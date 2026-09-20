@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e8f9e">
+<meta name="format-detection" content="telephone=no">
+<title>第四篇 · 送礼心得 · 火焰纹章 万缕千丝 完全攻略手册</title>
+<style>
+:root{
+  --bg:#f7f8fa; --card:#ffffff;
+  --ink:#1a1d23; --ink2:#3a4250; --muted:#6b7484;
+  --line:#e4e7ec; --line2:#eef0f4;
+  --brand:#b8123c; --brand-soft:#fdf1f4; --brand-chip:#fbe6ee;
+  --blue:#1f5fa8; --amber:#e8a33d; --code:#f2f4f7;
+  --shadow:0 4px 18px rgba(20,25,40,.05);
+  --shadow-lg:0 12px 32px rgba(20,25,40,.18);
+  --topbar-h:56px;
+  --cur:#b8123c; --cur-soft:#fdf1f4;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth; scroll-padding-top:calc(var(--topbar-h) + 14px)}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.78; font-size:15.5px;
+  -webkit-text-size-adjust:100%; text-rendering:optimizeLegibility;
+  overflow-x:hidden; max-width:100vw;
+}
+.card,.hero,.sidebar,.topbar{overflow-wrap:anywhere}
+h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
+
+/* ============ 顶栏 ============ */
+.topbar{
+  position:fixed; top:0; left:0; right:0; height:var(--topbar-h); z-index:60;
+  display:none; align-items:center; gap:10px; padding:0 12px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+  overflow:hidden; max-width:100vw;
+}
+.topbar .brand{
+  font-weight:700; font-size:14.5px; color:var(--ink);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  flex:1 1 auto; min-width:0; width:0;
+}
+.topbar .brand .dot{
+  display:inline-block; width:8px; height:8px; border-radius:50%;
+  background:var(--cur); margin-right:7px; vertical-align:1.5px;
+}
+@media (max-width:400px){ .topbar .brand .seg{display:none} }
+
+/*
+  纯 CSS 抽屉开关：checkbox 驱动，无 JS 也能打开。
+  checkbox 隐藏但仍可被 label 点击。
+*/
+#navToggle{position:absolute; opacity:0; pointer-events:none; width:0; height:0}
+.menu-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:42px; height:42px; border-radius:12px; flex:0 0 auto;
+  border:1px solid var(--line); background:#fff; cursor:pointer;
+  box-shadow:0 1px 3px rgba(18,24,38,.06);
+  position:relative; z-index:1;
+}
+.menu-btn:active{background:#f0f2f6}
+.menu-btn svg{width:20px; height:20px; stroke:var(--ink2); stroke-width:2;
+  fill:none; stroke-linecap:round}
+
+/* ============ 布局 ============ */
+.layout{display:flex; align-items:flex-start; max-width:1500px; margin:0 auto}
+
+.sidebar{
+  position:sticky; top:0; flex:0 0 278px; width:278px;
+  height:100vh; overflow-y:auto; overscroll-behavior:contain;
+  padding:24px 12px 40px 18px;
+  border-right:1px solid var(--line);
+  background:linear-gradient(180deg,#fbfcfe,#f6f8fb);
+}
+.sidebar::-webkit-scrollbar{width:7px}
+.sidebar::-webkit-scrollbar-thumb{background:#cfd6e0; border-radius:4px}
+.sidebar::-webkit-scrollbar-track{background:transparent}
+.sidebar-title{
+  font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted); font-weight:700; margin:0 0 12px 10px;
+}
+.toc-link{
+  display:block; padding:7px 11px; margin:1px 0; border-radius:9px;
+  color:var(--ink2); text-decoration:none; font-size:13.5px; line-height:1.45;
+  border-left:3px solid transparent;
+  transition:background .14s,color .14s,border-color .14s;
+}
+.toc-link:hover{background:#eef1f6; color:var(--ink)}
+.toc-part{
+  font-weight:700; color:#1d2430; margin-top:13px; font-size:13.6px;
+  background:#f0f3f8; border-left:3px solid var(--pc,transparent);
+  display:flex; align-items:center; gap:8px;
+}
+.toc-part::before{
+  content:""; flex:0 0 auto; width:7px; height:7px; border-radius:2px;
+  background:var(--pc,#c3cad6);
+}
+.toc-part:first-of-type{margin-top:2px}
+.toc-sec{padding-left:26px; color:var(--muted); font-size:13.1px}
+.toc-link.active{
+  background:var(--active-bg,#fdf1f4); color:var(--active-fg,#b8123c);
+  border-left-color:var(--active-fg,#b8123c); font-weight:600;
+}
+.toc-part.active{background:var(--pc-soft,#fbe6ee); color:var(--pc,#b8123c);
+  border-left-color:var(--pc,#b8123c)}
+
+/* 侧栏里的「本篇/全站」切换 */
+.nav-split{display:flex; gap:6px; margin:0 6px 12px}
+.nav-split a{
+  flex:1; text-align:center; font-size:12.2px; padding:6px 4px;
+  border-radius:8px; text-decoration:none; color:var(--muted);
+  border:1px solid var(--line); background:#fff; font-weight:600;
+}
+.nav-split a.on{background:var(--brand); color:#fff; border-color:var(--brand)}
+
+.scrim{
+  position:fixed; inset:0; background:rgba(14,19,28,.44); z-index:70;
+  opacity:0; pointer-events:none; transition:opacity .22s;
+  backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px);
+}
+/* 遮罩由 checkbox 控制 */
+#navToggle:checked ~ .scrim{opacity:1; pointer-events:auto}
+
+.content{flex:1 1 auto; min-width:0; padding:28px 40px 96px; max-width:1220px}
+.card{
+  background:var(--card); border:1px solid var(--line); border-radius:16px;
+  padding:14px 42px 46px; box-shadow:var(--shadow);
+}
+
+/* ============ 头图 ============ */
+.hero{
+  background:linear-gradient(135deg,#1a1d23 0%,#2c3444 58%,var(--cur) 168%);
+  color:#fff; border-radius:18px; padding:34px 38px 30px; margin-bottom:22px;
+  box-shadow:var(--shadow-lg); position:relative; overflow:hidden;
+}
+.hero::after{
+  content:""; position:absolute; right:-70px; top:-70px; width:250px; height:250px;
+  border-radius:50%; background:radial-gradient(circle,var(--cur),transparent 68%);
+  opacity:.5; pointer-events:none;
+}
+.hero h1{
+  margin:0 0 10px; font-size:28px; letter-spacing:.4px; line-height:1.34;
+  color:#fff; border:0; padding:0; position:relative; z-index:1;
+}
+.hero h1 .accent{color:#ffa8c0}
+.hero .sub{color:#c9d1de; font-size:13.6px; position:relative; z-index:1; line-height:1.6}
+.hero .pills{margin-top:15px; position:relative; z-index:1;
+  display:flex; flex-wrap:wrap; gap:8px}
+.hero .pill{
+  display:inline-block; padding:4px 12px;
+  background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.26);
+  border-radius:999px; font-size:12.3px; color:#eef2f8; line-height:1.6;
+}
+.hero .pill.hot{background:rgba(184,18,60,.34); border-color:rgba(255,140,170,.46)}
+/* 篇序号大数字 */
+.hero .pnum{
+  position:absolute; right:30px; bottom:-16px; z-index:0;
+  font-size:120px; font-weight:800; line-height:1; letter-spacing:-.04em;
+  color:rgba(255,255,255,.09); pointer-events:none; user-select:none;
+}
+
+/* ============ 标题 ============ */
+h1{font-size:26px; line-height:1.35; margin:0 0 18px;
+   padding-bottom:14px; border-bottom:2px solid var(--cur); color:#12161c;
+   scroll-margin-top:calc(var(--topbar-h) + 18px)}
+h2{
+  font-size:20px; margin:44px 0 16px; padding:11px 0 11px 16px;
+  border-left:5px solid var(--cur);
+  background:linear-gradient(90deg,var(--cur-soft),rgba(255,255,255,0));
+  border-radius:0 10px 10px 0; line-height:1.42; color:#151a21;
+  scroll-margin-top:calc(var(--topbar-h) + 18px);
+}
+h3{font-size:16.8px; margin:30px 0 12px; color:#1c222b;
+   padding-bottom:7px; border-bottom:1px dashed var(--line);
+   scroll-margin-top:calc(var(--topbar-h) + 18px)}
+/* h2 右侧的小注（如「自动采集 · 逐日留档」） */
+h2 .h2note{
+  display:inline-block; margin-left:10px; vertical-align:2px;
+  font-size:11.6px; font-weight:600; letter-spacing:.04em;
+  color:var(--muted); background:#fff; border:1px solid var(--line);
+  padding:2px 9px; border-radius:20px; white-space:nowrap;
+}
+h3::before{
+  content:""; display:inline-block; width:7px; height:7px; margin-right:8px;
+  border-radius:2px; background:var(--cur); vertical-align:1.5px;
+}
+h4{font-size:15.4px; margin:20px 0 8px; color:var(--cur);
+   scroll-margin-top:calc(var(--topbar-h) + 18px)}
+p{margin:11px 0}
+a{color:var(--blue); text-decoration:none;
+  border-bottom:1px solid rgba(31,95,168,.26); word-break:break-word}
+a:hover{color:var(--brand); border-bottom-color:var(--brand)}
+code{background:var(--code); padding:2px 6px; border-radius:5px; font-size:13.5px;
+  font-family:"SF Mono",ui-monospace,Consolas,Menlo,monospace; color:var(--brand)}
+strong{color:#0d1117; font-weight:650}
+hr{border:0; border-top:1px solid var(--line); margin:38px 0}
+
+blockquote{
+  margin:18px 0; padding:15px 20px; background:var(--cur-soft);
+  border-left:4px solid var(--cur); border-radius:0 10px 10px 0; color:var(--ink2);
+}
+blockquote p{margin:6px 0}
+blockquote strong{color:var(--cur)}
+
+/* ============ 表格：容器查询驱动 ============ */
+table{width:100%; border-collapse:collapse; font-size:13.8px}
+th{
+  background:#f1f4f8; text-align:left; padding:11px 13px; font-weight:650;
+  color:#1c222b; border-bottom:1px solid var(--line); white-space:nowrap;
+}
+td{padding:10px 13px; border-bottom:1px solid var(--line2); vertical-align:top; line-height:1.62}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even){background:#fafbfc}
+tbody tr:hover{background:var(--cur-soft)}
+
+table.c8 thead th:first-child,table.c9 thead th:first-child,
+table.c10 thead th:first-child,table.c11 thead th:first-child,table.c12 thead th:first-child{
+  position:sticky; left:0; z-index:3; box-shadow:1px 0 0 var(--line); background:#f1f4f8;
+}
+table.c8 tbody td:first-child,table.c9 tbody td:first-child,
+table.c10 tbody td:first-child,table.c11 tbody td:first-child,table.c12 tbody td:first-child{
+  position:sticky; left:0; z-index:2;
+  background:#fff; box-shadow:1px 0 0 var(--line); font-weight:650;
+}
+table.c8 tbody tr:nth-child(even) td:first-child,table.c9 tbody tr:nth-child(even) td:first-child,
+table.c10 tbody tr:nth-child(even) td:first-child,table.c11 tbody tr:nth-child(even) td:first-child,
+table.c12 tbody tr:nth-child(even) td:first-child{background:#fafbfc}
+
+.table-wrap{
+  container-type:inline-size; container-name:tbl;
+  margin:18px 0; border:1px solid var(--line); border-radius:12px;
+  overflow:hidden; background:#fff; max-width:100%;
+}
+.table-wrap.scrollable{
+  overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+}
+.table-wrap.scrollable::-webkit-scrollbar{height:7px}
+.table-wrap.scrollable::-webkit-scrollbar-thumb{background:#cfd6e0; border-radius:4px}
+.table-wrap.scrollable::-webkit-scrollbar-track{background:#f4f6f9}
+
+table{--minw:100%}
+table.c2{--minw:340px}  table.c3{--minw:400px}  table.c4{--minw:500px}
+table.c5{--minw:600px}  table.c6{--minw:700px}  table.c7{--minw:790px}
+table.c8{--minw:880px}  table.c9{--minw:970px}  table.c10{--minw:1060px}
+table.c11{--minw:1150px} table.c12{--minw:1240px}
+.table-wrap.scrollable > table{min-width:var(--minw)}
+
+/* 卡片化降级 */
+@container tbl (max-width: 429px){
+  .table-wrap.cardmode > table.c2, .table-wrap.cardmode > table.c3,
+  .table-wrap.cardmode > table.c4{min-width:0; width:100%}
+}
+@container tbl (max-width: 669px){
+  .table-wrap.cardmode > table.c5, .table-wrap.cardmode > table.c6,
+  .table-wrap.cardmode > table.c7{min-width:0; width:100%}
+}
+@container tbl (max-width: 909px){
+  .table-wrap.cardmode > table.c8, .table-wrap.cardmode > table.c9,
+  .table-wrap.cardmode > table.c10, .table-wrap.cardmode > table.c11,
+  .table-wrap.cardmode > table.c12{min-width:0; width:100%}
+}
+@container tbl (max-width: 429px){
+  .table-wrap.cardmode > table.c2, .table-wrap.cardmode > table.c3,
+  .table-wrap.cardmode > table.c4{display:block}
+  .table-wrap.cardmode > table.c2 > thead, .table-wrap.cardmode > table.c3 > thead,
+  .table-wrap.cardmode > table.c4 > thead{display:none}
+  .table-wrap.cardmode > table.c2 > tbody, .table-wrap.cardmode > table.c2 > tbody > tr,
+  .table-wrap.cardmode > table.c2 > tbody > tr > td,
+  .table-wrap.cardmode > table.c3 > tbody, .table-wrap.cardmode > table.c3 > tbody > tr,
+  .table-wrap.cardmode > table.c3 > tbody > tr > td,
+  .table-wrap.cardmode > table.c4 > tbody, .table-wrap.cardmode > table.c4 > tbody > tr,
+  .table-wrap.cardmode > table.c4 > tbody > tr > td{display:block; width:100%}
+  .table-wrap.cardmode > table.c2 > tbody > tr,
+  .table-wrap.cardmode > table.c3 > tbody > tr,
+  .table-wrap.cardmode > table.c4 > tbody > tr{
+    border:1px solid var(--line); border-left:4px solid var(--cur);
+    border-radius:10px; margin:0 0 10px; overflow:hidden;
+    background:#fff !important; box-shadow:0 1px 3px rgba(20,25,40,.04);
+  }
+  .table-wrap.cardmode > table.c2 > tbody > tr:last-child,
+  .table-wrap.cardmode > table.c3 > tbody > tr:last-child,
+  .table-wrap.cardmode > table.c4 > tbody > tr:last-child{margin-bottom:0}
+  .table-wrap.cardmode > table.c2 td, .table-wrap.cardmode > table.c3 td,
+  .table-wrap.cardmode > table.c4 td{border:0; border-bottom:1px solid var(--line2); padding:9px 12px}
+  .table-wrap.cardmode > table.c2 td:last-child, .table-wrap.cardmode > table.c3 td:last-child,
+  .table-wrap.cardmode > table.c4 td:last-child{border-bottom:0}
+  .table-wrap.cardmode > table.c2 td:first-child, .table-wrap.cardmode > table.c3 td:first-child,
+  .table-wrap.cardmode > table.c4 td:first-child{
+    background:var(--cur-soft); font-weight:700; color:var(--cur);
+    border-bottom:1px solid var(--line); font-size:14.4px;
+  }
+  .table-wrap.cardmode > table.c2 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c3 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c4 td:not(:first-child)::before{
+    content:attr(data-label) "："; display:inline;
+    font-weight:650; color:var(--ink2); font-size:12.6px;
+  }
+  .table-wrap.cardmode > table.c2 td:not(:first-child)[data-label=""]::before,
+  .table-wrap.cardmode > table.c3 td:not(:first-child)[data-label=""]::before,
+  .table-wrap.cardmode > table.c4 td:not(:first-child)[data-label=""]::before{content:""}
+}
+@container tbl (max-width: 669px){
+  .table-wrap.cardmode > table.c5, .table-wrap.cardmode > table.c6,
+  .table-wrap.cardmode > table.c7{display:block}
+  .table-wrap.cardmode > table.c5 > thead, .table-wrap.cardmode > table.c6 > thead,
+  .table-wrap.cardmode > table.c7 > thead{display:none}
+  .table-wrap.cardmode > table.c5 > tbody, .table-wrap.cardmode > table.c5 > tbody > tr,
+  .table-wrap.cardmode > table.c5 > tbody > tr > td,
+  .table-wrap.cardmode > table.c6 > tbody, .table-wrap.cardmode > table.c6 > tbody > tr,
+  .table-wrap.cardmode > table.c6 > tbody > tr > td,
+  .table-wrap.cardmode > table.c7 > tbody, .table-wrap.cardmode > table.c7 > tbody > tr,
+  .table-wrap.cardmode > table.c7 > tbody > tr > td{display:block; width:100%}
+  .table-wrap.cardmode > table.c5 > tbody > tr,
+  .table-wrap.cardmode > table.c6 > tbody > tr,
+  .table-wrap.cardmode > table.c7 > tbody > tr{
+    border:1px solid var(--line); border-left:4px solid var(--cur);
+    border-radius:10px; margin:0 0 10px; overflow:hidden;
+    background:#fff !important; box-shadow:0 1px 3px rgba(20,25,40,.04);
+  }
+  .table-wrap.cardmode > table.c5 > tbody > tr:last-child,
+  .table-wrap.cardmode > table.c6 > tbody > tr:last-child,
+  .table-wrap.cardmode > table.c7 > tbody > tr:last-child{margin-bottom:0}
+  .table-wrap.cardmode > table.c5 td, .table-wrap.cardmode > table.c6 td,
+  .table-wrap.cardmode > table.c7 td{border:0; border-bottom:1px solid var(--line2); padding:9px 12px}
+  .table-wrap.cardmode > table.c5 td:last-child, .table-wrap.cardmode > table.c6 td:last-child,
+  .table-wrap.cardmode > table.c7 td:last-child{border-bottom:0}
+  .table-wrap.cardmode > table.c5 td:first-child, .table-wrap.cardmode > table.c6 td:first-child,
+  .table-wrap.cardmode > table.c7 td:first-child{
+    background:var(--cur-soft); font-weight:700; color:var(--cur);
+    border-bottom:1px solid var(--line); font-size:14.4px;
+  }
+  .table-wrap.cardmode > table.c5 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c6 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c7 td:not(:first-child)::before{
+    content:attr(data-label) "："; display:inline;
+    font-weight:650; color:var(--ink2); font-size:12.6px;
+  }
+  .table-wrap.cardmode > table.c5 td:not(:first-child)[data-label=""]::before,
+  .table-wrap.cardmode > table.c6 td:not(:first-child)[data-label=""]::before,
+  .table-wrap.cardmode > table.c7 td:not(:first-child)[data-label=""]::before{content:""}
+}
+
+@supports not (container-type: inline-size){
+  .table-wrap.cardmode{overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch}
+  .table-wrap.cardmode > table{min-width:var(--minw)}
+}
+
+/* ============ 头像 ============ */
+.avatar{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:26px; height:26px; border-radius:8px; flex:0 0 auto;
+  font-size:13px; font-weight:700; color:#fff; line-height:1;
+  background:var(--ac,#b8123c); box-shadow:inset 0 -2px 0 rgba(0,0,0,.14);
+  vertical-align:-6px; margin-right:7px; letter-spacing:0;
+  font-family:inherit;
+}
+.avatar.lg{width:40px; height:40px; border-radius:12px; font-size:19px;
+  vertical-align:-11px; margin-right:10px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
+.avatar.sm{width:21px; height:21px; border-radius:6px; font-size:11px;
+  vertical-align:-5px; margin-right:5px}
+/* 角色名字行：头像 + 名字 */
+.who{display:inline-flex; align-items:center; gap:0; font-weight:600}
+
+/* ============ 角色卡网格 ============ */
+.chr-grid{
+  display:grid; gap:12px; margin:20px 0;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+}
+.chr-card{
+  border:1px solid var(--line); border-radius:14px; padding:14px 16px;
+  background:linear-gradient(160deg,#fff, var(--cs,#f8fafc));
+  border-top:4px solid var(--cc,#b8123c);
+  box-shadow:0 2px 10px rgba(20,25,40,.05);
+}
+.chr-card .top{display:flex; align-items:center; gap:10px; margin-bottom:9px}
+.chr-card .name{font-weight:700; font-size:15.4px; color:#141922; line-height:1.3}
+.chr-card .role{font-size:11.8px; color:var(--muted); margin-top:2px}
+.chr-card dl{margin:0; font-size:13.2px}
+.chr-card dt{
+  font-size:11.6px; letter-spacing:.06em; color:var(--muted); font-weight:700;
+  margin-top:8px; text-transform:uppercase;
+}
+.chr-card dd{margin:2px 0 0; color:var(--ink2); line-height:1.6}
+
+/* ============ 要点卡 ============ */
+.keys{
+  display:grid; gap:11px; margin:20px 0;
+  grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+}
+.key{
+  border:1px solid var(--line); border-radius:12px; padding:13px 15px;
+  background:#fff; border-left:4px solid var(--cur);
+  box-shadow:0 2px 8px rgba(20,25,40,.04);
+}
+.key .k-t{font-weight:700; font-size:14.2px; color:var(--cur); margin-bottom:5px;
+  display:flex; align-items:center; gap:7px}
+.key .k-t .n{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:20px; height:20px; border-radius:6px; background:var(--cur); color:#fff;
+  font-size:11.5px; flex:0 0 auto;
+}
+.key .k-b{font-size:13.4px; color:var(--ink2); line-height:1.66}
+
+/* ============ 编号步骤卡（速查流程用） ============ */
+.steps{
+  display:grid; gap:9px; margin:18px 0 22px;
+  grid-template-columns:repeat(auto-fit,minmax(268px,1fr));
+  counter-reset:st;
+}
+.step{
+  display:flex; gap:11px; align-items:flex-start;
+  border:1px solid var(--line); border-radius:12px; padding:12px 14px 12px 12px;
+  background:#fff; box-shadow:0 2px 8px rgba(20,25,40,.045);
+  position:relative; overflow:hidden;
+}
+.step::before{
+  content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+  background:var(--cur); opacity:.85;
+}
+.step .num{
+  flex:0 0 auto; width:26px; height:26px; border-radius:9px;
+  background:var(--cur); color:#fff; font-weight:700; font-size:13.5px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 3px 8px color-mix(in srgb, var(--cur) 32%, transparent);
+  font-variant-numeric:tabular-nums;
+}
+@supports not (color: color-mix(in srgb, red 10%, blue)){
+  .step .num{box-shadow:0 3px 8px rgba(20,25,40,.16)}
+}
+.step .num i{font-style:normal}
+.step .tx{font-size:13.8px; line-height:1.65; color:var(--ink2); flex:1 1 auto; min-width:0}
+.step .tx b,.step .tx strong{color:var(--ink); font-weight:700}
+.step .tx .em{color:var(--cur); font-weight:700}
+.step.wide{grid-column:1 / -1}
+
+/* 强化版优先级引用块 */
+.card blockquote.prio{
+  background:linear-gradient(135deg,var(--cur-soft) 0%,#fff 100%);
+  border-left-width:5px; border-left-color:var(--cur);
+  font-size:14.4px; line-height:1.85; color:#171c26;
+}
+.card blockquote.prio .pin{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:11.5px; font-weight:700; letter-spacing:.08em;
+  color:var(--cur); background:#fff; border:1px solid var(--line);
+  padding:2px 9px; border-radius:20px; margin-right:8px; vertical-align:2px;
+}
+
+/* ============ 每日更新 log ============ */
+.dlog-empty{
+  border:1px dashed var(--line); border-radius:13px; padding:26px 20px;
+  text-align:center; color:var(--muted); font-size:13.6px; line-height:1.8;
+  background:linear-gradient(180deg,#fcfdfe,#f8fafc);
+}
+.dlog-empty .ic{
+  display:block; font-size:22px; margin-bottom:8px; opacity:.5;
+}
+.dlog-empty b{color:var(--ink2)}
+.dlog{
+  display:grid; gap:14px; margin:18px 0 6px;
+}
+.dlog-day{
+  border:1px solid var(--line); border-radius:13px; background:#fff;
+  overflow:hidden; box-shadow:0 2px 10px rgba(20,25,40,.045);
+}
+.dlog-head{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  padding:12px 15px; background:linear-gradient(180deg,#fbfcfe,#f5f7fa);
+  border-bottom:1px solid var(--line);
+}
+.dlog-date{
+  font-weight:700; font-size:14.6px; color:var(--ink);
+  font-variant-numeric:tabular-nums; letter-spacing:.01em;
+}
+.dlog-count{
+  font-size:11.8px; color:var(--muted); background:#fff;
+  border:1px solid var(--line); padding:2px 9px; border-radius:20px;
+}
+.dlog-body{padding:13px 15px 15px}
+.dlog-sec{margin:0 0 12px}
+.dlog-sec:last-child{margin-bottom:0}
+.dlog-sec > .lbl{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:11.6px; font-weight:700; letter-spacing:.07em;
+  color:var(--muted); margin-bottom:7px;
+}
+.dlog-sec > .lbl .n{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:18px; height:18px; padding:0 5px; border-radius:6px;
+  background:#eef1f6; color:var(--ink2); font-size:11px;
+}
+.dlog ul{margin:0; padding-left:19px}
+.dlog li{font-size:13.5px; line-height:1.72; color:var(--ink2); margin:3px 0}
+.dlog li .src{
+  font-size:11.8px; color:var(--muted); text-decoration:none;
+  border-bottom:1px dotted var(--line); margin-left:4px;
+}
+.dlog li .src:hover{color:var(--brand)}
+.dlog .none{font-size:13.2px; color:var(--muted)}
+
+/* 三级来源分档 */
+.grade{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:19px; height:19px; border-radius:6px; flex:0 0 auto;
+  font-size:11.4px; font-weight:700; color:#fff; margin-right:6px;
+  vertical-align:-3px;
+}
+.grade.gA{background:#0f8a63}
+.grade.gB{background:#1f5fa8}
+.grade.gC{background:#8a93a1}
+.grade-tip{
+  font-size:11.8px; color:var(--muted); margin:0 0 9px; line-height:1.7;
+  padding:8px 11px; background:#f7f9fc; border-radius:9px;
+  border-left:3px solid var(--line);
+}
+.dlog-src{margin:0; padding:0; list-style:none}
+.dlog-src li{
+  font-size:13.3px; line-height:1.68; color:var(--ink2);
+  padding:5px 0; border-bottom:1px dashed var(--line2);
+}
+.dlog-src li:last-child{border-bottom:none}
+.dlog-src a{color:var(--brand); text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb, var(--brand) 30%, transparent);
+  overflow-wrap:anywhere}
+.dlog-src .note{color:var(--muted); font-size:12.4px}
+
+/* 冲突待裁决 */
+.dlog-conf{
+  border-left:3px solid #c2790a; background:#fffaf0;
+  border-radius:0 9px 9px 0; padding:9px 12px; margin:5px 0;
+}
+.dlog-conf .tp{font-weight:700; font-size:13.4px; color:#8a5a1e; margin-bottom:4px}
+.dlog-conf .vs{font-size:13.1px; line-height:1.7; color:var(--ink2)}
+.dlog-conf .vs b{color:var(--ink)}
+
+/* 采集受限 */
+.dlog-lim{
+  border-left:3px solid #8a93a1; background:#f7f8fa;
+  border-radius:0 9px 9px 0; padding:8px 12px; margin:4px 0;
+  font-size:13.1px; color:var(--ink2); line-height:1.7;
+}
+.dlog-lim b{color:#5b6472}
+
+/* ============ 上下篇导航 ============ */
+.pager{
+  display:flex; gap:12px; margin:32px 0 0; flex-wrap:wrap;
+}
+.pager a{
+  flex:1 1 210px; border:1px solid var(--line); border-radius:13px;
+  padding:14px 17px; background:#fff; text-decoration:none;
+  border-bottom:1px solid var(--line); color:var(--ink);
+  box-shadow:0 2px 9px rgba(20,25,40,.045);
+  transition:transform .14s, box-shadow .14s, border-color .14s;
+}
+.pager a:hover{transform:translateY(-2px); box-shadow:0 7px 20px rgba(20,25,40,.1);
+  color:var(--ink); border-bottom-color:var(--line)}
+.pager .dir{font-size:11.8px; color:var(--muted); font-weight:700;
+  letter-spacing:.08em; display:block; margin-bottom:4px}
+.pager .ttl{font-weight:650; font-size:14.4px; line-height:1.4}
+.pager a.next{text-align:right}
+.pager .dotm{
+  display:inline-block; width:8px; height:8px; border-radius:2px;
+  background:var(--pc,#b8123c); margin-right:7px; vertical-align:1px;
+}
+
+/* ============ 首页 ============ */
+.home-grid{
+  display:grid; gap:14px; margin:24px 0;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+}
+.home-card{
+  display:block; text-decoration:none; color:inherit;
+  border:1px solid var(--line); border-radius:16px; padding:20px 22px 18px;
+  background:#fff; border-bottom:1px solid var(--line);
+  border-top:5px solid var(--pc,#b8123c);
+  box-shadow:0 3px 14px rgba(20,25,40,.055);
+  transition:transform .15s, box-shadow .15s;
+  position:relative; overflow:hidden;
+}
+.home-card:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(20,25,40,.12);
+  color:inherit; border-bottom-color:var(--line)}
+.home-card .no{
+  position:absolute; right:14px; top:8px; font-size:56px; font-weight:800;
+  color:var(--pc); opacity:.1; line-height:1; letter-spacing:-.04em;
+}
+.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:7px;
+  display:flex; align-items:center; gap:9px}
+.home-card .t .bd{width:9px; height:9px; border-radius:3px; background:var(--pc); flex:0 0 auto}
+.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66; margin-bottom:11px}
+.home-card .meta{font-size:12.2px; color:var(--pc); font-weight:650}
+.home-card .chips{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px}
+.home-card .chips span{
+  font-size:11.6px; padding:2px 9px; border-radius:999px;
+  background:var(--pcs,#f2f4f7); color:var(--pc); font-weight:600;
+}
+
+/* ============ 通用零件 ============ */
+.badge{
+  display:inline-block; font-size:11.6px; font-weight:700; padding:2px 9px;
+  border-radius:999px; background:var(--cur-soft); color:var(--cur);
+  vertical-align:1px; margin-right:6px;
+}
+.badge.warn{background:#fdf5e6; color:#c2790a}
+.badge.ok{background:#eafaf4; color:#0f8a63}
+.hint-line{
+  font-size:12.6px; color:var(--muted); border-left:3px solid var(--line);
+  padding-left:11px; margin:13px 0;
+}
+.pager-home{margin-top:26px; text-align:center}
+.pager-home a{
+  display:inline-block; padding:11px 26px; border-radius:11px;
+  background:var(--brand); color:#fff; font-weight:650; font-size:14.4px;
+  text-decoration:none; border-bottom:0; box-shadow:0 5px 16px rgba(184,18,60,.28);
+}
+.pager-home a:hover{color:#fff; opacity:.93}
+
+ul,ol{padding-left:24px; margin:12px 0}
+li{margin:7px 0}
+ul li::marker{color:var(--cur)}
+ol li::marker{color:var(--cur); font-weight:600}
+
+.to-top{
+  position:fixed; right:18px; bottom:20px; width:46px; height:46px;
+  border-radius:50%; border:1px solid var(--line); background:#fff;
+  box-shadow:0 6px 18px rgba(18,24,38,.14); cursor:pointer; z-index:55;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .22s, transform .22s;
+  text-decoration:none;
+}
+.to-top.show{opacity:1; pointer-events:auto}
+.to-top:active{transform:scale(.93)}
+.to-top svg{width:19px; height:19px; stroke:var(--brand); stroke-width:2.2;
+  fill:none; stroke-linecap:round; stroke-linejoin:round}
+
+footer.foot{
+  margin-top:30px; color:var(--muted); font-size:12.5px;
+  text-align:center; line-height:1.8; padding:0 8px;
+}
+
+/* ============ 响应式 ============ */
+@media (max-width:1080px){
+  .sidebar{flex:0 0 240px; width:240px}
+  .content{padding:24px 24px 90px; max-width:none}
+  .card{padding:12px 26px 40px}
+  h1{font-size:24px} h2{font-size:19.5px}
+  .hero{padding:30px 30px 26px} .hero h1{font-size:25px}
+  .chr-grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+}
+
+@media (max-width:860px){
+  body{font-size:15.5px; line-height:1.75}
+  .topbar{display:flex}
+  .layout{display:block}
+  html{scroll-padding-top:calc(var(--topbar-h) + 10px)}
+
+  /* 抽屉：由 checkbox 控制，无 JS 可用 */
+  .sidebar{
+    position:fixed; top:0; left:0; bottom:0; z-index:80;
+    width:min(85vw,330px); height:100%;
+    padding:18px 12px 0 16px;
+    transform:translateX(-102%);
+    transition:transform .26s cubic-bezier(.32,.72,.28,1);
+    box-shadow:6px 0 28px rgba(14,19,28,.2);
+    background:#fbfcfe;
+    /* 抽屉自身成独立滚动区：避免滚动链传给主页面 */
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    display:flex; flex-direction:column;
+  }
+  /* 抽屉内可滚动主体，底部留安全间距 */
+  .sidebar .nav-scroll{
+    flex:1 1 auto; min-height:0; overflow-y:auto;
+    overscroll-behavior:contain; -webkit-overflow-scrolling:touch;
+    padding-bottom:calc(28px + env(safe-area-inset-bottom,0px));
+  }
+  #navToggle:checked ~ .layout .sidebar{transform:translateX(0)}
+
+  /*
+    抽屉打开时锁住主页面滚动 —— 纯 CSS 实现：
+    利用 :has() 检测兄弟节点里的 checkbox 状态。
+    不支持 :has() 时由下方 JS 兜底。
+  */
+  html:has(#navToggle:checked),
+  body:has(#navToggle:checked){overflow:hidden; touch-action:none}
+  body:has(#navToggle:checked) .content{overflow:hidden}
+  .sidebar-title{margin-bottom:10px}
+  .toc-link{padding:9px 12px; font-size:14.1px}
+  .toc-sec{padding-left:24px; font-size:13.7px}
+  /* 抽屉内的关闭键 */
+  .drawer-close{
+    display:flex; align-items:center; justify-content:flex-end;
+    margin:0 4px 6px;
+  }
+
+  .content{padding:calc(var(--topbar-h) + 12px) 11px 78px}
+  .card{padding:10px 15px 28px; border-radius:14px}
+  .hero{padding:24px 20px 20px; border-radius:15px; margin-bottom:16px}
+  .hero h1{font-size:21px}
+  .hero .sub{font-size:12.6px}
+  .hero .pill{font-size:11.6px; padding:3px 10px}
+  .hero .pnum{font-size:78px; right:14px; bottom:-8px}
+  h1{font-size:20px; margin-bottom:14px; padding-bottom:11px}
+  h2{font-size:17.6px; margin:32px 0 13px; padding:10px 12px;
+     border-left-width:4px; border-radius:0 9px 9px 0}
+  h3{font-size:15.8px; margin:24px 0 10px}
+  h4{font-size:15px}
+  blockquote{padding:13px 15px; margin:15px 0; font-size:14.8px}
+  ul,ol{padding-left:21px}
+
+  .table-wrap{border-radius:10px; margin:15px 0}
+  table{font-size:13.4px}
+  th{padding:9px 11px; font-size:12.8px}
+  td{padding:9px 11px}
+
+  .chr-grid{grid-template-columns:1fr; gap:10px}
+  .keys{grid-template-columns:1fr; gap:10px}
+  .steps{grid-template-columns:1fr; gap:8px}
+  .step .tx{font-size:13.4px}
+  .dlog-head{padding:11px 12px}
+  .dlog-body{padding:12px 12px 14px}
+  .dlog-date{font-size:14px}
+  .home-grid{grid-template-columns:1fr; gap:12px}
+  .pager a{flex:1 1 100%}
+
+  .to-top{right:13px; bottom:16px; width:43px; height:43px}
+}
+.drawer-close{display:none}
+@media (max-width:860px){ .drawer-close{display:flex} }
+
+@media (max-width:430px){
+  body{font-size:15px}
+  .card{padding:9px 12px 24px}
+  .hero{padding:20px 16px 17px}
+  .hero h1{font-size:19.5px}
+  h1{font-size:19px} h2{font-size:16.8px}
+  table{font-size:12.9px}
+  th,td{padding:8px 10px}
+  .avatar.lg{width:34px; height:34px; border-radius:10px; font-size:16px}
+}
+
+/* 打印 */
+@media print{
+  .topbar,.sidebar,.to-top,.scrim,.pager,.pager-home,.drawer-close{display:none !important}
+  body{background:#fff}
+  .content{padding:0}
+  .card{border:0; box-shadow:none; padding:0}
+  .table-wrap{overflow:visible}
+  table{min-width:0}
+  h2{break-after:avoid}
+  .home-card,.chr-card,.key,.step,.dlog-day{break-inside:avoid}
+}
+
+:root{--cur:#0e8f9e;--cur-soft:#e8f7f9}
+</style>
+</head>
+<body>
+<input type="checkbox" id="navToggle" aria-hidden="true">
+<div class="topbar">
+  <label class="menu-btn" for="navToggle" aria-label="打开目录" role="button" tabindex="0">
+    <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </label>
+  <div class="brand"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· 第四篇 · 送礼心得</span></div>
+</div>
+<div class="scrim"><label for="navToggle" style="display:block;width:100%;height:100%"></label></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="drawer-close"><label class="menu-btn" for="navToggle" aria-label="关闭目录" role="button" tabindex="0">
+    <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </label></div>
+  <div class="nav-scroll">
+    <div class="sidebar-title">本篇目录 · On this page</div>
+    <div class="nav-split"><a href="index.html">总目录</a><a class="on" href="p4.html">本篇目录</a></div><a class="toc-link toc-sec" href="#4-1-一句话结论" data-target="4-1-一句话结论" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">4.1 一句话结论</a><a class="toc-link toc-sec" href="#4-2-送礼的机制规则" data-target="4-2-送礼的机制规则" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">4.2 送礼的机制规则</a><a class="toc-link toc-sec" href="#支援增加量分级" data-target="支援增加量分级" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">支援增加量分级</a><a class="toc-link toc-sec" href="#礼物稀有度" data-target="礼物稀有度" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">礼物稀有度</a><a class="toc-link toc-sec" href="#礼物分类-共-18-类-与获取渠道" data-target="礼物分类-共-18-类-与获取渠道" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">礼物分类（共 18 类）与获取渠道</a><a class="toc-link toc-sec" href="#4-3-送礼核心技巧" data-target="4-3-送礼核心技巧" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">4.3 送礼核心技巧</a><a class="toc-link toc-sec" href="#技巧-1-用-物品描述-反查角色-本作的关键机制" data-target="技巧-1-用-物品描述-反查角色-本作的关键机制" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">技巧 1：用「物品描述」反查角色 —— 本作的关键机制</a><a class="toc-link toc-sec" href="#技巧-2-别死磕-最爱-退而求其次完全可以" data-target="技巧-2-别死磕-最爱-退而求其次完全可以" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">技巧 2：别死磕「最爱」，退而求其次完全可以</a><a class="toc-link toc-sec" href="#技巧-3-餐桌才是主力-送礼用来补齐" data-target="技巧-3-餐桌才是主力-送礼用来补齐" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">技巧 3：餐桌才是主力，送礼用来补齐</a><a class="toc-link toc-sec" href="#技巧-4-剧院-Theatre-被忽略的第三渠道" data-target="技巧-4-剧院-Theatre-被忽略的第三渠道" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">技巧 4：剧院（Theatre）—— 被忽略的第三渠道</a><a class="toc-link toc-sec" href="#技巧-5-战斗与连携也能刷" data-target="技巧-5-战斗与连携也能刷" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">技巧 5：战斗与连携也能刷</a><a class="toc-link toc-sec" href="#技巧-6-注意角色在场情况" data-target="技巧-6-注意角色在场情况" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">技巧 6：注意角色在场情况</a><a class="toc-link toc-sec" href="#4-4-全角色喜好与推荐礼物一览" data-target="4-4-全角色喜好与推荐礼物一览" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">4.4 全角色喜好与推荐礼物一览</a><a class="toc-link toc-sec" href="#四位主角-真主角" data-target="四位主角-真主角" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">四位主角 + 真主角</a><a class="toc-link toc-sec" href="#利贝拉之风-凯伊篇主力" data-target="利贝拉之风-凯伊篇主力" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">利贝拉之风（凯伊篇主力）</a><a class="toc-link toc-sec" href="#拉米努家族-迪托利希篇" data-target="拉米努家族-迪托利希篇" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">拉米努家族（迪托利希篇）</a><a class="toc-link toc-sec" href="#墨伽拉之灯-赛奥朵拉篇" data-target="墨伽拉之灯-赛奥朵拉篇" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">墨伽拉之灯（赛奥朵拉篇）</a><a class="toc-link toc-sec" href="#蔷薇风暴-蕾达篇" data-target="蔷薇风暴-蕾达篇" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">蔷薇风暴（蕾达篇）</a><a class="toc-link toc-sec" href="#炎之鬃" data-target="炎之鬃" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">炎之鬃</a><a class="toc-link toc-sec" href="#月之谎-白鸦新娘团-其他" data-target="月之谎-白鸦新娘团-其他" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">月之谎 / 白鸦新娘团 / 其他</a><a class="toc-part" style="--pc:#b8123c;--pc-soft:#fdf1f4" href="index.html">全站篇章</a><a class="toc-link toc-sec" href="p1.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">0. 第一篇 · 开局与全局框架</a><a class="toc-link toc-sec" href="p2.html" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">1. 第二篇 · 核心系统机制</a><a class="toc-link toc-sec" href="p3.html" style="--active-fg:#7a4bbf;--active-bg:#f4effc">2. 第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-sec" href="p4.html" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">3. 第四篇 · 送礼心得 ←</a><a class="toc-link toc-sec" href="p5.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">4. 第五篇 · 角色培养</a><a class="toc-link toc-sec" href="p6.html" style="--active-fg:#c2790a;--active-bg:#fdf5e6">5. 第六篇 · 路线切换与错过要素</a><a class="toc-link toc-sec" href="p7.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">6. 附录 · 每周日常速查卡</a><a class="toc-link toc-sec" href="p8.html" style="--active-fg:#5b6472;--active-bg:#f2f4f7">7. 资料源与可信度</a>
+  </div>
+</aside>
+  <main class="content">
+    <header class="hero">
+  <div class="pnum">04</div>
+  <h1>第四篇 · <span class="accent">送礼心得</span></h1>
+  <div class="sub">火焰纹章 万缕千丝 ／ ファイアーエムブレム 万紫千紅 ｜ Fire Emblem: Fortune's Weave</div>
+  <div class="pills"><span class="pill hot">日文站 · 中文站 · 英文站 三语综合</span><span class="pill">4 个章节</span><span class="pill">汇总日期 2026-09-19</span></div>
+</header>
+    <article class="card">
+<h2 id="4-1-一句话结论">4.1 一句话结论</h2>
+<blockquote>
+<p><strong>送礼的核心作用是「解锁用餐资格」和「补足支援差」，不是主力刷支援手段。</strong></p>
+<p>送对礼物（对方喜欢的）获得的支援量 ≈ 请对方吃一顿他喜欢的饭。但由于<strong>赠礼每周每人只能一次</strong>，而用餐<strong>每周可办 3 次 × 3 人</strong>，因此英文站明确建议：<strong>不要把送礼当主要手段</strong>，主力应是宿屋用餐。</p>
+</blockquote>
+<h2 id="4-2-送礼的机制规则">4.2 送礼的机制规则</h2>
+<div class="table-wrap scrollable cardmode"><table class="c2">
+<thead>
+<tr>
+<th>规则</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="规则"><strong>每周限一次</strong></td>
+<td data-label="内容">赠礼是<strong>每周行动</strong>，同一角色一周只能送一件</td>
+</tr>
+<tr>
+<td data-label="规则"><strong>每周日重置</strong></td>
+<td data-label="内容">每周从<strong>星期日</strong>开始</td>
+</tr>
+<tr>
+<td data-label="规则"><strong>地点限制</strong></td>
+<td data-label="内容">只有在角色<strong>人在达格席翁（Dagsion）</strong>时才能送。可从地图菜单的<strong>角色页签</strong>查看谁在场、当前支援等级，并<strong>直接快速传送</strong>过去</td>
+</tr>
+<tr>
+<td data-label="规则"><strong>首次送礼 = 解锁用餐</strong></td>
+<td data-label="内容"><strong>送出第一件礼物后，才能邀请该角色参加宿屋用餐</strong>——这是送礼最关键的机制作用</td>
+</tr>
+<tr>
+<td data-label="规则"><strong>招募前置</strong></td>
+<td data-label="内容">每个角色<strong>至少需送出 1 件礼物</strong>，才可能成为可招募对象</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="支援增加量分级">支援增加量分级</h3>
+<div class="table-wrap scrollable cardmode"><table class="c3">
+<thead>
+<tr>
+<th>反应</th>
+<th>支援增幅</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="反应">不喜欢</td>
+<td data-label="支援增幅"><strong>无支援增加</strong></td>
+<td data-label="说明">—</td>
+</tr>
+<tr>
+<td data-label="反应">有点喜欢</td>
+<td data-label="支援增幅">小幅增加</td>
+<td data-label="说明">—</td>
+</tr>
+<tr>
+<td data-label="反应">喜欢</td>
+<td data-label="支援增幅">中等增加</td>
+<td data-label="说明">—</td>
+</tr>
+<tr>
+<td data-label="反应"><strong>非常喜欢</strong></td>
+<td data-label="支援增幅"><strong>大幅增加</strong></td>
+<td data-label="说明">约等于请吃一顿他喜欢的饭</td>
+</tr>
+<tr>
+<td data-label="反应"><strong>非常喜欢 + 双黄箭头</strong></td>
+<td data-label="支援增幅"><strong>双倍点数</strong></td>
+<td data-label="说明">仅限「最爱物品」</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="礼物稀有度">礼物稀有度</h3>
+<div class="table-wrap scrollable cardmode"><table class="c2">
+<thead>
+<tr>
+<th>稀有度</th>
+<th>图标特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="稀有度"><strong>普通</strong></td>
+<td data-label="图标特征">深蓝绿色图标</td>
+</tr>
+<tr>
+<td data-label="稀有度"><strong>罕见</strong></td>
+<td data-label="图标特征">颜色更浅，<strong>右下角有符号</strong></td>
+</tr>
+<tr>
+<td data-label="稀有度"><strong>稀有</strong></td>
+<td data-label="图标特征">更浅，<strong>左上角有小闪光</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>注意</strong>：部分角色<strong>只接受罕见或稀有的物品</strong>，无论类别（例：卡塔尼娅偏好「任意稀有物品」）。</p>
+</blockquote>
+<h3 id="礼物分类-共-18-类-与获取渠道">礼物分类（共 18 类）与获取渠道</h3>
+<p><strong>分类</strong>：时尚 · 美容 · 花卉 · 烹饪 · 发酵饮料 · 一般饮料 · 咖啡 · 训练用品 · 武器 · 军用品 · 马匹用品 · 书籍 · 棋盘游戏 · 蔬菜 · 手工艺 · 钓鱼 · 弓术</p>
+<div class="table-wrap scrollable cardmode"><table class="c2">
+<thead>
+<tr>
+<th>获取渠道</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="获取渠道"><strong>各城镇市集商人</strong></td>
+<td data-label="说明">世界地图上各城镇/城市均有，<strong>达格席翁商店街尽头</strong>也有一处</td>
+</tr>
+<tr>
+<td data-label="获取渠道"><strong>低城区酒馆</strong></td>
+<td data-label="说明">可购买咖啡、Cervi 等饮料</td>
+</tr>
+<tr>
+<td data-label="获取渠道"><strong>库存刷新</strong></td>
+<td data-label="说明">达格席翁商店的库存会<strong>在每章开始时补货并新增品项</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>省钱重点</strong>：礼物<strong>很贵</strong>，训练用品等还很难找。<strong>建议尽早解锁「赠礼折扣」的救世祝福（Boon of Salvation）</strong>来降低成本。</p>
+</blockquote>
+<h2 id="4-3-送礼核心技巧">4.3 送礼核心技巧</h2>
+<h3 id="技巧-1-用-物品描述-反查角色-本作的关键机制">技巧 1：用「物品描述」反查角色 —— 本作的关键机制</h3>
+<blockquote>
+<p>本作对「谁喜欢什么」<strong>刻意保持模糊</strong>。礼物本身的描述会写明「主要为喜爱书籍者所享受」之类，<strong>玩家需要自己反查匹配的角色</strong>。</p>
+</blockquote>
+<p><strong>举例</strong>：一件描述为「喜爱书籍/阅读者」的礼物，可选对象包括——
+<strong>奥罗拉、本迪茨、贝尔特兰、菲亚娜、露迪娅、奈丁、奥尔赫尔、西洛可、蒂亚拉、乌修拉</strong></p>
+<p><strong>辅助判断线索</strong>：
+- <strong>成年人</strong>普遍喜欢发酵饮料，<strong>儿童不喜欢</strong>
+- 从<strong>外观</strong>可推测——例如看起来讲究时尚的角色会喜欢时尚类
+- 查看角色信息会<strong>直接透露部分喜好</strong></p>
+<h3 id="技巧-2-别死磕-最爱-退而求其次完全可以">技巧 2：别死磕「最爱」，退而求其次完全可以</h3>
+<blockquote>
+<p>如果某一周甚至整章都没有对方「非常喜欢」的东西，<strong>给个他「勉强能接受」的也完全没问题</strong>——第一部结束前有充足时间刷支援，不必焦虑。</p>
+</blockquote>
+<h3 id="技巧-3-餐桌才是主力-送礼用来补齐">技巧 3：餐桌才是主力，送礼用来补齐</h3>
+<ol>
+<li><strong>每周 3 顿用餐</strong>（宿屋上限 3 次 × 3 人）</li>
+<li>如果目标是招募：<strong>每顿饭都必须包含「你的主角 + 两个想招募的对象」</strong></li>
+<li><strong>先送一次礼</strong>给 Guest，才能邀请他入席</li>
+<li><strong>如果某位 Guest 不喜欢当天的菜色，就换成另一位喜欢该菜色的招募目标</strong></li>
+<li><strong>三人越都爱吃，支援涨得越多</strong></li>
+</ol>
+<h3 id="技巧-4-剧院-Theatre-被忽略的第三渠道">技巧 4：剧院（Theatre）—— 被忽略的第三渠道</h3>
+<ul>
+<li><strong>参演</strong>：只能从<strong>已招募</strong>的角色中选择</li>
+<li><strong>观演</strong>：可包含<strong>主角 + 一位 Guest</strong></li>
+<li><strong>只要两人真的喜欢该场演出</strong>，就能获得<strong>可观的支援提升</strong></li>
+</ul>
+<h3 id="技巧-5-战斗与连携也能刷">技巧 5：战斗与连携也能刷</h3>
+<div class="table-wrap scrollable cardmode"><table class="c2">
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="方式"><strong>相邻战斗</strong></td>
+<td data-label="说明">让想提升支援的两名角色<strong>相邻站位</strong>并攻击敌人结束回合，每次获得小额支援加成；<strong>每场战斗的每个回合都能刷</strong></td>
+</tr>
+<tr>
+<td data-label="方式"><strong>连携攻击（Link Attack）</strong></td>
+<td data-label="说明">地牢战等场景发动连携攻击，同样提升两人支援</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="技巧-6-注意角色在场情况">技巧 6：注意角色在场情况</h3>
+<p>某些章节中特定角色群<strong>不在达格席翁</strong>——凯伊、迪托利希、赛奥朵拉、塔利穆恩、阿纳托莉娅的队伍会缺席。想给这些人送礼或办餐会，<strong>需换到他们在场的章节</strong>。</p>
+<h2 id="4-4-全角色喜好与推荐礼物一览">4.4 全角色喜好与推荐礼物一览</h2>
+<blockquote>
+<p>下表综合 Polygon（推荐礼物）与 Game8 / Nintendo Insider（喜好与兴趣）三方资料。
+中文名多为暂译，以日文名/英文名对照为准。</p>
+</blockquote>
+<h3 id="四位主角-真主角">四位主角 + 真主角</h3>
+<div class="table-wrap scrollable cardmode"><table class="c4">
+<thead>
+<tr>
+<th>角色</th>
+<th>喜欢的东西</th>
+<th>兴趣</th>
+<th>推荐礼物</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="角色"><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊" aria-hidden="true">凯</span><strong>凯伊 Cai</strong></td>
+<td data-label="喜欢的东西">体能锻炼、捕捉动物</td>
+<td data-label="兴趣">钓鱼、枪术训练</td>
+<td data-label="推荐礼物"><strong>马匹用品</strong>（胡须草、马匹美容套装、鬃毛装饰）；训练用品亦可</td>
+</tr>
+<tr>
+<td data-label="角色"><span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希" aria-hidden="true">迪</span><strong>迪托利希 Dietrich</strong></td>
+<td data-label="喜欢的东西">美丽之物、甜食、妹妹</td>
+<td data-label="兴趣">与强者战斗、冥想</td>
+<td data-label="推荐礼物">甜食、美术品类</td>
+</tr>
+<tr>
+<td data-label="角色"><span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉" aria-hidden="true">赛</span><strong>赛奥朵拉 Theodora</strong></td>
+<td data-label="喜欢的东西">战斗、尤法斯、看子民繁荣</td>
+<td data-label="兴趣">狩猎、战斗训练</td>
+<td data-label="推荐礼物"><strong>尤法斯肖像画</strong>（最优）；咖啡、训练用品、时尚用品、结实背包、烹饪用品亦可接受</td>
+</tr>
+<tr>
+<td data-label="角色"><span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达" aria-hidden="true">蕾</span><strong>蕾达 Leda</strong></td>
+<td data-label="喜欢的东西">双亲的回忆、家乡的歌、宝石、掌声</td>
+<td data-label="兴趣">为比维拉琴调音、长途骑马</td>
+<td data-label="推荐礼物"><strong>东方耳环</strong>、<strong>蓝玫瑰花束</strong>为其最爱</td>
+</tr>
+<tr>
+<td data-label="角色"><span class="avatar sm" style="--ac:#c2790a" title="伊修玛尔" data-name="伊修玛尔" aria-hidden="true">伊</span><strong>伊修玛尔 Eshmel（救世主）</strong></td>
+<td data-label="喜欢的东西">有抱负的人、才能出众的人、无名小花</td>
+<td data-label="兴趣">玩棋盘游戏</td>
+<td data-label="推荐礼物">棋盘游戏类</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="利贝拉之风-凯伊篇主力">利贝拉之风（凯伊篇主力）</h3>
+<div class="table-wrap scrollable cardmode"><table class="c4">
+<thead>
+<tr>
+<th>角色</th>
+<th>喜欢的东西</th>
+<th>兴趣</th>
+<th>推荐礼物</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="角色"><strong>蒂亚拉 Tialla</strong></td>
+<td data-label="喜欢的东西">图书馆、聊恋爱八卦、独处、祖父</td>
+<td data-label="兴趣">阅读、玩棋盘游戏</td>
+<td data-label="推荐礼物">书籍、各类 Cervi 饮料、棋盘游戏</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>皮特鲁 Peter</strong></td>
+<td data-label="喜欢的东西">母亲的手作料理、金橘果</td>
+<td data-label="兴趣">吃东西、看云</td>
+<td data-label="推荐礼物">各类 Cervi 饮料、甜食、糕点食谱</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>乌尔坦德 Ultand</strong></td>
+<td data-label="喜欢的东西">照顾他人、家人、家务、爱情故事</td>
+<td data-label="兴趣">存钱、逛市集</td>
+<td data-label="推荐礼物"><strong>鱼酱（garum）</strong>、书籍、食谱等「爱下厨的人」用品；最爱为<strong>东方爱情故事</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>古扎岚 Guzran</strong></td>
+<td data-label="喜欢的东西">酒、女人、有趣的人、年轻新手</td>
+<td data-label="兴趣">吹嘘</td>
+<td data-label="推荐礼物">发酵饮料（ghosh / shosh）</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="拉米努家族-迪托利希篇">拉米努家族（迪托利希篇）</h3>
+<div class="table-wrap scrollable cardmode"><table class="c4">
+<thead>
+<tr>
+<th>角色</th>
+<th>喜欢的东西</th>
+<th>兴趣</th>
+<th>推荐礼物</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="角色"><strong>法比奥 Fabio</strong></td>
+<td data-label="喜欢的东西">痛苦、被遗忘的情感、解剖美丽之物</td>
+<td data-label="兴趣">绘画、与深思者交谈</td>
+<td data-label="推荐礼物">—</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>艾丝梅拉达 Esmeralda</strong></td>
+<td data-label="喜欢的东西">美男子、投掷三叉戟、保养钓具</td>
+<td data-label="兴趣">钓鱼、雕刻木偶</td>
+<td data-label="推荐礼物"><strong>东方耳环</strong>、<strong>蓝玫瑰花束</strong> 为其最爱</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>米卡艾拉 Mikaela</strong></td>
+<td data-label="喜欢的东西">活动身体、照顾他人</td>
+<td data-label="兴趣">烹饪、烘焙、煮咖啡</td>
+<td data-label="推荐礼物"><strong>柔软钓竿、鬃毛装饰、虚弱 Cervi、幼小 Ghosh、结实背包</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="墨伽拉之灯-赛奥朵拉篇">墨伽拉之灯（赛奥朵拉篇）</h3>
+<div class="table-wrap scrollable cardmode"><table class="c4">
+<thead>
+<tr>
+<th>角色</th>
+<th>喜欢的东西</th>
+<th>兴趣</th>
+<th>推荐礼物</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="角色"><strong>波拿巴 Bonaventure</strong></td>
+<td data-label="喜欢的东西">知识、与贤者对话、了解他国</td>
+<td data-label="兴趣">烹饪、吟诗</td>
+<td data-label="推荐礼物">书籍</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>托比亚斯 Tobias</strong></td>
+<td data-label="喜欢的东西">喝酒、战斗、唱歌、与人交流</td>
+<td data-label="兴趣">狩猎、独自露营</td>
+<td data-label="推荐礼物">发酵饮料（ghosh / shosh）</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>莉莉安 Lilian</strong></td>
+<td data-label="喜欢的东西">金币、宝石、年长男性</td>
+<td data-label="兴趣">节俭、狩猎</td>
+<td data-label="推荐礼物">金币、宝石类</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>莱桑德 Lysander</strong></td>
+<td data-label="喜欢的东西">观星、与女性共餐</td>
+<td data-label="兴趣">制作飞镖、长途骑行</td>
+<td data-label="推荐礼物"><strong>武器</strong>（仪式用枪）、训练用品、<strong>仿制勋章</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="蔷薇风暴-蕾达篇">蔷薇风暴（蕾达篇）</h3>
+<div class="table-wrap scrollable cardmode"><table class="c4">
+<thead>
+<tr>
+<th>角色</th>
+<th>喜欢的东西</th>
+<th>兴趣</th>
+<th>推荐礼物</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="角色"><strong>巴卡尼亚 Buccar</strong></td>
+<td data-label="喜欢的东西">忠诚、训练、梦见蕾达的幸福</td>
+<td data-label="兴趣">烹饪、指导年轻人</td>
+<td data-label="推荐礼物">发酵饮料、军用品、训练用品</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>西洛可 Sirocco</strong></td>
+<td data-label="喜欢的东西">女神卡拉、所有女性、吟诵诗歌</td>
+<td data-label="兴趣">阅读、绘制肖像</td>
+<td data-label="推荐礼物"><strong>发酵饮料</strong>、绘画（特别是<strong>尤法斯肖像</strong>）、书籍</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>奥林匹娅 Olympia</strong></td>
+<td data-label="喜欢的东西">歌、舞、演奏乐器、作曲、引人注目</td>
+<td data-label="兴趣">保养乐器、研究音乐舞蹈</td>
+<td data-label="推荐礼物"><strong>花卉、绘画、给「爱美者」的物品、棋盘游戏</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>姆乌 Mu</strong></td>
+<td data-label="喜欢的东西">调配新药、父母、吃甜食</td>
+<td data-label="兴趣">制作药液、运动</td>
+<td data-label="推荐礼物"><strong>各类 Cervi 饮料、甜食、咖啡</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="炎之鬃">炎之鬃</h3>
+<div class="table-wrap scrollable cardmode"><table class="c4">
+<thead>
+<tr>
+<th>角色</th>
+<th>喜欢的东西</th>
+<th>兴趣</th>
+<th>推荐礼物</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="角色"><strong>盖茨 Gaitz</strong></td>
+<td data-label="喜欢的东西">赛伊的茶、费尔加纳马、决斗、书法</td>
+<td data-label="兴趣">泡茶、练武</td>
+<td data-label="推荐礼物">茶、马匹用品、决斗/书法相关</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>杰斯特 Jester</strong></td>
+<td data-label="喜欢的东西">白鬃恶魔、看对手脸上的恐惧</td>
+<td data-label="兴趣">将对手切成碎片、吓唬观众</td>
+<td data-label="推荐礼物">—</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>歌利亚 Goliath</strong></td>
+<td data-label="喜欢的东西">暴走、食物、动物、熏肉</td>
+<td data-label="兴趣">训练、参加角斗</td>
+<td data-label="推荐礼物">—</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>但丁 Dante</strong></td>
+<td data-label="喜欢的东西">她自己、快速书写、寻找戏剧性题材</td>
+<td data-label="兴趣">研究他人、观察他人反应</td>
+<td data-label="推荐礼物">咖啡、书籍</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>迭戈 Diego</strong></td>
+<td data-label="喜欢的东西">森林漫步、采药、奥尔赫尔</td>
+<td data-label="兴趣">吹笛、侍奉奥尔赫尔</td>
+<td data-label="推荐礼物"><strong>弓术用品</strong>（装饰箭、关节舒缓手套、弓保养套装）</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>洛蕾塔 Loretta</strong></td>
+<td data-label="喜欢的东西">可靠的人、甜食、朋友</td>
+<td data-label="兴趣">剑术训练、钓鱼</td>
+<td data-label="推荐礼物"><strong>糕点等甜食</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>西提司 Seteth</strong></td>
+<td data-label="喜欢的东西">赛罗斯的教诲、钓鱼、女儿、勤奋的人</td>
+<td data-label="兴趣">写寓言、讲道、教学</td>
+<td data-label="推荐礼物"><strong>钓鱼用品</strong>（鱼钩、钓竿、鱼眼、腌鱼肠）</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>妮内 Ninae</strong></td>
+<td data-label="喜欢的东西">可怜的人、与灵魂交谈、定情项链、观星</td>
+<td data-label="兴趣">白日梦、训练</td>
+<td data-label="推荐礼物"><strong>东方黑丝绸</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>乌修拉 Ursula</strong></td>
+<td data-label="喜欢的东西">诗歌、动物、阴处绽放的花、数钱</td>
+<td data-label="兴趣">阅读、绘画</td>
+<td data-label="推荐礼物"><strong>咖啡、棋盘游戏、书籍、绘画、花卉</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="月之谎-白鸦新娘团-其他">月之谎 / 白鸦新娘团 / 其他</h3>
+<div class="table-wrap scrollable cardmode"><table class="c3">
+<thead>
+<tr>
+<th>角色</th>
+<th>喜欢的东西</th>
+<th>推荐礼物</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="角色"><strong>塔利穆恩 Talimun</strong></td>
+<td data-label="喜欢的东西">钱、冒险、肉桂、调情、随心而行</td>
+<td data-label="推荐礼物">发酵饮料、咖啡、罕见书籍、棋盘游戏、绘画</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>西蒙 Simon</strong></td>
+<td data-label="喜欢的东西">殊死战斗、家乡菜、拈花惹草</td>
+<td data-label="推荐礼物"><strong>蔬菜</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>菲亚娜 Fianna</strong></td>
+<td data-label="喜欢的东西">诗集、辛辣食物、咖啡、可信赖的人</td>
+<td data-label="推荐礼物">诗集、辛辣食物、咖啡</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>鲁鲁迪娅 Ludia</strong></td>
+<td data-label="喜欢的东西">写故事、欣赏艺术、谈情说爱</td>
+<td data-label="推荐礼物"><strong>咖啡、书籍、绘画</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>阿纳托莉娅 Anatolia</strong></td>
+<td data-label="喜欢的东西">八卦占卜、圆形之物</td>
+<td data-label="推荐礼物"><strong>八卦占卜套装</strong>、罕见书籍与时尚用品</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>萨兰 Sha Lan</strong></td>
+<td data-label="喜欢的东西">美食、酒、社交</td>
+<td data-label="推荐礼物"><strong>「爱下厨的人」用品、茶</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>纳贾 Nezha</strong></td>
+<td data-label="喜欢的东西">体力活动、正义、战斗、美食</td>
+<td data-label="推荐礼物"><strong>蔬菜、棋盘游戏</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>哈尔文 Halvin</strong></td>
+<td data-label="喜欢的东西">种菜、购物、街头表演</td>
+<td data-label="推荐礼物"><strong>盆栽蔬菜、幼小 Ghosh、俗艳手镯</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>戴托 Dadao</strong></td>
+<td data-label="喜欢的东西">女人（尤其阿纳托莉娅）、机械、美食、战斗</td>
+<td data-label="推荐礼物"><strong>各类 Cervi 饮料</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>贝尔特兰 Bertrand</strong></td>
+<td data-label="喜欢的东西">锻造、腌肉、鱼酱、精良武器</td>
+<td data-label="推荐礼物"><strong>鱼酱（garum）</strong>（其人设直接写明）</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>安娜 Anna</strong></td>
+<td data-label="喜欢的东西">八卦、做生意、占便宜</td>
+<td data-label="推荐礼物">—</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>诺克图拉 Noctula</strong></td>
+<td data-label="喜欢的东西">城市与市民、斗殴</td>
+<td data-label="推荐礼物">训练用品（训练柱、训练重物）</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>努佐 Nuzzuo</strong></td>
+<td data-label="喜欢的东西">传统、荣誉、强大力量</td>
+<td data-label="推荐礼物"><strong>户外烹饪套装</strong>等「爱下厨」用品、蔬菜</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>奈丁 Nydine</strong></td>
+<td data-label="喜欢的东西">恪守职责、照顾奥尼乌斯</td>
+<td data-label="推荐礼物"><strong>弓术用品</strong>（装饰箭、关节舒缓手套、弓保养套装）、马匹美容套装、书籍</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>马吉德 Majide</strong></td>
+<td data-label="喜欢的东西">酒、女人、战斗、变强</td>
+<td data-label="推荐礼物"><strong>成熟 Shosh</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>扎科内 Zarcone</strong></td>
+<td data-label="喜欢的东西">钱、暴力、好女人、蔬菜、与友饮酒</td>
+<td data-label="推荐礼物"><strong>蔬菜</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>亚历山德拉 Alexandra</strong></td>
+<td data-label="喜欢的东西">双亲、布凯法卢斯、有德之人、谈情说爱</td>
+<td data-label="推荐礼物"><strong>马匹用品</strong>、天马绘画</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>本迪茨 Benditz</strong></td>
+<td data-label="喜欢的东西">伟大的奥古斯特的战术、上进的年轻人</td>
+<td data-label="推荐礼物"><strong>武器、战术与军史书籍、军功勋章、棋盘游戏</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>伊奥 Io</strong></td>
+<td data-label="喜欢的东西">骑士精神、自律、爱马罗西南</td>
+<td data-label="推荐礼物">马匹用品</td>
+</tr>
+<tr>
+<td data-label="角色"><strong>卡塔尼娅 Catania</strong></td>
+<td data-label="喜欢的东西">上等商品、上等人、上等餐食</td>
+<td data-label="推荐礼物"><strong>咖啡、绘画、任意稀有物品</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>杨杰 Yang Jie</strong></td>
+<td data-label="喜欢的东西">酒、古老故事、远方旅程、拯救弱者</td>
+<td data-label="推荐礼物"><strong>发酵饮料、书籍</strong>；最爱为<strong>但丁的著作</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>索菲娅 Sofia</strong></td>
+<td data-label="喜欢的东西">美食、上菜瞬间（随即消失）</td>
+<td data-label="推荐礼物"><strong>甜食、鱼酱、「爱下厨的人」用品</strong></td>
+</tr>
+<tr>
+<td data-label="角色"><strong>凯洛克 Kiroc</strong></td>
+<td data-label="喜欢的东西">偷盗、大海、船、顺从的下属</td>
+<td data-label="推荐礼物">海运相关</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>特别提醒</strong>：多数情况下「喜欢某类别 = 该类别内所有物品都喜欢」，<strong>但有例外</strong>。例如<strong>奈丁</strong>爱<strong>马匹美容套装</strong>，却不喜欢<strong>鬃毛装饰</strong>——因为她的坐骑是<strong>奥尼乌斯（巨型鸵鸟状恐龙）</strong>，有美容套装可用，但<strong>没有鬃毛</strong>，自然用不上鬃毛装饰。游戏内对此有合理解释。</p>
+</blockquote>
+<hr />
+    </article>
+    <div class="pager"><a class="prev" href="p3.html" style="--pc:#7a4bbf"><span class="dir">← 上一篇</span><span class="ttl"><span class="dotm"></span>第三篇 · 加护（侍奉）心得</span></a><a class="next" href="p5.html" style="--pc:#0f8a63"><span class="dir">下一篇 →</span><span class="ttl"><span class="dotm"></span>第五篇 · 角色培养</span></a></div>
+  </main>
+</div>
+<a class="to-top" id="toTop" href="#" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</a>
+<script>
+(function(){
+  // 抽屉在点击目录项后自动关闭（无 JS 时仅是不自动关，功能不受影响）
+  var t=document.getElementById('navToggle');
+  document.querySelectorAll('.sidebar a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(){ t.checked=false; });
+  });
+  // 回顶按钮显隐
+  var tt=document.getElementById('toTop');
+  tt.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+  var tick=false;
+  window.addEventListener('scroll',function(){
+    if(!tick){tick=true;requestAnimationFrame(function(){
+      tt.classList.toggle('show',window.scrollY>500);tick=false;});}
+  },{passive:true});
+  // 侧栏高亮
+  var links=[].slice.call(document.querySelectorAll('.sidebar a[data-target]'));
+  var hs=links.map(function(a){return document.getElementById(a.dataset.target);});
+  var cur=-1,sup=false,supT=null;
+  function setA(i){
+    if(i===cur)return;cur=i;
+    links.forEach(function(x,j){x.classList.toggle('active',j===i);});
+  }
+  links.forEach(function(a,i){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var el=document.getElementById(a.dataset.target); if(!el)return;
+      t.checked=false;
+      setA(i); sup=true;
+      clearTimeout(supT); supT=setTimeout(function(){sup=false;},700);
+      var mob=window.innerWidth<=860;
+      var y=el.getBoundingClientRect().top+window.scrollY-(mob?80:74);
+      window.scrollTo({top:Math.max(0,Math.round(y)),behavior:'smooth'});
+      if(history.replaceState)history.replaceState(null,'','#'+a.dataset.target);
+    });
+  });
+  function spy(){
+    if(sup)return;
+    var y=window.scrollY||0, probe=y+(window.innerWidth<=860?150:100), idx=0;
+    for(var i=0;i<hs.length;i++){
+      if(!hs[i])continue;
+      if(hs[i].getBoundingClientRect().top+y<=probe+6)idx=i;
+    }
+    if(idx!==cur)setA(idx);
+  }
+  window.addEventListener('scroll',function(){
+    if(!tick){tick=true;requestAnimationFrame(function(){spy();tick=false;});}
+  },{passive:true});
+  window.addEventListener('resize',spy);
+  spy();
+
+  /*
+    抽屉滚动锁兜底：:has() 已可用时由 CSS 处理；
+    不支持 :has() 的老 WebView 用 JS 补上，避免滑动穿透到主页面。
+  */
+  var hasSel = (function(){
+    try{ return CSS.supports('selector(html:has(a))'); }catch(e){ return false; }
+  })();
+  if(!hasSel){
+    var y = 0;
+    function lock(){
+      y = window.scrollY || 0;
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = (-y) + 'px';
+      document.body.style.width = '100%';
+    }
+    function unlock(){
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, y);
+    }
+    t.addEventListener('change', function(){ t.checked ? lock() : unlock(); });
+  }
+})();
+</script>
+</body>
+</html>

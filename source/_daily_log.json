@@ -1,0 +1,13 @@
+{
+  "_说明": "每日资料采集 log。由 build_site.py 渲染到 p8.html 的「每日更新 log」大类。",
+  "_格式": "entries 按日期倒序排列（最新在最上）。每次采集追加一条。",
+  "_字段说明": {
+    "date": "采集日期 YYYY-MM-DD",
+    "checked": "本次检查的来源数",
+    "merged": "并入正文的条目数组，每条 {text, src}",
+    "conflicts": "冲突待裁决条目数组，每条 {topic, current, incoming, src}",
+    "new_sources": "新来源候选，按 grade A/B/C 分档，每条 {grade, name, url, note}",
+    "limited": "采集受限说明数组，每条 {site, reason}"
+  },
+  "entries": []
+}
