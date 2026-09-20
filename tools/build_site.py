@@ -30,6 +30,24 @@ OUTDIR = _opt('--out', ROOT / 'docs')
 sys.path.insert(0, str(HERE))
 from site_css import CSS, PART_COLORS, PART_SOFTS
 
+# ---------- 人物美术资源映射 ----------
+# docs/data/chars.json 由 tools/sync_chars.py 生成：
+#   { "凯伊": {"n":"2","jp":"カイ","avatar":"assets/avatar/2.jpg",
+#              "portrait":"assets/portrait/2.jpg"}, ... }
+# 同时接受繁体名与简中别名，便于正文任意写法都能命中。
+CHARS_JSON = ROOT / 'docs' / 'data' / 'chars.json'
+try:
+    CHAR_ART = json.loads(CHARS_JSON.read_text(encoding='utf-8'))
+except Exception:
+    CHAR_ART = {}
+
+# 只保留文件名，运行时用 url_prefix 拼前缀，保证相对路径在任意部署根下可用。
+CHAR_NAMES = sorted(CHAR_ART.keys(), key=len, reverse=True)
+
+# 所有页面（index.html 与 p1~pN.html）都输出在同一层目录，
+# 因此资源相对路径统一为 "assets/..."，无需按页面深度调整。
+url_prefix = ''
+
 raw = SRC.read_text(encoding='utf-8')
 
 # ---------- 1) 按篇切分 ----------
@@ -294,16 +312,41 @@ def char_cluster(name):
         return 'div'
     return None
 
+def _art(name, kind='avatar'):
+    """按中文名取美术资源相对路径；找不到返回 None"""
+    rec = CHAR_ART.get(name.strip())
+    if not rec:
+        return None
+    p = rec.get(kind)
+    return p or None
+
+
 def avatar(name, size=''):
-    """按名字取首字做色块头像；同阵营同色，便于在表内快速分组"""
+    """
+    人物头像。
+    有立绘素材时输出真实图片；缺失则回退为同阵营配色的首字色块，
+    保证版面不出现空洞。
+    """
     name = name.strip()
-    ch = name[:1]
     cl = char_cluster(name)
     c = CLUSTER_COLORS[cl] if cl else char_color(name)
     cls = 'avatar' + (f' {size}' if size else '')
     tip = ihtml.escape(name, quote=True)
+
+    src = _art(name, 'avatar')
+    if src:
+        # 主角伊修玛尔为男女双人，标记后由 CSS 呈现并列头像
+        dual = CHAR_ART.get(name, {}).get('avatar_f')
+        dual_cls = ' is-dual' if dual else ''
+        dual_img = (f'<img class="av-b" src="{url_prefix}{CHAR_ART[name]["avatar_f"]}" '
+                    f'alt="{tip}（女）" loading="lazy">' if dual else '')
+        return (f'<span class="{cls}{dual_cls}" style="--ac:{c}" title="{tip}" '
+                f'data-name="{tip}">'
+                f'<img class="av-a" src="{url_prefix}{src}" alt="{tip}" loading="lazy">'
+                f'{dual_img}</span>')
+
     return (f'<span class="{cls}" style="--ac:{c}" title="{tip}" '
-            f'data-name="{tip}" aria-hidden="true">{ihtml.escape(ch)}</span>')
+            f'data-name="{tip}" aria-hidden="true">{ihtml.escape(name[:1])}</span>')
 
 def prep_table(m):
     tbl = m.group(0)
@@ -378,6 +421,8 @@ def build_body(src_lines, page):
 
     # 人物头像：给「角色」类列自动加头像
     body = enhance_characters(body)
+    # 正文内联头像：表格之外的首次提及也配图，方便辨认
+    body = enhance_inline_characters(body)
     # 速查流程：把紧随「标准流程」提示语的 <ol> 转成编号步骤卡
     body = enhance_steps(body)
 
@@ -396,12 +441,15 @@ def build_body(src_lines, page):
     return body, toc
 
 # 已知角色名单（用于匹配加头像）
-KNOWN_CHARS = [
-    '凯伊', '赛奥朵拉', '迪托利希', '蕾达', '伊修玛尔',
-    '蕾娜', '莱纳斯', '艾尔', '希露卡', '芙蕾雅', '卡莲',
-    '奥罗拉', '玛尔斯', '斯米尔诺斯', '朱拉', '卡拉', '克蕾德娜', '芙托娜',
-    '奥尔赫尔', '埃什梅尔',
+# 从 chars.json 自动汇总，并保留若干正文历史写法作为别名补充。
+# 注意：不要加入单字别名（如「凯」），会与「凯旋」「凯甲」等普通词误匹配。
+KNOWN_CHARS = list(CHAR_NAMES) + [
+    '埃什梅尔', '皮特鲁', '万紫千红',
 ]
+# 去重并保持「长名优先」以便贪婪匹配
+_seen_kc = set()
+KNOWN_CHARS = [c for c in KNOWN_CHARS
+               if not (c in _seen_kc or _seen_kc.add(c))]
 
 # 「角色列」判定：除精确表头外，还接受含「角色/主角/心」的列名（如「路线」）
 CHAR_HEAD_OK = ('角色', '主角', '神', '英雄', '路线', '对象', '名字', '名称')
@@ -465,6 +513,64 @@ def enhance_characters(body):
 # 哪些提示语后面的有序列表要转成步骤卡
 STEP_TRIGGER = ('标准流程', '流程：', '流程:', '每周流程', '优先级判断')
 CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩'
+
+
+def enhance_inline_characters(body):
+    """
+    正文（表格之外）首次提到某角色时，在名字前插入小头像。
+    规则：
+      1. 只在文本节点中操作，跳过标签属性与已有头像（避免嵌套重复）；
+      2. 每个角色整页只加一次，避免满屏头像反而干扰阅读；
+      3. 表格内部已由 enhance_characters 处理，此处排除；
+      4. 段落/列表/引用内才加，标题（h1~h4）不加，保持标题干净。
+    """
+    # 1) 先把表格整体挖出来占位，避免被本函数处理
+    tables = []
+
+    def stash(m):
+        tables.append(m.group(0))
+        return f'\x00TBL{len(tables) - 1}\x00'
+
+    body = re.sub(r'<table[^>]*>.*?</table>', stash, body, flags=re.S)
+
+    # 2) 把标题也挖出来，标题内不加头像
+    heads = []
+
+    def stash_h(m):
+        heads.append(m.group(0))
+        return f'\x00HED{len(heads) - 1}\x00'
+
+    body = re.sub(r'<h[1-6][^>]*>.*?</h[1-6]>', stash_h, body, flags=re.S)
+
+    used = set()
+
+    def add_in_text(m):
+        pre, text = m.group(1), m.group(2)
+        for name in KNOWN_CHARS:          # 已按长度降序，保证贪婪匹配
+            if name in used or name not in text:
+                continue
+            idx = text.index(name)
+            # 名字前需为词首（行首、空白、标点或中文），避免截断词
+            if idx > 0 and re.match(r'[\w\u4e00-\u9fff]', text[idx - 1]):
+                continue
+            used.add(name)
+            text = (text[:idx] + avatar(name, 'sm') + text[idx:])
+            # 插入后位置变化，重新从当前 used 状态继续
+        return pre + text
+
+    # 只在标签之间的纯文本里替换
+    body = re.sub(r'(>)([^<>]+)(?=<)', add_in_text, body)
+
+    # 3) 还原标题与表格
+    def restore_h(m):
+        return heads[int(m.group(1))]
+
+    def restore_t(m):
+        return tables[int(m.group(1))]
+
+    body = re.sub(r'\x00HED(\d+)\x00', restore_h, body)
+    body = re.sub(r'\x00TBL(\d+)\x00', restore_t, body)
+    return body
 
 def enhance_steps(body):
     """

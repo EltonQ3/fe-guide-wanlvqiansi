@@ -352,6 +352,7 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 }
 
 /* ============ 头像 ============ */
+/* 有立绘素材时呈现真实图片；缺图回退为阵营色块首字 */
 .avatar{
   display:inline-flex; align-items:center; justify-content:center;
   width:26px; height:26px; border-radius:8px; flex:0 0 auto;
@@ -359,11 +360,29 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   background:var(--ac,#b8123c); box-shadow:inset 0 -2px 0 rgba(0,0,0,.14);
   vertical-align:-6px; margin-right:7px; letter-spacing:0;
   font-family:inherit;
+  position:relative; overflow:hidden;
+  outline:1px solid rgba(0,0,0,.10); outline-offset:-1px;
+}
+.avatar>img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  border-radius:inherit;
 }
 .avatar.lg{width:40px; height:40px; border-radius:12px; font-size:19px;
   vertical-align:-11px; margin-right:10px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
 .avatar.sm{width:21px; height:21px; border-radius:6px; font-size:11px;
   vertical-align:-5px; margin-right:5px}
+.avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
+  vertical-align:-17px; margin-right:12px; box-shadow:none}
+
+/* 真主角（伊修玛尔）为男女双人：两张头像并列，中间以细线分隔 */
+.avatar.is-dual{width:52px; border-radius:8px}
+.avatar.is-dual>img{width:50%; position:absolute; top:0; height:100%}
+.avatar.is-dual>img.av-a{left:0}
+.avatar.is-dual>img.av-b{right:0}
+.avatar.is-dual::after{
+  content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+  background:rgba(255,255,255,.85); transform:translateX(-1px);
+}
 /* 角色名字行：头像 + 名字 */
 .who{display:inline-flex; align-items:center; gap:0; font-weight:600}
 
@@ -891,7 +910,7 @@ footer.foot{
 <li>17173 — 角色加入条件一览：https://news.17173.com/content/09172026/140100715.shtml</li>
 <li>3DM — 鞑古席翁区域探索攻略：https://www.3dmgame.com/games/fefw/</li>
 <li>游侠网 — 直面会情报汇总（新机制）：https://3g.ali213.net/news/html/1028737.html</li>
-<li>新浪 — FE 万紫千红角色乌修拉介绍：https://www.sina.cn/news/detail/5335892500940633.html</li>
+<li>新浪 — FE <span class="avatar sm" style="--ac:#2f6f9f" title="万紫千红" data-name="万紫千红" aria-hidden="true">万</span>万紫千红角色乌修拉介绍：https://www.sina.cn/news/detail/5335892500940633.html</li>
 <li>巴哈姆特 GNN — 系统详细解析：https://m.gamer.com.tw/gnn/detail.php?sn=309776</li>
 <li>萌娘百科 — 火焰之纹章 万缕千丝：https://zh.moegirl.org.cn/火焰之纹章_万缕千丝</li>
 <li>百度百科 — 火焰之纹章：万缕千丝：https://baike.baidu.com/item/火焰之纹章：万缕千丝/66759702</li>
@@ -914,7 +933,7 @@ footer.foot{
 <li>游民星空 — 困难难度全流程图文攻略：https://www.gamersky.com/tools/guide-map/roadbooks/50</li>
 <li>什么值得买 — 开荒 48 小时全网实战笔记整理：https://post.m.smzdm.com/p/a82xlvvq</li>
 <li>4Gamers（台湾）— 四名主角交织命运（发售信息）：https://www.4gamers.com.tw/news/detail/79910/fire-emblem-wanshiqianhong-release-date-september-17-switch-2</li>
-<li>巴哈姆特 GNN — 系统详细解析·真主角「伊修玛尔」：https://m.gamer.com.tw/gnn/detail.php?sn=309776</li>
+<li>巴哈姆特 GNN — 系统详细解析·真主角「<span class="avatar sm is-dual" style="--ac:#c2790a" title="伊修玛尔" data-name="伊修玛尔"><img class="av-a" src="assets/avatar/hero_m.jpg" alt="伊修玛尔" loading="lazy"><img class="av-b" src="assets/avatar/hero_f.jpg" alt="伊修玛尔（女）" loading="lazy"></span>伊修玛尔」：https://m.gamer.com.tw/gnn/detail.php?sn=309776</li>
 <li>网易/游民星空 — 真主角亮相与五年时间跳跃：https://www.163.com/dy/article/L3H9AIE20526K1KN.html</li>
 <li>中关村在线 — 四线叙事 + 五年跃迁 + 跨时空协战：https://game.zol.com.cn/1227/12270379.html</li>
 <li>IT之家 — 直面会细节公开（可四线并行）：https://m.ithome.com/html/985721.htm</li>
@@ -1135,9 +1154,9 @@ footer.foot{
 </table></div>
 <h2 id="注意事项">注意事项</h2>
 <ul>
-<li><strong>真主角默认名的译法分歧</strong>：简体中文媒体存在「伊修玛尔」（默认名，官方设定）与「埃什梅尔」（英文 Eshmel 音译）两种写法。<strong>以「伊修玛尔」为准</strong>。</li>
+<li><strong>真主角默认名的译法分歧</strong>：简体中文媒体存在「伊修玛尔」（默认名，官方设定）与「<span class="avatar sm" style="--ac:#8a5a1e" title="埃什梅尔" data-name="埃什梅尔" aria-hidden="true">埃</span>埃什梅尔」（英文 Eshmel 音译）两种写法。<strong>以「伊修玛尔」为准</strong>。</li>
 <li><strong>魔神名译法分歧</strong>：简中存在「巴罗尔」与「霸罗尔」两种写法，官方未统一，本手册采用<strong>巴罗尔</strong>。</li>
-<li><strong>部分角色在中文站有多个暂译</strong>（如蒂亚拉/媞雅拉、杰斯特/杰斯塔），对照表的 <code>alias_zhs</code> 字段保留了别名以便检索。</li>
+<li><strong>部分角色在中文站有多个暂译</strong>（如蒂亚拉/<span class="avatar sm" style="--ac:#b8123c" title="媞雅拉" data-name="媞雅拉"><img class="av-a" src="assets/avatar/6.jpg" alt="媞雅拉" loading="lazy"></span>媞雅拉、<span class="avatar sm" style="--ac:#8a5a1e" title="杰斯特" data-name="杰斯特"><img class="av-a" src="assets/avatar/51.jpg" alt="杰斯特" loading="lazy"></span>杰斯特/<span class="avatar sm" style="--ac:#1f5fa8" title="杰斯塔" data-name="杰斯塔"><img class="av-a" src="assets/avatar/51.jpg" alt="杰斯塔" loading="lazy"></span>杰斯塔），对照表的 <code>alias_zhs</code> 字段保留了别名以便检索。</li>
 <li>随官方陆续公布角色介绍，标记为「⚠️ 社群」的条目应逐步升级为「✅ 官方」。</li>
 </ul>
     </article>

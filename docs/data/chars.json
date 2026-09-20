@@ -1,0 +1,429 @@
+{
+ "凱伊": {
+  "n": "2",
+  "jp": "カイ",
+  "avatar": "assets/avatar/2.jpg",
+  "portrait": "assets/portrait/2.jpg"
+ },
+ "凯伊": {
+  "n": "2",
+  "jp": "カイ",
+  "avatar": "assets/avatar/2.jpg",
+  "portrait": "assets/portrait/2.jpg"
+ },
+ "迪托利希": {
+  "n": "3",
+  "jp": "ディートリヒ",
+  "avatar": "assets/avatar/3.jpg",
+  "portrait": "assets/portrait/3.jpg"
+ },
+ "赛奥朵拉": {
+  "n": "4",
+  "jp": "セオドラ",
+  "avatar": "assets/avatar/4.jpg",
+  "portrait": "assets/portrait/4.jpg"
+ },
+ "賽奧朵拉": {
+  "n": "4",
+  "jp": "セオドラ",
+  "avatar": "assets/avatar/4.jpg",
+  "portrait": "assets/portrait/4.jpg"
+ },
+ "蕾達": {
+  "n": "5",
+  "jp": "レダ",
+  "avatar": "assets/avatar/5.jpg",
+  "portrait": "assets/portrait/5.jpg"
+ },
+ "蕾达": {
+  "n": "5",
+  "jp": "レダ",
+  "avatar": "assets/avatar/5.jpg",
+  "portrait": "assets/portrait/5.jpg"
+ },
+ "媞雅拉": {
+  "n": "6",
+  "jp": "ティアラ",
+  "avatar": "assets/avatar/6.jpg",
+  "portrait": "assets/portrait/6.jpg"
+ },
+ "蒂亚拉": {
+  "n": "6",
+  "jp": "ティアラ",
+  "avatar": "assets/avatar/6.jpg",
+  "portrait": "assets/portrait/6.jpg"
+ },
+ "彼得": {
+  "n": "7",
+  "jp": "ピーテル",
+  "avatar": "assets/avatar/7.jpg",
+  "portrait": "assets/portrait/7.jpg"
+ },
+ "皮特鲁": {
+  "n": "7",
+  "jp": "ピーテル",
+  "avatar": "assets/avatar/7.jpg",
+  "portrait": "assets/portrait/7.jpg"
+ },
+ "乌尔坦德": {
+  "n": "8",
+  "jp": "ウルタンド",
+  "avatar": "assets/avatar/8.jpg",
+  "portrait": "assets/portrait/8.jpg"
+ },
+ "乌尔坦": {
+  "n": "8",
+  "jp": "ウルタンド",
+  "avatar": "assets/avatar/8.jpg",
+  "portrait": "assets/portrait/8.jpg"
+ },
+ "法毕欧": {
+  "n": "9",
+  "jp": "ファビオ",
+  "avatar": "assets/avatar/9.jpg",
+  "portrait": "assets/portrait/9.jpg"
+ },
+ "法比奥": {
+  "n": "9",
+  "jp": "ファビオ",
+  "avatar": "assets/avatar/9.jpg",
+  "portrait": "assets/portrait/9.jpg"
+ },
+ "艾丝梅拉尔达": {
+  "n": "10",
+  "jp": "エスメラルダ",
+  "avatar": "assets/avatar/10.jpg",
+  "portrait": "assets/portrait/10.jpg"
+ },
+ "米迦艾拉": {
+  "n": "11",
+  "jp": "ミカエラ",
+  "avatar": "assets/avatar/11.jpg",
+  "portrait": "assets/portrait/11.jpg"
+ },
+ "波拿帕尔特": {
+  "n": "12",
+  "jp": "ボナパルテ",
+  "avatar": "assets/avatar/12.jpg",
+  "portrait": "assets/portrait/12.jpg"
+ },
+ "托比亚斯": {
+  "n": "13",
+  "jp": "トビヤス",
+  "avatar": "assets/avatar/13.jpg",
+  "portrait": "assets/portrait/13.jpg"
+ },
+ "莉利安": {
+  "n": "14",
+  "jp": "リリアン",
+  "avatar": "assets/avatar/14.jpg",
+  "portrait": "assets/portrait/14.jpg"
+ },
+ "莱桑达": {
+  "n": "15",
+  "jp": "ライサンダー",
+  "avatar": "assets/avatar/15.jpg",
+  "portrait": "assets/portrait/15.jpg"
+ },
+ "巴卡尼亚": {
+  "n": "16",
+  "jp": "バッカニア",
+  "avatar": "assets/avatar/16.jpg",
+  "portrait": "assets/portrait/16.jpg"
+ },
+ "西洛可": {
+  "n": "17",
+  "jp": "シロッコ",
+  "avatar": "assets/avatar/17.jpg",
+  "portrait": "assets/portrait/17.jpg"
+ },
+ "奥林匹亚": {
+  "n": "18",
+  "jp": "オリンピア",
+  "avatar": "assets/avatar/18.jpg",
+  "portrait": "assets/portrait/18.jpg"
+ },
+ "穆": {
+  "n": "19",
+  "jp": "ムウ",
+  "avatar": "assets/avatar/19.jpg",
+  "portrait": "assets/portrait/19.jpg"
+ },
+ "贝特兰": {
+  "n": "20",
+  "jp": "ベルトラン",
+  "avatar": "assets/avatar/20.jpg",
+  "portrait": "assets/portrait/20.jpg"
+ },
+ "盖茨": {
+  "n": "21",
+  "jp": "ゲイツ",
+  "avatar": "assets/avatar/21.jpg",
+  "portrait": "assets/portrait/21.jpg"
+ },
+ "但丁": {
+  "n": "22",
+  "jp": "ダンテ",
+  "avatar": "assets/avatar/22.jpg",
+  "portrait": "assets/portrait/22.jpg"
+ },
+ "谭利穆恩": {
+  "n": "23",
+  "jp": "タリムーン",
+  "avatar": "assets/avatar/23.jpg",
+  "portrait": "assets/portrait/23.jpg"
+ },
+ "乌修拉": {
+  "n": "24",
+  "jp": "ウーシュラ",
+  "avatar": "assets/avatar/24.jpg",
+  "portrait": "assets/portrait/24.jpg"
+ },
+ "希蒙": {
+  "n": "25",
+  "jp": "シモン",
+  "avatar": "assets/avatar/25.jpg",
+  "portrait": "assets/portrait/25.jpg"
+ },
+ "奥尔赫尔": {
+  "n": "26",
+  "jp": "オルヘル",
+  "avatar": "assets/avatar/26.jpg",
+  "portrait": "assets/portrait/26.jpg"
+ },
+ "迪雅各": {
+  "n": "27",
+  "jp": "ディエゴ",
+  "avatar": "assets/avatar/27.jpg",
+  "portrait": "assets/portrait/27.jpg"
+ },
+ "妮涅": {
+  "n": "28",
+  "jp": "ニネ",
+  "avatar": "assets/avatar/28.jpg",
+  "portrait": "assets/portrait/28.jpg"
+ },
+ "阿纳托利亚": {
+  "n": "29",
+  "jp": "アナトリア",
+  "avatar": "assets/avatar/29.jpg",
+  "portrait": "assets/portrait/29.jpg"
+ },
+ "爱娜特莉亚": {
+  "n": "29",
+  "jp": "アナトリア",
+  "avatar": "assets/avatar/29.jpg",
+  "portrait": "assets/portrait/29.jpg"
+ },
+ "莎兰": {
+  "n": "30",
+  "jp": "サラン",
+  "avatar": "assets/avatar/30.jpg",
+  "portrait": "assets/portrait/30.jpg"
+ },
+ "哪吒": {
+  "n": "31",
+  "jp": "ナジャ",
+  "avatar": "assets/avatar/31.jpg",
+  "portrait": "assets/portrait/31.jpg"
+ },
+ "古扎岚": {
+  "n": "32",
+  "jp": "グザラン",
+  "avatar": "assets/avatar/32.jpg",
+  "portrait": "assets/portrait/32.jpg"
+ },
+ "伊欧": {
+  "n": "33",
+  "jp": "イオ",
+  "avatar": "assets/avatar/33.jpg",
+  "portrait": "assets/portrait/33.jpg"
+ },
+ "卡塔妮雅": {
+  "n": "34",
+  "jp": "カターニャ",
+  "avatar": "assets/avatar/34.jpg",
+  "portrait": "assets/portrait/34.jpg"
+ },
+ "努蒂奴": {
+  "n": "35",
+  "jp": "ヌディーヌ",
+  "avatar": "assets/avatar/35.jpg",
+  "portrait": "assets/portrait/35.jpg"
+ },
+ "班迪兹": {
+  "n": "36",
+  "jp": "ベンディッツ",
+  "avatar": "assets/avatar/36.jpg",
+  "portrait": "assets/portrait/36.jpg"
+ },
+ "本迪茨": {
+  "n": "36",
+  "jp": "ベンディッツ",
+  "avatar": "assets/avatar/36.jpg",
+  "portrait": "assets/portrait/36.jpg"
+ },
+ "亚历山德拉": {
+  "n": "37",
+  "jp": "アレキサンドラ",
+  "avatar": "assets/avatar/37.jpg",
+  "portrait": "assets/portrait/37.jpg"
+ },
+ "基罗伊卡": {
+  "n": "39",
+  "jp": "キリーク",
+  "avatar": "assets/avatar/39.jpg",
+  "portrait": "assets/portrait/39.jpg"
+ },
+ "红花": {
+  "n": "40",
+  "jp": "コウカ",
+  "avatar": "assets/avatar/40.jpg",
+  "portrait": "assets/portrait/40.jpg"
+ },
+ "特洛伊亚": {
+  "n": "41",
+  "jp": "トロイア",
+  "avatar": "assets/avatar/41.jpg",
+  "portrait": "assets/portrait/41.jpg"
+ },
+ "盛托利翁": {
+  "n": "42",
+  "jp": "セントリオン",
+  "avatar": "assets/avatar/42.jpg",
+  "portrait": "assets/portrait/42.jpg"
+ },
+ "诺克裘拉": {
+  "n": "44",
+  "jp": "ノクチュラ",
+  "avatar": "assets/avatar/44.jpg",
+  "portrait": "assets/portrait/44.jpg"
+ },
+ "杨界": {
+  "n": "45",
+  "jp": "ヨーカイ",
+  "avatar": "assets/avatar/45.jpg",
+  "portrait": "assets/portrait/45.jpg"
+ },
+ "索绯雅": {
+  "n": "46",
+  "jp": "ソフィア",
+  "avatar": "assets/avatar/46.jpg",
+  "portrait": "assets/portrait/46.jpg"
+ },
+ "努佐": {
+  "n": "47",
+  "jp": "ヌッツォ",
+  "avatar": "assets/avatar/47.jpg",
+  "portrait": "assets/portrait/47.jpg"
+ },
+ "马吉迪": {
+  "n": "48",
+  "jp": "マジーデ",
+  "avatar": "assets/avatar/48.jpg",
+  "portrait": "assets/portrait/48.jpg"
+ },
+ "札可捏": {
+  "n": "49",
+  "jp": "ザーコネ",
+  "avatar": "assets/avatar/49.jpg",
+  "portrait": "assets/portrait/49.jpg"
+ },
+ "哥莱亚斯": {
+  "n": "50",
+  "jp": "ゴライアス",
+  "avatar": "assets/avatar/50.jpg",
+  "portrait": "assets/portrait/50.jpg"
+ },
+ "歌利亚": {
+  "n": "50",
+  "jp": "ゴライアス",
+  "avatar": "assets/avatar/50.jpg",
+  "portrait": "assets/portrait/50.jpg"
+ },
+ "杰斯塔": {
+  "n": "51",
+  "jp": "ジェスター",
+  "avatar": "assets/avatar/51.jpg",
+  "portrait": "assets/portrait/51.jpg"
+ },
+ "杰斯特": {
+  "n": "51",
+  "jp": "ジェスター",
+  "avatar": "assets/avatar/51.jpg",
+  "portrait": "assets/portrait/51.jpg"
+ },
+ "露迪娅": {
+  "n": "52",
+  "jp": "ルルディヤー",
+  "avatar": "assets/avatar/52.jpg",
+  "portrait": "assets/portrait/52.jpg"
+ },
+ "鲁鲁迪娅": {
+  "n": "52",
+  "jp": "ルルディヤー",
+  "avatar": "assets/avatar/52.jpg",
+  "portrait": "assets/portrait/52.jpg"
+ },
+ "菲亚娜": {
+  "n": "53",
+  "jp": "フィアナ",
+  "avatar": "assets/avatar/53.jpg",
+  "portrait": "assets/portrait/53.jpg"
+ },
+ "西提司": {
+  "n": "54",
+  "jp": "セテス",
+  "avatar": "assets/avatar/54.jpg",
+  "portrait": "assets/portrait/54.jpg"
+ },
+ "洛蕾塔": {
+  "n": "55",
+  "jp": "ロレッタ",
+  "avatar": "assets/avatar/55.jpg",
+  "portrait": "assets/portrait/55.jpg"
+ },
+ "罗蕾塔": {
+  "n": "55",
+  "jp": "ロレッタ",
+  "avatar": "assets/avatar/55.jpg",
+  "portrait": "assets/portrait/55.jpg"
+ },
+ "大刀": {
+  "n": "56",
+  "jp": "ダイトウ",
+  "avatar": "assets/avatar/56.jpg",
+  "portrait": "assets/portrait/56.jpg"
+ },
+ "哈尔温": {
+  "n": "57",
+  "jp": "ハルヴィン",
+  "avatar": "assets/avatar/57.jpg",
+  "portrait": "assets/portrait/57.jpg"
+ },
+ "贾斯敏": {
+  "n": "58",
+  "jp": "ジャスミン",
+  "avatar": "assets/avatar/58.jpg",
+  "portrait": "assets/portrait/58.jpg"
+ },
+ "易尼奥尼": {
+  "n": "60",
+  "jp": "イニオニ",
+  "avatar": "assets/avatar/60.jpg",
+  "portrait": "assets/portrait/60.jpg"
+ },
+ "佩佩": {
+  "n": "61",
+  "jp": "ペペ",
+  "avatar": "assets/avatar/61.jpg",
+  "portrait": "assets/portrait/61.jpg"
+ },
+ "伊修玛尔": {
+  "n": "hero",
+  "jp": "イシュマール",
+  "avatar": "assets/avatar/hero_m.jpg",
+  "portrait": "assets/portrait/hero_m.jpg",
+  "avatar_f": "assets/avatar/hero_f.jpg"
+ }
+}

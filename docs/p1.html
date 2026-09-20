@@ -352,6 +352,7 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 }
 
 /* ============ 头像 ============ */
+/* 有立绘素材时呈现真实图片；缺图回退为阵营色块首字 */
 .avatar{
   display:inline-flex; align-items:center; justify-content:center;
   width:26px; height:26px; border-radius:8px; flex:0 0 auto;
@@ -359,11 +360,29 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   background:var(--ac,#b8123c); box-shadow:inset 0 -2px 0 rgba(0,0,0,.14);
   vertical-align:-6px; margin-right:7px; letter-spacing:0;
   font-family:inherit;
+  position:relative; overflow:hidden;
+  outline:1px solid rgba(0,0,0,.10); outline-offset:-1px;
+}
+.avatar>img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  border-radius:inherit;
 }
 .avatar.lg{width:40px; height:40px; border-radius:12px; font-size:19px;
   vertical-align:-11px; margin-right:10px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
 .avatar.sm{width:21px; height:21px; border-radius:6px; font-size:11px;
   vertical-align:-5px; margin-right:5px}
+.avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
+  vertical-align:-17px; margin-right:12px; box-shadow:none}
+
+/* 真主角（伊修玛尔）为男女双人：两张头像并列，中间以细线分隔 */
+.avatar.is-dual{width:52px; border-radius:8px}
+.avatar.is-dual>img{width:50%; position:absolute; top:0; height:100%}
+.avatar.is-dual>img.av-a{left:0}
+.avatar.is-dual>img.av-b{right:0}
+.avatar.is-dual::after{
+  content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+  background:rgba(255,255,255,.85); transform:translateX(-1px);
+}
 /* 角色名字行：头像 + 名字 */
 .who{display:inline-flex; align-items:center; gap:0; font-weight:600}
 
@@ -818,7 +837,7 @@ footer.foot{
 <p><strong>普通与困难的核心差异，不只是敌人强度。</strong> 关键在<strong>「天刻的白沙（Divine Sand）」</strong>——它是<strong>回溯时间</strong>的消耗品，同时也是<strong>战斗中启用神之加護</strong>的消耗品。<strong>普通难度下芙托娜的回溯免费（0 沙），困难难度每次回溯要花 5 沙。</strong> 这意味着困难难度下，<strong>回溯与加護在争夺同一份资源</strong>。</p>
 </blockquote>
 <h2 id="1-2-四主角路线推荐顺序-三语站共识">1.2 四主角路线推荐顺序（三语站共识）</h2>
-<p>中文站与日文站给出的顺序完全一致——<strong>凯伊 → 赛奥朵拉 → 迪托利希 → 蕾达</strong>（由简至难）。</p>
+<p>中文站与日文站给出的顺序完全一致——<strong><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span>凯伊 → <span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span>赛奥朵拉 → <span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span>迪托利希 → <span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span>蕾达</strong>（由简至难）。</p>
 <div class="table-wrap scrollable cardmode"><table class="c4">
 <thead>
 <tr>
@@ -831,25 +850,25 @@ footer.foot{
 <tbody>
 <tr>
 <td data-label="顺序"><strong>1</strong></td>
-<td data-label="主角"><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊" aria-hidden="true">凯</span><strong>凯伊 Cai</strong></td>
+<td data-label="主角"><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span><strong>凯伊 Cai</strong></td>
 <td data-label="推荐理由">固有系统类似支线任务，机制简单易懂；名声最易积攒，招募队友轻松；自带范围攻击，战斗容错高；地图范围最小，便于熟悉探索</td>
 <td data-label="适合人群">完全新手 / 系列新人</td>
 </tr>
 <tr>
 <td data-label="顺序"><strong>2</strong></td>
-<td data-label="主角"><span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉" aria-hidden="true">赛</span><strong>赛奥朵拉 Theodora</strong></td>
+<td data-label="主角"><span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span><strong>赛奥朵拉 Theodora</strong></td>
 <td data-label="推荐理由">独有「军团兵」可下达计略指令（范围攻击、异常回复），攻辅兼备；但需要较多地图探索与时间管理</td>
 <td data-label="适合人群">想稳妥体验的玩家</td>
 </tr>
 <tr>
 <td data-label="顺序">3</td>
-<td data-label="主角"><span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希" aria-hidden="true">迪</span><strong>迪托利希 Dietrich</strong></td>
+<td data-label="主角"><span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span><strong>迪托利希 Dietrich</strong></td>
 <td data-label="推荐理由">名声提升较难，要求严格日程安排；专属任务是狩猎强敌，战斗经验与经验值获取量极大</td>
 <td data-label="适合人群">战斗爱好者 / 想刷战斗次数</td>
 </tr>
 <tr>
 <td data-label="顺序">4</td>
-<td data-label="主角"><span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达" aria-hidden="true">蕾</span><strong>蕾达 Leda</strong></td>
+<td data-label="主角"><span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span><strong>蕾达 Leda</strong></td>
 <td data-label="推荐理由">名声最难提升；侧重复仇主题与支援（Buff）打法；<strong>唯一能解锁「舞者」职业的路线</strong>，且解锁后其他路线也可用</td>
 <td data-label="适合人群">二周目 / 支援流玩家</td>
 </tr>

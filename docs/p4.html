@@ -352,6 +352,7 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 }
 
 /* ============ 头像 ============ */
+/* 有立绘素材时呈现真实图片；缺图回退为阵营色块首字 */
 .avatar{
   display:inline-flex; align-items:center; justify-content:center;
   width:26px; height:26px; border-radius:8px; flex:0 0 auto;
@@ -359,11 +360,29 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   background:var(--ac,#b8123c); box-shadow:inset 0 -2px 0 rgba(0,0,0,.14);
   vertical-align:-6px; margin-right:7px; letter-spacing:0;
   font-family:inherit;
+  position:relative; overflow:hidden;
+  outline:1px solid rgba(0,0,0,.10); outline-offset:-1px;
+}
+.avatar>img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  border-radius:inherit;
 }
 .avatar.lg{width:40px; height:40px; border-radius:12px; font-size:19px;
   vertical-align:-11px; margin-right:10px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
 .avatar.sm{width:21px; height:21px; border-radius:6px; font-size:11px;
   vertical-align:-5px; margin-right:5px}
+.avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
+  vertical-align:-17px; margin-right:12px; box-shadow:none}
+
+/* 真主角（伊修玛尔）为男女双人：两张头像并列，中间以细线分隔 */
+.avatar.is-dual{width:52px; border-radius:8px}
+.avatar.is-dual>img{width:50%; position:absolute; top:0; height:100%}
+.avatar.is-dual>img.av-a{left:0}
+.avatar.is-dual>img.av-b{right:0}
+.avatar.is-dual::after{
+  content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+  background:rgba(255,255,255,.85); transform:translateX(-1px);
+}
 /* 角色名字行：头像 + 名字 */
 .who{display:inline-flex; align-items:center; gap:0; font-weight:600}
 
@@ -919,7 +938,7 @@ footer.foot{
 <p>本作对「谁喜欢什么」<strong>刻意保持模糊</strong>。礼物本身的描述会写明「主要为喜爱书籍者所享受」之类，<strong>玩家需要自己反查匹配的角色</strong>。</p>
 </blockquote>
 <p><strong>举例</strong>：一件描述为「喜爱书籍/阅读者」的礼物，可选对象包括——
-<strong>奥罗拉、本迪茨、贝尔特兰、菲亚娜、露迪娅、奈丁、奥尔赫尔、西洛可、蒂亚拉、乌修拉</strong></p>
+<strong>奥罗拉、<span class="avatar sm" style="--ac:#8a5a1e" title="本迪茨" data-name="本迪茨"><img class="av-a" src="assets/avatar/36.jpg" alt="本迪茨" loading="lazy"></span>本迪茨、贝尔特兰、<span class="avatar sm" style="--ac:#c2790a" title="菲亚娜" data-name="菲亚娜"><img class="av-a" src="assets/avatar/53.jpg" alt="菲亚娜" loading="lazy"></span>菲亚娜、<span class="avatar sm" style="--ac:#b8123c" title="露迪娅" data-name="露迪娅"><img class="av-a" src="assets/avatar/52.jpg" alt="露迪娅" loading="lazy"></span>露迪娅、奈丁、<span class="avatar sm" style="--ac:#c2790a" title="奥尔赫尔" data-name="奥尔赫尔"><img class="av-a" src="assets/avatar/26.jpg" alt="奥尔赫尔" loading="lazy"></span>奥尔赫尔、<span class="avatar sm" style="--ac:#5b6472" title="西洛可" data-name="西洛可"><img class="av-a" src="assets/avatar/17.jpg" alt="西洛可" loading="lazy"></span>西洛可、<span class="avatar sm" style="--ac:#b8123c" title="蒂亚拉" data-name="蒂亚拉"><img class="av-a" src="assets/avatar/6.jpg" alt="蒂亚拉" loading="lazy"></span>蒂亚拉、<span class="avatar sm" style="--ac:#0f8a63" title="乌修拉" data-name="乌修拉"><img class="av-a" src="assets/avatar/24.jpg" alt="乌修拉" loading="lazy"></span>乌修拉</strong></p>
 <p><strong>辅助判断线索</strong>：
 - <strong>成年人</strong>普遍喜欢发酵饮料，<strong>儿童不喜欢</strong>
 - 从<strong>外观</strong>可推测——例如看起来讲究时尚的角色会喜欢时尚类
@@ -962,7 +981,7 @@ footer.foot{
 </tbody>
 </table></div>
 <h3 id="技巧-6-注意角色在场情况">技巧 6：注意角色在场情况</h3>
-<p>某些章节中特定角色群<strong>不在达格席翁</strong>——凯伊、迪托利希、赛奥朵拉、塔利穆恩、阿纳托莉娅的队伍会缺席。想给这些人送礼或办餐会，<strong>需换到他们在场的章节</strong>。</p>
+<p>某些章节中特定角色群<strong>不在达格席翁</strong>——<span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span>凯伊、<span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span>迪托利希、<span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span>赛奥朵拉、塔利穆恩、阿纳托莉娅的队伍会缺席。想给这些人送礼或办餐会，<strong>需换到他们在场的章节</strong>。</p>
 <h2 id="4-4-全角色喜好与推荐礼物一览">4.4 全角色喜好与推荐礼物一览</h2>
 <blockquote>
 <p>下表综合 Polygon（推荐礼物）与 Game8 / Nintendo Insider（喜好与兴趣）三方资料。
@@ -980,31 +999,31 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="角色"><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊" aria-hidden="true">凯</span><strong>凯伊 Cai</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span><strong>凯伊 Cai</strong></td>
 <td data-label="喜欢的东西">体能锻炼、捕捉动物</td>
 <td data-label="兴趣">钓鱼、枪术训练</td>
 <td data-label="推荐礼物"><strong>马匹用品</strong>（胡须草、马匹美容套装、鬃毛装饰）；训练用品亦可</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希" aria-hidden="true">迪</span><strong>迪托利希 Dietrich</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span><strong>迪托利希 Dietrich</strong></td>
 <td data-label="喜欢的东西">美丽之物、甜食、妹妹</td>
 <td data-label="兴趣">与强者战斗、冥想</td>
 <td data-label="推荐礼物">甜食、美术品类</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉" aria-hidden="true">赛</span><strong>赛奥朵拉 Theodora</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span><strong>赛奥朵拉 Theodora</strong></td>
 <td data-label="喜欢的东西">战斗、尤法斯、看子民繁荣</td>
 <td data-label="兴趣">狩猎、战斗训练</td>
 <td data-label="推荐礼物"><strong>尤法斯肖像画</strong>（最优）；咖啡、训练用品、时尚用品、结实背包、烹饪用品亦可接受</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达" aria-hidden="true">蕾</span><strong>蕾达 Leda</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span><strong>蕾达 Leda</strong></td>
 <td data-label="喜欢的东西">双亲的回忆、家乡的歌、宝石、掌声</td>
 <td data-label="兴趣">为比维拉琴调音、长途骑马</td>
 <td data-label="推荐礼物"><strong>东方耳环</strong>、<strong>蓝玫瑰花束</strong>为其最爱</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar sm" style="--ac:#c2790a" title="伊修玛尔" data-name="伊修玛尔" aria-hidden="true">伊</span><strong>伊修玛尔 Eshmel（救世主）</strong></td>
+<td data-label="角色"><span class="avatar sm is-dual" style="--ac:#c2790a" title="伊修玛尔" data-name="伊修玛尔"><img class="av-a" src="assets/avatar/hero_m.jpg" alt="伊修玛尔" loading="lazy"><img class="av-b" src="assets/avatar/hero_f.jpg" alt="伊修玛尔（女）" loading="lazy"></span><strong>伊修玛尔 Eshmel（救世主）</strong></td>
 <td data-label="喜欢的东西">有抱负的人、才能出众的人、无名小花</td>
 <td data-label="兴趣">玩棋盘游戏</td>
 <td data-label="推荐礼物">棋盘游戏类</td>
@@ -1023,25 +1042,25 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="角色"><strong>蒂亚拉 Tialla</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#b8123c" title="蒂亚拉" data-name="蒂亚拉"><img class="av-a" src="assets/avatar/6.jpg" alt="蒂亚拉" loading="lazy"></span><strong>蒂亚拉 Tialla</strong></td>
 <td data-label="喜欢的东西">图书馆、聊恋爱八卦、独处、祖父</td>
 <td data-label="兴趣">阅读、玩棋盘游戏</td>
 <td data-label="推荐礼物">书籍、各类 Cervi 饮料、棋盘游戏</td>
 </tr>
 <tr>
-<td data-label="角色"><strong>皮特鲁 Peter</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#1f5fa8" title="皮特鲁" data-name="皮特鲁"><img class="av-a" src="assets/avatar/7.jpg" alt="皮特鲁" loading="lazy"></span><strong>皮特鲁 Peter</strong></td>
 <td data-label="喜欢的东西">母亲的手作料理、金橘果</td>
 <td data-label="兴趣">吃东西、看云</td>
 <td data-label="推荐礼物">各类 Cervi 饮料、甜食、糕点食谱</td>
 </tr>
 <tr>
-<td data-label="角色"><strong>乌尔坦德 Ultand</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#7a4bbf" title="乌尔坦德" data-name="乌尔坦德"><img class="av-a" src="assets/avatar/8.jpg" alt="乌尔坦德" loading="lazy"></span><strong>乌尔坦德 Ultand</strong></td>
 <td data-label="喜欢的东西">照顾他人、家人、家务、爱情故事</td>
 <td data-label="兴趣">存钱、逛市集</td>
 <td data-label="推荐礼物"><strong>鱼酱（garum）</strong>、书籍、食谱等「爱下厨的人」用品；最爱为<strong>东方爱情故事</strong></td>
 </tr>
 <tr>
-<td data-label="角色"><strong>古扎岚 Guzran</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#0e8f9e" title="古扎岚" data-name="古扎岚"><img class="av-a" src="assets/avatar/32.jpg" alt="古扎岚" loading="lazy"></span><strong>古扎岚 Guzran</strong></td>
 <td data-label="喜欢的东西">酒、女人、有趣的人、年轻新手</td>
 <td data-label="兴趣">吹嘘</td>
 <td data-label="推荐礼物">发酵饮料（ghosh / shosh）</td>
@@ -1060,7 +1079,7 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="角色"><strong>法比奥 Fabio</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#0f8a63" title="法比奥" data-name="法比奥"><img class="av-a" src="assets/avatar/9.jpg" alt="法比奥" loading="lazy"></span><strong>法比奥 Fabio</strong></td>
 <td data-label="喜欢的东西">痛苦、被遗忘的情感、解剖美丽之物</td>
 <td data-label="兴趣">绘画、与深思者交谈</td>
 <td data-label="推荐礼物">—</td>
@@ -1097,7 +1116,7 @@ footer.foot{
 <td data-label="推荐礼物">书籍</td>
 </tr>
 <tr>
-<td data-label="角色"><strong>托比亚斯 Tobias</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#c2790a" title="托比亚斯" data-name="托比亚斯"><img class="av-a" src="assets/avatar/13.jpg" alt="托比亚斯" loading="lazy"></span><strong>托比亚斯 Tobias</strong></td>
 <td data-label="喜欢的东西">喝酒、战斗、唱歌、与人交流</td>
 <td data-label="兴趣">狩猎、独自露营</td>
 <td data-label="推荐礼物">发酵饮料（ghosh / shosh）</td>
@@ -1128,13 +1147,13 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="角色"><strong>巴卡尼亚 Buccar</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#c2185b" title="巴卡尼亚" data-name="巴卡尼亚"><img class="av-a" src="assets/avatar/16.jpg" alt="巴卡尼亚" loading="lazy"></span><strong>巴卡尼亚 Buccar</strong></td>
 <td data-label="喜欢的东西">忠诚、训练、梦见蕾达的幸福</td>
 <td data-label="兴趣">烹饪、指导年轻人</td>
 <td data-label="推荐礼物">发酵饮料、军用品、训练用品</td>
 </tr>
 <tr>
-<td data-label="角色"><strong>西洛可 Sirocco</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#5b6472" title="西洛可" data-name="西洛可"><img class="av-a" src="assets/avatar/17.jpg" alt="西洛可" loading="lazy"></span><strong>西洛可 Sirocco</strong></td>
 <td data-label="喜欢的东西">女神卡拉、所有女性、吟诵诗歌</td>
 <td data-label="兴趣">阅读、绘制肖像</td>
 <td data-label="推荐礼物"><strong>发酵饮料</strong>、绘画（特别是<strong>尤法斯肖像</strong>）、书籍</td>
@@ -1165,25 +1184,25 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="角色"><strong>盖茨 Gaitz</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#2f6f9f" title="盖茨" data-name="盖茨"><img class="av-a" src="assets/avatar/21.jpg" alt="盖茨" loading="lazy"></span><strong>盖茨 Gaitz</strong></td>
 <td data-label="喜欢的东西">赛伊的茶、费尔加纳马、决斗、书法</td>
 <td data-label="兴趣">泡茶、练武</td>
 <td data-label="推荐礼物">茶、马匹用品、决斗/书法相关</td>
 </tr>
 <tr>
-<td data-label="角色"><strong>杰斯特 Jester</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#8a5a1e" title="杰斯特" data-name="杰斯特"><img class="av-a" src="assets/avatar/51.jpg" alt="杰斯特" loading="lazy"></span><strong>杰斯特 Jester</strong></td>
 <td data-label="喜欢的东西">白鬃恶魔、看对手脸上的恐惧</td>
 <td data-label="兴趣">将对手切成碎片、吓唬观众</td>
 <td data-label="推荐礼物">—</td>
 </tr>
 <tr>
-<td data-label="角色"><strong>歌利亚 Goliath</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#b8123c" title="歌利亚" data-name="歌利亚"><img class="av-a" src="assets/avatar/50.jpg" alt="歌利亚" loading="lazy"></span><strong>歌利亚 Goliath</strong></td>
 <td data-label="喜欢的东西">暴走、食物、动物、熏肉</td>
 <td data-label="兴趣">训练、参加角斗</td>
 <td data-label="推荐礼物">—</td>
 </tr>
 <tr>
-<td data-label="角色"><strong>但丁 Dante</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#1f5fa8" title="但丁" data-name="但丁"><img class="av-a" src="assets/avatar/22.jpg" alt="但丁" loading="lazy"></span><strong>但丁 Dante</strong></td>
 <td data-label="喜欢的东西">她自己、快速书写、寻找戏剧性题材</td>
 <td data-label="兴趣">研究他人、观察他人反应</td>
 <td data-label="推荐礼物">咖啡、书籍</td>
@@ -1195,13 +1214,13 @@ footer.foot{
 <td data-label="推荐礼物"><strong>弓术用品</strong>（装饰箭、关节舒缓手套、弓保养套装）</td>
 </tr>
 <tr>
-<td data-label="角色"><strong>洛蕾塔 Loretta</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#7a4bbf" title="洛蕾塔" data-name="洛蕾塔"><img class="av-a" src="assets/avatar/55.jpg" alt="洛蕾塔" loading="lazy"></span><strong>洛蕾塔 Loretta</strong></td>
 <td data-label="喜欢的东西">可靠的人、甜食、朋友</td>
 <td data-label="兴趣">剑术训练、钓鱼</td>
 <td data-label="推荐礼物"><strong>糕点等甜食</strong></td>
 </tr>
 <tr>
-<td data-label="角色"><strong>西提司 Seteth</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#0e8f9e" title="西提司" data-name="西提司"><img class="av-a" src="assets/avatar/54.jpg" alt="西提司" loading="lazy"></span><strong>西提司 Seteth</strong></td>
 <td data-label="喜欢的东西">赛罗斯的教诲、钓鱼、女儿、勤奋的人</td>
 <td data-label="兴趣">写寓言、讲道、教学</td>
 <td data-label="推荐礼物"><strong>钓鱼用品</strong>（鱼钩、钓竿、鱼眼、腌鱼肠）</td>
@@ -1213,7 +1232,7 @@ footer.foot{
 <td data-label="推荐礼物"><strong>东方黑丝绸</strong></td>
 </tr>
 <tr>
-<td data-label="角色"><strong>乌修拉 Ursula</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#0f8a63" title="乌修拉" data-name="乌修拉"><img class="av-a" src="assets/avatar/24.jpg" alt="乌修拉" loading="lazy"></span><strong>乌修拉 Ursula</strong></td>
 <td data-label="喜欢的东西">诗歌、动物、阴处绽放的花、数钱</td>
 <td data-label="兴趣">阅读、绘画</td>
 <td data-label="推荐礼物"><strong>咖啡、棋盘游戏、书籍、绘画、花卉</strong></td>
@@ -1241,12 +1260,12 @@ footer.foot{
 <td data-label="推荐礼物"><strong>蔬菜</strong></td>
 </tr>
 <tr>
-<td data-label="角色"><strong>菲亚娜 Fianna</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#c2790a" title="菲亚娜" data-name="菲亚娜"><img class="av-a" src="assets/avatar/53.jpg" alt="菲亚娜" loading="lazy"></span><strong>菲亚娜 Fianna</strong></td>
 <td data-label="喜欢的东西">诗集、辛辣食物、咖啡、可信赖的人</td>
 <td data-label="推荐礼物">诗集、辛辣食物、咖啡</td>
 </tr>
 <tr>
-<td data-label="角色"><strong>鲁鲁迪娅 Ludia</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#c2185b" title="鲁鲁迪娅" data-name="鲁鲁迪娅"><img class="av-a" src="assets/avatar/52.jpg" alt="鲁鲁迪娅" loading="lazy"></span><strong>鲁鲁迪娅 Ludia</strong></td>
 <td data-label="喜欢的东西">写故事、欣赏艺术、谈情说爱</td>
 <td data-label="推荐礼物"><strong>咖啡、书籍、绘画</strong></td>
 </tr>
@@ -1291,7 +1310,7 @@ footer.foot{
 <td data-label="推荐礼物">训练用品（训练柱、训练重物）</td>
 </tr>
 <tr>
-<td data-label="角色"><strong>努佐 Nuzzuo</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#5b6472" title="努佐" data-name="努佐"><img class="av-a" src="assets/avatar/47.jpg" alt="努佐" loading="lazy"></span><strong>努佐 Nuzzuo</strong></td>
 <td data-label="喜欢的东西">传统、荣誉、强大力量</td>
 <td data-label="推荐礼物"><strong>户外烹饪套装</strong>等「爱下厨」用品、蔬菜</td>
 </tr>
@@ -1311,12 +1330,12 @@ footer.foot{
 <td data-label="推荐礼物"><strong>蔬菜</strong></td>
 </tr>
 <tr>
-<td data-label="角色"><strong>亚历山德拉 Alexandra</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#2f6f9f" title="亚历山德拉" data-name="亚历山德拉"><img class="av-a" src="assets/avatar/37.jpg" alt="亚历山德拉" loading="lazy"></span><strong>亚历山德拉 Alexandra</strong></td>
 <td data-label="喜欢的东西">双亲、布凯法卢斯、有德之人、谈情说爱</td>
 <td data-label="推荐礼物"><strong>马匹用品</strong>、天马绘画</td>
 </tr>
 <tr>
-<td data-label="角色"><strong>本迪茨 Benditz</strong></td>
+<td data-label="角色"><span class="avatar sm" style="--ac:#8a5a1e" title="本迪茨" data-name="本迪茨"><img class="av-a" src="assets/avatar/36.jpg" alt="本迪茨" loading="lazy"></span><strong>本迪茨 Benditz</strong></td>
 <td data-label="喜欢的东西">伟大的奥古斯特的战术、上进的年轻人</td>
 <td data-label="推荐礼物"><strong>武器、战术与军史书籍、军功勋章、棋盘游戏</strong></td>
 </tr>

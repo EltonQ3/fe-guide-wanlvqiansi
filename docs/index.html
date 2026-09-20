@@ -351,6 +351,7 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 }
 
 /* ============ 头像 ============ */
+/* 有立绘素材时呈现真实图片；缺图回退为阵营色块首字 */
 .avatar{
   display:inline-flex; align-items:center; justify-content:center;
   width:26px; height:26px; border-radius:8px; flex:0 0 auto;
@@ -358,11 +359,29 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   background:var(--ac,#b8123c); box-shadow:inset 0 -2px 0 rgba(0,0,0,.14);
   vertical-align:-6px; margin-right:7px; letter-spacing:0;
   font-family:inherit;
+  position:relative; overflow:hidden;
+  outline:1px solid rgba(0,0,0,.10); outline-offset:-1px;
+}
+.avatar>img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  border-radius:inherit;
 }
 .avatar.lg{width:40px; height:40px; border-radius:12px; font-size:19px;
   vertical-align:-11px; margin-right:10px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
 .avatar.sm{width:21px; height:21px; border-radius:6px; font-size:11px;
   vertical-align:-5px; margin-right:5px}
+.avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
+  vertical-align:-17px; margin-right:12px; box-shadow:none}
+
+/* 真主角（伊修玛尔）为男女双人：两张头像并列，中间以细线分隔 */
+.avatar.is-dual{width:52px; border-radius:8px}
+.avatar.is-dual>img{width:50%; position:absolute; top:0; height:100%}
+.avatar.is-dual>img.av-a{left:0}
+.avatar.is-dual>img.av-b{right:0}
+.avatar.is-dual::after{
+  content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+  background:rgba(255,255,255,.85); transform:translateX(-1px);
+}
 /* 角色名字行：头像 + 名字 */
 .who{display:inline-flex; align-items:center; gap:0; font-weight:600}
 

@@ -352,6 +352,7 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 }
 
 /* ============ 头像 ============ */
+/* 有立绘素材时呈现真实图片；缺图回退为阵营色块首字 */
 .avatar{
   display:inline-flex; align-items:center; justify-content:center;
   width:26px; height:26px; border-radius:8px; flex:0 0 auto;
@@ -359,11 +360,29 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   background:var(--ac,#b8123c); box-shadow:inset 0 -2px 0 rgba(0,0,0,.14);
   vertical-align:-6px; margin-right:7px; letter-spacing:0;
   font-family:inherit;
+  position:relative; overflow:hidden;
+  outline:1px solid rgba(0,0,0,.10); outline-offset:-1px;
+}
+.avatar>img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  border-radius:inherit;
 }
 .avatar.lg{width:40px; height:40px; border-radius:12px; font-size:19px;
   vertical-align:-11px; margin-right:10px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
 .avatar.sm{width:21px; height:21px; border-radius:6px; font-size:11px;
   vertical-align:-5px; margin-right:5px}
+.avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
+  vertical-align:-17px; margin-right:12px; box-shadow:none}
+
+/* 真主角（伊修玛尔）为男女双人：两张头像并列，中间以细线分隔 */
+.avatar.is-dual{width:52px; border-radius:8px}
+.avatar.is-dual>img{width:50%; position:absolute; top:0; height:100%}
+.avatar.is-dual>img.av-a{left:0}
+.avatar.is-dual>img.av-b{right:0}
+.avatar.is-dual::after{
+  content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+  background:rgba(255,255,255,.85); transform:translateX(-1px);
+}
 /* 角色名字行：头像 + 名字 */
 .who{display:inline-flex; align-items:center; gap:0; font-weight:600}
 
@@ -845,49 +864,49 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="神"><span class="avatar sm" style="--ac:#b8123c" title="奥罗拉" data-name="奥罗拉" aria-hidden="true">奥</span><strong>奥罗拉 Aurora</strong></td>
+<td data-label="神"><strong>奥罗拉 Aurora</strong></td>
 <td data-label="Lv1">1 回合内，物理伤害减半</td>
 <td data-label="Lv2">1 回合内，魔法伤害减半</td>
 <td data-label="Lv3">1 回合内，无效化敌方的<strong>冥府加護</strong></td>
 <td data-label="白沙成本（普通/困难）">15 / 20</td>
 </tr>
 <tr>
-<td data-label="神"><span class="avatar sm" style="--ac:#b8123c" title="玛尔斯" data-name="玛尔斯" aria-hidden="true">玛</span><strong>玛尔斯 Mars</strong></td>
+<td data-label="神"><strong>玛尔斯 Mars</strong></td>
 <td data-label="Lv1">1 回合内，物理命中 +50</td>
 <td data-label="Lv2">1 回合内，击杀敌人回复 HP</td>
 <td data-label="Lv3">1 回合内，力量 +5</td>
 <td data-label="白沙成本（普通/困难）">20 / 30</td>
 </tr>
 <tr>
-<td data-label="神"><span class="avatar sm" style="--ac:#c2790a" title="斯米尔诺斯" data-name="斯米尔诺斯" aria-hidden="true">斯</span><strong>斯米尔诺斯 Smyrnos</strong></td>
+<td data-label="神"><strong>斯米尔诺斯 Smyrnos</strong></td>
 <td data-label="Lv1">1 回合内，魔法命中 +50</td>
 <td data-label="Lv2">1 回合内，魔法射程 +1</td>
 <td data-label="Lv3">1 回合内，魔力 +5</td>
 <td data-label="白沙成本（普通/困难）">20 / 30</td>
 </tr>
 <tr>
-<td data-label="神"><span class="avatar sm" style="--ac:#1f5fa8" title="朱拉" data-name="朱拉" aria-hidden="true">朱</span><strong>朱拉 Jurah</strong></td>
+<td data-label="神"><strong>朱拉 Jurah</strong></td>
 <td data-label="Lv1">无效化敌方特效伤害</td>
 <td data-label="Lv2">1 回合内，防止被追击</td>
 <td data-label="Lv3">1 回合内，防止被必杀</td>
 <td data-label="白沙成本（普通/困难）">10 / 15</td>
 </tr>
 <tr>
-<td data-label="神"><span class="avatar sm" style="--ac:#7a4bbf" title="卡拉" data-name="卡拉" aria-hidden="true">卡</span><strong>卡拉 Kalla</strong></td>
+<td data-label="神"><strong>卡拉 Kalla</strong></td>
 <td data-label="Lv1">1 回合内，回避 +50</td>
 <td data-label="Lv2">1 回合内，速度 +5</td>
 <td data-label="Lv3"><strong>1 回合内，移动力 +2</strong></td>
 <td data-label="白沙成本（普通/困难）">20 / 40</td>
 </tr>
 <tr>
-<td data-label="神"><span class="avatar sm" style="--ac:#0e8f9e" title="克蕾德娜" data-name="克蕾德娜" aria-hidden="true">克</span><strong>克蕾德娜 Credna</strong></td>
+<td data-label="神"><strong>克蕾德娜 Credna</strong></td>
 <td data-label="Lv1">1 回合内，视野 +5</td>
 <td data-label="Lv2"><strong>1 回合内，武器耐久消耗归零</strong></td>
 <td data-label="Lv3">1 回合内，敌方回合中先制攻击</td>
 <td data-label="白沙成本（普通/困难）">10 / 20</td>
 </tr>
 <tr>
-<td data-label="神"><span class="avatar sm" style="--ac:#0e8f9e" title="芙托娜" data-name="芙托娜" aria-hidden="true">芙</span><strong>芙托娜 Fortuna</strong></td>
+<td data-label="神"><strong>芙托娜 Fortuna</strong></td>
 <td data-label="Lv1">回溯战斗行动（剧情解锁，不可侍奉）</td>
 <td data-label="Lv2">—</td>
 <td data-label="Lv3">—</td>
