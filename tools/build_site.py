@@ -11,14 +11,23 @@
 - 每页顶部上/下篇导航
 - 人物头像色块、卡片化版面
 """
-import re, html as ihtml, pathlib, shutil, json
+import re, html as ihtml, pathlib, shutil, json, sys
 import markdown
 
-SRC = pathlib.Path('/workspace/火焰纹章万缕千丝攻略汇总/火焰纹章万缕千丝_完全攻略手册.md')
-OUTDIR = pathlib.Path('/workspace/火焰纹章万缕千丝攻略汇总')
+# ---------- 路径解析（相对脚本自身，可在任意机器/沙箱运行）----------
+HERE = pathlib.Path(__file__).resolve().parent   # tools/
+ROOT = HERE.parent                               # 仓库根
 
-import sys
-sys.path.insert(0, '/tmp')
+# 允许命令行覆盖： --src <md> --out <dir>
+def _opt(flag, default):
+    if flag in sys.argv:
+        return pathlib.Path(sys.argv[sys.argv.index(flag) + 1]).resolve()
+    return default
+
+SRC    = _opt('--src', ROOT / 'source' / '火焰纹章万缕千丝_完全攻略手册.md')
+OUTDIR = _opt('--out', ROOT / 'docs')
+
+sys.path.insert(0, str(HERE))
 from site_css import CSS, PART_COLORS, PART_SOFTS
 
 raw = SRC.read_text(encoding='utf-8')
@@ -98,7 +107,7 @@ for i, (t, b) in enumerate(part_secs):
                   'sections': [b], 'kind': 'part'})
 
 # 资料源页：每日更新 log（新大类，置顶）+ 1.1 + 附录·来源清单 + 附录·情报可靠度提示
-DAILY_LOG = OUTDIR / '_daily_log.json'
+DAILY_LOG = ROOT / 'source' / '_daily_log.json'
 
 def render_daily_log():
     """把 _daily_log.json 渲染成「每日更新 log」大类的 HTML。纯静态，无 JS。"""
