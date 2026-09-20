@@ -9,5 +9,120 @@
     "new_sources": "新来源候选，按 grade A/B/C 分档，每条 {grade, name, url, note}",
     "limited": "采集受限说明数组，每条 {site, reason}"
   },
-  "entries": []
+  "entries": [
+    {
+      "date": "2026-09-20",
+      "checked": "巡检 19 个来源域名，实际取回 4 篇正文；可达 13 个、受限 6 个",
+      "merged": [
+        {
+          "text": "新增「5.3.1 跨路线招募条件速查表」，收录 8 名跨路线角色的支援等级/名声等级门槛（蒂亚拉、彼得、乌尔坦德、杰斯特、歌利亚、但丁、盖茨、法比奥），含附加条件列",
+          "src": "18183 全角色招募方法（2026-09-17）+ 游民星空 角色加入条件一览（2026-09-17）"
+        },
+        {
+          "text": "表格数值经双源交叉验证：21 项对照全部吻合，零冲突，具备并入正文可信度",
+          "src": "本地交叉核对"
+        },
+        {
+          "text": "来源清单新增「2026-09-20 新增来源」小节，补入 9 条来源（游民星空×3、什么值得买、4Gamers、巴哈姆特 GNN、网易、中关村在线、IT之家）",
+          "src": "本轮采集"
+        },
+        {
+          "text": "确认「支援等级（nS）/ 名声等级（nR）」记法对应：3S = 支援 Lv.3，9R = 名声 Lv.9，已在正文加注说明",
+          "src": "18183 与游民星空对照"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "A",
+          "name": "游民星空 — 角色加入条件一览",
+          "url": "https://wap.gamersky.com/gl/Content-2211366.html",
+          "note": "含各路线支援 Lv/名声 Lv 完整数值表，与 18183 数据 21/21 吻合。站点自述表格「正在施工中」、部分角色为暂译，使用时需注意"
+        },
+        {
+          "grade": "A",
+          "name": "4Gamers（台湾）— 萬縷千絲发售报道",
+          "url": "https://www.4gamers.com.tw/news/detail/79910/fire-emblem-wanshiqianhong-release-date-september-17-switch-2",
+          "note": "台湾主要游戏媒体，发售日/平台/四主角设定等官方信息，可信度高"
+        },
+        {
+          "grade": "B",
+          "name": "什么值得买 — 开荒 48 小时全网实战笔记",
+          "url": "https://post.m.smzdm.com/p/a82xlvvq",
+          "note": "UGC 聚合帖，整理 B 站/小红书/知乎/微博开荒一手信息（选线成本、挖角、神将取舍）。有实质内容、非标题党，但属二次聚合，未直接并入正文"
+        },
+        {
+          "grade": "B",
+          "name": "网易/游民星空 — 真主角与五年时间跳跃",
+          "url": "https://www.163.com/dy/article/L3H9AIE20526K1KN.html",
+          "note": "游民星空原稿转载。与巴哈姆特 GNN、中关村在线三源印证「真主角埃什梅尔/伊修玛尔 + 五年跃迁」说法，可信度较高"
+        },
+        {
+          "grade": "B",
+          "name": "中关村在线 — 四线叙事 + 跨时空协战",
+          "url": "https://game.zol.com.cn/1227/12270379.html",
+          "note": "与巴哈姆特 GNN 相互印证，同属系统机制解读类"
+        },
+        {
+          "grade": "B",
+          "name": "IT之家 — 直面会细节公开",
+          "url": "https://m.ithome.com/html/985721.htm",
+          "note": "科技媒体，转述任天堂直面会内容（四线并行、职业分级、神之加护）。内容权威但对攻略深度有限"
+        },
+        {
+          "grade": "B",
+          "name": "巴哈姆特 GNN — 系统详细解析",
+          "url": "https://m.gamer.com.tw/gnn/detail.php?sn=309776",
+          "note": "台湾最大游戏社群的一手报道，已在原有来源清单中；本轮确认其「真主角」内容与其他来源一致"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "洛蕾塔（Loretta）在迪托利希线的名声等级门槛",
+          "current": "正文 5.3 节写「洛蕾塔在赛奥朵拉篇只需名声 5，在迪托利希篇则需名声 8」",
+          "incoming": "游民星空数据显示：迪托利希篇 支援Lv3 / 名声Lv9；赛奥朵拉篇 支援Lv3 / 名声Lv5；凯伊篇 名声Lv7；蕾达篇 名声Lv5",
+          "src": "https://wap.gamersky.com/gl/Content-2211366.html"
+        },
+        {
+          "topic": "角色译名不统一",
+          "current": "正文使用「蒂亚拉 / 彼得 / 乌尔坦德 / 杰斯特 / 歌利亚 / 但丁 / 洛蕾塔」",
+          "incoming": "游民星空用「媞雅拉 / 皮特鲁 / 乌尔坦德 / 杰斯塔 / 哥莱亚斯 / 丹提 / 罗蕾塔」，且站点自述为暂译、待与官中对照",
+          "src": "游民星空角色加入条件一览"
+        }
+      ],
+      "limited": [
+        {
+          "site": "AlGest（al-gest.com / altema.jp）",
+          "reason": "HTTP 403，反爬拦截，日文站核心来源未取回"
+        },
+        {
+          "site": "NGA 论坛（bbs.nga.cn）",
+          "reason": "HTTP 403，需登录或反爬限制"
+        },
+        {
+          "site": "百度贴吧（tieba.baidu.com）",
+          "reason": "HTTP 403，反爬限制"
+        },
+        {
+          "site": "Reddit",
+          "reason": "连接失败（HTTP 000），沙箱网络不可达"
+        },
+        {
+          "site": "GameFAQs",
+          "reason": "连接失败（HTTP 000），沙箱网络不可达"
+        },
+        {
+          "site": "巴哈姆特 GNN（gnn.gamer.com.tw）",
+          "reason": "主域 HTTP 000，改用 m.gamer.com.tw 移动域取回成功"
+        },
+        {
+          "site": "TapTap 社区",
+          "reason": "HTTP 405，方法不被允许"
+        },
+        {
+          "site": "RPGamer",
+          "reason": "HTTP 403"
+        }
+      ]
+    }
+  ]
 }
