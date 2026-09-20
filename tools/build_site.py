@@ -222,13 +222,21 @@ def render_daily_log():
 src_blocks = [('RAWHTML', render_daily_log())]
 if source_sec:
     src_blocks.append(source_sec)
+
+# 归入「资料源与可信度」页的附录类章节
+# 注意：新增附录时必须同步登记此表，否则会被当作独立篇章单独成页，导致全站序号错位
+SRC_PAGE_KEYS = ('来源', '可靠度', '译名')
+
+def _belongs_to_src_page(title):
+    return any(k in title for k in SRC_PAGE_KEYS)
+
 for t, b in misc_secs:
-    if '来源' in t or '可靠度' in t:
+    if _belongs_to_src_page(t):
         # 切分时标题被消费掉了（存在 t 里，不在 b 里），这里补回去，
         # 否则该段会失去标题层级、并在目录里缺席。
         src_blocks.append([f'# {t}', ''] + list(b))
 # 其余杂项（如每周速查卡）单独成页
-others = [(t, b) for (t, b) in misc_secs if '来源' not in t and '可靠度' not in t]
+others = [(t, b) for (t, b) in misc_secs if not _belongs_to_src_page(t)]
 
 for t, b in others:
     PAGES.append({'file': f'p{len(PAGES)+1}.html', 'title': t, 'idx': len(PAGES),

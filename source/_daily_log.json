@@ -12,87 +12,153 @@
   "entries": [
     {
       "date": "2026-09-20",
-      "checked": "巡检 19 个来源域名，实际取回 4 篇正文；可达 13 个、受限 6 个",
+      "checked": "巡检 19 个来源域名；新增日站 AlGest 全量抓取（8 个栏目页全部 200）+ 任天堂官方源核查",
       "merged": [
         {
-          "text": "新增「5.3.1 跨路线招募条件速查表」，收录 8 名跨路线角色的支援等级/名声等级门槛（蒂亚拉、彼得、乌尔坦德、杰斯特、歌利亚、但丁、盖茨、法比奥），含附加条件列",
-          "src": "18183 全角色招募方法（2026-09-17）+ 游民星空 角色加入条件一览（2026-09-17）"
+          "text": "【重大修正】AlGest 误判：实为 altema.jp 返回 403，AlGest 本体（al-gest.com）8 个栏目页实测全部 HTTP 200，恢复正常采集。已在来源清单加注说明",
+          "src": "本轮实测复核"
         },
         {
-          "text": "表格数值经双源交叉验证：21 项对照全部吻合，零冲突，具备并入正文可信度",
-          "src": "本地交叉核对"
+          "text": "【修正】洛蕾塔迪托利希线名声门槛：正文「名声8」→「名声9」。经日站 AlGest 核实，与游民星空一致，两源均修正为 9",
+          "src": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/"
         },
         {
-          "text": "来源清单新增「2026-09-20 新增来源」小节，补入 9 条来源（游民星空×3、什么值得买、4Gamers、巴哈姆特 GNN、网易、中关村在线、IT之家）",
+          "text": "【扩充】5.3.1 跨路线招募条件速查表：从 8 名角色扩充至 60 名，按五大派系分表（利贝拉之风/拉弥努家族/美盖拉的灯火/蔷薇风暴/炎之鬃 + 其他派系 + 无派系）",
+          "src": "AlGest スカウト・加入条件一覧（2026-09-17）"
+        },
+        {
+          "text": "新增「附录 · 译名对照与多语言说明」，含四语言官方译名表与权威性分档",
+          "src": "任天堂香港官网 / eShop"
+        },
+        {
+          "text": "建立多语言对照表：docs/data/i18n.json（结构化）+ docs/data/译名对照表.md（可读版），覆盖作品名、四主角、9 名官方 NPC、6 项世界观、6 项系统术语、54 名可招募角色、10 项道具素材",
+          "src": "官方源 + AlGest + 18183/游民星空"
+        },
+        {
+          "text": "可靠度表更新：「招募条件」由「中」升为「中高」（三方交叉验证一致）；新增「专有名词译名」行",
+          "src": "本轮验证"
+        },
+        {
+          "text": "来源清单新增「官方来源（任天堂）」小节，补入 8 条官方/权威来源（任天堂香港×2、eShop、Nintendo Life、百度百科×2、玩一玩游戏、游侠网）",
           "src": "本轮采集"
-        },
-        {
-          "text": "确认「支援等级（nS）/ 名声等级（nR）」记法对应：3S = 支援 Lv.3，9R = 名声 Lv.9，已在正文加注说明",
-          "src": "18183 与游民星空对照"
         }
       ],
       "new_sources": [
         {
           "grade": "A",
+          "name": "任天堂（香港）官方网站 — 官方资讯页",
+          "url": "https://www.nintendo.com/hk/topics/article/6TmiV6zUXU8YEQzNj5NvgQ",
+          "note": "【官方一手】四主角官方繁中译名（凱伊/迪托利希/賽奧朵拉/蕾達）与世界觀术语。译名权威来源"
+        },
+        {
+          "grade": "A",
+          "name": "任天堂 eShop 香港 — 商品页",
+          "url": "https://ec.nintendo.com/HK/zh/titles/70010000126932",
+          "note": "【官方一手】载明支持简繁中文、四位战士介绍、「救世軍」等官方术语"
+        },
+        {
+          "grade": "A",
+          "name": "AlGest — スカウト・加入条件一覧",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/",
+          "note": "【本轮核实可用】日站核心数据源，60 名角色完整招募条件（支援Lv/名声Lv/附加条件），本表以此为准。此前误判为 403 受限"
+        },
+        {
+          "grade": "A",
           "name": "游民星空 — 角色加入条件一览",
           "url": "https://wap.gamersky.com/gl/Content-2211366.html",
-          "note": "含各路线支援 Lv/名声 Lv 完整数值表，与 18183 数据 21/21 吻合。站点自述表格「正在施工中」、部分角色为暂译，使用时需注意"
+          "note": "中文数值表，与日站 AlGest 一致"
         },
         {
           "grade": "A",
           "name": "4Gamers（台湾）— 萬縷千絲发售报道",
           "url": "https://www.4gamers.com.tw/news/detail/79910/fire-emblem-wanshiqianhong-release-date-september-17-switch-2",
-          "note": "台湾主要游戏媒体，发售日/平台/四主角设定等官方信息，可信度高"
+          "note": "台湾主要游戏媒体，官方信息转述"
+        },
+        {
+          "grade": "B",
+          "name": "Nintendo Life — Fortune's Weave Characters",
+          "url": "https://www.nintendolife.com/guides/guides/fire-emblem-fortunes-weave-characters-every-hero-revealed-so-far",
+          "note": "汇总任天堂 Nintendo Today 官方角色介绍，提供英文官方名（Cai/Dietrich/Leda/Theodora/Eshmel 等），对建英文对照极有用"
+        },
+        {
+          "grade": "B",
+          "name": "百度百科 — 火焰之纹章：万缕千丝",
+          "url": "https://baike.baidu.com/item/火焰纹章:万紫千红/66759549",
+          "note": "含官方配音信息（红花 CV、奥林匹亚、君子兰夫人、但丁、莎兰、哪吒等），部分角色属官方公开信息"
+        },
+        {
+          "grade": "B",
+          "name": "百度百科 — 救世主（伊修玛尔）",
+          "url": "https://baike.baidu.com/item/救世主/68436329",
+          "note": "真主角默认名「伊修玛尔」、CV 松冈祯丞/井上麻里奈、世界观（禁断之地、女娲之民、巴罗尔）"
+        },
+        {
+          "grade": "B",
+          "name": "游侠网 — 官方披露主角详细情报",
+          "url": "https://3g.ali213.net/news/html/1028581.html",
+          "note": "巴罗尔/霸罗尔译法分歧来源；与官方信息互证"
+        },
+        {
+          "grade": "B",
+          "name": "玩一玩游戏网 — 主角信息公布",
+          "url": "https://www.wywyx.com/news/202608/583078.html",
+          "note": "伊修玛尔、芙托娜、苏谛斯译名，与官方互证"
         },
         {
           "grade": "B",
           "name": "什么值得买 — 开荒 48 小时全网实战笔记",
           "url": "https://post.m.smzdm.com/p/a82xlvvq",
-          "note": "UGC 聚合帖，整理 B 站/小红书/知乎/微博开荒一手信息（选线成本、挖角、神将取舍）。有实质内容、非标题党，但属二次聚合，未直接并入正文"
-        },
-        {
-          "grade": "B",
-          "name": "网易/游民星空 — 真主角与五年时间跳跃",
-          "url": "https://www.163.com/dy/article/L3H9AIE20526K1KN.html",
-          "note": "游民星空原稿转载。与巴哈姆特 GNN、中关村在线三源印证「真主角埃什梅尔/伊修玛尔 + 五年跃迁」说法，可信度较高"
-        },
-        {
-          "grade": "B",
-          "name": "中关村在线 — 四线叙事 + 跨时空协战",
-          "url": "https://game.zol.com.cn/1227/12270379.html",
-          "note": "与巴哈姆特 GNN 相互印证，同属系统机制解读类"
-        },
-        {
-          "grade": "B",
-          "name": "IT之家 — 直面会细节公开",
-          "url": "https://m.ithome.com/html/985721.htm",
-          "note": "科技媒体，转述任天堂直面会内容（四线并行、职业分级、神之加护）。内容权威但对攻略深度有限"
+          "note": "UGC 聚合帖，整理 B 站/小红书/知乎/微博开荒信息。非标题党、有实质内容，属二次聚合未并入正文"
         },
         {
           "grade": "B",
           "name": "巴哈姆特 GNN — 系统详细解析",
           "url": "https://m.gamer.com.tw/gnn/detail.php?sn=309776",
-          "note": "台湾最大游戏社群的一手报道，已在原有来源清单中；本轮确认其「真主角」内容与其他来源一致"
+          "note": "台湾最大游戏社群报道，真主角内容与其他来源一致"
+        },
+        {
+          "grade": "B",
+          "name": "中关村在线 / 网易 — 四线叙事 + 五年跃迁",
+          "url": "https://game.zol.com.cn/1227/12270379.html",
+          "note": "与巴哈姆特 GNN 相互印证"
+        },
+        {
+          "grade": "B",
+          "name": "IT之家 — 直面会细节公开",
+          "url": "https://m.ithome.com/html/985721.htm",
+          "note": "任天堂直面会内容转述"
         }
       ],
       "conflicts": [
         {
-          "topic": "洛蕾塔（Loretta）在迪托利希线的名声等级门槛",
-          "current": "正文 5.3 节写「洛蕾塔在赛奥朵拉篇只需名声 5，在迪托利希篇则需名声 8」",
-          "incoming": "游民星空数据显示：迪托利希篇 支援Lv3 / 名声Lv9；赛奥朵拉篇 支援Lv3 / 名声Lv5；凯伊篇 名声Lv7；蕾达篇 名声Lv5",
-          "src": "https://wap.gamersky.com/gl/Content-2211366.html"
+          "topic": "洛蕾塔迪托利希线名声门槛【已解决】",
+          "current": "正文原写「迪托利希篇需名声 8」",
+          "incoming": "日站 AlGest 与游民星空均为「名声 9」，三方验证后确认 9 正确",
+          "src": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/（已修正正文为 9）"
         },
         {
-          "topic": "角色译名不统一",
-          "current": "正文使用「蒂亚拉 / 彼得 / 乌尔坦德 / 杰斯特 / 歌利亚 / 但丁 / 洛蕾塔」",
-          "incoming": "游民星空用「媞雅拉 / 皮特鲁 / 乌尔坦德 / 杰斯塔 / 哥莱亚斯 / 丹提 / 罗蕾塔」，且站点自述为暂译、待与官中对照",
-          "src": "游民星空角色加入条件一览"
+          "topic": "角色译名不统一【部分解决】",
+          "current": "正文原用「蒂亚拉/彼得/杰斯特」等",
+          "incoming": "游民星空用「媞雅拉/皮特鲁/杰斯塔」；官方已公布四主角与部分 NPC 译名，大量可招募角色仍无官方译名",
+          "src": "已建立 docs/data/i18n.json 对照表，保留 alias 字段；官方源：https://www.nintendo.com/hk/topics/article/6TmiV6zUXU8YEQzNj5NvgQ"
+        },
+        {
+          "topic": "真主角默认名译法分歧【已裁定】",
+          "current": "部分媒体作「埃什梅尔」（英文 Eshmel 音译）",
+          "incoming": "官方设定默认名为「伊修玛尔」（イシュマール）",
+          "src": "https://baike.baidu.com/item/救世主/68436329 —— 本手册采用「伊修玛尔」"
+        },
+        {
+          "topic": "魔神名译法分歧【待官方统一】",
+          "current": "「巴罗尔」",
+          "incoming": "另有「霸罗尔」写法",
+          "src": "https://3g.ali213.net/news/html/1028581.html —— 官方未统一，暂用巴罗尔"
         }
       ],
       "limited": [
         {
-          "site": "AlGest（al-gest.com / altema.jp）",
-          "reason": "HTTP 403，反爬拦截，日文站核心来源未取回"
+          "site": "altema.jp",
+          "reason": "HTTP 403。注意：这是 AlGest 的关联站点但并非同一域名，AlGest 本体 al-gest.com 可用"
         },
         {
           "site": "NGA 论坛（bbs.nga.cn）",
@@ -111,12 +177,12 @@
           "reason": "连接失败（HTTP 000），沙箱网络不可达"
         },
         {
-          "site": "巴哈姆特 GNN（gnn.gamer.com.tw）",
-          "reason": "主域 HTTP 000，改用 m.gamer.com.tw 移动域取回成功"
+          "site": "巴哈姆特 GNN 主域（gnn.gamer.com.tw）",
+          "reason": "HTTP 000；移动域 m.gamer.com.tw 可用，已改用"
         },
         {
           "site": "TapTap 社区",
-          "reason": "HTTP 405，方法不被允许"
+          "reason": "HTTP 405"
         },
         {
           "site": "RPGamer",
