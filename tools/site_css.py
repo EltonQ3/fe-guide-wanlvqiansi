@@ -232,7 +232,7 @@ table.c12 tbody tr:nth-child(even) td:first-child{background:#fafbfc}
 .table-wrap{
   container-type:inline-size; container-name:tbl;
   margin:18px 0; border:1px solid var(--line); border-radius:12px;
-  overflow:hidden; background:#fff; max-width:100%;
+  background:#fff; max-width:100%; min-width:0;
 }
 .table-wrap.scrollable{
   overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch;
@@ -249,100 +249,47 @@ table.c8{--minw:880px}  table.c9{--minw:970px}  table.c10{--minw:1060px}
 table.c11{--minw:1150px} table.c12{--minw:1240px}
 .table-wrap.scrollable > table{min-width:var(--minw)}
 
-/* 卡片化降级 */
+/* 卡片化降级：所有多列表格在窄容器下一律转卡片，避免横向撑破 */
 @container tbl (max-width: 429px){
-  .table-wrap.cardmode > table.c2, .table-wrap.cardmode > table.c3,
-  .table-wrap.cardmode > table.c4{min-width:0; width:100%}
+  .table-wrap.cardmode > table[class*="c"]{min-width:0; width:100%; display:block}
+  .table-wrap.cardmode > table[class*="c"] > thead{display:none}
+  .table-wrap.cardmode > table[class*="c"] > tbody,
+  .table-wrap.cardmode > table[class*="c"] > tbody > tr,
+  .table-wrap.cardmode > table[class*="c"] > tbody > tr > td{display:block; width:100%}
+  .table-wrap.cardmode > table[class*="c"] > tbody > tr{
+    border:1px solid var(--line); border-left:4px solid var(--cur);
+    border-radius:10px; margin:0 0 10px; overflow:hidden;
+    background:#fff !important; box-shadow:0 1px 3px rgba(20,25,40,.04);
+  }
+  .table-wrap.cardmode > table[class*="c"] > tbody > tr:last-child{margin-bottom:0}
+  .table-wrap.cardmode > table[class*="c"] td{
+    border:0; border-bottom:1px solid var(--line2); padding:9px 12px;
+    white-space:normal; overflow-wrap:anywhere;
+  }
+  .table-wrap.cardmode > table[class*="c"] td:last-child{border-bottom:0}
+  .table-wrap.cardmode > table[class*="c"] td:first-child{
+    background:var(--cur-soft); font-weight:700; color:var(--cur);
+    border-bottom:1px solid var(--line); font-size:14.4px;
+  }
+  .table-wrap.cardmode > table[class*="c"] td:not(:first-child)::before{
+    content:attr(data-label) "："; display:inline;
+    font-weight:650; color:var(--ink2); font-size:12.6px;
+  }
+  .table-wrap.cardmode > table[class*="c"] td:not(:first-child)[data-label=""]::before{content:""}
 }
-@container tbl (max-width: 669px){
+@container tbl (min-width: 430px) and (max-width: 669px){
   .table-wrap.cardmode > table.c5, .table-wrap.cardmode > table.c6,
   .table-wrap.cardmode > table.c7{min-width:0; width:100%}
 }
-@container tbl (max-width: 909px){
+@container tbl (min-width: 430px) and (max-width: 909px){
   .table-wrap.cardmode > table.c8, .table-wrap.cardmode > table.c9,
   .table-wrap.cardmode > table.c10, .table-wrap.cardmode > table.c11,
   .table-wrap.cardmode > table.c12{min-width:0; width:100%}
 }
-@container tbl (max-width: 429px){
-  .table-wrap.cardmode > table.c2, .table-wrap.cardmode > table.c3,
-  .table-wrap.cardmode > table.c4{display:block}
-  .table-wrap.cardmode > table.c2 > thead, .table-wrap.cardmode > table.c3 > thead,
-  .table-wrap.cardmode > table.c4 > thead{display:none}
-  .table-wrap.cardmode > table.c2 > tbody, .table-wrap.cardmode > table.c2 > tbody > tr,
-  .table-wrap.cardmode > table.c2 > tbody > tr > td,
-  .table-wrap.cardmode > table.c3 > tbody, .table-wrap.cardmode > table.c3 > tbody > tr,
-  .table-wrap.cardmode > table.c3 > tbody > tr > td,
-  .table-wrap.cardmode > table.c4 > tbody, .table-wrap.cardmode > table.c4 > tbody > tr,
-  .table-wrap.cardmode > table.c4 > tbody > tr > td{display:block; width:100%}
-  .table-wrap.cardmode > table.c2 > tbody > tr,
-  .table-wrap.cardmode > table.c3 > tbody > tr,
-  .table-wrap.cardmode > table.c4 > tbody > tr{
-    border:1px solid var(--line); border-left:4px solid var(--cur);
-    border-radius:10px; margin:0 0 10px; overflow:hidden;
-    background:#fff !important; box-shadow:0 1px 3px rgba(20,25,40,.04);
-  }
-  .table-wrap.cardmode > table.c2 > tbody > tr:last-child,
-  .table-wrap.cardmode > table.c3 > tbody > tr:last-child,
-  .table-wrap.cardmode > table.c4 > tbody > tr:last-child{margin-bottom:0}
-  .table-wrap.cardmode > table.c2 td, .table-wrap.cardmode > table.c3 td,
-  .table-wrap.cardmode > table.c4 td{border:0; border-bottom:1px solid var(--line2); padding:9px 12px}
-  .table-wrap.cardmode > table.c2 td:last-child, .table-wrap.cardmode > table.c3 td:last-child,
-  .table-wrap.cardmode > table.c4 td:last-child{border-bottom:0}
-  .table-wrap.cardmode > table.c2 td:first-child, .table-wrap.cardmode > table.c3 td:first-child,
-  .table-wrap.cardmode > table.c4 td:first-child{
-    background:var(--cur-soft); font-weight:700; color:var(--cur);
-    border-bottom:1px solid var(--line); font-size:14.4px;
-  }
-  .table-wrap.cardmode > table.c2 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c3 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c4 td:not(:first-child)::before{
-    content:attr(data-label) "："; display:inline;
-    font-weight:650; color:var(--ink2); font-size:12.6px;
-  }
-  .table-wrap.cardmode > table.c2 td:not(:first-child)[data-label=""]::before,
-  .table-wrap.cardmode > table.c3 td:not(:first-child)[data-label=""]::before,
-  .table-wrap.cardmode > table.c4 td:not(:first-child)[data-label=""]::before{content:""}
-}
-@container tbl (max-width: 669px){
-  .table-wrap.cardmode > table.c5, .table-wrap.cardmode > table.c6,
-  .table-wrap.cardmode > table.c7{display:block}
-  .table-wrap.cardmode > table.c5 > thead, .table-wrap.cardmode > table.c6 > thead,
-  .table-wrap.cardmode > table.c7 > thead{display:none}
-  .table-wrap.cardmode > table.c5 > tbody, .table-wrap.cardmode > table.c5 > tbody > tr,
-  .table-wrap.cardmode > table.c5 > tbody > tr > td,
-  .table-wrap.cardmode > table.c6 > tbody, .table-wrap.cardmode > table.c6 > tbody > tr,
-  .table-wrap.cardmode > table.c6 > tbody > tr > td,
-  .table-wrap.cardmode > table.c7 > tbody, .table-wrap.cardmode > table.c7 > tbody > tr,
-  .table-wrap.cardmode > table.c7 > tbody > tr > td{display:block; width:100%}
-  .table-wrap.cardmode > table.c5 > tbody > tr,
-  .table-wrap.cardmode > table.c6 > tbody > tr,
-  .table-wrap.cardmode > table.c7 > tbody > tr{
-    border:1px solid var(--line); border-left:4px solid var(--cur);
-    border-radius:10px; margin:0 0 10px; overflow:hidden;
-    background:#fff !important; box-shadow:0 1px 3px rgba(20,25,40,.04);
-  }
-  .table-wrap.cardmode > table.c5 > tbody > tr:last-child,
-  .table-wrap.cardmode > table.c6 > tbody > tr:last-child,
-  .table-wrap.cardmode > table.c7 > tbody > tr:last-child{margin-bottom:0}
-  .table-wrap.cardmode > table.c5 td, .table-wrap.cardmode > table.c6 td,
-  .table-wrap.cardmode > table.c7 td{border:0; border-bottom:1px solid var(--line2); padding:9px 12px}
-  .table-wrap.cardmode > table.c5 td:last-child, .table-wrap.cardmode > table.c6 td:last-child,
-  .table-wrap.cardmode > table.c7 td:last-child{border-bottom:0}
-  .table-wrap.cardmode > table.c5 td:first-child, .table-wrap.cardmode > table.c6 td:first-child,
-  .table-wrap.cardmode > table.c7 td:first-child{
-    background:var(--cur-soft); font-weight:700; color:var(--cur);
-    border-bottom:1px solid var(--line); font-size:14.4px;
-  }
-  .table-wrap.cardmode > table.c5 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c6 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c7 td:not(:first-child)::before{
-    content:attr(data-label) "："; display:inline;
-    font-weight:650; color:var(--ink2); font-size:12.6px;
-  }
-  .table-wrap.cardmode > table.c5 td:not(:first-child)[data-label=""]::before,
-  .table-wrap.cardmode > table.c6 td:not(:first-child)[data-label=""]::before,
-  .table-wrap.cardmode > table.c7 td:not(:first-child)[data-label=""]::before{content:""}
-}
+
+/* 卡片模式下容器宽度必须受父级约束，否则会按内容撑开导致卡片化不触发 */
+.table-wrap.cardmode{overflow-x:clip; overflow-y:visible}
+.table-wrap.cardmode > table{max-width:100%}
 
 @supports not (container-type: inline-size){
   .table-wrap.cardmode{overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch}
@@ -759,7 +706,31 @@ footer.foot{
   h1{font-size:19px} h2{font-size:16.8px}
   table{font-size:12.9px}
   th,td{padding:8px 10px}
-  .avatar.lg{width:34px; height:34px; border-radius:10px; font-size:16px}
+
+  /* ---- 手机端：头像显著放大，远距离也能辨认 ---- */
+  /* 表格内头像 21 → 46px */
+  .avatar.sm{
+    width:46px; height:46px; border-radius:12px; font-size:17px;
+    vertical-align:-15px; margin-right:9px;
+  }
+  /* 正文内联头像同步放大 */
+  .avatar{
+    width:46px; height:46px; border-radius:12px; font-size:17px;
+    vertical-align:-15px; margin-right:9px;
+  }
+  .avatar.lg{width:60px; height:60px; border-radius:16px; font-size:25px;
+    vertical-align:-21px; margin-right:12px}
+  .avatar.xl{width:66px; height:66px; border-radius:18px; font-size:28px}
+  /* 主角双人并排：加宽以容纳两张脸 */
+  .avatar.is-dual{width:90px; height:46px; border-radius:12px;
+    vertical-align:-15px; margin-right:9px}
+  .avatar.is-dual>img{height:100%}
+
+  /* 表格内头像放大后，给角色列更多呼吸空间 */
+  .table-wrap table td, .table-wrap table th{padding:9px 8px}
+  .table-wrap table td:first-child, .table-wrap table th:first-child{
+    padding-left:11px;
+  }
 }
 
 /* 打印 */

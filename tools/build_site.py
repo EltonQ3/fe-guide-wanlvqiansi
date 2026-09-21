@@ -415,7 +415,7 @@ def build_body(src_lines, page):
         tbl = m.group(1)
         cm = re.search(r'<table class="c(\d+)"', tbl)
         cols = int(cm.group(1)) if cm else 0
-        c = 'table-wrap scrollable cardmode' if 2 <= cols <= 7 else 'table-wrap scrollable'
+        c = 'table-wrap scrollable cardmode' if cols >= 2 else 'table-wrap'
         return f'<div class="{c}">{tbl}</div>'
     body = re.sub(r'(<table[^>]*>.*?</table>)', wrap_table, body, flags=re.S)
 
@@ -618,28 +618,26 @@ def topbar_html(page):
 </div>'''
 
 def sidebar_html(all_pages, cur_page, toc):
-    items = ['<div class="nav-split"><a href="index.html">总目录</a>'
-             f'<a class="on" href="{cur_page["file"]}">本篇目录</a></div>']
-    for lvl, sid, txt in toc:
-        cls = 'toc-sec' if lvl >= 2 else ''
-        pad = '' if lvl < 2 else ''
-        items.append(
-            f'<a class="toc-link {cls}" href="#{sid}" data-target="{sid}"'
-            f' style="--active-fg:{cur_page["color"]};--active-bg:{cur_page["soft"]}">{ihtml.escape(txt)}</a>')
-    # 全站各篇入口
-    items.append('<a class="toc-part" style="--pc:#b8123c;--pc-soft:#fdf1f4" href="index.html">全站篇章</a>')
+    """侧边栏 = 全站篇章（与首页同结构）+ 当前篇的章节。
+    不再显示篇序号（正文已有「第N篇」标题），也不再分「总目录/本篇目录」两栏。"""
+    items = []
     for p in all_pages:
-        cls = 'toc-sec'
-        mark = ' ←' if p['file'] == cur_page['file'] else ''
+        cur = p['file'] == cur_page['file']
         items.append(
-            f'<a class="toc-link {cls}" href="{p["file"]}"'
-            f' style="--active-fg:{p["color"]};--active-bg:{p["soft"]}">{p["idx"]}. {ihtml.escape(p["title"])}{mark}</a>')
+            f'<a class="toc-link toc-part{" active" if cur else ""}" href="{p["file"]}"'
+            f' style="--active-fg:{p["color"]};--active-bg:{p["soft"]}">{ihtml.escape(p["title"])}</a>')
+        if cur:
+            for lvl, sid, txt in toc:
+                cls = 'toc-sec' if lvl >= 2 else ''
+                items.append(
+                    f'<a class="toc-link {cls}" href="#{sid}" data-target="{sid}"'
+                    f' style="--active-fg:{p["color"]};--active-bg:{p["soft"]}">{ihtml.escape(txt)}</a>')
     return f'''<aside class="sidebar" id="sidebar">
   <div class="drawer-close"><label class="menu-btn" for="navToggle" aria-label="关闭目录" role="button" tabindex="0">
     <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
   </label></div>
   <div class="nav-scroll">
-    <div class="sidebar-title">本篇目录 · On this page</div>
+    <div class="sidebar-title">目录 · Contents</div>
     {''.join(items)}
   </div>
 </aside>'''
@@ -779,15 +777,12 @@ def part_hero(page, total_sections):
         cn = '一二三四五六七八九十'[page['idx']] if page['idx'] < 10 else str(n)
         name = re.sub(r'^第[一二三四五六七八九十]+篇\s*·\s*', '', page['title'])
         eyebrow = f'第{cn}篇'
-        big = f'{n:02d}'
         pills = ['日文站 · 中文站 · 英文站 三语综合', f'{total_sections} 个章节', '汇总日期 2026-09-19']
     elif page['kind'] == 'tool':
         eyebrow = '速查工具'
-        big = '＊'
         pills = ['打印友好', '每周对照用', '汇总日期 2026-09-19']
     else:
         eyebrow = '附录'
-        big = '＊'
         pills = ['三语站来源', '各站特色与链接', '情报可靠度分级']
     name = re.sub(r'^第[一二三四五六七八九十]+篇\s*·\s*', '', page['title'])
     name = re.sub(r'^附录\s*·\s*', '', name)
@@ -795,7 +790,6 @@ def part_hero(page, total_sections):
         f'<span class="pill{" hot" if i == 0 else ""}">{ihtml.escape(p)}</span>'
         for i, p in enumerate(pills))
     return f'''<header class="hero">
-  <div class="pnum">{big}</div>
   <h1>{ihtml.escape(eyebrow)} · <span class="accent">{ihtml.escape(name)}</span></h1>
   <div class="sub">火焰纹章 万缕千丝 ／ ファイアーエムブレム 万紫千紅 ｜ Fire Emblem: Fortune's Weave</div>
   <div class="pills">{pill_html}</div>
@@ -835,9 +829,7 @@ def index_html():
             d, chips = descs.get(p['file'], ('', []))
         chips_html = ''.join(f'<span>{ihtml.escape(c)}</span>' for c in chips)
         # 大序号从 1 开始（idx 是 0 基，附录保持「＊」）
-        num = (p['idx'] + 1) if p['kind'] == 'part' else '＊'
         cards.append(f'''<a class="home-card" href="{p['file']}" style="--pc:{p['color']};--pcs:{p['soft']}">
-  <div class="no">{num}</div>
   <div class="t"><span class="bd"></span>{ihtml.escape(p['title'])}</div>
   <div class="d">{ihtml.escape(d)}</div>
   <div class="chips">{chips_html}</div>
@@ -853,7 +845,7 @@ def index_html():
             for _, sid, txt in subs)
         nav_blocks.append(
             f'<a class="toc-link toc-part" href="{page["file"]}" style="--pc:{page["color"]}">'
-            f'{page["idx"]}. {ihtml.escape(page["title"])}</a>{lis}')
+            f'{ihtml.escape(page["title"])}</a>{lis}')
 
     fake_page = {'title': '总目录', 'color': '#b8123c', 'soft': '#fdf1f4', 'file': 'index.html', 'idx': 0}
     return f'''<!DOCTYPE html>
