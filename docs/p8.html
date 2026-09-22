@@ -892,6 +892,50 @@ footer.foot{
   }
 }
 
+/* 成长率对照：容器够宽时收回紧凑表格。窄屏仍走上面的卡片，数字不会被挤掉。 */
+table.growth{--minw:0; table-layout:fixed}
+.table-wrap table.growth th:first-child,
+.table-wrap table.growth td:first-child{width:28%}
+.table-wrap table.growth th, .table-wrap table.growth td{
+  text-align:center; padding:8px 3px; white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.table-wrap table.growth th:first-child, .table-wrap table.growth td:first-child{
+  text-align:left; padding-left:12px; padding-right:10px;
+}
+.table-wrap table.growth td:last-child, .table-wrap table.growth th:last-child{font-weight:700}
+@container tbl (min-width: 640px){
+  .table-wrap.cardmode > table.growth{
+    display:table; min-width:0 !important; width:100%;
+  }
+  .table-wrap.cardmode > table.growth > thead{display:table-header-group}
+  .table-wrap.cardmode > table.growth > tbody{display:table-row-group}
+  .table-wrap.cardmode > table.growth > thead > tr,
+  .table-wrap.cardmode > table.growth > tbody > tr{
+    display:table-row; border:0; margin:0; border-radius:0;
+    box-shadow:none; overflow:visible; background:transparent;
+  }
+  .table-wrap.cardmode > table.growth > thead > tr > th,
+  .table-wrap.cardmode > table.growth > tbody > tr > td{
+    display:table-cell; width:auto; white-space:nowrap;
+    border-bottom:1px solid var(--line2);
+    font-size:14.5px;
+  }
+  .table-wrap.cardmode > table.growth > tbody > tr > td:not(:first-child){
+    display:table-cell;
+  }
+  .table-wrap.cardmode > table.growth > tbody > tr:last-child > td{border-bottom:0}
+  .table-wrap.cardmode > table.growth > thead > tr > th:first-child,
+  .table-wrap.cardmode > table.growth > tbody > tr > td:first-child{
+    width:220px; text-align:left;
+    background:#fff; color:inherit; font-weight:650;
+    position:static; box-shadow:none;
+  }
+  .table-wrap.cardmode > table.growth > tbody > tr:nth-child(even) > td:first-child{background:#fafbfc}
+  .table-wrap.cardmode > table.growth > tbody > tr:hover > td:first-child{background:var(--cur-soft)}
+  .table-wrap.cardmode > table.growth > tbody > tr > td:not(:first-child)::before{content:none}
+}
+
 /* 打印 */
 @media print{
   .topbar,.sidebar,.to-top,.scrim,.pager,.pager-home,.drawer-close{display:none !important}
@@ -934,6 +978,9 @@ footer.foot{
 </header>
     <article class="card">
 <h2 id="每日更新-log">每日更新 log<span class="h2note">自动采集 · 逐日留档</span></h2><p>本站每日 09:00 自动巡检三语系攻略站与 UGC 论坛，将变更分类后写入正文，并在此逐日留档。<br>新来源按三级分档：<span class="grade gA">A</span>高可信（可并入正文）、<span class="grade gB">B</span>参考（UGC 一手资料，待裁决）、<span class="grade gC">C</span>待观察（标题党／AI 痕迹／纯聚合）。</p><div class="dlog"><div class="dlog-day">
+  <div class="dlog-head"><span class="dlog-date">2026-09-22</span><span class="dlog-count">检查 本站修订，不是 05:00 采集。开工前 log 最新仍是内容页注释那条。 个来源</span></div>
+  <div class="dlog-body"><div class="dlog-sec"><span class="lbl"><span class="n">1</span>并入正文</span><ul><li>【版面】四主角成长率在网页上改回紧凑对照表。手机窄屏仍是每人一张卡片，避免数字被挤没 <span class="src">tools/site_css.py</span></li></ul></div></div>
+</div><div class="dlog-day">
   <div class="dlog-head"><span class="dlog-date">2026-09-22</span><span class="dlog-count">检查 本站修订，不是 05:00 采集。开工前 log 最新仍是七神译名与头像那条。 个来源</span></div>
   <div class="dlog-body"><div class="dlog-sec"><span class="lbl"><span class="n">1</span>并入正文</span><ul><li>【版面】内容页里的修订说明和来源交代已拿掉。玩家要看的规则留在原处。资料从哪来、哪些格子是空的，改记在情报可靠度 <span class="src">source/火焰纹章万缕千丝_完全攻略手册.md</span></li></ul></div></div>
 </div><div class="dlog-day">

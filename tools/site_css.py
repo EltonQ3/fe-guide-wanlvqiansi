@@ -890,6 +890,50 @@ footer.foot{
   }
 }
 
+/* 成长率对照：容器够宽时收回紧凑表格。窄屏仍走上面的卡片，数字不会被挤掉。 */
+table.growth{--minw:0; table-layout:fixed}
+.table-wrap table.growth th:first-child,
+.table-wrap table.growth td:first-child{width:28%}
+.table-wrap table.growth th, .table-wrap table.growth td{
+  text-align:center; padding:8px 3px; white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.table-wrap table.growth th:first-child, .table-wrap table.growth td:first-child{
+  text-align:left; padding-left:12px; padding-right:10px;
+}
+.table-wrap table.growth td:last-child, .table-wrap table.growth th:last-child{font-weight:700}
+@container tbl (min-width: 640px){
+  .table-wrap.cardmode > table.growth{
+    display:table; min-width:0 !important; width:100%;
+  }
+  .table-wrap.cardmode > table.growth > thead{display:table-header-group}
+  .table-wrap.cardmode > table.growth > tbody{display:table-row-group}
+  .table-wrap.cardmode > table.growth > thead > tr,
+  .table-wrap.cardmode > table.growth > tbody > tr{
+    display:table-row; border:0; margin:0; border-radius:0;
+    box-shadow:none; overflow:visible; background:transparent;
+  }
+  .table-wrap.cardmode > table.growth > thead > tr > th,
+  .table-wrap.cardmode > table.growth > tbody > tr > td{
+    display:table-cell; width:auto; white-space:nowrap;
+    border-bottom:1px solid var(--line2);
+    font-size:14.5px;
+  }
+  .table-wrap.cardmode > table.growth > tbody > tr > td:not(:first-child){
+    display:table-cell;
+  }
+  .table-wrap.cardmode > table.growth > tbody > tr:last-child > td{border-bottom:0}
+  .table-wrap.cardmode > table.growth > thead > tr > th:first-child,
+  .table-wrap.cardmode > table.growth > tbody > tr > td:first-child{
+    width:220px; text-align:left;
+    background:#fff; color:inherit; font-weight:650;
+    position:static; box-shadow:none;
+  }
+  .table-wrap.cardmode > table.growth > tbody > tr:nth-child(even) > td:first-child{background:#fafbfc}
+  .table-wrap.cardmode > table.growth > tbody > tr:hover > td:first-child{background:var(--cur-soft)}
+  .table-wrap.cardmode > table.growth > tbody > tr > td:not(:first-child)::before{content:none}
+}
+
 /* 打印 */
 @media print{
   .topbar,.sidebar,.to-top,.scrim,.pager,.pager-home,.drawer-close{display:none !important}

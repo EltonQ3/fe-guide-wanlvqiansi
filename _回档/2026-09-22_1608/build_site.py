@@ -382,10 +382,7 @@ def prep_table(m):
         ft = re.search(r'<tr>.*?</tr>', tbl, re.S)
         if ft:
             cols = len(re.findall(r'<th[^>]*>|<td[^>]*>', ft.group(0)))
-    # 成长率是两位数对照。标成 growth，网页上保持紧凑表格，不拆成每人一张卡片。
-    growth = 'HP' in labels and '合计' in labels and labels[:1] == ['角色']
-    extra = ' growth' if growth else ''
-    cls = f' class="c{cols}{extra}"' if 2 <= cols <= 12 else ''
+    cls = f' class="c{cols}"' if 2 <= cols <= 12 else ''
     if cls:
         tbl = tbl.replace('<table>', f'<table{cls}>', 1)
     def row_fix(rm):
@@ -438,7 +435,7 @@ def build_body(src_lines, page):
     body = re.sub(r'<table>.*?</table>', prep_table, body, flags=re.S)
     def wrap_table(m):
         tbl = m.group(1)
-        cm = re.search(r'<table class="c(\d+)', tbl)
+        cm = re.search(r'<table class="c(\d+)"', tbl)
         cols = int(cm.group(1)) if cm else 0
         c = 'table-wrap scrollable cardmode' if cols >= 2 else 'table-wrap'
         return f'<div class="{c}">{tbl}</div>'
