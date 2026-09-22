@@ -12,34 +12,6 @@
   "entries": [
     {
       "date": "2026-09-22",
-      "checked": "本站修订，不是 05:00 采集。开工前 log 最新仍是头像别名那条，没有新的采集条目。",
-      "merged": [
-        {
-          "text": "【兵种】第五篇补上社区在线表的兵种阶梯：考试或解放条件、移动、技能经验、特技、精通。成长率和基础能力原表有多行未填完，这次不搬。空格子不补",
-          "src": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq?tab=lnafol"
-        },
-        {
-          "text": "【外传】补上 9 条已填写的外传开放窗口和其中 3 条报酬。角色名改回本手册已有写法",
-          "src": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq?tab=6bb00l"
-        },
-        {
-          "text": "【血印】补上 10 枚血印的效果和持有者。作者写的芙朵拉纹章对照不收。神之加护、挖角门槛、送礼本手册已有，不重复搬",
-          "src": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq?tab=0x9327"
-        }
-      ],
-      "conflicts": [],
-      "new_sources": [
-        {
-          "grade": "B",
-          "name": "社区在线数据表（腾讯文档）",
-          "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
-          "note": "作者持续更新的公开表。2026-09-22 仍在保存。兵种、外传、血印已摘进正文。计算公式页作者标明未收集。"
-        }
-      ],
-      "limited": []
-    },
-    {
-      "date": "2026-09-22",
       "checked": "本站修订，不是 05:00 采集。",
       "merged": [
         {
