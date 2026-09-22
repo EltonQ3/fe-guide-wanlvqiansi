@@ -316,11 +316,11 @@ def char_cluster(name):
     """按角色名判断所属阵营"""
     if name in ('凯伊', '奥罗拉', '玛尔斯', '希露卡', '莱纳斯', '蕾娜', '艾尔'):
         return 'kay'
-    if name in ('迪托利希', '茱拉', '卡莲'):
+    if name in ('迪托利希', '朱拉', '卡莲'):
         return 'dito'
     if name in ('赛奥朵拉', '卡拉', '芙蕾雅'):
         return 'theo'
-    if name in ('蕾达', '库莱尔', '芙托娜'):
+    if name in ('蕾达', '克蕾德娜', '芙托娜'):
         return 'leda'
     if name in ('斯米尔诺斯', '伊修玛尔', '奥尔赫尔'):
         return 'div'

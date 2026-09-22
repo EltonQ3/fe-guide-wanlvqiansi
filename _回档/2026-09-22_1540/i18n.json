@@ -1,7 +1,7 @@
 {
   "_说明": "《火焰纹章 万缕千丝》多语言译名对照表（日 / 英 / 繁中 / 简中）",
   "_依据": "以官方（任天堂香港/台湾官网、任天堂 eShop、Nintendo Today）为准，官方未覆盖的条目以 AlGest（日）与 18183/游民星空（中）社群译名暂代并标注",
-  "_更新": "2026-09-22 七神简体按社区表核对：朱拉改为茱拉，克蕾德娜改为库莱尔。芙托娜的日文改为フォトナ",
+  "_更新": "2026-09-22 简体正文与本表对齐；魔神名改为任天堂香港 eShop「霸羅爾」的简体「霸罗尔」",
   "_字段": "jp=日文原名, en=英文官方, zht=繁體中文官方, zhs=简体中文官方, status=official(有官方来源)|community(社群暂译)|pending(待官方)",
 
   "title": {
@@ -38,8 +38,8 @@
   ],
 
   "npcs_official": [
-    {"key":"fortune","jp":"フォトナ","en":"Fortuna","zht":"—","zhs":"芙托娜","status":"official","note":"命运女神。日文现作フォトナ；英文站仍作 Fortuna。简体沿用已有报道「芙托娜」",
-     "src":["https://baike.baidu.com/item/救世主/68436329","https://gamewith.jp/fefw/573601"]},
+    {"key":"fortune","jp":"フォルトゥナ","en":"Fortuna","zht":"—","zhs":"芙托娜","status":"official","note":"命运女神，又译福托娜",
+     "src":["https://baike.baidu.com/item/救世主/68436329"]},
     {"key":"sothis","jp":"ソティス","en":"Sothis","zht":"蘇諦斯","zhs":"苏谛斯","status":"official","note":"初始之神",
      "src":["https://www.wywyx.com/news/202608/583078.html"]},
     {"key":"balor","jp":"バロール","en":"Balor","zht":"霸羅爾","zhs":"霸罗尔","status":"official","note":"魔神。任天堂香港 eShop 作霸羅爾；简中媒体旧译巴罗尔，正文不用",
@@ -54,18 +54,8 @@
      "src":["https://baike.baidu.com/item/火焰纹章:万紫千红/66759549"]},
     {"key":"lady_clivia","jp":"—","en":"—","zht":"—","zhs":"君子兰夫人（伊莉安娜·希米努斯）","status":"official",
      "src":["https://baike.baidu.com/item/火焰纹章:万紫千红/66759549"]},
-    {"key":"aurora","jp":"アウロラ","en":"Aurora","zht":"—","zhs":"奥罗拉","status":"community","note":"七神。简体与社区在线表一致",
-     "src":["https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq?tab=bp75ko","https://gamewith.jp/fefw/573601"]},
-    {"key":"mars","jp":"マーズ","en":"Mars","zht":"—","zhs":"玛尔斯","status":"community","note":"七神，武神",
-     "src":["https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq?tab=bp75ko","https://gamewith.jp/fefw/573601"]},
-    {"key":"smyrnos","jp":"スミルノス","en":"Smyrnos","zht":"—","zhs":"斯米尔诺斯","status":"community","note":"七神",
-     "src":["https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq?tab=bp75ko","https://gamewith.jp/fefw/573601"]},
-    {"key":"jura","jp":"ジュラ","en":"Jurah","zht":"—","zhs":"茱拉","alias_zhs":"朱拉","status":"community","note":"七神。英文站旧作 Jurah",
-     "src":["https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq?tab=bp75ko","https://gamewith.jp/fefw/573601"]},
-    {"key":"kalla","jp":"カーラ","en":"Kalla","zht":"—","zhs":"卡拉","status":"community","note":"七神。英文站旧作 Kalla",
-     "src":["https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq?tab=bp75ko","https://gamewith.jp/fefw/573601"]},
-    {"key":"claire","jp":"クレール","en":"Credna","zht":"—","zhs":"库莱尔","alias_zhs":"克蕾德娜","status":"community","note":"七神。英文站旧作 Credna，与日文クレール不符",
-     "src":["https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq?tab=bp75ko","https://gamewith.jp/fefw/573601"]}
+    {"key":"aurora","jp":"—","en":"Aurora","zht":"—","zhs":"奥罗拉","status":"official","note":"鞑古扎诸神之一",
+     "src":["https://baike.baidu.com/item/火焰纹章:万紫千红/66759549"]}
   ],
 
   "recruitable": [

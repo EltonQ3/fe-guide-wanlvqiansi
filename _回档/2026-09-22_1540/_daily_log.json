@@ -12,27 +12,6 @@
   "entries": [
     {
       "date": "2026-09-22",
-      "checked": "本站修订，不是 05:00 采集。开工前 log 最新仍是字号与图标那条。",
-      "merged": [
-        {
-          "text": "【译名】七神简体对过社区在线表和日文攻略。朱拉改为茱拉（ジュラ），克蕾德娜改为库莱尔（クレール）。旧译跟着英文站 Jurah、Credna，和日文对不上",
-          "src": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq?tab=bp75ko"
-        },
-        {
-          "text": "【译名】奥罗拉、玛尔斯、斯米尔诺斯、卡拉、芙托娜的简体与社区表相同，未改。芙托娜的日文由フォルトゥナ改为フォトナ",
-          "src": "https://gamewith.jp/fefw/573601"
-        },
-        {
-          "text": "【头像】贝特朗、塔利穆恩、安娜补上立绘和头像。波鲁波亚在日文攻略角色表和英文 wiki 里都没有这个名字，社区角色表也没有，头像仍空着",
-          "src": "https://fireemblemwiki.org/wiki/Bertrand"
-        }
-      ],
-      "conflicts": [],
-      "new_sources": [],
-      "limited": []
-    },
-    {
-      "date": "2026-09-22",
       "checked": "本站修订，不是 05:00 采集。开工前 log 最新仍是兵种与血印那条，没有新的采集条目。",
       "merged": [
         {
