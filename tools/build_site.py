@@ -832,13 +832,18 @@ for page in PAGES:
 # ---------- 6) 首页 ----------
 def index_html():
     blurbs = [
-        ('第一篇', '开局决策、难度选择、四主角路线顺序、时间与自由行动、名声系统', ['开局必读', '路线顺序']),
-        ('第二篇', '支援等级全局机制与速刷法、战斗计算式、主角大招', ['核心机制', '速刷技巧']),
-        ('第三篇', '七神加护效果全表、侍奉解锁优先级、专属日排程', ['优先级 T1–T5', '七神全表']),
-        ('第四篇', '送礼的真实作用、机制规则、全角色喜好与推荐礼物', ['全角色', '礼物表']),
-        ('第五篇', '资源分配、转职考试、挖角招募、跨路线进度、角色强度', ['培养方向', '强度参考']),
-        ('第六篇', '路线切换的分歧点、不可挽回要素、可挽回的两种情况', ['避坑', '挽回机制']),
-        ('第七篇', '全书分段与章数，以及已经核对到的简体章名。打法仍在补。', ['章节目录', '持续补完']),
+        ('第一篇', '难度和模式怎么选、四条路线建议的先后、自由行动不耗回合但每周有上限、名声从支线来。',
+         ['难度', '路线顺序', '自由行动', '每周行动', '名声']),
+        ('第二篇', '支援等级全路线共用、用餐速刷、战斗公式、四位主角的大招和站位。',
+         ['支援等级', '速刷', '战斗计算', '主角大招']),
+        ('第三篇', '七位神的加护效果和白沙消耗、侍奉每周一次、解锁优先级、周一到周六的专属日。',
+         ['七神全表', '白沙', '侍奉优先级', '专属日', '公开谒见']),
+        ('第四篇', '送礼主要用来解锁用餐、每周每人一件、喜欢程度分档、全角色喜好和推荐礼物。',
+         ['解锁用餐', '每周一次', '喜好分级', '全角色礼物']),
+        ('第五篇', '主力怎么留、转职和许可证、四线挖角的支援与名声门槛、救世祝福、主角成长率。',
+         ['转职', '挖角条件', '救世祝福', '成长率']),
+        ('第六篇', '换线会留下什么、哪些进度找不回来、章重来和再降临各自能挽回什么。',
+         ['路线切换', '不可挽回', '章重来', '再降临']),
     ]
     cards = []
     nav_blocks = [
@@ -847,37 +852,25 @@ def index_html():
     ]
     for p in PAGES:
         if p['title'].startswith('附录 · 每周'):
-            d, chips = '每周固定行动、自由行动、重点提醒的速查清单，适合对照游玩', ['速查清单', '打印友好']
+            d, chips = '周日回城的固定顺序：确认在场角色、送礼、三顿饭、侍奉、训练和公开谒见。', ['周日流程', '用餐', '侍奉', '送礼']
         elif p['kind'] == 'src':
-            d, chips = '每日更新记录、资料来源、情报可靠度，以及官方简体译名对照', ['每日更新', '译名对照']
+            d, chips = '每天补了什么、三语资料从哪来、哪些能直接用、官方简体译名怎么定。', ['每日更新', '资料来源', '可靠度', '译名对照']
         else:
             d, chips = next(((b, c) for k, b, c in blurbs if p['title'].startswith(k)), ('', []))
         chips_html = ''.join(f'<span>{ihtml.escape(c)}</span>' for c in chips)
         _, toc = build_body(flatten_sections(p['sections']), p)
-        outline, side = [], []
-        for lvl, sid, txt in toc:
-            if lvl == 2:
-                outline.append(
-                    f'<a class="ol2" href="{p["file"]}#{sid}">{ihtml.escape(txt)}</a>')
-                side.append(
-                    f'<a class="toc-link toc-sec" href="{p["file"]}#{sid}">{ihtml.escape(txt)}</a>')
-            elif lvl == 3:
-                outline.append(
-                    f'<a class="ol3" href="{p["file"]}#{sid}">{ihtml.escape(txt)}</a>')
-                side.append(
-                    f'<a class="toc-link toc-sub" href="{p["file"]}#{sid}">{ihtml.escape(txt)}</a>')
+        lis = ''.join(
+            f'<a class="toc-link toc-sec" href="{p["file"]}#{sid}">{ihtml.escape(txt)}</a>'
+            for lvl, sid, txt in toc if lvl == 2)
         cards.append(
-            f'''<section class="home-card" style="--pc:{p['color']};--pcs:{p['soft']}">
-  <a class="head" href="{p['file']}">
-    <div class="t"><span class="bd"></span>{ihtml.escape(p['title'])}</div>
-    <div class="d">{ihtml.escape(d)}</div>
-    <div class="chips">{chips_html}</div>
-  </a>
-  <div class="home-outline">{''.join(outline)}</div>
-</section>''')
+            f'''<a class="home-card" href="{p['file']}" style="--pc:{p['color']};--pcs:{p['soft']}">
+  <div class="t"><span class="bd"></span>{ihtml.escape(p['title'])}</div>
+  <div class="d">{ihtml.escape(d)}</div>
+  <div class="chips">{chips_html}</div>
+</a>''')
         nav_blocks.append(
             f'<a class="toc-link toc-part" href="{p["file"]}" style="--pc:{p["color"]}">'
-            f'{ihtml.escape(p["title"])}</a>{"".join(side)}')
+            f'{ihtml.escape(p["title"])}</a>{lis}')
 
     fake_page = {'title': '首页', 'color': '#b8123c', 'soft': '#fdf1f4', 'file': 'index.html', 'idx': 0}
     return f'''<!DOCTYPE html>
@@ -916,7 +909,7 @@ def index_html():
     </header>
     <article class="card">
       <h1 style="border-bottom-color:var(--brand)">按篇章阅读</h1>
-      <p>点篇名进入该页，点下面的小节直接跳到对应位置。左侧目录同样可以回到首页，或跳到任一小节。</p>
+      <p>每篇独立成页，页面内可跳转章节；页面底部有上/下篇导航，也可以随时从左侧目录切换。</p>
       <div class="home-grid">{''.join(cards)}</div>
       <blockquote>
         <p><strong>关于本作</strong>：中文译名有「万缕千丝」（官方简体／繁体）与「万紫千红」（日文原名直译）两种写法。2026 年 9 月 17 日 Nintendo Switch 2 独占发售，Intelligent Systems 开发、任天堂发行，支持繁简中文。</p>

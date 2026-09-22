@@ -390,6 +390,10 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 .avatar.face{width:40px; height:40px; border-radius:11px; font-size:16px;
   vertical-align:-14px; margin-right:8px}
 .avatar.face.is-dual{width:76px; height:40px; border-radius:11px}
+/* 角色名和头像保持同一行，避免「艾丝梅拉尔达」被从中间截断 */
+td:has(.avatar){
+  white-space:nowrap; word-break:keep-all; overflow-wrap:normal;
+}
 .avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
   vertical-align:-17px; margin-right:12px; box-shadow:none}
 
@@ -609,48 +613,29 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 
 /* ============ 首页 ============ */
 .home-grid{
-  display:grid; gap:16px; margin:22px 0 8px;
-  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  display:grid; gap:14px; margin:24px 0;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
 }
 .home-card{
-  display:flex; flex-direction:column;
-  border:1px solid var(--line); border-radius:16px; padding:0;
-  background:#fff; border-top:5px solid var(--pc,#b8123c);
+  display:block; text-decoration:none; color:inherit;
+  border:1px solid var(--line); border-radius:16px; padding:20px 22px 18px;
+  background:#fff; border-bottom:1px solid var(--line);
+  border-top:5px solid var(--pc,#b8123c);
   box-shadow:0 3px 14px rgba(20,25,40,.055);
-  overflow:hidden;
+  transition:transform .15s, box-shadow .15s;
+  position:relative; overflow:hidden;
 }
-.home-card .head{
-  display:block; text-decoration:none; color:inherit; padding:18px 20px 12px;
-  border-bottom:0;
-}
-.home-card .head:hover{background:var(--pcs,#f7f8fa); color:inherit; border-bottom:0}
-.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:6px;
+.home-card:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(20,25,40,.12);
+  color:inherit; border-bottom-color:var(--line)}
+.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:7px;
   display:flex; align-items:center; gap:9px}
 .home-card .t .bd{width:9px; height:9px; border-radius:3px; background:var(--pc); flex:0 0 auto}
-.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66}
+.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66; margin-bottom:11px}
 .home-card .chips{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px}
 .home-card .chips span{
   font-size:11.6px; padding:2px 9px; border-radius:999px;
   background:var(--pcs,#f2f4f7); color:var(--pc); font-weight:600;
 }
-.home-outline{
-  display:flex; flex-direction:column; gap:1px;
-  padding:4px 8px 12px; background:linear-gradient(#fff, #fbfcfe);
-  border-top:1px solid var(--line2);
-}
-.home-outline a{
-  text-decoration:none; border-bottom:0; color:var(--ink2);
-  border-radius:8px; line-height:1.45;
-}
-.home-outline a.ol2{
-  font-size:13.4px; font-weight:650; color:var(--ink);
-  padding:7px 10px 3px;
-}
-.home-outline a.ol3{
-  font-size:12.6px; color:var(--muted); font-weight:500;
-  padding:3px 10px 3px 22px;
-}
-.home-outline a:hover{background:#eef1f6; color:var(--ink); border-bottom:0}
 
 /* ============ 通用零件 ============ */
 .badge{
@@ -903,7 +888,7 @@ footer.foot{
   </label></div>
   <div class="nav-scroll">
     <div class="sidebar-title">目录 · Contents</div>
-    <a class="toc-link toc-part" href="index.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">首页</a><a class="toc-link toc-part" href="p1.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">第一篇 · 开局与全局框架</a><a class="toc-link toc-part" href="p2.html" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">第二篇 · 核心系统机制</a><a class="toc-link toc-part" href="p3.html" style="--active-fg:#7a4bbf;--active-bg:#f4effc">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-part" href="p4.html" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">第四篇 · 送礼心得</a><a class="toc-link toc-part" href="p5.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">第五篇 · 角色培养</a><a class="toc-link toc-part active" href="p6.html" style="--active-fg:#c2790a;--active-bg:#fdf5e6">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-sec" href="#6-1-路线切换策略-一个重要的分歧点" data-target="6-1-路线切换策略-一个重要的分歧点" style="--active-fg:#c2790a;--active-bg:#fdf5e6">6.1 路线切换策略：一个重要的分歧点</a><a class="toc-link toc-sec" href="#6-2-不可挽回的要素" data-target="6-2-不可挽回的要素" style="--active-fg:#c2790a;--active-bg:#fdf5e6">6.2 不可挽回的要素</a><a class="toc-link toc-sec" href="#6-3-可通过-章重来-挽回" data-target="6-3-可通过-章重来-挽回" style="--active-fg:#c2790a;--active-bg:#fdf5e6">6.3 可通过「章重来」挽回</a><a class="toc-link toc-sec" href="#6-4-可通过-再降临-挽回" data-target="6-4-可通过-再降临-挽回" style="--active-fg:#c2790a;--active-bg:#fdf5e6">6.4 可通过「再降临」挽回</a><a class="toc-link toc-part" href="p7.html" style="--active-fg:#9b3d55;--active-bg:#fdf0f4">第七篇 · 章节一览</a><a class="toc-link toc-part" href="p8.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">附录 · 每周日常速查卡</a><a class="toc-link toc-part" href="p9.html" style="--active-fg:#5b6472;--active-bg:#f2f4f7">资料源与可信度</a>
+    <a class="toc-link toc-part" href="index.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">首页</a><a class="toc-link toc-part" href="p1.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">第一篇 · 开局与全局框架</a><a class="toc-link toc-part" href="p2.html" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">第二篇 · 核心系统机制</a><a class="toc-link toc-part" href="p3.html" style="--active-fg:#7a4bbf;--active-bg:#f4effc">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-part" href="p4.html" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">第四篇 · 送礼心得</a><a class="toc-link toc-part" href="p5.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">第五篇 · 角色培养</a><a class="toc-link toc-part active" href="p6.html" style="--active-fg:#c2790a;--active-bg:#fdf5e6">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-sec" href="#6-1-路线切换策略-一个重要的分歧点" data-target="6-1-路线切换策略-一个重要的分歧点" style="--active-fg:#c2790a;--active-bg:#fdf5e6">6.1 路线切换策略：一个重要的分歧点</a><a class="toc-link toc-sec" href="#6-2-不可挽回的要素" data-target="6-2-不可挽回的要素" style="--active-fg:#c2790a;--active-bg:#fdf5e6">6.2 不可挽回的要素</a><a class="toc-link toc-sec" href="#6-3-可通过-章重来-挽回" data-target="6-3-可通过-章重来-挽回" style="--active-fg:#c2790a;--active-bg:#fdf5e6">6.3 可通过「章重来」挽回</a><a class="toc-link toc-sec" href="#6-4-可通过-再降临-挽回" data-target="6-4-可通过-再降临-挽回" style="--active-fg:#c2790a;--active-bg:#fdf5e6">6.4 可通过「再降临」挽回</a><a class="toc-link toc-part" href="p7.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">附录 · 每周日常速查卡</a><a class="toc-link toc-part" href="p8.html" style="--active-fg:#5b6472;--active-bg:#f2f4f7">资料源与可信度</a>
   </div>
 </aside>
   <main class="content">
@@ -983,7 +968,7 @@ footer.foot{
 </ul>
 <hr />
     </article>
-    <div class="pager"><a class="prev" href="p5.html" style="--pc:#0f8a63"><span class="dir">← 上一篇</span><span class="ttl"><span class="dotm"></span>第五篇 · 角色培养</span></a><a class="next" href="p7.html" style="--pc:#9b3d55"><span class="dir">下一篇 →</span><span class="ttl"><span class="dotm"></span>第七篇 · 章节一览</span></a></div>
+    <div class="pager"><a class="prev" href="p5.html" style="--pc:#0f8a63"><span class="dir">← 上一篇</span><span class="ttl"><span class="dotm"></span>第五篇 · 角色培养</span></a><a class="next" href="p7.html" style="--pc:#0f8a63"><span class="dir">下一篇 →</span><span class="ttl"><span class="dotm"></span>附录 · 每周日常速查卡</span></a></div>
   </main>
 </div>
 <a class="to-top" id="toTop" href="#" aria-label="回到顶部">

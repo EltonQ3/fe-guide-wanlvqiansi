@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#9b3d55">
+<meta name="theme-color" content="#0f8a63">
 <meta name="format-detection" content="telephone=no">
-<title>第七篇 · 章节一览 · 火焰纹章 万缕千丝 完全攻略手册</title>
+<title>附录 · 每周日常速查卡 · 火焰纹章 万缕千丝 完全攻略手册</title>
 <style>
 :root{
   --bg:#f7f8fa; --card:#ffffff;
@@ -390,6 +390,10 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 .avatar.face{width:40px; height:40px; border-radius:11px; font-size:16px;
   vertical-align:-14px; margin-right:8px}
 .avatar.face.is-dual{width:76px; height:40px; border-radius:11px}
+/* 角色名和头像保持同一行，避免「艾丝梅拉尔达」被从中间截断 */
+td:has(.avatar){
+  white-space:nowrap; word-break:keep-all; overflow-wrap:normal;
+}
 .avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
   vertical-align:-17px; margin-right:12px; box-shadow:none}
 
@@ -609,48 +613,29 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 
 /* ============ 首页 ============ */
 .home-grid{
-  display:grid; gap:16px; margin:22px 0 8px;
-  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  display:grid; gap:14px; margin:24px 0;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
 }
 .home-card{
-  display:flex; flex-direction:column;
-  border:1px solid var(--line); border-radius:16px; padding:0;
-  background:#fff; border-top:5px solid var(--pc,#b8123c);
+  display:block; text-decoration:none; color:inherit;
+  border:1px solid var(--line); border-radius:16px; padding:20px 22px 18px;
+  background:#fff; border-bottom:1px solid var(--line);
+  border-top:5px solid var(--pc,#b8123c);
   box-shadow:0 3px 14px rgba(20,25,40,.055);
-  overflow:hidden;
+  transition:transform .15s, box-shadow .15s;
+  position:relative; overflow:hidden;
 }
-.home-card .head{
-  display:block; text-decoration:none; color:inherit; padding:18px 20px 12px;
-  border-bottom:0;
-}
-.home-card .head:hover{background:var(--pcs,#f7f8fa); color:inherit; border-bottom:0}
-.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:6px;
+.home-card:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(20,25,40,.12);
+  color:inherit; border-bottom-color:var(--line)}
+.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:7px;
   display:flex; align-items:center; gap:9px}
 .home-card .t .bd{width:9px; height:9px; border-radius:3px; background:var(--pc); flex:0 0 auto}
-.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66}
+.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66; margin-bottom:11px}
 .home-card .chips{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px}
 .home-card .chips span{
   font-size:11.6px; padding:2px 9px; border-radius:999px;
   background:var(--pcs,#f2f4f7); color:var(--pc); font-weight:600;
 }
-.home-outline{
-  display:flex; flex-direction:column; gap:1px;
-  padding:4px 8px 12px; background:linear-gradient(#fff, #fbfcfe);
-  border-top:1px solid var(--line2);
-}
-.home-outline a{
-  text-decoration:none; border-bottom:0; color:var(--ink2);
-  border-radius:8px; line-height:1.45;
-}
-.home-outline a.ol2{
-  font-size:13.4px; font-weight:650; color:var(--ink);
-  padding:7px 10px 3px;
-}
-.home-outline a.ol3{
-  font-size:12.6px; color:var(--muted); font-weight:500;
-  padding:3px 10px 3px 22px;
-}
-.home-outline a:hover{background:#eef1f6; color:var(--ink); border-bottom:0}
 
 /* ============ 通用零件 ============ */
 .badge{
@@ -884,7 +869,7 @@ footer.foot{
   .home-card,.chr-card,.key,.step,.dlog-day{break-inside:avoid}
 }
 
-:root{--cur:#9b3d55;--cur-soft:#fdf0f4}
+:root{--cur:#0f8a63;--cur-soft:#eafaf4}
 </style>
 </head>
 <body>
@@ -893,7 +878,7 @@ footer.foot{
   <label class="menu-btn" for="navToggle" aria-label="打开目录" role="button" tabindex="0">
     <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
   </label>
-  <a class="brand topbar-brand" href="index.html"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· 第七篇 · 章节一览</span></a>
+  <a class="brand topbar-brand" href="index.html"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· 附录 · 每周日常速查卡</span></a>
 </div>
 <div class="scrim"><label for="navToggle" style="display:block;width:100%;height:100%"></label></div>
 <div class="layout">
@@ -903,139 +888,22 @@ footer.foot{
   </label></div>
   <div class="nav-scroll">
     <div class="sidebar-title">目录 · Contents</div>
-    <a class="toc-link toc-part" href="index.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">首页</a><a class="toc-link toc-part" href="p1.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">第一篇 · 开局与全局框架</a><a class="toc-link toc-part" href="p2.html" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">第二篇 · 核心系统机制</a><a class="toc-link toc-part" href="p3.html" style="--active-fg:#7a4bbf;--active-bg:#f4effc">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-part" href="p4.html" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">第四篇 · 送礼心得</a><a class="toc-link toc-part" href="p5.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">第五篇 · 角色培养</a><a class="toc-link toc-part" href="p6.html" style="--active-fg:#c2790a;--active-bg:#fdf5e6">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-part active" href="p7.html" style="--active-fg:#9b3d55;--active-bg:#fdf0f4">第七篇 · 章节一览</a><a class="toc-link toc-sec" href="#7-1-全书怎么分" data-target="7-1-全书怎么分" style="--active-fg:#9b3d55;--active-bg:#fdf0f4">7.1 全书怎么分</a><a class="toc-link toc-sec" href="#7-2-已核对的简体章名" data-target="7-2-已核对的简体章名" style="--active-fg:#9b3d55;--active-bg:#fdf0f4">7.2 已核对的简体章名</a><a class="toc-link toc-sec" href="#7-3-接下来补什么" data-target="7-3-接下来补什么" style="--active-fg:#9b3d55;--active-bg:#fdf0f4">7.3 接下来补什么</a><a class="toc-link toc-part" href="p8.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">附录 · 每周日常速查卡</a><a class="toc-link toc-part" href="p9.html" style="--active-fg:#5b6472;--active-bg:#f2f4f7">资料源与可信度</a>
+    <a class="toc-link toc-part" href="index.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">首页</a><a class="toc-link toc-part" href="p1.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">第一篇 · 开局与全局框架</a><a class="toc-link toc-part" href="p2.html" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">第二篇 · 核心系统机制</a><a class="toc-link toc-part" href="p3.html" style="--active-fg:#7a4bbf;--active-bg:#f4effc">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-part" href="p4.html" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">第四篇 · 送礼心得</a><a class="toc-link toc-part" href="p5.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">第五篇 · 角色培养</a><a class="toc-link toc-part" href="p6.html" style="--active-fg:#c2790a;--active-bg:#fdf5e6">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-part active" href="p7.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">附录 · 每周日常速查卡</a><a class="toc-link toc-part" href="p8.html" style="--active-fg:#5b6472;--active-bg:#f2f4f7">资料源与可信度</a>
   </div>
 </aside>
   <main class="content">
     <header class="hero">
-  <h1>第七篇 · <span class="accent">章节一览</span></h1>
+  <h1>速查工具 · <span class="accent">每周日常速查卡</span></h1>
   <div class="sub">火焰纹章 万缕千丝 ／ ファイアーエムブレム 万紫千紅 ｜ Fire Emblem: Fortune's Weave</div>
-  <div class="pills"><span class="pill hot">日文站 · 中文站 · 英文站 三语综合</span><span class="pill">3 个章节</span><span class="pill">修订 2026-09-22</span></div>
+  <div class="pills"><span class="pill hot">打印友好</span><span class="pill">每周对照用</span><span class="pill">修订 2026-09-22</span></div>
 </header>
     <article class="card">
-<blockquote>
-<p>本篇只收录已经核对过的章节结构与简体章名。没有中文出处的章名先空着，不自行翻译。流程打法还在补，这里先当目录用。</p>
-</blockquote>
-<h2 id="7-1-全书怎么分">7.1 全书怎么分</h2>
-<p>据 Polygon 2026-09-21 更新的章节表（<a href="https://www.polygon.com/fire-emblem-fortunes-weave-chapter-list-how-long-to-beat/">来源 61</a>）：</p>
-<div class="table-wrap scrollable cardmode"><table class="c3">
-<thead>
-<tr>
-<th>段落</th>
-<th>章数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="段落">序幕</td>
-<td data-label="章数">2</td>
-<td data-label="说明">降临篇，四线开始之前</td>
-</tr>
-<tr>
-<td data-label="段落">间章</td>
-<td data-label="章数">1</td>
-<td data-label="说明">序幕与第一部之间</td>
-</tr>
-<tr>
-<td data-label="段落">第一部</td>
-<td data-label="章数">四线各 12</td>
-<td data-label="说明">凯伊、迪托利希、赛奥朵拉、蕾达，章名各线不同</td>
-</tr>
-<tr>
-<td data-label="段落">第二部 · 战争</td>
-<td data-label="章数">6</td>
-<td data-label="说明">四线之后的战争篇，各线走同一组章节</td>
-</tr>
-<tr>
-<td data-label="段落">第三部 · 救世</td>
-<td data-label="章数">6</td>
-<td data-label="说明">各线走同一组章节</td>
-</tr>
-</tbody>
-</table></div>
-<p>同一篇还写到：通关全三部，该作者在普通／休闲下用了约 147 小时；单条第一部大约 40–50 小时，第二部大约 10 小时，第三部大约 40 小时。这是个人游玩记录，不是官方时长。文中还说可以跳过第二部直接进第三部，但会少掉练级和剧情。</p>
-<h2 id="7-2-已核对的简体章名">7.2 已核对的简体章名</h2>
-<p>以下章名来自游民星空《全剧情通关流程攻略》的分页目录（<a href="https://www.gamersky.com/handbook/202609/2211230.shtml">来源 62</a>，2026-09-17）。该文当时连载到蕾达篇前半，其余路线的简体章名还没在这篇目录里出现。</p>
-<p><strong>序幕 · 降临篇</strong></p>
-<div class="table-wrap scrollable cardmode"><table class="c2">
-<thead>
-<tr>
-<th>章</th>
-<th>简体章名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="章">第一章</td>
-<td data-label="简体章名">白鸟</td>
-</tr>
-<tr>
-<td data-label="章">第二章</td>
-<td data-label="简体章名">封闭之地</td>
-</tr>
-</tbody>
-</table></div>
-<p><strong><span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span>蕾达篇（第一部）</strong></p>
-<div class="table-wrap scrollable cardmode"><table class="c2">
-<thead>
-<tr>
-<th>章</th>
-<th>简体章名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="章">第一章</td>
-<td data-label="简体章名">复仇的舞姬</td>
-</tr>
-<tr>
-<td data-label="章">第二章</td>
-<td data-label="简体章名">矿山之战</td>
-</tr>
-<tr>
-<td data-label="章">第三章</td>
-<td data-label="简体章名">凯路斯的蔷薇</td>
-</tr>
-<tr>
-<td data-label="章">第四章</td>
-<td data-label="简体章名">不可磨灭的过去</td>
-</tr>
-<tr>
-<td data-label="章">第五章</td>
-<td data-label="简体章名">女人们的战斗</td>
-</tr>
-<tr>
-<td data-label="章">第六章</td>
-<td data-label="简体章名">翱翔天际的少女</td>
-</tr>
-<tr>
-<td data-label="章">第七章</td>
-<td data-label="简体章名">目录未给出章名</td>
-</tr>
-<tr>
-<td data-label="章">第八章</td>
-<td data-label="简体章名">阴谋的形状</td>
-</tr>
-<tr>
-<td data-label="章">第九章</td>
-<td data-label="简体章名">水火不容的人们（上）</td>
-</tr>
-<tr>
-<td data-label="章">第十章至第十二章</td>
-<td data-label="简体章名">该文目录尚未列出</td>
-</tr>
-</tbody>
-</table></div>
-<p><strong><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span>凯伊篇、<span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span>迪托利希篇、<span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span>赛奥朵拉篇，以及第二部、第三部、间章</strong>：章数见 7.1，简体章名还没有从中文站逐条核对，先不编。</p>
-<h2 id="7-3-接下来补什么">7.3 接下来补什么</h2>
-<ul>
-<li>按路线补齐简体章名，优先对游民星空、日文站与英文站三边都能对上的条目。</li>
-<li>每一章只在有出处时写自由行动、招募与不可错过的点，不写没有来源的打法。</li>
-</ul>
+<p><strong>周日（周日常行动日）标准流程：</strong></p><div class="steps" role="list"><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>1</i></span><span class="tx">回鞑古席翁（<strong>周日用餐花费减半、侍奉贡献度增加</strong>）</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>2</i></span><span class="tx">打开地图 → 角色页签，<strong>确认本周有谁在场</strong></span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>3</i></span><span class="tx">给<strong>尚未送过礼的招募目标各送 1 件</strong>（解锁用餐资格是首要目的）</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>4</i></span><span class="tx"><strong>办 3 顿饭</strong>，每顿都安排「主角 + 2 名招募目标」，尽量选三人都爱吃的菜色</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>5</i></span><span class="tx"><strong>侍奉</strong>——按第 3.3 节优先级选神殿；若本周某天是目标神专属日，改那天去</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>6</i></span><span class="tx">顺路去<strong>剧院</strong>看一场演出（主角 + 1 名 Guest）</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>7</i></span><span class="tx"><strong>训练（斗技场）</strong>——提升技能 EXP，为资格考试铺路</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>8</i></span><span class="tx"><strong>喂白鸦</strong>——提升与伊修玛尔的支援</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>9</i></span><span class="tx">地图上<strong>神殿图标变金色</strong>时，参加公开谒见拿约 50 点名望（不耗回合）</span></div></div>
+<p><strong>优先级判断：</strong></p>
+<blockquote class="prio"><span class="pin">优先级</span><p><strong>① 每周 3 顿精准用餐 ＞ ② 侍奉（按 T1→T5 排序） ＞ ③ 每周 1 次送礼（解锁+补差） ＞ ④ 剧院观演 ＞ ⑤ 战斗相邻刷支援</strong></p></blockquote>
 <hr />
     </article>
-    <div class="pager"><a class="prev" href="p6.html" style="--pc:#c2790a"><span class="dir">← 上一篇</span><span class="ttl"><span class="dotm"></span>第六篇 · 路线切换与错过要素</span></a><a class="next" href="p8.html" style="--pc:#0f8a63"><span class="dir">下一篇 →</span><span class="ttl"><span class="dotm"></span>附录 · 每周日常速查卡</span></a></div>
+    <div class="pager"><a class="prev" href="p6.html" style="--pc:#c2790a"><span class="dir">← 上一篇</span><span class="ttl"><span class="dotm"></span>第六篇 · 路线切换与错过要素</span></a><a class="next" href="p8.html" style="--pc:#5b6472"><span class="dir">下一篇 →</span><span class="ttl"><span class="dotm"></span>资料源与可信度</span></a></div>
   </main>
 </div>
 <a class="to-top" id="toTop" href="#" aria-label="回到顶部">

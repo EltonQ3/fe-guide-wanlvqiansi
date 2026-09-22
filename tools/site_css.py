@@ -388,6 +388,10 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 .avatar.face{width:40px; height:40px; border-radius:11px; font-size:16px;
   vertical-align:-14px; margin-right:8px}
 .avatar.face.is-dual{width:76px; height:40px; border-radius:11px}
+/* 角色名和头像保持同一行，避免「艾丝梅拉尔达」被从中间截断 */
+td:has(.avatar){
+  white-space:nowrap; word-break:keep-all; overflow-wrap:normal;
+}
 .avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
   vertical-align:-17px; margin-right:12px; box-shadow:none}
 
@@ -607,48 +611,29 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 
 /* ============ 首页 ============ */
 .home-grid{
-  display:grid; gap:16px; margin:22px 0 8px;
-  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  display:grid; gap:14px; margin:24px 0;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
 }
 .home-card{
-  display:flex; flex-direction:column;
-  border:1px solid var(--line); border-radius:16px; padding:0;
-  background:#fff; border-top:5px solid var(--pc,#b8123c);
+  display:block; text-decoration:none; color:inherit;
+  border:1px solid var(--line); border-radius:16px; padding:20px 22px 18px;
+  background:#fff; border-bottom:1px solid var(--line);
+  border-top:5px solid var(--pc,#b8123c);
   box-shadow:0 3px 14px rgba(20,25,40,.055);
-  overflow:hidden;
+  transition:transform .15s, box-shadow .15s;
+  position:relative; overflow:hidden;
 }
-.home-card .head{
-  display:block; text-decoration:none; color:inherit; padding:18px 20px 12px;
-  border-bottom:0;
-}
-.home-card .head:hover{background:var(--pcs,#f7f8fa); color:inherit; border-bottom:0}
-.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:6px;
+.home-card:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(20,25,40,.12);
+  color:inherit; border-bottom-color:var(--line)}
+.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:7px;
   display:flex; align-items:center; gap:9px}
 .home-card .t .bd{width:9px; height:9px; border-radius:3px; background:var(--pc); flex:0 0 auto}
-.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66}
+.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66; margin-bottom:11px}
 .home-card .chips{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px}
 .home-card .chips span{
   font-size:11.6px; padding:2px 9px; border-radius:999px;
   background:var(--pcs,#f2f4f7); color:var(--pc); font-weight:600;
 }
-.home-outline{
-  display:flex; flex-direction:column; gap:1px;
-  padding:4px 8px 12px; background:linear-gradient(#fff, #fbfcfe);
-  border-top:1px solid var(--line2);
-}
-.home-outline a{
-  text-decoration:none; border-bottom:0; color:var(--ink2);
-  border-radius:8px; line-height:1.45;
-}
-.home-outline a.ol2{
-  font-size:13.4px; font-weight:650; color:var(--ink);
-  padding:7px 10px 3px;
-}
-.home-outline a.ol3{
-  font-size:12.6px; color:var(--muted); font-weight:500;
-  padding:3px 10px 3px 22px;
-}
-.home-outline a:hover{background:#eef1f6; color:var(--ink); border-bottom:0}
 
 /* ============ 通用零件 ============ */
 .badge{
