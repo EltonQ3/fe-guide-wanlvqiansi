@@ -2,9 +2,8 @@
 """
 生成《火焰纹章 万缕千丝》完全攻略手册 —— 多页站点版
 - index.html         总目录首页
-- p1.html ~ p6.html  六个正文篇
-- 其后附录各自成页（每周速查等）
-- 最后一页        资料源与可信度（每日更新 log + 1.1 + 来源/可靠度/译名）
+- p1.html ~ p6.html  六个篇的独立页面
+- p7.html            资料源与可信度（原 1.1 + 附录来源/可靠度合并，置于最后）
 
 特点：
 - 纯 CSS 抽屉目录（checkbox 驱动），无 JS 也能打开
@@ -31,11 +30,8 @@ OUTDIR = _opt('--out', ROOT / 'docs')
 sys.path.insert(0, str(HERE))
 from site_css import CSS, PART_COLORS, PART_SOFTS
 
-# 首页与各篇头图上的修订日期。内容有实质改动时改这里。
-SITE_UPDATED = '2026-09-22'
-
 # ---------- 人物美术资源映射 ----------
-# docs/data/chars.json 手工维护（简繁别名都可命中）：
+# docs/data/chars.json 由 tools/sync_chars.py 生成：
 #   { "凯伊": {"n":"2","jp":"カイ","avatar":"assets/avatar/2.jpg",
 #              "portrait":"assets/portrait/2.jpg"}, ... }
 # 同时接受繁体名与简中别名，便于正文任意写法都能命中。
@@ -448,7 +444,7 @@ def build_body(src_lines, page):
 # 从 chars.json 自动汇总，并保留若干正文历史写法作为别名补充。
 # 注意：不要加入单字别名（如「凯」），会与「凯旋」「凯甲」等普通词误匹配。
 KNOWN_CHARS = list(CHAR_NAMES) + [
-    '埃什梅尔', '皮特鲁',
+    '埃什梅尔', '皮特鲁', '万紫千红',
 ]
 # 去重并保持「长名优先」以便贪婪匹配
 _seen_kc = set()
@@ -546,16 +542,6 @@ def enhance_inline_characters(body):
 
     body = re.sub(r'<h[1-6][^>]*>.*?</h[1-6]>', stash_h, body, flags=re.S)
 
-    # 3) 列表（来源清单、步骤、条目）不加内联头像，避免一屏人名都带头像。
-    #    角色表仍由 enhance_characters 处理。
-    lists = []
-
-    def stash_list(m):
-        lists.append(m.group(0))
-        return f'\x00LST{len(lists) - 1}\x00'
-
-    body = re.sub(r'<(ul|ol)[^>]*>.*?</\1>', stash_list, body, flags=re.S)
-
     used = set()
 
     def add_in_text(m):
@@ -575,17 +561,13 @@ def enhance_inline_characters(body):
     # 只在标签之间的纯文本里替换
     body = re.sub(r'(>)([^<>]+)(?=<)', add_in_text, body)
 
-    # 4) 还原列表、标题与表格（列表在标题之后还原，避免占位符被包进标题）
-    def restore_l(m):
-        return lists[int(m.group(1))]
-
+    # 3) 还原标题与表格
     def restore_h(m):
         return heads[int(m.group(1))]
 
     def restore_t(m):
         return tables[int(m.group(1))]
 
-    body = re.sub(r'\x00LST(\d+)\x00', restore_l, body)
     body = re.sub(r'\x00HED(\d+)\x00', restore_h, body)
     body = re.sub(r'\x00TBL(\d+)\x00', restore_t, body)
     return body
@@ -795,10 +777,10 @@ def part_hero(page, total_sections):
         cn = '一二三四五六七八九十'[page['idx']] if page['idx'] < 10 else str(n)
         name = re.sub(r'^第[一二三四五六七八九十]+篇\s*·\s*', '', page['title'])
         eyebrow = f'第{cn}篇'
-        pills = ['日文站 · 中文站 · 英文站 三语综合', f'{total_sections} 个章节', f'修订 {SITE_UPDATED}']
+        pills = ['日文站 · 中文站 · 英文站 三语综合', f'{total_sections} 个章节', '汇总日期 2026-09-19']
     elif page['kind'] == 'tool':
         eyebrow = '速查工具'
-        pills = ['打印友好', '每周对照用', f'修订 {SITE_UPDATED}']
+        pills = ['打印友好', '每周对照用', '汇总日期 2026-09-19']
     else:
         eyebrow = '附录'
         pills = ['三语站来源', '各站特色与链接', '情报可靠度分级']
@@ -841,8 +823,8 @@ def index_html():
             d = '每周固定行动、自由行动、重点提醒的速查清单，适合对照游玩'
             chips = ['速查清单', '打印友好']
         elif p['kind'] == 'src':
-            d = '每日更新记录、资料来源、情报可靠度，以及官方简体译名对照'
-            chips = ['每日更新', '译名对照']
+            d = '三语站资料来源、各站特色与链接、情报可靠度分级提示'
+            chips = ['资料源', '可信度']
         else:
             d, chips = descs.get(p['file'], ('', []))
         chips_html = ''.join(f'<span>{ihtml.escape(c)}</span>' for c in chips)
@@ -895,9 +877,9 @@ def index_html():
       <div class="sub">ファイアーエムブレム 万紫千紅 ／ Fire Emblem: Fortune's Weave ｜ Nintendo Switch 2 ｜ 2026-09-17 发售</div>
       <div class="pills">
         <span class="pill hot">日文站 · 中文站 · 英文站 三语综合</span>
-        <span class="pill">{sum(1 for p in PAGES if p['kind']=='part')} 篇正文 · {len(PAGES)} 个页面</span>
+        <span class="pill">7 个篇章 · 独立页面</span>
         <span class="pill">加护 · 送礼 · 培养 全收录</span>
-        <span class="pill">修订 {SITE_UPDATED}</span>
+        <span class="pill">汇总日期 2026-09-19</span>
       </div>
     </header>
     <article class="card">

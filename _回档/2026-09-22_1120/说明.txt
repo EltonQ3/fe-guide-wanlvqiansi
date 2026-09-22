@@ -1,0 +1,2 @@
+回档点：修改前的正文、生成器、每日 log、译名表与当时的首页。
+恢复：把本目录中的同名文件拷回 source/、tools/、docs/ 对应位置，再运行 python3 tools/build_site.py。
