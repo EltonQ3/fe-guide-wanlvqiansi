@@ -95,6 +95,12 @@
   "avatar": "assets/avatar/10.jpg",
   "portrait": "assets/portrait/10.jpg"
  },
+ "艾丝梅拉达": {
+  "n": "10",
+  "jp": "エスメラルダ",
+  "avatar": "assets/avatar/10.jpg",
+  "portrait": "assets/portrait/10.jpg"
+ },
  "米迦艾拉": {
   "n": "11",
   "jp": "ミカエラ",
@@ -204,6 +210,12 @@
   "portrait": "assets/portrait/28.jpg"
  },
  "阿纳托利亚": {
+  "n": "29",
+  "jp": "アナトリア",
+  "avatar": "assets/avatar/29.jpg",
+  "portrait": "assets/portrait/29.jpg"
+ },
+ "阿纳托莉娅": {
   "n": "29",
   "jp": "アナトリア",
   "avatar": "assets/avatar/29.jpg",
