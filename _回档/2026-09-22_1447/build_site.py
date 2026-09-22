@@ -48,16 +48,6 @@ except Exception:
 # 只保留文件名，运行时用 url_prefix 拼前缀，保证相对路径在任意部署根下可用。
 CHAR_NAMES = sorted(CHAR_ART.keys(), key=len, reverse=True)
 
-ICONS_JSON = ROOT / 'docs' / 'data' / 'icons.json'
-try:
-    _ICONS = json.loads(ICONS_JSON.read_text(encoding='utf-8'))
-except Exception:
-    _ICONS = {}
-CLASS_ICONS = _ICONS.get('class') or {}
-CREST_ICONS = _ICONS.get('crest') or {}
-CLASS_NAMES = sorted(CLASS_ICONS, key=len, reverse=True)
-CREST_NAMES = sorted(CREST_ICONS, key=len, reverse=True)
-
 # 所有页面（index.html 与 p1~pN.html）都输出在同一层目录，
 # 因此资源相对路径统一为 "assets/..."，无需按页面深度调整。
 url_prefix = ''
@@ -362,14 +352,6 @@ def avatar(name, size=''):
     return (f'<span class="{cls}" style="--ac:{c}" title="{tip}" '
             f'data-name="{tip}" aria-hidden="true">{ihtml.escape(name[:1])}</span>')
 
-
-def mark(src, name, size=''):
-    """兵种或血印图标。size='sm' 用于正文，默认用于表格。"""
-    tip = ihtml.escape(name, quote=True)
-    cls = 'mark' + (' sm' if size == 'sm' else '')
-    return (f'<img class="{cls}" src="{url_prefix}{src}" alt="{tip}" '
-            f'title="{tip}" loading="lazy">')
-
 def prep_table(m):
     tbl = m.group(0)
     head = re.search(r'<thead>.*?</thead>', tbl, re.S)
@@ -443,8 +425,6 @@ def build_body(src_lines, page):
 
     # 人物头像：给「角色」类列自动加头像
     body = enhance_characters(body)
-    # 兵种、血印列配上原表图标
-    body = enhance_icons(body)
     # 正文内联头像：表格之外的首次提及也配图，方便辨认
     body = enhance_inline_characters(body)
     # 速查流程：把紧随「标准流程」提示语的 <ol> 转成编号步骤卡
@@ -469,8 +449,6 @@ def build_body(src_lines, page):
 # 注意：不要加入单字别名（如「凯」），会与「凯旋」「凯甲」等普通词误匹配。
 KNOWN_CHARS = list(CHAR_NAMES) + [
     '埃什梅尔', '皮特鲁',
-    # 外传和血印表里出现、图库还没有立绘的名字。先用首字色块，对上图后再换。
-    '贝特朗', '塔利穆恩', '安娜', '波鲁波亚',
 ]
 # 去重并保持「长名优先」以便贪婪匹配
 _seen_kc = set()
@@ -478,65 +456,14 @@ KNOWN_CHARS = [c for c in KNOWN_CHARS
                if not (c in _seen_kc or _seen_kc.add(c))]
 
 # 「角色列」判定：除精确表头外，还接受含「角色/主角/心」的列名（如「路线」）
-# 「外传」列在外传窗口表里就是角色名。「持有者」一格里常有多个人，单独处理。
-CHAR_HEAD_OK = ('角色', '主角', '神', '英雄', '路线', '对象', '名字', '名称', '外传')
-CHAR_HEAD_MULTI = ('持有者',)
-
-def _plain_cell(inner):
-    plain = re.sub(r'<[^>]+>', '', inner)
-    plain = re.sub(r'\s+', '', plain)
-    return plain.lstrip('•·-—　')
-
-
-def _sprinkle_names(inner, size='face'):
-    """在一段单元格文本里，给每个已知角色名前加上头像。顿号分隔的多人各配一张。"""
-    parts = re.split(r'(<[^>]+>)', inner)
-    changed = False
-    out = []
-    for part in parts:
-        if part.startswith('<'):
-            out.append(part)
-            continue
-        occupied = [False] * len(part)
-        hits = []
-        for name in KNOWN_CHARS:
-            start = 0
-            while True:
-                i = part.find(name, start)
-                if i < 0:
-                    break
-                end = i + len(name)
-                if i > 0 and re.match(r'[\w\u4e00-\u9fff]', part[i - 1]):
-                    start = i + 1
-                    continue
-                if any(occupied[i:end]):
-                    start = i + 1
-                    continue
-                for j in range(i, end):
-                    occupied[j] = True
-                hits.append((i, name))
-                start = end
-        hits.sort()
-        buf = []
-        last = 0
-        for i, name in hits:
-            buf.append(part[last:i])
-            buf.append(f'<span class="nm">{avatar(name, size)}{name}</span>')
-            last = i + len(name)
-            changed = True
-        buf.append(part[last:])
-        out.append(''.join(buf))
-    if not changed:
-        return inner
-    return f'<span class="holders">{"".join(out)}</span>'
-
+CHAR_HEAD_OK = ('角色', '主角', '神', '英雄', '路线', '对象', '名字', '名称')
 
 def enhance_characters(body):
     """
-    给「角色」类列自动前置头像。规则：
+    给「角色」类列自动前置色块头像。规则：
     1. 只处理有 thead 的表；
-    2. 表头命中 CHAR_HEAD_OK 的列，单元格以已知角色名开头时前置头像，整表同一格只加一次；
-    3. 「持有者」一格里的每个人都加头像；
+    2. 找出表头命中 CHAR_HEAD_OK 的列（可能不止第一列）；
+    3. 单元格纯文本以已知角色名开头时前置头像，且整表去重，同一角色只加一次；
     4. 纯数字/纯符号单元格跳过。
     """
     def fix_table(m):
@@ -544,11 +471,10 @@ def enhance_characters(body):
         head = re.search(r'<thead>.*?</thead>', tbl, re.S)
         if not head:
             return tbl
-        labels = [re.sub(r'\s+', '', re.sub(r'<[^>]+>', '', th)).strip()
+        labels = [re.sub(r'\s+', '', re.sub(r'<[^>]+>', '', th)) .strip()
                   for th in re.findall(r'<th[^>]*>.*?</th>', head.group(0), re.S)]
-        single = [i for i, lab in enumerate(labels) if lab in CHAR_HEAD_OK]
-        multi = [i for i, lab in enumerate(labels) if lab in CHAR_HEAD_MULTI]
-        if not single and not multi:
+        cols = [i for i, lab in enumerate(labels) if lab in CHAR_HEAD_OK]
+        if not cols:
             return tbl
         seen = set()
 
@@ -560,7 +486,7 @@ def enhance_characters(body):
             if not parts:
                 return row
             new_row = row
-            for ci in single + multi:
+            for ci in cols:
                 if ci >= len(parts):
                     continue
                 cell = parts[ci]
@@ -568,18 +494,12 @@ def enhance_characters(body):
                 if not im:
                     continue
                 inner = im.group(2)
-                if ci in multi:
-                    new_inner = _sprinkle_names(inner, 'face')
-                    if new_inner == inner:
-                        continue
-                    new_cell = im.group(1) + new_inner + im.group(3)
-                    new_row = new_row.replace(cell, new_cell, 1)
-                    continue
-                plain = _plain_cell(inner)
+                plain = re.sub(r'<[^>]+>', '', inner).strip()
+                plain = plain.lstrip('•·-—　 ').strip()
                 if not plain or plain in seen:
                     continue
                 name = None
-                for k in KNOWN_CHARS:
+                for k in sorted(KNOWN_CHARS, key=len, reverse=True):
                     if plain.startswith(k):
                         name = k
                         break
@@ -594,49 +514,6 @@ def enhance_characters(body):
     return re.sub(r'<table[^>]*>.*?</table>', fix_table, body, flags=re.S)
 
 
-def enhance_icons(body):
-    """兵种列、血印列前置社区表里的图标。按最长名字前缀匹配，所以「圣天翼兵」不会套成「天翼兵」。"""
-    books = {'兵种': (CLASS_NAMES, CLASS_ICONS), '血印': (CREST_NAMES, CREST_ICONS)}
-
-    def fix_table(m):
-        tbl = m.group(0)
-        head = re.search(r'<thead>.*?</thead>', tbl, re.S)
-        if not head:
-            return tbl
-        labels = [re.sub(r'\s+', '', re.sub(r'<[^>]+>', '', th)).strip()
-                  for th in re.findall(r'<th[^>]*>.*?</th>', head.group(0), re.S)]
-        cols = [(i, lab) for i, lab in enumerate(labels) if lab in books]
-        if not cols:
-            return tbl
-
-        def fix_row(rm):
-            row = rm.group(0)
-            if '<th' in row:
-                return row
-            parts = re.findall(r'<td[^>]*>.*?</td>', row, re.S)
-            if not parts:
-                return row
-            new_row = row
-            for ci, lab in cols:
-                if ci >= len(parts):
-                    continue
-                cell = parts[ci]
-                im = re.match(r'(<td[^>]*>)(.*?)(</td>)$', cell, re.S)
-                if not im or 'class="mark' in im.group(2):
-                    continue
-                plain = _plain_cell(im.group(2))
-                names, table = books[lab]
-                hit = next((k for k in names if plain.startswith(k)), None)
-                if not hit:
-                    continue
-                new_cell = im.group(1) + mark(table[hit], hit) + im.group(2) + im.group(3)
-                new_row = new_row.replace(cell, new_cell, 1)
-            return new_row
-
-        return re.sub(r'<tr>.*?</tr>', fix_row, tbl, flags=re.S)
-    return re.sub(r'<table[^>]*>.*?</table>', fix_table, body, flags=re.S)
-
-
 # 哪些提示语后面的有序列表要转成步骤卡
 STEP_TRIGGER = ('标准流程', '流程：', '流程:', '每周流程', '优先级判断')
 CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩'
@@ -644,12 +521,12 @@ CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩'
 
 def enhance_inline_characters(body):
     """
-    正文（表格之外）首次提到某角色或血印时，在名字前插入小图。
+    正文（表格之外）首次提到某角色时，在名字前插入小头像。
     规则：
       1. 只在文本节点中操作，跳过标签属性与已有头像（避免嵌套重复）；
-      2. 每个二级标题下各加一次，换一节还能对上脸，又不会在同一段里重复；
-      3. 表格内部已由 enhance_characters / enhance_icons 处理，此处排除；
-      4. 段落/引用内才加，标题和列表不加。
+      2. 每个角色整页只加一次，避免满屏头像反而干扰阅读；
+      3. 表格内部已由 enhance_characters 处理，此处排除；
+      4. 段落/列表/引用内才加，标题（h1~h4）不加，保持标题干净。
     """
     # 1) 先把表格整体挖出来占位，避免被本函数处理
     tables = []
@@ -680,58 +557,20 @@ def enhance_inline_characters(body):
     body = re.sub(r'<(ul|ol)[^>]*>.*?</\1>', stash_list, body, flags=re.S)
 
     used = set()
-    used_crest = set()
-
-    def find_plain(text, name):
-        start = 0
-        while True:
-            i = text.find(name, start)
-            if i < 0:
-                return -1
-            lt = text.rfind('<', 0, i)
-            gt = text.rfind('>', 0, i)
-            if lt > gt:
-                start = i + 1
-                continue
-            if i > 0 and re.match(r'[\w\u4e00-\u9fff]', text[i - 1]):
-                start = i + 1
-                continue
-            return i
-
-    def inject(text):
-        for name in CREST_NAMES:
-            if name in used_crest:
-                continue
-            idx = find_plain(text, name)
-            if idx < 0:
-                continue
-            used_crest.add(name)
-            text = text[:idx] + mark(CREST_ICONS[name], name, 'sm') + text[idx:]
-        for name in KNOWN_CHARS:
-            if name in used:
-                continue
-            idx = find_plain(text, name)
-            if idx < 0:
-                continue
-            used.add(name)
-            text = text[:idx] + avatar(name, 'sm') + text[idx:]
-        return text
 
     def add_in_text(m):
         pre, text = m.group(1), m.group(2)
-        bits = re.split(r'(\x00HED\d+\x00)', text)
-        out = []
-        for bit in bits:
-            hm = re.fullmatch(r'\x00HED(\d+)\x00', bit)
-            if hm:
-                tag = heads[int(hm.group(1))]
-                if tag.startswith('<h2'):
-                    used.clear()
-                    used_crest.clear()
-                out.append(bit)
-            else:
-                out.append(inject(bit))
-        return pre + ''.join(out)
+        for name in KNOWN_CHARS:          # 已按长度降序，保证贪婪匹配
+            if name in used or name not in text:
+                continue
+            idx = text.index(name)
+            # 名字前需为词首（行首、空白、标点或中文），避免截断词
+            if idx > 0 and re.match(r'[\w\u4e00-\u9fff]', text[idx - 1]):
+                continue
+            used.add(name)
+            text = (text[:idx] + avatar(name, 'sm') + text[idx:])
+            # 插入后位置变化，重新从当前 used 状态继续
+        return pre + text
 
     # 只在标签之间的纯文本里替换
     body = re.sub(r'(>)([^<>]+)(?=<)', add_in_text, body)

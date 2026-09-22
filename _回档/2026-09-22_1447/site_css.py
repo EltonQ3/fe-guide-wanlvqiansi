@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#b8123c">
-<meta name="format-detection" content="telephone=no">
-<title>第一篇 · 开局与全局框架 · 火焰纹章 万缕千丝 完全攻略手册</title>
-<style>
+# -*- coding: utf-8 -*-
+"""多页站点共用的样式表"""
+
+PART_COLORS = ['#b8123c', '#1f5fa8', '#7a4bbf', '#0e8f9e', '#0f8a63', '#c2790a', '#9b3d55', '#5b6472']
+PART_SOFTS  = ['#fdf1f4', '#eef4fc', '#f4effc', '#e8f7f9', '#eafaf4', '#fdf5e6', '#fdf0f4', '#f2f4f7']
+
+CSS = """
 :root{
   --bg:#f7f8fa; --card:#ffffff;
   --ink:#1a1d23; --ink2:#3a4250; --muted:#6b7484;
@@ -28,8 +26,7 @@ body{
   overflow-x:hidden; max-width:100vw;
 }
 .card,.hero,.sidebar,.topbar{overflow-wrap:anywhere}
-h1,h2,h3,h4,p,li,td,th{overflow-wrap:break-word; word-break:normal}
-h1,h2,h3,h4{font-weight:700}
+h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
 
 /* ============ 顶栏 ============ */
 .topbar{
@@ -179,7 +176,7 @@ h2{
   border-radius:0 10px 10px 0; line-height:1.42; color:#151a21;
   scroll-margin-top:calc(var(--topbar-h) + 18px);
 }
-h3{font-size:17px; margin:30px 0 12px; color:#1c222b;
+h3{font-size:16.8px; margin:30px 0 12px; color:#1c222b;
    padding-bottom:7px; border-bottom:1px dashed var(--line);
    scroll-margin-top:calc(var(--topbar-h) + 18px)}
 /* h2 右侧的小注（如「自动采集 · 逐日留档」） */
@@ -193,13 +190,8 @@ h3::before{
   content:""; display:inline-block; width:7px; height:7px; margin-right:8px;
   border-radius:2px; background:var(--cur); vertical-align:1.5px;
 }
-h4{font-size:15.5px; margin:26px 0 10px; color:var(--cur); line-height:1.45;
+h4{font-size:15.4px; margin:20px 0 8px; color:var(--cur);
    scroll-margin-top:calc(var(--topbar-h) + 18px)}
-h4::before{
-  content:""; display:inline-block; width:6px; height:6px; margin-right:8px;
-  border-radius:50%; background:var(--cur); vertical-align:2px;
-}
-p,li{font-size:15.5px}
 p{margin:11px 0}
 a{color:var(--blue); text-decoration:none;
   border-bottom:1px solid rgba(31,95,168,.26); word-break:break-word}
@@ -212,16 +204,14 @@ hr{border:0; border-top:1px solid var(--line); margin:38px 0}
 blockquote{
   margin:18px 0; padding:15px 20px; background:var(--cur-soft);
   border-left:4px solid var(--cur); border-radius:0 10px 10px 0; color:var(--ink2);
-  font-size:15.5px;
 }
 blockquote p{margin:6px 0}
 blockquote strong{color:var(--cur)}
 
 /* ============ 表格：容器查询驱动 ============ */
-table{width:100%; border-collapse:collapse; font-size:14.5px}
+table{width:100%; border-collapse:collapse; font-size:13.8px}
 th{
   background:#f1f4f8; text-align:left; padding:11px 13px; font-weight:650;
-  font-size:13.5px;
   color:#1c222b; border-bottom:1px solid var(--line); white-space:nowrap;
 }
 td{padding:10px 13px; border-bottom:1px solid var(--line2); vertical-align:top; line-height:1.62}
@@ -282,24 +272,14 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   .table-wrap.cardmode > table[class*="c"] td:last-child{border-bottom:0}
   .table-wrap.cardmode > table[class*="c"] td:first-child{
     background:var(--cur-soft); font-weight:700; color:var(--cur);
-    border-bottom:1px solid var(--line); font-size:15.5px;
-    white-space:nowrap;
-  }
-  .table-wrap.cardmode > table[class*="c"] td[data-label="持有者"]{
-    flex-wrap:wrap; align-items:center;
-  }
-  .table-wrap.cardmode > table[class*="c"] td[data-label="持有者"]::before{
-    flex:1 0 100%;
-  }
-  .table-wrap.cardmode > table[class*="c"] td[data-label="持有者"] .holders{
-    flex:1 1 auto; justify-content:flex-start;
+    border-bottom:1px solid var(--line); font-size:14.4px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child){
     display:flex; justify-content:space-between; align-items:baseline; gap:12px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)::before{
-    content:attr(data-label); flex:0 0 auto; white-space:nowrap;
-    font-weight:650; color:var(--ink2); font-size:13.5px;
+    content:attr(data-label); flex:1 1 auto;
+    font-weight:650; color:var(--ink2); font-size:12.6px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)[data-label=""]::before{content:""}
 }
@@ -370,8 +350,8 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
-    content:attr(data-label); flex:0 0 auto; white-space:nowrap;
-    font-weight:650; color:var(--ink2); font-size:13.5px;
+    content:attr(data-label); flex:1 1 auto;
+    font-weight:650; color:var(--ink2); font-size:13px;
   }
 }
 
@@ -409,22 +389,9 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   vertical-align:-14px; margin-right:8px}
 .avatar.face.is-dual{width:76px; height:40px; border-radius:11px}
 /* 角色名和头像保持同一行，避免「艾丝梅拉尔达」被从中间截断 */
-td:has(.avatar), td:has(.mark){
+td:has(.avatar){
   white-space:nowrap; word-break:keep-all; overflow-wrap:normal;
-  vertical-align:middle; font-weight:650;
 }
-td[data-label="持有者"]{
-  white-space:normal; font-weight:400; vertical-align:middle;
-}
-.mark{
-  display:inline-block; width:40px; height:40px; object-fit:contain;
-  vertical-align:-13px; margin-right:8px; border-radius:8px;
-}
-.mark.sm{
-  width:21px; height:21px; vertical-align:-4px; margin-right:4px; border-radius:5px;
-}
-.holders{display:flex; flex-wrap:wrap; gap:6px 12px; align-items:center}
-.nm{display:inline-flex; align-items:center; white-space:nowrap; font-weight:650}
 .avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
   vertical-align:-17px; margin-right:12px; box-shadow:none}
 
@@ -770,17 +737,16 @@ footer.foot{
   .content{padding:calc(var(--topbar-h) + 12px) 11px 78px}
   .card{padding:10px 15px 28px; border-radius:14px}
   .hero{padding:24px 20px 20px; border-radius:15px; margin-bottom:16px}
-  .hero h1{font-size:22px}
-  .hero .sub{font-size:14.5px}
-  .hero .pill{font-size:12.5px; padding:3px 10px}
+  .hero h1{font-size:21px}
+  .hero .sub{font-size:12.6px}
+  .hero .pill{font-size:11.6px; padding:3px 10px}
   .hero .pnum{font-size:78px; right:14px; bottom:-8px}
-  h1{font-size:22px; margin-bottom:14px; padding-bottom:11px}
-  h2{font-size:18px; margin:32px 0 13px; padding:10px 12px;
+  h1{font-size:20px; margin-bottom:14px; padding-bottom:11px}
+  h2{font-size:17.6px; margin:32px 0 13px; padding:10px 12px;
      border-left-width:4px; border-radius:0 9px 9px 0}
-  h3{font-size:16.5px; margin:24px 0 10px}
-  h4{font-size:15.5px}
-  p,li,blockquote{font-size:15.5px}
-  blockquote{padding:13px 15px; margin:15px 0}
+  h3{font-size:15.8px; margin:24px 0 10px}
+  h4{font-size:15px}
+  blockquote{padding:13px 15px; margin:15px 0; font-size:14.8px}
   ul,ol{padding-left:21px}
 
   .table-wrap{border-radius:10px; margin:15px 0}
@@ -834,10 +800,10 @@ footer.foot{
   .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
-    content:attr(data-label); flex:0 0 auto; white-space:nowrap; font-weight:650; color:var(--ink2); font-size:13.5px;
+    content:attr(data-label); flex:1 1 auto; font-weight:650; color:var(--ink2); font-size:13px;
   }
-  table{font-size:14.5px}
-  th{padding:9px 11px; font-size:13.5px}
+  table{font-size:13.4px}
+  th{padding:9px 11px; font-size:12.8px}
   td{padding:9px 11px}
 
   .chr-grid{grid-template-columns:1fr; gap:10px}
@@ -856,13 +822,12 @@ footer.foot{
 @media (max-width:860px){ .drawer-close{display:flex} }
 
 @media (max-width:430px){
-  body,p,li,blockquote{font-size:15.5px}
+  body{font-size:15px}
   .card{padding:9px 12px 24px}
   .hero{padding:20px 16px 17px}
-  .hero h1{font-size:21px}
-  h1{font-size:21px} h2{font-size:18px} h3{font-size:16.5px} h4{font-size:15.5px}
-  table{font-size:14.5px}
-  th{font-size:13.5px}
+  .hero h1{font-size:19.5px}
+  h1{font-size:19px} h2{font-size:16.8px}
+  table{font-size:12.9px}
   th,td{padding:8px 10px}
 
   /* 正文行内头像贴近字号；表格头像单独保持可辨认 */
@@ -882,8 +847,6 @@ footer.foot{
   .avatar.face.is-dual{width:68px; height:36px; border-radius:10px;
     vertical-align:-12px; margin-right:8px}
   .avatar.is-dual>img{height:100%}
-  .mark{width:36px; height:36px; vertical-align:-12px; margin-right:8px}
-  .mark.sm{width:24px; height:24px; vertical-align:-6px; margin-right:5px}
 
   /* 表格内头像放大后，给角色列更多呼吸空间 */
   .table-wrap table td, .table-wrap table th{padding:9px 8px}
@@ -903,300 +866,4 @@ footer.foot{
   h2{break-after:avoid}
   .home-card,.chr-card,.key,.step,.dlog-day{break-inside:avoid}
 }
-
-:root{--cur:#b8123c;--cur-soft:#fdf1f4}
-</style>
-</head>
-<body>
-<input type="checkbox" id="navToggle" aria-hidden="true">
-<div class="topbar">
-  <label class="menu-btn" for="navToggle" aria-label="打开目录" role="button" tabindex="0">
-    <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-  </label>
-  <a class="brand topbar-brand" href="index.html"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· 第一篇 · 开局与全局框架</span></a>
-</div>
-<div class="scrim"><label for="navToggle" style="display:block;width:100%;height:100%"></label></div>
-<div class="layout">
-<aside class="sidebar" id="sidebar">
-  <div class="drawer-close"><label class="menu-btn" for="navToggle" aria-label="关闭目录" role="button" tabindex="0">
-    <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
-  </label></div>
-  <div class="nav-scroll">
-    <div class="sidebar-title">目录 · Contents</div>
-    <a class="toc-link toc-part" href="index.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">首页</a><a class="toc-link toc-part active" href="p1.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">第一篇 · 开局与全局框架</a><a class="toc-link toc-sec" href="#1-1-难度与模式" data-target="1-1-难度与模式" style="--active-fg:#b8123c;--active-bg:#fdf1f4">1.1 难度与模式</a><a class="toc-link toc-sec" href="#1-2-四主角路线推荐顺序-三语站共识" data-target="1-2-四主角路线推荐顺序-三语站共识" style="--active-fg:#b8123c;--active-bg:#fdf1f4">1.2 四主角路线推荐顺序（三语站共识）</a><a class="toc-link toc-sec" href="#1-3-时间与-自由行动-最容易被误解的机制" data-target="1-3-时间与-自由行动-最容易被误解的机制" style="--active-fg:#b8123c;--active-bg:#fdf1f4">1.3 时间与「自由行动」——最容易被误解的机制</a><a class="toc-link toc-sec" href="#1-4-每周固定行动总表-不消耗回合-但每周限一次" data-target="1-4-每周固定行动总表-不消耗回合-但每周限一次" style="--active-fg:#b8123c;--active-bg:#fdf1f4">1.4 每周固定行动总表（不消耗回合，但每周限一次）</a><a class="toc-link toc-sec" href="#1-5-先见之助言-自由行动的决策罗盘" data-target="1-5-先见之助言-自由行动的决策罗盘" style="--active-fg:#b8123c;--active-bg:#fdf1f4">1.5 「先见之助言」——自由行动的决策罗盘</a><a class="toc-link toc-sec" href="#1-6-名声-Renown-与名声等级" data-target="1-6-名声-Renown-与名声等级" style="--active-fg:#b8123c;--active-bg:#fdf1f4">1.6 名声（Renown）与名声等级</a><a class="toc-link toc-part" href="p2.html" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">第二篇 · 核心系统机制</a><a class="toc-link toc-part" href="p3.html" style="--active-fg:#7a4bbf;--active-bg:#f4effc">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-part" href="p4.html" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">第四篇 · 送礼心得</a><a class="toc-link toc-part" href="p5.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">第五篇 · 角色培养</a><a class="toc-link toc-part" href="p6.html" style="--active-fg:#c2790a;--active-bg:#fdf5e6">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-part" href="p7.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">附录 · 每周日常速查卡</a><a class="toc-link toc-part" href="p8.html" style="--active-fg:#5b6472;--active-bg:#f2f4f7">资料源与可信度</a>
-  </div>
-</aside>
-  <main class="content">
-    <header class="hero">
-  <h1>第一篇 · <span class="accent">开局与全局框架</span></h1>
-  <div class="sub">火焰纹章 万缕千丝 ／ ファイアーエムブレム 万紫千紅 ｜ Fire Emblem: Fortune's Weave</div>
-  <div class="pills"><span class="pill hot">日文站 · 中文站 · 英文站 三语综合</span><span class="pill">6 个章节</span><span class="pill">修订 2026-09-22</span></div>
-</header>
-    <article class="card">
-<h2 id="1-1-难度与模式">1.1 难度与模式</h2>
-<div class="table-wrap scrollable cardmode"><table class="c3">
-<thead>
-<tr>
-<th>项目</th>
-<th>推荐</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="项目">难度</td>
-<td data-label="推荐"><strong>普通</strong>（新手）／<strong>困难</strong>（老手）</td>
-<td data-label="说明">困难可在「方尖塔大厅」随时下调；但<strong>一旦下调，本章进行中无法回调</strong></td>
-</tr>
-<tr>
-<td data-label="项目">模式</td>
-<td data-label="推荐"><strong>轻松</strong>（新手）／<strong>经典</strong>（硬核）</td>
-<td data-label="说明">经典模式下伙伴阵亡不复活；但<strong>当章内可用「章重来」回到开头</strong>挽回</td>
-</tr>
-<tr>
-<td data-label="项目">存档</td>
-<td data-label="推荐"><strong>注意单存档机制</strong></td>
-<td data-label="说明">本作只有一个存档位：手动存档会覆盖自动存档，新自动存档也会覆盖手动存档</td>
-</tr>
-</tbody>
-</table></div>
-<blockquote>
-<p><strong>普通与困难的核心差异，不只是敌人强度。</strong> 关键在<strong>「天刻的白沙」</strong>——它是<strong>回溯时间</strong>的消耗品，同时也是<strong>战斗中启用神之加护</strong>的消耗品。<strong>普通难度下芙托娜的回溯免费（0 沙），困难难度每次回溯要花 5 沙。</strong> 这意味着困难难度下，<strong>回溯与加护在争夺同一份资源</strong>。</p>
-</blockquote>
-<h2 id="1-2-四主角路线推荐顺序-三语站共识">1.2 四主角路线推荐顺序（三语站共识）</h2>
-<p>中文站与日文站给出的顺序完全一致——<strong><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span>凯伊 → <span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span>赛奥朵拉 → <span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span>迪托利希 → <span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span>蕾达</strong>（由简至难）。</p>
-<div class="table-wrap scrollable cardmode"><table class="c4">
-<thead>
-<tr>
-<th>顺序</th>
-<th>主角</th>
-<th>推荐理由</th>
-<th>适合人群</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="顺序"><strong>1</strong></td>
-<td data-label="主角"><span class="avatar face" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span><strong>凯伊 Cai</strong></td>
-<td data-label="推荐理由">固有系统类似支线任务，机制简单易懂；名声最易积攒，招募队友轻松；自带范围攻击，战斗容错高；地图范围最小，便于熟悉探索</td>
-<td data-label="适合人群">完全新手 / 系列新人</td>
-</tr>
-<tr>
-<td data-label="顺序"><strong>2</strong></td>
-<td data-label="主角"><span class="avatar face" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span><strong>赛奥朵拉 Theodora</strong></td>
-<td data-label="推荐理由">独有「军团兵」可下达计略指令（范围攻击、异常回复），攻辅兼备；但需要较多地图探索与时间管理</td>
-<td data-label="适合人群">想稳妥体验的玩家</td>
-</tr>
-<tr>
-<td data-label="顺序">3</td>
-<td data-label="主角"><span class="avatar face" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span><strong>迪托利希 Dietrich</strong></td>
-<td data-label="推荐理由">名声提升较难，要求严格日程安排；专属任务是狩猎强敌，战斗经验与经验值获取量极大</td>
-<td data-label="适合人群">战斗爱好者 / 想刷战斗次数</td>
-</tr>
-<tr>
-<td data-label="顺序">4</td>
-<td data-label="主角"><span class="avatar face" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span><strong>蕾达 Leda</strong></td>
-<td data-label="推荐理由">名声最难提升；侧重复仇主题与支援（Buff）打法；<strong>唯一能解锁「舞者」职业的路线</strong>，且解锁后其他路线也可用</td>
-<td data-label="适合人群">二周目 / 支援流玩家</td>
-</tr>
-</tbody>
-</table></div>
-<blockquote>
-<p><strong>英文站补充</strong>：Polygon 与 GameSpot 均建议<strong>新手从凯伊开始</strong>，称其为「Starter Option」；Theodora 适合老手（剧情专有名词多、政治线复杂）；Leda 适合支援流玩家。GameSpot 特别提示：<strong>在方尖塔大厅如果转身离开房间，会直接触发最终决战</strong>——此时无法招募四主角及部分重要角色，等于「硬核模式」。</p>
-</blockquote>
-<h2 id="1-3-时间与-自由行动-最容易被误解的机制">1.3 时间与「自由行动」——最容易被误解的机制</h2>
-<blockquote>
-<p><strong>核心结论：时钟本身毫无意义，只有「回合数」重要。</strong></p>
-</blockquote>
-<ul>
-<li>每天分为 4 个 6 小时时段（0:00–5:59 / 6:00–11:59 / 12:00–17:59 / 18:00–23:59），<strong>每个时段 = 1 回合</strong>，4 回合 = 1 天。</li>
-<li>时间<strong>不会实时流逝</strong>——只要你没有执行消耗回合的行动，时钟会自动停住（会停在 5:59 / 11:59 / 17:59 / 23:59）。所以不用担心「浪费时间」。</li>
-<li>放置时时间也会走，<strong>长时间挂机请先打开菜单</strong>。</li>
-</ul>
-<h2 id="1-4-每周固定行动总表-不消耗回合-但每周限一次">1.4 每周固定行动总表（不消耗回合，但每周限一次）</h2>
-<p><strong>三语站一致建议：统一在「星期日」做，因为周日效果好。</strong></p>
-<div class="table-wrap scrollable cardmode"><table class="c4">
-<thead>
-<tr>
-<th>行动</th>
-<th>效果</th>
-<th>周日加成</th>
-<th>是否消耗回合</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="行动"><strong>用餐（宿屋）</strong></td>
-<td data-label="效果">提升同席 3 人的支援值；恢复 HP、魔法次数、干劲</td>
-<td data-label="周日加成"><strong>花费减半</strong></td>
-<td data-label="是否消耗回合">否</td>
-</tr>
-<tr>
-<td data-label="行动"><strong>训练（斗技场）</strong></td>
-<td data-label="效果">提升技能 EXP（<strong>最有价值的周常</strong>）</td>
-<td data-label="周日加成">—</td>
-<td data-label="是否消耗回合">否</td>
-</tr>
-<tr>
-<td data-label="行动"><strong>侍奉（神殿）</strong></td>
-<td data-label="效果">提升加护等级与支援值；解锁神之加护</td>
-<td data-label="周日加成"><strong>贡献度获得量增加</strong></td>
-<td data-label="是否消耗回合">否</td>
-</tr>
-<tr>
-<td data-label="行动"><strong>喂食白鸦</strong></td>
-<td data-label="效果">提升任意角色与主角伊修玛尔的支援（<strong>第三部才生效</strong>）</td>
-<td data-label="周日加成">仅周日</td>
-<td data-label="是否消耗回合">否</td>
-</tr>
-<tr>
-<td data-label="行动"><strong>送礼</strong></td>
-<td data-label="效果">提升想挖角角色的支援值；<strong>首次赠送解锁用餐资格</strong></td>
-<td data-label="周日加成">—</td>
-<td data-label="是否消耗回合">否</td>
-</tr>
-<tr>
-<td data-label="行动"><strong>马厩喂食</strong></td>
-<td data-label="效果">仅<strong>凯伊篇</strong>可用</td>
-<td data-label="周日加成">—</td>
-<td data-label="是否消耗回合">否</td>
-</tr>
-<tr>
-<td data-label="行动"><strong>宿屋住宿</strong></td>
-<td data-label="效果">恢复</td>
-<td data-label="周日加成">—</td>
-<td data-label="是否消耗回合"><strong>是</strong></td>
-</tr>
-</tbody>
-</table></div>
-<blockquote>
-<p><strong>实践建议</strong>：自由行动期间外出探索鞑古扎大陆，但<strong>每周至少回一次鞑古席翁</strong>完成周常，然后再出发。</p>
-</blockquote>
-<h2 id="1-5-先见之助言-自由行动的决策罗盘">1.5 「先见之助言」——自由行动的决策罗盘</h2>
-<p>从「冒险手帐」可查看<strong>先见之助言</strong>，他会直接告诉下一场主战所需的准备：</p>
-<div class="table-wrap scrollable cardmode"><table class="c2">
-<thead>
-<tr>
-<th>项目</th>
-<th>对应准备</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="项目">推荐 Lv.</td>
-<td data-label="对应准备">去遭遇战或地牢练级</td>
-</tr>
-<tr>
-<td data-label="项目">推荐武器 Rank</td>
-<td data-label="对应准备">武器店购买 / 万达鲁商会兑换</td>
-</tr>
-<tr>
-<td data-label="项目">推荐兵种</td>
-<td data-label="对应准备">资格考试转职 / 挖角新同伴</td>
-</tr>
-<tr>
-<td data-label="项目">推荐道具</td>
-<td data-label="对应准备">购买</td>
-</tr>
-</tbody>
-</table></div>
-<blockquote>
-<p>自由行动不知道做什么时，打开「冒险の手引き」执行<strong>推荐度 3</strong> 的内容。宿屋的「おまかせ稼ぎ」（自动活动）主要用于<strong>调整时间</strong>——比如快接近周日时用它快进。</p>
-</blockquote>
-<h2 id="1-6-名声-Renown-与名声等级">1.6 名声（Renown）与名声等级</h2>
-<ul>
-<li>名声达到一定数值会提升<strong>名声 Lv.</strong>，解锁各类要素与新同伴的挖角资格。</li>
-<li><strong>主要来源：完成支线任务（Subquest）</strong>。自由行动开放后，<strong>把所有可接的支线全部接下</strong>，并在期限内完成并报告。</li>
-<li>其他来源：完成主线、外传、部分事件；与神「谒见（拝谒）」时也可提升。</li>
-<li><strong>注意</strong>：迪托利希篇与蕾达篇名声提升明显更难，需要更严格的日程规划。</li>
-</ul>
-<hr />
-    </article>
-    <div class="pager"><a class="next" href="p2.html" style="--pc:#1f5fa8"><span class="dir">下一篇 →</span><span class="ttl"><span class="dotm"></span>第二篇 · 核心系统机制</span></a></div>
-  </main>
-</div>
-<a class="to-top" id="toTop" href="#" aria-label="回到顶部">
-  <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</a>
-<script>
-(function(){
-  // 抽屉在点击目录项后自动关闭（无 JS 时仅是不自动关，功能不受影响）
-  var t=document.getElementById('navToggle');
-  document.querySelectorAll('.sidebar a[href^="#"]').forEach(function(a){
-    a.addEventListener('click',function(){ t.checked=false; });
-  });
-  // 回顶按钮显隐
-  var tt=document.getElementById('toTop');
-  tt.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
-  var tick=false;
-  window.addEventListener('scroll',function(){
-    if(!tick){tick=true;requestAnimationFrame(function(){
-      tt.classList.toggle('show',window.scrollY>500);tick=false;});}
-  },{passive:true});
-  // 侧栏高亮
-  var links=[].slice.call(document.querySelectorAll('.sidebar a[data-target]'));
-  var hs=links.map(function(a){return document.getElementById(a.dataset.target);});
-  var cur=-1,sup=false,supT=null;
-  function setA(i){
-    if(i===cur)return;cur=i;
-    links.forEach(function(x,j){x.classList.toggle('active',j===i);});
-  }
-  links.forEach(function(a,i){
-    a.addEventListener('click',function(e){
-      e.preventDefault();
-      var el=document.getElementById(a.dataset.target); if(!el)return;
-      t.checked=false;
-      setA(i); sup=true;
-      clearTimeout(supT); supT=setTimeout(function(){sup=false;},700);
-      var mob=window.innerWidth<=860;
-      var y=el.getBoundingClientRect().top+window.scrollY-(mob?80:74);
-      window.scrollTo({top:Math.max(0,Math.round(y)),behavior:'smooth'});
-      if(history.replaceState)history.replaceState(null,'','#'+a.dataset.target);
-    });
-  });
-  function spy(){
-    if(sup)return;
-    var y=window.scrollY||0, probe=y+(window.innerWidth<=860?150:100), idx=0;
-    for(var i=0;i<hs.length;i++){
-      if(!hs[i])continue;
-      if(hs[i].getBoundingClientRect().top+y<=probe+6)idx=i;
-    }
-    if(idx!==cur)setA(idx);
-  }
-  window.addEventListener('scroll',function(){
-    if(!tick){tick=true;requestAnimationFrame(function(){spy();tick=false;});}
-  },{passive:true});
-  window.addEventListener('resize',spy);
-  spy();
-
-  /*
-    抽屉滚动锁兜底：:has() 已可用时由 CSS 处理；
-    不支持 :has() 的老 WebView 用 JS 补上，避免滑动穿透到主页面。
-  */
-  var hasSel = (function(){
-    try{ return CSS.supports('selector(html:has(a))'); }catch(e){ return false; }
-  })();
-  if(!hasSel){
-    var y = 0;
-    function lock(){
-      y = window.scrollY || 0;
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = (-y) + 'px';
-      document.body.style.width = '100%';
-    }
-    function unlock(){
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, y);
-    }
-    t.addEventListener('change', function(){ t.checked ? lock() : unlock(); });
-  }
-})();
-</script>
-</body>
-</html>
+"""

@@ -28,7 +28,8 @@ body{
   overflow-x:hidden; max-width:100vw;
 }
 .card,.hero,.sidebar,.topbar{overflow-wrap:anywhere}
-h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
+h1,h2,h3,h4,p,li,td,th{overflow-wrap:break-word; word-break:normal}
+h1,h2,h3,h4{font-weight:700}
 
 /* ============ 顶栏 ============ */
 .topbar{
@@ -178,7 +179,7 @@ h2{
   border-radius:0 10px 10px 0; line-height:1.42; color:#151a21;
   scroll-margin-top:calc(var(--topbar-h) + 18px);
 }
-h3{font-size:16.8px; margin:30px 0 12px; color:#1c222b;
+h3{font-size:17px; margin:30px 0 12px; color:#1c222b;
    padding-bottom:7px; border-bottom:1px dashed var(--line);
    scroll-margin-top:calc(var(--topbar-h) + 18px)}
 /* h2 右侧的小注（如「自动采集 · 逐日留档」） */
@@ -192,8 +193,13 @@ h3::before{
   content:""; display:inline-block; width:7px; height:7px; margin-right:8px;
   border-radius:2px; background:var(--cur); vertical-align:1.5px;
 }
-h4{font-size:15.4px; margin:20px 0 8px; color:var(--cur);
+h4{font-size:15.5px; margin:26px 0 10px; color:var(--cur); line-height:1.45;
    scroll-margin-top:calc(var(--topbar-h) + 18px)}
+h4::before{
+  content:""; display:inline-block; width:6px; height:6px; margin-right:8px;
+  border-radius:50%; background:var(--cur); vertical-align:2px;
+}
+p,li{font-size:15.5px}
 p{margin:11px 0}
 a{color:var(--blue); text-decoration:none;
   border-bottom:1px solid rgba(31,95,168,.26); word-break:break-word}
@@ -206,14 +212,16 @@ hr{border:0; border-top:1px solid var(--line); margin:38px 0}
 blockquote{
   margin:18px 0; padding:15px 20px; background:var(--cur-soft);
   border-left:4px solid var(--cur); border-radius:0 10px 10px 0; color:var(--ink2);
+  font-size:15.5px;
 }
 blockquote p{margin:6px 0}
 blockquote strong{color:var(--cur)}
 
 /* ============ 表格：容器查询驱动 ============ */
-table{width:100%; border-collapse:collapse; font-size:13.8px}
+table{width:100%; border-collapse:collapse; font-size:14.5px}
 th{
   background:#f1f4f8; text-align:left; padding:11px 13px; font-weight:650;
+  font-size:13.5px;
   color:#1c222b; border-bottom:1px solid var(--line); white-space:nowrap;
 }
 td{padding:10px 13px; border-bottom:1px solid var(--line2); vertical-align:top; line-height:1.62}
@@ -274,14 +282,24 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   .table-wrap.cardmode > table[class*="c"] td:last-child{border-bottom:0}
   .table-wrap.cardmode > table[class*="c"] td:first-child{
     background:var(--cur-soft); font-weight:700; color:var(--cur);
-    border-bottom:1px solid var(--line); font-size:14.4px;
+    border-bottom:1px solid var(--line); font-size:15.5px;
+    white-space:nowrap;
+  }
+  .table-wrap.cardmode > table[class*="c"] td[data-label="持有者"]{
+    flex-wrap:wrap; align-items:center;
+  }
+  .table-wrap.cardmode > table[class*="c"] td[data-label="持有者"]::before{
+    flex:1 0 100%;
+  }
+  .table-wrap.cardmode > table[class*="c"] td[data-label="持有者"] .holders{
+    flex:1 1 auto; justify-content:flex-start;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child){
     display:flex; justify-content:space-between; align-items:baseline; gap:12px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)::before{
-    content:attr(data-label); flex:1 1 auto;
-    font-weight:650; color:var(--ink2); font-size:12.6px;
+    content:attr(data-label); flex:0 0 auto; white-space:nowrap;
+    font-weight:650; color:var(--ink2); font-size:13.5px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)[data-label=""]::before{content:""}
 }
@@ -352,8 +370,8 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
-    content:attr(data-label); flex:1 1 auto;
-    font-weight:650; color:var(--ink2); font-size:13px;
+    content:attr(data-label); flex:0 0 auto; white-space:nowrap;
+    font-weight:650; color:var(--ink2); font-size:13.5px;
   }
 }
 
@@ -391,9 +409,22 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   vertical-align:-14px; margin-right:8px}
 .avatar.face.is-dual{width:76px; height:40px; border-radius:11px}
 /* 角色名和头像保持同一行，避免「艾丝梅拉尔达」被从中间截断 */
-td:has(.avatar){
+td:has(.avatar), td:has(.mark){
   white-space:nowrap; word-break:keep-all; overflow-wrap:normal;
+  vertical-align:middle; font-weight:650;
 }
+td[data-label="持有者"]{
+  white-space:normal; font-weight:400; vertical-align:middle;
+}
+.mark{
+  display:inline-block; width:40px; height:40px; object-fit:contain;
+  vertical-align:-13px; margin-right:8px; border-radius:8px;
+}
+.mark.sm{
+  width:21px; height:21px; vertical-align:-4px; margin-right:4px; border-radius:5px;
+}
+.holders{display:flex; flex-wrap:wrap; gap:6px 12px; align-items:center}
+.nm{display:inline-flex; align-items:center; white-space:nowrap; font-weight:650}
 .avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
   vertical-align:-17px; margin-right:12px; box-shadow:none}
 
@@ -739,16 +770,17 @@ footer.foot{
   .content{padding:calc(var(--topbar-h) + 12px) 11px 78px}
   .card{padding:10px 15px 28px; border-radius:14px}
   .hero{padding:24px 20px 20px; border-radius:15px; margin-bottom:16px}
-  .hero h1{font-size:21px}
-  .hero .sub{font-size:12.6px}
-  .hero .pill{font-size:11.6px; padding:3px 10px}
+  .hero h1{font-size:22px}
+  .hero .sub{font-size:14.5px}
+  .hero .pill{font-size:12.5px; padding:3px 10px}
   .hero .pnum{font-size:78px; right:14px; bottom:-8px}
-  h1{font-size:20px; margin-bottom:14px; padding-bottom:11px}
-  h2{font-size:17.6px; margin:32px 0 13px; padding:10px 12px;
+  h1{font-size:22px; margin-bottom:14px; padding-bottom:11px}
+  h2{font-size:18px; margin:32px 0 13px; padding:10px 12px;
      border-left-width:4px; border-radius:0 9px 9px 0}
-  h3{font-size:15.8px; margin:24px 0 10px}
-  h4{font-size:15px}
-  blockquote{padding:13px 15px; margin:15px 0; font-size:14.8px}
+  h3{font-size:16.5px; margin:24px 0 10px}
+  h4{font-size:15.5px}
+  p,li,blockquote{font-size:15.5px}
+  blockquote{padding:13px 15px; margin:15px 0}
   ul,ol{padding-left:21px}
 
   .table-wrap{border-radius:10px; margin:15px 0}
@@ -802,10 +834,10 @@ footer.foot{
   .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
-    content:attr(data-label); flex:1 1 auto; font-weight:650; color:var(--ink2); font-size:13px;
+    content:attr(data-label); flex:0 0 auto; white-space:nowrap; font-weight:650; color:var(--ink2); font-size:13.5px;
   }
-  table{font-size:13.4px}
-  th{padding:9px 11px; font-size:12.8px}
+  table{font-size:14.5px}
+  th{padding:9px 11px; font-size:13.5px}
   td{padding:9px 11px}
 
   .chr-grid{grid-template-columns:1fr; gap:10px}
@@ -824,12 +856,13 @@ footer.foot{
 @media (max-width:860px){ .drawer-close{display:flex} }
 
 @media (max-width:430px){
-  body{font-size:15px}
+  body,p,li,blockquote{font-size:15.5px}
   .card{padding:9px 12px 24px}
   .hero{padding:20px 16px 17px}
-  .hero h1{font-size:19.5px}
-  h1{font-size:19px} h2{font-size:16.8px}
-  table{font-size:12.9px}
+  .hero h1{font-size:21px}
+  h1{font-size:21px} h2{font-size:18px} h3{font-size:16.5px} h4{font-size:15.5px}
+  table{font-size:14.5px}
+  th{font-size:13.5px}
   th,td{padding:8px 10px}
 
   /* 正文行内头像贴近字号；表格头像单独保持可辨认 */
@@ -849,6 +882,8 @@ footer.foot{
   .avatar.face.is-dual{width:68px; height:36px; border-radius:10px;
     vertical-align:-12px; margin-right:8px}
   .avatar.is-dual>img{height:100%}
+  .mark{width:36px; height:36px; vertical-align:-12px; margin-right:8px}
+  .mark.sm{width:24px; height:24px; vertical-align:-6px; margin-right:5px}
 
   /* 表格内头像放大后，给角色列更多呼吸空间 */
   .table-wrap table td, .table-wrap table th{padding:9px 8px}
@@ -927,14 +962,14 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="兵种">平民</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/平民.png" alt="平民" title="平民" loading="lazy">平民</td>
 <td data-label="移动">4</td>
 <td data-label="技能经验">无</td>
 <td data-label="特技">步兵</td>
 <td data-label="精通">【战斗的基本】（15）</td>
 </tr>
 <tr>
-<td data-label="兵种">贵族</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/贵族.png" alt="贵族" title="贵族" loading="lazy">贵族</td>
 <td data-label="移动">4</td>
 <td data-label="技能经验">无</td>
 <td data-label="特技">步兵</td>
@@ -956,7 +991,7 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="兵种">斗士</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/斗士.png" alt="斗士" title="斗士" loading="lazy">斗士</td>
 <td data-label="移动">4</td>
 <td data-label="考试">剑术/斧术/格斗术任一项 D，初级考试票证×1</td>
 <td data-label="技能经验">剑术+1、斧术+1、步兵术+1</td>
@@ -964,7 +999,7 @@ footer.foot{
 <td data-label="精通">【攻击的基本】（30）</td>
 </tr>
 <tr>
-<td data-label="兵种">猎兵</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/猎兵.png" alt="猎兵" title="猎兵" loading="lazy">猎兵</td>
 <td data-label="移动">4</td>
 <td data-label="考试">剑术/箭术任一项 D，初级考试票证×1</td>
 <td data-label="技能经验">剑术+1、弓术+1、步兵术+1</td>
@@ -972,7 +1007,7 @@ footer.foot{
 <td data-label="精通">【狩猎的基本】（30）</td>
 </tr>
 <tr>
-<td data-label="兵种">士兵</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/士兵.png" alt="士兵" title="士兵" loading="lazy">士兵</td>
 <td data-label="移动">4</td>
 <td data-label="考试">斧术/枪术任一项 D，初级考试票证×1</td>
 <td data-label="技能经验">枪术+1、斧术+1、重装术+1</td>
@@ -980,7 +1015,7 @@ footer.foot{
 <td data-label="精通">【防卫的基本】（30）</td>
 </tr>
 <tr>
-<td data-label="兵种">飞鸵兵</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/飞鸵兵.png" alt="飞鸵兵" title="飞鸵兵" loading="lazy">飞鸵兵</td>
 <td data-label="移动">5</td>
 <td data-label="考试">枪术/斧术任一项 D，且马术 E+，初级考试票证×1</td>
 <td data-label="技能经验">枪术+1、马术+1、飞行术+1</td>
@@ -988,7 +1023,7 @@ footer.foot{
 <td data-label="精通">【攻势的基本】（30）</td>
 </tr>
 <tr>
-<td data-label="兵种">诅咒师</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/诅咒师.png" alt="诅咒师" title="诅咒师" loading="lazy">诅咒师</td>
 <td data-label="移动">4</td>
 <td data-label="考试">黑魔术/白魔术任一项 D，初级考试票证×1</td>
 <td data-label="技能经验">黑魔术+1、白魔术+1</td>
@@ -1011,7 +1046,7 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="兵种">剑客</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/剑客.png" alt="剑客" title="剑客" loading="lazy">剑客</td>
 <td data-label="移动">5</td>
 <td data-label="考试">剑术 C，中级考试票证×1</td>
 <td data-label="技能经验">剑术+2、步兵术+1</td>
@@ -1019,7 +1054,7 @@ footer.foot{
 <td data-label="精通">【技巧精湛】（60）</td>
 </tr>
 <tr>
-<td data-label="兵种">土匪</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/土匪.png" alt="土匪" title="土匪" loading="lazy">土匪</td>
 <td data-label="移动">5</td>
 <td data-label="考试">剑术/斧术任一项 C，中级考试票证×1</td>
 <td data-label="技能经验">斧术+2</td>
@@ -1027,7 +1062,7 @@ footer.foot{
 <td data-label="精通">【重整态势】（60）</td>
 </tr>
 <tr>
-<td data-label="兵种">斗拳手</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/斗拳手.png" alt="斗拳手" title="斗拳手" loading="lazy">斗拳手</td>
 <td data-label="移动">5</td>
 <td data-label="考试">格斗术 C，中级考试票证×1</td>
 <td data-label="技能经验">格斗术+2、步兵术+2</td>
@@ -1035,7 +1070,7 @@ footer.foot{
 <td data-label="精通">【攻击&amp;远离】（60）</td>
 </tr>
 <tr>
-<td data-label="兵种">弓箭手</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/弓箭手.png" alt="弓箭手" title="弓箭手" loading="lazy">弓箭手</td>
 <td data-label="移动">5</td>
 <td data-label="考试">箭术 C，中级考试票证×1</td>
 <td data-label="技能经验">箭术+2、步兵术+1</td>
@@ -1043,7 +1078,7 @@ footer.foot{
 <td data-label="精通">【状态不错】（60）</td>
 </tr>
 <tr>
-<td data-label="兵种">恶棍</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/恶棍.png" alt="恶棍" title="恶棍" loading="lazy">恶棍</td>
 <td data-label="移动">5</td>
 <td data-label="考试">剑术/箭术任一项 C，中级考试票证×1</td>
 <td data-label="技能经验">剑术+1、箭术+1、步兵术+2</td>
@@ -1051,7 +1086,7 @@ footer.foot{
 <td data-label="精通">【暗影隐身】（60）</td>
 </tr>
 <tr>
-<td data-label="兵种">重装步兵</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/重装步兵.png" alt="重装步兵" title="重装步兵" loading="lazy">重装步兵</td>
 <td data-label="移动">4</td>
 <td data-label="考试">枪术/斧术任一项 C，且重装术 E+，中级考试票证×1</td>
 <td data-label="技能经验">枪术+1、斧术+1、重装术+2</td>
@@ -1059,7 +1094,7 @@ footer.foot{
 <td data-label="精通">【大反击】（60）</td>
 </tr>
 <tr>
-<td data-label="兵种">轻骑兵</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/轻骑兵.png" alt="轻骑兵" title="轻骑兵" loading="lazy">轻骑兵</td>
 <td data-label="移动">6</td>
 <td data-label="考试">剑术/枪术任一项 C，且马术 E+，中级考试票证×1</td>
 <td data-label="技能经验">枪术+1、马术+2</td>
@@ -1067,7 +1102,7 @@ footer.foot{
 <td data-label="精通">【体力强化】（60）</td>
 </tr>
 <tr>
-<td data-label="兵种">战车兵</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/战车兵.png" alt="战车兵" title="战车兵" loading="lazy">战车兵</td>
 <td data-label="移动">5</td>
 <td data-label="考试">箭术 C 且马术 D，中级考试票证×1</td>
 <td data-label="技能经验">箭术+2、马术+1</td>
@@ -1075,7 +1110,7 @@ footer.foot{
 <td data-label="精通">【突击态势】（60）</td>
 </tr>
 <tr>
-<td data-label="兵种">骑甲驼兵</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/骑甲驼兵.png" alt="骑甲驼兵" title="骑甲驼兵" loading="lazy">骑甲驼兵</td>
 <td data-label="移动">6</td>
 <td data-label="考试">枪术/斧术任一项 C，且马术 D，中级考试票证×1</td>
 <td data-label="技能经验">枪术+1、斧术+1、马术+1、飞行术+1</td>
@@ -1083,7 +1118,7 @@ footer.foot{
 <td data-label="精通">【威胁察觉】（60）</td>
 </tr>
 <tr>
-<td data-label="兵种">天翼兵（女性专用）</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/天翼兵.png" alt="天翼兵" title="天翼兵" loading="lazy">天翼兵（女性专用）</td>
 <td data-label="移动">6</td>
 <td data-label="考试">剑术/枪术任一项 C，且飞行术 E+，中级考试票证×1</td>
 <td data-label="技能经验">剑术+1、枪术+1、飞行术+2</td>
@@ -1091,7 +1126,7 @@ footer.foot{
 <td data-label="精通">【天马的护翼】（60）</td>
 </tr>
 <tr>
-<td data-label="兵种">萨满巫师</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/萨满巫师.png" alt="萨满巫师" title="萨满巫师" loading="lazy">萨满巫师</td>
 <td data-label="移动">5</td>
 <td data-label="考试">黑魔术 C+，中级考试票证×1</td>
 <td data-label="技能经验">剑术+1、黑魔术+2、白魔术+1</td>
@@ -1099,7 +1134,7 @@ footer.foot{
 <td data-label="精通">【技巧咒缚】（60）</td>
 </tr>
 <tr>
-<td data-label="兵种">牧师</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/牧师.png" alt="牧师" title="牧师" loading="lazy">牧师</td>
 <td data-label="移动">5</td>
 <td data-label="考试">白魔术 C+，中级考试票证×1</td>
 <td data-label="技能经验">格斗术+1、黑魔术+1、白魔术+2</td>
@@ -1123,7 +1158,7 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="兵种">侍道</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/侍道.png" alt="侍道" title="侍道" loading="lazy">侍道</td>
 <td data-label="移动">5</td>
 <td data-label="解放条件">—</td>
 <td data-label="技能经验">剑术+3、枪术+1、步兵术+2</td>
@@ -1131,7 +1166,7 @@ footer.foot{
 <td data-label="精通">【残心】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">舞者（蕾达限定）</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/舞者.png" alt="舞者" title="舞者" loading="lazy">舞者（蕾达限定）</td>
 <td data-label="移动">—</td>
 <td data-label="解放条件">完成蕾达篇第 1 部分第 9 章「舞者的继承人」，舞姬的首饰×1</td>
 <td data-label="技能经验">剑术+3、弓术+2、步兵术+4</td>
@@ -1139,7 +1174,7 @@ footer.foot{
 <td data-label="精通">【特别舞蹈】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">勇士</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/勇士.png" alt="勇士" title="勇士" loading="lazy">勇士</td>
 <td data-label="移动">5</td>
 <td data-label="解放条件">—</td>
 <td data-label="技能经验">剑术+2、斧术+3、格斗术+2、步兵术+1</td>
@@ -1147,7 +1182,7 @@ footer.foot{
 <td data-label="精通">【熟练之技】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">狙击手</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/狙击手.png" alt="狙击手" title="狙击手" loading="lazy">狙击手</td>
 <td data-label="移动">5</td>
 <td data-label="解放条件">—</td>
 <td data-label="技能经验">箭术+3、步兵术+2</td>
@@ -1155,7 +1190,7 @@ footer.foot{
 <td data-label="精通">【射击专家】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">森林骑士</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/森林骑士.png" alt="森林骑士" title="森林骑士" loading="lazy">森林骑士</td>
 <td data-label="移动">6</td>
 <td data-label="解放条件">—</td>
 <td data-label="技能经验">剑术+1、箭术+2、马术+2</td>
@@ -1163,7 +1198,7 @@ footer.foot{
 <td data-label="精通">【猎人之眼】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">游侠（高级）</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/游侠.png" alt="游侠" title="游侠" loading="lazy">游侠（高级）</td>
 <td data-label="移动">5</td>
 <td data-label="解放条件">完成蕾达篇第 1 部分第 10 章「我想制作并推出新商品4」</td>
 <td data-label="技能经验">剑术+2、弓术+2、步兵术+3</td>
@@ -1171,7 +1206,7 @@ footer.foot{
 <td data-label="精通">【反击射击】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">巨型重甲兵</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/巨型重甲兵.png" alt="巨型重甲兵" title="巨型重甲兵" loading="lazy">巨型重甲兵</td>
 <td data-label="移动">4</td>
 <td data-label="解放条件">—</td>
 <td data-label="技能经验">枪术+2、斧术+2、步兵术+1、重装术+3</td>
@@ -1179,7 +1214,7 @@ footer.foot{
 <td data-label="精通">【集中反击】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">重装骑兵</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/重装骑兵.png" alt="重装骑兵" title="重装骑兵" loading="lazy">重装骑兵</td>
 <td data-label="移动">—</td>
 <td data-label="解放条件">—</td>
 <td data-label="技能经验">—</td>
@@ -1187,7 +1222,7 @@ footer.foot{
 <td data-label="精通">【大盾】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">荣光骑士</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/荣光骑士.png" alt="荣光骑士" title="荣光骑士" loading="lazy">荣光骑士</td>
 <td data-label="移动">6</td>
 <td data-label="解放条件">—</td>
 <td data-label="技能经验">剑术+2、枪术+2、斧术+1、马术+3</td>
@@ -1195,7 +1230,7 @@ footer.foot{
 <td data-label="精通">【圣盾】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">神鸵兵</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/神鸵兵.png" alt="神鸵兵" title="神鸵兵" loading="lazy">神鸵兵</td>
 <td data-label="移动">6</td>
 <td data-label="解放条件">卡司托尔的指导 Lv（原表未写等级），完成「来自父亲的秘密委托」</td>
 <td data-label="技能经验">剑术+1、枪术+2、斧术+2、黑魔术+2、马术+1、飞行术+1</td>
@@ -1203,7 +1238,7 @@ footer.foot{
 <td data-label="精通">【驰骋】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">驭龙兵</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/驭龙兵.png" alt="驭龙兵" title="驭龙兵" loading="lazy">驭龙兵</td>
 <td data-label="移动">6</td>
 <td data-label="解放条件">奥罗拉的指导 Lv8，完成「来自母亲的特别委托」</td>
 <td data-label="技能经验">剑术+1、枪术+1、斧术+3、飞行术+3</td>
@@ -1211,7 +1246,7 @@ footer.foot{
 <td data-label="精通">【突破围城】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">先知</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/先知.png" alt="先知" title="先知" loading="lazy">先知</td>
 <td data-label="移动">5</td>
 <td data-label="解放条件">—</td>
 <td data-label="技能经验">剑术+2、格斗术+1、黑魔术+3、白魔术+1、步兵术+1</td>
@@ -1219,7 +1254,7 @@ footer.foot{
 <td data-label="精通">【速度咒缚】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">主教</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/主教.png" alt="主教" title="主教" loading="lazy">主教</td>
 <td data-label="移动">5</td>
 <td data-label="解放条件">—</td>
 <td data-label="技能经验">斧术、格斗术、黑魔术、白魔术、步兵术（原表未写加成数字）</td>
@@ -1227,7 +1262,7 @@ footer.foot{
 <td data-label="精通">【结界】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">游唱诗人</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/游唱诗人.png" alt="游唱诗人" title="游唱诗人" loading="lazy">游唱诗人</td>
 <td data-label="移动">6</td>
 <td data-label="解放条件">贝特朗的指导 Lv10，完成「白发鬼的委托」</td>
 <td data-label="技能经验">黑魔术+3、白魔术+3、马术+2</td>
@@ -1235,7 +1270,7 @@ footer.foot{
 <td data-label="精通">【勇气的咒歌】（100）</td>
 </tr>
 <tr>
-<td data-label="兵种">卫士</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/卫士.png" alt="卫士" title="卫士" loading="lazy">卫士</td>
 <td data-label="移动">5</td>
 <td data-label="解放条件">—</td>
 <td data-label="技能经验">枪术+3、白魔术+1、步兵术+1</td>
@@ -1257,84 +1292,84 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="兵种">刀剑将领</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/刀剑将领.png" alt="刀剑将领" title="刀剑将领" loading="lazy">刀剑将领</td>
 <td data-label="移动">5</td>
 <td data-label="技能经验">—</td>
 <td data-label="特技">斗士系 · 步兵，【战技装备+3】【剑必杀+7】</td>
 <td data-label="精通">—（经验 130，特技名未填）</td>
 </tr>
 <tr>
-<td data-label="兵种">战斗将领</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/战斗将领.png" alt="战斗将领" title="战斗将领" loading="lazy">战斗将领</td>
 <td data-label="移动">5</td>
 <td data-label="技能经验">剑术+2、斧术+4、格斗术+2、步兵术+1</td>
 <td data-label="特技">斗士系 · 步兵，【战技装备+3】【斧命中+7】【格斗命中+7】</td>
 <td data-label="精通">【战鬼一击】（130）</td>
 </tr>
 <tr>
-<td data-label="兵种">武僧</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/武僧.png" alt="武僧" title="武僧" loading="lazy">武僧</td>
 <td data-label="移动">5</td>
 <td data-label="技能经验">格斗术+4、白魔术+2、步兵术+2</td>
 <td data-label="特技">斗士系 · 步兵，【战技装备+3】【白魔术的探究】【格斗回避+7】</td>
 <td data-label="精通">【强打&amp;治愈】（130）</td>
 </tr>
 <tr>
-<td data-label="兵种">宗师射手</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/宗师射手.png" alt="宗师射手" title="宗师射手" loading="lazy">宗师射手</td>
 <td data-label="移动">5</td>
 <td data-label="技能经验">弓术+4、步兵术+2</td>
 <td data-label="特技">猎兵系 · 步兵，【战技装备+3】【弓命中+15】</td>
 <td data-label="精通">【飞空猎手】（130）</td>
 </tr>
 <tr>
-<td data-label="兵种">探影者</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/探影者.png" alt="探影者" title="探影者" loading="lazy">探影者</td>
 <td data-label="移动">5</td>
 <td data-label="技能经验">剑术+2、弓术+3、步兵术+4</td>
 <td data-label="特技">猎兵系 · 步兵，【战技装备+3】【开锁】【最上级探索术】</td>
 <td data-label="精通">【落影之刃】（130）</td>
 </tr>
 <tr>
-<td data-label="兵种">圣枪师</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/圣枪师.png" alt="圣枪师" title="圣枪师" loading="lazy">圣枪师</td>
 <td data-label="移动">5</td>
 <td data-label="技能经验">枪术+4、白魔术+3、步兵术+1</td>
 <td data-label="特技">士兵系 · 步兵，【战技装备+3】【魔法回复+10】【白魔术的探究】</td>
 <td data-label="精通">【不退架势】（130）</td>
 </tr>
 <tr>
-<td data-label="兵种">要塞</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/要塞.png" alt="要塞" title="要塞" loading="lazy">要塞</td>
 <td data-label="移动">4</td>
 <td data-label="技能经验">枪术+2、斧术+2、步兵术+1、重装术+4</td>
 <td data-label="特技">士兵系 · 重装，【战技装备+3】【后攻防守+7】</td>
 <td data-label="精通">【阻绝】（130）</td>
 </tr>
 <tr>
-<td data-label="兵种">奥利哈铁骑</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/奥利哈铁骑.png" alt="奥利哈铁骑" title="奥利哈铁骑" loading="lazy">奥利哈铁骑</td>
 <td data-label="移动">7</td>
 <td data-label="技能经验">剑术+2、枪术+3、斧术+1、马术+4</td>
 <td data-label="特技">士兵系 · 骑兵，【乘降术】【战技装备+3】</td>
 <td data-label="精通">【骑士烈枪】（130）</td>
 </tr>
 <tr>
-<td data-label="兵种">圣天翼兵（女性专用）</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/圣天翼兵.png" alt="圣天翼兵" title="圣天翼兵" loading="lazy">圣天翼兵（女性专用）</td>
 <td data-label="移动">7</td>
 <td data-label="技能经验">剑术+3、枪术+3、飞行术+4</td>
 <td data-label="特技">飞行系 · 飞行，【乘降术】【战技装备+1】【飞行回避+7】</td>
 <td data-label="精通">【迅雷风烈】（130）</td>
 </tr>
 <tr>
-<td data-label="兵种">飞龙将领</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/飞龙将领.png" alt="飞龙将领" title="飞龙将领" loading="lazy">飞龙将领</td>
 <td data-label="移动">7</td>
 <td data-label="技能经验">剑术+1、枪术+3、斧术+3、飞行术+4</td>
 <td data-label="特技">飞行系 · 飞行，【乘降术】【战技装备+2】</td>
 <td data-label="精通">【袭击】（130）</td>
 </tr>
 <tr>
-<td data-label="兵种">德鲁伊</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/德鲁伊.png" alt="德鲁伊" title="德鲁伊" loading="lazy">德鲁伊</td>
 <td data-label="移动">5</td>
 <td data-label="技能经验">剑术+2、格斗术+2、黑魔术+4、步兵术+1</td>
 <td data-label="特技">魔道系 · 步兵，【黑魔术的探究】【魔法命中+7】</td>
 <td data-label="精通">【魔防咒缚】（130）</td>
 </tr>
 <tr>
-<td data-label="兵种">贤者</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/贤者.png" alt="贤者" title="贤者" loading="lazy">贤者</td>
 <td data-label="移动">5</td>
 <td data-label="技能经验">斧术+1、格斗术+2、白魔术+4、步兵术+1</td>
 <td data-label="特技">魔道系 · 步兵，【白魔术的探究】【魔法回复+15】</td>
@@ -1357,7 +1392,7 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="兵种">刃辉神将</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/刃辉神将.png" alt="刃辉神将" title="刃辉神将" loading="lazy">刃辉神将</td>
 <td data-label="移动">6</td>
 <td data-label="条件">剑术至少 S，妖刀之锷×1</td>
 <td data-label="技能经验">剑术+5、枪术+1、步兵术+2</td>
@@ -1365,7 +1400,7 @@ footer.foot{
 <td data-label="精通">【战神】（160）</td>
 </tr>
 <tr>
-<td data-label="兵种">神乐神将</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/神乐神将.png" alt="神乐神将" title="神乐神将" loading="lazy">神乐神将</td>
 <td data-label="移动">6</td>
 <td data-label="条件">剑术 A 且箭术 C，穆萨首饰×1</td>
 <td data-label="技能经验">剑术+4、箭术+2、步兵术+5</td>
@@ -1373,7 +1408,7 @@ footer.foot{
 <td data-label="精通">【神舞】（160）</td>
 </tr>
 <tr>
-<td data-label="兵种">永霸神将</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/永霸神将.png" alt="永霸神将" title="永霸神将" loading="lazy">永霸神将</td>
 <td data-label="移动">6</td>
 <td data-label="条件">剑术/斧术/格斗术任一项 S，决裁天秤×1</td>
 <td data-label="技能经验">斧术+5、剑术+3、格斗术+3、步兵术+1</td>
@@ -1381,7 +1416,7 @@ footer.foot{
 <td data-label="精通">【武神】（160）</td>
 </tr>
 <tr>
-<td data-label="兵种">破拳神将</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/破拳神将.png" alt="破拳神将" title="破拳神将" loading="lazy">破拳神将</td>
 <td data-label="移动">6</td>
 <td data-label="条件">格斗术 S 且白魔术 C，大帝腰封×1</td>
 <td data-label="技能经验">格斗术+5、白魔术+3、步兵术+3</td>
@@ -1389,7 +1424,7 @@ footer.foot{
 <td data-label="精通">【神装】（160）</td>
 </tr>
 <tr>
-<td data-label="兵种">绝祸神将</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/绝祸神将.png" alt="绝祸神将" title="绝祸神将" loading="lazy">绝祸神将</td>
 <td data-label="移动">6</td>
 <td data-label="条件">剑术/箭术任一项 S，暗之结晶×1</td>
 <td data-label="技能经验">箭术+4、剑术+2、步兵术+5</td>
@@ -1397,7 +1432,7 @@ footer.foot{
 <td data-label="精通">【神命】（160）</td>
 </tr>
 <tr>
-<td data-label="兵种">岚枪神将</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/岚枪神将.png" alt="岚枪神将" title="岚枪神将" loading="lazy">岚枪神将</td>
 <td data-label="移动">6</td>
 <td data-label="条件">枪术至少 S，三叉戟×1</td>
 <td data-label="技能经验">枪术+5、白魔术+3、步兵术+1</td>
@@ -1405,7 +1440,7 @@ footer.foot{
 <td data-label="精通">【神壁】（160）</td>
 </tr>
 <tr>
-<td data-label="兵种">烈骏神将</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/烈骏神将.png" alt="烈骏神将" title="烈骏神将" loading="lazy">烈骏神将</td>
 <td data-label="移动">8</td>
 <td data-label="条件">剑术/枪术/斧术任一项 S，且马术 A，神铁之鞍×1</td>
 <td data-label="技能经验">剑术+3、枪术+3、斧术+3、马术+5</td>
@@ -1413,7 +1448,7 @@ footer.foot{
 <td data-label="精通">【神技】（160）</td>
 </tr>
 <tr>
-<td data-label="兵种">圣转神将</td>
+<td data-label="兵种"><img class="mark" src="assets/icon/class/圣转神将.png" alt="圣转神将" title="圣转神将" loading="lazy">圣转神将</td>
 <td data-label="移动">6</td>
 <td data-label="条件">黑魔术/白魔术任一项 S，转世莲华×1</td>
 <td data-label="技能经验">黑魔术+5、白魔术+5、剑术+2、格斗术+2、斧术+1、步兵术+1</td>
@@ -1454,7 +1489,7 @@ footer.foot{
 </tbody>
 </table></div>
 <blockquote>
-<p><strong>同一角色的招募条件在不同路线差异很大</strong>。例如洛蕾塔在赛奥朵拉篇只需名声 5，在迪托利希篇则需名声 9（经日站 AlGest 核实）。<strong><span class="avatar sm" style="--ac:#5b6472" title="杰斯特" data-name="杰斯特"><img class="av-a" src="assets/avatar/51.jpg" alt="杰斯特" loading="lazy"></span>杰斯特</strong>需要完成 3 个战斗任务（每次须回报后才能接下一个）；<strong><span class="avatar sm" style="--ac:#2f6f9f" title="歌利亚" data-name="歌利亚"><img class="av-a" src="assets/avatar/50.jpg" alt="歌利亚" loading="lazy"></span>歌利亚</strong>需 3 个「巨人肉」；<strong><span class="avatar sm" style="--ac:#8a5a1e" title="但丁" data-name="但丁"><img class="av-a" src="assets/avatar/22.jpg" alt="但丁" loading="lazy"></span>但丁</strong>需 8000G。</p>
+<p><strong>同一角色的招募条件在不同路线差异很大</strong>。例如洛蕾塔在赛奥朵拉篇只需名声 5，在迪托利希篇则需名声 9（经日站 AlGest 核实）。<strong><span class="avatar sm" style="--ac:#2f6f9f" title="杰斯特" data-name="杰斯特"><img class="av-a" src="assets/avatar/51.jpg" alt="杰斯特" loading="lazy"></span>杰斯特</strong>需要完成 3 个战斗任务（每次须回报后才能接下一个）；<strong><span class="avatar sm" style="--ac:#8a5a1e" title="歌利亚" data-name="歌利亚"><img class="av-a" src="assets/avatar/50.jpg" alt="歌利亚" loading="lazy"></span>歌利亚</strong>需 3 个「巨人肉」；<strong><span class="avatar sm" style="--ac:#b8123c" title="但丁" data-name="但丁"><img class="av-a" src="assets/avatar/22.jpg" alt="但丁" loading="lazy"></span>但丁</strong>需 8000G。</p>
 </blockquote>
 <h3 id="5-3-1-跨路线招募条件速查表">5.3.1 跨路线招募条件速查表</h3>
 <p>下表按「支援等级 / 名声等级」列出<strong>全部四线跨路线挖角门槛</strong>，数值以日站 AlGest（2026-09-17）为准，并经 18183 与游民星空（同为 2026-09-17）交叉验证。三方在共同覆盖的条目上<strong>完全一致</strong>。</p>
@@ -1482,21 +1517,21 @@ footer.foot{
 <td data-label="蕾达线">—</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#1f5fa8" title="蒂亚拉" data-name="蒂亚拉"><img class="av-a" src="assets/avatar/6.jpg" alt="蒂亚拉" loading="lazy"></span><strong>蒂亚拉</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="蒂亚拉" data-name="蒂亚拉"><img class="av-a" src="assets/avatar/6.jpg" alt="蒂亚拉" loading="lazy"></span><strong>蒂亚拉</strong></td>
 <td data-label="凯伊线">自动加入</td>
 <td data-label="迪托利希线">3S / 9R ・凯伊外传 ・3000G</td>
 <td data-label="赛奥朵拉线">3S / 10R ・凯伊外传 ・3000G</td>
 <td data-label="蕾达线">3S / 8R ・凯伊外传 ・3000G</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="彼得" data-name="彼得"><img class="av-a" src="assets/avatar/7.jpg" alt="彼得" loading="lazy"></span><strong>彼得</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#0e8f9e" title="彼得" data-name="彼得"><img class="av-a" src="assets/avatar/7.jpg" alt="彼得" loading="lazy"></span><strong>彼得</strong></td>
 <td data-label="凯伊线">自动加入</td>
 <td data-label="迪托利希线">3S / 8R ・追加条件①</td>
 <td data-label="赛奥朵拉线">3S / 7R ・追加条件①</td>
 <td data-label="蕾达线">3S / 10R ・追加条件①</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#0e8f9e" title="乌尔坦德" data-name="乌尔坦德"><img class="av-a" src="assets/avatar/8.jpg" alt="乌尔坦德" loading="lazy"></span><strong>乌尔坦德</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#0f8a63" title="乌尔坦德" data-name="乌尔坦德"><img class="av-a" src="assets/avatar/8.jpg" alt="乌尔坦德" loading="lazy"></span><strong>乌尔坦德</strong></td>
 <td data-label="凯伊线">第 6 章自动加入</td>
 <td data-label="迪托利希线">3S / 5R ・赠礼盒</td>
 <td data-label="赛奥朵拉线">3S / 6R ・赠礼盒</td>
@@ -1524,21 +1559,21 @@ footer.foot{
 <td data-label="蕾达线">—</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#c2790a" title="法比奥" data-name="法比奥"><img class="av-a" src="assets/avatar/9.jpg" alt="法比奥" loading="lazy"></span><strong>法比奥</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#c2185b" title="法比奥" data-name="法比奥"><img class="av-a" src="assets/avatar/9.jpg" alt="法比奥" loading="lazy"></span><strong>法比奥</strong></td>
 <td data-label="凯伊线">—</td>
 <td data-label="迪托利希线">自动加入</td>
 <td data-label="赛奥朵拉线">—</td>
 <td data-label="蕾达线">3S / 9R ・迪托利希外传 ・迪托利希队败退后交涉</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#0e8f9e" title="艾丝梅拉尔达" data-name="艾丝梅拉尔达"><img class="av-a" src="assets/avatar/10.jpg" alt="艾丝梅拉尔达" loading="lazy"></span><strong>艾丝梅拉尔达</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#c2185b" title="艾丝梅拉尔达" data-name="艾丝梅拉尔达"><img class="av-a" src="assets/avatar/10.jpg" alt="艾丝梅拉尔达" loading="lazy"></span><strong>艾丝梅拉尔达</strong></td>
 <td data-label="凯伊线">2S / 7R ・交涉</td>
 <td data-label="迪托利希线">自动加入</td>
 <td data-label="赛奥朵拉线">3S / 9R ・交涉</td>
 <td data-label="蕾达线">3S / 6R ・交涉</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#5b6472" title="米迦艾拉" data-name="米迦艾拉"><img class="av-a" src="assets/avatar/11.jpg" alt="米迦艾拉" loading="lazy"></span><strong>米迦艾拉</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#2f6f9f" title="米迦艾拉" data-name="米迦艾拉"><img class="av-a" src="assets/avatar/11.jpg" alt="米迦艾拉" loading="lazy"></span><strong>米迦艾拉</strong></td>
 <td data-label="凯伊线">3S / 5R ・3000G</td>
 <td data-label="迪托利希线">自动加入</td>
 <td data-label="赛奥朵拉线">3S / 8R ・3000G</td>
@@ -1566,28 +1601,28 @@ footer.foot{
 <td data-label="蕾达线">—</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#2f6f9f" title="波拿帕尔特" data-name="波拿帕尔特"><img class="av-a" src="assets/avatar/12.jpg" alt="波拿帕尔特" loading="lazy"></span><strong>波拿帕尔特</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#8a5a1e" title="波拿帕尔特" data-name="波拿帕尔特"><img class="av-a" src="assets/avatar/12.jpg" alt="波拿帕尔特" loading="lazy"></span><strong>波拿帕尔特</strong></td>
 <td data-label="凯伊线">—</td>
 <td data-label="迪托利希线">—</td>
 <td data-label="赛奥朵拉线">自动加入</td>
 <td data-label="蕾达线">—</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#8a5a1e" title="托比亚斯" data-name="托比亚斯"><img class="av-a" src="assets/avatar/13.jpg" alt="托比亚斯" loading="lazy"></span><strong>托比亚斯</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#b8123c" title="托比亚斯" data-name="托比亚斯"><img class="av-a" src="assets/avatar/13.jpg" alt="托比亚斯" loading="lazy"></span><strong>托比亚斯</strong></td>
 <td data-label="凯伊线">—</td>
 <td data-label="迪托利希线">—</td>
 <td data-label="赛奥朵拉线">自动加入</td>
 <td data-label="蕾达线">—</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#b8123c" title="莉利安" data-name="莉利安"><img class="av-a" src="assets/avatar/14.jpg" alt="莉利安" loading="lazy"></span><strong>莉利安</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#1f5fa8" title="莉利安" data-name="莉利安"><img class="av-a" src="assets/avatar/14.jpg" alt="莉利安" loading="lazy"></span><strong>莉利安</strong></td>
 <td data-label="凯伊线">2S / 8R ・5000G</td>
 <td data-label="迪托利希线">2S / 8R ・5000G</td>
 <td data-label="赛奥朵拉线">自动加入</td>
 <td data-label="蕾达线">2S / 7R ・5000G</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#1f5fa8" title="莱桑达" data-name="莱桑达"><img class="av-a" src="assets/avatar/15.jpg" alt="莱桑达" loading="lazy"></span><strong>莱桑达</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="莱桑达" data-name="莱桑达"><img class="av-a" src="assets/avatar/15.jpg" alt="莱桑达" loading="lazy"></span><strong>莱桑达</strong></td>
 <td data-label="凯伊线">3S / 8R ・铁枪×5</td>
 <td data-label="迪托利希线">3S / 6R ・铁枪×5</td>
 <td data-label="赛奥朵拉线">自动加入</td>
@@ -1615,28 +1650,28 @@ footer.foot{
 <td data-label="蕾达线">自动加入</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="巴卡尼亚" data-name="巴卡尼亚"><img class="av-a" src="assets/avatar/16.jpg" alt="巴卡尼亚" loading="lazy"></span><strong>巴卡尼亚</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#0e8f9e" title="巴卡尼亚" data-name="巴卡尼亚"><img class="av-a" src="assets/avatar/16.jpg" alt="巴卡尼亚" loading="lazy"></span><strong>巴卡尼亚</strong></td>
 <td data-label="凯伊线">—</td>
 <td data-label="迪托利希线">3S / 8R ・蕾达外传</td>
 <td data-label="赛奥朵拉线">3S / 8R ・蕾达外传</td>
 <td data-label="蕾达线">自动加入</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#0e8f9e" title="西洛可" data-name="西洛可"><img class="av-a" src="assets/avatar/17.jpg" alt="西洛可" loading="lazy"></span><strong>西洛可</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#0f8a63" title="西洛可" data-name="西洛可"><img class="av-a" src="assets/avatar/17.jpg" alt="西洛可" loading="lazy"></span><strong>西洛可</strong></td>
 <td data-label="凯伊线">3S / 9R ・追加条件①</td>
 <td data-label="迪托利希线">3S / 9R ・追加条件①</td>
 <td data-label="赛奥朵拉线">1S / 5R ・追加条件①</td>
 <td data-label="蕾达线">自动加入</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#0f8a63" title="奥林匹亚" data-name="奥林匹亚"><img class="av-a" src="assets/avatar/18.jpg" alt="奥林匹亚" loading="lazy"></span><strong>奥林匹亚</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#c2790a" title="奥林匹亚" data-name="奥林匹亚"><img class="av-a" src="assets/avatar/18.jpg" alt="奥林匹亚" loading="lazy"></span><strong>奥林匹亚</strong></td>
 <td data-label="凯伊线">3S / 8R ・3 个任务</td>
 <td data-label="迪托利希线">3S / 6R ・3 个任务</td>
 <td data-label="赛奥朵拉线">3S / 9R ・3 个任务</td>
 <td data-label="蕾达线">自动加入</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#c2790a" title="穆" data-name="穆"><img class="av-a" src="assets/avatar/19.jpg" alt="穆" loading="lazy"></span><strong>穆</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#c2185b" title="穆" data-name="穆"><img class="av-a" src="assets/avatar/19.jpg" alt="穆" loading="lazy"></span><strong>穆</strong></td>
 <td data-label="凯伊线">3S / 9R ・交涉</td>
 <td data-label="迪托利希线">3S / 7R ・交涉</td>
 <td data-label="赛奥朵拉线">3S / 9R ・交涉</td>
@@ -1657,28 +1692,28 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#c2185b" title="盖茨" data-name="盖茨"><img class="av-a" src="assets/avatar/21.jpg" alt="盖茨" loading="lazy"></span><strong>盖茨</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#5b6472" title="盖茨" data-name="盖茨"><img class="av-a" src="assets/avatar/21.jpg" alt="盖茨" loading="lazy"></span><strong>盖茨</strong></td>
 <td data-label="凯伊线">—</td>
 <td data-label="迪托利希线">3S / 10R ・贝特朗外传 ・贝特朗队败退后</td>
 <td data-label="赛奥朵拉线">—</td>
 <td data-label="蕾达线">—</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#5b6472" title="杰斯特" data-name="杰斯特"><img class="av-a" src="assets/avatar/51.jpg" alt="杰斯特" loading="lazy"></span><strong>杰斯特</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#2f6f9f" title="杰斯特" data-name="杰斯特"><img class="av-a" src="assets/avatar/51.jpg" alt="杰斯特" loading="lazy"></span><strong>杰斯特</strong></td>
 <td data-label="凯伊线">3S / 10R ・战斗任务×3</td>
 <td data-label="迪托利希线">3S / 6R ・战斗任务×3</td>
 <td data-label="赛奥朵拉线">3S / 9R ・战斗任务×3</td>
 <td data-label="蕾达线">3S / 10R ・战斗任务×3</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#8a5a1e" title="但丁" data-name="但丁"><img class="av-a" src="assets/avatar/22.jpg" alt="但丁" loading="lazy"></span><strong>但丁</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#b8123c" title="但丁" data-name="但丁"><img class="av-a" src="assets/avatar/22.jpg" alt="但丁" loading="lazy"></span><strong>但丁</strong></td>
 <td data-label="凯伊线">3S / 10R ・8000G</td>
 <td data-label="迪托利希线">2S / 8R ・8000G</td>
 <td data-label="赛奥朵拉线">3S / 6R ・8000G</td>
 <td data-label="蕾达线">3S / 10R ・8000G</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#2f6f9f" title="歌利亚" data-name="歌利亚"><img class="av-a" src="assets/avatar/50.jpg" alt="歌利亚" loading="lazy"></span><strong>歌利亚</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#8a5a1e" title="歌利亚" data-name="歌利亚"><img class="av-a" src="assets/avatar/50.jpg" alt="歌利亚" loading="lazy"></span><strong>歌利亚</strong></td>
 <td data-label="凯伊线">3S / 7R ・交涉</td>
 <td data-label="迪托利希线">3S / 6R ・交涉</td>
 <td data-label="赛奥朵拉线">3S / 9R ・交涉</td>
@@ -1704,7 +1739,7 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#1f5fa8" title="洛蕾塔" data-name="洛蕾塔"><img class="av-a" src="assets/avatar/55.jpg" alt="洛蕾塔" loading="lazy"></span><strong>洛蕾塔</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="洛蕾塔" data-name="洛蕾塔"><img class="av-a" src="assets/avatar/55.jpg" alt="洛蕾塔" loading="lazy"></span><strong>洛蕾塔</strong></td>
 <td data-label="派系">利纳利亚朝露</td>
 <td data-label="凯伊线">3S / 7R ・铁剑×3</td>
 <td data-label="迪托利希线">3S / 9R ・铁剑×3</td>
@@ -1712,7 +1747,7 @@ footer.foot{
 <td data-label="蕾达线">3S / 5R ・铁剑×3</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#b8123c" title="迪雅各" data-name="迪雅各"><img class="av-a" src="assets/avatar/27.jpg" alt="迪雅各" loading="lazy"></span><strong>迪雅各</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#1f5fa8" title="迪雅各" data-name="迪雅各"><img class="av-a" src="assets/avatar/27.jpg" alt="迪雅各" loading="lazy"></span><strong>迪雅各</strong></td>
 <td data-label="派系">利纳利亚朝露</td>
 <td data-label="凯伊线">3S / 10R ・奥尔赫尔外传</td>
 <td data-label="迪托利希线">3S / 9R ・奥尔赫尔外传</td>
@@ -1720,7 +1755,7 @@ footer.foot{
 <td data-label="蕾达线">3S / 8R ・奥尔赫尔外传</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#0e8f9e" title="妮涅" data-name="妮涅"><img class="av-a" src="assets/avatar/28.jpg" alt="妮涅" loading="lazy"></span><strong>妮涅</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#0f8a63" title="妮涅" data-name="妮涅"><img class="av-a" src="assets/avatar/28.jpg" alt="妮涅" loading="lazy"></span><strong>妮涅</strong></td>
 <td data-label="派系">利纳利亚朝露</td>
 <td data-label="凯伊线">3S / 6R ・交涉</td>
 <td data-label="迪托利希线">3S / 8R ・交涉</td>
@@ -1728,7 +1763,7 @@ footer.foot{
 <td data-label="蕾达线">3S / 6R ・交涉</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="西提司" data-name="西提司"><img class="av-a" src="assets/avatar/54.jpg" alt="西提司" loading="lazy"></span><strong>西提司</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#0e8f9e" title="西提司" data-name="西提司"><img class="av-a" src="assets/avatar/54.jpg" alt="西提司" loading="lazy"></span><strong>西提司</strong></td>
 <td data-label="派系">利纳利亚朝露</td>
 <td data-label="凯伊线">3S / 6R ・追加条件①</td>
 <td data-label="迪托利希线">—</td>
@@ -1736,7 +1771,7 @@ footer.foot{
 <td data-label="蕾达线">3S / 10R ・追加条件①</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#0f8a63" title="乌修拉" data-name="乌修拉"><img class="av-a" src="assets/avatar/24.jpg" alt="乌修拉" loading="lazy"></span><strong>乌修拉</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#c2790a" title="乌修拉" data-name="乌修拉"><img class="av-a" src="assets/avatar/24.jpg" alt="乌修拉" loading="lazy"></span><strong>乌修拉</strong></td>
 <td data-label="派系">月之谎</td>
 <td data-label="凯伊线">3S / 10R ・塔利穆恩外传 ・问答</td>
 <td data-label="迪托利希线">3S / 7R ・塔利穆恩外传 ・问答</td>
@@ -1744,7 +1779,7 @@ footer.foot{
 <td data-label="蕾达线">—</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#5b6472" title="鲁鲁迪娅" data-name="鲁鲁迪娅"><img class="av-a" src="assets/avatar/52.jpg" alt="鲁鲁迪娅" loading="lazy"></span><strong>鲁鲁迪娅</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#2f6f9f" title="鲁鲁迪娅" data-name="鲁鲁迪娅"><img class="av-a" src="assets/avatar/52.jpg" alt="鲁鲁迪娅" loading="lazy"></span><strong>鲁鲁迪娅</strong></td>
 <td data-label="派系">月之谎</td>
 <td data-label="凯伊线">3S / 9R ・「鲁鲁迪娅的请求」</td>
 <td data-label="迪托利希线">3S / 9R ・「鲁鲁迪娅的请求」</td>
@@ -1752,7 +1787,7 @@ footer.foot{
 <td data-label="蕾达线">3S / 7R ・「鲁鲁迪娅的请求」</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#c2790a" title="希蒙" data-name="希蒙"><img class="av-a" src="assets/avatar/25.jpg" alt="希蒙" loading="lazy"></span><strong>希蒙</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#c2185b" title="希蒙" data-name="希蒙"><img class="av-a" src="assets/avatar/25.jpg" alt="希蒙" loading="lazy"></span><strong>希蒙</strong></td>
 <td data-label="派系">月之谎</td>
 <td data-label="凯伊线">3S / 8R ・掷硬币</td>
 <td data-label="迪托利希线">3S / 7R ・掷硬币</td>
@@ -1760,7 +1795,7 @@ footer.foot{
 <td data-label="蕾达线">3S / 6R ・掷硬币</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#c2185b" title="菲亚娜" data-name="菲亚娜"><img class="av-a" src="assets/avatar/53.jpg" alt="菲亚娜" loading="lazy"></span><strong>菲亚娜</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#5b6472" title="菲亚娜" data-name="菲亚娜"><img class="av-a" src="assets/avatar/53.jpg" alt="菲亚娜" loading="lazy"></span><strong>菲亚娜</strong></td>
 <td data-label="派系">月之谎</td>
 <td data-label="凯伊线">3S / 8R ・3000G</td>
 <td data-label="迪托利希线">3S / 7R ・3000G</td>
@@ -1768,7 +1803,7 @@ footer.foot{
 <td data-label="蕾达线">3S / 5R ・3000G</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#2f6f9f" title="莎兰" data-name="莎兰"><img class="av-a" src="assets/avatar/30.jpg" alt="莎兰" loading="lazy"></span><strong>莎兰</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#8a5a1e" title="莎兰" data-name="莎兰"><img class="av-a" src="assets/avatar/30.jpg" alt="莎兰" loading="lazy"></span><strong>莎兰</strong></td>
 <td data-label="派系">白鸦新娘团</td>
 <td data-label="凯伊线">—</td>
 <td data-label="迪托利希线">3S / 10R ・阿纳托莉娅外传 ・问答</td>
@@ -1776,7 +1811,7 @@ footer.foot{
 <td data-label="蕾达线">3S / 8R ・阿纳托莉娅外传 ・问答</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#8a5a1e" title="哪吒" data-name="哪吒"><img class="av-a" src="assets/avatar/31.jpg" alt="哪吒" loading="lazy"></span><strong>哪吒</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#b8123c" title="哪吒" data-name="哪吒"><img class="av-a" src="assets/avatar/31.jpg" alt="哪吒" loading="lazy"></span><strong>哪吒</strong></td>
 <td data-label="派系">白鸦新娘团</td>
 <td data-label="凯伊线">3S / 6R ・交涉</td>
 <td data-label="迪托利希线">3S / 10R ・交涉</td>
@@ -1784,7 +1819,7 @@ footer.foot{
 <td data-label="蕾达线">3S / 9R ・交涉</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#1f5fa8" title="大刀" data-name="大刀"><img class="av-a" src="assets/avatar/56.jpg" alt="大刀" loading="lazy"></span><strong>大刀</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="大刀" data-name="大刀"><img class="av-a" src="assets/avatar/56.jpg" alt="大刀" loading="lazy"></span><strong>大刀</strong></td>
 <td data-label="派系">白鸦新娘团</td>
 <td data-label="凯伊线">3S / 7R ・交涉</td>
 <td data-label="迪托利希线">3S / 10R ・交涉</td>
@@ -1792,7 +1827,7 @@ footer.foot{
 <td data-label="蕾达线">2S / 5R ・交涉</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#b8123c" title="哈尔温" data-name="哈尔温"><img class="av-a" src="assets/avatar/57.jpg" alt="哈尔温" loading="lazy"></span><strong>哈尔温</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#1f5fa8" title="哈尔温" data-name="哈尔温"><img class="av-a" src="assets/avatar/57.jpg" alt="哈尔温" loading="lazy"></span><strong>哈尔温</strong></td>
 <td data-label="派系">白鸦新娘团</td>
 <td data-label="凯伊线">3S / 5R ・椰枣×10</td>
 <td data-label="迪托利希线">3S / 9R ・椰枣×10</td>
@@ -1814,77 +1849,77 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#0f8a63" title="古扎岚" data-name="古扎岚"><img class="av-a" src="assets/avatar/32.jpg" alt="古扎岚" loading="lazy"></span><strong>古扎岚</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#c2790a" title="古扎岚" data-name="古扎岚"><img class="av-a" src="assets/avatar/32.jpg" alt="古扎岚" loading="lazy"></span><strong>古扎岚</strong></td>
 <td data-label="凯伊线">挖角教学加入</td>
 <td data-label="迪托利希线">3S / 8R</td>
 <td data-label="赛奥朵拉线">3S / 8R</td>
 <td data-label="蕾达线">1S / 3R</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#b8123c" title="杨界" data-name="杨界"><img class="av-a" src="assets/avatar/45.jpg" alt="杨界" loading="lazy"></span><strong>杨界</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#0e8f9e" title="杨界" data-name="杨界"><img class="av-a" src="assets/avatar/45.jpg" alt="杨界" loading="lazy"></span><strong>杨界</strong></td>
 <td data-label="凯伊线">2S / 3R ・问答</td>
 <td data-label="迪托利希线">挖角教学加入</td>
 <td data-label="赛奥朵拉线">3S / 9R ・问答</td>
 <td data-label="蕾达线">3S / 8R ・问答</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#0f8a63" title="伊欧" data-name="伊欧"><img class="av-a" src="assets/avatar/33.jpg" alt="伊欧" loading="lazy"></span><strong>伊欧</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#5b6472" title="伊欧" data-name="伊欧"><img class="av-a" src="assets/avatar/33.jpg" alt="伊欧" loading="lazy"></span><strong>伊欧</strong></td>
 <td data-label="凯伊线">3S / 10R ・4000G</td>
 <td data-label="迪托利希线">2S / 3R ・800G</td>
 <td data-label="赛奥朵拉线">3S / 10R ・4000G</td>
 <td data-label="蕾达线">1S / 6R ・1500G</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#c2790a" title="佩佩" data-name="佩佩"><img class="av-a" src="assets/avatar/61.jpg" alt="佩佩" loading="lazy"></span><strong>佩佩</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#2f6f9f" title="佩佩" data-name="佩佩"><img class="av-a" src="assets/avatar/61.jpg" alt="佩佩" loading="lazy"></span><strong>佩佩</strong></td>
 <td data-label="凯伊线">1S / 9R ・贝特朗外传</td>
 <td data-label="迪托利希线">3S / 8R ・贝特朗外传</td>
 <td data-label="赛奥朵拉线">2S / 7R ・贝特朗外传</td>
 <td data-label="蕾达线">—</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="诺克裘拉" data-name="诺克裘拉"><img class="av-a" src="assets/avatar/44.jpg" alt="诺克裘拉" loading="lazy"></span><strong>诺克裘拉</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#c2790a" title="诺克裘拉" data-name="诺克裘拉"><img class="av-a" src="assets/avatar/44.jpg" alt="诺克裘拉" loading="lazy"></span><strong>诺克裘拉</strong></td>
 <td data-label="凯伊线">1S / 4R</td>
 <td data-label="迪托利希线">1S / 6R</td>
 <td data-label="赛奥朵拉线">1S / 3R</td>
 <td data-label="蕾达线">3S / 8R</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#1f5fa8" title="索绯雅" data-name="索绯雅"><img class="av-a" src="assets/avatar/46.jpg" alt="索绯雅" loading="lazy"></span><strong>索绯雅</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#0f8a63" title="索绯雅" data-name="索绯雅"><img class="av-a" src="assets/avatar/46.jpg" alt="索绯雅" loading="lazy"></span><strong>索绯雅</strong></td>
 <td data-label="凯伊线">3S / 9R</td>
 <td data-label="迪托利希线">3S / 9R</td>
 <td data-label="赛奥朵拉线">挖角教学加入</td>
 <td data-label="蕾达线">3S / 7R</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#8a5a1e" title="卡塔妮雅" data-name="卡塔妮雅"><img class="av-a" src="assets/avatar/34.jpg" alt="卡塔妮雅" loading="lazy"></span><strong>卡塔妮雅</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="卡塔妮雅" data-name="卡塔妮雅"><img class="av-a" src="assets/avatar/34.jpg" alt="卡塔妮雅" loading="lazy"></span><strong>卡塔妮雅</strong></td>
 <td data-label="凯伊线">3S / 10R</td>
 <td data-label="迪托利希线">1S / 8R</td>
 <td data-label="赛奥朵拉线">3S / 7R</td>
 <td data-label="蕾达线">挖角教学加入</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#0f8a63" title="努蒂奴" data-name="努蒂奴"><img class="av-a" src="assets/avatar/35.jpg" alt="努蒂奴" loading="lazy"></span><strong>努蒂奴</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#5b6472" title="努蒂奴" data-name="努蒂奴"><img class="av-a" src="assets/avatar/35.jpg" alt="努蒂奴" loading="lazy"></span><strong>努蒂奴</strong></td>
 <td data-label="凯伊线">1S / 6R ・青铜斧×2</td>
 <td data-label="迪托利希线">2S / 5R ・青铜斧×2</td>
 <td data-label="赛奥朵拉线">3S / 5R ・青铜斧×2</td>
 <td data-label="蕾达线">3S / 10R ・青铜斧×2</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#c2185b" title="札可捏" data-name="札可捏"><img class="av-a" src="assets/avatar/49.jpg" alt="札可捏" loading="lazy"></span><strong>札可捏</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#8a5a1e" title="札可捏" data-name="札可捏"><img class="av-a" src="assets/avatar/49.jpg" alt="札可捏" loading="lazy"></span><strong>札可捏</strong></td>
 <td data-label="凯伊线">3S / 8R ・砍价至 10G</td>
 <td data-label="迪托利希线">3S / 7R ・砍价至 10G</td>
 <td data-label="赛奥朵拉线">1S / 4R ・砍价至 10G</td>
 <td data-label="蕾达线">2S / 5R ・砍价至 10G</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#c2790a" title="马吉迪" data-name="马吉迪"><img class="av-a" src="assets/avatar/48.jpg" alt="马吉迪" loading="lazy"></span><strong>马吉迪</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#2f6f9f" title="马吉迪" data-name="马吉迪"><img class="av-a" src="assets/avatar/48.jpg" alt="马吉迪" loading="lazy"></span><strong>马吉迪</strong></td>
 <td data-label="凯伊线">2S / 5R ・问答</td>
 <td data-label="迪托利希线">3S / 8R ・问答</td>
 <td data-label="赛奥朵拉线">3S / 8R ・问答</td>
 <td data-label="蕾达线">3S / 9R ・问答</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#2f6f9f" title="班迪兹" data-name="班迪兹"><img class="av-a" src="assets/avatar/36.jpg" alt="班迪兹" loading="lazy"></span><strong>班迪兹</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#1f5fa8" title="班迪兹" data-name="班迪兹"><img class="av-a" src="assets/avatar/36.jpg" alt="班迪兹" loading="lazy"></span><strong>班迪兹</strong></td>
 <td data-label="凯伊线">3S / 9R</td>
 <td data-label="迪托利希线">2S / 7R</td>
 <td data-label="赛奥朵拉线">1S / 8R</td>
@@ -1898,28 +1933,28 @@ footer.foot{
 <td data-label="蕾达线">1S / 7R ・3000G</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#c2185b" title="贾斯敏" data-name="贾斯敏"><img class="av-a" src="assets/avatar/58.jpg" alt="贾斯敏" loading="lazy"></span><strong>贾斯敏</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#8a5a1e" title="贾斯敏" data-name="贾斯敏"><img class="av-a" src="assets/avatar/58.jpg" alt="贾斯敏" loading="lazy"></span><strong>贾斯敏</strong></td>
 <td data-label="凯伊线">1S / 8R ・2000G</td>
 <td data-label="迪托利希线">3S / 9R ・5000G</td>
 <td data-label="赛奥朵拉线">3S / 8R ・5000G</td>
 <td data-label="蕾达线">2S / 4R ・500G</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#5b6472" title="亚历山德拉" data-name="亚历山德拉"><img class="av-a" src="assets/avatar/37.jpg" alt="亚历山德拉" loading="lazy"></span><strong>亚历山德拉</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#b8123c" title="亚历山德拉" data-name="亚历山德拉"><img class="av-a" src="assets/avatar/37.jpg" alt="亚历山德拉" loading="lazy"></span><strong>亚历山德拉</strong></td>
 <td data-label="凯伊线">2S / 7R</td>
 <td data-label="迪托利希线">3S / 8R</td>
 <td data-label="赛奥朵拉线">1S / 6R</td>
 <td data-label="蕾达线">3S / 10R</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#0e8f9e" title="努佐" data-name="努佐"><img class="av-a" src="assets/avatar/47.jpg" alt="努佐" loading="lazy"></span><strong>努佐</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#c2185b" title="努佐" data-name="努佐"><img class="av-a" src="assets/avatar/47.jpg" alt="努佐" loading="lazy"></span><strong>努佐</strong></td>
 <td data-label="凯伊线">2S / 6R ・铁弓×3</td>
 <td data-label="迪托利希线">1S / 9R ・铁弓×2</td>
 <td data-label="赛奥朵拉线">1S / 6R ・铁弓×3</td>
 <td data-label="蕾达线">3S / 9R ・铁弓×3</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="基罗伊卡" data-name="基罗伊卡"><img class="av-a" src="assets/avatar/39.jpg" alt="基罗伊卡" loading="lazy"></span><strong>基罗伊卡</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#c2790a" title="基罗伊卡" data-name="基罗伊卡"><img class="av-a" src="assets/avatar/39.jpg" alt="基罗伊卡" loading="lazy"></span><strong>基罗伊卡</strong></td>
 <td data-label="凯伊线">3S / 8R ・圣水×3</td>
 <td data-label="迪托利希线">1S / 4R ・圣水×3</td>
 <td data-label="赛奥朵拉线">3S / 10R ・圣水×3</td>
@@ -1928,7 +1963,7 @@ footer.foot{
 </tbody>
 </table></div>
 <blockquote>
-<p><strong>购买类附加条件的花费</strong>（部分角色需付款）：但丁 8000G、<span class="avatar sm" style="--ac:#1f5fa8" title="蒂亚拉" data-name="蒂亚拉"><img class="av-a" src="assets/avatar/6.jpg" alt="蒂亚拉" loading="lazy"></span>蒂亚拉 3000G、<span class="avatar sm" style="--ac:#5b6472" title="米迦艾拉" data-name="米迦艾拉"><img class="av-a" src="assets/avatar/11.jpg" alt="米迦艾拉" loading="lazy"></span>米迦艾拉 3000G、<span class="avatar sm" style="--ac:#c2185b" title="菲亚娜" data-name="菲亚娜"><img class="av-a" src="assets/avatar/53.jpg" alt="菲亚娜" loading="lazy"></span>菲亚娜 3000G、<span class="avatar sm" style="--ac:#b8123c" title="莉利安" data-name="莉利安"><img class="av-a" src="assets/avatar/14.jpg" alt="莉利安" loading="lazy"></span>莉利安 5000G、伊尼奥尼 3000–6000G、<span class="avatar sm" style="--ac:#c2185b" title="贾斯敏" data-name="贾斯敏"><img class="av-a" src="assets/avatar/58.jpg" alt="贾斯敏" loading="lazy"></span>贾斯敏 500–5000G、<span class="avatar sm" style="--ac:#0f8a63" title="伊欧" data-name="伊欧"><img class="av-a" src="assets/avatar/33.jpg" alt="伊欧" loading="lazy"></span>伊欧 800–4000G、<span class="avatar sm" style="--ac:#c2185b" title="札可捏" data-name="札可捏"><img class="av-a" src="assets/avatar/49.jpg" alt="札可捏" loading="lazy"></span>札可捏可砍价至 10G。</p>
+<p><strong>购买类附加条件的花费</strong>（部分角色需付款）：但丁 8000G、<span class="avatar sm" style="--ac:#7a4bbf" title="蒂亚拉" data-name="蒂亚拉"><img class="av-a" src="assets/avatar/6.jpg" alt="蒂亚拉" loading="lazy"></span>蒂亚拉 3000G、<span class="avatar sm" style="--ac:#2f6f9f" title="米迦艾拉" data-name="米迦艾拉"><img class="av-a" src="assets/avatar/11.jpg" alt="米迦艾拉" loading="lazy"></span>米迦艾拉 3000G、<span class="avatar sm" style="--ac:#5b6472" title="菲亚娜" data-name="菲亚娜"><img class="av-a" src="assets/avatar/53.jpg" alt="菲亚娜" loading="lazy"></span>菲亚娜 3000G、<span class="avatar sm" style="--ac:#1f5fa8" title="莉利安" data-name="莉利安"><img class="av-a" src="assets/avatar/14.jpg" alt="莉利安" loading="lazy"></span>莉利安 5000G、伊尼奥尼 3000–6000G、<span class="avatar sm" style="--ac:#8a5a1e" title="贾斯敏" data-name="贾斯敏"><img class="av-a" src="assets/avatar/58.jpg" alt="贾斯敏" loading="lazy"></span>贾斯敏 500–5000G、<span class="avatar sm" style="--ac:#5b6472" title="伊欧" data-name="伊欧"><img class="av-a" src="assets/avatar/33.jpg" alt="伊欧" loading="lazy"></span>伊欧 800–4000G、<span class="avatar sm" style="--ac:#8a5a1e" title="札可捏" data-name="札可捏"><img class="av-a" src="assets/avatar/49.jpg" alt="札可捏" loading="lazy"></span>札可捏可砍价至 10G。</p>
 <p><strong>素材类附加条件</strong>：铁剑×3、铁枪×5、铁弓×2–3、青铜斧×2、圣水×3、椰枣×10、赠礼盒。</p>
 </blockquote>
 <p><strong>进阶技巧</strong>：<strong>在 Part 1 越晚招募的角色，入队时的等级与装备越好。</strong> 如果主力已定，可考虑把一些招募留到后面。Part 2 有专门帮助低等级角色追赶的机制。</p>
@@ -1937,7 +1972,7 @@ footer.foot{
 <p>⚠️ <strong>跨路线注意</strong>：属于其他主角路线的角色，在你切换故事线时<strong>可能离开队伍</strong>——趁人在时把支援链刷完。</p>
 </blockquote>
 <h3 id="5-3-2-外传开放窗口">5.3.2 外传开放窗口</h3>
-<p>同一张社区表的「全外传」页列出了 9 条已填写的外传。角色名改成了本手册已有的写法（贝特朗、塔利穆恩、<span class="avatar sm" style="--ac:#b8123c" title="阿纳托莉娅" data-name="阿纳托莉娅"><img class="av-a" src="assets/avatar/29.jpg" alt="阿纳托莉娅" loading="lazy"></span>阿纳托莉娅、<span class="avatar sm" style="--ac:#c2790a" title="奥尔赫尔" data-name="奥尔赫尔"><img class="av-a" src="assets/avatar/26.jpg" alt="奥尔赫尔" loading="lazy"></span>奥尔赫尔）。〇 是该线能打，× 是不能打。报酬栏空白的不补。<span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span>迪托利希篇的贝特朗外传，原表只写了 9 月 17 日，没有写结束日。</p>
+<p>同一张社区表的「全外传」页列出了 9 条已填写的外传。角色名改成了本手册已有的写法（<span class="avatar sm" style="--ac:#0e8f9e" title="贝特朗" data-name="贝特朗" aria-hidden="true">贝</span>贝特朗、<span class="avatar sm" style="--ac:#1f5fa8" title="塔利穆恩" data-name="塔利穆恩" aria-hidden="true">塔</span>塔利穆恩、<span class="avatar sm" style="--ac:#b8123c" title="阿纳托莉娅" data-name="阿纳托莉娅"><img class="av-a" src="assets/avatar/29.jpg" alt="阿纳托莉娅" loading="lazy"></span>阿纳托莉娅、<span class="avatar sm" style="--ac:#c2790a" title="奥尔赫尔" data-name="奥尔赫尔"><img class="av-a" src="assets/avatar/26.jpg" alt="奥尔赫尔" loading="lazy"></span>奥尔赫尔）。〇 是该线能打，× 是不能打。报酬栏空白的不补。<span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span>迪托利希篇的贝特朗外传，原表只写了 9 月 17 日，没有写结束日。</p>
 <div class="table-wrap scrollable cardmode"><table class="c7">
 <thead>
 <tr>
@@ -1952,7 +1987,7 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="外传">蕾达</td>
+<td data-label="外传"><span class="avatar face" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span>蕾达</td>
 <td data-label="凯伊">×</td>
 <td data-label="迪托利希">〇</td>
 <td data-label="赛奥朵拉">〇</td>
@@ -1961,7 +1996,7 @@ footer.foot{
 <td data-label="报酬">—</td>
 </tr>
 <tr>
-<td data-label="外传">赛奥朵拉</td>
+<td data-label="外传"><span class="avatar face" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span>赛奥朵拉</td>
 <td data-label="凯伊">×</td>
 <td data-label="迪托利希">〇</td>
 <td data-label="赛奥朵拉">×</td>
@@ -1970,7 +2005,7 @@ footer.foot{
 <td data-label="报酬">—</td>
 </tr>
 <tr>
-<td data-label="外传">贝特朗</td>
+<td data-label="外传"><span class="avatar face" style="--ac:#0e8f9e" title="贝特朗" data-name="贝特朗" aria-hidden="true">贝</span>贝特朗</td>
 <td data-label="凯伊">〇</td>
 <td data-label="迪托利希">〇</td>
 <td data-label="赛奥朵拉">〇</td>
@@ -1979,7 +2014,7 @@ footer.foot{
 <td data-label="报酬">巨大金块×1、金币 20000、名声 150</td>
 </tr>
 <tr>
-<td data-label="外传">塔利穆恩</td>
+<td data-label="外传"><span class="avatar face" style="--ac:#1f5fa8" title="塔利穆恩" data-name="塔利穆恩" aria-hidden="true">塔</span>塔利穆恩</td>
 <td data-label="凯伊">〇</td>
 <td data-label="迪托利希">〇</td>
 <td data-label="赛奥朵拉">〇</td>
@@ -1988,7 +2023,7 @@ footer.foot{
 <td data-label="报酬">净化剑×1、金币 20000、名声 150</td>
 </tr>
 <tr>
-<td data-label="外传">安娜</td>
+<td data-label="外传"><span class="avatar face" style="--ac:#0f8a63" title="安娜" data-name="安娜" aria-hidden="true">安</span>安娜</td>
 <td data-label="凯伊">〇</td>
 <td data-label="迪托利希">〇</td>
 <td data-label="赛奥朵拉">〇</td>
@@ -1997,7 +2032,7 @@ footer.foot{
 <td data-label="报酬">奥利哈刚×1、金币 20000、名声 150</td>
 </tr>
 <tr>
-<td data-label="外传">阿纳托莉娅</td>
+<td data-label="外传"><span class="avatar face" style="--ac:#b8123c" title="阿纳托莉娅" data-name="阿纳托莉娅"><img class="av-a" src="assets/avatar/29.jpg" alt="阿纳托莉娅" loading="lazy"></span>阿纳托莉娅</td>
 <td data-label="凯伊">×</td>
 <td data-label="迪托利希">〇</td>
 <td data-label="赛奥朵拉">×</td>
@@ -2006,7 +2041,7 @@ footer.foot{
 <td data-label="报酬">—</td>
 </tr>
 <tr>
-<td data-label="外传">凯伊</td>
+<td data-label="外传"><span class="avatar face" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span>凯伊</td>
 <td data-label="凯伊">×</td>
 <td data-label="迪托利希">〇</td>
 <td data-label="赛奥朵拉">〇</td>
@@ -2015,7 +2050,7 @@ footer.foot{
 <td data-label="报酬">—</td>
 </tr>
 <tr>
-<td data-label="外传">迪托利希</td>
+<td data-label="外传"><span class="avatar face" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span>迪托利希</td>
 <td data-label="凯伊">×</td>
 <td data-label="迪托利希">×</td>
 <td data-label="赛奥朵拉">〇</td>
@@ -2024,7 +2059,7 @@ footer.foot{
 <td data-label="报酬">—</td>
 </tr>
 <tr>
-<td data-label="外传">奥尔赫尔</td>
+<td data-label="外传"><span class="avatar face" style="--ac:#c2790a" title="奥尔赫尔" data-name="奥尔赫尔"><img class="av-a" src="assets/avatar/26.jpg" alt="奥尔赫尔" loading="lazy"></span>奥尔赫尔</td>
 <td data-label="凯伊">〇</td>
 <td data-label="迪托利希">〇</td>
 <td data-label="赛奥朵拉">〇</td>
@@ -2121,9 +2156,9 @@ footer.foot{
 <p>⚠️ <strong>重要前提</strong>：请谨慎看待任何「最强角色排名」。英文站明确指出：<strong>发售第二天给出的 Tier List 只是个人档样本，不是数据结论</strong>。原因有三：① 成长率随机，同一角色在不同存档差异巨大；② 职业系统自由，角色上限取决于你把他练成什么；③ 支援与角色数据跨路线合并，强度还取决于你练过几条路线。</p>
 </blockquote>
 <h3 id="万用结论-五位主角必强">万用结论：五位主角必强</h3>
-<p><strong><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span>凯伊、迪托利希、<span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span>赛奥朵拉、<span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span>蕾达、<span class="avatar sm is-dual" style="--ac:#c2790a" title="伊修玛尔" data-name="伊修玛尔"><img class="av-a" src="assets/avatar/hero_m.jpg" alt="伊修玛尔" loading="lazy"><img class="av-b" src="assets/avatar/hero_f.jpg" alt="伊修玛尔（女）" loading="lazy"></span>伊修玛尔</strong>——这五人<strong>强制在队、始终可用、且是仅有的 Blaze Arts 持有者</strong>，稳定性最高。这一点三语站无异议。</p>
+<p><strong><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span>凯伊、<span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span>迪托利希、<span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span>赛奥朵拉、<span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span>蕾达、<span class="avatar sm is-dual" style="--ac:#c2790a" title="伊修玛尔" data-name="伊修玛尔"><img class="av-a" src="assets/avatar/hero_m.jpg" alt="伊修玛尔" loading="lazy"><img class="av-b" src="assets/avatar/hero_f.jpg" alt="伊修玛尔（女）" loading="lazy"></span>伊修玛尔</strong>——这五人<strong>强制在队、始终可用、且是仅有的 Blaze Arts 持有者</strong>，稳定性最高。这一点三语站无异议。</p>
 <h3 id="日文站-AlGest-Tier-暂定版-按成长率总和排序">日文站 AlGest Tier（暂定版，按成长率总和排序）</h3>
-<p><strong>S 级</strong>（主角团 + 奥尔赫尔）：</p>
+<p><strong>S 级</strong>（主角团 + <span class="avatar sm" style="--ac:#c2790a" title="奥尔赫尔" data-name="奥尔赫尔"><img class="av-a" src="assets/avatar/26.jpg" alt="奥尔赫尔" loading="lazy"></span>奥尔赫尔）：</p>
 <div class="table-wrap scrollable cardmode"><table class="c2">
 <thead>
 <tr>
@@ -2172,23 +2207,23 @@ footer.foot{
 <td data-label="评价要点">魔力与速度成长佳，<strong>魔法输出最强格</strong>；兼具范围攻击；<strong>爆掉后最大 HP 不下降</strong></td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#8a5a1e" title="卡塔妮雅" data-name="卡塔妮雅"><img class="av-a" src="assets/avatar/34.jpg" alt="卡塔妮雅" loading="lazy"></span><strong>卡塔妮雅</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="卡塔妮雅" data-name="卡塔妮雅"><img class="av-a" src="assets/avatar/34.jpg" alt="卡塔妮雅" loading="lazy"></span><strong>卡塔妮雅</strong></td>
 <td data-label="评价要点">速度、技、幸运高，高速输出；个人技能带来高命中；<strong>飞行特性高，游击手顶级</strong></td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#1f5fa8" title="蒂亚拉" data-name="蒂亚拉"><img class="av-a" src="assets/avatar/6.jpg" alt="蒂亚拉" loading="lazy"></span><strong>蒂亚拉</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#7a4bbf" title="蒂亚拉" data-name="蒂亚拉"><img class="av-a" src="assets/avatar/6.jpg" alt="蒂亚拉" loading="lazy"></span><strong>蒂亚拉</strong></td>
 <td data-label="评价要点">白魔法技能 C 即习得「リブロー（远隔治疗）」；数值平凡但作治疗足够</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#c2185b" title="艾丝梅拉达" data-name="艾丝梅拉达"><img class="av-a" src="assets/avatar/10.jpg" alt="艾丝梅拉达" loading="lazy"></span><strong>艾丝梅拉达</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#5b6472" title="艾丝梅拉达" data-name="艾丝梅拉达"><img class="av-a" src="assets/avatar/10.jpg" alt="艾丝梅拉达" loading="lazy"></span><strong>艾丝梅拉达</strong></td>
 <td data-label="评价要点">HP、力、守备成长优秀；速度也能成长且有<strong>重量减轻</strong>，不易被追击；守备→重甲，速度→バーディンガー / ドラグーン</td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#0f8a63" title="古扎岚" data-name="古扎岚"><img class="av-a" src="assets/avatar/32.jpg" alt="古扎岚" loading="lazy"></span><strong>古扎岚</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#c2790a" title="古扎岚" data-name="古扎岚"><img class="av-a" src="assets/avatar/32.jpg" alt="古扎岚" loading="lazy"></span><strong>古扎岚</strong></td>
 <td data-label="评价要点">成长全面，近战物理合格；<strong>个人技能「気分屋」极强且可随升级强化</strong>；<strong>蕾达篇建议早期挖角</strong></td>
 </tr>
 <tr>
-<td data-label="角色"><span class="avatar face" style="--ac:#2f6f9f" title="歌利亚" data-name="歌利亚"><img class="av-a" src="assets/avatar/50.jpg" alt="歌利亚" loading="lazy"></span><strong>歌利亚</strong></td>
+<td data-label="角色"><span class="avatar face" style="--ac:#8a5a1e" title="歌利亚" data-name="歌利亚"><img class="av-a" src="assets/avatar/50.jpg" alt="歌利亚" loading="lazy"></span><strong>歌利亚</strong></td>
 <td data-label="评价要点">HP、力、守备成长优秀的坦克；可视作<strong>奥尔赫尔的下位互换</strong>，但<strong>奥尔赫尔在「过去篇」无法挖角</strong>，故实质上是该篇最优坦克</td>
 </tr>
 </tbody>
@@ -2288,8 +2323,8 @@ footer.foot{
 <p><strong>解读</strong>：迪托利希成长总和最高（技巧 60、魅力 60），是<strong>必杀型近战</strong>的理想底子。赛奥朵拉 HP 70 / 力 50 / 守备 40，是<strong>天然坦克</strong>。蕾达速度 65 全游戏最高，适合追击与支援走位。凯伊与主角数值最均衡。</p>
 </blockquote>
 <h2 id="5-8-血印">5.8 血印</h2>
-<p>同一张社区表列出了 10 枚已填写效果的血印。角色名改成了本手册已有的写法。波鲁波亚只出现在这张表里，招募表还没有这个名字。原表另外写了一列「对应芙朵拉纹章」，那是作者自己的对照，不是本作已核实的设定，这里不收。</p>
-<p>凯伊、奥尔赫尔各持两枚。这和 5.7 里「凯伊持 2 枚血印」对得上；迪托利希的「永远之天冠」会回复 HP，也和该节「血印效果可回 HP」对得上。</p>
+<p>同一张社区表列出了 10 枚已填写效果的血印。角色名改成了本手册已有的写法。<span class="avatar sm" style="--ac:#b8123c" title="波鲁波亚" data-name="波鲁波亚" aria-hidden="true">波</span>波鲁波亚只出现在这张表里，招募表还没有这个名字。原表另外写了一列「对应芙朵拉纹章」，那是作者自己的对照，不是本作已核实的设定，这里不收。</p>
+<p><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span>凯伊、<span class="avatar sm" style="--ac:#c2790a" title="奥尔赫尔" data-name="奥尔赫尔"><img class="av-a" src="assets/avatar/26.jpg" alt="奥尔赫尔" loading="lazy"></span>奥尔赫尔各持两枚。这和 5.7 里「凯伊持 2 枚血印」对得上；<span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span>迪托利希的「<img class="mark sm" src="assets/icon/crest/永远之天冠.png" alt="永远之天冠" title="永远之天冠" loading="lazy">永远之天冠」会回复 HP，也和该节「血印效果可回 HP」对得上。</p>
 <div class="table-wrap scrollable cardmode"><table class="c3">
 <thead>
 <tr>
@@ -2300,54 +2335,54 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="血印">预言者之冠</td>
+<td data-label="血印"><img class="mark" src="assets/icon/crest/预言者之冠.png" alt="预言者之冠" title="预言者之冠" loading="lazy">预言者之冠</td>
 <td data-label="效果">攻击时 5% 发动，命中 +100</td>
-<td data-label="持有者">伊修玛尔</td>
+<td data-label="持有者"><span class="holders"><span class="nm"><span class="avatar face is-dual" style="--ac:#c2790a" title="伊修玛尔" data-name="伊修玛尔"><img class="av-a" src="assets/avatar/hero_m.jpg" alt="伊修玛尔" loading="lazy"><img class="av-b" src="assets/avatar/hero_f.jpg" alt="伊修玛尔（女）" loading="lazy"></span>伊修玛尔</span></span></td>
 </tr>
 <tr>
-<td data-label="血印">使徒之天冠</td>
+<td data-label="血印"><img class="mark" src="assets/icon/crest/使徒之天冠.png" alt="使徒之天冠" title="使徒之天冠" loading="lazy">使徒之天冠</td>
 <td data-label="效果">攻击时 20% 发动，命中 +20</td>
-<td data-label="持有者">凯伊、奥尔赫尔</td>
+<td data-label="持有者"><span class="holders"><span class="nm"><span class="avatar face" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span>凯伊</span>、<span class="nm"><span class="avatar face" style="--ac:#c2790a" title="奥尔赫尔" data-name="奥尔赫尔"><img class="av-a" src="assets/avatar/26.jpg" alt="奥尔赫尔" loading="lazy"></span>奥尔赫尔</span></span></td>
 </tr>
 <tr>
-<td data-label="血印">永远之天冠</td>
+<td data-label="血印"><img class="mark" src="assets/icon/crest/永远之天冠.png" alt="永远之天冠" title="永远之天冠" loading="lazy">永远之天冠</td>
 <td data-label="效果">攻击时 10% 发动，中幅回复自己的 HP</td>
-<td data-label="持有者">迪托利希</td>
+<td data-label="持有者"><span class="holders"><span class="nm"><span class="avatar face" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span>迪托利希</span></span></td>
 </tr>
 <tr>
-<td data-label="血印">魂魄之天冠</td>
+<td data-label="血印"><img class="mark" src="assets/icon/crest/魂魄之天冠.png" alt="魂魄之天冠" title="魂魄之天冠" loading="lazy">魂魄之天冠</td>
 <td data-label="效果">攻击时 25% 发动，攻击力 +3</td>
-<td data-label="持有者">赛奥朵拉、凯伊、奥尔赫尔、塔利穆恩、波鲁波亚</td>
+<td data-label="持有者"><span class="holders"><span class="nm"><span class="avatar face" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span>赛奥朵拉</span>、<span class="nm"><span class="avatar face" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span>凯伊</span>、<span class="nm"><span class="avatar face" style="--ac:#c2790a" title="奥尔赫尔" data-name="奥尔赫尔"><img class="av-a" src="assets/avatar/26.jpg" alt="奥尔赫尔" loading="lazy"></span>奥尔赫尔</span>、<span class="nm"><span class="avatar face" style="--ac:#1f5fa8" title="塔利穆恩" data-name="塔利穆恩" aria-hidden="true">塔</span>塔利穆恩</span>、<span class="nm"><span class="avatar face" style="--ac:#b8123c" title="波鲁波亚" data-name="波鲁波亚" aria-hidden="true">波</span>波鲁波亚</span></span></td>
 </tr>
 <tr>
-<td data-label="血印">大地之天冠</td>
+<td data-label="血印"><img class="mark" src="assets/icon/crest/大地之天冠.png" alt="大地之天冠" title="大地之天冠" loading="lazy">大地之天冠</td>
 <td data-label="效果">攻击时 3% 发动，攻击力 +7</td>
-<td data-label="持有者">蕾达</td>
+<td data-label="持有者"><span class="holders"><span class="nm"><span class="avatar face" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span>蕾达</span></span></td>
 </tr>
 <tr>
-<td data-label="血印">勇气之天冠</td>
+<td data-label="血印"><img class="mark" src="assets/icon/crest/勇气之天冠.png" alt="勇气之天冠" title="勇气之天冠" loading="lazy">勇气之天冠</td>
 <td data-label="效果">攻击时 3% 发动，造成的伤害变为 1.5 倍</td>
-<td data-label="持有者">艾丝梅拉尔达</td>
+<td data-label="持有者"><span class="holders"><span class="nm"><span class="avatar face" style="--ac:#c2185b" title="艾丝梅拉尔达" data-name="艾丝梅拉尔达"><img class="av-a" src="assets/avatar/10.jpg" alt="艾丝梅拉尔达" loading="lazy"></span>艾丝梅拉尔达</span></span></td>
 </tr>
 <tr>
-<td data-label="血印">天秤之天冠</td>
+<td data-label="血印"><img class="mark" src="assets/icon/crest/天秤之天冠.png" alt="天秤之天冠" title="天秤之天冠" loading="lazy">天秤之天冠</td>
 <td data-label="效果">攻击时 3% 发动，不会受到反击</td>
-<td data-label="持有者">西提司</td>
+<td data-label="持有者"><span class="holders"><span class="nm"><span class="avatar face" style="--ac:#0e8f9e" title="西提司" data-name="西提司"><img class="av-a" src="assets/avatar/54.jpg" alt="西提司" loading="lazy"></span>西提司</span></span></td>
 </tr>
 <tr>
-<td data-label="血印">孤高之天冠</td>
+<td data-label="血印"><img class="mark" src="assets/icon/crest/孤高之天冠.png" alt="孤高之天冠" title="孤高之天冠" loading="lazy">孤高之天冠</td>
 <td data-label="效果">攻击时 10% 发动，命中 +30</td>
-<td data-label="持有者">妮涅</td>
+<td data-label="持有者"><span class="holders"><span class="nm"><span class="avatar face" style="--ac:#0f8a63" title="妮涅" data-name="妮涅"><img class="av-a" src="assets/avatar/28.jpg" alt="妮涅" loading="lazy"></span>妮涅</span></span></td>
 </tr>
 <tr>
-<td data-label="血印">束缚之天冠</td>
+<td data-label="血印"><img class="mark" src="assets/icon/crest/束缚之天冠.png" alt="束缚之天冠" title="束缚之天冠" loading="lazy">束缚之天冠</td>
 <td data-label="效果">攻击时 5% 发动，造成的伤害变为 1.2 倍</td>
-<td data-label="持有者">乌修拉</td>
+<td data-label="持有者"><span class="holders"><span class="nm"><span class="avatar face" style="--ac:#c2790a" title="乌修拉" data-name="乌修拉"><img class="av-a" src="assets/avatar/24.jpg" alt="乌修拉" loading="lazy"></span>乌修拉</span></span></td>
 </tr>
 <tr>
-<td data-label="血印">再生之天冠</td>
+<td data-label="血印"><img class="mark" src="assets/icon/crest/再生之天冠.png" alt="再生之天冠" title="再生之天冠" loading="lazy">再生之天冠</td>
 <td data-label="效果">攻击时 20% 发动，小幅回复自己的 HP</td>
-<td data-label="持有者">菲亚娜</td>
+<td data-label="持有者"><span class="holders"><span class="nm"><span class="avatar face" style="--ac:#5b6472" title="菲亚娜" data-name="菲亚娜"><img class="av-a" src="assets/avatar/53.jpg" alt="菲亚娜" loading="lazy"></span>菲亚娜</span></span></td>
 </tr>
 </tbody>
 </table></div>

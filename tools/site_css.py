@@ -26,7 +26,8 @@ body{
   overflow-x:hidden; max-width:100vw;
 }
 .card,.hero,.sidebar,.topbar{overflow-wrap:anywhere}
-h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
+h1,h2,h3,h4,p,li,td,th{overflow-wrap:break-word; word-break:normal}
+h1,h2,h3,h4{font-weight:700}
 
 /* ============ 顶栏 ============ */
 .topbar{
@@ -176,7 +177,7 @@ h2{
   border-radius:0 10px 10px 0; line-height:1.42; color:#151a21;
   scroll-margin-top:calc(var(--topbar-h) + 18px);
 }
-h3{font-size:16.8px; margin:30px 0 12px; color:#1c222b;
+h3{font-size:17px; margin:30px 0 12px; color:#1c222b;
    padding-bottom:7px; border-bottom:1px dashed var(--line);
    scroll-margin-top:calc(var(--topbar-h) + 18px)}
 /* h2 右侧的小注（如「自动采集 · 逐日留档」） */
@@ -190,8 +191,13 @@ h3::before{
   content:""; display:inline-block; width:7px; height:7px; margin-right:8px;
   border-radius:2px; background:var(--cur); vertical-align:1.5px;
 }
-h4{font-size:15.4px; margin:20px 0 8px; color:var(--cur);
+h4{font-size:15.5px; margin:26px 0 10px; color:var(--cur); line-height:1.45;
    scroll-margin-top:calc(var(--topbar-h) + 18px)}
+h4::before{
+  content:""; display:inline-block; width:6px; height:6px; margin-right:8px;
+  border-radius:50%; background:var(--cur); vertical-align:2px;
+}
+p,li{font-size:15.5px}
 p{margin:11px 0}
 a{color:var(--blue); text-decoration:none;
   border-bottom:1px solid rgba(31,95,168,.26); word-break:break-word}
@@ -204,14 +210,16 @@ hr{border:0; border-top:1px solid var(--line); margin:38px 0}
 blockquote{
   margin:18px 0; padding:15px 20px; background:var(--cur-soft);
   border-left:4px solid var(--cur); border-radius:0 10px 10px 0; color:var(--ink2);
+  font-size:15.5px;
 }
 blockquote p{margin:6px 0}
 blockquote strong{color:var(--cur)}
 
 /* ============ 表格：容器查询驱动 ============ */
-table{width:100%; border-collapse:collapse; font-size:13.8px}
+table{width:100%; border-collapse:collapse; font-size:14.5px}
 th{
   background:#f1f4f8; text-align:left; padding:11px 13px; font-weight:650;
+  font-size:13.5px;
   color:#1c222b; border-bottom:1px solid var(--line); white-space:nowrap;
 }
 td{padding:10px 13px; border-bottom:1px solid var(--line2); vertical-align:top; line-height:1.62}
@@ -272,14 +280,24 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   .table-wrap.cardmode > table[class*="c"] td:last-child{border-bottom:0}
   .table-wrap.cardmode > table[class*="c"] td:first-child{
     background:var(--cur-soft); font-weight:700; color:var(--cur);
-    border-bottom:1px solid var(--line); font-size:14.4px;
+    border-bottom:1px solid var(--line); font-size:15.5px;
+    white-space:nowrap;
+  }
+  .table-wrap.cardmode > table[class*="c"] td[data-label="持有者"]{
+    flex-wrap:wrap; align-items:center;
+  }
+  .table-wrap.cardmode > table[class*="c"] td[data-label="持有者"]::before{
+    flex:1 0 100%;
+  }
+  .table-wrap.cardmode > table[class*="c"] td[data-label="持有者"] .holders{
+    flex:1 1 auto; justify-content:flex-start;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child){
     display:flex; justify-content:space-between; align-items:baseline; gap:12px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)::before{
-    content:attr(data-label); flex:1 1 auto;
-    font-weight:650; color:var(--ink2); font-size:12.6px;
+    content:attr(data-label); flex:0 0 auto; white-space:nowrap;
+    font-weight:650; color:var(--ink2); font-size:13.5px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)[data-label=""]::before{content:""}
 }
@@ -350,8 +368,8 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
-    content:attr(data-label); flex:1 1 auto;
-    font-weight:650; color:var(--ink2); font-size:13px;
+    content:attr(data-label); flex:0 0 auto; white-space:nowrap;
+    font-weight:650; color:var(--ink2); font-size:13.5px;
   }
 }
 
@@ -389,9 +407,22 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   vertical-align:-14px; margin-right:8px}
 .avatar.face.is-dual{width:76px; height:40px; border-radius:11px}
 /* 角色名和头像保持同一行，避免「艾丝梅拉尔达」被从中间截断 */
-td:has(.avatar){
+td:has(.avatar), td:has(.mark){
   white-space:nowrap; word-break:keep-all; overflow-wrap:normal;
+  vertical-align:middle; font-weight:650;
 }
+td[data-label="持有者"]{
+  white-space:normal; font-weight:400; vertical-align:middle;
+}
+.mark{
+  display:inline-block; width:40px; height:40px; object-fit:contain;
+  vertical-align:-13px; margin-right:8px; border-radius:8px;
+}
+.mark.sm{
+  width:21px; height:21px; vertical-align:-4px; margin-right:4px; border-radius:5px;
+}
+.holders{display:flex; flex-wrap:wrap; gap:6px 12px; align-items:center}
+.nm{display:inline-flex; align-items:center; white-space:nowrap; font-weight:650}
 .avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
   vertical-align:-17px; margin-right:12px; box-shadow:none}
 
@@ -737,16 +768,17 @@ footer.foot{
   .content{padding:calc(var(--topbar-h) + 12px) 11px 78px}
   .card{padding:10px 15px 28px; border-radius:14px}
   .hero{padding:24px 20px 20px; border-radius:15px; margin-bottom:16px}
-  .hero h1{font-size:21px}
-  .hero .sub{font-size:12.6px}
-  .hero .pill{font-size:11.6px; padding:3px 10px}
+  .hero h1{font-size:22px}
+  .hero .sub{font-size:14.5px}
+  .hero .pill{font-size:12.5px; padding:3px 10px}
   .hero .pnum{font-size:78px; right:14px; bottom:-8px}
-  h1{font-size:20px; margin-bottom:14px; padding-bottom:11px}
-  h2{font-size:17.6px; margin:32px 0 13px; padding:10px 12px;
+  h1{font-size:22px; margin-bottom:14px; padding-bottom:11px}
+  h2{font-size:18px; margin:32px 0 13px; padding:10px 12px;
      border-left-width:4px; border-radius:0 9px 9px 0}
-  h3{font-size:15.8px; margin:24px 0 10px}
-  h4{font-size:15px}
-  blockquote{padding:13px 15px; margin:15px 0; font-size:14.8px}
+  h3{font-size:16.5px; margin:24px 0 10px}
+  h4{font-size:15.5px}
+  p,li,blockquote{font-size:15.5px}
+  blockquote{padding:13px 15px; margin:15px 0}
   ul,ol{padding-left:21px}
 
   .table-wrap{border-radius:10px; margin:15px 0}
@@ -800,10 +832,10 @@ footer.foot{
   .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
   .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
-    content:attr(data-label); flex:1 1 auto; font-weight:650; color:var(--ink2); font-size:13px;
+    content:attr(data-label); flex:0 0 auto; white-space:nowrap; font-weight:650; color:var(--ink2); font-size:13.5px;
   }
-  table{font-size:13.4px}
-  th{padding:9px 11px; font-size:12.8px}
+  table{font-size:14.5px}
+  th{padding:9px 11px; font-size:13.5px}
   td{padding:9px 11px}
 
   .chr-grid{grid-template-columns:1fr; gap:10px}
@@ -822,12 +854,13 @@ footer.foot{
 @media (max-width:860px){ .drawer-close{display:flex} }
 
 @media (max-width:430px){
-  body{font-size:15px}
+  body,p,li,blockquote{font-size:15.5px}
   .card{padding:9px 12px 24px}
   .hero{padding:20px 16px 17px}
-  .hero h1{font-size:19.5px}
-  h1{font-size:19px} h2{font-size:16.8px}
-  table{font-size:12.9px}
+  .hero h1{font-size:21px}
+  h1{font-size:21px} h2{font-size:18px} h3{font-size:16.5px} h4{font-size:15.5px}
+  table{font-size:14.5px}
+  th{font-size:13.5px}
   th,td{padding:8px 10px}
 
   /* 正文行内头像贴近字号；表格头像单独保持可辨认 */
@@ -847,6 +880,8 @@ footer.foot{
   .avatar.face.is-dual{width:68px; height:36px; border-radius:10px;
     vertical-align:-12px; margin-right:8px}
   .avatar.is-dual>img{height:100%}
+  .mark{width:36px; height:36px; vertical-align:-12px; margin-right:8px}
+  .mark.sm{width:24px; height:24px; vertical-align:-6px; margin-right:5px}
 
   /* 表格内头像放大后，给角色列更多呼吸空间 */
   .table-wrap table td, .table-wrap table th{padding:9px 8px}
