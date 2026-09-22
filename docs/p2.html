@@ -40,6 +40,8 @@ h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
   border-bottom:1px solid var(--line);
   overflow:hidden; max-width:100vw;
 }
+a.topbar-brand{text-decoration:none; border-bottom:0; color:inherit}
+a.topbar-brand:hover{color:inherit; border-bottom:0}
 .topbar .brand{
   font-weight:700; font-size:14.5px; color:var(--ink);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
@@ -102,6 +104,7 @@ h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
 }
 .toc-part:first-of-type{margin-top:2px}
 .toc-sec{padding-left:26px; color:var(--muted); font-size:13.1px}
+.toc-sub{padding-left:40px; color:var(--muted); font-size:12.4px; font-weight:500}
 .toc-link.active{
   background:var(--active-bg,#fdf1f4); color:var(--active-fg,#b8123c);
   border-left-color:var(--active-fg,#b8123c); font-weight:600;
@@ -273,8 +276,11 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
     background:var(--cur-soft); font-weight:700; color:var(--cur);
     border-bottom:1px solid var(--line); font-size:14.4px;
   }
+  .table-wrap.cardmode > table[class*="c"] td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+  }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)::before{
-    content:attr(data-label) "："; display:inline;
+    content:attr(data-label); flex:1 1 auto;
     font-weight:650; color:var(--ink2); font-size:12.6px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)[data-label=""]::before{content:""}
@@ -283,10 +289,72 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   .table-wrap.cardmode > table.c5, .table-wrap.cardmode > table.c6,
   .table-wrap.cardmode > table.c7{min-width:0; width:100%}
 }
-@container tbl (min-width: 430px) and (max-width: 909px){
-  .table-wrap.cardmode > table.c8, .table-wrap.cardmode > table.c9,
-  .table-wrap.cardmode > table.c10, .table-wrap.cardmode > table.c11,
-  .table-wrap.cardmode > table.c12{min-width:0; width:100%}
+/* 8 列以上（含主角成长率 11 列）在手机和平板宽度改成卡片。
+   旧规则只把表格压到 100% 宽，11 个数字列会被挤到放不下一个数。 */
+@container tbl (min-width: 430px) and (max-width: 980px){
+  .table-wrap.cardmode > table.c8,
+  .table-wrap.cardmode > table.c9,
+  .table-wrap.cardmode > table.c10,
+  .table-wrap.cardmode > table.c11,
+  .table-wrap.cardmode > table.c12{min-width:0; width:100%; display:block}
+  .table-wrap.cardmode > table.c8 > thead,
+  .table-wrap.cardmode > table.c9 > thead,
+  .table-wrap.cardmode > table.c10 > thead,
+  .table-wrap.cardmode > table.c11 > thead,
+  .table-wrap.cardmode > table.c12 > thead{display:none}
+  .table-wrap.cardmode > table.c8 > tbody,
+  .table-wrap.cardmode > table.c9 > tbody,
+  .table-wrap.cardmode > table.c10 > tbody,
+  .table-wrap.cardmode > table.c11 > tbody,
+  .table-wrap.cardmode > table.c12 > tbody,
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr,
+  .table-wrap.cardmode > table.c8 > tbody > tr > td,
+  .table-wrap.cardmode > table.c9 > tbody > tr > td,
+  .table-wrap.cardmode > table.c10 > tbody > tr > td,
+  .table-wrap.cardmode > table.c11 > tbody > tr > td,
+  .table-wrap.cardmode > table.c12 > tbody > tr > td{display:block; width:100%}
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr{
+    border:1px solid var(--line); border-left:4px solid var(--cur);
+    border-radius:10px; margin:0 0 10px; overflow:hidden; background:#fff !important;
+  }
+  .table-wrap.cardmode > table.c8 td,
+  .table-wrap.cardmode > table.c9 td,
+  .table-wrap.cardmode > table.c10 td,
+  .table-wrap.cardmode > table.c11 td,
+  .table-wrap.cardmode > table.c12 td{
+    border:0; border-bottom:1px solid var(--line2); padding:8px 12px;
+    white-space:normal;
+  }
+  .table-wrap.cardmode > table.c8 td:first-child,
+  .table-wrap.cardmode > table.c9 td:first-child,
+  .table-wrap.cardmode > table.c10 td:first-child,
+  .table-wrap.cardmode > table.c11 td:first-child,
+  .table-wrap.cardmode > table.c12 td:first-child{
+    background:var(--cur-soft); font-weight:700; position:static; box-shadow:none;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child),
+  .table-wrap.cardmode > table.c9 td:not(:first-child),
+  .table-wrap.cardmode > table.c10 td:not(:first-child),
+  .table-wrap.cardmode > table.c11 td:not(:first-child),
+  .table-wrap.cardmode > table.c12 td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c9 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
+    content:attr(data-label); flex:1 1 auto;
+    font-weight:650; color:var(--ink2); font-size:13px;
+  }
 }
 
 /* 卡片模式下容器宽度必须受父级约束，否则会按内容撑开导致卡片化不触发 */
@@ -318,6 +386,10 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   vertical-align:-11px; margin-right:10px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
 .avatar.sm{width:21px; height:21px; border-radius:6px; font-size:11px;
   vertical-align:-5px; margin-right:5px}
+/* 表格里的头像：比正文行内头像大一圈，方便在格子里认人 */
+.avatar.face{width:40px; height:40px; border-radius:11px; font-size:16px;
+  vertical-align:-14px; margin-right:8px}
+.avatar.face.is-dual{width:76px; height:40px; border-radius:11px}
 .avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
   vertical-align:-17px; margin-right:12px; box-shadow:none}
 
@@ -537,34 +609,48 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 
 /* ============ 首页 ============ */
 .home-grid{
-  display:grid; gap:14px; margin:24px 0;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  display:grid; gap:16px; margin:22px 0 8px;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
 }
 .home-card{
-  display:block; text-decoration:none; color:inherit;
-  border:1px solid var(--line); border-radius:16px; padding:20px 22px 18px;
-  background:#fff; border-bottom:1px solid var(--line);
-  border-top:5px solid var(--pc,#b8123c);
+  display:flex; flex-direction:column;
+  border:1px solid var(--line); border-radius:16px; padding:0;
+  background:#fff; border-top:5px solid var(--pc,#b8123c);
   box-shadow:0 3px 14px rgba(20,25,40,.055);
-  transition:transform .15s, box-shadow .15s;
-  position:relative; overflow:hidden;
+  overflow:hidden;
 }
-.home-card:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(20,25,40,.12);
-  color:inherit; border-bottom-color:var(--line)}
-.home-card .no{
-  position:absolute; right:14px; top:8px; font-size:56px; font-weight:800;
-  color:var(--pc); opacity:.1; line-height:1; letter-spacing:-.04em;
+.home-card .head{
+  display:block; text-decoration:none; color:inherit; padding:18px 20px 12px;
+  border-bottom:0;
 }
-.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:7px;
+.home-card .head:hover{background:var(--pcs,#f7f8fa); color:inherit; border-bottom:0}
+.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:6px;
   display:flex; align-items:center; gap:9px}
 .home-card .t .bd{width:9px; height:9px; border-radius:3px; background:var(--pc); flex:0 0 auto}
-.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66; margin-bottom:11px}
-.home-card .meta{font-size:12.2px; color:var(--pc); font-weight:650}
+.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66}
 .home-card .chips{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px}
 .home-card .chips span{
   font-size:11.6px; padding:2px 9px; border-radius:999px;
   background:var(--pcs,#f2f4f7); color:var(--pc); font-weight:600;
 }
+.home-outline{
+  display:flex; flex-direction:column; gap:1px;
+  padding:4px 8px 12px; background:linear-gradient(#fff, #fbfcfe);
+  border-top:1px solid var(--line2);
+}
+.home-outline a{
+  text-decoration:none; border-bottom:0; color:var(--ink2);
+  border-radius:8px; line-height:1.45;
+}
+.home-outline a.ol2{
+  font-size:13.4px; font-weight:650; color:var(--ink);
+  padding:7px 10px 3px;
+}
+.home-outline a.ol3{
+  font-size:12.6px; color:var(--muted); font-weight:500;
+  padding:3px 10px 3px 22px;
+}
+.home-outline a:hover{background:#eef1f6; color:var(--ink); border-bottom:0}
 
 /* ============ 通用零件 ============ */
 .badge{
@@ -681,6 +767,58 @@ footer.foot{
   ul,ol{padding-left:21px}
 
   .table-wrap{border-radius:10px; margin:15px 0}
+  /* 侧栏收起后，8 列以上的表改卡片，避免 11 列成长率被压成一条缝 */
+  .table-wrap.cardmode > table.c8,
+  .table-wrap.cardmode > table.c9,
+  .table-wrap.cardmode > table.c10,
+  .table-wrap.cardmode > table.c11,
+  .table-wrap.cardmode > table.c12{min-width:0 !important; width:100%; display:block}
+  .table-wrap.cardmode > table.c8 > thead,
+  .table-wrap.cardmode > table.c9 > thead,
+  .table-wrap.cardmode > table.c10 > thead,
+  .table-wrap.cardmode > table.c11 > thead,
+  .table-wrap.cardmode > table.c12 > thead{display:none}
+  .table-wrap.cardmode > table.c8 > tbody,
+  .table-wrap.cardmode > table.c9 > tbody,
+  .table-wrap.cardmode > table.c10 > tbody,
+  .table-wrap.cardmode > table.c11 > tbody,
+  .table-wrap.cardmode > table.c12 > tbody,
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr,
+  .table-wrap.cardmode > table.c8 > tbody > tr > td,
+  .table-wrap.cardmode > table.c9 > tbody > tr > td,
+  .table-wrap.cardmode > table.c10 > tbody > tr > td,
+  .table-wrap.cardmode > table.c11 > tbody > tr > td,
+  .table-wrap.cardmode > table.c12 > tbody > tr > td{display:block; width:100%}
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr{
+    border:1px solid var(--line); border-left:4px solid var(--cur);
+    border-radius:10px; margin:0 0 10px; overflow:hidden; background:#fff !important;
+  }
+  table.c8 tbody td:first-child, table.c9 tbody td:first-child,
+  table.c10 tbody td:first-child, table.c11 tbody td:first-child,
+  table.c12 tbody td:first-child{position:static; box-shadow:none}
+  .table-wrap.cardmode > table.c8 td:not(:first-child),
+  .table-wrap.cardmode > table.c9 td:not(:first-child),
+  .table-wrap.cardmode > table.c10 td:not(:first-child),
+  .table-wrap.cardmode > table.c11 td:not(:first-child),
+  .table-wrap.cardmode > table.c12 td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+    font-variant-numeric:tabular-nums; font-size:15px;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c9 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
+    content:attr(data-label); flex:1 1 auto; font-weight:650; color:var(--ink2); font-size:13px;
+  }
   table{font-size:13.4px}
   th{padding:9px 11px; font-size:12.8px}
   td{padding:9px 11px}
@@ -709,23 +847,22 @@ footer.foot{
   table{font-size:12.9px}
   th,td{padding:8px 10px}
 
-  /* ---- 手机端：头像显著放大，远距离也能辨认 ---- */
-  /* 表格内头像 21 → 46px */
-  .avatar.sm{
-    width:46px; height:46px; border-radius:12px; font-size:17px;
-    vertical-align:-15px; margin-right:9px;
+  /* 正文行内头像贴近字号；表格头像单独保持可辨认 */
+  .avatar, .avatar.sm{
+    width:24px; height:24px; border-radius:7px; font-size:12px;
+    vertical-align:-6px; margin-right:5px;
   }
-  /* 正文内联头像同步放大 */
-  .avatar{
-    width:46px; height:46px; border-radius:12px; font-size:17px;
-    vertical-align:-15px; margin-right:9px;
+  .avatar.face{
+    width:36px; height:36px; border-radius:10px; font-size:15px;
+    vertical-align:-12px; margin-right:8px;
   }
-  .avatar.lg{width:60px; height:60px; border-radius:16px; font-size:25px;
-    vertical-align:-21px; margin-right:12px}
-  .avatar.xl{width:66px; height:66px; border-radius:18px; font-size:28px}
-  /* 主角双人并排：加宽以容纳两张脸 */
-  .avatar.is-dual{width:90px; height:46px; border-radius:12px;
-    vertical-align:-15px; margin-right:9px}
+  .avatar.lg{width:44px; height:44px; border-radius:12px; font-size:18px;
+    vertical-align:-14px; margin-right:8px}
+  .avatar.xl{width:52px; height:52px; border-radius:14px; font-size:22px}
+  .avatar.is-dual{width:46px; height:24px; border-radius:7px;
+    vertical-align:-6px; margin-right:5px}
+  .avatar.face.is-dual{width:68px; height:36px; border-radius:10px;
+    vertical-align:-12px; margin-right:8px}
   .avatar.is-dual>img{height:100%}
 
   /* 表格内头像放大后，给角色列更多呼吸空间 */
@@ -756,7 +893,7 @@ footer.foot{
   <label class="menu-btn" for="navToggle" aria-label="打开目录" role="button" tabindex="0">
     <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
   </label>
-  <div class="brand"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· 第二篇 · 核心系统机制</span></div>
+  <a class="brand topbar-brand" href="index.html"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· 第二篇 · 核心系统机制</span></a>
 </div>
 <div class="scrim"><label for="navToggle" style="display:block;width:100%;height:100%"></label></div>
 <div class="layout">
@@ -766,7 +903,7 @@ footer.foot{
   </label></div>
   <div class="nav-scroll">
     <div class="sidebar-title">目录 · Contents</div>
-    <a class="toc-link toc-part" href="p1.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">第一篇 · 开局与全局框架</a><a class="toc-link toc-part active" href="p2.html" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">第二篇 · 核心系统机制</a><a class="toc-link toc-sec" href="#2-1-支援等级系统-本作最值得优先投入的长期投资" data-target="2-1-支援等级系统-本作最值得优先投入的长期投资" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">2.1 支援等级系统——本作最值得优先投入的长期投资</a><a class="toc-link toc-sec" href="#2-2-重点技巧-支援等级速刷法-零成本" data-target="2-2-重点技巧-支援等级速刷法-零成本" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">2.2 【重点技巧】支援等级速刷法（零成本）</a><a class="toc-link toc-sec" href="#2-3-战斗系统与计算式" data-target="2-3-战斗系统与计算式" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">2.3 战斗系统与计算式</a><a class="toc-link toc-sec" href="#2-4-Blaze-Arts-主角专属大招" data-target="2-4-Blaze-Arts-主角专属大招" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">2.4 Blaze Arts（主角专属大招）</a><a class="toc-link toc-part" href="p3.html" style="--active-fg:#7a4bbf;--active-bg:#f4effc">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-part" href="p4.html" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">第四篇 · 送礼心得</a><a class="toc-link toc-part" href="p5.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">第五篇 · 角色培养</a><a class="toc-link toc-part" href="p6.html" style="--active-fg:#c2790a;--active-bg:#fdf5e6">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-part" href="p7.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">附录 · 每周日常速查卡</a><a class="toc-link toc-part" href="p8.html" style="--active-fg:#5b6472;--active-bg:#f2f4f7">资料源与可信度</a>
+    <a class="toc-link toc-part" href="index.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">首页</a><a class="toc-link toc-part" href="p1.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">第一篇 · 开局与全局框架</a><a class="toc-link toc-part active" href="p2.html" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">第二篇 · 核心系统机制</a><a class="toc-link toc-sec" href="#2-1-支援等级系统-本作最值得优先投入的长期投资" data-target="2-1-支援等级系统-本作最值得优先投入的长期投资" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">2.1 支援等级系统——本作最值得优先投入的长期投资</a><a class="toc-link toc-sec" href="#2-2-重点技巧-支援等级速刷法-零成本" data-target="2-2-重点技巧-支援等级速刷法-零成本" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">2.2 【重点技巧】支援等级速刷法（零成本）</a><a class="toc-link toc-sec" href="#2-3-战斗系统与计算式" data-target="2-3-战斗系统与计算式" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">2.3 战斗系统与计算式</a><a class="toc-link toc-sec" href="#2-4-Blaze-Arts-主角专属大招" data-target="2-4-Blaze-Arts-主角专属大招" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">2.4 Blaze Arts（主角专属大招）</a><a class="toc-link toc-part" href="p3.html" style="--active-fg:#7a4bbf;--active-bg:#f4effc">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-part" href="p4.html" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">第四篇 · 送礼心得</a><a class="toc-link toc-part" href="p5.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">第五篇 · 角色培养</a><a class="toc-link toc-part" href="p6.html" style="--active-fg:#c2790a;--active-bg:#fdf5e6">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-part" href="p7.html" style="--active-fg:#9b3d55;--active-bg:#fdf0f4">第七篇 · 章节一览</a><a class="toc-link toc-part" href="p8.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">附录 · 每周日常速查卡</a><a class="toc-link toc-part" href="p9.html" style="--active-fg:#5b6472;--active-bg:#f2f4f7">资料源与可信度</a>
   </div>
 </aside>
   <main class="content">
@@ -918,27 +1055,27 @@ footer.foot{
 </thead>
 <tbody>
 <tr>
-<td data-label="主角"><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span><strong>凯伊 Cai</strong></td>
+<td data-label="主角"><span class="avatar face" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span><strong>凯伊 Cai</strong></td>
 <td data-label="Blaze Art 特性"><strong>范围攻击</strong>（本作罕见的 AOE）</td>
 <td data-label="战术定位">高容错主力，机动力极强</td>
 </tr>
 <tr>
-<td data-label="主角"><span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span><strong>迪托利希 Dietrich</strong></td>
+<td data-label="主角"><span class="avatar face" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span><strong>迪托利希 Dietrich</strong></td>
 <td data-label="Blaze Art 特性"><strong>强调位移与站位</strong>，可快速贴脸；影渡（可无视障碍瞬移）</td>
 <td data-label="战术定位">近战物理爆发、必杀流</td>
 </tr>
 <tr>
-<td data-label="主角"><span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span><strong>赛奥朵拉 Theodora</strong></td>
+<td data-label="主角"><span class="avatar face" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span><strong>赛奥朵拉 Theodora</strong></td>
 <td data-label="Blaze Art 特性"><strong>远程巨岩投掷</strong>，攻击范围全游戏最大</td>
 <td data-label="战术定位">顶级肉盾 + 远程支援</td>
 </tr>
 <tr>
-<td data-label="主角"><span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span><strong>蕾达 Leda</strong></td>
+<td data-label="主角"><span class="avatar face" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span><strong>蕾达 Leda</strong></td>
 <td data-label="Blaze Art 特性"><strong>范围 Buff 歌曲</strong>，可同时强化周边多名同伴</td>
 <td data-label="战术定位">支援核心，需居中站位</td>
 </tr>
 <tr>
-<td data-label="主角"><span class="avatar sm is-dual" style="--ac:#c2790a" title="伊修玛尔" data-name="伊修玛尔"><img class="av-a" src="assets/avatar/hero_m.jpg" alt="伊修玛尔" loading="lazy"><img class="av-b" src="assets/avatar/hero_f.jpg" alt="伊修玛尔（女）" loading="lazy"></span><strong>伊修玛尔（救世主）</strong></td>
+<td data-label="主角"><span class="avatar face is-dual" style="--ac:#c2790a" title="伊修玛尔" data-name="伊修玛尔"><img class="av-a" src="assets/avatar/hero_m.jpg" alt="伊修玛尔" loading="lazy"><img class="av-b" src="assets/avatar/hero_f.jpg" alt="伊修玛尔（女）" loading="lazy"></span><strong>伊修玛尔（救世主）</strong></td>
 <td data-label="Blaze Art 特性"><strong>「破邪闪击」大范围攻击</strong>，极为强力</td>
 <td data-label="战术定位">均衡型，起始等级高</td>
 </tr>

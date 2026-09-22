@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """多页站点共用的样式表"""
 
-PART_COLORS = ['#b8123c', '#1f5fa8', '#7a4bbf', '#0e8f9e', '#0f8a63', '#c2790a', '#5b6472']
-PART_SOFTS  = ['#fdf1f4', '#eef4fc', '#f4effc', '#e8f7f9', '#eafaf4', '#fdf5e6', '#f2f4f7']
+PART_COLORS = ['#b8123c', '#1f5fa8', '#7a4bbf', '#0e8f9e', '#0f8a63', '#c2790a', '#9b3d55', '#5b6472']
+PART_SOFTS  = ['#fdf1f4', '#eef4fc', '#f4effc', '#e8f7f9', '#eafaf4', '#fdf5e6', '#fdf0f4', '#f2f4f7']
 
 CSS = """
 :root{
@@ -38,6 +38,8 @@ h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
   border-bottom:1px solid var(--line);
   overflow:hidden; max-width:100vw;
 }
+a.topbar-brand{text-decoration:none; border-bottom:0; color:inherit}
+a.topbar-brand:hover{color:inherit; border-bottom:0}
 .topbar .brand{
   font-weight:700; font-size:14.5px; color:var(--ink);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
@@ -100,6 +102,7 @@ h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
 }
 .toc-part:first-of-type{margin-top:2px}
 .toc-sec{padding-left:26px; color:var(--muted); font-size:13.1px}
+.toc-sub{padding-left:40px; color:var(--muted); font-size:12.4px; font-weight:500}
 .toc-link.active{
   background:var(--active-bg,#fdf1f4); color:var(--active-fg,#b8123c);
   border-left-color:var(--active-fg,#b8123c); font-weight:600;
@@ -271,8 +274,11 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
     background:var(--cur-soft); font-weight:700; color:var(--cur);
     border-bottom:1px solid var(--line); font-size:14.4px;
   }
+  .table-wrap.cardmode > table[class*="c"] td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+  }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)::before{
-    content:attr(data-label) "："; display:inline;
+    content:attr(data-label); flex:1 1 auto;
     font-weight:650; color:var(--ink2); font-size:12.6px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)[data-label=""]::before{content:""}
@@ -281,10 +287,72 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   .table-wrap.cardmode > table.c5, .table-wrap.cardmode > table.c6,
   .table-wrap.cardmode > table.c7{min-width:0; width:100%}
 }
-@container tbl (min-width: 430px) and (max-width: 909px){
-  .table-wrap.cardmode > table.c8, .table-wrap.cardmode > table.c9,
-  .table-wrap.cardmode > table.c10, .table-wrap.cardmode > table.c11,
-  .table-wrap.cardmode > table.c12{min-width:0; width:100%}
+/* 8 列以上（含主角成长率 11 列）在手机和平板宽度改成卡片。
+   旧规则只把表格压到 100% 宽，11 个数字列会被挤到放不下一个数。 */
+@container tbl (min-width: 430px) and (max-width: 980px){
+  .table-wrap.cardmode > table.c8,
+  .table-wrap.cardmode > table.c9,
+  .table-wrap.cardmode > table.c10,
+  .table-wrap.cardmode > table.c11,
+  .table-wrap.cardmode > table.c12{min-width:0; width:100%; display:block}
+  .table-wrap.cardmode > table.c8 > thead,
+  .table-wrap.cardmode > table.c9 > thead,
+  .table-wrap.cardmode > table.c10 > thead,
+  .table-wrap.cardmode > table.c11 > thead,
+  .table-wrap.cardmode > table.c12 > thead{display:none}
+  .table-wrap.cardmode > table.c8 > tbody,
+  .table-wrap.cardmode > table.c9 > tbody,
+  .table-wrap.cardmode > table.c10 > tbody,
+  .table-wrap.cardmode > table.c11 > tbody,
+  .table-wrap.cardmode > table.c12 > tbody,
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr,
+  .table-wrap.cardmode > table.c8 > tbody > tr > td,
+  .table-wrap.cardmode > table.c9 > tbody > tr > td,
+  .table-wrap.cardmode > table.c10 > tbody > tr > td,
+  .table-wrap.cardmode > table.c11 > tbody > tr > td,
+  .table-wrap.cardmode > table.c12 > tbody > tr > td{display:block; width:100%}
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr{
+    border:1px solid var(--line); border-left:4px solid var(--cur);
+    border-radius:10px; margin:0 0 10px; overflow:hidden; background:#fff !important;
+  }
+  .table-wrap.cardmode > table.c8 td,
+  .table-wrap.cardmode > table.c9 td,
+  .table-wrap.cardmode > table.c10 td,
+  .table-wrap.cardmode > table.c11 td,
+  .table-wrap.cardmode > table.c12 td{
+    border:0; border-bottom:1px solid var(--line2); padding:8px 12px;
+    white-space:normal;
+  }
+  .table-wrap.cardmode > table.c8 td:first-child,
+  .table-wrap.cardmode > table.c9 td:first-child,
+  .table-wrap.cardmode > table.c10 td:first-child,
+  .table-wrap.cardmode > table.c11 td:first-child,
+  .table-wrap.cardmode > table.c12 td:first-child{
+    background:var(--cur-soft); font-weight:700; position:static; box-shadow:none;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child),
+  .table-wrap.cardmode > table.c9 td:not(:first-child),
+  .table-wrap.cardmode > table.c10 td:not(:first-child),
+  .table-wrap.cardmode > table.c11 td:not(:first-child),
+  .table-wrap.cardmode > table.c12 td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c9 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
+    content:attr(data-label); flex:1 1 auto;
+    font-weight:650; color:var(--ink2); font-size:13px;
+  }
 }
 
 /* 卡片模式下容器宽度必须受父级约束，否则会按内容撑开导致卡片化不触发 */
@@ -316,6 +384,10 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   vertical-align:-11px; margin-right:10px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
 .avatar.sm{width:21px; height:21px; border-radius:6px; font-size:11px;
   vertical-align:-5px; margin-right:5px}
+/* 表格里的头像：比正文行内头像大一圈，方便在格子里认人 */
+.avatar.face{width:40px; height:40px; border-radius:11px; font-size:16px;
+  vertical-align:-14px; margin-right:8px}
+.avatar.face.is-dual{width:76px; height:40px; border-radius:11px}
 .avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
   vertical-align:-17px; margin-right:12px; box-shadow:none}
 
@@ -535,34 +607,48 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 
 /* ============ 首页 ============ */
 .home-grid{
-  display:grid; gap:14px; margin:24px 0;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  display:grid; gap:16px; margin:22px 0 8px;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
 }
 .home-card{
-  display:block; text-decoration:none; color:inherit;
-  border:1px solid var(--line); border-radius:16px; padding:20px 22px 18px;
-  background:#fff; border-bottom:1px solid var(--line);
-  border-top:5px solid var(--pc,#b8123c);
+  display:flex; flex-direction:column;
+  border:1px solid var(--line); border-radius:16px; padding:0;
+  background:#fff; border-top:5px solid var(--pc,#b8123c);
   box-shadow:0 3px 14px rgba(20,25,40,.055);
-  transition:transform .15s, box-shadow .15s;
-  position:relative; overflow:hidden;
+  overflow:hidden;
 }
-.home-card:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(20,25,40,.12);
-  color:inherit; border-bottom-color:var(--line)}
-.home-card .no{
-  position:absolute; right:14px; top:8px; font-size:56px; font-weight:800;
-  color:var(--pc); opacity:.1; line-height:1; letter-spacing:-.04em;
+.home-card .head{
+  display:block; text-decoration:none; color:inherit; padding:18px 20px 12px;
+  border-bottom:0;
 }
-.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:7px;
+.home-card .head:hover{background:var(--pcs,#f7f8fa); color:inherit; border-bottom:0}
+.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:6px;
   display:flex; align-items:center; gap:9px}
 .home-card .t .bd{width:9px; height:9px; border-radius:3px; background:var(--pc); flex:0 0 auto}
-.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66; margin-bottom:11px}
-.home-card .meta{font-size:12.2px; color:var(--pc); font-weight:650}
+.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66}
 .home-card .chips{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px}
 .home-card .chips span{
   font-size:11.6px; padding:2px 9px; border-radius:999px;
   background:var(--pcs,#f2f4f7); color:var(--pc); font-weight:600;
 }
+.home-outline{
+  display:flex; flex-direction:column; gap:1px;
+  padding:4px 8px 12px; background:linear-gradient(#fff, #fbfcfe);
+  border-top:1px solid var(--line2);
+}
+.home-outline a{
+  text-decoration:none; border-bottom:0; color:var(--ink2);
+  border-radius:8px; line-height:1.45;
+}
+.home-outline a.ol2{
+  font-size:13.4px; font-weight:650; color:var(--ink);
+  padding:7px 10px 3px;
+}
+.home-outline a.ol3{
+  font-size:12.6px; color:var(--muted); font-weight:500;
+  padding:3px 10px 3px 22px;
+}
+.home-outline a:hover{background:#eef1f6; color:var(--ink); border-bottom:0}
 
 /* ============ 通用零件 ============ */
 .badge{
@@ -679,6 +765,58 @@ footer.foot{
   ul,ol{padding-left:21px}
 
   .table-wrap{border-radius:10px; margin:15px 0}
+  /* 侧栏收起后，8 列以上的表改卡片，避免 11 列成长率被压成一条缝 */
+  .table-wrap.cardmode > table.c8,
+  .table-wrap.cardmode > table.c9,
+  .table-wrap.cardmode > table.c10,
+  .table-wrap.cardmode > table.c11,
+  .table-wrap.cardmode > table.c12{min-width:0 !important; width:100%; display:block}
+  .table-wrap.cardmode > table.c8 > thead,
+  .table-wrap.cardmode > table.c9 > thead,
+  .table-wrap.cardmode > table.c10 > thead,
+  .table-wrap.cardmode > table.c11 > thead,
+  .table-wrap.cardmode > table.c12 > thead{display:none}
+  .table-wrap.cardmode > table.c8 > tbody,
+  .table-wrap.cardmode > table.c9 > tbody,
+  .table-wrap.cardmode > table.c10 > tbody,
+  .table-wrap.cardmode > table.c11 > tbody,
+  .table-wrap.cardmode > table.c12 > tbody,
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr,
+  .table-wrap.cardmode > table.c8 > tbody > tr > td,
+  .table-wrap.cardmode > table.c9 > tbody > tr > td,
+  .table-wrap.cardmode > table.c10 > tbody > tr > td,
+  .table-wrap.cardmode > table.c11 > tbody > tr > td,
+  .table-wrap.cardmode > table.c12 > tbody > tr > td{display:block; width:100%}
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr{
+    border:1px solid var(--line); border-left:4px solid var(--cur);
+    border-radius:10px; margin:0 0 10px; overflow:hidden; background:#fff !important;
+  }
+  table.c8 tbody td:first-child, table.c9 tbody td:first-child,
+  table.c10 tbody td:first-child, table.c11 tbody td:first-child,
+  table.c12 tbody td:first-child{position:static; box-shadow:none}
+  .table-wrap.cardmode > table.c8 td:not(:first-child),
+  .table-wrap.cardmode > table.c9 td:not(:first-child),
+  .table-wrap.cardmode > table.c10 td:not(:first-child),
+  .table-wrap.cardmode > table.c11 td:not(:first-child),
+  .table-wrap.cardmode > table.c12 td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+    font-variant-numeric:tabular-nums; font-size:15px;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c9 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
+    content:attr(data-label); flex:1 1 auto; font-weight:650; color:var(--ink2); font-size:13px;
+  }
   table{font-size:13.4px}
   th{padding:9px 11px; font-size:12.8px}
   td{padding:9px 11px}
@@ -707,23 +845,22 @@ footer.foot{
   table{font-size:12.9px}
   th,td{padding:8px 10px}
 
-  /* ---- 手机端：头像显著放大，远距离也能辨认 ---- */
-  /* 表格内头像 21 → 46px */
-  .avatar.sm{
-    width:46px; height:46px; border-radius:12px; font-size:17px;
-    vertical-align:-15px; margin-right:9px;
+  /* 正文行内头像贴近字号；表格头像单独保持可辨认 */
+  .avatar, .avatar.sm{
+    width:24px; height:24px; border-radius:7px; font-size:12px;
+    vertical-align:-6px; margin-right:5px;
   }
-  /* 正文内联头像同步放大 */
-  .avatar{
-    width:46px; height:46px; border-radius:12px; font-size:17px;
-    vertical-align:-15px; margin-right:9px;
+  .avatar.face{
+    width:36px; height:36px; border-radius:10px; font-size:15px;
+    vertical-align:-12px; margin-right:8px;
   }
-  .avatar.lg{width:60px; height:60px; border-radius:16px; font-size:25px;
-    vertical-align:-21px; margin-right:12px}
-  .avatar.xl{width:66px; height:66px; border-radius:18px; font-size:28px}
-  /* 主角双人并排：加宽以容纳两张脸 */
-  .avatar.is-dual{width:90px; height:46px; border-radius:12px;
-    vertical-align:-15px; margin-right:9px}
+  .avatar.lg{width:44px; height:44px; border-radius:12px; font-size:18px;
+    vertical-align:-14px; margin-right:8px}
+  .avatar.xl{width:52px; height:52px; border-radius:14px; font-size:22px}
+  .avatar.is-dual{width:46px; height:24px; border-radius:7px;
+    vertical-align:-6px; margin-right:5px}
+  .avatar.face.is-dual{width:68px; height:36px; border-radius:10px;
+    vertical-align:-12px; margin-right:8px}
   .avatar.is-dual>img{height:100%}
 
   /* 表格内头像放大后，给角色列更多呼吸空间 */

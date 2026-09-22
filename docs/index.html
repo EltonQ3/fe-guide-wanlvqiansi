@@ -39,6 +39,8 @@ h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
   border-bottom:1px solid var(--line);
   overflow:hidden; max-width:100vw;
 }
+a.topbar-brand{text-decoration:none; border-bottom:0; color:inherit}
+a.topbar-brand:hover{color:inherit; border-bottom:0}
 .topbar .brand{
   font-weight:700; font-size:14.5px; color:var(--ink);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
@@ -101,6 +103,7 @@ h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
 }
 .toc-part:first-of-type{margin-top:2px}
 .toc-sec{padding-left:26px; color:var(--muted); font-size:13.1px}
+.toc-sub{padding-left:40px; color:var(--muted); font-size:12.4px; font-weight:500}
 .toc-link.active{
   background:var(--active-bg,#fdf1f4); color:var(--active-fg,#b8123c);
   border-left-color:var(--active-fg,#b8123c); font-weight:600;
@@ -272,8 +275,11 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
     background:var(--cur-soft); font-weight:700; color:var(--cur);
     border-bottom:1px solid var(--line); font-size:14.4px;
   }
+  .table-wrap.cardmode > table[class*="c"] td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+  }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)::before{
-    content:attr(data-label) "："; display:inline;
+    content:attr(data-label); flex:1 1 auto;
     font-weight:650; color:var(--ink2); font-size:12.6px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)[data-label=""]::before{content:""}
@@ -282,10 +288,72 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   .table-wrap.cardmode > table.c5, .table-wrap.cardmode > table.c6,
   .table-wrap.cardmode > table.c7{min-width:0; width:100%}
 }
-@container tbl (min-width: 430px) and (max-width: 909px){
-  .table-wrap.cardmode > table.c8, .table-wrap.cardmode > table.c9,
-  .table-wrap.cardmode > table.c10, .table-wrap.cardmode > table.c11,
-  .table-wrap.cardmode > table.c12{min-width:0; width:100%}
+/* 8 列以上（含主角成长率 11 列）在手机和平板宽度改成卡片。
+   旧规则只把表格压到 100% 宽，11 个数字列会被挤到放不下一个数。 */
+@container tbl (min-width: 430px) and (max-width: 980px){
+  .table-wrap.cardmode > table.c8,
+  .table-wrap.cardmode > table.c9,
+  .table-wrap.cardmode > table.c10,
+  .table-wrap.cardmode > table.c11,
+  .table-wrap.cardmode > table.c12{min-width:0; width:100%; display:block}
+  .table-wrap.cardmode > table.c8 > thead,
+  .table-wrap.cardmode > table.c9 > thead,
+  .table-wrap.cardmode > table.c10 > thead,
+  .table-wrap.cardmode > table.c11 > thead,
+  .table-wrap.cardmode > table.c12 > thead{display:none}
+  .table-wrap.cardmode > table.c8 > tbody,
+  .table-wrap.cardmode > table.c9 > tbody,
+  .table-wrap.cardmode > table.c10 > tbody,
+  .table-wrap.cardmode > table.c11 > tbody,
+  .table-wrap.cardmode > table.c12 > tbody,
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr,
+  .table-wrap.cardmode > table.c8 > tbody > tr > td,
+  .table-wrap.cardmode > table.c9 > tbody > tr > td,
+  .table-wrap.cardmode > table.c10 > tbody > tr > td,
+  .table-wrap.cardmode > table.c11 > tbody > tr > td,
+  .table-wrap.cardmode > table.c12 > tbody > tr > td{display:block; width:100%}
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr{
+    border:1px solid var(--line); border-left:4px solid var(--cur);
+    border-radius:10px; margin:0 0 10px; overflow:hidden; background:#fff !important;
+  }
+  .table-wrap.cardmode > table.c8 td,
+  .table-wrap.cardmode > table.c9 td,
+  .table-wrap.cardmode > table.c10 td,
+  .table-wrap.cardmode > table.c11 td,
+  .table-wrap.cardmode > table.c12 td{
+    border:0; border-bottom:1px solid var(--line2); padding:8px 12px;
+    white-space:normal;
+  }
+  .table-wrap.cardmode > table.c8 td:first-child,
+  .table-wrap.cardmode > table.c9 td:first-child,
+  .table-wrap.cardmode > table.c10 td:first-child,
+  .table-wrap.cardmode > table.c11 td:first-child,
+  .table-wrap.cardmode > table.c12 td:first-child{
+    background:var(--cur-soft); font-weight:700; position:static; box-shadow:none;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child),
+  .table-wrap.cardmode > table.c9 td:not(:first-child),
+  .table-wrap.cardmode > table.c10 td:not(:first-child),
+  .table-wrap.cardmode > table.c11 td:not(:first-child),
+  .table-wrap.cardmode > table.c12 td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c9 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
+    content:attr(data-label); flex:1 1 auto;
+    font-weight:650; color:var(--ink2); font-size:13px;
+  }
 }
 
 /* 卡片模式下容器宽度必须受父级约束，否则会按内容撑开导致卡片化不触发 */
@@ -317,6 +385,10 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   vertical-align:-11px; margin-right:10px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
 .avatar.sm{width:21px; height:21px; border-radius:6px; font-size:11px;
   vertical-align:-5px; margin-right:5px}
+/* 表格里的头像：比正文行内头像大一圈，方便在格子里认人 */
+.avatar.face{width:40px; height:40px; border-radius:11px; font-size:16px;
+  vertical-align:-14px; margin-right:8px}
+.avatar.face.is-dual{width:76px; height:40px; border-radius:11px}
 .avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
   vertical-align:-17px; margin-right:12px; box-shadow:none}
 
@@ -536,34 +608,48 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 
 /* ============ 首页 ============ */
 .home-grid{
-  display:grid; gap:14px; margin:24px 0;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  display:grid; gap:16px; margin:22px 0 8px;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
 }
 .home-card{
-  display:block; text-decoration:none; color:inherit;
-  border:1px solid var(--line); border-radius:16px; padding:20px 22px 18px;
-  background:#fff; border-bottom:1px solid var(--line);
-  border-top:5px solid var(--pc,#b8123c);
+  display:flex; flex-direction:column;
+  border:1px solid var(--line); border-radius:16px; padding:0;
+  background:#fff; border-top:5px solid var(--pc,#b8123c);
   box-shadow:0 3px 14px rgba(20,25,40,.055);
-  transition:transform .15s, box-shadow .15s;
-  position:relative; overflow:hidden;
+  overflow:hidden;
 }
-.home-card:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(20,25,40,.12);
-  color:inherit; border-bottom-color:var(--line)}
-.home-card .no{
-  position:absolute; right:14px; top:8px; font-size:56px; font-weight:800;
-  color:var(--pc); opacity:.1; line-height:1; letter-spacing:-.04em;
+.home-card .head{
+  display:block; text-decoration:none; color:inherit; padding:18px 20px 12px;
+  border-bottom:0;
 }
-.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:7px;
+.home-card .head:hover{background:var(--pcs,#f7f8fa); color:inherit; border-bottom:0}
+.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:6px;
   display:flex; align-items:center; gap:9px}
 .home-card .t .bd{width:9px; height:9px; border-radius:3px; background:var(--pc); flex:0 0 auto}
-.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66; margin-bottom:11px}
-.home-card .meta{font-size:12.2px; color:var(--pc); font-weight:650}
+.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66}
 .home-card .chips{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px}
 .home-card .chips span{
   font-size:11.6px; padding:2px 9px; border-radius:999px;
   background:var(--pcs,#f2f4f7); color:var(--pc); font-weight:600;
 }
+.home-outline{
+  display:flex; flex-direction:column; gap:1px;
+  padding:4px 8px 12px; background:linear-gradient(#fff, #fbfcfe);
+  border-top:1px solid var(--line2);
+}
+.home-outline a{
+  text-decoration:none; border-bottom:0; color:var(--ink2);
+  border-radius:8px; line-height:1.45;
+}
+.home-outline a.ol2{
+  font-size:13.4px; font-weight:650; color:var(--ink);
+  padding:7px 10px 3px;
+}
+.home-outline a.ol3{
+  font-size:12.6px; color:var(--muted); font-weight:500;
+  padding:3px 10px 3px 22px;
+}
+.home-outline a:hover{background:#eef1f6; color:var(--ink); border-bottom:0}
 
 /* ============ 通用零件 ============ */
 .badge{
@@ -680,6 +766,58 @@ footer.foot{
   ul,ol{padding-left:21px}
 
   .table-wrap{border-radius:10px; margin:15px 0}
+  /* 侧栏收起后，8 列以上的表改卡片，避免 11 列成长率被压成一条缝 */
+  .table-wrap.cardmode > table.c8,
+  .table-wrap.cardmode > table.c9,
+  .table-wrap.cardmode > table.c10,
+  .table-wrap.cardmode > table.c11,
+  .table-wrap.cardmode > table.c12{min-width:0 !important; width:100%; display:block}
+  .table-wrap.cardmode > table.c8 > thead,
+  .table-wrap.cardmode > table.c9 > thead,
+  .table-wrap.cardmode > table.c10 > thead,
+  .table-wrap.cardmode > table.c11 > thead,
+  .table-wrap.cardmode > table.c12 > thead{display:none}
+  .table-wrap.cardmode > table.c8 > tbody,
+  .table-wrap.cardmode > table.c9 > tbody,
+  .table-wrap.cardmode > table.c10 > tbody,
+  .table-wrap.cardmode > table.c11 > tbody,
+  .table-wrap.cardmode > table.c12 > tbody,
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr,
+  .table-wrap.cardmode > table.c8 > tbody > tr > td,
+  .table-wrap.cardmode > table.c9 > tbody > tr > td,
+  .table-wrap.cardmode > table.c10 > tbody > tr > td,
+  .table-wrap.cardmode > table.c11 > tbody > tr > td,
+  .table-wrap.cardmode > table.c12 > tbody > tr > td{display:block; width:100%}
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr{
+    border:1px solid var(--line); border-left:4px solid var(--cur);
+    border-radius:10px; margin:0 0 10px; overflow:hidden; background:#fff !important;
+  }
+  table.c8 tbody td:first-child, table.c9 tbody td:first-child,
+  table.c10 tbody td:first-child, table.c11 tbody td:first-child,
+  table.c12 tbody td:first-child{position:static; box-shadow:none}
+  .table-wrap.cardmode > table.c8 td:not(:first-child),
+  .table-wrap.cardmode > table.c9 td:not(:first-child),
+  .table-wrap.cardmode > table.c10 td:not(:first-child),
+  .table-wrap.cardmode > table.c11 td:not(:first-child),
+  .table-wrap.cardmode > table.c12 td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+    font-variant-numeric:tabular-nums; font-size:15px;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c9 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
+    content:attr(data-label); flex:1 1 auto; font-weight:650; color:var(--ink2); font-size:13px;
+  }
   table{font-size:13.4px}
   th{padding:9px 11px; font-size:12.8px}
   td{padding:9px 11px}
@@ -708,23 +846,22 @@ footer.foot{
   table{font-size:12.9px}
   th,td{padding:8px 10px}
 
-  /* ---- 手机端：头像显著放大，远距离也能辨认 ---- */
-  /* 表格内头像 21 → 46px */
-  .avatar.sm{
-    width:46px; height:46px; border-radius:12px; font-size:17px;
-    vertical-align:-15px; margin-right:9px;
+  /* 正文行内头像贴近字号；表格头像单独保持可辨认 */
+  .avatar, .avatar.sm{
+    width:24px; height:24px; border-radius:7px; font-size:12px;
+    vertical-align:-6px; margin-right:5px;
   }
-  /* 正文内联头像同步放大 */
-  .avatar{
-    width:46px; height:46px; border-radius:12px; font-size:17px;
-    vertical-align:-15px; margin-right:9px;
+  .avatar.face{
+    width:36px; height:36px; border-radius:10px; font-size:15px;
+    vertical-align:-12px; margin-right:8px;
   }
-  .avatar.lg{width:60px; height:60px; border-radius:16px; font-size:25px;
-    vertical-align:-21px; margin-right:12px}
-  .avatar.xl{width:66px; height:66px; border-radius:18px; font-size:28px}
-  /* 主角双人并排：加宽以容纳两张脸 */
-  .avatar.is-dual{width:90px; height:46px; border-radius:12px;
-    vertical-align:-15px; margin-right:9px}
+  .avatar.lg{width:44px; height:44px; border-radius:12px; font-size:18px;
+    vertical-align:-14px; margin-right:8px}
+  .avatar.xl{width:52px; height:52px; border-radius:14px; font-size:22px}
+  .avatar.is-dual{width:46px; height:24px; border-radius:7px;
+    vertical-align:-6px; margin-right:5px}
+  .avatar.face.is-dual{width:68px; height:36px; border-radius:10px;
+    vertical-align:-12px; margin-right:8px}
   .avatar.is-dual>img{height:100%}
 
   /* 表格内头像放大后，给角色列更多呼吸空间 */
@@ -753,7 +890,7 @@ footer.foot{
   <label class="menu-btn" for="navToggle" aria-label="打开目录" role="button" tabindex="0">
     <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
   </label>
-  <div class="brand"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· 总目录</span></div>
+  <a class="brand topbar-brand" href="index.html"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· 首页</span></a>
 </div>
 <div class="scrim"><label for="navToggle" style="display:block;width:100%;height:100%"></label></div>
 <div class="layout">
@@ -763,7 +900,7 @@ footer.foot{
   </label></div>
   <div class="nav-scroll">
     <div class="sidebar-title">全站目录 · Contents</div>
-    <a class="toc-link toc-part" href="p1.html" style="--pc:#b8123c">第一篇 · 开局与全局框架</a><a class="toc-link toc-sec" href="p1.html#1-1-难度与模式-1">1.1 难度与模式</a><a class="toc-link toc-sec" href="p1.html#1-2-四主角路线推荐顺序-三语站共识-1">1.2 四主角路线推荐顺序（三语站共识）</a><a class="toc-link toc-sec" href="p1.html#1-3-时间与-自由行动-最容易被误解的机制-1">1.3 时间与「自由行动」——最容易被误解的机制</a><a class="toc-link toc-sec" href="p1.html#1-4-每周固定行动总表-不消耗回合-但每周限一次-1">1.4 每周固定行动总表（不消耗回合，但每周限一次）</a><a class="toc-link toc-sec" href="p1.html#1-5-先见之助言-自由行动的决策罗盘-1">1.5 「先见之助言」——自由行动的决策罗盘</a><a class="toc-link toc-sec" href="p1.html#1-6-名声-Renown-与名声等级-1">1.6 名声（Renown）与名声等级</a><a class="toc-link toc-part" href="p2.html" style="--pc:#1f5fa8">第二篇 · 核心系统机制</a><a class="toc-link toc-sec" href="p2.html#2-1-支援等级系统-本作最值得优先投入的长期投资-1">2.1 支援等级系统——本作最值得优先投入的长期投资</a><a class="toc-link toc-sec" href="p2.html#2-2-重点技巧-支援等级速刷法-零成本-1">2.2 【重点技巧】支援等级速刷法（零成本）</a><a class="toc-link toc-sec" href="p2.html#2-3-战斗系统与计算式-1">2.3 战斗系统与计算式</a><a class="toc-link toc-sec" href="p2.html#2-4-Blaze-Arts-主角专属大招-1">2.4 Blaze Arts（主角专属大招）</a><a class="toc-link toc-part" href="p3.html" style="--pc:#7a4bbf">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-sec" href="p3.html#3-1-加护系统基本规则-1">3.1 加护系统基本规则</a><a class="toc-link toc-sec" href="p3.html#3-2-七神加护效果全表-1">3.2 七神加护效果全表</a><a class="toc-link toc-sec" href="p3.html#3-3-侍奉解锁优先级排序-1">3.3 侍奉解锁优先级排序</a><a class="toc-link toc-sec" href="p3.html#3-4-七神专属日排程表-1">3.4 七神专属日排程表</a><a class="toc-link toc-sec" href="p3.html#3-5-附带技巧-免费名望-1">3.5 附带技巧：免费名望</a><a class="toc-link toc-sec" href="p3.html#3-6-重要提醒-加护等级是全局的-1">3.6 重要提醒：加护等级是全局的</a><a class="toc-link toc-part" href="p4.html" style="--pc:#0e8f9e">第四篇 · 送礼心得</a><a class="toc-link toc-sec" href="p4.html#4-1-一句话结论-1">4.1 一句话结论</a><a class="toc-link toc-sec" href="p4.html#4-2-送礼的机制规则-1">4.2 送礼的机制规则</a><a class="toc-link toc-sec" href="p4.html#4-3-送礼核心技巧-1">4.3 送礼核心技巧</a><a class="toc-link toc-sec" href="p4.html#4-4-全角色喜好与推荐礼物一览-1">4.4 全角色喜好与推荐礼物一览</a><a class="toc-link toc-part" href="p5.html" style="--pc:#0f8a63">第五篇 · 角色培养</a><a class="toc-link toc-sec" href="p5.html#5-1-资源分配原则-少而精优于多而弱-1">5.1 资源分配原则：「少而精优于多而弱」</a><a class="toc-link toc-sec" href="p5.html#5-2-转职与资格考试-1">5.2 转职与资格考试</a><a class="toc-link toc-sec" href="p5.html#5-3-挖角招募-三项要素-附加条件-1">5.3 挖角招募：三项要素 + 附加条件</a><a class="toc-link toc-sec" href="p5.html#5-4-跨路线全局进度-Boon-of-Salvation-与-Notable-Deeds-1">5.4 跨路线全局进度：Boon of Salvation 与 Notable Deeds</a><a class="toc-link toc-sec" href="p5.html#5-5-高价值技巧-重复招募角色要-差异化培养-1">5.5 【高价值技巧】重复招募角色要「差异化培养」</a><a class="toc-link toc-sec" href="p5.html#5-6-各路线专属行动的价值-1">5.6 各路线专属行动的价值</a><a class="toc-link toc-sec" href="p5.html#5-7-角色强度与培养方向-1">5.7 角色强度与培养方向</a><a class="toc-link toc-part" href="p6.html" style="--pc:#c2790a">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-sec" href="p6.html#6-1-路线切换策略-一个重要的分歧点-1">6.1 路线切换策略：一个重要的分歧点</a><a class="toc-link toc-sec" href="p6.html#6-2-不可挽回的要素-1">6.2 不可挽回的要素</a><a class="toc-link toc-sec" href="p6.html#6-3-可通过-章重来-挽回-1">6.3 可通过「章重来」挽回</a><a class="toc-link toc-sec" href="p6.html#6-4-可通过-再降临-挽回-1">6.4 可通过「再降临」挽回</a><a class="toc-link toc-part" href="p7.html" style="--pc:#0f8a63">附录 · 每周日常速查卡</a><a class="toc-link toc-part" href="p8.html" style="--pc:#5b6472">资料源与可信度</a><a class="toc-link toc-sec" href="p8.html#每日更新-log">每日更新 log</a><a class="toc-link toc-sec" href="p8.html#1-1-资料来源总览-1">1.1 资料来源总览</a><a class="toc-link toc-sec" href="p8.html#译名权威性分档-1">译名权威性分档</a><a class="toc-link toc-sec" href="p8.html#已确认的官方译名-四语言-1">已确认的官方译名（四语言）</a><a class="toc-link toc-sec" href="p8.html#注意事项-1">注意事项</a>
+    <a class="toc-link toc-part active" href="index.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">首页</a><a class="toc-link toc-part" href="p1.html" style="--pc:#b8123c">第一篇 · 开局与全局框架</a><a class="toc-link toc-sec" href="p1.html#1-1-难度与模式-1">1.1 难度与模式</a><a class="toc-link toc-sec" href="p1.html#1-2-四主角路线推荐顺序-三语站共识-1">1.2 四主角路线推荐顺序（三语站共识）</a><a class="toc-link toc-sec" href="p1.html#1-3-时间与-自由行动-最容易被误解的机制-1">1.3 时间与「自由行动」——最容易被误解的机制</a><a class="toc-link toc-sec" href="p1.html#1-4-每周固定行动总表-不消耗回合-但每周限一次-1">1.4 每周固定行动总表（不消耗回合，但每周限一次）</a><a class="toc-link toc-sec" href="p1.html#1-5-先见之助言-自由行动的决策罗盘-1">1.5 「先见之助言」——自由行动的决策罗盘</a><a class="toc-link toc-sec" href="p1.html#1-6-名声-Renown-与名声等级-1">1.6 名声（Renown）与名声等级</a><a class="toc-link toc-part" href="p2.html" style="--pc:#1f5fa8">第二篇 · 核心系统机制</a><a class="toc-link toc-sec" href="p2.html#2-1-支援等级系统-本作最值得优先投入的长期投资-1">2.1 支援等级系统——本作最值得优先投入的长期投资</a><a class="toc-link toc-sec" href="p2.html#2-2-重点技巧-支援等级速刷法-零成本-1">2.2 【重点技巧】支援等级速刷法（零成本）</a><a class="toc-link toc-sec" href="p2.html#2-3-战斗系统与计算式-1">2.3 战斗系统与计算式</a><a class="toc-link toc-sec" href="p2.html#2-4-Blaze-Arts-主角专属大招-1">2.4 Blaze Arts（主角专属大招）</a><a class="toc-link toc-part" href="p3.html" style="--pc:#7a4bbf">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-sec" href="p3.html#3-1-加护系统基本规则-1">3.1 加护系统基本规则</a><a class="toc-link toc-sec" href="p3.html#3-2-七神加护效果全表-1">3.2 七神加护效果全表</a><a class="toc-link toc-sec" href="p3.html#3-3-侍奉解锁优先级排序-1">3.3 侍奉解锁优先级排序</a><a class="toc-link toc-sub" href="p3.html#顺序建议-1">顺序建议</a><a class="toc-link toc-sub" href="p3.html#一个反直觉的官方建议-1">一个反直觉的官方建议</a><a class="toc-link toc-sec" href="p3.html#3-4-七神专属日排程表-1">3.4 七神专属日排程表</a><a class="toc-link toc-sec" href="p3.html#3-5-附带技巧-免费名望-1">3.5 附带技巧：免费名望</a><a class="toc-link toc-sec" href="p3.html#3-6-重要提醒-加护等级是全局的-1">3.6 重要提醒：加护等级是全局的</a><a class="toc-link toc-part" href="p4.html" style="--pc:#0e8f9e">第四篇 · 送礼心得</a><a class="toc-link toc-sec" href="p4.html#4-1-一句话结论-1">4.1 一句话结论</a><a class="toc-link toc-sec" href="p4.html#4-2-送礼的机制规则-1">4.2 送礼的机制规则</a><a class="toc-link toc-sub" href="p4.html#支援增加量分级-1">支援增加量分级</a><a class="toc-link toc-sub" href="p4.html#礼物稀有度-1">礼物稀有度</a><a class="toc-link toc-sub" href="p4.html#礼物分类-共-18-类-与获取渠道-1">礼物分类（共 18 类）与获取渠道</a><a class="toc-link toc-sec" href="p4.html#4-3-送礼核心技巧-1">4.3 送礼核心技巧</a><a class="toc-link toc-sub" href="p4.html#技巧-1-用-物品描述-反查角色-本作的关键机制-1">技巧 1：用「物品描述」反查角色 —— 本作的关键机制</a><a class="toc-link toc-sub" href="p4.html#技巧-2-别死磕-最爱-退而求其次完全可以-1">技巧 2：别死磕「最爱」，退而求其次完全可以</a><a class="toc-link toc-sub" href="p4.html#技巧-3-餐桌才是主力-送礼用来补齐-1">技巧 3：餐桌才是主力，送礼用来补齐</a><a class="toc-link toc-sub" href="p4.html#技巧-4-剧院-Theatre-被忽略的第三渠道-1">技巧 4：剧院（Theatre）—— 被忽略的第三渠道</a><a class="toc-link toc-sub" href="p4.html#技巧-5-战斗与连携也能刷-1">技巧 5：战斗与连携也能刷</a><a class="toc-link toc-sub" href="p4.html#技巧-6-注意角色在场情况-1">技巧 6：注意角色在场情况</a><a class="toc-link toc-sec" href="p4.html#4-4-全角色喜好与推荐礼物一览-1">4.4 全角色喜好与推荐礼物一览</a><a class="toc-link toc-sub" href="p4.html#四位主角-真主角-1">四位主角 + 真主角</a><a class="toc-link toc-sub" href="p4.html#利贝拉之风-凯伊篇主力-1">利贝拉之风（凯伊篇主力）</a><a class="toc-link toc-sub" href="p4.html#拉米努家族-迪托利希篇-1">拉米努家族（迪托利希篇）</a><a class="toc-link toc-sub" href="p4.html#美盖拉的灯火-赛奥朵拉篇-1">美盖拉的灯火（赛奥朵拉篇）</a><a class="toc-link toc-sub" href="p4.html#蔷薇风暴-蕾达篇-1">蔷薇风暴（蕾达篇）</a><a class="toc-link toc-sub" href="p4.html#炎之鬃-1">炎之鬃</a><a class="toc-link toc-sub" href="p4.html#月之谎-白鸦新娘团-其他-1">月之谎 / 白鸦新娘团 / 其他</a><a class="toc-link toc-part" href="p5.html" style="--pc:#0f8a63">第五篇 · 角色培养</a><a class="toc-link toc-sec" href="p5.html#5-1-资源分配原则-少而精优于多而弱-1">5.1 资源分配原则：「少而精优于多而弱」</a><a class="toc-link toc-sec" href="p5.html#5-2-转职与资格考试-1">5.2 转职与资格考试</a><a class="toc-link toc-sec" href="p5.html#5-3-挖角招募-三项要素-附加条件-1">5.3 挖角招募：三项要素 + 附加条件</a><a class="toc-link toc-sub" href="p5.html#5-3-1-跨路线招募条件速查表-1">5.3.1 跨路线招募条件速查表</a><a class="toc-link toc-sec" href="p5.html#5-4-跨路线全局进度-救世祝福与伟业录-1">5.4 跨路线全局进度：救世祝福与伟业录</a><a class="toc-link toc-sub" href="p5.html#救世祝福优先级-AlGest-星级-1">救世祝福优先级（AlGest 星级）</a><a class="toc-link toc-sec" href="p5.html#5-5-高价值技巧-重复招募角色要-差异化培养-1">5.5 【高价值技巧】重复招募角色要「差异化培养」</a><a class="toc-link toc-sec" href="p5.html#5-6-各路线专属行动的价值-1">5.6 各路线专属行动的价值</a><a class="toc-link toc-sec" href="p5.html#5-7-角色强度与培养方向-1">5.7 角色强度与培养方向</a><a class="toc-link toc-sub" href="p5.html#万用结论-五位主角必强-1">万用结论：五位主角必强</a><a class="toc-link toc-sub" href="p5.html#日文站-AlGest-Tier-暂定版-按成长率总和排序-1">日文站 AlGest Tier（暂定版，按成长率总和排序）</a><a class="toc-link toc-sub" href="p5.html#真正该投资的三件事-而非追逐排名-1">真正该投资的三件事（而非追逐排名）</a><a class="toc-link toc-sub" href="p5.html#四主角核心成长率对照-1">四主角核心成长率对照</a><a class="toc-link toc-part" href="p6.html" style="--pc:#c2790a">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-sec" href="p6.html#6-1-路线切换策略-一个重要的分歧点-1">6.1 路线切换策略：一个重要的分歧点</a><a class="toc-link toc-sec" href="p6.html#6-2-不可挽回的要素-1">6.2 不可挽回的要素</a><a class="toc-link toc-sec" href="p6.html#6-3-可通过-章重来-挽回-1">6.3 可通过「章重来」挽回</a><a class="toc-link toc-sec" href="p6.html#6-4-可通过-再降临-挽回-1">6.4 可通过「再降临」挽回</a><a class="toc-link toc-part" href="p7.html" style="--pc:#9b3d55">第七篇 · 章节一览</a><a class="toc-link toc-sec" href="p7.html#7-1-全书怎么分-1">7.1 全书怎么分</a><a class="toc-link toc-sec" href="p7.html#7-2-已核对的简体章名-1">7.2 已核对的简体章名</a><a class="toc-link toc-sec" href="p7.html#7-3-接下来补什么-1">7.3 接下来补什么</a><a class="toc-link toc-part" href="p8.html" style="--pc:#0f8a63">附录 · 每周日常速查卡</a><a class="toc-link toc-part" href="p9.html" style="--pc:#5b6472">资料源与可信度</a><a class="toc-link toc-sec" href="p9.html#每日更新-log">每日更新 log</a><a class="toc-link toc-sec" href="p9.html#1-1-资料来源总览-1">1.1 资料来源总览</a><a class="toc-link toc-sub" href="p9.html#日文站-1">日文站</a><a class="toc-link toc-sub" href="p9.html#中文站-1">中文站</a><a class="toc-link toc-sub" href="p9.html#英文站-1">英文站</a><a class="toc-link toc-sub" href="p9.html#2026-09-20-新增来源-1">2026-09-20 新增来源</a><a class="toc-link toc-sub" href="p9.html#官方来源-任天堂-1">官方来源（任天堂）</a><a class="toc-link toc-sec" href="p9.html#译名权威性分档-1">译名权威性分档</a><a class="toc-link toc-sec" href="p9.html#已确认的官方译名-四语言-1">已确认的官方译名（四语言）</a><a class="toc-link toc-sec" href="p9.html#注意事项-1">注意事项</a>
   </div>
 </aside>
   <main class="content">
@@ -772,47 +909,78 @@ footer.foot{
       <div class="sub">ファイアーエムブレム 万紫千紅 ／ Fire Emblem: Fortune's Weave ｜ Nintendo Switch 2 ｜ 2026-09-17 发售</div>
       <div class="pills">
         <span class="pill hot">日文站 · 中文站 · 英文站 三语综合</span>
-        <span class="pill">6 篇正文 · 8 个页面</span>
+        <span class="pill">7 篇正文 · 9 个页面</span>
         <span class="pill">加护 · 送礼 · 培养 全收录</span>
         <span class="pill">修订 2026-09-22</span>
       </div>
     </header>
     <article class="card">
       <h1 style="border-bottom-color:var(--brand)">按篇章阅读</h1>
-      <p>每篇独立成页，页面内可跳转章节；页面底部有上/下篇导航，也可以随时从左侧目录切换。</p>
-      <div class="home-grid"><a class="home-card" href="p1.html" style="--pc:#b8123c;--pcs:#fdf1f4">
-  <div class="t"><span class="bd"></span>第一篇 · 开局与全局框架</div>
-  <div class="d">开局决策、难度选择、四主角路线顺序、时间与自由行动、名声系统</div>
-  <div class="chips"><span>开局必读</span><span>路线顺序</span></div>
-</a><a class="home-card" href="p2.html" style="--pc:#1f5fa8;--pcs:#eef4fc">
-  <div class="t"><span class="bd"></span>第二篇 · 核心系统机制</div>
-  <div class="d">支援等级全局机制与速刷法、战斗计算式、Blaze Arts 主角大招</div>
-  <div class="chips"><span>核心机制</span><span>速刷技巧</span></div>
-</a><a class="home-card" href="p3.html" style="--pc:#7a4bbf;--pcs:#f4effc">
-  <div class="t"><span class="bd"></span>第三篇 · 加护（侍奉）心得</div>
-  <div class="d">七神加护效果全表、侍奉解锁优先级排序、专属日排程</div>
-  <div class="chips"><span>优先级 T1–T5</span><span>七神全表</span></div>
-</a><a class="home-card" href="p4.html" style="--pc:#0e8f9e;--pcs:#e8f7f9">
-  <div class="t"><span class="bd"></span>第四篇 · 送礼心得</div>
-  <div class="d">送礼的真实作用、机制规则、全角色喜好与推荐礼物</div>
-  <div class="chips"><span>全角色</span><span>礼物表</span></div>
-</a><a class="home-card" href="p5.html" style="--pc:#0f8a63;--pcs:#eafaf4">
-  <div class="t"><span class="bd"></span>第五篇 · 角色培养</div>
-  <div class="d">资源分配、转职考试、挖角招募、跨路线进度、角色强度梯队</div>
-  <div class="chips"><span>培养方向</span><span>强度梯队</span></div>
-</a><a class="home-card" href="p6.html" style="--pc:#c2790a;--pcs:#fdf5e6">
-  <div class="t"><span class="bd"></span>第六篇 · 路线切换与错过要素</div>
-  <div class="d">路线切换的分歧点、不可挽回要素、可挽回的两种情况</div>
-  <div class="chips"><span>避坑</span><span>挽回机制</span></div>
-</a><a class="home-card" href="p7.html" style="--pc:#0f8a63;--pcs:#eafaf4">
-  <div class="t"><span class="bd"></span>附录 · 每周日常速查卡</div>
-  <div class="d">每周固定行动、自由行动、重点提醒的速查清单，适合对照游玩</div>
-  <div class="chips"><span>速查清单</span><span>打印友好</span></div>
-</a><a class="home-card" href="p8.html" style="--pc:#5b6472;--pcs:#f2f4f7">
-  <div class="t"><span class="bd"></span>资料源与可信度</div>
-  <div class="d">每日更新记录、资料来源、情报可靠度，以及官方简体译名对照</div>
-  <div class="chips"><span>每日更新</span><span>译名对照</span></div>
-</a></div>
+      <p>点篇名进入该页，点下面的小节直接跳到对应位置。左侧目录同样可以回到首页，或跳到任一小节。</p>
+      <div class="home-grid"><section class="home-card" style="--pc:#b8123c;--pcs:#fdf1f4">
+  <a class="head" href="p1.html">
+    <div class="t"><span class="bd"></span>第一篇 · 开局与全局框架</div>
+    <div class="d">开局决策、难度选择、四主角路线顺序、时间与自由行动、名声系统</div>
+    <div class="chips"><span>开局必读</span><span>路线顺序</span></div>
+  </a>
+  <div class="home-outline"><a class="ol2" href="p1.html#1-1-难度与模式-1">1.1 难度与模式</a><a class="ol2" href="p1.html#1-2-四主角路线推荐顺序-三语站共识-1">1.2 四主角路线推荐顺序（三语站共识）</a><a class="ol2" href="p1.html#1-3-时间与-自由行动-最容易被误解的机制-1">1.3 时间与「自由行动」——最容易被误解的机制</a><a class="ol2" href="p1.html#1-4-每周固定行动总表-不消耗回合-但每周限一次-1">1.4 每周固定行动总表（不消耗回合，但每周限一次）</a><a class="ol2" href="p1.html#1-5-先见之助言-自由行动的决策罗盘-1">1.5 「先见之助言」——自由行动的决策罗盘</a><a class="ol2" href="p1.html#1-6-名声-Renown-与名声等级-1">1.6 名声（Renown）与名声等级</a></div>
+</section><section class="home-card" style="--pc:#1f5fa8;--pcs:#eef4fc">
+  <a class="head" href="p2.html">
+    <div class="t"><span class="bd"></span>第二篇 · 核心系统机制</div>
+    <div class="d">支援等级全局机制与速刷法、战斗计算式、主角大招</div>
+    <div class="chips"><span>核心机制</span><span>速刷技巧</span></div>
+  </a>
+  <div class="home-outline"><a class="ol2" href="p2.html#2-1-支援等级系统-本作最值得优先投入的长期投资-1">2.1 支援等级系统——本作最值得优先投入的长期投资</a><a class="ol2" href="p2.html#2-2-重点技巧-支援等级速刷法-零成本-1">2.2 【重点技巧】支援等级速刷法（零成本）</a><a class="ol2" href="p2.html#2-3-战斗系统与计算式-1">2.3 战斗系统与计算式</a><a class="ol2" href="p2.html#2-4-Blaze-Arts-主角专属大招-1">2.4 Blaze Arts（主角专属大招）</a></div>
+</section><section class="home-card" style="--pc:#7a4bbf;--pcs:#f4effc">
+  <a class="head" href="p3.html">
+    <div class="t"><span class="bd"></span>第三篇 · 加护（侍奉）心得</div>
+    <div class="d">七神加护效果全表、侍奉解锁优先级、专属日排程</div>
+    <div class="chips"><span>优先级 T1–T5</span><span>七神全表</span></div>
+  </a>
+  <div class="home-outline"><a class="ol2" href="p3.html#3-1-加护系统基本规则-1">3.1 加护系统基本规则</a><a class="ol2" href="p3.html#3-2-七神加护效果全表-1">3.2 七神加护效果全表</a><a class="ol2" href="p3.html#3-3-侍奉解锁优先级排序-1">3.3 侍奉解锁优先级排序</a><a class="ol3" href="p3.html#顺序建议-1">顺序建议</a><a class="ol3" href="p3.html#一个反直觉的官方建议-1">一个反直觉的官方建议</a><a class="ol2" href="p3.html#3-4-七神专属日排程表-1">3.4 七神专属日排程表</a><a class="ol2" href="p3.html#3-5-附带技巧-免费名望-1">3.5 附带技巧：免费名望</a><a class="ol2" href="p3.html#3-6-重要提醒-加护等级是全局的-1">3.6 重要提醒：加护等级是全局的</a></div>
+</section><section class="home-card" style="--pc:#0e8f9e;--pcs:#e8f7f9">
+  <a class="head" href="p4.html">
+    <div class="t"><span class="bd"></span>第四篇 · 送礼心得</div>
+    <div class="d">送礼的真实作用、机制规则、全角色喜好与推荐礼物</div>
+    <div class="chips"><span>全角色</span><span>礼物表</span></div>
+  </a>
+  <div class="home-outline"><a class="ol2" href="p4.html#4-1-一句话结论-1">4.1 一句话结论</a><a class="ol2" href="p4.html#4-2-送礼的机制规则-1">4.2 送礼的机制规则</a><a class="ol3" href="p4.html#支援增加量分级-1">支援增加量分级</a><a class="ol3" href="p4.html#礼物稀有度-1">礼物稀有度</a><a class="ol3" href="p4.html#礼物分类-共-18-类-与获取渠道-1">礼物分类（共 18 类）与获取渠道</a><a class="ol2" href="p4.html#4-3-送礼核心技巧-1">4.3 送礼核心技巧</a><a class="ol3" href="p4.html#技巧-1-用-物品描述-反查角色-本作的关键机制-1">技巧 1：用「物品描述」反查角色 —— 本作的关键机制</a><a class="ol3" href="p4.html#技巧-2-别死磕-最爱-退而求其次完全可以-1">技巧 2：别死磕「最爱」，退而求其次完全可以</a><a class="ol3" href="p4.html#技巧-3-餐桌才是主力-送礼用来补齐-1">技巧 3：餐桌才是主力，送礼用来补齐</a><a class="ol3" href="p4.html#技巧-4-剧院-Theatre-被忽略的第三渠道-1">技巧 4：剧院（Theatre）—— 被忽略的第三渠道</a><a class="ol3" href="p4.html#技巧-5-战斗与连携也能刷-1">技巧 5：战斗与连携也能刷</a><a class="ol3" href="p4.html#技巧-6-注意角色在场情况-1">技巧 6：注意角色在场情况</a><a class="ol2" href="p4.html#4-4-全角色喜好与推荐礼物一览-1">4.4 全角色喜好与推荐礼物一览</a><a class="ol3" href="p4.html#四位主角-真主角-1">四位主角 + 真主角</a><a class="ol3" href="p4.html#利贝拉之风-凯伊篇主力-1">利贝拉之风（凯伊篇主力）</a><a class="ol3" href="p4.html#拉米努家族-迪托利希篇-1">拉米努家族（迪托利希篇）</a><a class="ol3" href="p4.html#美盖拉的灯火-赛奥朵拉篇-1">美盖拉的灯火（赛奥朵拉篇）</a><a class="ol3" href="p4.html#蔷薇风暴-蕾达篇-1">蔷薇风暴（蕾达篇）</a><a class="ol3" href="p4.html#炎之鬃-1">炎之鬃</a><a class="ol3" href="p4.html#月之谎-白鸦新娘团-其他-1">月之谎 / 白鸦新娘团 / 其他</a></div>
+</section><section class="home-card" style="--pc:#0f8a63;--pcs:#eafaf4">
+  <a class="head" href="p5.html">
+    <div class="t"><span class="bd"></span>第五篇 · 角色培养</div>
+    <div class="d">资源分配、转职考试、挖角招募、跨路线进度、角色强度</div>
+    <div class="chips"><span>培养方向</span><span>强度参考</span></div>
+  </a>
+  <div class="home-outline"><a class="ol2" href="p5.html#5-1-资源分配原则-少而精优于多而弱-1">5.1 资源分配原则：「少而精优于多而弱」</a><a class="ol2" href="p5.html#5-2-转职与资格考试-1">5.2 转职与资格考试</a><a class="ol2" href="p5.html#5-3-挖角招募-三项要素-附加条件-1">5.3 挖角招募：三项要素 + 附加条件</a><a class="ol3" href="p5.html#5-3-1-跨路线招募条件速查表-1">5.3.1 跨路线招募条件速查表</a><a class="ol2" href="p5.html#5-4-跨路线全局进度-救世祝福与伟业录-1">5.4 跨路线全局进度：救世祝福与伟业录</a><a class="ol3" href="p5.html#救世祝福优先级-AlGest-星级-1">救世祝福优先级（AlGest 星级）</a><a class="ol2" href="p5.html#5-5-高价值技巧-重复招募角色要-差异化培养-1">5.5 【高价值技巧】重复招募角色要「差异化培养」</a><a class="ol2" href="p5.html#5-6-各路线专属行动的价值-1">5.6 各路线专属行动的价值</a><a class="ol2" href="p5.html#5-7-角色强度与培养方向-1">5.7 角色强度与培养方向</a><a class="ol3" href="p5.html#万用结论-五位主角必强-1">万用结论：五位主角必强</a><a class="ol3" href="p5.html#日文站-AlGest-Tier-暂定版-按成长率总和排序-1">日文站 AlGest Tier（暂定版，按成长率总和排序）</a><a class="ol3" href="p5.html#真正该投资的三件事-而非追逐排名-1">真正该投资的三件事（而非追逐排名）</a><a class="ol3" href="p5.html#四主角核心成长率对照-1">四主角核心成长率对照</a></div>
+</section><section class="home-card" style="--pc:#c2790a;--pcs:#fdf5e6">
+  <a class="head" href="p6.html">
+    <div class="t"><span class="bd"></span>第六篇 · 路线切换与错过要素</div>
+    <div class="d">路线切换的分歧点、不可挽回要素、可挽回的两种情况</div>
+    <div class="chips"><span>避坑</span><span>挽回机制</span></div>
+  </a>
+  <div class="home-outline"><a class="ol2" href="p6.html#6-1-路线切换策略-一个重要的分歧点-1">6.1 路线切换策略：一个重要的分歧点</a><a class="ol2" href="p6.html#6-2-不可挽回的要素-1">6.2 不可挽回的要素</a><a class="ol2" href="p6.html#6-3-可通过-章重来-挽回-1">6.3 可通过「章重来」挽回</a><a class="ol2" href="p6.html#6-4-可通过-再降临-挽回-1">6.4 可通过「再降临」挽回</a></div>
+</section><section class="home-card" style="--pc:#9b3d55;--pcs:#fdf0f4">
+  <a class="head" href="p7.html">
+    <div class="t"><span class="bd"></span>第七篇 · 章节一览</div>
+    <div class="d">全书分段与章数，以及已经核对到的简体章名。打法仍在补。</div>
+    <div class="chips"><span>章节目录</span><span>持续补完</span></div>
+  </a>
+  <div class="home-outline"><a class="ol2" href="p7.html#7-1-全书怎么分-1">7.1 全书怎么分</a><a class="ol2" href="p7.html#7-2-已核对的简体章名-1">7.2 已核对的简体章名</a><a class="ol2" href="p7.html#7-3-接下来补什么-1">7.3 接下来补什么</a></div>
+</section><section class="home-card" style="--pc:#0f8a63;--pcs:#eafaf4">
+  <a class="head" href="p8.html">
+    <div class="t"><span class="bd"></span>附录 · 每周日常速查卡</div>
+    <div class="d">每周固定行动、自由行动、重点提醒的速查清单，适合对照游玩</div>
+    <div class="chips"><span>速查清单</span><span>打印友好</span></div>
+  </a>
+  <div class="home-outline"></div>
+</section><section class="home-card" style="--pc:#5b6472;--pcs:#f2f4f7">
+  <a class="head" href="p9.html">
+    <div class="t"><span class="bd"></span>资料源与可信度</div>
+    <div class="d">每日更新记录、资料来源、情报可靠度，以及官方简体译名对照</div>
+    <div class="chips"><span>每日更新</span><span>译名对照</span></div>
+  </a>
+  <div class="home-outline"><a class="ol2" href="p9.html#每日更新-log">每日更新 log</a><a class="ol2" href="p9.html#1-1-资料来源总览-1">1.1 资料来源总览</a><a class="ol3" href="p9.html#日文站-1">日文站</a><a class="ol3" href="p9.html#中文站-1">中文站</a><a class="ol3" href="p9.html#英文站-1">英文站</a><a class="ol3" href="p9.html#2026-09-20-新增来源-1">2026-09-20 新增来源</a><a class="ol3" href="p9.html#官方来源-任天堂-1">官方来源（任天堂）</a><a class="ol2" href="p9.html#译名权威性分档-1">译名权威性分档</a><a class="ol2" href="p9.html#已确认的官方译名-四语言-1">已确认的官方译名（四语言）</a><a class="ol2" href="p9.html#注意事项-1">注意事项</a></div>
+</section></div>
       <blockquote>
         <p><strong>关于本作</strong>：中文译名有「万缕千丝」（官方简体／繁体）与「万紫千红」（日文原名直译）两种写法。2026 年 9 月 17 日 Nintendo Switch 2 独占发售，Intelligent Systems 开发、任天堂发行，支持繁简中文。</p>
         <p><strong>时效提醒</strong>：游戏刚发售，各站内容仍在更新，部分数值为暂定版；加护效果等数据来自社区整理，非官方公布。</p>

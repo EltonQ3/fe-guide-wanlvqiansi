@@ -506,7 +506,7 @@ def enhance_characters(body):
                 if not name:
                     continue
                 seen.add(plain)
-                new_cell = im.group(1) + avatar(name, 'face') + inner + im.group(3)
+                new_cell = im.group(1) + avatar(name, 'sm') + inner + im.group(3)
                 new_row = new_row.replace(cell, new_cell, 1)
             return new_row
 
@@ -632,17 +632,13 @@ def topbar_html(page):
   <label class="menu-btn" for="navToggle" aria-label="打开目录" role="button" tabindex="0">
     <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
   </label>
-  <a class="brand topbar-brand" href="index.html"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· {ihtml.escape(page['title'])}</span></a>
+  <div class="brand"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· {ihtml.escape(page['title'])}</span></div>
 </div>'''
 
 def sidebar_html(all_pages, cur_page, toc):
     """侧边栏 = 全站篇章（与首页同结构）+ 当前篇的章节。
     不再显示篇序号（正文已有「第N篇」标题），也不再分「总目录/本篇目录」两栏。"""
-    on_home = cur_page.get('file') == 'index.html'
-    items = [
-        f'<a class="toc-link toc-part{" active" if on_home else ""}" href="index.html"'
-        f' style="--active-fg:#b8123c;--active-bg:#fdf1f4">首页</a>'
-    ]
+    items = []
     for p in all_pages:
         cur = p['file'] == cur_page['file']
         items.append(
@@ -831,55 +827,45 @@ for page in PAGES:
 
 # ---------- 6) 首页 ----------
 def index_html():
-    blurbs = [
-        ('第一篇', '开局决策、难度选择、四主角路线顺序、时间与自由行动、名声系统', ['开局必读', '路线顺序']),
-        ('第二篇', '支援等级全局机制与速刷法、战斗计算式、主角大招', ['核心机制', '速刷技巧']),
-        ('第三篇', '七神加护效果全表、侍奉解锁优先级、专属日排程', ['优先级 T1–T5', '七神全表']),
-        ('第四篇', '送礼的真实作用、机制规则、全角色喜好与推荐礼物', ['全角色', '礼物表']),
-        ('第五篇', '资源分配、转职考试、挖角招募、跨路线进度、角色强度', ['培养方向', '强度参考']),
-        ('第六篇', '路线切换的分歧点、不可挽回要素、可挽回的两种情况', ['避坑', '挽回机制']),
-        ('第七篇', '全书分段与章数，以及已经核对到的简体章名。打法仍在补。', ['章节目录', '持续补完']),
-    ]
     cards = []
-    nav_blocks = [
-        '<a class="toc-link toc-part active" href="index.html" '
-        'style="--active-fg:#b8123c;--active-bg:#fdf1f4">首页</a>'
-    ]
+    descs = {
+        'p1.html': ('开局决策、难度选择、四主角路线顺序、时间与自由行动、名声系统', ['开局必读', '路线顺序']),
+        'p2.html': ('支援等级全局机制与速刷法、战斗计算式、Blaze Arts 主角大招', ['核心机制', '速刷技巧']),
+        'p3.html': ('七神加护效果全表、侍奉解锁优先级排序、专属日排程', ['优先级 T1–T5', '七神全表']),
+        'p4.html': ('送礼的真实作用、机制规则、全角色喜好与推荐礼物', ['全角色', '礼物表']),
+        'p5.html': ('资源分配、转职考试、挖角招募、跨路线进度、角色强度梯队', ['培养方向', '强度梯队']),
+        'p6.html': ('路线切换的分歧点、不可挽回要素、可挽回的两种情况', ['避坑', '挽回机制']),
+    }
     for p in PAGES:
         if p['title'].startswith('附录 · 每周'):
-            d, chips = '每周固定行动、自由行动、重点提醒的速查清单，适合对照游玩', ['速查清单', '打印友好']
+            d = '每周固定行动、自由行动、重点提醒的速查清单，适合对照游玩'
+            chips = ['速查清单', '打印友好']
         elif p['kind'] == 'src':
-            d, chips = '每日更新记录、资料来源、情报可靠度，以及官方简体译名对照', ['每日更新', '译名对照']
+            d = '每日更新记录、资料来源、情报可靠度，以及官方简体译名对照'
+            chips = ['每日更新', '译名对照']
         else:
-            d, chips = next(((b, c) for k, b, c in blurbs if p['title'].startswith(k)), ('', []))
+            d, chips = descs.get(p['file'], ('', []))
         chips_html = ''.join(f'<span>{ihtml.escape(c)}</span>' for c in chips)
-        _, toc = build_body(flatten_sections(p['sections']), p)
-        outline, side = [], []
-        for lvl, sid, txt in toc:
-            if lvl == 2:
-                outline.append(
-                    f'<a class="ol2" href="{p["file"]}#{sid}">{ihtml.escape(txt)}</a>')
-                side.append(
-                    f'<a class="toc-link toc-sec" href="{p["file"]}#{sid}">{ihtml.escape(txt)}</a>')
-            elif lvl == 3:
-                outline.append(
-                    f'<a class="ol3" href="{p["file"]}#{sid}">{ihtml.escape(txt)}</a>')
-                side.append(
-                    f'<a class="toc-link toc-sub" href="{p["file"]}#{sid}">{ihtml.escape(txt)}</a>')
-        cards.append(
-            f'''<section class="home-card" style="--pc:{p['color']};--pcs:{p['soft']}">
-  <a class="head" href="{p['file']}">
-    <div class="t"><span class="bd"></span>{ihtml.escape(p['title'])}</div>
-    <div class="d">{ihtml.escape(d)}</div>
-    <div class="chips">{chips_html}</div>
-  </a>
-  <div class="home-outline">{''.join(outline)}</div>
-</section>''')
-        nav_blocks.append(
-            f'<a class="toc-link toc-part" href="{p["file"]}" style="--pc:{p["color"]}">'
-            f'{ihtml.escape(p["title"])}</a>{"".join(side)}')
+        # 大序号从 1 开始（idx 是 0 基，附录保持「＊」）
+        cards.append(f'''<a class="home-card" href="{p['file']}" style="--pc:{p['color']};--pcs:{p['soft']}">
+  <div class="t"><span class="bd"></span>{ihtml.escape(p['title'])}</div>
+  <div class="d">{ihtml.escape(d)}</div>
+  <div class="chips">{chips_html}</div>
+</a>''')
 
-    fake_page = {'title': '首页', 'color': '#b8123c', 'soft': '#fdf1f4', 'file': 'index.html', 'idx': 0}
+    # 首页目录（按篇列出章节）
+    nav_blocks = []
+    for page in PAGES:
+        _, toc = build_body(flatten_sections(page['sections']), page)
+        subs = [t for t in toc if t[0] == 2]
+        lis = ''.join(
+            f'<a class="toc-link toc-sec" href="{page["file"]}#{sid}">{ihtml.escape(txt)}</a>'
+            for _, sid, txt in subs)
+        nav_blocks.append(
+            f'<a class="toc-link toc-part" href="{page["file"]}" style="--pc:{page["color"]}">'
+            f'{ihtml.escape(page["title"])}</a>{lis}')
+
+    fake_page = {'title': '总目录', 'color': '#b8123c', 'soft': '#fdf1f4', 'file': 'index.html', 'idx': 0}
     return f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -916,7 +902,7 @@ def index_html():
     </header>
     <article class="card">
       <h1 style="border-bottom-color:var(--brand)">按篇章阅读</h1>
-      <p>点篇名进入该页，点下面的小节直接跳到对应位置。左侧目录同样可以回到首页，或跳到任一小节。</p>
+      <p>每篇独立成页，页面内可跳转章节；页面底部有上/下篇导航，也可以随时从左侧目录切换。</p>
       <div class="home-grid">{''.join(cards)}</div>
       <blockquote>
         <p><strong>关于本作</strong>：中文译名有「万缕千丝」（官方简体／繁体）与「万紫千红」（日文原名直译）两种写法。2026 年 9 月 17 日 Nintendo Switch 2 独占发售，Intelligent Systems 开发、任天堂发行，支持繁简中文。</p>

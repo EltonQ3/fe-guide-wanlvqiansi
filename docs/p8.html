@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#5b6472">
+<meta name="theme-color" content="#0f8a63">
 <meta name="format-detection" content="telephone=no">
-<title>资料源与可信度 · 火焰纹章 万缕千丝 完全攻略手册</title>
+<title>附录 · 每周日常速查卡 · 火焰纹章 万缕千丝 完全攻略手册</title>
 <style>
 :root{
   --bg:#f7f8fa; --card:#ffffff;
@@ -40,6 +40,8 @@ h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
   border-bottom:1px solid var(--line);
   overflow:hidden; max-width:100vw;
 }
+a.topbar-brand{text-decoration:none; border-bottom:0; color:inherit}
+a.topbar-brand:hover{color:inherit; border-bottom:0}
 .topbar .brand{
   font-weight:700; font-size:14.5px; color:var(--ink);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
@@ -102,6 +104,7 @@ h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
 }
 .toc-part:first-of-type{margin-top:2px}
 .toc-sec{padding-left:26px; color:var(--muted); font-size:13.1px}
+.toc-sub{padding-left:40px; color:var(--muted); font-size:12.4px; font-weight:500}
 .toc-link.active{
   background:var(--active-bg,#fdf1f4); color:var(--active-fg,#b8123c);
   border-left-color:var(--active-fg,#b8123c); font-weight:600;
@@ -273,8 +276,11 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
     background:var(--cur-soft); font-weight:700; color:var(--cur);
     border-bottom:1px solid var(--line); font-size:14.4px;
   }
+  .table-wrap.cardmode > table[class*="c"] td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+  }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)::before{
-    content:attr(data-label) "："; display:inline;
+    content:attr(data-label); flex:1 1 auto;
     font-weight:650; color:var(--ink2); font-size:12.6px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)[data-label=""]::before{content:""}
@@ -283,10 +289,72 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   .table-wrap.cardmode > table.c5, .table-wrap.cardmode > table.c6,
   .table-wrap.cardmode > table.c7{min-width:0; width:100%}
 }
-@container tbl (min-width: 430px) and (max-width: 909px){
-  .table-wrap.cardmode > table.c8, .table-wrap.cardmode > table.c9,
-  .table-wrap.cardmode > table.c10, .table-wrap.cardmode > table.c11,
-  .table-wrap.cardmode > table.c12{min-width:0; width:100%}
+/* 8 列以上（含主角成长率 11 列）在手机和平板宽度改成卡片。
+   旧规则只把表格压到 100% 宽，11 个数字列会被挤到放不下一个数。 */
+@container tbl (min-width: 430px) and (max-width: 980px){
+  .table-wrap.cardmode > table.c8,
+  .table-wrap.cardmode > table.c9,
+  .table-wrap.cardmode > table.c10,
+  .table-wrap.cardmode > table.c11,
+  .table-wrap.cardmode > table.c12{min-width:0; width:100%; display:block}
+  .table-wrap.cardmode > table.c8 > thead,
+  .table-wrap.cardmode > table.c9 > thead,
+  .table-wrap.cardmode > table.c10 > thead,
+  .table-wrap.cardmode > table.c11 > thead,
+  .table-wrap.cardmode > table.c12 > thead{display:none}
+  .table-wrap.cardmode > table.c8 > tbody,
+  .table-wrap.cardmode > table.c9 > tbody,
+  .table-wrap.cardmode > table.c10 > tbody,
+  .table-wrap.cardmode > table.c11 > tbody,
+  .table-wrap.cardmode > table.c12 > tbody,
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr,
+  .table-wrap.cardmode > table.c8 > tbody > tr > td,
+  .table-wrap.cardmode > table.c9 > tbody > tr > td,
+  .table-wrap.cardmode > table.c10 > tbody > tr > td,
+  .table-wrap.cardmode > table.c11 > tbody > tr > td,
+  .table-wrap.cardmode > table.c12 > tbody > tr > td{display:block; width:100%}
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr{
+    border:1px solid var(--line); border-left:4px solid var(--cur);
+    border-radius:10px; margin:0 0 10px; overflow:hidden; background:#fff !important;
+  }
+  .table-wrap.cardmode > table.c8 td,
+  .table-wrap.cardmode > table.c9 td,
+  .table-wrap.cardmode > table.c10 td,
+  .table-wrap.cardmode > table.c11 td,
+  .table-wrap.cardmode > table.c12 td{
+    border:0; border-bottom:1px solid var(--line2); padding:8px 12px;
+    white-space:normal;
+  }
+  .table-wrap.cardmode > table.c8 td:first-child,
+  .table-wrap.cardmode > table.c9 td:first-child,
+  .table-wrap.cardmode > table.c10 td:first-child,
+  .table-wrap.cardmode > table.c11 td:first-child,
+  .table-wrap.cardmode > table.c12 td:first-child{
+    background:var(--cur-soft); font-weight:700; position:static; box-shadow:none;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child),
+  .table-wrap.cardmode > table.c9 td:not(:first-child),
+  .table-wrap.cardmode > table.c10 td:not(:first-child),
+  .table-wrap.cardmode > table.c11 td:not(:first-child),
+  .table-wrap.cardmode > table.c12 td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c9 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
+    content:attr(data-label); flex:1 1 auto;
+    font-weight:650; color:var(--ink2); font-size:13px;
+  }
 }
 
 /* 卡片模式下容器宽度必须受父级约束，否则会按内容撑开导致卡片化不触发 */
@@ -318,6 +386,10 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   vertical-align:-11px; margin-right:10px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
 .avatar.sm{width:21px; height:21px; border-radius:6px; font-size:11px;
   vertical-align:-5px; margin-right:5px}
+/* 表格里的头像：比正文行内头像大一圈，方便在格子里认人 */
+.avatar.face{width:40px; height:40px; border-radius:11px; font-size:16px;
+  vertical-align:-14px; margin-right:8px}
+.avatar.face.is-dual{width:76px; height:40px; border-radius:11px}
 .avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
   vertical-align:-17px; margin-right:12px; box-shadow:none}
 
@@ -537,34 +609,48 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 
 /* ============ 首页 ============ */
 .home-grid{
-  display:grid; gap:14px; margin:24px 0;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  display:grid; gap:16px; margin:22px 0 8px;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
 }
 .home-card{
-  display:block; text-decoration:none; color:inherit;
-  border:1px solid var(--line); border-radius:16px; padding:20px 22px 18px;
-  background:#fff; border-bottom:1px solid var(--line);
-  border-top:5px solid var(--pc,#b8123c);
+  display:flex; flex-direction:column;
+  border:1px solid var(--line); border-radius:16px; padding:0;
+  background:#fff; border-top:5px solid var(--pc,#b8123c);
   box-shadow:0 3px 14px rgba(20,25,40,.055);
-  transition:transform .15s, box-shadow .15s;
-  position:relative; overflow:hidden;
+  overflow:hidden;
 }
-.home-card:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(20,25,40,.12);
-  color:inherit; border-bottom-color:var(--line)}
-.home-card .no{
-  position:absolute; right:14px; top:8px; font-size:56px; font-weight:800;
-  color:var(--pc); opacity:.1; line-height:1; letter-spacing:-.04em;
+.home-card .head{
+  display:block; text-decoration:none; color:inherit; padding:18px 20px 12px;
+  border-bottom:0;
 }
-.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:7px;
+.home-card .head:hover{background:var(--pcs,#f7f8fa); color:inherit; border-bottom:0}
+.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:6px;
   display:flex; align-items:center; gap:9px}
 .home-card .t .bd{width:9px; height:9px; border-radius:3px; background:var(--pc); flex:0 0 auto}
-.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66; margin-bottom:11px}
-.home-card .meta{font-size:12.2px; color:var(--pc); font-weight:650}
+.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66}
 .home-card .chips{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px}
 .home-card .chips span{
   font-size:11.6px; padding:2px 9px; border-radius:999px;
   background:var(--pcs,#f2f4f7); color:var(--pc); font-weight:600;
 }
+.home-outline{
+  display:flex; flex-direction:column; gap:1px;
+  padding:4px 8px 12px; background:linear-gradient(#fff, #fbfcfe);
+  border-top:1px solid var(--line2);
+}
+.home-outline a{
+  text-decoration:none; border-bottom:0; color:var(--ink2);
+  border-radius:8px; line-height:1.45;
+}
+.home-outline a.ol2{
+  font-size:13.4px; font-weight:650; color:var(--ink);
+  padding:7px 10px 3px;
+}
+.home-outline a.ol3{
+  font-size:12.6px; color:var(--muted); font-weight:500;
+  padding:3px 10px 3px 22px;
+}
+.home-outline a:hover{background:#eef1f6; color:var(--ink); border-bottom:0}
 
 /* ============ 通用零件 ============ */
 .badge{
@@ -681,6 +767,58 @@ footer.foot{
   ul,ol{padding-left:21px}
 
   .table-wrap{border-radius:10px; margin:15px 0}
+  /* 侧栏收起后，8 列以上的表改卡片，避免 11 列成长率被压成一条缝 */
+  .table-wrap.cardmode > table.c8,
+  .table-wrap.cardmode > table.c9,
+  .table-wrap.cardmode > table.c10,
+  .table-wrap.cardmode > table.c11,
+  .table-wrap.cardmode > table.c12{min-width:0 !important; width:100%; display:block}
+  .table-wrap.cardmode > table.c8 > thead,
+  .table-wrap.cardmode > table.c9 > thead,
+  .table-wrap.cardmode > table.c10 > thead,
+  .table-wrap.cardmode > table.c11 > thead,
+  .table-wrap.cardmode > table.c12 > thead{display:none}
+  .table-wrap.cardmode > table.c8 > tbody,
+  .table-wrap.cardmode > table.c9 > tbody,
+  .table-wrap.cardmode > table.c10 > tbody,
+  .table-wrap.cardmode > table.c11 > tbody,
+  .table-wrap.cardmode > table.c12 > tbody,
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr,
+  .table-wrap.cardmode > table.c8 > tbody > tr > td,
+  .table-wrap.cardmode > table.c9 > tbody > tr > td,
+  .table-wrap.cardmode > table.c10 > tbody > tr > td,
+  .table-wrap.cardmode > table.c11 > tbody > tr > td,
+  .table-wrap.cardmode > table.c12 > tbody > tr > td{display:block; width:100%}
+  .table-wrap.cardmode > table.c8 > tbody > tr,
+  .table-wrap.cardmode > table.c9 > tbody > tr,
+  .table-wrap.cardmode > table.c10 > tbody > tr,
+  .table-wrap.cardmode > table.c11 > tbody > tr,
+  .table-wrap.cardmode > table.c12 > tbody > tr{
+    border:1px solid var(--line); border-left:4px solid var(--cur);
+    border-radius:10px; margin:0 0 10px; overflow:hidden; background:#fff !important;
+  }
+  table.c8 tbody td:first-child, table.c9 tbody td:first-child,
+  table.c10 tbody td:first-child, table.c11 tbody td:first-child,
+  table.c12 tbody td:first-child{position:static; box-shadow:none}
+  .table-wrap.cardmode > table.c8 td:not(:first-child),
+  .table-wrap.cardmode > table.c9 td:not(:first-child),
+  .table-wrap.cardmode > table.c10 td:not(:first-child),
+  .table-wrap.cardmode > table.c11 td:not(:first-child),
+  .table-wrap.cardmode > table.c12 td:not(:first-child){
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+    font-variant-numeric:tabular-nums; font-size:15px;
+  }
+  .table-wrap.cardmode > table.c8 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c9 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
+  .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
+    content:attr(data-label); flex:1 1 auto; font-weight:650; color:var(--ink2); font-size:13px;
+  }
   table{font-size:13.4px}
   th{padding:9px 11px; font-size:12.8px}
   td{padding:9px 11px}
@@ -709,23 +847,22 @@ footer.foot{
   table{font-size:12.9px}
   th,td{padding:8px 10px}
 
-  /* ---- 手机端：头像显著放大，远距离也能辨认 ---- */
-  /* 表格内头像 21 → 46px */
-  .avatar.sm{
-    width:46px; height:46px; border-radius:12px; font-size:17px;
-    vertical-align:-15px; margin-right:9px;
+  /* 正文行内头像贴近字号；表格头像单独保持可辨认 */
+  .avatar, .avatar.sm{
+    width:24px; height:24px; border-radius:7px; font-size:12px;
+    vertical-align:-6px; margin-right:5px;
   }
-  /* 正文内联头像同步放大 */
-  .avatar{
-    width:46px; height:46px; border-radius:12px; font-size:17px;
-    vertical-align:-15px; margin-right:9px;
+  .avatar.face{
+    width:36px; height:36px; border-radius:10px; font-size:15px;
+    vertical-align:-12px; margin-right:8px;
   }
-  .avatar.lg{width:60px; height:60px; border-radius:16px; font-size:25px;
-    vertical-align:-21px; margin-right:12px}
-  .avatar.xl{width:66px; height:66px; border-radius:18px; font-size:28px}
-  /* 主角双人并排：加宽以容纳两张脸 */
-  .avatar.is-dual{width:90px; height:46px; border-radius:12px;
-    vertical-align:-15px; margin-right:9px}
+  .avatar.lg{width:44px; height:44px; border-radius:12px; font-size:18px;
+    vertical-align:-14px; margin-right:8px}
+  .avatar.xl{width:52px; height:52px; border-radius:14px; font-size:22px}
+  .avatar.is-dual{width:46px; height:24px; border-radius:7px;
+    vertical-align:-6px; margin-right:5px}
+  .avatar.face.is-dual{width:68px; height:36px; border-radius:10px;
+    vertical-align:-12px; margin-right:8px}
   .avatar.is-dual>img{height:100%}
 
   /* 表格内头像放大后，给角色列更多呼吸空间 */
@@ -747,7 +884,7 @@ footer.foot{
   .home-card,.chr-card,.key,.step,.dlog-day{break-inside:avoid}
 }
 
-:root{--cur:#5b6472;--cur-soft:#f2f4f7}
+:root{--cur:#0f8a63;--cur-soft:#eafaf4}
 </style>
 </head>
 <body>
@@ -756,7 +893,7 @@ footer.foot{
   <label class="menu-btn" for="navToggle" aria-label="打开目录" role="button" tabindex="0">
     <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
   </label>
-  <div class="brand"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· 资料源与可信度</span></div>
+  <a class="brand topbar-brand" href="index.html"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· 附录 · 每周日常速查卡</span></a>
 </div>
 <div class="scrim"><label for="navToggle" style="display:block;width:100%;height:100%"></label></div>
 <div class="layout">
@@ -766,376 +903,22 @@ footer.foot{
   </label></div>
   <div class="nav-scroll">
     <div class="sidebar-title">目录 · Contents</div>
-    <a class="toc-link toc-part" href="p1.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">第一篇 · 开局与全局框架</a><a class="toc-link toc-part" href="p2.html" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">第二篇 · 核心系统机制</a><a class="toc-link toc-part" href="p3.html" style="--active-fg:#7a4bbf;--active-bg:#f4effc">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-part" href="p4.html" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">第四篇 · 送礼心得</a><a class="toc-link toc-part" href="p5.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">第五篇 · 角色培养</a><a class="toc-link toc-part" href="p6.html" style="--active-fg:#c2790a;--active-bg:#fdf5e6">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-part" href="p7.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">附录 · 每周日常速查卡</a><a class="toc-link toc-part active" href="p8.html" style="--active-fg:#5b6472;--active-bg:#f2f4f7">资料源与可信度</a><a class="toc-link toc-sec" href="#每日更新-log" data-target="每日更新-log" style="--active-fg:#5b6472;--active-bg:#f2f4f7">每日更新 log</a><a class="toc-link toc-sec" href="#1-1-资料来源总览" data-target="1-1-资料来源总览" style="--active-fg:#5b6472;--active-bg:#f2f4f7">1.1 资料来源总览</a><a class="toc-link " href="#附录-来源清单" data-target="附录-来源清单" style="--active-fg:#5b6472;--active-bg:#f2f4f7">附录 · 来源清单</a><a class="toc-link toc-sec" href="#日文站" data-target="日文站" style="--active-fg:#5b6472;--active-bg:#f2f4f7">日文站</a><a class="toc-link toc-sec" href="#中文站" data-target="中文站" style="--active-fg:#5b6472;--active-bg:#f2f4f7">中文站</a><a class="toc-link toc-sec" href="#英文站" data-target="英文站" style="--active-fg:#5b6472;--active-bg:#f2f4f7">英文站</a><a class="toc-link toc-sec" href="#2026-09-20-新增来源" data-target="2026-09-20-新增来源" style="--active-fg:#5b6472;--active-bg:#f2f4f7">2026-09-20 新增来源</a><a class="toc-link toc-sec" href="#官方来源-任天堂" data-target="官方来源-任天堂" style="--active-fg:#5b6472;--active-bg:#f2f4f7">官方来源（任天堂）</a><a class="toc-link " href="#附录-情报可靠度提示" data-target="附录-情报可靠度提示" style="--active-fg:#5b6472;--active-bg:#f2f4f7">附录 · 情报可靠度提示</a><a class="toc-link " href="#附录-译名对照与多语言说明" data-target="附录-译名对照与多语言说明" style="--active-fg:#5b6472;--active-bg:#f2f4f7">附录 · 译名对照与多语言说明</a><a class="toc-link toc-sec" href="#译名权威性分档" data-target="译名权威性分档" style="--active-fg:#5b6472;--active-bg:#f2f4f7">译名权威性分档</a><a class="toc-link toc-sec" href="#已确认的官方译名-四语言" data-target="已确认的官方译名-四语言" style="--active-fg:#5b6472;--active-bg:#f2f4f7">已确认的官方译名（四语言）</a><a class="toc-link toc-sec" href="#注意事项" data-target="注意事项" style="--active-fg:#5b6472;--active-bg:#f2f4f7">注意事项</a>
+    <a class="toc-link toc-part" href="index.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">首页</a><a class="toc-link toc-part" href="p1.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">第一篇 · 开局与全局框架</a><a class="toc-link toc-part" href="p2.html" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">第二篇 · 核心系统机制</a><a class="toc-link toc-part" href="p3.html" style="--active-fg:#7a4bbf;--active-bg:#f4effc">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-part" href="p4.html" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">第四篇 · 送礼心得</a><a class="toc-link toc-part" href="p5.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">第五篇 · 角色培养</a><a class="toc-link toc-part" href="p6.html" style="--active-fg:#c2790a;--active-bg:#fdf5e6">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-part" href="p7.html" style="--active-fg:#9b3d55;--active-bg:#fdf0f4">第七篇 · 章节一览</a><a class="toc-link toc-part active" href="p8.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">附录 · 每周日常速查卡</a><a class="toc-link toc-part" href="p9.html" style="--active-fg:#5b6472;--active-bg:#f2f4f7">资料源与可信度</a>
   </div>
 </aside>
   <main class="content">
     <header class="hero">
-  <h1>附录 · <span class="accent">资料源与可信度</span></h1>
+  <h1>速查工具 · <span class="accent">每周日常速查卡</span></h1>
   <div class="sub">火焰纹章 万缕千丝 ／ ファイアーエムブレム 万紫千紅 ｜ Fire Emblem: Fortune's Weave</div>
-  <div class="pills"><span class="pill hot">三语站来源</span><span class="pill">各站特色与链接</span><span class="pill">情报可靠度分级</span></div>
+  <div class="pills"><span class="pill hot">打印友好</span><span class="pill">每周对照用</span><span class="pill">修订 2026-09-22</span></div>
 </header>
     <article class="card">
-<h2 id="每日更新-log">每日更新 log<span class="h2note">自动采集 · 逐日留档</span></h2><p>本站每日 09:00 自动巡检三语系攻略站与 UGC 论坛，将变更分类后写入正文，并在此逐日留档。<br>新来源按三级分档：<span class="grade gA">A</span>高可信（可并入正文）、<span class="grade gB">B</span>参考（UGC 一手资料，待裁决）、<span class="grade gC">C</span>待观察（标题党／AI 痕迹／纯聚合）。</p><div class="dlog"><div class="dlog-day">
-  <div class="dlog-head"><span class="dlog-date">2026-09-22</span><span class="dlog-count">检查 本站修订，不是 05:00 采集。开工前 log 仍只有 2026-09-20 一条；远程 main 也没有更新的采集提交。 个来源</span></div>
-  <div class="dlog-body"><div class="dlog-sec"><span class="lbl"><span class="n">6</span>并入正文</span><ul><li>【译名】地名改为任天堂香港官方繁中的简体：达格扎/达格席翁 → 鞑古扎/鞑古席翁 <a class="src" href="https://ec.nintendo.com/HK/zh/titles/70010000126932" target="_blank" rel="noopener">出处</a></li><li>【译名】魔神名改为官方「霸羅爾」的简体「霸罗尔」。媒体旧译「巴罗尔」只保留在来源说明里 <a class="src" href="https://store.nintendo.com.hk/70010000126932" target="_blank" rel="noopener">出处</a></li><li>【译名】简体正文里同一角色的多套音译已收成一种，与招募表和译名表一致（如皮特鲁→彼得、奈丁→努蒂奴、本迪茨→班迪兹）。无官方译名的仍标为社群暂译 <span class="src">docs/data/译名对照表.md</span></li><li>【译名】「神之加護」在简体正文中写为「神之加护」；日文公式里的「神の加護」保持原样 <span class="src">本站修订</span></li><li>【版面】来源清单重复编号 34–43 改为 51–60。首页「7 个篇章 / 汇总日期 2026-09-19」改为按实际页数生成，并标修订日 2026-09-22 <span class="src">本站修订</span></li><li>【版面】内联头像不再插入列表（来源清单、步骤），角色表仍保留头像 <span class="src">本站修订</span></li></ul></div><div class="dlog-sec"><span class="lbl"><span class="n">1</span>冲突待裁决（未改动正文）</span><div class="dlog-conf"><div class="tp">喂食白鸦 vs 官方「白鸟」【未改名】</div><div class="vs">现有：<b>正文作「喂食白鸦」</b><br>新说法：<b>任天堂用语「白鳥」的简体是「白鸟」，但是据点切换主角的设施。尚未核对喂食对象是否就是该设施</b> <span class="src">docs/data/i18n.json white_bird</span></div></div></div></div>
-</div><div class="dlog-day">
-  <div class="dlog-head"><span class="dlog-date">2026-09-20</span><span class="dlog-count">检查 巡检 19 个来源域名；新增日站 AlGest 全量抓取（8 个栏目页全部 200）+ 任天堂官方源核查 个来源</span></div>
-  <div class="dlog-body"><div class="dlog-sec"><span class="lbl"><span class="n">7</span>并入正文</span><ul><li>【重大修正】AlGest 误判：实为 altema.jp 返回 403，AlGest 本体（al-gest.com）8 个栏目页实测全部 HTTP 200，恢复正常采集。已在来源清单加注说明 <span class="src">本轮实测复核</span></li><li>【修正】洛蕾塔迪托利希线名声门槛：正文「名声8」→「名声9」。经日站 AlGest 核实，与游民星空一致，两源均修正为 9 <a class="src" href="https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/" target="_blank" rel="noopener">出处</a></li><li>【扩充】5.3.1 跨路线招募条件速查表：从 8 名角色扩充至 60 名，按五大派系分表（利贝拉之风/拉弥努家族/美盖拉的灯火/蔷薇风暴/炎之鬃 + 其他派系 + 无派系） <span class="src">AlGest スカウト・加入条件一覧（2026-09-17）</span></li><li>新增「附录 · 译名对照与多语言说明」，含四语言官方译名表与权威性分档 <span class="src">任天堂香港官网 / eShop</span></li><li>建立多语言对照表：docs/data/i18n.json（结构化）+ docs/data/译名对照表.md（可读版），覆盖作品名、四主角、9 名官方 NPC、6 项世界观、6 项系统术语、54 名可招募角色、10 项道具素材 <span class="src">官方源 + AlGest + 18183/游民星空</span></li><li>可靠度表更新：「招募条件」由「中」升为「中高」（三方交叉验证一致）；新增「专有名词译名」行 <span class="src">本轮验证</span></li><li>来源清单新增「官方来源（任天堂）」小节，补入 8 条官方/权威来源（任天堂香港×2、eShop、Nintendo Life、百度百科×2、玩一玩游戏、游侠网） <span class="src">本轮采集</span></li></ul></div><div class="dlog-sec"><span class="lbl"><span class="n">14</span>新来源候选</span><ul class="dlog-src"><li><span class="grade gA">A</span><a href="https://www.nintendo.com/hk/topics/article/6TmiV6zUXU8YEQzNj5NvgQ" target="_blank" rel="noopener">任天堂（香港）官方网站 — 官方资讯页</a> <span class="note">— 【官方一手】四主角官方繁中译名（凱伊/迪托利希/賽奧朵拉/蕾達）与世界觀术语。译名权威来源</span></li><li><span class="grade gA">A</span><a href="https://ec.nintendo.com/HK/zh/titles/70010000126932" target="_blank" rel="noopener">任天堂 eShop 香港 — 商品页</a> <span class="note">— 【官方一手】载明支持简繁中文、四位战士介绍、「救世軍」等官方术语</span></li><li><span class="grade gA">A</span><a href="https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/" target="_blank" rel="noopener">AlGest — スカウト・加入条件一覧</a> <span class="note">— 【本轮核实可用】日站核心数据源，60 名角色完整招募条件（支援Lv/名声Lv/附加条件），本表以此为准。此前误判为 403 受限</span></li><li><span class="grade gA">A</span><a href="https://wap.gamersky.com/gl/Content-2211366.html" target="_blank" rel="noopener">游民星空 — 角色加入条件一览</a> <span class="note">— 中文数值表，与日站 AlGest 一致</span></li><li><span class="grade gA">A</span><a href="https://www.4gamers.com.tw/news/detail/79910/fire-emblem-wanshiqianhong-release-date-september-17-switch-2" target="_blank" rel="noopener">4Gamers（台湾）— 萬縷千絲发售报道</a> <span class="note">— 台湾主要游戏媒体，官方信息转述</span></li><li><span class="grade gB">B</span><a href="https://www.nintendolife.com/guides/guides/fire-emblem-fortunes-weave-characters-every-hero-revealed-so-far" target="_blank" rel="noopener">Nintendo Life — Fortune&#x27;s Weave Characters</a> <span class="note">— 汇总任天堂 Nintendo Today 官方角色介绍，提供英文官方名（Cai/Dietrich/Leda/Theodora/Eshmel 等），对建英文对照极有用</span></li><li><span class="grade gB">B</span><a href="https://baike.baidu.com/item/火焰纹章:万紫千红/66759549" target="_blank" rel="noopener">百度百科 — 火焰之纹章：万缕千丝</a> <span class="note">— 含官方配音信息（红花 CV、奥林匹亚、君子兰夫人、但丁、莎兰、哪吒等），部分角色属官方公开信息</span></li><li><span class="grade gB">B</span><a href="https://baike.baidu.com/item/救世主/68436329" target="_blank" rel="noopener">百度百科 — 救世主（伊修玛尔）</a> <span class="note">— 真主角默认名「伊修玛尔」、CV 松冈祯丞/井上麻里奈、世界观（禁断之地、女娲之民、巴罗尔）</span></li><li><span class="grade gB">B</span><a href="https://3g.ali213.net/news/html/1028581.html" target="_blank" rel="noopener">游侠网 — 官方披露主角详细情报</a> <span class="note">— 巴罗尔/霸罗尔译法分歧来源；与官方信息互证</span></li><li><span class="grade gB">B</span><a href="https://www.wywyx.com/news/202608/583078.html" target="_blank" rel="noopener">玩一玩游戏网 — 主角信息公布</a> <span class="note">— 伊修玛尔、芙托娜、苏谛斯译名，与官方互证</span></li><li><span class="grade gB">B</span><a href="https://post.m.smzdm.com/p/a82xlvvq" target="_blank" rel="noopener">什么值得买 — 开荒 48 小时全网实战笔记</a> <span class="note">— UGC 聚合帖，整理 B 站/小红书/知乎/微博开荒信息。非标题党、有实质内容，属二次聚合未并入正文</span></li><li><span class="grade gB">B</span><a href="https://m.gamer.com.tw/gnn/detail.php?sn=309776" target="_blank" rel="noopener">巴哈姆特 GNN — 系统详细解析</a> <span class="note">— 台湾最大游戏社群报道，真主角内容与其他来源一致</span></li><li><span class="grade gB">B</span><a href="https://game.zol.com.cn/1227/12270379.html" target="_blank" rel="noopener">中关村在线 / 网易 — 四线叙事 + 五年跃迁</a> <span class="note">— 与巴哈姆特 GNN 相互印证</span></li><li><span class="grade gB">B</span><a href="https://m.ithome.com/html/985721.htm" target="_blank" rel="noopener">IT之家 — 直面会细节公开</a> <span class="note">— 任天堂直面会内容转述</span></li></ul></div><div class="dlog-sec"><span class="lbl"><span class="n">4</span>冲突待裁决（未改动正文）</span><div class="dlog-conf"><div class="tp">洛蕾塔迪托利希线名声门槛【已解决】</div><div class="vs">现有：<b>正文原写「迪托利希篇需名声 8」</b><br>新说法：<b>日站 AlGest 与游民星空均为「名声 9」，三方验证后确认 9 正确</b> <a class="src" href="https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/（已修正正文为 9）" target="_blank" rel="noopener">出处</a></div></div><div class="dlog-conf"><div class="tp">角色译名不统一【部分解决】</div><div class="vs">现有：<b>正文原用「蒂亚拉/彼得/杰斯特」等</b><br>新说法：<b>游民星空用「媞雅拉/皮特鲁/杰斯塔」；官方已公布四主角与部分 NPC 译名，大量可招募角色仍无官方译名</b> <span class="src">已建立 docs/data/i18n.json 对照表，保留 alias 字段；官方源：https://www.nintendo.com/hk/topics/article/6TmiV6zUXU8YEQzNj5NvgQ</span></div></div><div class="dlog-conf"><div class="tp">真主角默认名译法分歧【已裁定】</div><div class="vs">现有：<b>部分媒体作「埃什梅尔」（英文 Eshmel 音译）</b><br>新说法：<b>官方设定默认名为「伊修玛尔」（イシュマール）</b> <a class="src" href="https://baike.baidu.com/item/救世主/68436329 —— 本手册采用「伊修玛尔」" target="_blank" rel="noopener">出处</a></div></div><div class="dlog-conf"><div class="tp">魔神名译法分歧【待官方统一】</div><div class="vs">现有：<b>「巴罗尔」</b><br>新说法：<b>另有「霸罗尔」写法</b> <a class="src" href="https://3g.ali213.net/news/html/1028581.html —— 官方未统一，暂用巴罗尔" target="_blank" rel="noopener">出处</a></div></div></div><div class="dlog-sec"><span class="lbl"><span class="n">8</span>采集受限</span><div class="dlog-lim"><b>altema.jp</b>：HTTP 403。注意：这是 AlGest 的关联站点但并非同一域名，AlGest 本体 al-gest.com 可用</div><div class="dlog-lim"><b>NGA 论坛（bbs.nga.cn）</b>：HTTP 403，需登录或反爬限制</div><div class="dlog-lim"><b>百度贴吧（tieba.baidu.com）</b>：HTTP 403，反爬限制</div><div class="dlog-lim"><b>Reddit</b>：连接失败（HTTP 000），沙箱网络不可达</div><div class="dlog-lim"><b>GameFAQs</b>：连接失败（HTTP 000），沙箱网络不可达</div><div class="dlog-lim"><b>巴哈姆特 GNN 主域（gnn.gamer.com.tw）</b>：HTTP 000；移动域 m.gamer.com.tw 可用，已改用</div><div class="dlog-lim"><b>TapTap 社区</b>：HTTP 405</div><div class="dlog-lim"><b>RPGamer</b>：HTTP 403</div></div></div>
-</div></div>
-<h2 id="1-1-资料来源总览">1.1 资料来源总览</h2>
-<div class="table-wrap scrollable cardmode"><table class="c4">
-<thead>
-<tr>
-<th>语区</th>
-<th>站点</th>
-<th>定位与特色</th>
-<th>链接</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="语区">日文</td>
-<td data-label="站点"><strong>AlGest</strong></td>
-<td data-label="定位与特色">目前日文侧最完整的专门 Wiki，覆盖全角色成长率、最强角色 Tier、自由行动推荐、神之加护效果、战斗计算式、不可挽回要素</td>
-<td data-label="链接"><a href="https://al-gest.com/fe-banshisenkou/">al-gest.com/fe-banshisenkou</a></td>
-</tr>
-<tr>
-<td data-label="语区">日文</td>
-<td data-label="站点"><strong>GameWith</strong></td>
-<td data-label="定位与特色">世界观/剧情、系统概览、角色官方情报</td>
-<td data-label="链接"><a href="https://gamewith.jp/gamedb/14412/articles/58894">gamewith.jp</a></td>
-</tr>
-<tr>
-<td data-label="语区">日文</td>
-<td data-label="站点"><strong>Inside Games</strong></td>
-<td data-label="定位与特色">与《风花雪月》关联性的深度专题分析</td>
-<td data-label="链接"><a href="https://www.inside-games.jp/article/2026/08/05/185762.html">inside-games.jp</a></td>
-</tr>
-<tr>
-<td data-label="语区">中文</td>
-<td data-label="站点"><strong>游民星空</strong></td>
-<td data-label="定位与特色">全流程图文攻略（困难难度）、角色加入条件、角色资料汇总、方尖塔顺序推荐</td>
-<td data-label="链接"><a href="https://www.gamersky.com/handbook/202609/2211684.shtml">gamersky.com</a></td>
-</tr>
-<tr>
-<td data-label="语区">中文</td>
-<td data-label="站点"><strong>18183 / 17173 / 3DM / 游侠网</strong></td>
-<td data-label="定位与特色">全角色招募方法、四主角选择指南、养成思路、区域探索</td>
-<td data-label="链接"><a href="https://www.18183.com/gonglue/202609/6ge6ljlk.html">18183</a></td>
-</tr>
-<tr>
-<td data-label="语区">中文</td>
-<td data-label="站点"><strong>萌娘百科 / 百度百科 / 巴哈姆特 GNN</strong></td>
-<td data-label="定位与特色">系统设定、角色档案、官方机制转述</td>
-<td data-label="链接"><a href="https://zh.moegirl.org.cn/火焰之纹章_万缕千丝">萌娘百科</a></td>
-</tr>
-<tr>
-<td data-label="语区">英文</td>
-<td data-label="站点"><strong>RPG Site</strong></td>
-<td data-label="定位与特色">完整 Walkthrough + 深度机制指南（支援速刷、招募、神殿侍奉、Notable Deeds）</td>
-<td data-label="链接"><a href="https://www.rpgsite.net/guide/21407-fire-emblem-fortunes-weave-walkthrough-in-depth-guides-tips-for-getting-startedgetting-started-guide-our-best-tips-as-your-begin-your-playthrough">rpgsite.net</a></td>
-</tr>
-<tr>
-<td data-label="语区">英文</td>
-<td data-label="站点"><strong>Game8</strong></td>
-<td data-label="定位与特色">新手教学、加护效果表、角色成长率、Tier List、礼物指南</td>
-<td data-label="链接"><a href="https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/624024">game8.co</a></td>
-</tr>
-<tr>
-<td data-label="语区">英文</td>
-<td data-label="站点"><strong>Polygon / TheGamer / GameSpot / VGC</strong></td>
-<td data-label="定位与特色">全角色礼物表、12 条新手心得、路线选择、支援速升</td>
-<td data-label="链接"><a href="https://www.polygon.com/fire-emblem-fortunes-weave-best-gifts-each-character">Polygon</a></td>
-</tr>
-<tr>
-<td data-label="语区">英文</td>
-<td data-label="站点"><strong>Nintendo Insider / HowToVideoGame</strong></td>
-<td data-label="定位与特色">角色喜好与兴趣、加护机制详解</td>
-<td data-label="链接"><a href="https://howtovideogame.com/fire-emblem-fortunes-weave-blessings">HowToVideoGame</a></td>
-</tr>
-</tbody>
-</table></div>
-<h1 id="附录-来源清单">附录 · 来源清单</h1>
-<h3 id="日文站">日文站</h3>
-<ol>
-<li>AlGest — 专区首页：https://al-gest.com/fe-banshisenkou/</li>
-<li>AlGest — 神の加護の効果一覧：https://al-gest.com/fe-banshisenkou/fe-banshisenkou-blessing/</li>
-<li>AlGest — 自由行動期間のおすすめ行動：https://al-gest.com/fe-banshisenkou/fe-banshisenkou-freedom/</li>
-<li>AlGest — ステータス成長率一覧：https://al-gest.com/fe-banshisenkou/fe-banshisenkou-growth/</li>
-<li>AlGest — 最強キャラTierランキング：https://al-gest.com/fe-banshisenkou/fe-banshisenkou-saikyo/</li>
-<li>AlGest — 戦闘に使う計算式：https://al-gest.com/fe-banshisenkou/fe-banshisenkou-formula/</li>
-<li>AlGest — 取り返しがつかない要素：https://al-gest.com/fe-banshisenkou/fe-banshisenkou-irreversible/</li>
-<li>AlGest — 支援レベルの上げ方：https://al-gest.com/fe-banshisenkou/fe-banshisenkou-supportlevel/</li>
-<li>AlGest — スカウト・加入条件一覧：https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/</li>
-<li>AlGest — おすすめ救世の祝福：https://al-gest.com/fe-banshisenkou/fe-banshisenkou-blessingrecommend/</li>
-<li>GameWith — 世界観/ストーリー：https://gamewith.jp/gamedb/14412/articles/58894</li>
-<li>Inside Games — 《风花雪月》关联性分析：https://www.inside-games.jp/article/2026/08/05/185762.html</li>
-</ol>
-<h3 id="中文站">中文站</h3>
-<ol start="13">
-<li>游民星空 — 方尖塔攻略顺序推荐：https://www.gamersky.com/handbook/202609/2211684.shtml</li>
-<li>游民星空 — 困难难度全流程图文攻略：https://wap.gamersky.com/gl/Content-2212109.html</li>
-<li>游民星空 — 角色加入条件一览：https://wap.gamersky.com/gl/Content-2211366.html</li>
-<li>游民星空 — 角色资料汇总：https://www.gamersky.com/handbook/202609/2211429_49.shtml</li>
-<li>18183 — 全角色招募方法：https://www.18183.com/gonglue/202609/6ge6ljlk.html</li>
-<li>18183（编译 RPG Site）— 支援等级速刷攻略：https://news.18183.com/yxxw/202609/9035759.html</li>
-<li>17173 — 角色加入条件一览：https://news.17173.com/content/09172026/140100715.shtml</li>
-<li>3DM — 鞑古席翁区域探索攻略：https://www.3dmgame.com/games/fefw/</li>
-<li>游侠网 — 直面会情报汇总（新机制）：https://3g.ali213.net/news/html/1028737.html</li>
-<li>新浪 — FE 万紫千红角色乌修拉介绍：https://www.sina.cn/news/detail/5335892500940633.html</li>
-<li>巴哈姆特 GNN — 系统详细解析：https://m.gamer.com.tw/gnn/detail.php?sn=309776</li>
-<li>萌娘百科 — 火焰之纹章 万缕千丝：https://zh.moegirl.org.cn/火焰之纹章_万缕千丝</li>
-<li>百度百科 — 火焰之纹章：万缕千丝：https://baike.baidu.com/item/火焰之纹章：万缕千丝/66759702</li>
-<li>今日头条 — 四主角选择与新手入门 / 养成培养思路</li>
-</ol>
-<h3 id="英文站">英文站</h3>
-<ol start="27">
-<li>RPG Site — Walkthrough &amp; Getting Started Tips：https://www.rpgsite.net/guide/21407-fire-emblem-fortunes-weave-walkthrough-in-depth-guides-tips-for-getting-startedgetting-started-guide-our-best-tips-as-your-begin-your-playthrough</li>
-<li>RPG Site — How to raise Support Level quickly：https://www.rpgsite.net/guide/21393-how-to-raise-support-level-quickly-in-fire-emblem-fortunes-weave</li>
-<li>RPG Site — Recruitment Guide：https://www.rpgsite.net/guide/21391-fire-emblem-fortunes-weave-recruitment-guide-all-characters-in-the-game-and-how-to-recruit-them</li>
-<li>RPG Site — Dietrich's Path Walkthrough（含七神专属日）：https://dev.rpgsite.net/guide/21212-fire-emblem-fortunes-weave-part-i-dietrichs-path-walkthrough</li>
-<li>Game8 — Temple Guide: How to Get Blessings：https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/618887</li>
-<li>Game8 — Beginner's Guide: All Tips and Tricks：https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/618833</li>
-<li>Game8 — Best Characters Tier List：https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/624024</li>
-</ol>
-<h3 id="2026-09-20-新增来源">2026-09-20 新增来源</h3>
-<ol start="34">
-<li>游民星空 — 角色加入条件一览（支援/名声 Lv 数值表）：https://wap.gamersky.com/gl/Content-2211366.html</li>
-<li>游民星空 — 方尖塔攻略顺序推荐：https://www.gamersky.com/handbook/202609/2211684.shtml</li>
-<li>游民星空 — 困难难度全流程图文攻略：https://www.gamersky.com/tools/guide-map/roadbooks/50</li>
-<li>什么值得买 — 开荒 48 小时全网实战笔记整理：https://post.m.smzdm.com/p/a82xlvvq</li>
-<li>4Gamers（台湾）— 四名主角交织命运（发售信息）：https://www.4gamers.com.tw/news/detail/79910/fire-emblem-wanshiqianhong-release-date-september-17-switch-2</li>
-<li>巴哈姆特 GNN — 系统详细解析·真主角「伊修玛尔」：https://m.gamer.com.tw/gnn/detail.php?sn=309776</li>
-<li>网易/游民星空 — 真主角亮相与五年时间跳跃：https://www.163.com/dy/article/L3H9AIE20526K1KN.html</li>
-<li>中关村在线 — 四线叙事 + 五年跃迁 + 跨时空协战：https://game.zol.com.cn/1227/12270379.html</li>
-<li>IT之家 — 直面会细节公开（可四线并行）：https://m.ithome.com/html/985721.htm</li>
-</ol>
-<h3 id="官方来源-任天堂">官方来源（任天堂）</h3>
-<ol start="43">
-<li>任天堂（香港）— 《Fire Emblem: Fortune's Weave》最新资讯公开（四主角官方繁中译名）：https://www.nintendo.com/hk/topics/article/6TmiV6zUXU8YEQzNj5NvgQ</li>
-<li>任天堂（香港）— 早期公开资讯（世界观/大劍鬥祭）：https://www.nintendo.com/hk/topics/article/3feXfpwDoBpKurVdEuTygE</li>
-<li>任天堂 eShop（香港）— 商品页（救世军、中文支援说明）：https://ec.nintendo.com/HK/zh/titles/70010000126932</li>
-<li>任天堂官方（Nintendo Today）— 角色介绍（英文官方名，经 Nintendo Life 汇总）：https://www.nintendolife.com/guides/guides/fire-emblem-fortunes-weave-characters-every-hero-revealed-so-far</li>
-<li>百度百科 — 火焰之纹章：万缕千丝（角色设定，含官方配音信息）：https://baike.baidu.com/item/火焰纹章:万紫千红/66759549</li>
-<li>百度百科 — 救世主（伊修玛尔）角色条目：https://baike.baidu.com/item/救世主/68436329</li>
-<li>玩一玩游戏网 — 主角信息公布（伊修玛尔 / 芙托娜 / 苏谛斯）：https://www.wywyx.com/news/202608/583078.html</li>
-<li>游侠网 — 官方披露主角详细情报（媒体旧译「巴罗尔」，本手册作「霸罗尔」）：https://3g.ali213.net/news/html/1028581.html</li>
-</ol>
-<blockquote>
-<p><strong>AlGest 可用性说明</strong>：AlGest（al-gest.com）各页面实测均返回 HTTP 200，可正常采集。此前记录为「403 受限」系误判——403 来自同公司的 altema.jp（另一站点），非 AlGest 本体。
-51. Game8 — Gift Giving Guide：https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/623690
-52. Polygon — Best gifts for each character：https://www.polygon.com/fire-emblem-fortunes-weave-best-gifts-each-character
-53. Polygon — Which character should you pick first：https://www.polygon.com/fire-emblem-fortunes-weave-which-character-route-first
-54. TheGamer — 12 Beginner Tips：https://www.thegamer.com/fire-emblem-fortunes-weave-beginner-tips-tricks/
-55. GameSpot — Which Flame Lord Should You Pick First：https://www.gamespot.com/articles/fire-emblem-fortunes-weave-which-flame-lord-should-you-pick-first/
-56. VGC — Fastest way to raise Support ranks：https://www.videogameschronicle.com/guide/fire-emblem-fortunes-weave-fastest-way-to-raise-support-ranks/
-57. Nintendo Insider — Characters, Gifts, Likes and Interests：https://www.nintendo-insider.com/fire-emblem-fortunes-weave-characters-gifts-likes-and-interests
-58. HowToVideoGame — How Blessings Work：https://howtovideogame.com/fire-emblem-fortunes-weave-blessings
-59. HowToVideoGame — Best Units, Honestly：https://howtovideogame.com/fire-emblem-fortunes-weave-best-units
-60. Nintendo 官方 — Seven tips to save the world：https://www.nintendo.com/en-gb/News/2026/September/Fire-Emblem-Fortune-s-Weave-Seven-tips-to-save-the-world-3199100.html</p>
-</blockquote>
+<p><strong>周日（周日常行动日）标准流程：</strong></p><div class="steps" role="list"><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>1</i></span><span class="tx">回鞑古席翁（<strong>周日用餐花费减半、侍奉贡献度增加</strong>）</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>2</i></span><span class="tx">打开地图 → 角色页签，<strong>确认本周有谁在场</strong></span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>3</i></span><span class="tx">给<strong>尚未送过礼的招募目标各送 1 件</strong>（解锁用餐资格是首要目的）</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>4</i></span><span class="tx"><strong>办 3 顿饭</strong>，每顿都安排「主角 + 2 名招募目标」，尽量选三人都爱吃的菜色</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>5</i></span><span class="tx"><strong>侍奉</strong>——按第 3.3 节优先级选神殿；若本周某天是目标神专属日，改那天去</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>6</i></span><span class="tx">顺路去<strong>剧院</strong>看一场演出（主角 + 1 名 Guest）</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>7</i></span><span class="tx"><strong>训练（斗技场）</strong>——提升技能 EXP，为资格考试铺路</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>8</i></span><span class="tx"><strong>喂白鸦</strong>——提升与伊修玛尔的支援</span></div><div class="step" role="listitem"><span class="num" aria-hidden="true"><i>9</i></span><span class="tx">地图上<strong>神殿图标变金色</strong>时，参加公开谒见拿约 50 点名望（不耗回合）</span></div></div>
+<p><strong>优先级判断：</strong></p>
+<blockquote class="prio"><span class="pin">优先级</span><p><strong>① 每周 3 顿精准用餐 ＞ ② 侍奉（按 T1→T5 排序） ＞ ③ 每周 1 次送礼（解锁+补差） ＞ ④ 剧院观演 ＞ ⑤ 战斗相邻刷支援</strong></p></blockquote>
 <hr />
-<h1 id="附录-情报可靠度提示">附录 · 情报可靠度提示</h1>
-<div class="table-wrap scrollable cardmode"><table class="c3">
-<thead>
-<tr>
-<th>内容类型</th>
-<th>可靠度</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="内容类型">系统机制（时间、支援、名声、公式）</td>
-<td data-label="可靠度"><strong>高</strong></td>
-<td data-label="说明">三语站描述一致，且有官方直面会佐证</td>
-</tr>
-<tr>
-<td data-label="内容类型">加护效果与成本</td>
-<td data-label="可靠度"><strong>中高</strong></td>
-<td data-label="说明">Game8 与 HowToVideoGame 吻合，但来源为<strong>社区整理</strong>，非官方公布</td>
-</tr>
-<tr>
-<td data-label="内容类型">成长率数值</td>
-<td data-label="可靠度"><strong>中高</strong></td>
-<td data-label="说明">AlGest 与 Game8 数据基本吻合，但角色名中文为暂译</td>
-</tr>
-<tr>
-<td data-label="内容类型">招募条件（支援 Lv / 名声 Lv）</td>
-<td data-label="可靠度"><strong>中高</strong></td>
-<td data-label="说明">日站 AlGest 与中文两站三方交叉验证，共同覆盖条目完全一致；但仍建议实机复核</td>
-</tr>
-<tr>
-<td data-label="内容类型">专有名词译名</td>
-<td data-label="可靠度"><strong>分档</strong></td>
-<td data-label="说明">四主角、世界观、系统术语有官方中文；大量可招募角色名官方尚未公布，为社群暂译</td>
-</tr>
-<tr>
-<td data-label="内容类型">送礼喜好清单</td>
-<td data-label="可靠度"><strong>中高</strong></td>
-<td data-label="说明">Polygon 与 Game8 可交叉验证</td>
-</tr>
-<tr>
-<td data-label="内容类型">最强角色 Tier</td>
-<td data-label="可靠度"><strong>低（参考用）</strong></td>
-<td data-label="说明">发售初期样本不足；成长率随机 + 自由转职使排名高度个体化</td>
-</tr>
-<tr>
-<td data-label="内容类型">最优战技 / 技能排行</td>
-<td data-label="可靠度"><strong>不采信</strong></td>
-<td data-label="说明">英文站明确警告：部分高排名网站为<strong>虚构 Wiki</strong>，会编造战技名、职业名与阈值</td>
-</tr>
-</tbody>
-</table></div>
-<blockquote>
-<p><strong>建议用法</strong>：把机制部分（第一～四篇、第六篇）当作可直接执行的行动指南；把强度排名部分（第 5.7 节）当作方向参考，最终以自己队伍的实际成长结果为准。</p>
-</blockquote>
-<h1 id="附录-译名对照与多语言说明">附录 · 译名对照与多语言说明</h1>
-<p>本作官方支持<strong>日文、英文、繁體中文、简体中文</strong>四种语言。为便于检索外站资料与后续制作多语言版本，本手册维护一份译名对照表：</p>
-<p><strong>对照表位置</strong>：仓库 <code>docs/data/i18n.json</code>（结构化数据）+ <code>docs/data/译名对照表.md</code>（人工可读版）</p>
-<h2 id="译名权威性分档">译名权威性分档</h2>
-<div class="table-wrap scrollable cardmode"><table class="c3">
-<thead>
-<tr>
-<th>分档</th>
-<th>范围</th>
-<th>判定依据</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="分档"><strong>✅ 官方</strong></td>
-<td data-label="范围">四位主角（凱伊/迪托利希/賽奧朵拉/蕾達）、真主角（伊修瑪爾）、世界观地名（韃古扎帝國/韃古席翁/大劍鬥祭）、系统术语（神之加護/名聲Lv/支援Lv）、部分公开 NPC</td>
-<td data-label="判定依据">任天堂香港官网、任天堂 eShop、官方角色介绍</td>
-</tr>
-<tr>
-<td data-label="分档"><strong>⚠️ 社群</strong></td>
-<td data-label="范围">多数可招募角色（蒂亚拉、彼得、乌尔坦德…）</td>
-<td data-label="判定依据">AlGest（日）/ 18183 / 游民星空 一致译法；官方尚未逐一公布</td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="已确认的官方译名-四语言">已确认的官方译名（四语言）</h2>
-<div class="table-wrap scrollable cardmode"><table class="c4">
-<thead>
-<tr>
-<th>日文</th>
-<th>英文</th>
-<th>繁體中文</th>
-<th>简体中文</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="日文">カイ</td>
-<td data-label="英文">Cai</td>
-<td data-label="繁體中文">凱伊</td>
-<td data-label="简体中文">凯伊</td>
-</tr>
-<tr>
-<td data-label="日文">ディートリヒ</td>
-<td data-label="英文">Dietrich</td>
-<td data-label="繁體中文">迪托利希</td>
-<td data-label="简体中文">迪托利希</td>
-</tr>
-<tr>
-<td data-label="日文">セオドラ</td>
-<td data-label="英文">Theodora</td>
-<td data-label="繁體中文">賽奧朵拉</td>
-<td data-label="简体中文">赛奥朵拉</td>
-</tr>
-<tr>
-<td data-label="日文">レダ</td>
-<td data-label="英文">Leda</td>
-<td data-label="繁體中文">蕾達</td>
-<td data-label="简体中文">蕾达</td>
-</tr>
-<tr>
-<td data-label="日文">イシュマール</td>
-<td data-label="英文">Eshmel</td>
-<td data-label="繁體中文">伊修瑪爾</td>
-<td data-label="简体中文">伊修玛尔</td>
-</tr>
-<tr>
-<td data-label="日文">ダグザ帝国</td>
-<td data-label="英文">Dagda Empire</td>
-<td data-label="繁體中文">韃古扎帝國</td>
-<td data-label="简体中文">鞑古扎帝国</td>
-</tr>
-<tr>
-<td data-label="日文">ダグザシオン</td>
-<td data-label="英文">Dagdan</td>
-<td data-label="繁體中文">韃古席翁</td>
-<td data-label="简体中文">鞑古席翁</td>
-</tr>
-<tr>
-<td data-label="日文">ダグザシオン大剣闘祭</td>
-<td data-label="英文">Dagdan Grand Tournament</td>
-<td data-label="繁體中文">大劍鬥祭</td>
-<td data-label="简体中文">大剑斗祭</td>
-</tr>
-<tr>
-<td data-label="日文">サラミス王国</td>
-<td data-label="英文">Saramis</td>
-<td data-label="繁體中文">薩拉米斯</td>
-<td data-label="简体中文">萨拉米斯</td>
-</tr>
-<tr>
-<td data-label="日文">リベイラ</td>
-<td data-label="英文">Ribeira</td>
-<td data-label="繁體中文">利貝拉村</td>
-<td data-label="简体中文">利贝拉村</td>
-</tr>
-<tr>
-<td data-label="日文">神の加護</td>
-<td data-label="英文">Blessing</td>
-<td data-label="繁體中文">神之加護</td>
-<td data-label="简体中文">神之加护</td>
-</tr>
-<tr>
-<td data-label="日文">名声レベル</td>
-<td data-label="英文">Fame Level</td>
-<td data-label="繁體中文">名聲Lv</td>
-<td data-label="简体中文">名声Lv</td>
-</tr>
-<tr>
-<td data-label="日文">支援レベル</td>
-<td data-label="英文">Support Level</td>
-<td data-label="繁體中文">支援Lv</td>
-<td data-label="简体中文">支援Lv</td>
-</tr>
-<tr>
-<td data-label="日文">スカウト</td>
-<td data-label="英文">Recruit</td>
-<td data-label="繁體中文">挖角</td>
-<td data-label="简体中文">挖角</td>
-</tr>
-<tr>
-<td data-label="日文">白鳥</td>
-<td data-label="英文">White Bird</td>
-<td data-label="繁體中文">白鳥</td>
-<td data-label="简体中文">白鸟</td>
-</tr>
-<tr>
-<td data-label="日文">救世主軍</td>
-<td data-label="英文">—</td>
-<td data-label="繁體中文">救世軍</td>
-<td data-label="简体中文">救世军</td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="注意事项">注意事项</h2>
-<ul>
-<li><strong>真主角默认名的译法分歧</strong>：简体中文媒体存在「伊修玛尔」（默认名，官方设定）与「埃什梅尔」（英文 Eshmel 音译）两种写法。<strong>以「伊修玛尔」为准</strong>。</li>
-<li><strong>魔神名</strong>：任天堂香港 eShop 作「霸羅爾」，简体正文统一为<strong>霸罗尔</strong>。部分简中媒体写作「巴罗尔」，仅作旧译保留，不再用于正文。</li>
-<li><strong>部分角色在中文站有多个暂译</strong>（如蒂亚拉/媞雅拉、杰斯特/杰斯塔），对照表的 <code>alias_zhs</code> 字段保留了别名以便检索。</li>
-<li>随官方陆续公布角色介绍，标记为「⚠️ 社群」的条目应逐步升级为「✅ 官方」。</li>
-<li><strong>同一角色只保留一个简体写法</strong>。无官方译名时，以招募表所用社群译名为准；送礼表里的另一套音译已并入，旧译见译名表「别名」。</li>
-<li><strong>「白鸟」与「白鸦」</strong>：任天堂用语「白鳥」的简体是<strong>白鸟</strong>，指据点内切换主角的设施。正文「喂食白鸦」尚未核对为同一对象，因此没有改名。</li>
-</ul>
     </article>
-    <div class="pager"><a class="prev" href="p7.html" style="--pc:#0f8a63"><span class="dir">← 上一篇</span><span class="ttl"><span class="dotm"></span>附录 · 每周日常速查卡</span></a></div>
+    <div class="pager"><a class="prev" href="p7.html" style="--pc:#9b3d55"><span class="dir">← 上一篇</span><span class="ttl"><span class="dotm"></span>第七篇 · 章节一览</span></a><a class="next" href="p9.html" style="--pc:#5b6472"><span class="dir">下一篇 →</span><span class="ttl"><span class="dotm"></span>资料源与可信度</span></a></div>
   </main>
 </div>
 <a class="to-top" id="toTop" href="#" aria-label="回到顶部">

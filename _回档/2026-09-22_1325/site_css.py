@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#9b3d55">
-<meta name="format-detection" content="telephone=no">
-<title>第七篇 · 章节一览 · 火焰纹章 万缕千丝 完全攻略手册</title>
-<style>
+# -*- coding: utf-8 -*-
+"""多页站点共用的样式表"""
+
+PART_COLORS = ['#b8123c', '#1f5fa8', '#7a4bbf', '#0e8f9e', '#0f8a63', '#c2790a', '#5b6472']
+PART_SOFTS  = ['#fdf1f4', '#eef4fc', '#f4effc', '#e8f7f9', '#eafaf4', '#fdf5e6', '#f2f4f7']
+
+CSS = """
 :root{
   --bg:#f7f8fa; --card:#ffffff;
   --ink:#1a1d23; --ink2:#3a4250; --muted:#6b7484;
@@ -40,8 +38,6 @@ h1,h2,h3,h4,p,li,td,th{overflow-wrap:anywhere; word-break:break-word}
   border-bottom:1px solid var(--line);
   overflow:hidden; max-width:100vw;
 }
-a.topbar-brand{text-decoration:none; border-bottom:0; color:inherit}
-a.topbar-brand:hover{color:inherit; border-bottom:0}
 .topbar .brand{
   font-weight:700; font-size:14.5px; color:var(--ink);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
@@ -104,7 +100,6 @@ a.topbar-brand:hover{color:inherit; border-bottom:0}
 }
 .toc-part:first-of-type{margin-top:2px}
 .toc-sec{padding-left:26px; color:var(--muted); font-size:13.1px}
-.toc-sub{padding-left:40px; color:var(--muted); font-size:12.4px; font-weight:500}
 .toc-link.active{
   background:var(--active-bg,#fdf1f4); color:var(--active-fg,#b8123c);
   border-left-color:var(--active-fg,#b8123c); font-weight:600;
@@ -276,11 +271,8 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
     background:var(--cur-soft); font-weight:700; color:var(--cur);
     border-bottom:1px solid var(--line); font-size:14.4px;
   }
-  .table-wrap.cardmode > table[class*="c"] td:not(:first-child){
-    display:flex; justify-content:space-between; align-items:baseline; gap:12px;
-  }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)::before{
-    content:attr(data-label); flex:1 1 auto;
+    content:attr(data-label) "："; display:inline;
     font-weight:650; color:var(--ink2); font-size:12.6px;
   }
   .table-wrap.cardmode > table[class*="c"] td:not(:first-child)[data-label=""]::before{content:""}
@@ -289,72 +281,10 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   .table-wrap.cardmode > table.c5, .table-wrap.cardmode > table.c6,
   .table-wrap.cardmode > table.c7{min-width:0; width:100%}
 }
-/* 8 列以上（含主角成长率 11 列）在手机和平板宽度改成卡片。
-   旧规则只把表格压到 100% 宽，11 个数字列会被挤到放不下一个数。 */
-@container tbl (min-width: 430px) and (max-width: 980px){
-  .table-wrap.cardmode > table.c8,
-  .table-wrap.cardmode > table.c9,
-  .table-wrap.cardmode > table.c10,
-  .table-wrap.cardmode > table.c11,
-  .table-wrap.cardmode > table.c12{min-width:0; width:100%; display:block}
-  .table-wrap.cardmode > table.c8 > thead,
-  .table-wrap.cardmode > table.c9 > thead,
-  .table-wrap.cardmode > table.c10 > thead,
-  .table-wrap.cardmode > table.c11 > thead,
-  .table-wrap.cardmode > table.c12 > thead{display:none}
-  .table-wrap.cardmode > table.c8 > tbody,
-  .table-wrap.cardmode > table.c9 > tbody,
-  .table-wrap.cardmode > table.c10 > tbody,
-  .table-wrap.cardmode > table.c11 > tbody,
-  .table-wrap.cardmode > table.c12 > tbody,
-  .table-wrap.cardmode > table.c8 > tbody > tr,
-  .table-wrap.cardmode > table.c9 > tbody > tr,
-  .table-wrap.cardmode > table.c10 > tbody > tr,
-  .table-wrap.cardmode > table.c11 > tbody > tr,
-  .table-wrap.cardmode > table.c12 > tbody > tr,
-  .table-wrap.cardmode > table.c8 > tbody > tr > td,
-  .table-wrap.cardmode > table.c9 > tbody > tr > td,
-  .table-wrap.cardmode > table.c10 > tbody > tr > td,
-  .table-wrap.cardmode > table.c11 > tbody > tr > td,
-  .table-wrap.cardmode > table.c12 > tbody > tr > td{display:block; width:100%}
-  .table-wrap.cardmode > table.c8 > tbody > tr,
-  .table-wrap.cardmode > table.c9 > tbody > tr,
-  .table-wrap.cardmode > table.c10 > tbody > tr,
-  .table-wrap.cardmode > table.c11 > tbody > tr,
-  .table-wrap.cardmode > table.c12 > tbody > tr{
-    border:1px solid var(--line); border-left:4px solid var(--cur);
-    border-radius:10px; margin:0 0 10px; overflow:hidden; background:#fff !important;
-  }
-  .table-wrap.cardmode > table.c8 td,
-  .table-wrap.cardmode > table.c9 td,
-  .table-wrap.cardmode > table.c10 td,
-  .table-wrap.cardmode > table.c11 td,
-  .table-wrap.cardmode > table.c12 td{
-    border:0; border-bottom:1px solid var(--line2); padding:8px 12px;
-    white-space:normal;
-  }
-  .table-wrap.cardmode > table.c8 td:first-child,
-  .table-wrap.cardmode > table.c9 td:first-child,
-  .table-wrap.cardmode > table.c10 td:first-child,
-  .table-wrap.cardmode > table.c11 td:first-child,
-  .table-wrap.cardmode > table.c12 td:first-child{
-    background:var(--cur-soft); font-weight:700; position:static; box-shadow:none;
-  }
-  .table-wrap.cardmode > table.c8 td:not(:first-child),
-  .table-wrap.cardmode > table.c9 td:not(:first-child),
-  .table-wrap.cardmode > table.c10 td:not(:first-child),
-  .table-wrap.cardmode > table.c11 td:not(:first-child),
-  .table-wrap.cardmode > table.c12 td:not(:first-child){
-    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
-  }
-  .table-wrap.cardmode > table.c8 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c9 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
-    content:attr(data-label); flex:1 1 auto;
-    font-weight:650; color:var(--ink2); font-size:13px;
-  }
+@container tbl (min-width: 430px) and (max-width: 909px){
+  .table-wrap.cardmode > table.c8, .table-wrap.cardmode > table.c9,
+  .table-wrap.cardmode > table.c10, .table-wrap.cardmode > table.c11,
+  .table-wrap.cardmode > table.c12{min-width:0; width:100%}
 }
 
 /* 卡片模式下容器宽度必须受父级约束，否则会按内容撑开导致卡片化不触发 */
@@ -386,10 +316,6 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
   vertical-align:-11px; margin-right:10px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
 .avatar.sm{width:21px; height:21px; border-radius:6px; font-size:11px;
   vertical-align:-5px; margin-right:5px}
-/* 表格里的头像：比正文行内头像大一圈，方便在格子里认人 */
-.avatar.face{width:40px; height:40px; border-radius:11px; font-size:16px;
-  vertical-align:-14px; margin-right:8px}
-.avatar.face.is-dual{width:76px; height:40px; border-radius:11px}
 .avatar.xl{width:56px; height:56px; border-radius:16px; font-size:26px;
   vertical-align:-17px; margin-right:12px; box-shadow:none}
 
@@ -609,48 +535,34 @@ table.c11{--minw:1150px} table.c12{--minw:1240px}
 
 /* ============ 首页 ============ */
 .home-grid{
-  display:grid; gap:16px; margin:22px 0 8px;
-  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  display:grid; gap:14px; margin:24px 0;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
 }
 .home-card{
-  display:flex; flex-direction:column;
-  border:1px solid var(--line); border-radius:16px; padding:0;
-  background:#fff; border-top:5px solid var(--pc,#b8123c);
+  display:block; text-decoration:none; color:inherit;
+  border:1px solid var(--line); border-radius:16px; padding:20px 22px 18px;
+  background:#fff; border-bottom:1px solid var(--line);
+  border-top:5px solid var(--pc,#b8123c);
   box-shadow:0 3px 14px rgba(20,25,40,.055);
-  overflow:hidden;
+  transition:transform .15s, box-shadow .15s;
+  position:relative; overflow:hidden;
 }
-.home-card .head{
-  display:block; text-decoration:none; color:inherit; padding:18px 20px 12px;
-  border-bottom:0;
+.home-card:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(20,25,40,.12);
+  color:inherit; border-bottom-color:var(--line)}
+.home-card .no{
+  position:absolute; right:14px; top:8px; font-size:56px; font-weight:800;
+  color:var(--pc); opacity:.1; line-height:1; letter-spacing:-.04em;
 }
-.home-card .head:hover{background:var(--pcs,#f7f8fa); color:inherit; border-bottom:0}
-.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:6px;
+.home-card .t{font-size:17.6px; font-weight:700; color:#141922; margin-bottom:7px;
   display:flex; align-items:center; gap:9px}
 .home-card .t .bd{width:9px; height:9px; border-radius:3px; background:var(--pc); flex:0 0 auto}
-.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66}
+.home-card .d{font-size:13.4px; color:var(--muted); line-height:1.66; margin-bottom:11px}
+.home-card .meta{font-size:12.2px; color:var(--pc); font-weight:650}
 .home-card .chips{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px}
 .home-card .chips span{
   font-size:11.6px; padding:2px 9px; border-radius:999px;
   background:var(--pcs,#f2f4f7); color:var(--pc); font-weight:600;
 }
-.home-outline{
-  display:flex; flex-direction:column; gap:1px;
-  padding:4px 8px 12px; background:linear-gradient(#fff, #fbfcfe);
-  border-top:1px solid var(--line2);
-}
-.home-outline a{
-  text-decoration:none; border-bottom:0; color:var(--ink2);
-  border-radius:8px; line-height:1.45;
-}
-.home-outline a.ol2{
-  font-size:13.4px; font-weight:650; color:var(--ink);
-  padding:7px 10px 3px;
-}
-.home-outline a.ol3{
-  font-size:12.6px; color:var(--muted); font-weight:500;
-  padding:3px 10px 3px 22px;
-}
-.home-outline a:hover{background:#eef1f6; color:var(--ink); border-bottom:0}
 
 /* ============ 通用零件 ============ */
 .badge{
@@ -767,58 +679,6 @@ footer.foot{
   ul,ol{padding-left:21px}
 
   .table-wrap{border-radius:10px; margin:15px 0}
-  /* 侧栏收起后，8 列以上的表改卡片，避免 11 列成长率被压成一条缝 */
-  .table-wrap.cardmode > table.c8,
-  .table-wrap.cardmode > table.c9,
-  .table-wrap.cardmode > table.c10,
-  .table-wrap.cardmode > table.c11,
-  .table-wrap.cardmode > table.c12{min-width:0 !important; width:100%; display:block}
-  .table-wrap.cardmode > table.c8 > thead,
-  .table-wrap.cardmode > table.c9 > thead,
-  .table-wrap.cardmode > table.c10 > thead,
-  .table-wrap.cardmode > table.c11 > thead,
-  .table-wrap.cardmode > table.c12 > thead{display:none}
-  .table-wrap.cardmode > table.c8 > tbody,
-  .table-wrap.cardmode > table.c9 > tbody,
-  .table-wrap.cardmode > table.c10 > tbody,
-  .table-wrap.cardmode > table.c11 > tbody,
-  .table-wrap.cardmode > table.c12 > tbody,
-  .table-wrap.cardmode > table.c8 > tbody > tr,
-  .table-wrap.cardmode > table.c9 > tbody > tr,
-  .table-wrap.cardmode > table.c10 > tbody > tr,
-  .table-wrap.cardmode > table.c11 > tbody > tr,
-  .table-wrap.cardmode > table.c12 > tbody > tr,
-  .table-wrap.cardmode > table.c8 > tbody > tr > td,
-  .table-wrap.cardmode > table.c9 > tbody > tr > td,
-  .table-wrap.cardmode > table.c10 > tbody > tr > td,
-  .table-wrap.cardmode > table.c11 > tbody > tr > td,
-  .table-wrap.cardmode > table.c12 > tbody > tr > td{display:block; width:100%}
-  .table-wrap.cardmode > table.c8 > tbody > tr,
-  .table-wrap.cardmode > table.c9 > tbody > tr,
-  .table-wrap.cardmode > table.c10 > tbody > tr,
-  .table-wrap.cardmode > table.c11 > tbody > tr,
-  .table-wrap.cardmode > table.c12 > tbody > tr{
-    border:1px solid var(--line); border-left:4px solid var(--cur);
-    border-radius:10px; margin:0 0 10px; overflow:hidden; background:#fff !important;
-  }
-  table.c8 tbody td:first-child, table.c9 tbody td:first-child,
-  table.c10 tbody td:first-child, table.c11 tbody td:first-child,
-  table.c12 tbody td:first-child{position:static; box-shadow:none}
-  .table-wrap.cardmode > table.c8 td:not(:first-child),
-  .table-wrap.cardmode > table.c9 td:not(:first-child),
-  .table-wrap.cardmode > table.c10 td:not(:first-child),
-  .table-wrap.cardmode > table.c11 td:not(:first-child),
-  .table-wrap.cardmode > table.c12 td:not(:first-child){
-    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
-    font-variant-numeric:tabular-nums; font-size:15px;
-  }
-  .table-wrap.cardmode > table.c8 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c9 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c10 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c11 td:not(:first-child)::before,
-  .table-wrap.cardmode > table.c12 td:not(:first-child)::before{
-    content:attr(data-label); flex:1 1 auto; font-weight:650; color:var(--ink2); font-size:13px;
-  }
   table{font-size:13.4px}
   th{padding:9px 11px; font-size:12.8px}
   td{padding:9px 11px}
@@ -847,22 +707,23 @@ footer.foot{
   table{font-size:12.9px}
   th,td{padding:8px 10px}
 
-  /* 正文行内头像贴近字号；表格头像单独保持可辨认 */
-  .avatar, .avatar.sm{
-    width:24px; height:24px; border-radius:7px; font-size:12px;
-    vertical-align:-6px; margin-right:5px;
+  /* ---- 手机端：头像显著放大，远距离也能辨认 ---- */
+  /* 表格内头像 21 → 46px */
+  .avatar.sm{
+    width:46px; height:46px; border-radius:12px; font-size:17px;
+    vertical-align:-15px; margin-right:9px;
   }
-  .avatar.face{
-    width:36px; height:36px; border-radius:10px; font-size:15px;
-    vertical-align:-12px; margin-right:8px;
+  /* 正文内联头像同步放大 */
+  .avatar{
+    width:46px; height:46px; border-radius:12px; font-size:17px;
+    vertical-align:-15px; margin-right:9px;
   }
-  .avatar.lg{width:44px; height:44px; border-radius:12px; font-size:18px;
-    vertical-align:-14px; margin-right:8px}
-  .avatar.xl{width:52px; height:52px; border-radius:14px; font-size:22px}
-  .avatar.is-dual{width:46px; height:24px; border-radius:7px;
-    vertical-align:-6px; margin-right:5px}
-  .avatar.face.is-dual{width:68px; height:36px; border-radius:10px;
-    vertical-align:-12px; margin-right:8px}
+  .avatar.lg{width:60px; height:60px; border-radius:16px; font-size:25px;
+    vertical-align:-21px; margin-right:12px}
+  .avatar.xl{width:66px; height:66px; border-radius:18px; font-size:28px}
+  /* 主角双人并排：加宽以容纳两张脸 */
+  .avatar.is-dual{width:90px; height:46px; border-radius:12px;
+    vertical-align:-15px; margin-right:9px}
   .avatar.is-dual>img{height:100%}
 
   /* 表格内头像放大后，给角色列更多呼吸空间 */
@@ -883,243 +744,4 @@ footer.foot{
   h2{break-after:avoid}
   .home-card,.chr-card,.key,.step,.dlog-day{break-inside:avoid}
 }
-
-:root{--cur:#9b3d55;--cur-soft:#fdf0f4}
-</style>
-</head>
-<body>
-<input type="checkbox" id="navToggle" aria-hidden="true">
-<div class="topbar">
-  <label class="menu-btn" for="navToggle" aria-label="打开目录" role="button" tabindex="0">
-    <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-  </label>
-  <a class="brand topbar-brand" href="index.html"><span class="dot"></span>火焰纹章 万缕千丝 <span class="seg">· 第七篇 · 章节一览</span></a>
-</div>
-<div class="scrim"><label for="navToggle" style="display:block;width:100%;height:100%"></label></div>
-<div class="layout">
-<aside class="sidebar" id="sidebar">
-  <div class="drawer-close"><label class="menu-btn" for="navToggle" aria-label="关闭目录" role="button" tabindex="0">
-    <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
-  </label></div>
-  <div class="nav-scroll">
-    <div class="sidebar-title">目录 · Contents</div>
-    <a class="toc-link toc-part" href="index.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">首页</a><a class="toc-link toc-part" href="p1.html" style="--active-fg:#b8123c;--active-bg:#fdf1f4">第一篇 · 开局与全局框架</a><a class="toc-link toc-part" href="p2.html" style="--active-fg:#1f5fa8;--active-bg:#eef4fc">第二篇 · 核心系统机制</a><a class="toc-link toc-part" href="p3.html" style="--active-fg:#7a4bbf;--active-bg:#f4effc">第三篇 · 加护（侍奉）心得</a><a class="toc-link toc-part" href="p4.html" style="--active-fg:#0e8f9e;--active-bg:#e8f7f9">第四篇 · 送礼心得</a><a class="toc-link toc-part" href="p5.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">第五篇 · 角色培养</a><a class="toc-link toc-part" href="p6.html" style="--active-fg:#c2790a;--active-bg:#fdf5e6">第六篇 · 路线切换与错过要素</a><a class="toc-link toc-part active" href="p7.html" style="--active-fg:#9b3d55;--active-bg:#fdf0f4">第七篇 · 章节一览</a><a class="toc-link toc-sec" href="#7-1-全书怎么分" data-target="7-1-全书怎么分" style="--active-fg:#9b3d55;--active-bg:#fdf0f4">7.1 全书怎么分</a><a class="toc-link toc-sec" href="#7-2-已核对的简体章名" data-target="7-2-已核对的简体章名" style="--active-fg:#9b3d55;--active-bg:#fdf0f4">7.2 已核对的简体章名</a><a class="toc-link toc-sec" href="#7-3-接下来补什么" data-target="7-3-接下来补什么" style="--active-fg:#9b3d55;--active-bg:#fdf0f4">7.3 接下来补什么</a><a class="toc-link toc-part" href="p8.html" style="--active-fg:#0f8a63;--active-bg:#eafaf4">附录 · 每周日常速查卡</a><a class="toc-link toc-part" href="p9.html" style="--active-fg:#5b6472;--active-bg:#f2f4f7">资料源与可信度</a>
-  </div>
-</aside>
-  <main class="content">
-    <header class="hero">
-  <h1>第七篇 · <span class="accent">章节一览</span></h1>
-  <div class="sub">火焰纹章 万缕千丝 ／ ファイアーエムブレム 万紫千紅 ｜ Fire Emblem: Fortune's Weave</div>
-  <div class="pills"><span class="pill hot">日文站 · 中文站 · 英文站 三语综合</span><span class="pill">3 个章节</span><span class="pill">修订 2026-09-22</span></div>
-</header>
-    <article class="card">
-<blockquote>
-<p>本篇只收录已经核对过的章节结构与简体章名。没有中文出处的章名先空着，不自行翻译。流程打法还在补，这里先当目录用。</p>
-</blockquote>
-<h2 id="7-1-全书怎么分">7.1 全书怎么分</h2>
-<p>据 Polygon 2026-09-21 更新的章节表（<a href="https://www.polygon.com/fire-emblem-fortunes-weave-chapter-list-how-long-to-beat/">来源 61</a>）：</p>
-<div class="table-wrap scrollable cardmode"><table class="c3">
-<thead>
-<tr>
-<th>段落</th>
-<th>章数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="段落">序幕</td>
-<td data-label="章数">2</td>
-<td data-label="说明">降临篇，四线开始之前</td>
-</tr>
-<tr>
-<td data-label="段落">间章</td>
-<td data-label="章数">1</td>
-<td data-label="说明">序幕与第一部之间</td>
-</tr>
-<tr>
-<td data-label="段落">第一部</td>
-<td data-label="章数">四线各 12</td>
-<td data-label="说明">凯伊、迪托利希、赛奥朵拉、蕾达，章名各线不同</td>
-</tr>
-<tr>
-<td data-label="段落">第二部 · 战争</td>
-<td data-label="章数">6</td>
-<td data-label="说明">四线之后的战争篇，各线走同一组章节</td>
-</tr>
-<tr>
-<td data-label="段落">第三部 · 救世</td>
-<td data-label="章数">6</td>
-<td data-label="说明">各线走同一组章节</td>
-</tr>
-</tbody>
-</table></div>
-<p>同一篇还写到：通关全三部，该作者在普通／休闲下用了约 147 小时；单条第一部大约 40–50 小时，第二部大约 10 小时，第三部大约 40 小时。这是个人游玩记录，不是官方时长。文中还说可以跳过第二部直接进第三部，但会少掉练级和剧情。</p>
-<h2 id="7-2-已核对的简体章名">7.2 已核对的简体章名</h2>
-<p>以下章名来自游民星空《全剧情通关流程攻略》的分页目录（<a href="https://www.gamersky.com/handbook/202609/2211230.shtml">来源 62</a>，2026-09-17）。该文当时连载到蕾达篇前半，其余路线的简体章名还没在这篇目录里出现。</p>
-<p><strong>序幕 · 降临篇</strong></p>
-<div class="table-wrap scrollable cardmode"><table class="c2">
-<thead>
-<tr>
-<th>章</th>
-<th>简体章名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="章">第一章</td>
-<td data-label="简体章名">白鸟</td>
-</tr>
-<tr>
-<td data-label="章">第二章</td>
-<td data-label="简体章名">封闭之地</td>
-</tr>
-</tbody>
-</table></div>
-<p><strong><span class="avatar sm" style="--ac:#0e8f9e" title="蕾达" data-name="蕾达"><img class="av-a" src="assets/avatar/5.jpg" alt="蕾达" loading="lazy"></span>蕾达篇（第一部）</strong></p>
-<div class="table-wrap scrollable cardmode"><table class="c2">
-<thead>
-<tr>
-<th>章</th>
-<th>简体章名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-label="章">第一章</td>
-<td data-label="简体章名">复仇的舞姬</td>
-</tr>
-<tr>
-<td data-label="章">第二章</td>
-<td data-label="简体章名">矿山之战</td>
-</tr>
-<tr>
-<td data-label="章">第三章</td>
-<td data-label="简体章名">凯路斯的蔷薇</td>
-</tr>
-<tr>
-<td data-label="章">第四章</td>
-<td data-label="简体章名">不可磨灭的过去</td>
-</tr>
-<tr>
-<td data-label="章">第五章</td>
-<td data-label="简体章名">女人们的战斗</td>
-</tr>
-<tr>
-<td data-label="章">第六章</td>
-<td data-label="简体章名">翱翔天际的少女</td>
-</tr>
-<tr>
-<td data-label="章">第七章</td>
-<td data-label="简体章名">目录未给出章名</td>
-</tr>
-<tr>
-<td data-label="章">第八章</td>
-<td data-label="简体章名">阴谋的形状</td>
-</tr>
-<tr>
-<td data-label="章">第九章</td>
-<td data-label="简体章名">水火不容的人们（上）</td>
-</tr>
-<tr>
-<td data-label="章">第十章至第十二章</td>
-<td data-label="简体章名">该文目录尚未列出</td>
-</tr>
-</tbody>
-</table></div>
-<p><strong><span class="avatar sm" style="--ac:#b8123c" title="凯伊" data-name="凯伊"><img class="av-a" src="assets/avatar/2.jpg" alt="凯伊" loading="lazy"></span>凯伊篇、<span class="avatar sm" style="--ac:#1f5fa8" title="迪托利希" data-name="迪托利希"><img class="av-a" src="assets/avatar/3.jpg" alt="迪托利希" loading="lazy"></span>迪托利希篇、<span class="avatar sm" style="--ac:#7a4bbf" title="赛奥朵拉" data-name="赛奥朵拉"><img class="av-a" src="assets/avatar/4.jpg" alt="赛奥朵拉" loading="lazy"></span>赛奥朵拉篇，以及第二部、第三部、间章</strong>：章数见 7.1，简体章名还没有从中文站逐条核对，先不编。</p>
-<h2 id="7-3-接下来补什么">7.3 接下来补什么</h2>
-<ul>
-<li>按路线补齐简体章名，优先对游民星空、日文站与英文站三边都能对上的条目。</li>
-<li>每一章只在有出处时写自由行动、招募与不可错过的点，不写没有来源的打法。</li>
-</ul>
-<hr />
-    </article>
-    <div class="pager"><a class="prev" href="p6.html" style="--pc:#c2790a"><span class="dir">← 上一篇</span><span class="ttl"><span class="dotm"></span>第六篇 · 路线切换与错过要素</span></a><a class="next" href="p8.html" style="--pc:#0f8a63"><span class="dir">下一篇 →</span><span class="ttl"><span class="dotm"></span>附录 · 每周日常速查卡</span></a></div>
-  </main>
-</div>
-<a class="to-top" id="toTop" href="#" aria-label="回到顶部">
-  <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</a>
-<script>
-(function(){
-  // 抽屉在点击目录项后自动关闭（无 JS 时仅是不自动关，功能不受影响）
-  var t=document.getElementById('navToggle');
-  document.querySelectorAll('.sidebar a[href^="#"]').forEach(function(a){
-    a.addEventListener('click',function(){ t.checked=false; });
-  });
-  // 回顶按钮显隐
-  var tt=document.getElementById('toTop');
-  tt.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
-  var tick=false;
-  window.addEventListener('scroll',function(){
-    if(!tick){tick=true;requestAnimationFrame(function(){
-      tt.classList.toggle('show',window.scrollY>500);tick=false;});}
-  },{passive:true});
-  // 侧栏高亮
-  var links=[].slice.call(document.querySelectorAll('.sidebar a[data-target]'));
-  var hs=links.map(function(a){return document.getElementById(a.dataset.target);});
-  var cur=-1,sup=false,supT=null;
-  function setA(i){
-    if(i===cur)return;cur=i;
-    links.forEach(function(x,j){x.classList.toggle('active',j===i);});
-  }
-  links.forEach(function(a,i){
-    a.addEventListener('click',function(e){
-      e.preventDefault();
-      var el=document.getElementById(a.dataset.target); if(!el)return;
-      t.checked=false;
-      setA(i); sup=true;
-      clearTimeout(supT); supT=setTimeout(function(){sup=false;},700);
-      var mob=window.innerWidth<=860;
-      var y=el.getBoundingClientRect().top+window.scrollY-(mob?80:74);
-      window.scrollTo({top:Math.max(0,Math.round(y)),behavior:'smooth'});
-      if(history.replaceState)history.replaceState(null,'','#'+a.dataset.target);
-    });
-  });
-  function spy(){
-    if(sup)return;
-    var y=window.scrollY||0, probe=y+(window.innerWidth<=860?150:100), idx=0;
-    for(var i=0;i<hs.length;i++){
-      if(!hs[i])continue;
-      if(hs[i].getBoundingClientRect().top+y<=probe+6)idx=i;
-    }
-    if(idx!==cur)setA(idx);
-  }
-  window.addEventListener('scroll',function(){
-    if(!tick){tick=true;requestAnimationFrame(function(){spy();tick=false;});}
-  },{passive:true});
-  window.addEventListener('resize',spy);
-  spy();
-
-  /*
-    抽屉滚动锁兜底：:has() 已可用时由 CSS 处理；
-    不支持 :has() 的老 WebView 用 JS 补上，避免滑动穿透到主页面。
-  */
-  var hasSel = (function(){
-    try{ return CSS.supports('selector(html:has(a))'); }catch(e){ return false; }
-  })();
-  if(!hasSel){
-    var y = 0;
-    function lock(){
-      y = window.scrollY || 0;
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = (-y) + 'px';
-      document.body.style.width = '100%';
-    }
-    function unlock(){
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, y);
-    }
-    t.addEventListener('change', function(){ t.checked ? lock() : unlock(); });
-  }
-})();
-</script>
-</body>
-</html>
+"""

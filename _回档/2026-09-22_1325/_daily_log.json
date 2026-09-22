@@ -12,48 +12,6 @@
   "entries": [
     {
       "date": "2026-09-22",
-      "checked": "本站修订，不是 05:00 采集。开工前 log 最新仍是当天早前的译名修订，没有新的采集条目。",
-      "merged": [
-        {
-          "text": "【正文】第三篇神殿去掉夹写的英文神名和术语（如 Aurora、Blessings、Divine Sand、public audience），简体正文只留中文",
-          "src": "source/火焰纹章万缕千丝_完全攻略手册.md"
-        },
-        {
-          "text": "【目录】侧栏与首页目录增加「首页」，顶栏站名也可回到首页",
-          "src": "tools/build_site.py"
-        },
-        {
-          "text": "【首页】目录细化到三级标题，每篇卡片可直接跳到小节",
-          "src": "tools/build_site.py"
-        },
-        {
-          "text": "【版式】电脑版表格头像加大；手机版正文头像缩小；8 列以上的表（含主角成长率）在窄屏改为逐项卡片，避免数字被挤没",
-          "src": "tools/site_css.py"
-        },
-        {
-          "text": "【新篇】第七篇章节一览：分段与章数来自 Polygon（2026-09-21）；简体章名只收录游民星空目录已写出的序幕与蕾达篇前半，其余不自译",
-          "src": "https://www.polygon.com/fire-emblem-fortunes-weave-chapter-list-how-long-to-beat/"
-        }
-      ],
-      "conflicts": [],
-      "new_sources": [
-        {
-          "grade": "B",
-          "name": "Polygon — 全章节表",
-          "url": "https://www.polygon.com/fire-emblem-fortunes-weave-chapter-list-how-long-to-beat/",
-          "note": "章数与分段。通关时长是作者个人记录。简体章名不采用其英文标题。"
-        },
-        {
-          "grade": "B",
-          "name": "游民星空 — 全剧情通关流程",
-          "url": "https://www.gamersky.com/handbook/202609/2211230.shtml",
-          "note": "序幕与蕾达篇部分简体章名。该文仍在连载，未覆盖全部路线。"
-        }
-      ],
-      "limited": []
-    },
-    {
-      "date": "2026-09-22",
       "checked": "本站修订，不是 05:00 采集。开工前 log 仍只有 2026-09-20 一条；远程 main 也没有更新的采集提交。",
       "merged": [
         {
