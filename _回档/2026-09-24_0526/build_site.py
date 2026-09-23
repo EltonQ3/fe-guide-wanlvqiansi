@@ -32,7 +32,7 @@ sys.path.insert(0, str(HERE))
 from site_css import CSS, PART_COLORS, PART_SOFTS
 
 # 首页与各篇头图上的修订日期。内容有实质改动时改这里。
-SITE_UPDATED = '2026-09-24'
+SITE_UPDATED = '2026-09-22'
 
 # ---------- 人物美术资源映射 ----------
 # docs/data/chars.json 手工维护（简繁别名都可命中）：

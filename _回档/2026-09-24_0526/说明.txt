@@ -1,0 +1,8 @@
+回档时间：2026-09-24 05:26（东八区）
+
+将改的文件：
+- source/火焰纹章万缕千丝_完全攻略手册.md
+- source/_daily_log.json
+- tools/build_site.py（只改首页修订日期）
+
+原因：AlGest、GameWith、AppMedia、Game8 日文页交叉后，6 条外传原先空白的报酬可以补上。接取窗口与 GameWith 一致，日期不改。各站另写的清除期限彼此不一致，不写入窗口。名声一节补上五类任务。首页只更新修订日期。
