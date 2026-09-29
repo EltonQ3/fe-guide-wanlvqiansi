@@ -31,3 +31,16 @@ if(process.env.DI_BASELINE){
  for(const i of [0,2,3])assert.equal(vm.runInContext(`routePortal(D.story[${i}])`,context),vm.runInContext(`routePortal(D.story[${i}])`,old));
  console.log('Other three route pages: rendered HTML unchanged.');
 }
+
+const pyramid=vm.runInContext('dietrichPyramid(dietrichRecruits())',context);
+const tiers=[...pyramid.matchAll(/data-pyramid-level="(\d+)"/g)].map(m=>Number(m[1]));
+assert.deepEqual(tiers,[2,3,4,5,6,7,8,9,10]);
+const people=[...pyramid.matchAll(/data-pyramid-character="([^"]+)"/g)].map(m=>m[1]);
+assert.equal(people.length,39);assert.equal(new Set(people).size,39);
+for(const c of data.characters.filter(c=>people.includes(c.id)))assert(c.recruit['迪托利希线']!=='—');
+assert(!html.includes('id="battles"')&&!html.includes('#route/dietrich/battles'));
+assert(!html.includes('本站待补')&&!html.includes('全部 12 章参考索引'));
+assert.equal(data.story[1].battles.length,2,'Unpublished notes remain in source');
+for(const phrase of ['斯米尔诺斯神殿','参殿者接待处','鞑古席翁','魔响石','先选人，再选战技','同名战技要逐人强化'])assert(html.includes(phrase));
+assert(fs.statSync(path.join(root,'docs/assets/dietrich/temple-desk.webp')).size>1000);
+console.log('Upgrade workflow, all pyramid tiers, unique recruits, and unpublished battle visibility passed.');

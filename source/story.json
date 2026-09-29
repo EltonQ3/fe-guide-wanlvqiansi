@@ -413,7 +413,7 @@
         "其他主角的外传不等于能招募该主角。优先确认你真正需要的队友与解锁条件。"
       ],
       "pilot": {
-        "version": 1,
+        "version": 2,
         "title": "刃鸣找敌，魔响石强化战技",
         "intro": "从芙朵拉漂流到鞑古扎，迪托利希追逐的是值得拔剑的对手。大剑斗祭之外，地图上的敌人也能成为你的磨刀石：用刃鸣找出战斗，收集魔响石，再把常用战技磨得更准、更狠。喜欢亲手练出一支队伍，可以从这篇开始。",
         "native": [
@@ -539,7 +539,13 @@
             ],
             "fame": 3,
             "support": 2,
-            "condition": "支付 800G"
+            "condition": "支付 800G",
+            "pyramid": {
+              "role": "机动枪骑",
+              "priority": "priority",
+              "label": "优先推荐",
+              "note": "名声 3、800G，低成本补机动；第 4 章出现。"
+            }
           },
           {
             "name": "基罗伊卡",
@@ -562,7 +568,13 @@
             ],
             "fame": 4,
             "support": 1,
-            "condition": "交付圣水 ×3"
+            "condition": "交付圣水 ×3",
+            "pyramid": {
+              "role": "弓术／高速收尾",
+              "priority": "priority",
+              "label": "优先推荐",
+              "note": "补弓位的低门槛候选；第 6 章才出现，需圣水 ×3。"
+            }
           },
           {
             "name": "乌尔坦德",
@@ -584,7 +596,13 @@
             ],
             "fame": 5,
             "support": 3,
-            "condition": "完成乌尔坦德的请求：接取后到北部堡垒找赠礼盒，带回交付"
+            "condition": "完成乌尔坦德的请求：接取后到北部堡垒找赠礼盒，带回交付",
+            "pyramid": {
+              "role": "枪术／邻接回复",
+              "priority": "situational",
+              "label": "按需补位",
+              "note": "缺伴随前排的回复再招；不能替代远程治疗。"
+            }
           },
           {
             "name": "努蒂奴",
@@ -607,7 +625,13 @@
             ],
             "fame": 5,
             "support": 2,
-            "condition": "交付青铜斧 ×2"
+            "condition": "交付青铜斧 ×2",
+            "pyramid": {
+              "role": "机动斧／骑兵",
+              "priority": "situational",
+              "label": "按需补位",
+              "note": "需要穿越敌阵的机动位再招；青铜斧 ×2。"
+            }
           },
           {
             "name": "诺克裘拉",
@@ -630,7 +654,13 @@
             ],
             "fame": 6,
             "support": 1,
-            "condition": "来源列出支援与名声；未展开附加交涉，不能据此认定无条件"
+            "condition": "来源列出支援与名声；未展开附加交涉，不能据此认定无条件",
+            "pyramid": {
+              "role": "格斗／近战",
+              "priority": "situational",
+              "label": "按需补位",
+              "note": "支援 1，适合补格斗；首次出现与交涉仍需核对。"
+            }
           },
           {
             "name": "莱桑达",
@@ -652,7 +682,13 @@
             ],
             "fame": 6,
             "support": 3,
-            "condition": "交付铁枪 ×5"
+            "condition": "交付铁枪 ×5",
+            "pyramid": {
+              "role": "机动枪骑",
+              "priority": "situational",
+              "label": "按需补位",
+              "note": "已养伊欧时不必重复重投；铁枪 ×5。"
+            }
           },
           {
             "name": "奥林匹亚",
@@ -675,7 +711,13 @@
             ],
             "fame": 6,
             "support": 3,
-            "condition": "依次完成奥林匹亚的请求 1、2、3"
+            "condition": "依次完成奥林匹亚的请求 1、2、3",
+            "pyramid": {
+              "role": "白魔法／治疗",
+              "priority": "situational",
+              "label": "按需补位",
+              "note": "回复不够时考虑；要逐段完成三次请求。"
+            }
           },
           {
             "name": "歌利亚",
@@ -698,7 +740,13 @@
             ],
             "fame": 6,
             "support": 3,
-            "condition": "交付巨人肉 ×3"
+            "condition": "交付巨人肉 ×3",
+            "pyramid": {
+              "role": "重装／物理承伤",
+              "priority": "situational",
+              "label": "按需补位",
+              "note": "缺物理坦克时补进来；巨人肉 ×3。"
+            }
           },
           {
             "name": "杰斯特",
@@ -721,7 +769,13 @@
             ],
             "fame": 6,
             "support": 3,
-            "condition": "完成三场请求战斗；每场结束回报后，才可接取下一场"
+            "condition": "完成三场请求战斗；每场结束回报后，才可接取下一场",
+            "pyramid": {
+              "role": "高速剑弓",
+              "priority": "situational",
+              "label": "按需补位",
+              "note": "追击与灵活走位；招募需要三场请求战斗。"
+            }
           }
         ],
         "sources": [
@@ -744,8 +798,17 @@
           {
             "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-tips02/",
             "label": "AlGest · 招募前后成长比较（玩家考察）"
+          },
+          {
+            "url": "https://game8.jp/fe-banshisenko/817667",
+            "label": "Game8 · 强化地点与操作"
+          },
+          {
+            "url": "https://game8.jp/fe-banshisenko/817224",
+            "label": "Game8 · 魔响石取得与用途"
           }
-        ]
+        ],
+        "publishBattles": false
       }
     },
     "sources": [

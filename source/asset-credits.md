@@ -16,3 +16,11 @@
 - 页面：https://game8.jp/fe-banshisenko/817151
 - assets/dietrich/blade-sense.webp：https://img.game8.jp/13022585/9d74b9381087973d356e2f4d3a30ce7d.webp/show
 - assets/dietrich/combat-art.webp：https://img.game8.jp/13022582/63014a8e0c41ca344198586ff026df4d.webp/original
+
+### 强化地点配图补充
+
+- 文件：assets/dietrich/temple-desk.webp
+- 用途：斯米尔诺斯神殿接待处，以及「战技强化」菜单的操作识别。
+- 页面：https://game8.jp/fe-banshisenko/817667
+- 原图：https://img.game8.jp/13027597/634c3b2166b7e1bb53c60136bf56ec1c.webp/show
+- 日期：2026-09-29；保留原图。游戏版权 Nintendo / INTELLIGENT SYSTEMS；截图出处 Game8。
