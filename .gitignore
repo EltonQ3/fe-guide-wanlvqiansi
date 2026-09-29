@@ -4,3 +4,5 @@ __pycache__/
 *.log
 .cache/
 .env
+.venv/
+research/

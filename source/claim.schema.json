@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reviewed game claim",
+  "description": "Proposed format for future per-claim curation. Historical imports are not automatically approved claims.",
+  "type": "object",
+  "required": ["id", "claim", "status", "sourceIds", "independenceGroups", "gameVersion", "route", "difficulty", "evidenceLocation", "reviewedAt", "reviewer"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "claim": {"type": "string", "minLength": 1},
+    "status": {"enum": ["pending", "provisional", "confirmed", "conflicting", "withdrawn"]},
+    "sourceIds": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "independenceGroups": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "gameVersion": {"type": ["string", "null"]},
+    "route": {"type": ["string", "null"]},
+    "difficulty": {"type": ["string", "null"]},
+    "evidenceLocation": {"type": ["string", "null"]},
+    "reviewedAt": {"type": ["string", "null"]},
+    "reviewer": {"type": ["string", "null"]},
+    "supersedes": {"type": ["string", "null"]}
+  },
+  "allOf": [{"if": {"properties": {"status": {"const": "confirmed"}}}, "then": {"properties": {"sourceIds": {"minItems": 1}, "evidenceLocation": {"type": "string", "minLength": 1}, "reviewedAt": {"type": "string", "minLength": 1}, "reviewer": {"type": "string", "minLength": 1}}}}]
+}
