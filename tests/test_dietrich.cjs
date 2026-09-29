@@ -4,6 +4,7 @@ const data=JSON.parse(fs.readFileSync(path.join(root,'docs/data.js'),'utf8').rep
 const ui={innerHTML:'',open:false,showModal(){this.open=true}};
 const context=vm.createContext({window:{FE_DATA:data},document:{querySelector:()=>ui,querySelectorAll:()=>[],activeElement:null},localStorage:{getItem:()=>null}});
 vm.runInContext(fs.readFileSync(path.join(root,'web/dietrich.js'),'utf8'),context);
+vm.runInContext(fs.readFileSync(path.join(root,'web/reference.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(root,'web/app.js'),'utf8').split('function navigate()')[0],context);
 const html=vm.runInContext('routePortal(D.story[1])',context);
 const fame=[...html.matchAll(/data-recruit-fame="(\d+)"/g)].map(m=>Number(m[1]));

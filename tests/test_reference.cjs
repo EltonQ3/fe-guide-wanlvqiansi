@@ -1,0 +1,29 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
+const root=path.resolve(__dirname,'..'),data=JSON.parse(fs.readFileSync(path.join(root,'docs/data.js'),'utf8').replace(/^window.FE_DATA = /,'').replace(/;\s*$/,''));
+const nodes={};const node=id=>nodes[id]??={value:'',innerHTML:'',textContent:'',showModal(){this.open=true}};
+const ctx=vm.createContext({window:{FE_DATA:data},document:{querySelector:node,querySelectorAll:()=>[],activeElement:null},localStorage:{getItem:()=>null}});
+for(const f of ['dietrich.js','campaign.js','reference.js'])vm.runInContext(fs.readFileSync(path.join(root,'web',f),'utf8'),ctx);
+vm.runInContext(fs.readFileSync(path.join(root,'web/app.js'),'utf8').split('function navigate()')[0],ctx);
+for(const [id,count] of Object.entries({kai:4,dietrich:8,theodora:7,leda:4})){
+ const html=vm.runInContext(`routePortal(D.story.find(s=>s.id==='${id}'))`,ctx);
+ assert.equal([...html.matchAll(/data-paralogue=/g)].length,count);
+ assert(html.includes(`#route/${id}/paralogues`)&&html.includes(`#route/${id}/classes`));
+ assert(!html.includes(`data-paralogue="${id}"`),'Protagonist does not receive own paralogue');
+ const linked=[...html.matchAll(/data-class="([^"]+)"/g)].map(m=>m[1]);assert(linked.length>0&&linked.every(id=>data.classes.some(c=>c.id===id)));
+ for(const n of [...data.story.find(s=>s.id===id).profile.pilot.native,...data.story.find(s=>s.id===id).profile.pilot.scouts])for(const name of n.path)assert(data.classes.some(c=>c.name===name||c.aliases.includes(name)),`missing ${name}`);
+}
+const di=data.paralogues.find(p=>p.id==='bertrand').routes.dietrich;assert.equal(di.length,1);assert.equal(di[0].start,di[0].end);assert.equal(di[0].start,'9/17');
+const or=data.paralogues.find(p=>p.id==='orhel').routes.kai[0];assert.equal(or.end,'10/19');assert.equal(or.deadline,'10/21');
+assert.equal(data.paralogues.find(p=>p.id==='talimoon').routes.kai.length,2);
+assert(data.paralogues.some(p=>Object.values(p.routes).flat().some(w=>w.deadline===null)),'Missing deadlines remain explicit');
+assert(data.paralogues.find(p=>p.id==='dietrich').consequence.includes('不能招募法比奥'));
+assert.equal(new Set(data.classes.map(c=>c.id)).size,data.classes.length);
+assert(data.classes.every(c=>!/[\u3040-\u30ff]/.test(c.name)));
+assert(data.classes.filter(c=>c.tier==='最上级'||c.tier==='神将').every(c=>c.phase.startsWith('第三部')));
+vm.runInContext('filterClasses()',ctx);assert(node('#class-count').textContent.includes('54'));
+node('#class-tier').value='神将';vm.runInContext('filterClasses()',ctx);assert(node('#class-count').textContent.includes('8'));
+node('#class-tier').value='';node('#class-query').value='找不到的兵种';vm.runInContext('filterClasses()',ctx);assert(node('#class-results').innerHTML.includes('没有符合条件'));
+node('#class-query').value='';node('#class-role').value='开锁';vm.runInContext('filterClasses()',ctx);assert(node('#class-results').innerHTML.includes('恶棍')&&!node('#class-results').innerHTML.includes('主教'));
+const c=data.classes.find(c=>c.name==='舞者');vm.runInContext(`showClass('${c.id}')`,ctx);assert(node('#class-dialog').open&&node('#class-dialog').innerHTML.includes('第一部为蕾达专用'));
+node('#global-query').value='外传';vm.runInContext('renderSearch()',ctx);assert(node('#search-results').innerHTML.includes('#route/dietrich/paralogues'));
+console.log('Four route calendars, distinct windows/deadlines, class links, filters, modal and search passed.');

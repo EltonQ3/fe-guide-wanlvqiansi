@@ -1,0 +1,1218 @@
+[
+  {
+    "id": "class-1",
+    "name": "平民",
+    "aliases": [],
+    "tier": "基础",
+    "movement": "4",
+    "exam": "不适用",
+    "unlock": "初始基础兵种。",
+    "training": "无",
+    "features": "步兵",
+    "mastery": "【战斗的基本】（15）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-2",
+    "name": "贵族",
+    "aliases": [],
+    "tier": "基础",
+    "movement": "4",
+    "exam": "不适用",
+    "unlock": "初始基础兵种。",
+    "training": "无",
+    "features": "步兵",
+    "mastery": "【战斗的基本】（15）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-3",
+    "name": "斗士",
+    "aliases": [],
+    "tier": "初级",
+    "movement": "4",
+    "exam": "剑术/斧术/格斗术任一项 D，初级考试票证×1",
+    "unlock": "",
+    "training": "剑术+1、斧术+1、步兵术+1",
+    "features": "斗士系 · 步兵",
+    "mastery": "【攻击的基本】（30）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-4",
+    "name": "猎兵",
+    "aliases": [],
+    "tier": "初级",
+    "movement": "4",
+    "exam": "剑术/弓术任一项 D，初级考试票证×1",
+    "unlock": "",
+    "training": "剑术+1、弓术+1、步兵术+1",
+    "features": "猎兵系 · 步兵",
+    "mastery": "【狩猎的基本】（30）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-5",
+    "name": "士兵",
+    "aliases": [],
+    "tier": "初级",
+    "movement": "4",
+    "exam": "斧术/枪术任一项 D，初级考试票证×1",
+    "unlock": "",
+    "training": "枪术+1、斧术+1、重装术+1",
+    "features": "士兵系 · 重装",
+    "mastery": "【防卫的基本】（30）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-6",
+    "name": "飞鸵兵",
+    "aliases": [],
+    "tier": "初级",
+    "movement": "5",
+    "exam": "枪术/斧术任一项 D，且马术 E+，初级考试票证×1",
+    "unlock": "",
+    "training": "枪术+1、马术+1、飞行术+1",
+    "features": "飞行系 · 骑兵，【乘降术】",
+    "mastery": "【攻势的基本】（30）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-7",
+    "name": "诅咒师",
+    "aliases": [],
+    "tier": "初级",
+    "movement": "4",
+    "exam": "黑魔术/白魔术任一项 D，初级考试票证×1",
+    "unlock": "",
+    "training": "黑魔术+1、白魔术+1",
+    "features": "魔道系 · 步兵",
+    "mastery": "【魔道的基本】（30）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-8",
+    "name": "剑客",
+    "aliases": [],
+    "tier": "中级",
+    "movement": "5",
+    "exam": "剑术 C，中级考试票证×1",
+    "unlock": "",
+    "training": "剑术+2、步兵术+1",
+    "features": "斗士系 · 步兵，【战技装备+1】【剑必杀+3】",
+    "mastery": "【技巧精湛】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-9",
+    "name": "土匪",
+    "aliases": [],
+    "tier": "中级",
+    "movement": "5",
+    "exam": "剑术/斧术任一项 C，中级考试票证×1",
+    "unlock": "",
+    "training": "斧术+2",
+    "features": "斗士系 · 步兵，【战技装备+1】【斧命中+3】",
+    "mastery": "【重整态势】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-10",
+    "name": "斗拳手",
+    "aliases": [],
+    "tier": "中级",
+    "movement": "5",
+    "exam": "格斗术 C，中级考试票证×1",
+    "unlock": "",
+    "training": "格斗术+2、步兵术+2",
+    "features": "斗士系 · 步兵，【战技装备+1】【格斗回避+3】",
+    "mastery": "【攻击&远离】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-11",
+    "name": "弓箭手",
+    "aliases": [],
+    "tier": "中级",
+    "movement": "5",
+    "exam": "弓术 C，中级考试票证×1",
+    "unlock": "",
+    "training": "弓术+2、步兵术+1",
+    "features": "猎兵系 · 步兵，【战技装备+1】【弓命中+5】",
+    "mastery": "【状态不错】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-12",
+    "name": "恶棍",
+    "aliases": [],
+    "tier": "中级",
+    "movement": "5",
+    "exam": "剑术/弓术任一项 C，中级考试票证×1",
+    "unlock": "",
+    "training": "剑术+1、弓术+1、步兵术+2",
+    "features": "猎兵系 · 步兵，【战技装备+1】【开锁】【探索术】",
+    "mastery": "【暗影隐身】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "recommendation": {
+      "role": "开锁与探索",
+      "forWhom": "需要补探索职能、已练剑／弓的同伴。",
+      "reason": "把开锁与探索放在一名可随队行动的人身上。",
+      "tradeoff": "功能位不等于伤害主力；前进前仍要检查战斗能力。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-13",
+    "name": "重装步兵",
+    "aliases": [],
+    "tier": "中级",
+    "movement": "4",
+    "exam": "枪术/斧术任一项 C，且重装术 E+，中级考试票证×1",
+    "unlock": "",
+    "training": "枪术+1、斧术+1、重装术+2",
+    "features": "士兵系 · 重装，【战技装备+1】【后攻防守+3】",
+    "mastery": "【大反击】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-14",
+    "name": "轻骑兵",
+    "aliases": [],
+    "tier": "中级",
+    "movement": "6",
+    "exam": "剑术/枪术任一项 C，且马术 E+，中级考试票证×1",
+    "unlock": "",
+    "training": "枪术+1、马术+2",
+    "features": "士兵系 · 骑兵，【乘降术】",
+    "mastery": "【体力强化】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-15",
+    "name": "战车兵",
+    "aliases": [],
+    "tier": "中级",
+    "movement": "5",
+    "exam": "弓术 C 且马术 D，中级考试票证×1",
+    "unlock": "",
+    "training": "弓术+2、马术+1",
+    "features": "士兵系 · 骑兵，【战车装甲】【战车兵的战术】【战车兵之道】",
+    "mastery": "【突击态势】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-16",
+    "name": "骑甲驼兵",
+    "aliases": [],
+    "tier": "中级",
+    "movement": "6",
+    "exam": "枪术/斧术任一项 C，且马术 D，中级考试票证×1",
+    "unlock": "",
+    "training": "枪术+1、斧术+1、马术+1、飞行术+1",
+    "features": "飞行系 · 骑兵，【乘降术】",
+    "mastery": "【威胁察觉】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-17",
+    "name": "天翼兵",
+    "aliases": [
+      "天翼兵（女性专用）"
+    ],
+    "tier": "中级",
+    "movement": "6",
+    "exam": "剑术/枪术任一项 C，且飞行术 E+，中级考试票证×1",
+    "unlock": "",
+    "training": "剑术+1、枪术+1、飞行术+2",
+    "features": "飞行系 · 飞行，【乘降术】",
+    "mastery": "【天马的护翼】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "restriction": "女性角色专用。",
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-18",
+    "name": "萨满巫师",
+    "aliases": [],
+    "tier": "中级",
+    "movement": "5",
+    "exam": "黑魔术 C+，中级考试票证×1",
+    "unlock": "",
+    "training": "剑术+1、黑魔术+2、白魔术+1",
+    "features": "魔道系 · 步兵，【黑魔术的探究】【魔法命中+3】",
+    "mastery": "【技巧咒缚】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-19",
+    "name": "牧师",
+    "aliases": [],
+    "tier": "中级",
+    "movement": "5",
+    "exam": "白魔术 C+，中级考试票证×1",
+    "unlock": "",
+    "training": "格斗术+1、黑魔术+1、白魔术+2",
+    "features": "魔道系 · 步兵，【白魔术的探究】【魔法回复+5】",
+    "mastery": "【信仰心】（60）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-20",
+    "name": "侍道",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "5",
+    "exam": "剑术 B",
+    "unlock": "资料未列额外解锁任务；以当前考试列表为准。",
+    "training": "剑术+3、枪术+1、步兵术+2",
+    "features": "斗士系 · 步兵，【战技装备+2】【剑必杀+5】",
+    "mastery": "【残心】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "recommendation": {
+      "role": "剑系必杀与战技",
+      "forWhom": "迪托利希、穆，以及主练剑术的古扎岚／洛蕾塔。",
+      "reason": "沿用剑术投入，战技装备位与剑必杀加成适合主动击杀。",
+      "tradeoff": "需要机动或远程时，单练剑系不能替代骑兵与弓手。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-21",
+    "name": "舞者",
+    "aliases": [
+      "舞者（蕾达限定）"
+    ],
+    "tier": "上级与高级",
+    "movement": "待核对",
+    "exam": "剑术／弓术任一项 B",
+    "unlock": "蕾达篇第9章起完成「舞者的继承人」，使用舞姬的首饰。第一部为蕾达专用；救世篇开放给其他角色。",
+    "training": "剑术+3、弓术+2、步兵术+4",
+    "features": "步兵，【战技装备+2】【跳舞】",
+    "mastery": "【特别舞蹈】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "recommendation": {
+      "role": "让核心再行动",
+      "forWhom": "第一部的蕾达。",
+      "reason": "队友输出或治疗比自己出手更有价值时，用跳舞扩大主力作用。",
+      "tradeoff": "有专属支线与道具要求；不要把第一部的蕾达专属资格套给全员。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-22",
+    "name": "勇士",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "5",
+    "exam": "剑术／斧术／格斗术任一项 B",
+    "unlock": "资料未列额外解锁任务；以当前考试列表为准。",
+    "training": "剑术+2、斧术+3、格斗术+2、步兵术+1",
+    "features": "斗士系 · 步兵，【战技装备+2】【斧命中+5】【格斗命中+5】",
+    "mastery": "【熟练之技】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "recommendation": {
+      "role": "斧／格斗物理输出",
+      "forWhom": "诺克裘拉、马吉迪、札可捏等近战输出。",
+      "reason": "同一职业支持多种近战方向，先练你实际使用的武器。",
+      "tradeoff": "不要为三种武器同时达标而分散训练；薄防角色仍不适合连续接敌。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-23",
+    "name": "狙击手",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "5",
+    "exam": "弓术 B",
+    "unlock": "资料未列额外解锁任务；以当前考试列表为准。",
+    "training": "弓术+3、步兵术+2",
+    "features": "猎兵系 · 步兵，【战技装备+2】【弓命中+10】",
+    "mastery": "【射击专家】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "recommendation": {
+      "role": "稳定的步行弓手",
+      "forWhom": "彼得、莉利安、基罗伊卡。",
+      "reason": "弓命中加成较高，适合优先把远程命中与输出练扎实。",
+      "tradeoff": "比森林骑士少机动；需要追赶队伍时再考虑马术投入。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-24",
+    "name": "森林骑士",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "6",
+    "exam": "弓术 B、马术 D",
+    "unlock": "资料未列额外解锁任务；以当前考试列表为准。",
+    "training": "剑术+1、弓术+2、马术+2",
+    "features": "猎兵系 · 骑兵，【乘降术】【战技装备+1】【弓命中+5】",
+    "mastery": "【猎人之眼】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "recommendation": {
+      "role": "骑乘远射",
+      "forWhom": "已有马术投入、需要快速补位的弓手。",
+      "reason": "提高移动与射击后的位置选择，适合随骑兵队推进。",
+      "tradeoff": "需要额外练马术；兵种弓命中加成低于狙击手，先检查实战命中。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-25",
+    "name": "游侠",
+    "aliases": [
+      "游侠（高级）"
+    ],
+    "tier": "上级与高级",
+    "movement": "5",
+    "exam": "剑术／弓术任一项 B",
+    "unlock": "迪托利希篇名声 Lv10 的挑战书；或蕾达篇「我想制作并推出新商品4」。",
+    "training": "剑术+2、弓术+2、步兵术+3",
+    "features": "猎兵系 · 步兵，【战技装备+2】【开锁】【上级探索术】",
+    "mastery": "【反击射击】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-26",
+    "name": "巨型重甲兵",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "4",
+    "exam": "枪术／斧术任一项 B、重装术 D",
+    "unlock": "资料未列额外解锁任务；以当前考试列表为准。",
+    "training": "枪术+2、斧术+2、步兵术+1、重装术+3",
+    "features": "士兵系 · 重装，【战技装备+2】【后攻防守+5】",
+    "mastery": "【集中反击】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "recommendation": {
+      "role": "正面承伤",
+      "forWhom": "艾丝梅拉尔达、巴卡尼亚等重装位。",
+      "reason": "后攻防守加成适合守住狭口，让队友安全输出。",
+      "tradeoff": "移动慢，怕魔法和重装特效；目标是保护阵形，不是独自追敌。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-27",
+    "name": "重装骑兵",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "待核对",
+    "exam": "枪术／斧术任一项 B、马术 D、重装术 F",
+    "unlock": "赛奥朵拉篇对应战备增援。",
+    "training": "尚未收录",
+    "features": "重装 · 骑兵，【乘降术】【战技装备+1】【后攻防守+3】",
+    "mastery": "【大盾】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-28",
+    "name": "荣光骑士",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "6",
+    "exam": "剑术／枪术任一项 B、马术 C",
+    "unlock": "资料未列额外解锁任务；以当前考试列表为准。",
+    "training": "剑术+2、枪术+2、斧术+1、马术+3",
+    "features": "士兵系 · 骑兵，【乘降术】【战技装备+2】",
+    "mastery": "【圣盾】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "recommendation": {
+      "role": "机动物理补位",
+      "forWhom": "凯伊，以及沿枪术／马术培养的同伴。",
+      "reason": "骑乘与战技装备位便于追击、支援两翼。",
+      "tradeoff": "先补足马术；狭窄地形和特效敌人面前不要只看移动数字。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-29",
+    "name": "神鸵兵",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "6",
+    "exam": "黑魔术 B、马术 D",
+    "unlock": "凯伊篇卡司托尔指导 Lv7／「来自父亲的秘密委托」。",
+    "training": "剑术+1、枪术+2、斧术+2、黑魔术+2、马术+1、飞行术+1",
+    "features": "士兵系 · 骑兵，【乘降术】【黑魔术的探究】【战技装备+1】",
+    "mastery": "【驰骋】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "recommendation": {
+      "role": "骑乘黑魔术",
+      "forWhom": "凯伊篇想让已有黑魔术的角色跟随机动队。",
+      "reason": "移动与黑魔术兼顾，是本篇指导系统值得关注的解锁。",
+      "tradeoff": "先完成卡司托尔指导并准备黑魔术、马术；纯物理角色不必为解锁强行转法。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-30",
+    "name": "驭龙兵",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "6",
+    "exam": "枪术／斧术任一项 B、飞行术 C",
+    "unlock": "凯伊篇奥罗拉指导 Lv8／「来自母亲的特别委托」；赛奥朵拉篇也可通过对应战备增援开放。",
+    "training": "剑术+1、枪术+1、斧术+3、飞行术+3",
+    "features": "飞行系 · 飞行，【乘降术】【战技装备+1】",
+    "mastery": "【突破围城】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-31",
+    "name": "先知",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "5",
+    "exam": "黑魔术 B",
+    "unlock": "资料未列额外解锁任务；以当前考试列表为准。",
+    "training": "剑术+2、格斗术+1、黑魔术+3、白魔术+1、步兵术+1",
+    "features": "魔道系 · 步兵，【黑魔术的探究】【魔法命中+5】",
+    "mastery": "【速度咒缚】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "recommendation": {
+      "role": "黑魔术主攻",
+      "forWhom": "法比奥、波拿帕尔特、菲亚娜。",
+      "reason": "保留黑魔术成长与命中路线，培养方向集中。",
+      "tradeoff": "注意魔法次数与前排保护，不因转为上级就让法师硬接物理攻击。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-32",
+    "name": "主教",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "5",
+    "exam": "白魔术 B",
+    "unlock": "资料未列额外解锁任务；以当前考试列表为准。",
+    "training": "斧术、格斗术、黑魔术、白魔术、步兵术",
+    "features": "魔道系 · 步兵，【白魔术的探究】【魔法回复+10】",
+    "mastery": "【结界】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "recommendation": {
+      "role": "治疗与队伍续航",
+      "forWhom": "蒂亚拉、杨界、索绯雅、奥林匹亚。",
+      "reason": "白魔术与回复加成服务于治疗任务，不必和输出位争所有击杀。",
+      "tradeoff": "先看角色会用哪些回复魔法；职业名相同不代表魔法表相同。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-33",
+    "name": "游唱诗人",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "6",
+    "exam": "黑魔术／白魔术任一项 B、马术 D",
+    "unlock": "凯伊篇贝特朗指导 Lv10／「白发鬼的委托」；蕾达篇酒馆兴行「我想制作并推出新商品4」。",
+    "training": "黑魔术+3、白魔术+3、马术+2",
+    "features": "魔道系 · 骑兵，【乘降术】【魔法回复+5】【魔法命中+3】",
+    "mastery": "【勇气的咒歌】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-34",
+    "name": "卫士",
+    "aliases": [],
+    "tier": "上级与高级",
+    "movement": "5",
+    "exam": "枪术 B",
+    "unlock": "迪托利希篇名声 Lv6 的挑战书；或赛奥朵拉篇对应战备增援。",
+    "training": "枪术+3、白魔术+1、步兵术+1",
+    "features": "士兵系 · 步兵，【战技装备+2】【魔法回复+10】",
+    "mastery": "【紧绷神经】（100）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "recommendation": {
+      "role": "枪系兼回复",
+      "forWhom": "需要枪术前排兼顾白魔术支援的角色。",
+      "reason": "保留枪系战技，同时为队伍提供额外回复手段。",
+      "tradeoff": "先确认本存档已解锁；治疗能力还取决于角色魔法表。"
+    },
+    "phase": "第一部；仍须开放考试并满足该职业的特殊解锁。"
+  },
+  {
+    "id": "class-35",
+    "name": "刀剑将领",
+    "aliases": [],
+    "tier": "最上级",
+    "movement": "5",
+    "exam": "剑术 A",
+    "unlock": "第三部第二区分起，完成战神的委托。",
+    "training": "尚未收录",
+    "features": "斗士系 · 步兵，【战技装备+3】【剑必杀+7】",
+    "mastery": "名称待核对（精通经验130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-36",
+    "name": "战斗将领",
+    "aliases": [],
+    "tier": "最上级",
+    "movement": "5",
+    "exam": "剑术／斧术／格斗术任一项 A",
+    "unlock": "",
+    "training": "剑术+2、斧术+4、格斗术+2、步兵术+1",
+    "features": "斗士系 · 步兵，【战技装备+3】【斧命中+7】【格斗命中+7】",
+    "mastery": "【战鬼一击】（130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-37",
+    "name": "武僧",
+    "aliases": [],
+    "tier": "最上级",
+    "movement": "5",
+    "exam": "格斗术 B、白魔术 D",
+    "unlock": "第三部第二区分起，完成奥罗拉的委托。",
+    "training": "格斗术+4、白魔术+2、步兵术+2",
+    "features": "斗士系 · 步兵，【战技装备+3】【白魔术的探究】【格斗回避+7】",
+    "mastery": "【强打&治愈】（130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-38",
+    "name": "宗师射手",
+    "aliases": [],
+    "tier": "最上级",
+    "movement": "5",
+    "exam": "弓术 A",
+    "unlock": "",
+    "training": "弓术+4、步兵术+2",
+    "features": "猎兵系 · 步兵，【战技装备+3】【弓命中+15】",
+    "mastery": "【飞空猎手】（130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-39",
+    "name": "探影者",
+    "aliases": [],
+    "tier": "最上级",
+    "movement": "5",
+    "exam": "剑术／弓术任一项 A",
+    "unlock": "",
+    "training": "剑术+2、弓术+3、步兵术+4",
+    "features": "猎兵系 · 步兵，【战技装备+3】【开锁】【最上级探索术】",
+    "mastery": "【落影之刃】（130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-40",
+    "name": "圣枪师",
+    "aliases": [],
+    "tier": "最上级",
+    "movement": "5",
+    "exam": "枪术 A",
+    "unlock": "",
+    "training": "枪术+4、白魔术+3、步兵术+1",
+    "features": "士兵系 · 步兵，【战技装备+3】【魔法回复+10】【白魔术的探究】",
+    "mastery": "【不退架势】（130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-41",
+    "name": "要塞",
+    "aliases": [],
+    "tier": "最上级",
+    "movement": "4",
+    "exam": "枪术／斧术任一项 A、重装术 C",
+    "unlock": "",
+    "training": "枪术+2、斧术+2、步兵术+1、重装术+4",
+    "features": "士兵系 · 重装，【战技装备+3】【后攻防守+7】",
+    "mastery": "【阻绝】（130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-42",
+    "name": "奥利哈铁骑",
+    "aliases": [],
+    "tier": "最上级",
+    "movement": "7",
+    "exam": "剑术／枪术任一项 A、马术 B",
+    "unlock": "",
+    "training": "剑术+2、枪术+3、斧术+1、马术+4",
+    "features": "士兵系 · 骑兵，【乘降术】【战技装备+3】",
+    "mastery": "【骑士烈枪】（130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-43",
+    "name": "圣天翼兵",
+    "aliases": [
+      "圣天翼兵（女性专用）"
+    ],
+    "tier": "最上级",
+    "movement": "7",
+    "exam": "剑术／枪术任一项 A、飞行术 C",
+    "unlock": "",
+    "training": "剑术+3、枪术+3、飞行术+4",
+    "features": "飞行系 · 飞行，【乘降术】【战技装备+1】【飞行回避+7】",
+    "mastery": "【迅雷风烈】（130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "restriction": "女性角色专用。",
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-44",
+    "name": "飞龙将领",
+    "aliases": [],
+    "tier": "最上级",
+    "movement": "7",
+    "exam": "枪术／斧术任一项 A、飞行术 C",
+    "unlock": "",
+    "training": "剑术+1、枪术+3、斧术+3、飞行术+4",
+    "features": "飞行系 · 飞行，【乘降术】【战技装备+2】",
+    "mastery": "【袭击】（130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-45",
+    "name": "德鲁伊",
+    "aliases": [],
+    "tier": "最上级",
+    "movement": "5",
+    "exam": "黑魔术 A",
+    "unlock": "",
+    "training": "剑术+2、格斗术+2、黑魔术+4、步兵术+1",
+    "features": "魔道系 · 步兵，【黑魔术的探究】【魔法命中+7】",
+    "mastery": "【魔防咒缚】（130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-46",
+    "name": "贤者",
+    "aliases": [],
+    "tier": "最上级",
+    "movement": "5",
+    "exam": "白魔术 A",
+    "unlock": "",
+    "training": "斧术+1、格斗术+2、白魔术+4、步兵术+1",
+    "features": "魔道系 · 步兵，【白魔术的探究】【魔法回复+15】",
+    "mastery": "【魔力掌控】（130）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573025",
+        "label": "兵种技能与解锁对照 · GameWith"
+      }
+    ],
+    "phase": "第三部第二区分起；部分还需专属委托。"
+  },
+  {
+    "id": "class-47",
+    "name": "刃辉神将",
+    "aliases": [],
+    "tier": "神将",
+    "movement": "6",
+    "exam": "剑术至少 S，妖刀之锷×1",
+    "unlock": "",
+    "training": "剑术+5、枪术+1、步兵术+2",
+    "features": "斗士系 · 步兵，【战技装备+3】【剑必杀+10】",
+    "mastery": "【战神】（160）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第三部第四区分起；100%通过率、专用道具，每种限1人。"
+  },
+  {
+    "id": "class-48",
+    "name": "神乐神将",
+    "aliases": [],
+    "tier": "神将",
+    "movement": "6",
+    "exam": "剑术 A 且弓术 C，穆萨首饰×1",
+    "unlock": "",
+    "training": "剑术+4、弓术+2、步兵术+5",
+    "features": "斗士系 · 步兵，【战技装备+3】【跳舞】",
+    "mastery": "【神舞】（160）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第三部第四区分起；100%通过率、专用道具，每种限1人。"
+  },
+  {
+    "id": "class-49",
+    "name": "永霸神将",
+    "aliases": [],
+    "tier": "神将",
+    "movement": "6",
+    "exam": "剑术/斧术/格斗术任一项 S，决裁天秤×1",
+    "unlock": "",
+    "training": "斧术+5、剑术+3、格斗术+3、步兵术+1",
+    "features": "斗士系 · 步兵，【战技装备+3】【斧命中+10】【格斗命中+10】",
+    "mastery": "【武神】（160）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第三部第四区分起；100%通过率、专用道具，每种限1人。"
+  },
+  {
+    "id": "class-50",
+    "name": "破拳神将",
+    "aliases": [],
+    "tier": "神将",
+    "movement": "6",
+    "exam": "格斗术 S 且白魔术 C，大帝腰封×1",
+    "unlock": "",
+    "training": "格斗术+5、白魔术+3、步兵术+3",
+    "features": "斗士系 · 步兵，【战技装备+3】【白魔术的极限】【格斗回避+10】",
+    "mastery": "【神装】（160）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第三部第四区分起；100%通过率、专用道具，每种限1人。"
+  },
+  {
+    "id": "class-51",
+    "name": "绝祸神将",
+    "aliases": [],
+    "tier": "神将",
+    "movement": "6",
+    "exam": "剑术/弓术任一项 S，暗之结晶×1",
+    "unlock": "",
+    "training": "弓术+4、剑术+2、步兵术+5",
+    "features": "猎兵系 · 步兵，【战技装备+3】【开锁】【超级探索术】",
+    "mastery": "【神命】（160）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第三部第四区分起；100%通过率、专用道具，每种限1人。"
+  },
+  {
+    "id": "class-52",
+    "name": "岚枪神将",
+    "aliases": [],
+    "tier": "神将",
+    "movement": "6",
+    "exam": "枪术至少 S，三叉戟×1",
+    "unlock": "",
+    "training": "枪术+5、白魔术+3、步兵术+1",
+    "features": "士兵系 · 步兵，【战技装备+3】【魔法回复+10】【白魔术的极限】",
+    "mastery": "【神壁】（160）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第三部第四区分起；100%通过率、专用道具，每种限1人。"
+  },
+  {
+    "id": "class-53",
+    "name": "烈骏神将",
+    "aliases": [],
+    "tier": "神将",
+    "movement": "8",
+    "exam": "剑术/枪术/斧术任一项 S，且马术 A，神铁之鞍×1",
+    "unlock": "",
+    "training": "剑术+3、枪术+3、斧术+3、马术+5",
+    "features": "士兵系 · 骑兵，【乘降术】【战技装备+3】【黄金骑术】",
+    "mastery": "【神技】（160）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第三部第四区分起；100%通过率、专用道具，每种限1人。"
+  },
+  {
+    "id": "class-54",
+    "name": "圣转神将",
+    "aliases": [],
+    "tier": "神将",
+    "movement": "6",
+    "exam": "黑魔术/白魔术任一项 S，转世莲华×1",
+    "unlock": "",
+    "training": "黑魔术+5、白魔术+5、剑术+2、格斗术+2、斧术+1、步兵术+1",
+    "features": "魔道系 · 步兵，【战技装备+3】【全魔术的极限】【魔法命中+10】【魔法回复+20】",
+    "mastery": "【神法】（160）",
+    "sources": [
+      {
+        "url": "https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq",
+        "label": "腾讯共创表 · 02-兵种职业信息（站内收录，部分栏位复核）"
+      }
+    ],
+    "phase": "第三部第四区分起；100%通过率、专用道具，每种限1人。"
+  }
+]

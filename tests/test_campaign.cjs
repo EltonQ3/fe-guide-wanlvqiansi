@@ -2,7 +2,7 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const root=path.resolve(__dirname,'..'),data=JSON.parse(fs.readFileSync(path.join(root,'docs/data.js'),'utf8').replace(/^window.FE_DATA = /,'').replace(/;\s*$/,''));
 const ui={innerHTML:'',open:false,showModal(){this.open=true}};
 const ctx=vm.createContext({window:{FE_DATA:data},document:{querySelector:()=>ui,querySelectorAll:()=>[],activeElement:null},localStorage:{getItem:()=>null}});
-for(const f of ['dietrich.js','campaign.js'])vm.runInContext(fs.readFileSync(path.join(root,'web',f),'utf8'),ctx);
+for(const f of ['dietrich.js','campaign.js','reference.js'])vm.runInContext(fs.readFileSync(path.join(root,'web',f),'utf8'),ctx);
 vm.runInContext(fs.readFileSync(path.join(root,'web/app.js'),'utf8').split('function navigate()')[0],ctx);
 for(const id of ['kai','theodora','leda']){
  const s=data.story.find(x=>x.id===id),p=s.profile.pilot,route=s.title.replace('路线','线');

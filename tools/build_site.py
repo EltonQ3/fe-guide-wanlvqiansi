@@ -113,7 +113,7 @@ for line in source_text.splitlines():
 for log in logs:
     for s in log.get('new_sources',[]):
         add_source(s.get('url',''),s.get('name',''),s.get('grade',''),s.get('note',''),log['date'])
-curated = {name: read(name+'.json') for name in ('negotiations', 'builds', 'story')}
+curated = {name: read(name+'.json') for name in ('negotiations', 'builds', 'story', 'paralogues', 'classes')}
 for kind in ('negotiations', 'builds'):
     for item in curated[kind]:
         matches = [c for c in characters if item['name'] in c['aliases']]
@@ -130,6 +130,7 @@ for collection in curated.values():
             key=hashlib.sha256(canonical(s['url']).encode()).hexdigest()[:12]
             sources[key]['status']='page-reviewed'
             sources[key]['note']='已核对本次条目所引页面；不代表该站全部结论已验证。'
+            if 'docs.qq.com' in s['url']: sources[key]['note']='2026-09-29 可见表格核对外传窗口与部分兵种条件；表格禁止复制，未批量导出，兵种基础资料仍含此前站内收录。'
 latest=max(e['date'] for e in logs)
 payload={'snapshot':'35dfba9b2300efc28c4a84e720bc9b9f35e12b0b','updated':latest,'chapters':chapters,'characters':characters,'weekly':weekly,'sources':list(sources.values()),'logs':logs,**curated}
 (OUT/'data.js').write_text('window.FE_DATA = '+json.dumps(payload,ensure_ascii=False).replace('</','<\\/')+';\n')
