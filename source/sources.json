@@ -926,13 +926,13 @@
   {
     "id": "88c250ea9eb6",
     "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-tips02/",
-    "title": "AlGest — 挖角角色偏弱的考察",
+    "title": "AlGest · 招募前后成长比较（玩家考察）",
     "host": "al-gest.com",
     "kind": "攻略 / 媒体",
-    "originalGrade": "C",
-    "note": "2026-09-26。作者把未入队成长估成约 0.78 倍，并标明考察不充分。数字不采，也不改晚招募的等级和装备。",
-    "lastListed": "2026-09-27",
-    "status": "imported"
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-09-29",
+    "status": "page-reviewed"
   },
   {
     "id": "2e22ce080e4b",
@@ -1433,6 +1433,83 @@
     "id": "316dccda02e8",
     "url": "https://gamewith.jp/fefw/577812",
     "title": "GameWith · 迪托利希路线第 11 章",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-09-29",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "83aab979e397",
+    "url": "https://gamewith.jp/fefw/577588",
+    "title": "GameWith · 刃鸣",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-09-29",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "ac848b9dd3d7",
+    "url": "https://gamewith.jp/fefw/578847",
+    "title": "GameWith · 战技强化",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-09-29",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "8937a9e4dc88",
+    "url": "https://gamewith.jp/fefw/574062",
+    "title": "GameWith · 招募时机",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-09-29",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "151c1ffd8c21",
+    "url": "https://game8.jp/fe-banshisenko/817151",
+    "title": "Game8 · 刃鸣画面与操作",
+    "host": "game8.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-09-29",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "b0fc4fc48348",
+    "url": "https://gamewith.jp/fefw/577299",
+    "title": "GameWith · 伊欧培养与加入条件",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-09-29",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "d707769e0f67",
+    "url": "https://gamewith.jp/fefw/577296",
+    "title": "GameWith · 诺克裘拉培养与加入条件",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-09-29",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "2185ee203478",
+    "url": "https://gamewith.jp/fefw/577290",
+    "title": "GameWith · 杰斯特培养与加入条件",
     "host": "gamewith.jp",
     "kind": "攻略 / 媒体",
     "originalGrade": "",

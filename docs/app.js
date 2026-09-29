@@ -41,6 +41,7 @@ function filterCharacters() {
   $('#character-grid').innerHTML=chars.map(c=>`<button class="character-card" data-character="${esc(c.id)}" aria-label="查看${esc(c.name)}档案"><div class="character-image">${c.portrait?`<img src="${esc(c.portrait)}" alt="${esc(c.name)}" loading="lazy">`:`<span class="fallback">${esc(c.name[0])}</span>`}</div><h3>${esc(c.name)}</h3><p>${esc(c.faction.replace(/（.*?）/g,''))}</p><div class="character-flags">${c.builds?'<span class="tag amber">培养方案</span>':''}${Object.keys(c.recruit).length?'<span class="tag">招募条件</span>':''}${c.gifts['推荐礼物']&&c.gifts['推荐礼物']!=='—'?'<span class="tag green">礼物喜好</span>':''}</div></button>`).join('') || '<p class="empty">没有匹配的角色。试试其他别名，或切回所有路线。</p>';
 }
 function showCharacter(id) {
+  if(currentView==='route/dietrich')return showDietrichCharacter(id);
   const c=D.characters.find(x=>x.id===id); if(!c)return;
   const gift=c.gifts['推荐礼物'];
   $('#character-dialog').innerHTML=`<button class="icon-btn" data-close="character-dialog" aria-label="关闭角色档案">×</button><div class="character-detail"><div class="detail-art">${c.portrait?`<img src="${esc(c.portrait)}" alt="${esc(c.name)}立绘">`:''}</div><div class="detail-body"><div class="eyebrow">COMPANION DOSSIER</div><h2>${esc(c.name)}</h2><p class="jp">${esc(c.jp)} · ${esc(c.faction)}</p><p class="aliases">检索别名：${c.aliases.map(esc).join(' / ')}</p><h3>喜欢什么，送什么</h3><p>${gift && gift!=='—'?esc(gift):'原手册尚未收录明确的推荐礼物。'}</p>${c.gifts['喜欢的东西']?`<p class="aliases">喜好：${esc(c.gifts['喜欢的东西'])}</p>`:''}${c.gifts['兴趣']?`<p class="aliases">兴趣：${esc(c.gifts['兴趣'])}</p>`:''}<a class="text-link" href="#guide/g4/s4-4" data-dismiss>查看送礼原文与例外 →</a><h3>第一部 · 各路线加入条件</h3>${Object.keys(c.recruit).length?`<dl>${routeNames.map(n=>`<div><dt>${n}</dt><dd>${esc(c.recruit[n]||'原表未收录')}</dd></div>`).join('')}</dl><p class="aliases">S = 支援等级 · R = 名声等级 · — = 无法招募</p>`:'<p>原手册未提供此角色的四路线招募表。</p>'}${Object.values(c.recruit).some(v=>v.includes('①'))?'<p class="notice">原表的「追加条件①」未在该行展开，请结合游戏内提示核对。</p>':''}<a class="text-link" href="#guide/g5/s5-3" data-dismiss>查看招募原文与附加说明 →</a>${characterStrategy(c)}<div class="notice">本次新增条目经过来源页面核对，未逐项游戏内实测。没有补充明细的“交涉”仍待核验，不表示没有额外要求。</div></div></div>`;
@@ -113,6 +114,7 @@ function routeSectionHead(number, english, title, description='') {
   return `<header class="route-section-head"><span>${number}</span><div><div class="eyebrow">${english}</div><h2>${title}</h2>${description?`<p>${description}</p>`:''}</div></header>`;
 }
 function routePortal(s) {
+  if(s.id==='dietrich' && s.profile.pilot)return dietrichPortal(s);
   const p=s.profile, hero=routeCharacter(s.title.replace('路线','')), route=s.title.replace('路线','线');
   const nativeNames=new Set(p.native.map(n=>n.name));
   const recruits=D.characters.filter(c=>c.recruit[route]&&c.recruit[route]!=='—'&&!nativeNames.has(c.name)&&!c.recruit[route].includes('教学加入'));
