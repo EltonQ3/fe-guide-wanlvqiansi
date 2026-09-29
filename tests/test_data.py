@@ -73,9 +73,30 @@ class DataTests(unittest.TestCase):
                 self.assertTrue(item['sources'])
                 for ref in item['sources']:self.assertIn(ref['url'],registry)
     def test_correction_keeps_audit_trail(self):
-        old=[x for e in DATA['logs'][1:] for x in e.get('merged',[]) if '歌利亚' in x['text']]
+        old=[x for e in DATA['logs'] if not e.get('edition') for x in e.get('merged',[]) if '歌利亚' in x['text']]
         self.assertTrue(old)
         self.assertTrue(all(x.get('superseded') for x in old))
         self.assertIn('巨人肉',DATA['logs'][0]['merged'][0]['text'])
+
+    def test_route_portals_use_eligible_characters(self):
+        characters={alias:c for c in DATA['characters'] for alias in c['aliases']}
+        for s in DATA['story'][:4]:
+            route=s['title'].replace('路线','线')
+            profile=s['profile']
+            self.assertTrue(profile['background'] and profile['fit'] and profile['strength'])
+            self.assertTrue(profile['features'] and profile['notes'])
+            native=[n['name'] for n in profile['native']]
+            self.assertEqual(len(native),len(set(native)))
+            for n in profile['native']:
+                c=characters[n['name']]
+                self.assertNotEqual(c['recruit'].get(route,'—'),'—')
+                self.assertTrue(c['builds']['early'] and c['builds']['middle'])
+                self.assertTrue(n['sources'] and n['arrival'])
+            for name, purpose, reason in profile['scouts']:
+                c=characters[name]
+                self.assertNotEqual(c['recruit'].get(route,'—'),'—')
+                self.assertNotIn(name,native)
+                self.assertTrue(purpose and reason)
+            self.assertIn('教学加入',characters[profile['teaching']]['recruit'][route])
 
 if __name__=='__main__':unittest.main()

@@ -86,3 +86,7 @@ python3 tools/check_sources.py --host gamewith.jp --limit 5
 ## 后续专题
 
 优先补充逐角色养成、转职路线、章节用人与难点战斗，具体字段、证据规则和顺序见 [内容补全计划](CONTENT_ROADMAP.md)。Logo 出处见 [美术来源](source/asset-credits.md)。
+
+## 第一部人物专题
+
+首页四位主角链接到独立人物篇章，内容和配色由 `source/story.json` 的 `profile` 字段维护。主板块顺序为背景特色、队友培养、投入优先级、招募规划、注意事项、关卡补充。关卡仍保留，不能替代人物篇章主内容。角色培养使用 `source/builds.json`，避免专页与图鉴重复维护。

@@ -398,5 +398,47 @@
     "gameVersion": null,
     "status": "page-reviewed",
     "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "乌尔坦德",
+    "kind": "任务＋物品",
+    "condition": "完成「乌尔坦德的请求」，交付赠礼盒",
+    "details": "先接任务，再去北部コロイオス砦取得「贈り物の箱」交付；未接任务时不能预先拾取。",
+    "routes": [
+      "迪托利希线",
+      "赛奥朵拉线",
+      "蕾达线"
+    ],
+    "byRoute": {},
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577319",
+        "label": "GameWith · 乌尔坦德资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "法比奥",
+    "kind": "外传＋剧情＋武器",
+    "condition": "迪托利希外传后，待本线第 11 章迪托利希败退，再交付合适武器",
+    "details": "资料记录有交付达·米纳系护手成功的例子（日文表格写「ド・ミナの籠手」）；这只是已知成功例，并非已验证的唯一可用武器。需 3S／9R。",
+    "routes": [
+      "蕾达线"
+    ],
+    "byRoute": {},
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577318",
+        "label": "GameWith · 法比奥资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
   }
 ]

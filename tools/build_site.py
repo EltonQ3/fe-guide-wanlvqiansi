@@ -122,7 +122,7 @@ for kind in ('negotiations', 'builds'):
         matches[0][kind] = item
 for collection in curated.values():
     for item in collection:
-        refs = item.get('sources', []) + [s for b in item.get('battles', []) for s in b['sources']]
+        refs = item.get('sources', []) + [s for b in item.get('battles', []) for s in b['sources']] + [s for n in item.get('profile', {}).get('native', []) for s in n['sources']]
         for s in refs:
             add_source(s['url'], s['label'], note='2026-09-29 核对所引页面；不是游戏内实测。', date='2026-09-29')
             key=hashlib.sha256(canonical(s['url']).encode()).hexdigest()[:12]
