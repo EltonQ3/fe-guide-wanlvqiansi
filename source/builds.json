@@ -1,0 +1,230 @@
+[
+  {
+    "name": "凯伊",
+    "role": "机动输出／魔力型 Blaze Arts",
+    "early": "本线先承担前排与收尾，给蒂亚拉留治疗位置。培养剑术并兼顾魔力，不要把 Blaze Arts 当纯物理伤害。",
+    "middle": "想走机动路线，可在开放后使用飞驼系兵种；先保证当前武器熟练度，再补后期考试需求。",
+    "late": "候选：ハイエピタフ；来源另推荐カラドリオス作为过渡方向。",
+    "requirement": "后期方案需马术 D、黑魔术 D、剑术 B；ハイエピタフ另需第三部第 2 区分起的神殿相关委托解锁。",
+    "caution": "第一部只在凯伊线可用；不要为尚未解锁的最上级职分散开局全部训练。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577325",
+        "label": "GameWith · 凯伊资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "迪托利希",
+    "role": "先攻剑术输出",
+    "early": "先练剑术并维持命中，法比奥留在敌人攻击范围外提供治疗。",
+    "middle": "剑士 → シドー是可选的剑系培养方向；装备以实际攻速和命中为准。",
+    "late": "候选：ソードマスター（刀剑将领）。",
+    "requirement": "剑术 A；第三部第 2 区分起完成マーズの依頼解锁该最上级职。",
+    "caution": "先攻必杀加成不是必杀保证。用不触发必杀时的伤害预估决定能否安全出手。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577324",
+        "label": "GameWith · 迪托利希资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "赛奥朵拉",
+    "role": "枪系前排／辅助治疗",
+    "early": "优先枪术与生存，托比亚斯、波拿帕尔特加入后分担伤害；白魔术可逐步补练。",
+    "middle": "重装步兵或ガーディアン方向承接前排职责；需要机动时另考虑骑兵方案。",
+    "late": "候选：ホーリーランサー（圣枪师）。",
+    "requirement": "枪术 A；按游戏中的阶段开放和考试资格进行转职。",
+    "caution": "个人减伤有触发概率。扛伤计算按不触发减伤时也能存活来安排。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577323",
+        "label": "GameWith · 赛奥朵拉资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "蕾达",
+    "role": "高速输出／弓系支援",
+    "early": "先弥补力量与武器威力，穆担任近战、西洛可负责治疗；用安全位置发起攻击。",
+    "middle": "ブリガンド、ウォーリアー可补强物理成长；也可按队伍需求保留弓的远程作用。",
+    "late": "候选：シャドーシーカー（探影者）。",
+    "requirement": "对应剑术 A 或弓术 A 的考试方案；以考试界面要求为准。",
+    "caution": "Lv.35 技能的额外攻击需使用 Blaze Arts 后仍处于 Overblaze。别把它误写成每回合无条件再动。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577322",
+        "label": "GameWith · 蕾达资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "蒂亚拉",
+    "role": "主力治疗／远程救援",
+    "early": "凯伊线开局优先保证治疗。白魔术向 C 推进，争取远程治疗リブロー。",
+    "middle": "プリースト → ビショップ方向维持治疗能力；站位应让前排在治疗范围内、自己在敌射程外。",
+    "late": "候选：ワイズマン。",
+    "requirement": "白魔术 A；终盘兵种不能当作第一部开局即可使用。",
+    "caution": "其他三线需凯伊外传、3000G及门槛，加入较晚；开局必须先用本线治疗者。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577321",
+        "label": "GameWith · 蒂亚拉资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "歌利亚",
+    "role": "物理承伤／近战反击",
+    "early": "招募前备齐巨人肉 ×3。入队后以重装、近战武器和物防承担窄口防守。",
+    "middle": "重装步兵 → ヘヴィアーマー方向较适合本职；不要追求飞行或骑兵转职。",
+    "late": "候选：フォートレス守点，或バトルマスター近战输出。",
+    "requirement": "フォートレス：重装 C＋斧 A 或枪 A；バトルマスター依格斗／斧／剑 A 的考试方案选择。",
+    "caution": "不能转骑兵与飞行兵。魔防弱点需要站位和治疗弥补，不宜独扛法师群。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577291",
+        "label": "GameWith · 歌利亚资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "艾丝梅拉尔达",
+    "role": "重装前排／投枪反击",
+    "early": "迪托利希线可较早使用；跨线先完成个人请求。优先前排需要的武器与重装技能。",
+    "middle": "向ヘヴィアーマー发展；投枪提供远距离反击，但每次检查敌方法术覆盖。",
+    "late": "候选：フォートレス。",
+    "requirement": "重装 C＋斧 A 或枪 A 的对应方案。",
+    "caution": "Lv.35 的投枪强化才提供额外收益，不要提前把后期技能算进开局战力。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577317",
+        "label": "GameWith · 艾丝梅拉尔达资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "穆",
+    "role": "近战物理输出",
+    "early": "蕾达线初始可用；优先斧／近战路线与力量，先完成可靠击杀再考虑兼修。",
+    "middle": "ブリガンド → ウォーリアー方向可持续补物理输出。",
+    "late": "候选：バトルマスター；需要传送职能时再考虑バトルモンク。",
+    "requirement": "前者按格斗／斧／剑 A 方案；后者需投入白魔术 A，养成成本不同。",
+    "caution": "别为尚不需要的传送把早期训练全拆散；跨线招募另需グルマオサ ×3。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577308",
+        "label": "GameWith · 穆资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "古扎岚",
+    "role": "较易取得的剑系输出",
+    "early": "凯伊线教学加入；蕾达线 1S／3R 即可尝试。先剑术与命中，填补队伍输出空缺。",
+    "middle": "剑士 → シドー可作剑系过渡；给前排保留治疗资源。",
+    "late": "候选：ソードマスター。",
+    "requirement": "剑术 A，且需第三部マーズの依頼解锁。",
+    "caution": "概率触发的个人技能只算额外收益，不能作为存活或击杀的必需条件。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577301",
+        "label": "GameWith · 古扎岚资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "卡塔妮雅",
+    "role": "高速剑系／后期飞行",
+    "early": "蕾达线教学加入；先练剑术，以攻速、命中稳定清理轻甲敌人。",
+    "middle": "剑士、シドー均是可选过渡；若目标飞行，阶段性分配飞行训练。",
+    "late": "候选：聖天翼兵，或继续走ソードマスター。",
+    "requirement": "聖天翼兵需飞行 C＋枪 A 或剑 A；ソードマスター另有解锁委托。",
+    "caution": "重武器可能损失攻速；转飞行后重新检查敌方弓箭范围。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577298",
+        "label": "GameWith · 卡塔妮雅资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "妮涅",
+    "role": "抗魔前排／枪系输出",
+    "early": "先完成鱼类交付再入队。培养枪术，利用对魔法兵种的个人能力安排对位。",
+    "middle": "ガーディアン方向可兼顾前排职责；仍要核算实际魔法伤害。",
+    "late": "候选：ホーリーランサー。",
+    "requirement": "枪术 A；按阶段开放进行考试。",
+    "caution": "对魔法的命中／回避优势并非免伤。Lv.35 周边支援效果不要提前计入。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577303",
+        "label": "GameWith · 妮涅资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "大刀",
+    "role": "低速重装／稳定反击",
+    "early": "先核对交付数量差异，再投入招募。优先重装与主武器，安排窄口接敌。",
+    "middle": "重装步兵 → ヘヴィアーマー，保持治疗者可以覆盖。",
+    "late": "候选：フォートレス。",
+    "requirement": "重装 C＋斧 A 或枪 A。",
+    "caution": "双方不能追击时的加攻适合特定对位；不要为了追速度牺牲擅长的承伤。法师仍须另行处理。",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577336",
+        "label": "GameWith · 大刀资料"
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  }
+]

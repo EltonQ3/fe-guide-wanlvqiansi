@@ -52,6 +52,8 @@ python3 tools/build_site.py
 python3 -m unittest discover -s tests -v
 ```
 
+`source/negotiations.json`、`source/builds.json`、`source/story.json` 分别维护交涉明细、培养方案和三部流程；页面来源核对不等于游戏实测。新增条目须保留具体来源、适用路线和未确认条件。
+
 生成 `docs/data.js` 与 `source/sources.json`。不要直接修改生成文件；界面和样式分别在 `web/app.js`、`web/styles.css`、`web/index.html`。
 
 来源检查默认只列出待查地址：

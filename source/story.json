@@ -1,0 +1,685 @@
+[
+  {
+    "id": "kai",
+    "part": 1,
+    "title": "凯伊路线",
+    "subtitle": "围绕机动前排与稳定治疗建立第一支队伍。",
+    "team": [
+      "凯伊",
+      "彼得",
+      "蒂亚拉"
+    ],
+    "priorities": [
+      "开局优先凯伊的可靠输出、蒂亚拉的治疗覆盖；彼得协助补刀，避免三人同时吃伤害。",
+      "中期先补缺少的前排或远程，再招喜欢的角色；歌利亚要预留巨人肉，不能只刷支援。",
+      "终章前整理随身装备、药品与未完成外传；第二部不能沿用第一部的自由探索招募方式。"
+    ],
+    "chapters": [
+      {
+        "number": 1,
+        "url": "https://gamewith.jp/fefw/577097"
+      },
+      {
+        "number": 2,
+        "url": "https://gamewith.jp/fefw/577113"
+      },
+      {
+        "number": 3,
+        "url": "https://gamewith.jp/fefw/577118"
+      },
+      {
+        "number": 4,
+        "url": "https://gamewith.jp/fefw/577259"
+      },
+      {
+        "number": 5,
+        "url": "https://gamewith.jp/fefw/577283"
+      },
+      {
+        "number": 6,
+        "url": "https://gamewith.jp/fefw/577387"
+      },
+      {
+        "number": 7,
+        "url": "https://gamewith.jp/fefw/577587"
+      },
+      {
+        "number": 8,
+        "url": "https://gamewith.jp/fefw/577609"
+      },
+      {
+        "number": 9,
+        "url": "https://gamewith.jp/fefw/577613"
+      },
+      {
+        "number": 10,
+        "url": "https://gamewith.jp/fefw/577621"
+      },
+      {
+        "number": 11,
+        "url": "https://gamewith.jp/fefw/577756"
+      },
+      {
+        "number": 12,
+        "url": "https://gamewith.jp/fefw/577780"
+      }
+    ],
+    "battles": [
+      {
+        "number": 1,
+        "title": "开局与 Blaze Arts 教学",
+        "goal": "留意事件后的胜利条件变化。",
+        "team": "凯伊前排；彼得支援；蒂亚拉治疗。",
+        "steps": [
+          "先处理初始敌人，触发能力教学。",
+          "事件后把行动留给新的关键目标，发动 Blaze Arts 前先检查消耗后的 HP。"
+        ],
+        "watch": "别把第一次清敌当作整场结束；治疗行动留有余量。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577097",
+            "label": "GameWith · 凯伊路线第 1 章"
+          }
+        ]
+      },
+      {
+        "number": 11,
+        "title": "地下战场与阵地争夺",
+        "goal": "利用阵地，稳定处理目标敌人。",
+        "team": "准确输出者＋能覆盖前排的治疗；贝特朗作为本关助战使用。",
+        "steps": [
+          "把普通敌人引出有利阵地，再占用回避、耐物或耐魔阵。",
+          "守阵目标不轻易移动时，先整队、补满血，再集中可靠伤害。"
+        ],
+        "watch": "奥尔赫尔外传的接受窗口为 10/18–10/21；这是本线本章资料中的窗口，不套用到其他路线。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577756",
+            "label": "GameWith · 凯伊路线第 11 章"
+          }
+        ]
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "id": "dietrich",
+    "part": 1,
+    "title": "迪托利希路线",
+    "subtitle": "以剑系先攻推进，照顾治疗者与侧翼。",
+    "team": [
+      "迪托利希",
+      "法比奥"
+    ],
+    "priorities": [
+      "开局资源优先主角剑术与法比奥治疗，治疗者不要跟着前排进入敌方射程。",
+      "艾丝梅拉尔达可分担物理前排；杨界在本线为教学加入，无需套用别线问答。",
+      "想取得第二部的キリーク，第一部要完成「亡き妹の装身具」，并在第二部执行对应战斗条件。"
+    ],
+    "chapters": [
+      {
+        "number": 1,
+        "url": "https://gamewith.jp/fefw/577098"
+      },
+      {
+        "number": 2,
+        "url": "https://gamewith.jp/fefw/577119"
+      },
+      {
+        "number": 3,
+        "url": "https://gamewith.jp/fefw/577167"
+      },
+      {
+        "number": 4,
+        "url": "https://gamewith.jp/fefw/577268"
+      },
+      {
+        "number": 5,
+        "url": "https://gamewith.jp/fefw/577334"
+      },
+      {
+        "number": 6,
+        "url": "https://gamewith.jp/fefw/577371"
+      },
+      {
+        "number": 7,
+        "url": "https://gamewith.jp/fefw/577386"
+      },
+      {
+        "number": 8,
+        "url": "https://gamewith.jp/fefw/577524"
+      },
+      {
+        "number": 9,
+        "url": "https://gamewith.jp/fefw/577614"
+      },
+      {
+        "number": 10,
+        "url": "https://gamewith.jp/fefw/577620"
+      },
+      {
+        "number": 11,
+        "url": "https://gamewith.jp/fefw/577812"
+      },
+      {
+        "number": 12,
+        "url": "https://gamewith.jp/fefw/577859"
+      }
+    ],
+    "battles": [
+      {
+        "number": 1,
+        "title": "双人开局",
+        "goal": "用治疗维持前排，逐批处理敌人。",
+        "team": "迪托利希承担正面，法比奥保持安全距离。",
+        "steps": [
+          "先确认敌人的移动＋攻击范围，再让主角接敌。",
+          "法比奥治疗后，检查下回合是否会进入敌方追击范围。"
+        ],
+        "watch": "前期人数少，不能用必杀触发作为唯一击杀方案。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577098",
+            "label": "GameWith · 迪托利希路线第 1 章"
+          }
+        ]
+      },
+      {
+        "number": 11,
+        "title": "炮台、陷阱与接敌范围",
+        "goal": "先处理远程威胁，再向关键目标推进。",
+        "team": "能可靠处理炮台的机动单位＋前排＋治疗者。",
+        "steps": [
+          "两侧炮台先清，推进时检查地面陷阱。",
+          "接近贝特朗会改变陷阱状况；先让全队完成部署，再触发推进。"
+        ],
+        "watch": "本线本章：阿纳托莉娅外传接受窗口 10/5–10/14；凯伊 10/16–10/22；奥尔赫尔 10/18–10/25。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577812",
+            "label": "GameWith · 迪托利希路线第 11 章"
+          }
+        ]
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "id": "theodora",
+    "part": 1,
+    "title": "赛奥朵拉路线",
+    "subtitle": "以枪系前排撑住阵线，留意目标变化与后方增援。",
+    "team": [
+      "赛奥朵拉",
+      "托比亚斯",
+      "波拿帕尔特"
+    ],
+    "priorities": [
+      "开局先让主角安全推进；托比亚斯与波拿帕尔特加入后共同分担战线。",
+      "主角优先枪术和生存，白魔术作为辅助方向；不要按必触发减伤安排承伤。",
+      "后期地图要给后排留护卫；招募努蒂奴需铁斧 ×3、基罗伊卡需圣水 ×8，不能照搬凯伊或迪托利希线材料。"
+    ],
+    "chapters": [
+      {
+        "number": 1,
+        "url": "https://gamewith.jp/fefw/577099"
+      },
+      {
+        "number": 2,
+        "url": "https://gamewith.jp/fefw/577182"
+      },
+      {
+        "number": 3,
+        "url": "https://gamewith.jp/fefw/577227"
+      },
+      {
+        "number": 4,
+        "url": "https://gamewith.jp/fefw/577199"
+      },
+      {
+        "number": 5,
+        "url": "https://gamewith.jp/fefw/577284"
+      },
+      {
+        "number": 6,
+        "url": "https://gamewith.jp/fefw/577377"
+      },
+      {
+        "number": 7,
+        "url": "https://gamewith.jp/fefw/577385"
+      },
+      {
+        "number": 8,
+        "url": "https://gamewith.jp/fefw/577541"
+      },
+      {
+        "number": 9,
+        "url": "https://gamewith.jp/fefw/577612"
+      },
+      {
+        "number": 10,
+        "url": "https://gamewith.jp/fefw/577803"
+      },
+      {
+        "number": 11,
+        "url": "https://gamewith.jp/fefw/577808"
+      },
+      {
+        "number": 12,
+        "url": "https://gamewith.jp/fefw/577849"
+      }
+    ],
+    "battles": [
+      {
+        "number": 1,
+        "title": "抵达目标后的第二阶段",
+        "goal": "先抵达东北黄色目标格，再处理事件后的新胜利条件。",
+        "team": "赛奥朵拉先行；第 2 回合加入的两位同伴支援。",
+        "steps": [
+          "推进途中保留主角血量。",
+          "抵达目标后还有敌人增援；重新读胜利条件再分配攻击。"
+        ],
+        "watch": "别把“到达目标格”误当成本场已经结束。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577099",
+            "label": "GameWith · 赛奥朵拉路线第 1 章"
+          }
+        ]
+      },
+      {
+        "number": 12,
+        "title": "终章城战与后方增援",
+        "goal": "保持补给，越过楼梯前布好后方防线。",
+        "team": "主角稳前排，留一名输出护后排；各支队伍带回复物品。",
+        "steps": [
+          "先利用可用炮台削减敌人。",
+          "靠近上方楼梯会触发后方增援，治疗者别落单。",
+          "第 10 章借船给阿纳托莉娅时，留意她与莎兰的条件援军及传送点。"
+        ],
+        "watch": "进入第二部前完成想保留的招募与外传，整理随身装备；不要假设还能回城买药。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577849",
+            "label": "GameWith · 赛奥朵拉路线第 12 章"
+          }
+        ]
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "id": "leda",
+    "part": 1,
+    "title": "蕾达路线",
+    "subtitle": "以高速输出配合穆的近战和西洛可的治疗。",
+    "team": [
+      "蕾达",
+      "巴卡尼亚",
+      "西洛可",
+      "穆"
+    ],
+    "priorities": [
+      "开局蕾达与穆负责两侧输出，西洛可保留治疗；优先强化可靠伤害，减少同时受击人数。",
+      "卡塔妮雅教学加入后可补剑系／后期飞行位；古扎岚门槛较低，按队伍缺口决定是否招募。",
+      "想招莎兰先留意阿纳托莉娅外传；妮涅在本线为 3S／8R，努蒂奴交铁斧 ×3。"
+    ],
+    "chapters": [
+      {
+        "number": 1,
+        "url": "https://gamewith.jp/fefw/577100"
+      },
+      {
+        "number": 2,
+        "url": "https://gamewith.jp/fefw/577111"
+      },
+      {
+        "number": 3,
+        "url": "https://gamewith.jp/fefw/577117"
+      },
+      {
+        "number": 4,
+        "url": "https://gamewith.jp/fefw/577179"
+      },
+      {
+        "number": 5,
+        "url": "https://gamewith.jp/fefw/577335"
+      },
+      {
+        "number": 6,
+        "url": "https://gamewith.jp/fefw/577384"
+      },
+      {
+        "number": 7,
+        "url": "https://gamewith.jp/fefw/577485"
+      },
+      {
+        "number": 8,
+        "url": "https://gamewith.jp/fefw/577554"
+      },
+      {
+        "number": 9,
+        "url": "https://gamewith.jp/fefw/577610"
+      },
+      {
+        "number": 10,
+        "url": "https://gamewith.jp/fefw/577618"
+      },
+      {
+        "number": 11,
+        "url": "https://gamewith.jp/fefw/577809"
+      },
+      {
+        "number": 12,
+        "url": "https://gamewith.jp/fefw/577810"
+      }
+    ],
+    "battles": [
+      {
+        "number": 1,
+        "title": "双侧协作",
+        "goal": "确认清理全部必要敌人，而非只击倒首领。",
+        "team": "左侧蕾达＋巴卡尼亚；右侧西洛可＋穆。",
+        "steps": [
+          "两侧同步减少敌人数，避免一侧深入过快。",
+          "蕾达消耗 HP 使用能力后，给西洛可留下安全治疗位置。"
+        ],
+        "watch": "初始四人各有职责，不要把治疗者派去独自补刀。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577100",
+            "label": "GameWith · 蕾达路线第 1 章"
+          }
+        ]
+      },
+      {
+        "number": 10,
+        "title": "左右分队与屏障装置",
+        "goal": "右队管理装置，左队借保护推进。",
+        "team": "右侧放机动且能独立行动的队员；左侧保留前排和治疗。",
+        "steps": [
+          "观察赛奥朵拉大范围攻击的预告。",
+          "右侧四个装置各只能使用一次，在需要抵挡攻击时再启动。",
+          "按地图机制清理屏障外敌人，再推进关键目标。"
+        ],
+        "watch": "不要开场一次用完装置。阿纳托莉娅外传接受窗口 10/5–10/14，关系到本线莎兰招募。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577618",
+            "label": "GameWith · 蕾达路线第 10 章"
+          }
+        ]
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "id": "war",
+    "part": 2,
+    "title": "战争篇",
+    "subtitle": "从自由探索转为连续作战，先保补给，再执行条件招募。",
+    "team": [],
+    "priorities": [
+      "转入第二部前把需要的装备和物品放在角色身上；仓库不随身带入，但会在第三部再可用，并非永久删除。",
+      "利用章间整备安排考试、加护和军中行动；军中行动是不同收益间的选择。考试道具补足至 5 个，不是每章额外送 5 个。",
+      "没有第一部式的自由挖角，不代表没有新队友：キリーク与ネイサン有路线、前置任务和战斗条件，见第 2、3 章。"
+    ],
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577891",
+        "label": "GameWith · 战争篇总览"
+      }
+    ],
+    "chapters": [],
+    "battles": [
+      {
+        "number": 1,
+        "title": "平原会战",
+        "goal": "迎击突进骑兵，再逐组推进。",
+        "team": "耐物前排、对骑兵特效武器、治疗。",
+        "steps": [
+          "在初始阵地附近处理キリーク与ネイサン。",
+          "与西南助战队合流，再逐批引敌。"
+        ],
+        "watch": "别一次进入多个敌群的攻击范围。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577886",
+            "label": "GameWith · 战争篇第 1 章"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "title": "关隘突破与条件招募",
+        "goal": "击倒指定两名目标即可，不必清空全图。",
+        "team": "东侧通道约 3–4 人，其余从中央推进；飞行或高机动单位处理限时掉落。",
+        "steps": [
+          "先压制射程长的炮台。",
+          "想招キリーク：第一部迪托利希／蕾达线完成「亡き妹の装身具」，本关击倒西北的他；第 3 章才正式入队。"
+        ],
+        "watch": "东侧掉落敌人第 5 回合离开，西侧第 10 回合离开；赶不上时不要为战利品破坏生存线。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577903",
+            "label": "GameWith · 战争篇第 2 章"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "title": "盐道与火场",
+        "goal": "推进到目标首领，途中保护两支队伍。",
+        "team": "中央、东侧都带治疗；主角走东侧接应友军。",
+        "steps": [
+          "越过中央线前先处理战象等阻路目标，触发后避开火场。",
+          "想招ネイサン：必须让已加入的キリーク完成最后一击，其他人可以先削血；第 4 章入队。"
+        ],
+        "watch": "友军不等于永久入队；经典模式要保护助战单位。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577921",
+            "label": "GameWith · 战争篇第 3 章"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "title": "飞行增援与战象",
+        "goal": "渡桥后集中击倒首领。",
+        "team": "优先两名能可靠处理飞行敌人的弓手，搭配治疗与破障输出。",
+        "steps": [
+          "左右、南侧的飞行增援及时处理，优先消灭能威胁低魔防队员的敌人。",
+          "战象需要多次有效攻击；破障后再投入主力伤害。"
+        ],
+        "watch": "不要为抢进度让治疗耗尽；终点是首领，不是全灭。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577931",
+            "label": "GameWith · 战争篇第 4 章"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "title": "无敌阶段的处理",
+        "goal": "先解除机制，再集中攻击。",
+        "team": "能安全触发事件的远程单位、承伤者、充足回复物品。",
+        "steps": [
+          "优先从西侧推进，先夺取妨碍上楼的弓炮台。",
+          "变身后的目标初始无敌；安全攻击触发事件，等待下一回合援助解除后再输出。"
+        ],
+        "watch": "不要对无敌阶段连续消耗全部主力行动；按不会闪避的情况计算反击风险。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577922",
+            "label": "GameWith · 战争篇第 5 章"
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "title": "连续战斗与南侧脱出",
+        "goal": "第一战处理障壁；第二战护送主角抵达南侧目标格。",
+        "team": "破障手数、高伤害主力、治疗；脱出战由其他人开路。",
+        "steps": [
+          "第一战借助回复／防御阵推进，留意障壁在交战后恢复，按当前提示组织连续有效攻击。",
+          "第二战走能安全前进的侧路，保护主角 HP，不追求歼灭所有敌人。"
+        ],
+        "watch": "本章连续两战，能使用的设施受限；不要把低伤害刮痧当作稳定破局手段。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577937",
+            "label": "GameWith · 战争篇第 6 章"
+          }
+        ]
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "id": "salvation",
+    "part": 3,
+    "title": "救世篇",
+    "subtitle": "从单队行军转向多队调度、重建与瘴气管理。",
+    "team": [],
+    "priorities": [
+      "下方含后期机制信息，战斗细节默认折叠。第 1 区分的助战与第 2 区分的正式入队分开记。",
+      "自由行动恢复后，先集结能用的队友、确认期限，再在恢复神殿、兵种委托和清理瘴气之间分配行动。",
+      "以实际已通关路线与外传决定阵容；多支部队各自配备承伤、输出和治疗，避免只养一支万能队。"
+    ],
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577934",
+        "label": "GameWith · 救世篇总览"
+      }
+    ],
+    "chapters": [],
+    "battles": [
+      {
+        "number": 1,
+        "title": "解放战与条件助战",
+        "goal": "集中破障，处理首领的剩余 HP。",
+        "team": "救世主与实际到场的助战角色，留补刀与治疗。",
+        "steps": [
+          "从南侧接敌，避免过度深入而远离后续助战。",
+          "障壁解除后集中输出；目标可能以 1 HP 存活，预留可靠补刀。"
+        ],
+        "watch": "完成相应第一部路线／外传才有对应助战。这里的助战不等于四名主角已全部永久加入。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577936",
+            "label": "GameWith · 救世篇第 1 区分"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "title": "重建与自由行动恢复",
+        "goal": "重新集结队伍，清理瘴气后推进冥界之门。",
+        "team": "弓系反飞行、治疗、救世主清理战场瘴气。",
+        "steps": [
+          "到据点与满足条件的角色交谈入队；仅使用已经解锁的同伴。",
+          "复兴神殿并完成相关委托，可解锁新的最上级兵种；根据主力目标选择先后。",
+          "世界地图清理对应地区瘴气，注意多层节点需要多次行动。"
+        ],
+        "watch": "第一部未完成的路线、外传或招募，不会因为进入第三部自动全部补齐。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/577971",
+            "label": "GameWith · 救世篇第 2 区分"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "title": "暴食瘴气",
+        "goal": "保住装备使用次数，集中处理目标首领。",
+        "team": "弓手对飞行敌人，救世主清路，主力负责多个 HP 储备。",
+        "steps": [
+          "避免在暴食瘴气上待机，以免下一回合损失武器耐久和魔法次数。",
+          "优先清出安全通道，再围绕首领组织攻击。"
+        ],
+        "watch": "这类地形不能只看当回合 HP 损失；战前检查备用武器与治疗次数。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/578066",
+            "label": "GameWith · 救世篇第 3 区分"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "title": "视野限制与双线应对",
+        "goal": "先确认视野和目标，再分配队伍。",
+        "team": "探路者、反治疗输出、每队独立治疗。",
+        "steps": [
+          "欺瞒瘴气限制视野，利用清除能力或对应加护改善视野后推进。",
+          "傲慢瘴气会影响命中；以战斗预览为准，优先处理会治疗敌人的单位。"
+        ],
+        "watch": "不要让一支队伍拿走全部治疗资源；未探明区域不要靠回避概率冒进。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/578012",
+            "label": "GameWith · 救世篇第 4 区分"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "title": "多门推进与不同瘴气",
+        "goal": "按每场部署上限组织队伍，保住条件助战。",
+        "team": "沙漠关优先适合地形的步行／飞行单位；分路时双方都带回复。",
+        "steps": [
+          "嫉妒瘴气可用对应「海賊王の財宝」应对，装备持有者按需要站前排。",
+          "愤怒瘴气会放大必杀并降低防御，不能只计算自己增加的伤害。",
+          "情欲瘴气会移动且影响命中／回避，每回合重看落点；保护助战クラプカ以满足下一阶段加入条件。"
+        ],
+        "watch": "部分战斗需要提前集结多支部队；不要等期限到来才开始长距离调兵。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/578269",
+            "label": "GameWith · 救世篇第 5 区分"
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "title": "终盘整备与封印门",
+        "goal": "进入最终区域前完成补给，战斗中先处理障壁相关机制。",
+        "team": "分队处理门，每队带治疗；主力在机制解除后集中输出。",
+        "steps": [
+          "进入バロール神殿后不能返回城市，先完成想做的任务、装备和回复准备。",
+          "面对ライラー先处理障壁与危险瘴气，避免无意义拖长战斗。",
+          "最终战分配队伍处理门、削弱防护，躲开预告的大范围攻击再集中打首领。"
+        ],
+        "watch": "可用角色取决于此前通关与加入记录；不能默认凯伊、迪托利希等所有人都已培养完成。",
+        "sources": [
+          {
+            "url": "https://gamewith.jp/fefw/578374",
+            "label": "GameWith · 救世篇第 6 区分"
+          }
+        ]
+      }
+    ],
+    "checkedAt": "2026-09-29",
+    "gameVersion": null,
+    "status": "page-reviewed",
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  }
+]

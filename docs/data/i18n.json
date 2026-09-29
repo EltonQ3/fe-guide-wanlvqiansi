@@ -127,7 +127,7 @@
   ],
 
   "items": [
-    {"key":"giant_meat","jp":"巨人の肉","en":"Giant Meat","zht":"—","zhs":"巨人肉","status":"community","note":"歌利亚招募素材"},
+    {"key":"giant_meat","jp":"巨大肉","en":"Giant Meat","zht":"—","zhs":"巨人肉","status":"community","note":"歌利亚招募素材；2026-09-29 按 GameWith 详细页校对日文名，数量为 3"},
     {"key":"iron_sword","jp":"鉄の剣","en":"Iron Sword","zht":"—","zhs":"铁剑","status":"community"},
     {"key":"iron_lance","jp":"鉄の槍","en":"Iron Lance","zht":"—","zhs":"铁枪","status":"community"},
     {"key":"iron_bow","jp":"鉄の弓","en":"Iron Bow","zht":"—","zhs":"铁弓","status":"community"},

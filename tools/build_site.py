@@ -113,8 +113,23 @@ for line in source_text.splitlines():
 for log in logs:
     for s in log.get('new_sources',[]):
         add_source(s.get('url',''),s.get('name',''),s.get('grade',''),s.get('note',''),log['date'])
+curated = {name: read(name+'.json') for name in ('negotiations', 'builds', 'story')}
+for kind in ('negotiations', 'builds'):
+    for item in curated[kind]:
+        matches = [c for c in characters if item['name'] in c['aliases']]
+        if len(matches) != 1: raise ValueError('Unmatched curated character: '+item['name'])
+        item['characterId'] = matches[0]['id']
+        matches[0][kind] = item
+for collection in curated.values():
+    for item in collection:
+        refs = item.get('sources', []) + [s for b in item.get('battles', []) for s in b['sources']]
+        for s in refs:
+            add_source(s['url'], s['label'], note='2026-09-29 核对所引页面；不是游戏内实测。', date='2026-09-29')
+            key=hashlib.sha256(canonical(s['url']).encode()).hexdigest()[:12]
+            sources[key]['status']='page-reviewed'
+            sources[key]['note']='已核对本次条目所引页面；不代表该站全部结论已验证。'
 latest=max(e['date'] for e in logs)
-payload={'snapshot':'35dfba9b2300efc28c4a84e720bc9b9f35e12b0b','updated':latest,'chapters':chapters,'characters':characters,'weekly':weekly,'sources':list(sources.values()),'logs':logs}
+payload={'snapshot':'35dfba9b2300efc28c4a84e720bc9b9f35e12b0b','updated':latest,'chapters':chapters,'characters':characters,'weekly':weekly,'sources':list(sources.values()),'logs':logs,**curated}
 (OUT/'data.js').write_text('window.FE_DATA = '+json.dumps(payload,ensure_ascii=False).replace('</','<\\/')+';\n')
 (SOURCE/'sources.json').write_text(json.dumps(list(sources.values()),ensure_ascii=False,indent=2)+'\n')
 print(f'Built {len(chapters)} chapters, {sum(len(c["sections"]) for c in chapters)} sections, {len(characters)} characters, {len(sources)} sources, {len(weekly)} weekly tasks.')

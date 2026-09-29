@@ -25,8 +25,7 @@ class DataTests(unittest.TestCase):
         self.assertIn('5R',loretta['recruit']['赛奥朵拉线'])
         self.assertIn('甜食',loretta['gifts']['推荐礼物'])
         goliath=next(c for c in DATA['characters'] if c['name']=='歌利亚')
-        self.assertNotIn('巨人肉',json.dumps(goliath['recruit'],ensure_ascii=False))
-        self.assertIn('交涉',json.dumps(goliath['recruit'],ensure_ascii=False))
+        for value in goliath['recruit'].values(): self.assertIn('巨人肉 ×3',value)
     def test_aliases_join_and_unknown_stays_unknown(self):
         ids=[c['id'] for c in DATA['characters']]
         self.assertEqual(len(ids),len(set(ids)))
@@ -40,10 +39,43 @@ class DataTests(unittest.TestCase):
     def test_source_registry_deduplicated_not_verified(self):
         urls=[s['url'] for s in DATA['sources']]
         self.assertEqual(len(urls),len(set(urls)))
-        self.assertTrue(all(s['status']=='imported' for s in DATA['sources']))
+        self.assertTrue(all(s['status'] in ('imported','page-reviewed') for s in DATA['sources']))
+        self.assertTrue(any(s['status']=='page-reviewed' for s in DATA['sources']))
         self.assertEqual(len(DATA['logs']),len(json.loads((ROOT/'source'/'_daily_log.json').read_text())['entries']))
     def test_search_text_is_readable(self):
         self.assertNotIn('|---',DATA['chapters'][3]['sections'][-1]['text'])
         self.assertEqual(len(DATA['weekly']),9)
+
+    def test_route_specific_requirements(self):
+        chars={c['name']:c for c in DATA['characters']}
+        self.assertIn('铁斧 ×3',chars['努蒂奴']['recruit']['蕾达线'])
+        self.assertIn('青铜斧 ×2',chars['努蒂奴']['recruit']['凯伊线'])
+        self.assertIn('圣水 ×8',chars['基罗伊卡']['recruit']['赛奥朵拉线'])
+        self.assertIn('圣水 ×3',chars['基罗伊卡']['recruit']['迪托利希线'])
+        self.assertIn('8R',chars['妮涅']['recruit']['蕾达线'])
+        for name, route in zip(('凯伊','迪托利希','赛奥朵拉','蕾达'),('凯伊线','迪托利希线','赛奥朵拉线','蕾达线')):
+            self.assertEqual(chars[name]['recruit'][route],'本路线主角')
+            self.assertTrue(all(v=='—' for k,v in chars[name]['recruit'].items() if k!=route))
+    def test_story_coverage_and_evidence(self):
+        self.assertEqual([s['part'] for s in DATA['story']],[1,1,1,1,2,3])
+        self.assertEqual(sum(len(s['battles']) for s in DATA['story']),20)
+        registry={s['url'] for s in DATA['sources'] if s['status']=='page-reviewed'}
+        for s in DATA['story']:
+            if s['part']==1:self.assertEqual(len(s['chapters']),12)
+            else:self.assertEqual([b['number'] for b in s['battles']],list(range(1,7)))
+            for b in s['battles']:
+                self.assertTrue(b['goal'] and b['team'] and b['steps'] and b['watch'])
+                for ref in b['sources']:self.assertIn(ref['url'],registry)
+        for kind in ('negotiations','builds'):
+            for item in DATA[kind]:
+                c=next(c for c in DATA['characters'] if c['id']==item['characterId'])
+                self.assertIn(item['name'],c['aliases'])
+                self.assertTrue(item['sources'])
+                for ref in item['sources']:self.assertIn(ref['url'],registry)
+    def test_correction_keeps_audit_trail(self):
+        old=[x for e in DATA['logs'][1:] for x in e.get('merged',[]) if '歌利亚' in x['text']]
+        self.assertTrue(old)
+        self.assertTrue(all(x.get('superseded') for x in old))
+        self.assertIn('巨人肉',DATA['logs'][0]['merged'][0]['text'])
 
 if __name__=='__main__':unittest.main()

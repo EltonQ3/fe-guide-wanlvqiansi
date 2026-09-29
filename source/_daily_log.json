@@ -12,6 +12,31 @@
   "entries": [
     {
       "date": "2026-09-29",
+      "edition": "交涉与流程补完",
+      "merged": [
+        {
+          "text": "歌利亚恢复巨人肉 ×3；补充 17 位角色的物品、任务、金钱或选项条件，并按路线区分努蒂奴、基罗伊卡的数量。",
+          "src": "https://gamewith.jp/fefw/577291"
+        },
+        {
+          "text": "首页四个入口改为第一部路线攻略；新增第二部 6 章、第三部 6 区分的推进要点，第一部先完成 8 场代表性战斗笔记。"
+        },
+        {
+          "text": "新增 12 位角色的分阶段培养建议，最上级职与第三部解锁前提单独标注；其余角色待补。"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "大刀交付数量",
+          "current": "采用资料表的 2 个，并明确未全路线实测。",
+          "incoming": "GameWith 同页正文写 3 个、表格写 2 个；凯伊线玩家记录支持 2 个。",
+          "src": "https://gamewith.jp/fefw/577336"
+        }
+      ],
+      "new_sources": []
+    },
+    {
+      "date": "2026-09-29",
       "checked": "15",
       "merged": [
         {
@@ -20,7 +45,8 @@
         },
         {
           "text": "【招募】歌利亚的说明改回交涉，删掉 3 个巨人肉。招募表本来就是交涉",
-          "src": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/"
+          "src": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/",
+          "superseded": "已被同日「交涉与流程补完」更正：巨人肉 ×3；旧判断保留仅供追溯。"
         }
       ],
       "conflicts": [
@@ -46,7 +72,8 @@
           "topic": "歌利亚要不要交巨人肉【已改】",
           "current": "说明句写成要 3 个巨人肉，招募表写的是交涉",
           "incoming": "AlGest 招募表是交涉。18183 写了巨人肉，译名对不上，不采。说明句已改回交涉",
-          "src": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/"
+          "src": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/",
+          "superseded": "原裁决撤回；交涉是总称，详细条件为巨人肉 ×3。"
         }
       ],
       "new_sources": [
