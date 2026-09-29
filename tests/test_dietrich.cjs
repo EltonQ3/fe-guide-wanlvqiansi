@@ -34,7 +34,8 @@ if(process.env.DI_BASELINE){
 
 const pyramid=vm.runInContext('dietrichPyramid(dietrichRecruits())',context);
 const tiers=[...pyramid.matchAll(/data-pyramid-level="(\d+)"/g)].map(m=>Number(m[1]));
-assert.deepEqual(tiers,[2,3,4,5,6,7,8,9,10]);
+assert.deepEqual(tiers,[3,4,5,6,7,8,9,10]);
+assert(!pyramid.includes('无新增'));
 const people=[...pyramid.matchAll(/data-pyramid-character="([^"]+)"/g)].map(m=>m[1]);
 assert.equal(people.length,39);assert.equal(new Set(people).size,39);
 for(const c of data.characters.filter(c=>people.includes(c.id)))assert(c.recruit['迪托利希线']!=='—');

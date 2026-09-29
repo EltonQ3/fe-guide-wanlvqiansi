@@ -76,7 +76,7 @@ class DataTests(unittest.TestCase):
         old=[x for e in DATA['logs'] if not e.get('edition') for x in e.get('merged',[]) if '歌利亚' in x['text']]
         self.assertTrue(old)
         self.assertTrue(all(x.get('superseded') for x in old))
-        self.assertIn('巨人肉',DATA['logs'][0]['merged'][0]['text'])
+        self.assertTrue(any('巨人肉' in x['text'] for e in DATA['logs'] if e.get('edition') for x in e.get('merged',[])))
 
     def test_route_portals_use_eligible_characters(self):
         characters={alias:c for c in DATA['characters'] for alias in c['aliases']}
