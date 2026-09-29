@@ -902,6 +902,39 @@
     "status": "imported"
   },
   {
+    "id": "e17f241f0f92",
+    "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subquest26/",
+    "title": "AlGest — その名はダ・ミナの攻略",
+    "host": "al-gest.com",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "A",
+    "note": "页面标注2026-09-19；称第1部赛奥朵拉篇第11章、帝都达古席翁、期限10/24，交付列出的6种达·米纳武器中任意2种，奖励煉狱草×2、20,000G、名声100。路线和章节时机尚缺可复现证据核对，本次不并入正文。",
+    "lastListed": "2026-09-30",
+    "status": "imported"
+  },
+  {
+    "id": "52a62eef4c3a",
+    "url": "https://game8.jp/fe-banshisenko/817517",
+    "title": "Game8 — クエスト一覧・サブクエ",
+    "host": "game8.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "A",
+    "note": "列出迪托利希、赛奥朵拉、蕾达三线可触发，具体时机待查；报酬与AlGest相符；该页称具体时机待查，不能独立核实AlGest所列章节。",
+    "lastListed": "2026-09-30",
+    "status": "imported"
+  },
+  {
+    "id": "02d7dde3356c",
+    "url": "https://altema.jp/febansisenkou/subquest",
+    "title": "Altema — サブクエスト攻略一覧",
+    "host": "altema.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "B",
+    "note": "列出期限10/24和相同报酬，开放时机与地点仍标为调查中；未给出开放路线和具体章节，无法独立核实AlGest所列时点及交付条件。",
+    "lastListed": "2026-09-30",
+    "status": "imported"
+  },
+  {
     "id": "389cd145760d",
     "url": "https://allthings.how/how-to-merge-unit-versions-in-fire-emblem-fortune-s-weave/",
     "title": "AllThingsHow — Merge Unit Versions",
