@@ -11,6 +11,46 @@
   },
   "entries": [
     {
+      "date": "2026-09-30",
+      "edition": "达·米纳支线资料核对（待核验，未并入正文）",
+      "checked": 8,
+      "merged": [],
+      "conflicts": [
+        {
+          "topic": "「その名はダ・ミナ」支线的适用路线与开放时机",
+          "current": "本库尚无这条支线的详细攻略；Game8列出迪托利希、赛奥朵拉、蕾达三线但标注具体时机待查，Altema也标注开放时机与地点待查。",
+          "incoming": "AlGest单页称其在第1部赛奥朵拉篇第11章「急转」于帝都达古席翁接取，期限10/24，任选两件达·米纳武器交付。",
+          "src": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subquest26/"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "A",
+          "name": "AlGest — その名はダ・ミナの攻略",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subquest26/",
+          "note": "页面标注2026-09-19；称第1部赛奥朵拉篇第11章、帝都达古席翁、期限10/24，交付列出的6种达·米纳武器中任意2种，奖励煉狱草×2、20,000G、名声100。路线和章节时机尚无可复现证据核对，本次不并入正文。"
+        },
+        {
+          "grade": "A",
+          "name": "Game8 — クエスト一覧・サブクエ",
+          "url": "https://game8.jp/fe-banshisenko/817517",
+          "note": "列出迪托利希、赛奥朵拉、蕾达三线可触发，具体时机待查；报酬与AlGest相符，但未核实路线开放章节或交付条件。"
+        },
+        {
+          "grade": "B",
+          "name": "Altema — サブクエスト攻略一覧",
+          "url": "https://altema.jp/febansisenkou/subquest",
+          "note": "列出期限10/24和相同报酬，开放时机与地点仍标为调查中；未能独立核实AlGest所列章节和交付条件。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "可检索的完整实机流程",
+          "reason": "本轮精确检索未找到可核验该支线开放路线、章节与交付条件的完整实机记录；相关信息保留待核验。"
+        }
+      ]
+    },
+    {
       "date": "2026-09-29",
       "edition": "四线外传日历与兵种选职资料",
       "checked": 11,
