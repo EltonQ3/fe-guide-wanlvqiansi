@@ -1057,23 +1057,44 @@
               "主教"
             ],
             "train": "优先白魔术，先过牧师，再向主教发展。杨界够用时可缓招，把回合留给其他缺口。",
-            "caution": "三个请求要逐个接取、逐个回报，不能只带着最后一件物品去交差；任务地点有路线差异。",
+            "caution": "地点组合仅用于迪托利希线。先接任务再取物；市场购入物按当前标价备钱，出发前核对任务期限。完整日文物品名见本线档案。",
             "late": "第三部：贤者，白魔术 A。",
             "sources": [
               {
                 "url": "https://gamewith.jp/fefw/577309",
-                "label": "GameWith · 奥林匹亚培养与加入条件"
+                "label": "GameWith · 奥林匹亚分路线交涉",
+                "checkedAt": "2026-10-01",
+                "evidenceLocation": "「スカウト条件・交渉」及「頼み1／2／3」；本次核对迪托利希线"
+              },
+              {
+                "url": "https://lushgreengame.com/fe-bnssnk-olympia/",
+                "label": "玩家记录 · 迪托利希线三段请求",
+                "checkedAt": "2026-10-01",
+                "evidenceLocation": "「オリンピアの頼み」「暁平原／バイナのオアシス／碧晶洞穴の行き方」；作者明确说明本次为迪托利希线"
+              },
+              {
+                "url": "https://game8.jp/fe-banshisenko/816430",
+                "label": "Game8 · 奥林匹亚交涉",
+                "checkedAt": "2026-10-01",
+                "evidenceLocation": "「スカウト条件・交渉の攻略」；第5章、3S／6R及三项地点"
               }
             ],
             "fame": 6,
             "support": 3,
-            "condition": "依次完成奥林匹亚的请求 1、2、3",
+            "condition": "请求1：暁平原探索 → 请求2：バイナのオアシス市场购买 → 请求3：碧晶洞穴探索；每段交付后再接下一段",
             "pyramid": {
               "role": "白魔法／治疗",
               "priority": "situational",
               "label": "按需补位",
               "note": "回复不够时考虑；要逐段完成三次请求。"
-            }
+            },
+            "checkedAt": "2026-10-01",
+            "gameVersion": null,
+            "difficulty": null,
+            "route": "迪托利希线",
+            "chapter": "第一部第5章起出现；实际完成章节取决于进度",
+            "status": "page-reviewed",
+            "scope": "攻略页与明确路线的玩家记录交叉核对；本批只补迪托利希线交涉，不代表全路线或全难度实测。版本与难度未注明。"
           },
           {
             "name": "歌利亚",

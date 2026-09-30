@@ -440,5 +440,89 @@
     "gameVersion": null,
     "status": "page-reviewed",
     "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+  },
+  {
+    "name": "努佐",
+    "kind": "物品 · 按路线核对",
+    "condition": "凯伊／赛奥朵拉／蕾达线：铁弓 ×3",
+    "details": "先满足本线支援和名声门槛，再交付铁弓；缺少时查看武器屋或商人的现货。赛奥朵拉线第9章出现有两站对应记录。迪托利希线数量有分歧，先查看当前交涉提示，不能套用另外三线。",
+    "routes": [
+      "凯伊线",
+      "迪托利希线",
+      "赛奥朵拉线",
+      "蕾达线"
+    ],
+    "byRoute": {
+      "凯伊线": "2S／6R；铁弓 ×3",
+      "迪托利希线": "1S／9R；铁弓数量以当前交涉提示确认",
+      "赛奥朵拉线": "第9章起出现；1S／6R；铁弓 ×3",
+      "蕾达线": "3S／9R；铁弓 ×3"
+    },
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577380",
+        "label": "GameWith · 努佐",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「成長率・ステータス」「スカウト条件・交渉」「おすすめ兵種とシミュレーター」"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816462",
+        "label": "Game8 · 努佐",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「育成おすすめ（兵種）」「評価・成長値・スキル・技能」「スカウト条件・交渉の攻略」"
+      },
+      {
+        "url": "https://appmedia.jp/fe_banshisenkou/80402767",
+        "label": "AppMedia · 努佐",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「スカウト条件」「成長値」「個人スキル」"
+      }
+    ],
+    "checkedAt": "2026-10-01",
+    "gameVersion": null,
+    "difficulty": null,
+    "route": "第一部四路线",
+    "chapter": "赛奥朵拉线第9章；其他路线首次出现章未在本批裁定",
+    "status": "page-reviewed",
+    "scope": "三站核对S/R门槛；三条路线铁弓×3一致。迪托利希线数量存在冲突，未裁定；未作游戏内实测。版本与难度未标明。"
+  },
+  {
+    "name": "奥林匹亚",
+    "kind": "三段请求 · 迪托利希线",
+    "condition": "第5章起出现；3S／6R，并依次完成请求1、2、3",
+    "details": "本批只补迪托利希线的三个请求，按下方行程逐项接取、收集和回报。地点与道具保留日文以便对照；其他线不照搬，蕾达线仍是剧情加入。",
+    "routes": [
+      "迪托利希线"
+    ],
+    "byRoute": {
+      "迪托利希线": "迪托利希线：先接请求1，到帝都东南「暁平原」探索取得「緋灼の雫」；交付后接请求2，到西侧沙漠「バイナのオアシス」的市场购买「アウラムローズ」；再交付并接请求3，到西南「碧晶洞穴」探索取得「碧き心臓」，回报后入队。每段先接取、再收集、再回报。第二件物品按当前市场标价预留金钱，出发前核对存档任务期限；日文地名和物品名保留供对照。"
+    },
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577309",
+        "label": "GameWith · 奥林匹亚分路线交涉",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「スカウト条件・交渉」及「頼み1／2／3」；本次核对迪托利希线"
+      },
+      {
+        "url": "https://lushgreengame.com/fe-bnssnk-olympia/",
+        "label": "玩家记录 · 迪托利希线三段请求",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「オリンピアの頼み」「暁平原／バイナのオアシス／碧晶洞穴の行き方」；作者明确说明本次为迪托利希线"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816430",
+        "label": "Game8 · 奥林匹亚交涉",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「スカウト条件・交渉の攻略」；第5章、3S／6R及三项地点"
+      }
+    ],
+    "checkedAt": "2026-10-01",
+    "gameVersion": null,
+    "difficulty": null,
+    "route": "迪托利希线",
+    "chapter": "第一部第5章起出现；实际完成章节取决于进度",
+    "status": "page-reviewed",
+    "scope": "攻略页与明确路线的玩家记录交叉核对；本批只补迪托利希线交涉，不代表全路线或全难度实测。版本与难度未注明。"
   }
 ]

@@ -33,9 +33,29 @@
       },
       {
         "url": "https://gamewith.jp/fefw/577847",
-        "label": "外传接取地点与完成期限 · GameWith"
+        "label": "GameWith · 蕾达外传战斗机制",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「障害物は1回の攻撃でまとめて壊せる」「6ターン目開始時に味方増援＋レダ離脱」"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816870",
+        "label": "Game8 · 蕾达外传战斗机制",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「障害物は攻撃を受けるとまとめて破壊される」「ターン経過で味方増援が到着してレダが離脱」"
       }
-    ]
+    ],
+    "strategy": [
+      "障碍物被攻击破坏时，邻接障碍也会连锁消失；敌方攻击同样能触发。推进前检查后排是否会因此直接暴露。",
+      "战力不足时可先稳守等待友军增援；增援到达时蕾达会离场，不要继续把她计入之后的站位与输出。"
+    ],
+    "checkedAt": "2026-10-01",
+    "gameVersion": null,
+    "difficulty": null,
+    "route": "迪托利希／赛奥朵拉线",
+    "chapter": "迪托利希第9章；赛奥朵拉第10章",
+    "status": "page-reviewed",
+    "scope": "本次只交叉核对新增战斗机制；原接取日历保留，缺少单列完成期限仍留空。未作游戏内实测，版本与难度未注明。",
+    "spoilerLevel": "外传机制"
   },
   {
     "id": "theodora",
@@ -63,9 +83,29 @@
       },
       {
         "url": "https://gamewith.jp/fefw/577869",
-        "label": "外传接取地点与完成期限 · GameWith"
+        "label": "GameWith · 赛奥朵拉外传机关与雾战",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「進め方」「3つの装置を踏むとクリア」「ゴーレムが強力なので固まって動く」；日期分歧另记日志"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816854",
+        "label": "Game8 · 赛奥朵拉外传机关与雾战",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「3つの仕掛けを起動するとクリア」「視界が狭いのである程度固まって移動しよう」；日期分歧另记日志"
       }
-    ]
+    ],
+    "strategy": [
+      "胜利目标是踩上并启动3处机关：地图下方2处、上方1处。开局先查看目标位置，不必把歼灭全场当成胜利条件。",
+      "地图有雾，前排成组探路，确认安全后再让后排跟上；别为分头踩机关，让治疗或远程单位单独暴露。"
+    ],
+    "checkedAt": "2026-10-01",
+    "gameVersion": null,
+    "difficulty": null,
+    "route": "仅迪托利希线",
+    "chapter": "第一部第9章",
+    "status": "page-reviewed",
+    "scope": "本次只交叉核对新增战斗机制；原接取日历保留，缺少单列完成期限仍留空。未作游戏内实测，版本与难度未注明。",
+    "spoilerLevel": "外传机制"
   },
   {
     "id": "bertrand",
@@ -219,9 +259,29 @@
       },
       {
         "url": "https://gamewith.jp/fefw/577829",
-        "label": "外传接取地点与完成期限 · GameWith"
+        "label": "GameWith · 安娜外传战斗机制",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「攻略ポイント」：ソレル牵制；矿堆5／10与重突進"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816696",
+        "label": "Game8 · 安娜外传战斗机制",
+        "checkedAt": "2026-10-01",
+        "evidenceLocation": "「黄金色の秘密の攻略ポイント」：5堆一次、10堆两次及牵制／拆矿"
       }
-    ]
+    ],
+    "strategy": [
+      "客串单位索雷尔（ソレル）牵制巨人，其余人清理沿途敌人并拆矿，不把全队挤在巨人面前。",
+      "地图共10堆矿，每破坏5堆会触发一次对巨人的大额伤害，最多两次。优先安排机动单位拆矿；安娜的「重突進」可以边移动边破坏。"
+    ],
+    "checkedAt": "2026-10-01",
+    "gameVersion": null,
+    "difficulty": null,
+    "route": "凯伊／迪托利希／赛奥朵拉线",
+    "chapter": "凯伊第10章；迪托利希第10—11章；赛奥朵拉第11章",
+    "status": "page-reviewed",
+    "scope": "本次只交叉核对新增战斗机制；原接取日历保留，缺少单列完成期限仍留空。未作游戏内实测，版本与难度未注明。",
+    "spoilerLevel": "外传机制"
   },
   {
     "id": "anatolia",
