@@ -78,6 +78,33 @@ class DataTests(unittest.TestCase):
         self.assertTrue(all(x.get('superseded') for x in old))
         self.assertTrue(any('巨人肉' in x['text'] for e in DATA['logs'] if e.get('edition') for x in e.get('merged',[])))
 
+    def test_october_review_scope_and_dates(self):
+        chars={c['name']:c for c in DATA['characters']}
+        self.assertEqual(chars['奥林匹亚']['negotiations']['routes'],['迪托利希线'])
+        self.assertIn('碧晶洞穴',chars['奥林匹亚']['negotiations']['byRoute']['迪托利希线'])
+        self.assertNotIn('铁弓×2',chars['努佐']['recruit']['迪托利希线'])
+        self.assertIn('交涉提示',chars['努佐']['recruit']['迪托利希线'])
+        for kind in ('builds','negotiations'):
+            for item in DATA[kind]:
+                if item.get('checkedAt')!='2026-10-01':continue
+                for key in ('gameVersion','difficulty','route','chapter','scope','status'):
+                    self.assertIn(key,item)
+                for ref in item['sources']:
+                    self.assertEqual(ref['checkedAt'],'2026-10-01')
+                    self.assertTrue(ref['evidenceLocation'])
+        registry={s['url']:s for s in DATA['sources']}
+        self.assertEqual(registry['https://gamewith.jp/fefw/577380']['lastListed'],'2026-10-01')
+        self.assertEqual(registry['https://docs.qq.com/sheet/DV0N0VUZLSXRmUWFq']['lastListed'],'2026-09-29')
+
+    def test_paralogue_strategy_does_not_invent_deadlines(self):
+        for person in ('anna','leda','theodora'):
+            p=next(x for x in DATA['paralogues'] if x['id']==person)
+            self.assertEqual(len(p['strategy']),2)
+            self.assertTrue(all(w['deadline'] is None for windows in p['routes'].values() for w in windows))
+        log=next(e for e in DATA['logs'] if e['date']=='2026-10-01')
+        self.assertEqual(log['checked'],len({s['url'] for s in log['new_sources']}))
+        self.assertTrue(any('铁弓数量' in c['topic'] for c in log['conflicts']))
+
     def test_route_portals_use_eligible_characters(self):
         characters={alias:c for c in DATA['characters'] for alias in c['aliases']}
         for s in DATA['story'][:4]:

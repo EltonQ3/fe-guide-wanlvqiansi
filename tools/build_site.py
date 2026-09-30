@@ -126,7 +126,8 @@ for collection in curated.values():
         pilot = item.get('profile', {}).get('pilot', {})
         refs += pilot.get('sources', []) + [ref for n in pilot.get('native', []) + pilot.get('scouts', []) for ref in n['sources']]
         for s in refs:
-            add_source(s['url'], s['label'], note='2026-09-29 核对所引页面；不是游戏内实测。', date='2026-09-29')
+            reviewed_at = s.get('checkedAt', '2026-09-29')
+            add_source(s['url'], s['label'], note=f'{reviewed_at} 核对所引页面；不是游戏内实测。', date=reviewed_at)
             key=hashlib.sha256(canonical(s['url']).encode()).hexdigest()[:12]
             sources[key]['status']='page-reviewed'
             sources[key]['note']='已核对本次条目所引页面；不代表该站全部结论已验证。'

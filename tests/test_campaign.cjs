@@ -33,3 +33,17 @@ for(const phrase of ['war-portraits','军行动，每章三选一','补到5个',
 assert(salvation.includes('salvation-opening.webp')&&salvation.includes('不等于已经完成永久入队'));
 assert.equal(data.story.find(s=>s.id==='dietrich').profile.pilot.version,2,'Dietrich content retained');
 console.log('Route-specific modals, later-part introductions and Dietrich preservation passed.');
+// New route-scoped details must never leak into another protagonist's dossier.
+assert(modal('dietrich','奥林匹亚').includes('碧晶洞穴'));
+assert(!modal('kai','奥林匹亚').includes('碧晶洞穴'));
+assert(!modal('leda','奥林匹亚').includes('碧晶洞穴'));
+assert(modal('theodora','努佐').includes('铁弓 ×3'));
+assert(modal('dietrich','努佐').includes('交涉提示'));
+const newEvidence=vm.runInContext("evidence([{url:'https://example.com/new',label:'New',checkedAt:'2026-10-01',evidenceLocation:'section \"one\"'}])",ctx);
+assert(newEvidence.includes('2026.10.01')&&!newEvidence.includes('2026.09.29'));
+assert(newEvidence.includes('section &quot;one&quot;'));
+const oldEvidence=vm.runInContext("evidence([{url:'https://example.com/old',label:'Old'}])",ctx);
+assert(oldEvidence.includes('2026.09.29'));
+const mixedEvidence=vm.runInContext("evidence([{url:'https://example.com/old',label:'Old'},{url:'https://example.com/new',label:'New',checkedAt:'2026-10-01'}])",ctx);
+assert(mixedEvidence.includes('2026.09.29')&&mixedEvidence.includes('2026.10.01'));
+console.log('Oct1 route-scoped negotiation and per-source review dates passed.');

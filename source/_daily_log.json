@@ -11,6 +11,240 @@
   },
   "entries": [
     {
+      "date": "2026-10-01",
+      "edition": "三篇外传打法、奥林匹亚交涉与努佐培养",
+      "checked": 26,
+      "merged": [
+        {
+          "text": "补充安娜外传拆矿与牵制、蕾达外传障碍连锁与增援、赛奥朵拉外传三机关及雾中推进；保留接取窗口与完成期限的区分。",
+          "src": "https://gamewith.jp/fefw/577829"
+        },
+        {
+          "text": "补全奥林匹亚迪托利希线三个请求的接取、探索／购买与回报顺序；不把本线地点套到另外三线。",
+          "src": "https://lushgreengame.com/fe-bnssnk-olympia/"
+        },
+        {
+          "text": "新增努佐的剑／弓分工与分阶段培养，补三线铁弓×3及支援／名声条件；迪线数量未裁定，原表×2改为以交涉提示确认。",
+          "src": "https://game8.jp/fe-banshisenko/816462"
+        },
+        {
+          "text": "引用日期改为逐来源读取，10月1日新增核对不再误标9月29日；旧引用日期保留。"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "努佐 · 迪托利希线铁弓数量",
+          "current": "旧表1S／9R・铁弓×2，现保留S/R并撤下未经裁定的数量；以当前交涉提示确认。",
+          "incoming": "GameWith角色页迪线写2；其道具页笼统写3，AppMedia四线均写3，Game8也笼统写3。未获得路线明确的游戏交付画面，不按站点数量投票。",
+          "src": "https://appmedia.jp/fe_banshisenkou/80402767"
+        },
+        {
+          "topic": "努佐 · 首次出现章节",
+          "current": "本批只采用两站一致的赛奥朵拉第9章；凯伊、蕾达首次出现章不裁定。",
+          "incoming": "GameWith：凯伊8、蕾达10；Game8：凯伊6、蕾达8。不能把名声条件换算成出现章。",
+          "src": "https://game8.jp/fe-banshisenko/816462"
+        },
+        {
+          "topic": "勇士像的下落 · 接取与完成期限",
+          "current": "接取日历沿用9/3—9/8，完成期限仍未单列；新增战斗机制不代表日期争议已解决。",
+          "incoming": "Game8明确把9/15写作受注期日；Altema列期日9/15但奖励名声不同；redfreshet将9/15解释为完成期限。字段含义未统一，不把9/15直接填入完成期限。",
+          "src": "https://game8.jp/fe-banshisenko/816854"
+        },
+        {
+          "topic": "奥林匹亚 · 请求2价格与任务期限",
+          "current": "行程只写按当前市场标价备钱、出发前核对任务栏；不发布固定价格或期限。",
+          "incoming": "GameWith请求2记1400G，明确迪线玩家记2000G；无法证实差价原因。请求期限也有11/27与接取当章内的不同记录。",
+          "src": "https://gamewith.jp/fefw/578553"
+        },
+        {
+          "topic": "杰斯特 · 请求2路线",
+          "current": "没有扩成确定行程。",
+          "incoming": "GameWith角色页写ワルハラ鉱山，Game8任务表写セドー砦；GameWith任务详页摘要与步骤亦未统一。",
+          "src": "https://gamewith.jp/fefw/579107"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "",
+          "name": "GameWith · 努佐",
+          "url": "https://gamewith.jp/fefw/577380",
+          "note": "「成長率・ステータス」「スカウト条件・交渉」「おすすめ兵種とシミュレーター」"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 努佐",
+          "url": "https://game8.jp/fe-banshisenko/816462",
+          "note": "「育成おすすめ（兵種）」「評価・成長値・スキル・技能」「スカウト条件・交渉の攻略」"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 努佐",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402767",
+          "note": "「スカウト条件」「成長値」「個人スキル」"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 奥林匹亚分路线交涉",
+          "url": "https://gamewith.jp/fefw/577309",
+          "note": "「スカウト条件・交渉」及「頼み1／2／3」；本次核对迪托利希线"
+        },
+        {
+          "grade": "",
+          "name": "玩家记录 · 迪托利希线三段请求",
+          "url": "https://lushgreengame.com/fe-bnssnk-olympia/",
+          "note": "「オリンピアの頼み」「暁平原／バイナのオアシス／碧晶洞穴の行き方」；作者明确说明本次为迪托利希线"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 奥林匹亚交涉",
+          "url": "https://game8.jp/fe-banshisenko/816430",
+          "note": "「スカウト条件・交渉の攻略」；第5章、3S／6R及三项地点"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 蕾达外传战斗机制",
+          "url": "https://gamewith.jp/fefw/577847",
+          "note": "「障害物は1回の攻撃でまとめて壊せる」「6ターン目開始時に味方増援＋レダ離脱」"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 蕾达外传战斗机制",
+          "url": "https://game8.jp/fe-banshisenko/816870",
+          "note": "「障害物は攻撃を受けるとまとめて破壊される」「ターン経過で味方増援が到着してレダが離脱」"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 赛奥朵拉外传机关与雾战",
+          "url": "https://gamewith.jp/fefw/577869",
+          "note": "「進め方」「3つの装置を踏むとクリア」「ゴーレムが強力なので固まって動く」；日期分歧另记日志"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 赛奥朵拉外传机关与雾战",
+          "url": "https://game8.jp/fe-banshisenko/816854",
+          "note": "「3つの仕掛けを起動するとクリア」「視界が狭いのである程度固まって移動しよう」；日期分歧另记日志"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 安娜外传战斗机制",
+          "url": "https://gamewith.jp/fefw/577829",
+          "note": "「攻略ポイント」：ソレル牵制；矿堆5／10与重突進"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 安娜外传战斗机制",
+          "url": "https://game8.jp/fe-banshisenko/816696",
+          "note": "「黄金色の秘密の攻略ポイント」：5堆一次、10堆两次及牵制／拆矿"
+        },
+        {
+          "grade": "",
+          "name": "Altema · 努佐",
+          "url": "https://altema.jp/febansisenkou/nuzzo",
+          "note": "个人技能与成长值交叉参考；未用于裁定迪线铁弓数量"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 招募表",
+          "url": "https://appmedia.jp/fe_banshisenkou/80396458",
+          "note": "努佐四路线表均列铁弓3，不能与同站角色页计作独立证据"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 铁弓",
+          "url": "https://gamewith.jp/fefw/577833",
+          "note": "道具页笼统写3，与同站努佐迪线角色表2不一致"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 奥林匹亚请求2",
+          "url": "https://gamewith.jp/fefw/578553",
+          "note": "市场购入记录1400G；玩家迪线记2000G，未裁定固定价格或差价原因"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 诺克裘拉",
+          "url": "https://game8.jp/fe-banshisenko/816447",
+          "note": "迪线第4章候选，未找到第二份独立时点证据；不写成确定出现章"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 米迦艾拉",
+          "url": "https://game8.jp/fe-banshisenko/816423",
+          "note": "迪线第4章酒馆战斗事件后加入；不能由此证明一定免费"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 米迦艾拉",
+          "url": "https://gamewith.jp/fefw/577316",
+          "note": "迪线同时列剧情加入与3000G，旧争议维持"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 杰斯特",
+          "url": "https://gamewith.jp/fefw/577290",
+          "note": "请求2地点与任务表有差异，本轮不补确定行程"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 任务表",
+          "url": "https://game8.jp/fe-banshisenko/817517",
+          "note": "杰斯特请求2列セドー砦；不能与角色页地点直接合并"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 杰斯特请求2",
+          "url": "https://gamewith.jp/fefw/579107",
+          "note": "摘要与步骤地点不统一，留待按路线确认"
+        },
+        {
+          "grade": "",
+          "name": "Altema · 安娜外传",
+          "url": "https://altema.jp/febansisenkou/annagaiden",
+          "note": "牵制与10堆矿交叉参考；不据单站追加固定伤害40"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 赛奥朵拉第10章",
+          "url": "https://appmedia.jp/fe_banshisenkou/80412817",
+          "note": "蕾达外传后的日历推进线索，本次未推广到迪线"
+        },
+        {
+          "grade": "",
+          "name": "Altema · 赛奥朵拉外传",
+          "url": "https://altema.jp/febansisenkou/seodoragaiten",
+          "note": "列期日9/15，但名声100与两站150不一致；不覆盖既有奖励或完成期限"
+        },
+        {
+          "grade": "",
+          "name": "redfreshet · 外传汇总",
+          "url": "https://redfreshet.com/fe-banshisenko-gaiden/",
+          "note": "称9/15为完成期限，属汇总解释，不视为独立游戏内证据"
+        }
+      ],
+      "limited": [
+        {
+          "site": "实机与版本覆盖",
+          "reason": "采集日按Asia/Tokyo计为2026-10-01；来源未注明游戏版本或难度，未进行本站游戏内实测。多站一致仅作页面交叉核对，不声称完全独立的实机验证。"
+        },
+        {
+          "site": "未晋升的候选",
+          "reason": "诺克裘拉迪线第4章仍缺独立时点证据；米迦艾拉剧情加入与3000G仍未裁定。安娜商店、蕾达外传具体时间跳转及每次40伤害本次不新增到正文。"
+        },
+        {
+          "site": "图片与玩家页面访问",
+          "reason": "部分外站教学截图未能抓取；note.com玩家页面打开失败，仅检索摘要，不作为本次培养依据。没有宣称完成外站图片实核。"
+        }
+      ],
+      "review": {
+        "timezone": "Asia/Tokyo",
+        "gameVersion": null,
+        "difficulty": null,
+        "status": "page-reviewed",
+        "evidencePolicy": "新增玩法采用至少两家页面一致内容；奥林匹亚另有路线明确的本人记录。培养方向标为编辑建议。具体证据段落保存在新增引用的evidenceLocation。",
+        "chapters": "第一部对应路线；努佐终盘职业仅作第三部候选"
+      }
+    },
+    {
       "date": "2026-09-30",
       "edition": "达·米纳支线资料核对（待核验，未并入正文）",
       "checked": 8,
