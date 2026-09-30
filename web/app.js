@@ -99,8 +99,7 @@ function renderSearch() {
 }
 
 function evidence(refs) {
-  const dates=[...new Set(refs.map(s=>s.checkedAt||'2026-09-29'))].sort();
-  return `<div class="evidence">${refs.map(s=>`<a href="${href(s.url)}" target="_blank" rel="noopener noreferrer"${s.evidenceLocation?` title="${esc(s.evidenceLocation)}"`:''}>${esc(s.label)}${dates.length>1?` · ${esc((s.checkedAt||'2026-09-29').replaceAll('-','.'))}`:''} ↗</a>`).join('')}<span>${dates.length===1?`页面核对 ${esc(dates[0].replaceAll('-','.'))}`:'页面核对日期见各引用'} · 未作游戏内实测</span></div>`;
+  return `<div class="evidence">${refs.map(s=>`<a href="${href(s.url)}" target="_blank" rel="noopener noreferrer"${s.evidenceLocation?` title="${esc(s.evidenceLocation)}"`:''}>${esc(s.label)} ↗</a>`).join('')}<span>攻略来源交叉参考 · 未作游戏内实测</span></div>`;
 }
 function storyLink(s) { return s.part===1?'#route/'+s.id:'#story/'+s.id; }
 function buildMarkup(b) {

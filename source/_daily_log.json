@@ -12,6 +12,71 @@
   "entries": [
     {
       "date": "2026-10-01",
+      "edition": "外传与招募资料复核／页面结构检查",
+      "checked": 8,
+      "merged": [],
+      "conflicts": [
+        {
+          "topic": "努佐 · 迪托利希线铁弓数量（复核后仍待裁定）",
+          "current": "角色页记铁弓×2；本线资料不再把数量写成已确认结论。",
+          "incoming": "Game8通用交涉表列铁弓×3；缺少路线明确的游戏内交付画面，不按网页数量投票。",
+          "src": "https://game8.jp/fe-banshisenko/816462"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "",
+          "name": "GameWith · 安娜外传",
+          "url": "https://gamewith.jp/fefw/577829",
+          "note": "「攻略ポイント」：ソレル牵制与破坏矿堆造成巨人伤害；只作网页交叉核对。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 安娜外传",
+          "url": "https://game8.jp/fe-banshisenko/816696",
+          "note": "页面核对安娜外传攻略；未将单站精确数值追加为新结论。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 蕾达外传",
+          "url": "https://gamewith.jp/fefw/577847",
+          "note": "复核外传页面；本次未新增正文事实。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 蕾达外传",
+          "url": "https://game8.jp/fe-banshisenko/816870",
+          "note": "「阳动作战」：相邻障碍物可连锁破坏、数回合后援军抵达；正文已有相应说明。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 赛奥朵拉外传",
+          "url": "https://gamewith.jp/fefw/577869",
+          "note": "复核外传页面；具体日期争议仍以既有日志为准。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 赛奥朵拉外传",
+          "url": "https://game8.jp/fe-banshisenko/816854",
+          "note": "复核外传页面；不把受注期日推定为完成期限。"
+        },
+        {
+          "grade": "",
+          "name": "玩家记录 · 奥林匹亚三段请求",
+          "url": "https://lushgreengame.com/fe-bnssnk-olympia/",
+          "note": "作者注明迪托利希篇的三项请求与地点；仅作为路线明确的个人记录交叉参考。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 努佐",
+          "url": "https://game8.jp/fe-banshisenko/816462",
+          "note": "复核「招募条件／交涉」章节；铁弓数量的路线差异仍未裁决。"
+        }
+      ],
+      "limited": []
+    },
+    {
+      "date": "2026-10-01",
       "edition": "三篇外传打法、奥林匹亚交涉与努佐培养",
       "checked": 26,
       "merged": [
