@@ -10,6 +10,8 @@ assert(modal('dietrich','穆').includes('裏山道'));
 assert(!modal('kai','穆').includes('裏山道'));
 assert(!modal('theodora','穆').includes('裏山道'));
 assert(modal('kai','哪吒').includes('已核对的凯伊线购买画面'));
+assert(modal('kai','哪吒').includes('リガネット×10'));
+assert(modal('kai','哪吒').includes('高級肉箱'));
 for(const route of ['dietrich','theodora','leda'])assert(!modal(route,'哪吒').includes('已核对的凯伊线购买画面'));
 const loretta=modal('dietrich','洛蕾塔');
 assert(loretta.includes('编辑培养建议')&&loretta.includes('至少一半')&&loretta.includes('武器屋'));
