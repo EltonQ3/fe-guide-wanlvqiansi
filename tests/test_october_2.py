@@ -17,8 +17,8 @@ class October2Tests(unittest.TestCase):
         self.assertIn('省训练', c['builds']['middle'])
         self.assertIn('第三部', c['builds']['late'])
         self.assertNotIn('第三区分', c['builds']['requirement'])
-        self.assertIn('当前商店标价', c['negotiations']['details'])
-        self.assertNotIn('1500', c['negotiations']['details'])
+        self.assertIn('第一部王都ブレストン', c['negotiations']['details'])
+        self.assertIn('1500G', c['negotiations']['details'])
 
     def test_recruitment_locations_and_prices_are_route_scoped(self):
         items = {n['name']: n for n in DATA['negotiations']}
@@ -29,7 +29,7 @@ class October2Tests(unittest.TestCase):
         self.assertIn('キラの村', items['哪吒']['byRoute']['凯伊线'])
         self.assertIn('当前存档', items['哪吒']['byRoute']['凯伊线'])
         for route in ('迪托利希线', '赛奥朵拉线', '蕾达线'):
-            self.assertNotIn('300G', items['哪吒']['byRoute'][route])
+            self.assertNotIn('库存5份', items['哪吒']['byRoute'][route])
         self.assertEqual(len(items['哪吒']['imageEvidence']), 2)
         self.assertTrue(all(r['url'].startswith('https://') for r in items['哪吒']['imageEvidence']))
 

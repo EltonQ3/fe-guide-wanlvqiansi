@@ -3,7 +3,7 @@
     "name": "歌利亚",
     "kind": "物品",
     "condition": "巨人肉 ×3",
-    "details": "四条路线都需要交物品；“交涉”不是免交材料。日文资料名为「巨大肉」。另需达到各路线的支援与名声门槛。",
+    "details": "四条路线都需要交物品；“交涉”不是免交材料。日文资料名为「巨大肉」。另需达到各路线的支援与名声门槛。 凯伊篇可在海都アレクトー用煉獄草×10交换1个巨人肉。 砂影の砦的巨人也会掉落巨人肉，战斗难度较高；高級肉箱则随机开出，不能保证每箱都有。箱内物品在取得箱子时决定，拿到后再存档重开不会改变内容。",
     "routes": [
       "凯伊线",
       "迪托利希线",
@@ -19,12 +19,37 @@
       {
         "url": "https://game8.jp/fe-banshisenko/816453",
         "label": "Game8 · 歌利亚招募"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577828",
+        "label": "GameWith · 巨人肉取得方式",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "巨大肉の入手方法：海都アレクトー／高級肉箱／砂影の砦",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://altema.jp/febansisenkou/nikugensen",
+        "label": "Altema · 巨人肉与肉箱",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "巨大肉の入手方法まとめ（交換はカイ篇限定）／肉箱厳選のやり方",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
       }
     ],
     "checkedAt": "2026-09-29",
     "gameVersion": null,
     "status": "page-reviewed",
-    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。",
+    "acquisitionCheckedAt": "2026-10-02"
   },
   {
     "name": "彼得",
@@ -167,7 +192,7 @@
     "name": "努蒂奴",
     "kind": "物品",
     "condition": "所需斧种和数量随路线变化",
-    "details": "不要把凯伊线的材料直接套用到另外三线。",
+    "details": "不要把凯伊线的材料直接套用到另外三线。 第一部王都ブレストン武器屋的铁斧标价每把1500G，王都メガエラ为1125G；通路及库存以本线进度为准。 帝都ダグシオン武器屋的铁斧标价1500G：凯伊、赛奥朵拉篇第10章起，迪托利希、蕾达篇第7章起。 第一部王都メガエラ武器屋的青铜斧标价每把375G；帝都ダグシオン为500G，凯伊、赛奥朵拉篇第10章起，迪托利希、蕾达篇第4章起上架。通路及库存以本线进度为准。",
     "routes": [
       "凯伊线",
       "迪托利希线",
@@ -184,12 +209,61 @@
       {
         "url": "https://gamewith.jp/fefw/577300",
         "label": "GameWith · 努蒂奴资料"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577852",
+        "label": "GameWith · 铁斧取得与价格",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "入手方法：第一部の武器屋の城镇別価格；帝都の主人公別開放章（救世編とは分離）",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase021/",
+        "label": "AlGest · 王都ブレストン商店",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "王都ブレストンの武器屋：鉄の剣／槍／斧／弓の各1500G",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase002/",
+        "label": "AlGest · 王都メガエラ商店",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "王都メガエラの武器屋：鉄の槍／斧1125G、青銅の斧375G",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577857",
+        "label": "GameWith · 青铜斧取得与价格",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "入手方法：第一部の武器屋の城镇別価格；帝都の主人公別開放章（救世編とは分離）",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
       }
     ],
     "checkedAt": "2026-09-29",
     "gameVersion": null,
     "status": "page-reviewed",
-    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。",
+    "acquisitionCheckedAt": "2026-10-02"
   },
   {
     "name": "基罗伊卡",
@@ -334,7 +408,7 @@
     "name": "大刀",
     "kind": "物品 · 数量有分歧",
     "condition": "コーシャルーガー ×2（资料表记载）",
-    "details": "GameWith 的表格及标题写 2 个，同页正文却写 3 个，存在内部矛盾。凯伊线玩家招募记录支持 2 个；其他路线尚缺独立实测。请以当前存档的交付提示复核，不把所有路线标成已实测。",
+    "details": "GameWith 的表格及标题写 2 个，同页正文却写 3 个，存在内部矛盾。凯伊线玩家招募记录支持 2 个；其他路线尚缺独立实测。请以当前存档的交付提示复核，不把所有路线标成已实测。 可在コーシャルー湖、ゾトー湖探索，アルシネウス大橋的探索也有此鱼（AlGest列为？？？栏）。凯伊篇不能到ゾトー湖；其他地点也须先确认本线通路已开放。",
     "routes": [
       "凯伊线",
       "迪托利希线",
@@ -350,12 +424,37 @@
       {
         "url": "https://chucco.com/fefw-daitou-scout/",
         "label": "玩家记录 · 凯伊线交付数量"
+      },
+      {
+        "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-item016/",
+        "label": "AlGest · コーシャルーガー取得地点",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "コーシャルーガーの入手場所：探索／探索の？？？枠",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/817074",
+        "label": "Game8 · コーシャルーガー取得地点",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "ワールドマップの探索で入手：3地点とカイ編不可注記",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
       }
     ],
     "checkedAt": "2026-09-29",
     "gameVersion": null,
     "status": "page-reviewed",
-    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。",
+    "acquisitionCheckedAt": "2026-10-02"
   },
   {
     "name": "乌修拉",
@@ -383,7 +482,7 @@
     "name": "哪吒",
     "kind": "物品",
     "condition": "砂虫肉 ×3",
-    "details": "日文「砂虫肉」。仍需满足对应路线支援、名声条件。凯伊线可到世界地图南部「キラの村」的市场购买；已核对的玩家购买画面标价每份300G，所需3份按该标价共900G。实际价格和库存以当前存档为准。",
+    "details": "日文「砂虫肉」。仍需满足对应路线支援、名声条件。 キラの村市集标价每个300G；库存及能否到达以本线当前进度为准。 海都アレクトー的ヴァンダル商会可用リガネット×10交换；砂虫战斗掉落和高級肉箱也可取得，但均为随机。 凯伊线可由该村「设施→市场」进入；已有本线6/18购入画面佐证，3份按画面标价共900G，实际价格和库存以当前存档为准。",
     "routes": [
       "凯伊线",
       "迪托利希线",
@@ -392,9 +491,9 @@
     ],
     "byRoute": {
       "凯伊线": "南部「キラの村」→设施→市场。已核对的凯伊线购买画面中，砂虫肉每份300G、库存5份；所需3份按该标价共900G。实际价格与库存以当前存档为准。",
-      "迪托利希线": "日文「砂虫肉」。仍需满足对应路线支援、名声条件。",
-      "赛奥朵拉线": "日文「砂虫肉」。仍需满足对应路线支援、名声条件。",
-      "蕾达线": "日文「砂虫肉」。仍需满足对应路线支援、名声条件。"
+      "迪托利希线": "日文「砂虫肉」。仍需满足对应路线支援、名声条件。 キラの村市集标价每个300G；库存及能否到达以本线当前进度为准。 海都アレクトー的ヴァンダル商会可用リガネット×10交换；砂虫战斗掉落和高級肉箱也可取得，但均为随机。",
+      "赛奥朵拉线": "日文「砂虫肉」。仍需满足对应路线支援、名声条件。 キラの村市集标价每个300G；库存及能否到达以本线当前进度为准。 海都アレクトー的ヴァンダル商会可用リガネット×10交换；砂虫战斗掉落和高級肉箱也可取得，但均为随机。",
+      "蕾达线": "日文「砂虫肉」。仍需满足对应路线支援、名声条件。 キラの村市集标价每个300G；库存及能否到达以本线当前进度为准。 海都アレクトー的ヴァンダル商会可用リガネット×10交换；砂虫战斗掉落和高級肉箱也可取得，但均为随机。"
     },
     "sources": [
       {
@@ -402,32 +501,47 @@
         "label": "GameWith · 哪吒资料"
       },
       {
-        "url": "https://game1122.hatenablog.com/entry/2026/09/20/224750",
-        "label": "元プロゲーマーのゲーム記録 · カイ編 第1部7章～8章",
-        "checkedAt": "2026-10-02",
-        "evidenceLocation": "第7章起自由行动部分明确说砂虫肉在南部キラの村买到；实际查看紧随的商店截图和地图截图：300G、库存5，凯伊、6/18、キラの村。并不证明最早开放章节。"
-      },
-      {
         "url": "https://gamewith.jp/fefw/578020",
-        "label": "GameWith · 砂虫肉の入手方法と使い道",
+        "label": "GameWith · 砂虫肉取得方式",
         "checkedAt": "2026-10-02",
-        "evidenceLocation": "「砂虫肉はマップ南のキラの村で購入」：市场每个300G；「ナジャのスカウトで使用」3个。与路线明确的玩家商店画面交叉核对。"
+        "evidenceLocation": "砂虫肉の入手方法：キラの村で購入（300G）／高級肉箱",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
       },
       {
         "url": "https://game8.jp/fe-banshisenko/817080",
-        "label": "Game8 · 砂虫肉の入手方法と使い道",
+        "label": "Game8 · 砂虫肉取得方式",
         "checkedAt": "2026-10-02",
-        "evidenceLocation": "「ショップで入手」：キラの村市场300、库存5；「キャラの交渉に使用」3个。辅助佐证，不把库存恢复周期写成固定。"
+        "evidenceLocation": "ショップで入手：キラの村300／海都アレクトー・リガネット×10；砂虫のドロップ",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://game1122.hatenablog.com/entry/2026/09/20/224750",
+        "label": "元プロゲーマーのゲーム記録 · カイ編 第1部7章～8章",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "第7章起自由行动部分明确说砂虫肉在南部キラの村买到；实际查看紧随的商店截图和地图截图：300G、库存5，凯伊、6/18、キラの村。并不证明最早开放章节。",
+        "part": 1,
+        "route": "凯伊线",
+        "chapter": "第一部第7章自由行动；图片日期6/18，非首次开放章",
+        "gameVersion": null,
+        "difficulty": null,
+        "spoiler": "第一部"
       }
     ],
     "checkedAt": "2026-10-02",
     "gameVersion": null,
     "status": "page-reviewed",
-    "scope": "两家攻略页与路线明确玩家记录及原文2张游戏截图交叉核对。图片证明这份凯伊存档的商店标价/库存，不推为全路线固定价格或库存。版本与难度未知。",
-    "route": "第一部凯伊线",
-    "chapter": "第7章自由行动期间的玩家购买记录（地图日期6/18）；非最早开放时点",
-    "difficulty": null,
-    "spoilerLevel": "招募物品",
+    "scope": "保留先前原页核对的物品取得方式；本批增加凯伊线玩家商店、地图两张截图，验证该存档300G标价和路径，不把画面库存推为固定补货规律。版本与难度未注明。",
+    "acquisitionCheckedAt": "2026-10-02",
     "imageEvidence": [
       {
         "url": "https://cdn-ak.f.st-hatena.com/images/fotolife/y/yosi1934/20260920/20260920053826.jpg",
@@ -439,7 +553,11 @@
         "evidenceLocation": "地图选中キラの村，左侧凯伊头像和リベイラの風，日期6/18；设施菜单含市场。",
         "checkedAt": "2026-10-02"
       }
-    ]
+    ],
+    "difficulty": null,
+    "spoilerLevel": "招募物品",
+    "route": "第一部四路线的既有取得方式；新增购入画面仅凯伊线",
+    "chapter": "新增图证：凯伊线第7章自由行动，非首次开放章"
   },
   {
     "name": "希蒙",
@@ -510,7 +628,7 @@
     "name": "努佐",
     "kind": "物品 · 按路线核对",
     "condition": "凯伊／赛奥朵拉／蕾达线：铁弓 ×3",
-    "details": "先满足本线支援和名声门槛，再交付铁弓；缺少时查看武器屋或商人的现货。赛奥朵拉线第9章出现有两站对应记录。迪托利希线数量有分歧，先查看当前交涉提示，不能套用另外三线。",
+    "details": "先满足本线支援和名声门槛，再交付铁弓；缺少时查看武器屋或商人的现货。赛奥朵拉线第9章出现有两站对应记录。迪托利希线数量有分歧，先查看当前交涉提示，不能套用另外三线。 第一部王都ブレストン武器屋的铁弓标价每把1500G；リベイラ村为750G，オレンスの町为1125G。以上按城镇列价，不把第三部价格混入；通路及库存以本线进度为准。 帝都ダグシオン武器屋的铁弓标价1500G：凯伊、赛奥朵拉篇第9章起，迪托利希、蕾达篇第7章起。",
     "routes": [
       "凯伊线",
       "迪托利希线",
@@ -541,6 +659,30 @@
         "label": "AppMedia · 努佐",
         "checkedAt": "2026-10-01",
         "evidenceLocation": "「スカウト条件」「成長値」「個人スキル」"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577833",
+        "label": "GameWith · 铁弓取得与价格",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "入手方法：第一部の武器屋の城镇別価格；帝都の主人公別開放章（救世編とは分離）",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase021/",
+        "label": "AlGest · 王都ブレストン商店",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "王都ブレストンの武器屋：鉄の剣／槍／斧／弓の各1500G",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
       }
     ],
     "checkedAt": "2026-10-01",
@@ -549,7 +691,8 @@
     "route": "第一部四路线",
     "chapter": "赛奥朵拉线第9章；其他路线首次出现章未在本批裁定",
     "status": "page-reviewed",
-    "scope": "三站核对S/R门槛；三条路线铁弓×3一致。迪托利希线数量存在冲突，未裁定；未作游戏内实测。版本与难度未标明。"
+    "scope": "三站核对S/R门槛；三条路线铁弓×3一致。迪托利希线数量存在冲突，未裁定；未作游戏内实测。版本与难度未标明。",
+    "acquisitionCheckedAt": "2026-10-02"
   },
   {
     "name": "奥林匹亚",
@@ -591,55 +734,179 @@
     "scope": "攻略页与明确路线的玩家记录交叉核对；本批只补迪托利希线交涉，不代表全路线或全难度实测。版本与难度未注明。"
   },
   {
-    "name": "洛蕾塔",
-    "kind": "物品 · 铁剑准备",
-    "condition": "按当前交涉要求交付铁剑 ×3",
-    "details": "铁剑可在帝都达古席翁（ダグシオン）的武器屋购买。先确认本线支援、名声和当前库存，再凑齐交涉所需的3把；不要把招募用剑提前卖掉。各地价格与到货进度不同，按当前商店标价备钱。",
+    "name": "哈尔温",
+    "kind": "物品",
+    "condition": "椰枣 ×10",
+    "details": "以下补充交涉材料的取得方式；支援、名声与本线数量仍按上方原招募表。 椰枣对应日文デーツ。凯伊篇可完成「毛むくじゃらのでけえ獣」取得2个，再在世界地图栽培增加到交涉所需数量；先保留用于栽培的材料。 迪托利希、赛奥朵拉、蕾达篇可在タルボス平原、タルボス北道、タルボス南道等探索取得，也可到バイナのオアシス市集购买；凯伊篇不能进入这些西部探索地点。",
     "routes": [
       "凯伊线",
       "迪托利希线",
       "赛奥朵拉线",
       "蕾达线"
     ],
-    "byRoute": {
-      "凯伊线": "3S／7R；交涉要求铁剑 ×3。可先查帝都达古席翁武器屋现货。",
-      "迪托利希线": "3S／9R；交涉要求铁剑 ×3。可先查帝都达古席翁武器屋现货。",
-      "赛奥朵拉线": "3S／5R；交涉要求铁剑 ×3。可先查帝都达古席翁武器屋现货。",
-      "蕾达线": "沿用本线招募表，实际加入方式以当前剧情与交涉提示为准；若要求铁剑 ×3，可先查帝都达古席翁武器屋现货。"
-    },
-    "route": "第一部四路线；出现铁剑交涉时适用",
-    "chapter": "可交涉后；未固定商店到货章与单价",
-    "scope": "GameWith角色页、物品页与Game8交叉确认铁剑×3和帝都武器屋来源；Altema对蕾达线写剧情加入，故未据此改写原招募表。未作游戏内实测，版本与难度未注明。",
+    "byRoute": {},
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577816",
+        "label": "GameWith · 椰枣取得方式",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "デーツの入手方法：探索のルート制限／クエスト報酬／バイナのオアシス",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816871",
+        "label": "Game8 · 椰枣取得方式",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "探索で入手：カイ編不可；クエスト報酬：毛むくじゃらのでけえ獣・デーツ×2",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816457",
+        "label": "Game8 · 哈尔温交涉材料",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "交渉ではデーツを10個渡す：カイ編のクエスト報酬と栽培",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://chucco.com/fefw-halvin-scout/",
+        "label": "Chucco · 凯伊篇哈尔温招募过程",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "デーツの入手方法：クエスト報酬2個→栽培→10個交付",
+        "part": 1,
+        "route": "凯伊线",
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      }
+    ],
     "checkedAt": "2026-10-02",
     "gameVersion": null,
     "difficulty": null,
+    "route": "凯伊线 / 迪托利希线 / 赛奥朵拉线 / 蕾达线",
+    "chapter": null,
     "status": "page-reviewed",
-    "spoilerLevel": "培养与招募条件",
+    "scope": "本轮只核对交涉材料取得方式；原招募门槛沿用手册，未作游戏内实测。",
+    "acquisitionCheckedAt": "2026-10-02"
+  },
+  {
+    "name": "洛蕾塔",
+    "kind": "物品",
+    "condition": "铁剑 ×3",
+    "details": "以下补充交涉材料的取得方式；支援、名声与本线数量仍按上方原招募表。 第一部王都ブレストン武器屋的铁剑标价每把1500G；帝都ダグシオン武器屋同为1500G，四篇均从第7章起上架。通路及库存以本线进度为准。",
+    "routes": [
+      "凯伊线",
+      "迪托利希线",
+      "赛奥朵拉线",
+      "蕾达线"
+    ],
+    "byRoute": {},
     "sources": [
       {
-        "url": "https://game8.jp/fe-banshisenko/816451",
-        "label": "Game8 · 洛蕾塔",
-        "evidenceLocation": "「育成おすすめ（兵種）」「評価・成長値・スキル・技能」「交渉は鉄の剣を3つ渡すことで仲間になる」「ブレイズタイプ・個人スキル・血印」「レベルで覚えるスキル」",
-        "checkedAt": "2026-10-02"
-      },
-      {
-        "url": "https://gamewith.jp/fefw/577378",
-        "label": "GameWith · 洛蕾塔",
-        "evidenceLocation": "「成長率・ステータス」「スカウト条件」「鉄の剣を3個渡すと加入」「おすすめ兵種とシミュレーター」「レベル習得スキル」",
-        "checkedAt": "2026-10-02"
-      },
-      {
-        "url": "https://altema.jp/febansisenkou/loretta",
-        "label": "Altema · 洛蕾塔",
-        "evidenceLocation": "「各ストーリーのスカウト条件」「おすすめ兵種」「ステータスと成長率」「個人スキル」；蕾达线加入方式与其他站点有差异",
-        "checkedAt": "2026-10-02"
-      },
-      {
         "url": "https://gamewith.jp/fefw/578518",
-        "label": "GameWith · 铁剑取得",
-        "evidenceLocation": "「鉄の剣の入手方法」「ロレッタのスカウトで使用」；城市/章节标价只作本页记录，不概括为统一价格",
-        "checkedAt": "2026-10-02"
+        "label": "GameWith · 铁剑取得与价格",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "入手方法：第一部の武器屋の城镇別価格；帝都の主人公別開放章（救世編とは分離）",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase021/",
+        "label": "AlGest · 王都ブレストン商店",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "王都ブレストンの武器屋：鉄の剣／槍／斧／弓の各1500G",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
       }
-    ]
+    ],
+    "checkedAt": "2026-10-02",
+    "gameVersion": null,
+    "difficulty": null,
+    "route": "凯伊线 / 迪托利希线 / 赛奥朵拉线 / 蕾达线",
+    "chapter": null,
+    "status": "page-reviewed",
+    "scope": "本轮只核对交涉材料取得方式；原招募门槛沿用手册，未作游戏内实测。",
+    "acquisitionCheckedAt": "2026-10-02"
+  },
+  {
+    "name": "莱桑达",
+    "kind": "物品",
+    "condition": "铁枪 ×5",
+    "details": "以下补充交涉材料的取得方式；支援、名声与本线数量仍按上方原招募表。 第一部王都ブレストン武器屋的铁枪标价每把1500G，王都メガエラ为1125G；通路及库存以本线进度为准。 帝都ダグシオン武器屋的铁枪标价1500G：凯伊篇第5章、赛奥朵拉篇第4章、迪托利希与蕾达篇第7章起。",
+    "routes": [
+      "凯伊线",
+      "迪托利希线",
+      "蕾达线"
+    ],
+    "byRoute": {},
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577834",
+        "label": "GameWith · 铁枪取得与价格",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "入手方法：第一部の武器屋の城镇別価格；帝都の主人公別開放章（救世編とは分離）",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase021/",
+        "label": "AlGest · 王都ブレストン商店",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "王都ブレストンの武器屋：鉄の剣／槍／斧／弓の各1500G",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase002/",
+        "label": "AlGest · 王都メガエラ商店",
+        "checkedAt": "2026-10-02",
+        "evidenceLocation": "王都メガエラの武器屋：鉄の槍／斧1125G、青銅の斧375G",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      }
+    ],
+    "checkedAt": "2026-10-02",
+    "gameVersion": null,
+    "difficulty": null,
+    "route": "凯伊线 / 迪托利希线 / 蕾达线",
+    "chapter": null,
+    "status": "page-reviewed",
+    "scope": "本轮只核对交涉材料取得方式；原招募门槛沿用手册，未作游戏内实测。",
+    "acquisitionCheckedAt": "2026-10-02"
   }
 ]

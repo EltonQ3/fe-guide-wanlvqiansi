@@ -251,6 +251,12 @@
   "avatar": "assets/avatar/33.jpg",
   "portrait": "assets/portrait/33.jpg"
  },
+ "伊奥": {
+  "n": "33",
+  "jp": "イオ",
+  "avatar": "assets/avatar/33.jpg",
+  "portrait": "assets/portrait/33.jpg"
+ },
  "卡塔妮雅": {
   "n": "34",
   "jp": "カターニャ",
@@ -282,10 +288,10 @@
   "portrait": "assets/portrait/37.jpg"
  },
  "基罗伊卡": {
-  "n": "39",
+  "n": "59",
   "jp": "キロイカ",
-  "avatar": "assets/avatar/39.jpg",
-  "portrait": "assets/portrait/39.jpg"
+  "avatar": "assets/avatar/59.jpg",
+  "portrait": "assets/portrait/59.jpg"
  },
  "红花": {
   "n": "40",

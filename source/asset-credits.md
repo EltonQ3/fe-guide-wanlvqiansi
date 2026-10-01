@@ -52,3 +52,12 @@
 - 文件：assets/campaign/salvation-opening.webp
   - 来源页面：https://game8.jp/fe-banshisenko/817161
   - 原图：https://img.game8.jp/13024083/3abe6d6d6dd3151c7697233819f0ea53.webp/show
+
+## 西文字体（2026-10-01）
+
+标题与编号中的西文字母、数字使用 Libre Caslon Text（400、400 斜体、700），只含拉丁字符子集，随站点自托管，不依赖第三方字体服务。
+
+- 文件：assets/fonts/libre-caslon-text-latin-*.woff2，取自 npm 包 @fontsource/libre-caslon-text 5.3.0
+- 许可：SIL Open Font License 1.1，全文见 assets/fonts/OFL-LibreCaslonText.txt
+- 版权：Copyright 2012 The Libre Caslon Text Project Authors
+

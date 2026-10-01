@@ -1,0 +1,14 @@
+// Cloudflare Workers Builds is also connected to this repository (check "Workers Builds: fe-guide").
+// Without a config, its `wrangler deploy` has nothing to deploy and fails. This serves the same static
+// docs/ folder that Cloudflare Pages publishes; no Worker code, no build step. The site itself still
+// needs no npm. Cloudflare Pages ignores this file because it has no pages_build_output_dir.
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "fe-guide",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./docs",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}
