@@ -23,7 +23,9 @@
 :root[data-mode=dark] .resume-alerts a.is-closing span{color:#f0a688}:root[data-mode=dark] .resume-alerts a.is-open span{color:#93c8a4}
 /* Paralogue window bars: the route glow reads better than the mirrored accent on a dark card. */
 :root[data-mode=dark] .pg-win,:root[data-mode=dark] .pg-key{background:var(--route-glow,#9fb59a)}:root[data-mode=dark] .pg-due,:root[data-mode=dark] .pg-key.due{background:none;border-color:var(--route-glow,#9fb59a)}
+/* Blood-seal glyphs are mid-grey; lift them on the dark card (after the general image dimming below). */
 /* Portraits and screenshots sit a little quieter on a dark page. */
 :root[data-mode=dark] main img:not(.class-icon){filter:brightness(.94)}
+:root[data-mode=dark] main img.crest-icon{filter:brightness(1.7)}
 }
 @media screen and (max-width:800px){:root[data-mode=dark] .reading-nav a.active{color:var(--paper)}}

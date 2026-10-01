@@ -254,3 +254,7 @@ small{font-size:max(11px,.85em)}
 /* Phones: room between the buttons and the portraits for the braided threads (web/weave.js), so the cards never cover them. */
 @media(max-width:580px){.hero-art{margin-top:30px}}
 @media(max-width:700px){.campaign-pilot .route-hero-art{margin-top:24px}}
+/* Blood seals (manual 5.8): icon cards built from the manual's table (crest_cards in tools/build_site.py). */
+.crest-grid{list-style:none;padding:0;margin:18px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}.crest-grid li{display:flex;gap:14px;align-items:flex-start;margin:0;padding:14px 16px;background:var(--white);border:1px solid var(--line)}
+.crest-icon{flex:none;width:40px;height:40px}.crest-grid strong{display:block;font:600 16px/1.4 var(--serif)}.crest-grid p{margin:4px 0 2px;font-size:14px;line-height:1.7}.crest-grid small{color:var(--muted);font-size:12px}
+.crest-rate{display:inline-block;min-width:3.2em;padding:0 6px;margin-right:4px;text-align:center;font-weight:700;color:var(--gold-ink);border:1px solid var(--line);border-radius:2px}

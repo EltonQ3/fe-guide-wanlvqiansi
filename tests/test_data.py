@@ -246,4 +246,10 @@ class DataTests(unittest.TestCase):
         sections={f"#guide/{c['id']}/{s['id']}" for c in DATA['chapters'] for s in c['sections']}
         for tip in DATA['shopTips']:self.assertIn(tip['ref'],sections)
 
+    def test_blood_seals_render_as_cards_with_icons(self):
+        html=next(s['html'] for c in DATA['chapters'] for s in c['sections'] if s['id']=='s5-8')
+        icons=re.findall(r'<img class="crest-icon" src="([^"]+)"',html);self.assertEqual(len(icons),10)
+        for src in icons:self.assertTrue((ROOT/'docs'/src).exists(),src)
+        self.assertNotIn('<table>',html);self.assertIn('持有者：赛奥朵拉、凯伊、奥尔赫尔、塔利穆恩、波鲁波亚',html)
+
 if __name__=='__main__':unittest.main()

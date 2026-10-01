@@ -12,6 +12,22 @@
   "entries": [
     {
       "date": "2026-10-01",
+      "edition": "血印图鉴排版与部署检查修复",
+      "checked": 0,
+      "merged": [
+        {
+          "text": "攻略手册 5.8 血印改为卡片：用站内已有的 10 个血印图标，每张卡写发动率、效果与持有者；内容与原表逐字相同，只改排版。"
+        },
+        {
+          "text": "PR 上长期失败的「Workers Builds: fe-guide」已修复：仓库另连的 Cloudflare Workers 项目找不到可发布内容，新增 wrangler.jsonc 让它发布同一个 docs/。Cloudflare Pages 不受影响。"
+        }
+      ],
+      "conflicts": [],
+      "new_sources": [],
+      "limited": []
+    },
+    {
+      "date": "2026-10-01",
       "edition": "手机版丝线位置修正",
       "checked": 0,
       "merged": [

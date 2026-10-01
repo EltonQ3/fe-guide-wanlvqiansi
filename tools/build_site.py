@@ -29,7 +29,20 @@ def render(text):
         columns=table.split('</tr>')[0].count('<th>')
         kind='compact' if columns<=3 else 'wide'
         return f'<div class="table-scroll {kind}" role="region" aria-label="数据表格，可横向滚动" tabindex="0">{table}</div>'
-    return re.sub(r'<table>.*?</table>',wrap_table,result,flags=re.S)
+    return re.sub(r'<table>.*?</table>',wrap_table,crest_cards(result),flags=re.S)
+def crest_cards(result):
+    # The blood-seal table (manual 5.8) becomes cards with the seal icons the site already ships; same rows, same words.
+    def cards(match):
+        rows = re.findall(r'<tr>\s*<td>(.*?)</td>\s*<td>(.*?)</td>\s*<td>(.*?)</td>\s*</tr>', match[0], re.S)
+        items = []
+        for name, effect, holders in rows:
+            icon = f'assets/icon/crest/{name}.png'
+            if not (ROOT/'docs'/icon).exists(): return match[0]
+            m = re.fullmatch(r'攻击时 (\d+)% 发动，(.+)', effect.strip())
+            line = f'<span class="crest-rate">{m[1]}%</span> 攻击时发动 · {m[2]}' if m else effect
+            items.append(f'<li><img class="crest-icon" src="{icon}" alt="" width="40" height="40" loading="lazy"><div><strong>{name}</strong><p>{line}</p><small>持有者：{holders}</small></div></li>')
+        return f'<ul class="crest-grid">{"".join(items)}</ul>' if items else match[0]
+    return re.sub(r'<table>\s*<thead>\s*<tr>\s*<th>血印</th>.*?</table>', cards, result, flags=re.S)
 def canonical(url):
     p = urlsplit(url.rstrip('。；，'))
     query = [(k,v) for k,v in parse_qsl(p.query) if not k.startswith('utm_')]

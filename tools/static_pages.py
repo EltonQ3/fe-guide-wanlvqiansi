@@ -101,12 +101,13 @@ class Site:
     def guide(self, c, chapters):
         rel = '../'
         toc = ''.join(f'<a href="#{s["id"]}">{esc(s["title"])}</a>' for s in c['sections'])
-        sections = ''.join(f'<section class="reading-section" id="{s["id"]}"><h2>{esc(s["title"])}</h2><div class="prose">{s["html"]}</div></section>' for s in c['sections'])
+        local = lambda markup: markup.replace('src="assets/', f'src="{rel}assets/')  # icons in the manual sit at the site root
+        sections = ''.join(f'<section class="reading-section" id="{s["id"]}"><h2>{esc(s["title"])}</h2><div class="prose">{local(s["html"])}</div></section>' for s in c['sections'])
         prev = chapters[c['number'] - 2] if c['number'] > 1 else None
         nxt = chapters[c['number']] if c['number'] < len(chapters) else None
         end = (f'<a href="{prev["id"]}.html"><small>← 上一篇</small>{esc(prev["title"])}</a>' if prev else f'<a href="{rel}directory.html"><small>← 返回</small>全站目录</a>') + \
               (f'<a href="{nxt["id"]}.html"><small>下一篇 →</small>{esc(nxt["title"])}</a>' if nxt else f'<a href="{rel}index.html#weekly"><small>接着看 →</small>每周行动清单</a>')
-        body = f'''<div class="reading-layout"><aside class="reading-nav"><h2>本篇目录 <span class="eyebrow">{c["number"]:02d}</span></h2><nav aria-label="本篇目录">{toc}</nav></aside><article class="reading-content"><header class="reading-title"><div class="eyebrow">CHAPTER {c["number"]:02d} / FIELD NOTES</div><h1>{esc(c["title"])}</h1><div class="article-meta"><span>资料快照 {esc(self.d["updated"])}</span><span>{len(c["sections"])} 个主题</span></div></header>{f'<div class="prose">{c["introHtml"]}</div>' if c["introHtml"] else ''}{sections}<nav class="page-end" aria-label="上一篇与下一篇">{end}</nav></article></div>'''
+        body = f'''<div class="reading-layout"><aside class="reading-nav"><h2>本篇目录 <span class="eyebrow">{c["number"]:02d}</span></h2><nav aria-label="本篇目录">{toc}</nav></aside><article class="reading-content"><header class="reading-title"><div class="eyebrow">CHAPTER {c["number"]:02d} / FIELD NOTES</div><h1>{esc(c["title"])}</h1><div class="article-meta"><span>资料快照 {esc(self.d["updated"])}</span><span>{len(c["sections"])} 个主题</span></div></header>{f'<div class="prose">{local(c["introHtml"])}</div>' if c["introHtml"] else ''}{sections}<nav class="page-end" aria-label="上一篇与下一篇">{end}</nav></article></div>'''
         topics = '、'.join(s['title'] for s in c['sections'])
         desc = summary(f'火焰纹章 万缕千丝攻略手册第 {c["number"]} 篇「{c["title"]}」：{topics}。' + (c['sections'][0]['text'] if c['sections'] else ''))
         self.add(f'guide/{c["id"]}.html', '0.8', f'{c["title"]} · 攻略手册', desc, body, f'guide/{c["id"]}',
