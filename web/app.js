@@ -145,7 +145,7 @@ function buildMarkup(b) {
 }
 function characterStrategy(c) {
   const n=c.negotiations, b=c.builds;
-  return `<section class="negotiation-detail"><h3>交涉要准备什么</h3>${['2','3','4','5'].includes(c.id)?'<p>第一部仅作为对应路线主角使用，其他三线不可招募；第三部加入取决于此前路线通关与剧情进度。</p>':n?`<span class="tag">${esc(n.kind)}</span><h4>${esc(n.condition)}</h4><p>${esc(n.details)}</p><p class="aliases">适用：${n.routes.map(esc).join(' / ')}</p>${Object.keys(n.byRoute).length?`<dl>${Object.entries(n.byRoute).map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`:''}${evidence(n.sources)}`:`<p class="notice">本批尚未独立核对该角色交涉流程。先看上方原表的物品、金钱、外传与 S／R 门槛；没有写出明细不代表无条件加入。</p>`}</section><section class="training-detail"><h3>怎么养，怎么转职</h3>${b?buildMarkup(b):'<p class="notice">该角色的分阶段培养方案待补，暂不从同类角色直接套用。</p>'}</section>`;
+  return `<section class="negotiation-detail"><h3>交涉要准备什么</h3>${['2','3','4','5'].includes(c.id)?'<p>第一部仅作为对应路线主角使用，其他三线不可招募；第三部加入取决于此前路线通关与剧情进度。</p>':n?`<span class="tag">${esc(n.kind)}</span><h4>${esc(n.condition)}</h4><p>${esc(n.details)}</p><p class="aliases">适用：${n.routes.map(esc).join(' / ')}</p>${Object.keys(n.byRoute).length?`<dl>${Object.entries(n.byRoute).map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`:''}${evidence(n.sources)}`+tradeSources(c):`<p class="notice">本批尚未独立核对该角色交涉流程。先看上方原表的物品、金钱、外传与 S／R 门槛；没有写出明细不代表无条件加入。</p>`}</section><section class="training-detail"><h3>怎么养，怎么转职</h3>${b?buildMarkup(b):'<p class="notice">该角色的分阶段培养方案待补，暂不从同类角色直接套用。</p>'}</section>`;
 }
 function storyOverview() {
   return `<div class="container page">${heading('CAMPAIGN FIELD NOTES','跟着你的进度，往前走。','第一部的四位主角各自展开路线；第二部战争篇与第三部救世篇另行推进。这里的“部”与每条路线内的“章”分开记。')}<div class="story-coverage"><strong>首批内容已整理</strong><span>${D.negotiations.length} 位交涉明细</span><span>${D.builds.length} 位培养方案</span><span>20 场战斗笔记</span><a href="#sources/log">查看更正记录 ↗</a></div><section class="story-stage"><div class="section-heading"><div><div class="eyebrow">PART I · FOUR WARRIORS</div><h2>第一部 · 四条路线</h2></div></div><p class="notice">每线 12 章。四位主角只属于自己的第一部路线，其他路线不可招募该主角；点头像进入人物篇章专题。</p><div class="route-grid">${D.story.filter(s=>s.part===1).map((s,i)=>{const c=D.characters.find(c=>c.id===String(i+2));return `<a class="route-tile" href="${storyLink(s)}"><img src="${esc(c.avatar)}" alt=""><div><span class="eyebrow">ROUTE 0${i+1}</span><h3>${esc(s.title)}</h3><p>${esc(s.subtitle)}</p><small>背景特色 · 人物培养 · 招募与关卡 ↗</small></div></a>`;}).join('')}</div></section><div class="later-parts">${D.story.filter(s=>s.part>1).map(s=>`<a class="part-card" href="${storyLink(s)}"><div class="eyebrow">PART ${s.part===2?'II':'III'}</div><h2>第${s.part===2?'二':'三'}部 · ${esc(s.title)}</h2><p>${esc(s.subtitle)}</p><span>${s.battles.length} ${s.part===2?'章':'区分'}推进要点 →</span></a>`).join('')}</div><p class="notice">四个人物篇章以背景特色、原生队伍、培养取舍与招募规划为主；关卡打法保留为篇内补充。尚未核验的条件与未完成的关卡笔记分别标示，不冒充完整实测。</p></div>`;
@@ -199,8 +199,13 @@ function navigate() {
   const [path,query='']=raw.split('?'), [view,id,section]=path.split('/');
   const key=['guide','route','story'].includes(view)?`${view}/${id||''}`:view;
   if(['guide','route'].includes(view)&&currentView===key) { headroomLock=Date.now()+900; if(section){document.documentElement.classList.add('nav-hidden');$('#'+CSS.escape(section))?.scrollIntoView({behavior:'smooth'});} else window.scrollTo({top:0}); return; }
-  observer?.disconnect(); currentView=key;
-  $$('dialog[open]').forEach(d=>d.close());
+  const first=!currentView;observer?.disconnect(); currentView=key;
+  $$('dialog[open]').forEach(d=>d.close()); // before the old view is captured, so no dialog lingers in the snapshot
+  // Cross-fade between views where the browser supports it; the first paint and reduced motion swap at once.
+  if(!first&&document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.startViewTransition(()=>renderView(view,id,section,query));
+  else renderView(view,id,section,query);
+}
+function renderView(view,id,section,query) {
   if(view==='sources') sourceTab=['registry','log','collect'].includes(id)?id:'registry';
   const titles={classes:'兵种资料库',home:'首页',story:id?D.story.find(s=>s.id===id)?.title:'流程攻略',route:D.story.find(s=>s.id===id)?.title.replace('路线','篇')||'人物篇章',characters:'角色图鉴',planner:'招募规划',guides:'攻略手册',guide:D.chapters.find(c=>c.id===id)?.title||'攻略',weekly:'每周行动',sources:'情报档案'};
   document.title=(titles[view]||'未收录页面')+' · 万缕千丝战术手帖';
@@ -215,7 +220,7 @@ function navigate() {
   if(['route','story'].includes(view)&&section)requestAnimationFrame(()=>$('#'+CSS.escape(section))?.scrollIntoView({behavior:'instant'}));
   const reading=(sid,a)=>rememberReading(`#${view}/${id}/${sid}`,`${titles[view]} · ${(a?.textContent||'').replace(/^\d+/,'').trim()}`);
   if(view==='story'&&id&&D.story.find(s=>s.id===id)?.part>1)rememberReading('#story/'+id,titles.story);
-  if(view==='home'&&typeof startWeave==='function')startWeave($('.hero-weave'));
+  if(typeof startWeave==='function'){const sel={home:'.hero-home',route:'.route-hero'}[view],hero=sel&&$(sel);if(hero){if(!hero.querySelector('.hero-weave'))hero.insertAdjacentHTML('afterbegin','<canvas class="hero-weave" aria-hidden="true"></canvas>');startWeave(hero.querySelector('.hero-weave'));}}
   if(view==='route')renderGameDate(id);
   if(view==='route'){const links=$$('.route-toc a[data-section]');if(links.length)spy(links,reading)(section&&links.some(a=>a.dataset.section===section)?section:links[0].dataset.section);}
   if(view==='guide') {

@@ -125,6 +125,7 @@ class Site:
             trade = f'<span class="tag">{esc(n["kind"])}</span><h4>{esc(n["condition"])}</h4><p>{esc(n["details"])}</p><p class="aliases">适用：{" / ".join(map(esc, n["routes"]))}</p>{f"<dl>{by_route}</dl>" if by_route else ""}{evidence(n["sources"])}'
         else:
             trade = '<p class="notice">本批尚未独立核对该角色交涉流程。先看上方原表的物品、金钱、外传与 S／R 门槛；没有写出明细不代表无条件加入。</p>'
+        trade = trade + self.trade_sources(c, (n or {}).get('details', ''))
         if b:
             rows = ''.join(f'<div><dt>{k}</dt><dd>{esc(v)}</dd></div>' for k, v in [('前期', b['early']), ('中期', b['middle']), ('后期目标', b['late']), ('考试与解锁', b['requirement']), ('取舍与限制', b['caution'])])
             build = f'<div class="build-plan"><span class="tag amber">编辑培养建议</span><h4>{esc(b["role"])}</h4><dl>{rows}</dl><p class="notice">这些是阶段性培养方向，并非必须逐级转职的固定链。适用难度及版本未做独立实测；优先满足当前队伍缺口。</p>{evidence(b["sources"])}</div>'
@@ -165,6 +166,20 @@ class Site:
         spa = ('route/' if s['part'] == 1 else 'story/') + s['id']
         self.add(f'route/{s["id"]}.html', '0.8', f'{title}攻略', desc, f'<article class="reading-content static-route">{head}{"".join(parts)}</article>', spa,
                  crumbs=[('directory.html#routes', '流程攻略'), ('', title)])
+
+    def trade_sources(self, c, shown):
+        names = list(dict.fromkeys(x['item'] for p in c.get('plan', {}).values() for x in p.get('needs', []) if x['type'] == 'item'))
+        rows = []
+        for name in names:
+            t = self.d.get('tradeItems', {}).get(name)
+            known = ' '.join(v['text'] for v in t['verified'] if v['text'] not in shown) if t else ''
+            if not t or not (known or t['pages']): continue
+            pages = ' '.join(f'<a href="{esc(safe_url(p["url"]))}" target="_blank" rel="noopener noreferrer">{esc(p["label"].split(" · ")[0])} ↗</a>' for p in t['pages'])
+            lead = '详见' if t['verified'] else '可先查'
+            found = f'取得：{esc(known)}' if known else '取得方式见上方交涉说明' if t['verified'] else '取得方式本站尚未核对'
+            more = f'<span>{lead} {pages}</span>' if pages else ''
+            rows.append(f'<p><strong>{esc(name)}</strong><small class="plan-source">{found}{more}</small></p>')
+        return f'<div class="trade-sources"><h4>物品去哪里找</h4>{"".join(rows)}</div>' if rows else ''
 
     @staticmethod
     def battle(b, t):

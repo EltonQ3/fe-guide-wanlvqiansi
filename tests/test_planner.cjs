@@ -87,4 +87,13 @@ const dated=setup(null);dated.store['fe-next.gamedate.v1']=JSON.stringify({kai:'
 const alerts=dated.run('homeResume()');assert(alerts.includes('继续你的旅程')&&alerts.includes('外传提醒')&&alerts.includes('今天是最后一天可接'),'closing window is surfaced first');
 assert(alerts.indexOf('今天是最后一天可接')<alerts.indexOf('</div>',alerts.indexOf('外传提醒')),'alert sits in the reminder block');
 assert(!alerts.includes('蕾达篇 · '),'invalid saved dates are ignored');
+// Shopping list: checked sources and known prices only; unchecked items point to their guide pages.
+const shop=setup(JSON.stringify({route:'kai',renown:{kai:10},marks:{kai:{'59':'target','19':'target','50':'target'}}}));
+const sum=shop.run(`plannerSummary('kai')`);
+assert(sum.includes('约 19,000G'),'圣水 8×500 + グルマオサ 3×5000');assert(sum.includes('取得：商店基础标价每个 500G'));
+assert(sum.split('巨人肉')[1].includes('取得方式本站尚未核对')&&sum.includes('https://gamewith.jp/fefw/577828'));
+assert(shop.run(`plannerText('kai')`).includes('圣水 ×8（取得：商店基础标价每个 500G'));
+assert(shop.run(`tradeSources(D.characters.find(c=>c.name==='歌利亚'))`).includes('物品去哪里找'));
+const mu=shop.run(`tradeSources(D.characters.find(c=>c.name==='穆'))`);assert(mu.includes('取得方式见上方交涉说明')&&!mu.includes('本站尚未核对'),'a finding shown in the trade note is not called unchecked');
+assert.equal(shop.run(`tradeSources(D.characters.find(c=>c.aliases.includes('法比奥')))`),'','no repeat of the trade note');
 console.log('Planner: route lists, paralogue windows, totals, marks, persistence and matrix passed.');

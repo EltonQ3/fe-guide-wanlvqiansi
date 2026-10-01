@@ -171,8 +171,13 @@ for c in characters:
     c['plan'] = {route_ids[route]: recruit_plan(value) for route, value in c['recruit'].items()}
     scouts = [p for p in c['plan'].values() if p['kind'] == 'scout']
     for p in scouts: p['lowest'] = p['renown'] == min(s['renown'] for s in scouts)
+# Trade items: only checked findings and where-to-look links reach the site; search leads stay in the source file.
+trade = json.loads((SOURCE/'trade_items.json').read_text())
+trade_items = {i['name']: {k: i[k] for k in ('name', 'jp', 'verified', 'pages')} for i in trade['items']}
+needed = {n['item'] for c in characters for p in c.get('plan', {}).values() for n in p.get('needs', []) if n['type'] == 'item'}
+if needed - set(trade_items): raise ValueError('Trade items missing from source/trade_items.json: ' + '、'.join(sorted(needed - set(trade_items))))
 latest=max(e['date'] for e in logs)
-payload={'snapshot':'35dfba9b2300efc28c4a84e720bc9b9f35e12b0b','updated':latest,'chapters':chapters,'characters':characters,'weekly':weekly,'sources':list(sources.values()),'logs':logs,**curated}
+payload={'snapshot':'35dfba9b2300efc28c4a84e720bc9b9f35e12b0b','updated':latest,'chapters':chapters,'characters':characters,'weekly':weekly,'sources':list(sources.values()),'logs':logs,'tradeItems':trade_items,'shopTips':trade['shopTips'],**curated}
 (OUT/'data.js').write_text('window.FE_DATA = '+json.dumps(payload,ensure_ascii=False).replace('</','<\\/')+';\n')
 (SOURCE/'sources.json').write_text(json.dumps(list(sources.values()),ensure_ascii=False,indent=2)+'\n')
 print(f'Built {len(chapters)} chapters, {sum(len(c["sections"]) for c in chapters)} sections, {len(characters)} characters, {len(sources)} sources, {len(weekly)} weekly tasks.')

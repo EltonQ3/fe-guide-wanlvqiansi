@@ -229,4 +229,21 @@ class DataTests(unittest.TestCase):
         g4=(ROOT/'docs/guide/g4.html').read_text()
         for s in DATA['chapters'][3]['sections']:self.assertIn(f'id="{s["id"]}"',g4)
 
+    def test_trade_items_publish_only_checked_findings(self):
+        trade=json.loads((ROOT/'source/trade_items.json').read_text());neg=json.loads((ROOT/'source/negotiations.json').read_text())
+        needed={n['item'] for c in DATA['characters'] for p in c.get('plan',{}).values() for n in p.get('needs',[]) if n['type']=='item'}
+        self.assertEqual(needed,set(DATA['tradeItems']))
+        bundle=(ROOT/'docs/data.js').read_text()
+        self.assertNotIn('search-summary',bundle);self.assertNotIn('"leads"',bundle)
+        for item in DATA['tradeItems'].values():
+            for v in item['verified']:
+                # A published finding quotes a curated negotiation note and cites the same page.
+                self.assertTrue(any(v['text'] in n['details'] and {x['url'] for x in v['sources']}<={x['url'] for x in n['sources']} for n in neg),v['text'])
+                if 'unitPrice' in v:self.assertIn(f"{v['unitPrice']}G",v['text'])
+            for page in item['pages']:self.assertTrue(page['url'].startswith('https://'))
+        for i in trade['items']:
+            for lead in i['leads']:self.assertEqual(lead['status'],'search-summary')
+        sections={f"#guide/{c['id']}/{s['id']}" for c in DATA['chapters'] for s in c['sections']}
+        for tip in DATA['shopTips']:self.assertIn(tip['ref'],sections)
+
 if __name__=='__main__':unittest.main()

@@ -21,6 +21,8 @@
 :root[data-mode=dark] .paralogue-status.is-upcoming{background:#1d2835;color:#a3bcd6}
 :root[data-mode=dark] .paralogue-status.is-deadline{background:#332918;color:#dcbb7c}
 :root[data-mode=dark] .resume-alerts a.is-closing span{color:#f0a688}:root[data-mode=dark] .resume-alerts a.is-open span{color:#93c8a4}
+/* Paralogue window bars: the route glow reads better than the mirrored accent on a dark card. */
+:root[data-mode=dark] .pg-win,:root[data-mode=dark] .pg-key{background:var(--route-glow,#9fb59a)}:root[data-mode=dark] .pg-due,:root[data-mode=dark] .pg-key.due{background:none;border-color:var(--route-glow,#9fb59a)}
 /* Portraits and screenshots sit a little quieter on a dark page. */
 :root[data-mode=dark] main img:not(.class-icon){filter:brightness(.94)}
 }

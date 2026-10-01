@@ -22,6 +22,7 @@ python3 -m http.server 8766 --bind 127.0.0.1
 - 招募规划（`#planner`）：四路线名声门槛对照、按本线名声筛选、计划／已招募标记，自动汇总金币、物品、任务、外传窗口与交涉选项。标记自动存在当前浏览器；「备份链接」把整份计划编码进链接（`#planner?restore=FW1…`），换设备、换浏览器或换域名打开即可导入或合并。
 - 外传日期提醒：人物篇外传日历里填上本线的游戏内日期，每篇外传标出「可接／今明截止／几天后开放／只剩完成期限／已过」；首页「外传提醒」列出各线最紧迫的几篇。日期存在浏览器 `fe-next.gamedate.v1`，按路线分开。
 - 静态页面：构建时为六篇手册、六篇路线、55 位角色与兵种资料生成可直接打开的页面（`guide/`、`route/`、`character/`、`classes.html`），附全站目录 `directory.html`、`sitemap.xml` 与 `robots.txt`，方便百度等不执行脚本的搜索引擎收录，也让聊天软件的链接预览有标题和摘要。
+- 交涉物品「去哪里找」：招募规划的物品清单、角色档案与角色静态页显示已核对的取得方式与标价，并估算已核对物品的花费；未核对的物品只给出该物品的攻略页链接。数据在 `source/trade_items.json`。
 - 全站搜索：攻略标题和正文、简繁常用词与角色别名；角色页面支持礼物反查和可招募路线筛选。
 - 九项每周清单，当前浏览器保存，可手动重置与打印。
 - 兵种资料（`#classes`）：54 种兵种按阶段分组，配兵种像素图标；人物篇转职路线与兵种弹窗同样显示图标。
@@ -145,5 +146,13 @@ python3 tools/check_sources.py --host gamewith.jp --limit 5
 - canonical 与 `sitemap.xml` 用不带 `.html` 的地址（Cloudflare Pages 会把 `/x.html` 重定向到 `/x`）；站内相对链接保留 `.html`，本机 `python3 -m http.server` 预览也能打开。
 - 正式域名默认 `https://fe-guide.pages.dev`。绑定自定义域名后，用 `python3 tools/build_site.py --base-url https://新域名` 重新构建，首页 canonical、静态页与 sitemap 会一起更新。Cloudflare Pages 的预览部署默认带 `noindex`，不会与正式站抢收录。
 - 收录需要站主在百度搜索资源平台、Google Search Console 验证网站并提交 `sitemap.xml`；这一步需要账号操作，构建脚本不会代做。
+- 外传「接取窗口一览」（`web/reference.js` 的 `paralogueGantt`）：实线为接取窗口，虚线为窗口关闭后到完成期限（来源未给期限则不画）；同一外传再次开放时，虚线在下一个窗口前截止。填了游戏日期会画出「今天」线，日期离外传范围超过三周则只提示不画线。
+- 页面切换用浏览器原生 `document.startViewTransition` 淡入淡出（`navigate()` → `renderView()`），页首不参与动画；不支持的浏览器、首次载入与减少动态效果时直接切换。打开的弹窗在切换前关闭。
 - 首页「命运丝线」（`web/weave.js`）：Canvas 2D 背景动画，不用任何外部库。四条主角线的颜色取自立绘底色（`weaveColors`）。文字区域由遮罩淡化丝线；改动首页排版后，请复查大图文字对比仍 ≥ 4.5:1。`prefers-reduced-motion` 下只画静止一帧，画面外或后台分页不绘制。
+- 人物篇顶部也用 `web/weave.js`：本线的 `--route-glow` 与 `--route-gold` 两股线在文字下方编织、穿过立绘后方。
+- 交涉物品（`source/trade_items.json`）：
+  - `verified`：已核对的取得方式，文字须逐字引自 `negotiations.json` 的同一出处（测试会检查），`unitPrice` 须与文字里的价格一致。
+  - `pages`：该物品的专门攻略页，只作“去哪里查”的链接。
+  - `leads`：搜索摘要线索，构建不读取、页面不显示。打开原页核对后，把确认的结论先写进 `negotiations.json`（附出处），再引用到 `verified`。
+  - 招募表新增需要物品的角色时，若 `trade_items.json` 没有该物品，构建会报错。
 

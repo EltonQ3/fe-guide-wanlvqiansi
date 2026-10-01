@@ -45,4 +45,12 @@ assert.equal(st('talimoon','kai','10/11').state,'deadline');assert.equal(st('tal
 assert.equal(st('orhel','kai','x'),null);
 const dg=vm.runInContext(`paralogueDigest('kai','9/20')`,ctx);assert.equal(dg.rows.length,4);assert(dg.open>=1&&dg.open+dg.closed+dg.rows.filter(x=>x.st.state==='upcoming').length+dg.rows.filter(x=>x.st.state==='deadline').length===4);
 const cal=vm.runInContext(`paralogueSection('kai')`,ctx);assert(cal.includes('class="gamedate" data-route="kai"')&&[...cal.matchAll(/data-status-for=/g)].length===4);
+// Window overview: one row per paralogue, single-day marker, reopened windows, no today line without a date.
+const gantt=vm.runInContext(`paralogueGantt('dietrich')`,ctx);
+assert.equal([...gantt.matchAll(/<li /g)].length,8);assert.equal([...gantt.matchAll(/pg-win is-day/g)].length,1,'Bertrand 9/17 only');
+const tali=gantt.split('data-scroll="para-talimoon"')[1].split('</li>')[0];assert.equal([...tali.matchAll(/class="pg-win/g)].length,2);
+const dues=[...tali.matchAll(/class="pg-due" style="left:([\d.]+)%;width:([\d.]+)%/g)].map(m=>[+m[1],+m[2]]),wins=[...tali.matchAll(/class="pg-win" style="left:([\d.]+)%/g)].map(m=>+m[1]);
+assert(dues[0][0]+dues[0][1]<=wins[1]+0.01,'first dashed stretch stops before the window reopens');
+assert(!gantt.includes('pg-today')&&gantt.includes('来源未单列'));
+assert(cal.includes('data-gantt="kai"')&&cal.includes('id="para-orhel"'));
 console.log('Four route calendars, distinct windows/deadlines, class links, filters, modal and search passed.');

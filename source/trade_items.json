@@ -1,0 +1,151 @@
+{
+  "_说明": "交涉物品的取得方式。构建时只读取 verified 与 pages：verified 是已核对来源页面的结论（与 negotiations.json 同一批出处）；pages 是该物品的专门攻略页，只作为“去哪里查”的链接，不代表本站已核对其内容。leads 是搜索引擎摘要给出的线索，未打开原页核对，构建不读取、页面不显示；核对原页后，把确认的内容移入 verified 并附上出处。",
+  "_leads注意": "2026-10-01 的线索来自搜索摘要。摘要里已发现明显错误（把游戏名写成其他作品、与本站招募表的支援／名声门槛不一致），因此每条都必须打开原页确认后再发布。",
+  "shopTips": [
+    {"text": "鞑古席翁商店的库存在每章开始时补货并新增品项；各城镇、城市的市集也有商人。", "ref": "#guide/g4/s4-2"},
+    {"text": "世界地图上按 ZL 悬停聚落可先查看库存再前往（原手册以许可证为例）。", "ref": "#guide/g5/s5-2"}
+  ],
+  "items": [
+    {
+      "name": "巨人肉", "jp": "巨大肉",
+      "verified": [],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/577828", "label": "GameWith · 巨大肉の入手方法"},
+        {"url": "https://altema.jp/febansisenkou/nikugensen", "label": "Altema · 巨大肉の効率的な入手方法"}
+      ],
+      "leads": [
+        {"claim": "海都アレクトーで煉獄草×10と交換；ワールドマップの商人から購入；高級肉箱から稀に；砂影の砦の巨人を倒してドロップ", "from": ["https://gamewith.jp/fefw/577828", "https://altema.jp/febansisenkou/nikugensen", "https://lifematome.blog/fe-kyodainiku-atumeru/"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "グルマオサ", "jp": "グルマオサ",
+      "verified": [
+        {"text": "流动商人出售时标价每个 5000G；商品随机，折扣会影响实际花费。", "unitPrice": 5000, "sources": [{"url": "https://gamewith.jp/fefw/577308", "label": "GameWith · 穆资料"}]}
+      ],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/577825", "label": "GameWith · グルマオサの入手方法"},
+        {"url": "https://game8.jp/fe-banshisenko/817031", "label": "Game8 · グルマオサの入手方法"}
+      ],
+      "leads": [
+        {"claim": "探索：巨人の丘、オーガス山道、裏山道；栽培のレア枠（そよ風の丘、ソナイ峠、ムルキベル湿地帯）", "from": ["https://game8.jp/fe-banshisenko/817031", "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-item391/"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "カガヤキウオ", "jp": "カガヤキウオ",
+      "verified": [
+        {"text": "可探索南部ブロンテス湖取得。", "sources": [{"url": "https://gamewith.jp/fefw/577303", "label": "GameWith · 妮涅资料"}]}
+      ],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/577827", "label": "GameWith · カガヤキウオの入手方法"}
+      ],
+      "leads": [
+        {"claim": "ブロンテス湖の探索で低確率；おまかせ稼ぎで繰り返し探索すると楽", "from": ["https://gamewith.jp/fefw/577827", "https://pokemonza.hatenablog.jp/entry/2026/09/22/125540"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "コーシャルーガー", "jp": "コーシャルーガー",
+      "verified": [],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/577822", "label": "GameWith · コーシャルーガーの入手方法"},
+        {"url": "https://game8.jp/fe-banshisenko/817074", "label": "Game8 · コーシャルーガーの入手方法"}
+      ],
+      "leads": [
+        {"claim": "探索：アルシネウス大橋、コーシャルー湖（ダグシオンのすぐ南）、ゾトー湖；第9章に10個納品のクエスト「コーシャルーガーの戦備増強」", "from": ["https://game8.jp/fe-banshisenko/817074", "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-item016/"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "砂虫肉", "jp": "砂虫肉",
+      "verified": [],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/578020", "label": "GameWith · 砂虫肉の入手方法"},
+        {"url": "https://game8.jp/fe-banshisenko/817080", "label": "Game8 · 砂虫肉の入手方法"}
+      ],
+      "leads": [
+        {"claim": "キラ村の市場で購入（300G・在庫5、カイ編240Gとの記述あり）；海都アレクトーのヴァンダル商会でリガネス×10と交換；砂虫からドロップ；カイ編はダグシオン近くの洞窟で採取", "from": ["https://game8.jp/fe-banshisenko/817080", "https://k1persia.com/fe-banshi-aditi/"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "椰枣", "jp": null,
+      "verified": [],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/577341", "label": "GameWith · 哈尔温资料"},
+        {"url": "https://game8.jp/fe-banshisenko/816457", "label": "Game8 · 哈尔温资料"}
+      ],
+      "leads": [
+        {"claim": "カイ編では後半のサブクエストでしか入手できず、栽培で数を増やす（日本語名はナツメヤシ／デーツのどちらか未確認）", "from": ["https://game8.jp/fe-banshisenko/816457", "https://chucco.com/fefw-halvin-scout/"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "圣水", "jp": "聖水",
+      "verified": [
+        {"text": "商店基础标价每个 500G；按本路线数量准备，实际价格可能受折扣影响。", "unitPrice": 500, "sources": [{"url": "https://gamewith.jp/fefw/577287", "label": "GameWith · 基罗伊卡资料"}]}
+      ],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/577831", "label": "GameWith · 聖水の入手方法"}
+      ],
+      "leads": [
+        {"claim": "帝都ダグシオンの道具屋で1つ500G", "from": ["https://gamewith.jp/fefw/577831", "https://game8.jp/fe-banshisenko/816460"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "铁弓", "jp": "鉄の弓",
+      "verified": [
+        {"text": "缺少时查看武器屋或商人的现货。", "sources": [{"url": "https://gamewith.jp/fefw/577380", "label": "GameWith · 努佐资料"}]}
+      ],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/577833", "label": "GameWith · 鉄の弓の入手方法"}
+      ],
+      "leads": [
+        {"claim": "帝都ダグシオンの武器屋など1500G；リベイラ村で750Gとの記述あり", "from": ["https://gamewith.jp/fefw/577833", "https://appmedia.jp/fe_banshisenkou/80411827"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "铁剑", "jp": "鉄の剣",
+      "verified": [],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/578518", "label": "GameWith · 鉄の剣の入手方法"}
+      ],
+      "leads": [
+        {"claim": "帝都ダグシオンの武器屋など1500G", "from": ["https://gamewith.jp/fefw/578518", "https://appmedia.jp/fe_banshisenkou/80411827"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "铁枪", "jp": "鉄の槍",
+      "verified": [],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/577834", "label": "GameWith · 鉄の槍の入手方法"}
+      ],
+      "leads": [
+        {"claim": "帝都ダグシオンの武器屋など1500G", "from": ["https://gamewith.jp/fefw/577834", "https://appmedia.jp/fe_banshisenkou/80411827"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "铁斧", "jp": "鉄の斧",
+      "verified": [],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/577852", "label": "GameWith · 鉄の斧の入手方法"}
+      ],
+      "leads": [
+        {"claim": "王都ブレストンの武器屋で1500G", "from": ["https://gamewith.jp/fefw/577852", "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase021"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "青铜斧", "jp": "青銅の斧",
+      "verified": [],
+      "pages": [
+        {"url": "https://gamewith.jp/fefw/577857", "label": "GameWith · 青銅の斧の入手方法"}
+      ],
+      "leads": [
+        {"claim": "帝都ダグシオンの武器屋で500G；王都メガエラの武器屋で375G", "from": ["https://gamewith.jp/fefw/577857", "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase002"], "status": "search-summary", "retrieved": "2026-10-01"}
+      ]
+    },
+    {
+      "name": "合适武器", "jp": null,
+      "verified": [
+        {"text": "资料记录有交付达·米纳系护手成功的例子（日文表格写「ド・ミナの籠手」）；这只是已知成功例，并非已验证的唯一可用武器。", "sources": [{"url": "https://gamewith.jp/fefw/577318", "label": "GameWith · 法比奥资料"}]}
+      ],
+      "pages": [],
+      "leads": []
+    }
+  ]
+}
