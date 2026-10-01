@@ -12,7 +12,7 @@ python3 -m http.server 8766 --bind 127.0.0.1
 
 浏览器打开 <http://127.0.0.1:8766>。也可直接打开 `index.html` 阅读；本机保存和下载以 HTTP 预览为准。
 
-站点运行不需要 npm、服务器账户或在线服务。正式站：https://fe-guide.pages.dev/ 。提交 main 后由既有 Cloudflare Pages 集成发布 docs。旧版入口与回退方法见 [发布记录](RELEASE_AND_ROLLBACK.md)。
+站点运行不需要 npm、服务器账户或在线服务。正式站：https://fe-guide.pages.dev/ 。提交 main 后由既有 Cloudflare Pages 集成发布 docs。仓库另连了一个 Cloudflare Workers 项目（PR 上的 `Workers Builds: fe-guide` 检查）；根目录的 `wrangler.jsonc` 让它把同一个 `docs/` 当静态资源发布，否则它的 `wrangler deploy` 会因找不到可发布内容而失败。Pages 会忽略这个文件。若不需要这个 Workers 项目，可在 Cloudflare 后台断开它与仓库的连接，再删掉 `wrangler.jsonc`。旧版入口与回退方法见 [发布记录](RELEASE_AND_ROLLBACK.md)。
 
 ## 已实现
 
