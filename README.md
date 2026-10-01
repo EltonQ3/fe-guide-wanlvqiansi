@@ -12,15 +12,21 @@ python3 -m http.server 8766 --bind 127.0.0.1
 
 浏览器打开 <http://127.0.0.1:8766>。也可直接打开 `index.html` 阅读；本机保存和下载以 HTTP 预览为准。
 
-站点运行不需要 npm、服务器账户或在线服务。正式站：https://fe-guide.pages.dev/ 。提交 main 后由既有 Cloudflare Pages 集成发布 docs。旧版入口与回退方法见 [发布记录](RELEASE_AND_ROLLBACK.md)。
+站点运行不需要 npm、服务器账户或在线服务。正式站：https://fe-guide.pages.dev/ 。提交 main 后由既有 Cloudflare Pages 集成发布 docs。仓库另连了一个 Cloudflare Workers 项目（PR 上的 `Workers Builds: fe-guide` 检查）；根目录的 `wrangler.jsonc` 让它把同一个 `docs/` 当静态资源发布，否则它的 `wrangler deploy` 会因找不到可发布内容而失败。Pages 会忽略这个文件。若不需要这个 Workers 项目，可在 Cloudflare 后台断开它与仓库的连接，再删掉 `wrangler.jsonc`。旧版入口与回退方法见 [发布记录](RELEASE_AND_ROLLBACK.md)。
 
 ## 已实现
 
 - 新首页：深墨色与暖纸色、角色立绘、按玩家问题组织入口、最近修订摘要。
 - 六篇攻略、32 个主题，固定阅读目录与可复制的章节地址。
-- 56 位具有招募或送礼资料的角色索引，合并原站已有别名；角色弹窗同时展示四路线招募与礼物。
+- 55 位具有招募或送礼资料的角色索引，合并原站已有别名；角色弹窗同时展示四路线招募与礼物。
+- 招募规划（`#planner`）：四路线名声门槛对照、按本线名声筛选、计划／已招募标记，自动汇总金币、物品、任务、外传窗口与交涉选项。标记自动存在当前浏览器；「备份链接」把整份计划编码进链接（`#planner?restore=FW1…`），换设备、换浏览器或换域名打开即可导入或合并。
+- 外传日期提醒：人物篇外传日历里填上本线的游戏内日期，每篇外传标出「可接／今明截止／几天后开放／只剩完成期限／已过」；首页「外传提醒」列出各线最紧迫的几篇。日期存在浏览器 `fe-next.gamedate.v1`，按路线分开。
+- 静态页面：构建时为六篇手册、六篇路线、55 位角色与兵种资料生成可直接打开的页面（`guide/`、`route/`、`character/`、`classes.html`），附全站目录 `directory.html`、`sitemap.xml` 与 `robots.txt`，方便百度等不执行脚本的搜索引擎收录，也让聊天软件的链接预览有标题和摘要。
+- 交涉物品「去哪里找」：招募规划的物品清单、角色档案与角色静态页显示已核对的取得方式与标价，并估算已核对物品的花费；未核对的物品只给出该物品的攻略页链接。数据在 `source/trade_items.json`。
 - 全站搜索：攻略标题和正文、简繁常用词与角色别名；角色页面支持礼物反查和可招募路线筛选。
 - 九项每周清单，当前浏览器保存，可手动重置与打印。
+- 兵种资料（`#classes`）：54 种兵种按阶段分组，配兵种像素图标；人物篇转职路线与兵种弹窗同样显示图标。
+- 长页阅读：人物篇与攻略手册的目录随阅读位置高亮；手机上目录固定在顶部，页首导航向下阅读时自动收起。
 - 90 个按完整地址去重的历史来源；保留原分级、记录日期和来源说明。
 - 历史修订、争议与访问受限记录。
 - 本机候选资料表单，记录链接、类型、版本、路线、证据位置与待核对内容，可导出 JSON。
@@ -32,7 +38,7 @@ python3 -m http.server 8766 --bind 127.0.0.1
 
 导入提交：`35dfba9b2300efc28c4a84e720bc9b9f35e12b0b`（2026-09-29 读取）。原文、头像、立绘与译名映射分别保存在 `source/` 与 `assets/`。内容以原手册简体为主。
 
-这里的 56 位是原手册招募表、礼物表经既有别名映射后的实际并集，**不是游戏完整角色总数**。图库里没有攻略条目的角色不生成空卡片；缺失礼物、额外条件和数值不推断。原站的“60 名”“全收录”等概括不直接沿用。
+这里的 55 位是原手册招募表、礼物表经既有别名映射后的实际并集，**不是游戏完整角色总数**。图库里没有攻略条目的角色不生成空卡片；缺失礼物、额外条件和数值不推断。原站的“60 名”“全收录”等概括不直接沿用。
 
 本次核对了任天堂作品资讯页，抽查了 GameWith 周常页与 AlGest 招募页；Game8 指定页面在检索工具中访问失败。未逐项重新实测全部攻略数值，故来源目录统一标为待重新核验，不以 HTTP 成功、媒体名称或旧 A/B/C 分级认定游戏结论已确认。
 
@@ -44,13 +50,26 @@ python3 -m http.server 8766 --bind 127.0.0.1
 
 ## 修改内容与重建
 
+构建需要 Python 3.11+ 和 Node.js 20+。Node 只在构建时复用交互版路线渲染，不需要 npm 包；读者打开站点仍不需要 Node 或在线服务。
+
 `source/火焰纹章万缕千丝_完全攻略手册.md` 是攻略正文，`source/_daily_log.json` 是继承的历史记录。`docs/data/chars.json` 维护图像和别名。修改后执行：
 
 ```sh
 python3 -m pip install -r requirements.txt
 python3 tools/build_site.py
 python3 -m unittest discover -s tests -v
+for f in tests/*.cjs; do node "$f"; done
 ```
+
+发布前还需浏览器回归检查（脚本会自动启动和关闭本机预览）：
+
+```sh
+python3 -m pip install -r requirements-dev.txt
+python3 -m playwright install --with-deps chromium webkit
+python3 tools/browser_smoke.py --browser all --output test-results
+```
+
+已有 Chromium 时可用 `--chromium-path /实际路径`；`--base-url` 可检查已部署的预览。GitHub Actions `Validate guide` 在 PR 和 main 上执行构建、生成文件一致性、Python／Node 测试与 Chromium／WebKit 检查。验证环境不足或检查失败时保留分支／PR，不发布到 main。
 
 `source/negotiations.json`、`source/builds.json`、`source/story.json` 分别维护交涉明细、培养方案和三部流程；页面来源核对不等于游戏实测。新增条目须保留具体来源、适用路线和未确认条件。
 
@@ -79,7 +98,7 @@ python3 tools/check_sources.py --host gamewith.jp --limit 5
 2. 为剧透内容加入按进度的保护；当前预览保留原文，存在后期角色与机制剧透。
 3. 将招募、礼物、兵种逐项迁移至 `claim.schema.json`，补足版本、难度、核对人和证据位置。
 4. 继续完善来源差异报告与发布检查；确认的内容经测试后发布，有冲突或证据不足的结论只进入日志。
-5. 正式发布前生成独立静态详情页与搜索元数据，方便搜索引擎收录。目前 hash 路由优先服务本地预览和轻量维护。
+5. ~~正式发布前生成独立静态详情页与搜索元数据~~：已在 2026-10-01 完成，见下方「静态页面与搜索收录」。交互版仍用 hash 路由。
 
 游戏与原有美术版权归 Nintendo / INTELLIGENT SYSTEMS 及对应权利人所有；素材继承自用户指定仓库。
 
@@ -97,3 +116,55 @@ python3 tools/check_sources.py --host gamewith.jp --limit 5
 - 奥林匹亚追加迪托利希线三段交涉；努佐追加剑／弓培养方案和分路线交涉。
 - 每条新引用保存 `checkedAt` 与 `evidenceLocation`；适用路线、章节、游戏版本、难度和审校范围留在条目。旧引用保留原核对日期，页面核对不等于游戏内实测。
 - 日期、地点或数量冲突进入 `source/_daily_log.json`；不得按来源数量多数决覆盖原值。
+
+## 2026-10-01 招募规划
+
+- 构建时把四路线招募表解析为 `plan` 字段：支援、名声、附加条件类型（金币／物品／任务／外传／交涉选项／剧情）与四线最低名声。原文逐字保留；规则认不出的部分按物品显示原文，不猜数量。
+- 招募表里的「某某外传」必须能对上 `source/paralogues.json` 的人物，否则构建报错；测试同时检查该外传在对应路线确有接取窗口。
+- 界面在 `web/planner.js`。规划器只读站内数据，不读取游戏存档；修改招募条件仍只改攻略正文的招募表。
+- 基罗伊卡改用 59 号立绘（原 39 号为キリーク）；「伊奥」作为别名并入伊欧档案。
+
+## 2026-10-01 结构与视觉
+
+- 头像原为 512px，页面最多显示 72px，已就地缩为 192px；兵种图标由 `docs/assets/icon/class/*.png` 生成 `class-sm/*.webp`（96px），构建时写入每个兵种的 `icon`。新增头像或兵种后运行 `python3 tools/optimize_images.py`（需另装 Pillow，不是构建依赖），重复运行不会改动已处理的文件。
+- 攻略正文里「**要点**：」这类引导行下面直接接列表时，构建会自动补空行，列表不再被排成一段；写作时不用特别留空行。
+- 站内跳转一律用 `#页面/…` 形式；页内滚动请用按钮（`data-scroll`），不要写 `#某个id` 链接，否则会被当成页面地址。
+
+## 招募规划的保存方式
+
+- 标记存在浏览器 `localStorage`（键名 `fe-next.planner.v1`），关网页、重开机都在；但只限同一设备、同一浏览器、同一网址。预览站与正式站是不同网址，互不相通。
+- 会丢失的情况：清除浏览器网站数据、无痕模式、部分 App 内置浏览器（如微信）清缓存；iOS Safari 对超过 7 天未打开的网站可能清除脚本存储（加到主屏幕的网页不受此限）。
+- 因此规划页提供备份链接与备份码，并提示未备份或备份后有改动；首次标记时调用 `navigator.storage.persist()` 申请长期保存，浏览器同意与否由其自行判断。
+- 备份码格式：`FW1` + base64url(JSON `{v:1,m:{路线:[名声,[计划角色ID],[已招角色ID]]}}`)。角色 ID 沿用图鉴 ID，修改 ID 会让旧备份对不上，需谨慎。
+
+## 可读性规则（2026-10-01）
+
+- 文字最小 11px（标签、英文小标题）／12px（中文说明）；`tests/test_data.py` 会检查样式表，商标字样等装饰除外。手机断点不要再把文字缩得比桌面小。
+- 灰色说明字用 `--muted`（#5a6066），金色小字用 `--gold-ink`（#7a5d2c），在浅色底上对比 ≥ 4.5:1；`--gold` 只用于线条、底色与深色区块里的文字。深色模式下这几个变量在 `web/dark.css` 里另有取值。
+- 标题字体顺序：宋体（苹果）→ 思源／Noto 宋体 → 苹方／微软雅黑。Windows 没有合适的宋体，会用雅黑而不是 SimSun。
+
+## 深色模式、西文字体与首页（2026-10-01）
+
+- 外观：页首按钮在「跟随系统／浅色／深色」间切换，选择存在浏览器 `fe-next.theme`；`index.html` 的内联脚本在样式加载前设置 `<html data-mode>`，避免闪白。打印始终浅色。
+- 深色样式在构建时由 `tools/dark_css.py` 从 `web/styles.css` 推导，附在 `docs/styles.css` 末尾：浅底变深底（卡片略亮于页面），深字变浅字，金色按钮等强调色与原本就是深色的区块保持不变；所有带颜色的声明按原顺序镜像，层叠结果与浅色一致。平时只改 `web/styles.css`，深色会自动跟上；个别需要判断的地方写进 `web/dark.css`。
+- 西文字体：Libre Caslon Text 拉丁子集随站点托管（`assets/fonts`，SIL OFL），不使用 Google Fonts 等第三方服务，方便中国大陆访问。站点目前不向任何第三方域名发请求。
+- 首页：回访者看到「继续阅读」（`fe-next.last.v1`，记录人物篇／手册／第二三部最后看到的段落）、招募计划与本周进度；初次来访看到三步上手。路线卡按原手册建议顺序排列。
+- 中国大陆访问：`*.pages.dev` 在部分网络下不稳定，若读者反映打不开，建议为 Cloudflare Pages 绑定自定义域名。
+
+## 外传日期提醒与静态页面（2026-10-01）
+
+- 外传日期提醒（`web/reference.js` 的 `paralogueState`）只读站内外传日历的接取窗口与完成期限，不推算任何新日期。来源未单列完成期限的外传，接取窗口过后显示「本线接取窗口已过」，不假定期限。日期按非闰年计算；2 月 30 日等无效日期会提示重选。
+- 静态页面由 `tools/static_pages.py` 在构建时生成，内容与交互版同源，不另写文案；每页有 canonical、描述与 Open Graph 标签，并链接回对应的交互页面。人名会链接到角色静态页，便于搜索引擎沿站内链接抓取。
+- 路线正文通过 `tools/render_routes.cjs` 直接调用交互版渲染，再由 `tools/static_markup.py` 转换为静态链接；两者共同遵守 `profile.pilot.publishBattles`。培养、外传打法及兵种条件不能另写一份或跳过发布开关。
+- canonical 与 `sitemap.xml` 用不带 `.html` 的地址（Cloudflare Pages 会把 `/x.html` 重定向到 `/x`）；站内相对链接保留 `.html`，本机 `python3 -m http.server` 预览也能打开。
+- 正式域名默认 `https://fe-guide.pages.dev`。绑定自定义域名后，用 `python3 tools/build_site.py --base-url https://新域名` 重新构建，首页 canonical、静态页与 sitemap 会一起更新。Cloudflare Pages 的预览部署默认带 `noindex`，不会与正式站抢收录。
+- 收录需要站主在百度搜索资源平台、Google Search Console 验证网站并提交 `sitemap.xml`；这一步需要账号操作，构建脚本不会代做。
+- 外传「接取窗口一览」（`web/reference.js` 的 `paralogueGantt`）：实线为接取窗口，虚线为窗口关闭后到完成期限（来源未给期限则不画）；同一外传再次开放时，虚线在下一个窗口前截止。填了游戏日期会画出「今天」线，日期离外传范围超过三周则只提示不画线。
+- 页面切换用浏览器原生 `document.startViewTransition` 淡入淡出（`navigate()` → `renderView()`），页首不参与动画；不支持的浏览器、首次载入与减少动态效果时直接切换。打开的弹窗在切换前关闭。
+- 首页「命运丝线」（`web/weave.js`）：Canvas 2D 背景动画，不用任何外部库。四条主角线的颜色取自立绘底色（`weaveColors`）。文字区域由遮罩淡化丝线；改动首页排版后，请复查大图文字对比仍 ≥ 4.5:1。`prefers-reduced-motion` 下只画静止一帧，画面外或后台分页不绘制。
+- 人物篇顶部也用 `web/weave.js`：本线的 `--route-glow` 与 `--route-gold` 两股线在文字下方编织、穿过立绘后方。
+- 交涉物品（`source/trade_items.json`）：
+  - `verified`：已核对的取得方式，文字须逐字引自 `negotiations.json` 的同一出处（测试会检查），`unitPrice` 须与文字里的价格一致。
+  - `pages`：该物品的专门攻略页，只作“去哪里查”的链接。
+  - `leads`：搜索摘要线索，构建不读取、页面不显示。打开原页核对后，把确认的结论先写进 `negotiations.json`（附出处），再引用到 `verified`。
+  - 招募表新增需要物品的角色时，若 `trade_items.json` 没有该物品，构建会报错。

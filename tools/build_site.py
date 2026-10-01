@@ -2,7 +2,8 @@
 from pathlib import Path
 import re, json, html, hashlib, argparse, shutil
 from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
-import markdown
+import markdown, sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'source'
@@ -10,6 +11,7 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--src', type=Path, default=SOURCE/'火焰纹章万缕千丝_完全攻略手册.md')
 parser.add_argument('--log', type=Path, default=SOURCE/'_daily_log.json')
 parser.add_argument('--out', type=Path, default=ROOT/'docs')
+parser.add_argument('--base-url', default='https://fe-guide.pages.dev', help='public origin for canonical links and sitemap.xml')
 args = parser.parse_args()
 OUT = args.out.resolve()
 OUT.mkdir(parents=True, exist_ok=True)
@@ -19,13 +21,28 @@ def read(name):
 def plain(text):
     return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', markdown.markdown(text, extensions=['tables'])))).strip()
 def render(text):
+    # Python-Markdown needs a blank line before a list; the manual often writes "**要点**：" directly above one.
+    text = re.sub(r'(?m)^((?![-*] |\d+\. |[#|>]).*\S.*)\n(?=(?:[-*]|\d+\.) )', r'\1\n\n', text)
     result = markdown.markdown(text, extensions=['tables', 'fenced_code', 'sane_lists'])
     def wrap_table(match):
         table=match[0]
         columns=table.split('</tr>')[0].count('<th>')
         kind='compact' if columns<=3 else 'wide'
         return f'<div class="table-scroll {kind}" role="region" aria-label="数据表格，可横向滚动" tabindex="0">{table}</div>'
-    return re.sub(r'<table>.*?</table>',wrap_table,result,flags=re.S)
+    return re.sub(r'<table>.*?</table>',wrap_table,crest_cards(result),flags=re.S)
+def crest_cards(result):
+    # The blood-seal table (manual 5.8) becomes cards with the seal icons the site already ships; same rows, same words.
+    def cards(match):
+        rows = re.findall(r'<tr>\s*<td>(.*?)</td>\s*<td>(.*?)</td>\s*<td>(.*?)</td>\s*</tr>', match[0], re.S)
+        items = []
+        for name, effect, holders in rows:
+            icon = f'assets/icon/crest/{name}.png'
+            if not (ROOT/'docs'/icon).exists(): return match[0]
+            m = re.fullmatch(r'攻击时 (\d+)% 发动，(.+)', effect.strip())
+            line = f'<span class="crest-rate">{m[1]}%</span> 攻击时发动 · {m[2]}' if m else effect
+            items.append(f'<li><img class="crest-icon" src="{icon}" alt="" width="40" height="40" loading="lazy"><div><strong>{name}</strong><p>{line}</p><small>持有者：{holders}</small></div></li>')
+        return f'<ul class="crest-grid">{"".join(items)}</ul>' if items else match[0]
+    return re.sub(r'<table>\s*<thead>\s*<tr>\s*<th>血印</th>.*?</table>', cards, result, flags=re.S)
 def canonical(url):
     p = urlsplit(url.rstrip('。；，'))
     query = [(k,v) for k,v in parse_qsl(p.query) if not k.startswith('utm_')]
@@ -132,20 +149,69 @@ for collection in curated.values():
             sources[key]['status']='page-reviewed'
             sources[key]['note']='已核对本次条目所引页面；不代表该站全部结论已验证。'
             if 'docs.qq.com' in s['url']: sources[key]['note']='2026-09-29 可见表格核对外传窗口与部分兵种条件；表格禁止复制，未批量导出，兵种基础资料仍含此前站内收录。'
+for c in curated['classes']:
+    icon = Path('assets/icon/class-sm')/(c['name']+'.webp')
+    if (ROOT/'docs'/icon).is_file(): c['icon'] = icon.as_posix()
+# Structured view of the recruit table for the planner. Every part keeps its original wording;
+# a part the rules do not recognise stays an item rather than being dropped or guessed.
+paralogue_ids = {p['person']: p['id'] for p in curated['paralogues']}
+route_ids = dict(zip(('凯伊线','迪托利希线','赛奥朵拉线','蕾达线'), ('kai','dietrich','theodora','leda')))
+def need(text):
+    if text.startswith('完成') or any(k in text for k in ('任务','请求','頼み')): return {'type':'quest','text':text}
+    m = re.fullmatch(r'(.+?)外传', text)
+    if m:
+        if m[1] not in paralogue_ids: raise ValueError('Unknown paralogue in recruit table: '+text)
+        return {'type':'paralogue','text':text,'paralogue':paralogue_ids[m[1]]}
+    gold = re.search(r'(\d+)G', text)
+    if '选择' in text or '→' in text or '砍价' in text: return {'type':'option','text':text,**({'gold':int(gold[1])} if gold else {})}
+    if gold and text.startswith(gold[0]): return {'type':'gold','text':text,'gold':int(gold[1])}
+    if '败退' in text: return {'type':'story','text':text}
+    m = re.fullmatch(r'(.+?)\s*×\s*(\d+)(.*)', text)
+    return {'type':'item','text':text,'item':m[1] if m else re.sub(r'（.*$','',text),'qty':int(m[2]) if m else None}
+def recruit_plan(value):
+    parts = [p.strip() for p in value.split('・') if p.strip()]
+    if value in ('—', ''): return {'kind':'none'}
+    if value == '本路线主角': return {'kind':'lord'}
+    if '教学加入' in value: return {'kind':'tutorial'}
+    if '加入' in parts[0]:
+        chapter = re.search(r'第 (\d+) 章', parts[0])
+        return {'kind':'auto','chapter':int(chapter[1]) if chapter else None,'needs':[need(p) for p in parts[1:]]}
+    m = re.fullmatch(r'(\d)S / (\d+)R', parts[0])
+    if not m: raise ValueError('Unparsed recruit condition: '+value)
+    return {'kind':'scout','support':int(m[1]),'renown':int(m[2]),'needs':[need(p) for p in parts[1:]]}
+for c in characters:
+    if not c['recruit']: continue
+    c['plan'] = {route_ids[route]: recruit_plan(value) for route, value in c['recruit'].items()}
+    scouts = [p for p in c['plan'].values() if p['kind'] == 'scout']
+    for p in scouts: p['lowest'] = p['renown'] == min(s['renown'] for s in scouts)
+# Trade items: only checked findings and where-to-look links reach the site; search leads stay in the source file.
+trade = json.loads((SOURCE/'trade_items.json').read_text())
+trade_items = {i['name']: {k: i[k] for k in ('name', 'jp', 'verified', 'pages')} for i in trade['items']}
+needed = {n['item'] for c in characters for p in c.get('plan', {}).values() for n in p.get('needs', []) if n['type'] == 'item'}
+if needed - set(trade_items): raise ValueError('Trade items missing from source/trade_items.json: ' + '、'.join(sorted(needed - set(trade_items))))
 latest=max(e['date'] for e in logs)
-payload={'snapshot':'35dfba9b2300efc28c4a84e720bc9b9f35e12b0b','updated':latest,'chapters':chapters,'characters':characters,'weekly':weekly,'sources':list(sources.values()),'logs':logs,**curated}
+payload={'snapshot':'35dfba9b2300efc28c4a84e720bc9b9f35e12b0b','updated':latest,'chapters':chapters,'characters':characters,'weekly':weekly,'sources':list(sources.values()),'logs':logs,'tradeItems':trade_items,'shopTips':trade['shopTips'],**curated}
 (OUT/'data.js').write_text('window.FE_DATA = '+json.dumps(payload,ensure_ascii=False).replace('</','<\\/')+';\n')
 (SOURCE/'sources.json').write_text(json.dumps(list(sources.values()),ensure_ascii=False,indent=2)+'\n')
 print(f'Built {len(chapters)} chapters, {sum(len(c["sections"]) for c in chapters)} sections, {len(characters)} characters, {len(sources)} sources, {len(weekly)} weekly tasks.')
 
 # Retain the established build command and canonical input paths for daily updates.
 for file in (ROOT/'web').iterdir():
-    if file.is_file(): shutil.copy2(file, OUT/file.name)
+    if file.is_file() and file.name != 'dark.css': shutil.copy2(file, OUT/file.name)
+# One stylesheet: the light theme, its generated dark mirror, then hand-tuned dark rules.
+from dark_css import dark_overrides
+light_css = (ROOT/'web/styles.css').read_text()
+(OUT/'styles.css').write_text(light_css + '\n/* ---- dark theme (generated by tools/dark_css.py from the rules above) ---- */\n' + dark_overrides(light_css) + (ROOT/'web/dark.css').read_text())
 shutil.copytree(ROOT/'web/assets', OUT/'assets', dirs_exist_ok=True)
 if OUT != ROOT/'docs':
     for directory in ['assets', 'data', 'archive']:
         if (ROOT/'docs'/directory).exists():
             shutil.copytree(ROOT/'docs'/directory, OUT/directory, dirs_exist_ok=True)
+# Crawlable static pages (guide, routes, characters, classes) with canonical/OG metadata, sitemap.xml and robots.txt.
+from static_pages import write as write_static
+index_html = (ROOT/'web/index.html').read_text()
+(OUT/'index.html').write_text(index_html.replace('https://fe-guide.pages.dev/', args.base_url.rstrip('/') + '/'))
+print(f'Wrote {write_static(OUT, payload, args.base_url, index_html)} static pages, sitemap.xml and robots.txt for {args.base_url}.')
 (OUT/'source').mkdir(exist_ok=True)
 shutil.copy2(args.src, OUT/'source/guide.md')
 # Old inbound page links retain their original anchors inside the frozen archive.

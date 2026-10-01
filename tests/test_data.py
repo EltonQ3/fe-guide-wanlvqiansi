@@ -90,7 +90,7 @@ class DataTests(unittest.TestCase):
                 for key in ('gameVersion','difficulty','route','chapter','scope','status'):
                     self.assertIn(key,item)
                 for ref in item['sources']:
-                    self.assertEqual(ref['checkedAt'],'2026-10-01')
+                    self.assertIn(ref['checkedAt'],[item['checkedAt'],item.get('acquisitionCheckedAt')])
                     self.assertTrue(ref['evidenceLocation'])
         registry={s['url']:s for s in DATA['sources']}
         self.assertEqual(registry['https://gamewith.jp/fefw/577380']['lastListed'],'2026-10-01')
@@ -101,7 +101,7 @@ class DataTests(unittest.TestCase):
             p=next(x for x in DATA['paralogues'] if x['id']==person)
             self.assertEqual(len(p['strategy']),2)
             self.assertTrue(all(w['deadline'] is None for windows in p['routes'].values() for w in windows))
-        log=next(e for e in DATA['logs'] if e['date']=='2026-10-01')
+        log=next(e for e in DATA['logs'] if e.get('edition')=='外传与招募资料复核／页面结构检查')
         self.assertEqual(log['checked'],len({s['url'] for s in log['new_sources']}))
         self.assertTrue(any('铁弓数量' in c['topic'] for c in log['conflicts']))
 
@@ -125,5 +125,182 @@ class DataTests(unittest.TestCase):
                 self.assertNotIn(name,native)
                 self.assertTrue(purpose and reason)
             self.assertIn('教学加入',characters[profile['teaching']]['recruit'][route])
+
+    def test_recruit_plan_mirrors_table(self):
+        routes=('kai','dietrich','theodora','leda')
+        paralogues={p['id']:p for p in DATA['paralogues']}
+        for c in DATA['characters']:
+            if not c['recruit']:
+                self.assertNotIn('plan',c);continue
+            self.assertEqual(set(c['plan']),set(routes))
+            scouts=[p for p in c['plan'].values() if p['kind']=='scout']
+            for route,name in zip(routes,('凯伊线','迪托利希线','赛奥朵拉线','蕾达线')):
+                p,value=c['plan'][route],c['recruit'][name]
+                if p['kind']!='scout':continue
+                self.assertTrue(value.startswith(f"{p['support']}S / {p['renown']}R"),c['name'])
+                self.assertEqual(p['lowest'],p['renown']==min(s['renown'] for s in scouts))
+                for n in p['needs']:
+                    self.assertIn(n['text'],value)
+                    if n['type']=='paralogue':self.assertTrue(paralogues[n['paralogue']]['routes'].get(route),f"{c['name']} needs {n['text']} on {route}")
+        chars={c['name']:c for c in DATA['characters']}
+        self.assertEqual(chars['洛蕾塔']['plan']['kai']['needs'],[{'type':'item','text':'铁剑×3','item':'铁剑','qty':3}])
+        self.assertTrue(chars['洛蕾塔']['plan']['theodora']['lowest'])
+        self.assertEqual([n['type'] for n in chars['蒂亚拉']['plan']['leda']['needs']],['paralogue','gold'])
+        self.assertEqual(chars['米迦艾拉']['plan']['dietrich'],{'kind':'auto','chapter':4,'needs':[{'type':'gold','text':'3000G（详细页记载，待实机核对）','gold':3000}]})
+        self.assertEqual(chars['艾丝梅拉尔达']['plan']['leda']['needs'][0]['type'],'quest')
+        self.assertIsNone(chars['努佐']['plan']['dietrich']['needs'][0]['qty'])
+        self.assertEqual(chars['古扎岚']['plan']['kai']['kind'],'tutorial')
+
+    def test_art_and_alias_corrections(self):
+        io=[c for c in DATA['characters'] if '伊奥' in c['aliases'] or '伊欧' in c['aliases']]
+        self.assertEqual(len(io),1)
+        self.assertEqual(io[0]['gifts']['推荐礼物'],'马匹用品')
+        self.assertTrue(io[0]['recruit'])
+        kiroika=next(c for c in DATA['characters'] if c['name']=='基罗伊卡')
+        self.assertEqual((kiroika['avatar'],kiroika['portrait']),('assets/avatar/59.jpg','assets/portrait/59.jpg'))
+
+    def test_lists_render_after_lead_in_lines(self):
+        for c in DATA['chapters']:
+            for s in c['sections']:
+                self.assertNotRegex(s['html'],r'</strong>：\s*-\s',s['title'])
+        tips=next(s for c in DATA['chapters'] for s in c['sections'] if s['id']=='s2-1')['html']
+        self.assertIn('重要提醒</strong>：</p>\n<ul>',tips)
+
+    def test_class_icons_exist(self):
+        for c in DATA['classes']:
+            self.assertTrue(c.get('icon'),c['name'])
+            self.assertTrue((ROOT/'docs'/c['icon']).is_file(),c['icon'])
+
+    def test_text_size_floor(self):
+        css=(ROOT/'web/styles.css').read_text()
+        for sel,decls in re.findall(r'([^{}]+)\{([^{}]*)\}',css):
+            if re.search(r'\.brand|kbd|\.hero-caption|\.route-hero-name|\.game-logo',sel):continue
+            for size in re.findall(r'font(?:-size)?:[^;}]*?(\d+(?:\.\d+)?)px',decls):
+                self.assertGreaterEqual(float(size),11,f'{sel.strip()} uses {size}px text')
+
+    def test_dark_theme_is_generated(self):
+        import sys; sys.path.insert(0,str(ROOT/'tools'))
+        from dark_css import transform, dark_overrides
+        css=(ROOT/'docs/styles.css').read_text()
+        self.assertIn(':root[data-mode=dark]',css)
+        self.assertNotIn('var(--#',css)
+        self.assertEqual(css.count('{'),css.count('}'))
+        light=(ROOT/'web/styles.css').read_text()
+        self.assertTrue(css.startswith(light))
+        dark=dark_overrides(light)
+        # light surfaces turn dark, dark text turns light, accent fills and already-dark parts stay
+        for color,role in (('#f5f3ee','bg'),('#fffefa','bg'),('#dedbd3','line')):
+            r,g,b=(int(transform(color,role)[i:i+2],16) for i in (1,3,5));self.assertLess(max(r,g,b),80,color)
+        r,g,b=(int(transform('#202830','fg')[i:i+2],16) for i in (1,3,5));self.assertGreater(min(r,g,b),160)
+        for color,role in (('#cbb68e','bg'),('#171e26','bg'),('#fff','fg')):self.assertEqual(transform(color,role),color)
+        self.assertIn(':root[data-mode=dark] .button.gold{color:#191f25;background:#cbb68e',dark)
+        self.assertIn(':root[data-mode=dark] .route-hero .button{background:var(--route-gold);color:#253129}',dark)
+        self.assertNotIn('print',dark.split('@media screen',1)[0])
+        page=(ROOT/'docs/index.html').read_text()
+        self.assertIn("localStorage.getItem('fe-next.theme')",page)
+        self.assertIn('id="theme-toggle"',page)
+    def test_static_pages_for_search(self):
+        from html import unescape
+        from urllib.parse import urlsplit
+        base='https://fe-guide.pages.dev/'
+        paths=[f'guide/{c["id"]}.html' for c in DATA['chapters']]+[f'route/{s["id"]}.html' for s in DATA['story']]+[f'character/{c["id"]}.html' for c in DATA['characters']]+['classes.html','directory.html']
+        sitemap=(ROOT/'docs/sitemap.xml').read_text()
+        self.assertEqual(re.findall(r'<loc>(.*?)</loc>',sitemap),[base]+[base+p.removesuffix('.html') for p in paths])
+        self.assertIn(f'Sitemap: {base}sitemap.xml',(ROOT/'docs/robots.txt').read_text())
+        self.assertIn(f'<link rel="canonical" href="{base}">',(ROOT/'docs/index.html').read_text())
+        self.assertIn('href="directory.html"',(ROOT/'docs/index.html').read_text())
+        titles=set()
+        for path in paths:
+            page=(ROOT/'docs'/path).read_text()
+            self.assertIn(f'<link rel="canonical" href="{base}{path.removesuffix(".html")}">',page)
+            self.assertIn(f'<meta property="og:url" content="{base}{path.removesuffix(".html")}">',page)
+            title=re.search(r'<title>(.*?)</title>',page)[1];self.assertNotIn(title,titles);titles.add(title)
+            desc=unescape(re.search(r'<meta name="description" content="([^"]*)">',page)[1]);self.assertTrue(20<=len(desc)<=120,(path,desc))
+            self.assertEqual(page.count('<h1'),1,path)
+            self.assertNotIn('<script src',page)  # readable without the app; only the inline theme script
+            self.assertIn("localStorage.getItem('fe-next.theme')",page)
+            for link in re.findall(r'(?:href|src)="([^"#]+)(?:#[^"]*)?"',page):
+                if urlsplit(link).scheme: continue
+                self.assertTrue(((ROOT/'docs'/path).parent/link).resolve().exists(),(path,link))
+        golia=(ROOT/'docs/character/50.html').read_text()
+        self.assertIn('巨人肉 ×3',golia);self.assertIn('index.html#characters?name=%E6%AD%8C%E5%88%A9%E4%BA%9A',golia)
+        kai=(ROOT/'docs/route/kai.html').read_text()
+        self.assertRegex(kai,r'<a[^>]*href="../character/2.html"[^>]*>.*?凯伊')
+        self.assertIn('完成期限</small><strong>10/21',kai)
+        self.assertIn('来源未单列',(ROOT/'docs/route/theodora.html').read_text())
+        g4=(ROOT/'docs/guide/g4.html').read_text()
+        for s in DATA['chapters'][3]['sections']:self.assertIn(f'id="{s["id"]}"',g4)
+
+    def test_static_routes_honor_publication_and_keep_public_advice(self):
+        from html import unescape
+        text=lambda value:re.sub(r'\s+','',unescape(re.sub(r'<[^>]+>','',value)))
+        for route in DATA['story']:
+            page=(ROOT/f'docs/route/{route["id"]}.html').read_text()
+            plain=text(page)
+            pilot=route.get('profile',{}).get('pilot')
+            if pilot:
+                if not pilot.get('publishBattles',False):
+                    self.assertNotIn('id="battles"',page)
+                    for draft in route['battles']:self.assertNotIn(text(draft['steps'][0]),plain)
+                for person in pilot['native']+pilot['scouts']:
+                    for key in ('train','caution','late'):
+                        self.assertIn(text(person[key]),plain,f'{route["id"]}: {person["name"]} {key}')
+                    self.assertIn(person['sources'][0]['url'],page)
+                for p in DATA['paralogues']:
+                    if p['routes'].get(route['id']):
+                        for step in p.get('strategy',[]):
+                            self.assertIn(text(step),plain)
+            self.assertNotIn('<button',page)
+            self.assertNotIn('<select',page)
+            self.assertNotIn('data-scroll=',page)
+        classes=(ROOT/'docs/classes.html').read_text()
+        self.assertIn('备考技能参考',classes)
+        self.assertIn('通过率、票证和条件',classes)
+        for c in DATA['classes']:
+            for key in ('restriction','training'):
+                if c.get(key):self.assertIn(text(c[key]),text(classes),c['name'])
+
+    def test_trade_items_publish_only_checked_findings(self):
+        trade=json.loads((ROOT/'source/trade_items.json').read_text());neg=json.loads((ROOT/'source/negotiations.json').read_text())
+        needed={n['item'] for c in DATA['characters'] for p in c.get('plan',{}).values() for n in p.get('needs',[]) if n['type']=='item'}
+        self.assertEqual(needed,set(DATA['tradeItems']))
+        bundle=(ROOT/'docs/data.js').read_text()
+        self.assertNotIn('search-summary',bundle);self.assertNotIn('"leads"',bundle)
+        for item in DATA['tradeItems'].values():
+            for v in item['verified']:
+                # A published finding quotes a curated negotiation note and cites the same page.
+                self.assertTrue(any(v['text'] in n['details'] and {x['url'] for x in v['sources']}<={x['url'] for x in n['sources']} for n in neg),v['text'])
+                if 'unitPrice' in v:self.assertIn(f"{v['unitPrice']}G",v['text'])
+            for page in item['pages']:self.assertTrue(page['url'].startswith('https://'))
+        for i in trade['items']:
+            for lead in i['leads']:self.assertEqual(lead['status'],'search-summary')
+        sections={f"#guide/{c['id']}/{s['id']}" for c in DATA['chapters'] for s in c['sections']}
+        for tip in DATA['shopTips']:self.assertIn(tip['ref'],sections)
+
+    def test_acquisition_review_keeps_route_and_price_conditions(self):
+        items=DATA['tradeItems']
+        self.assertTrue(all(item['verified'] for item in items.values()))
+        text=lambda name:' '.join(v['text'] for v in items[name]['verified'])
+        self.assertIn('凯伊篇可在海都',text('巨人肉'))
+        self.assertIn('取得箱子时决定',text('巨人肉'))
+        self.assertIn('凯伊篇不能进入',text('椰枣'))
+        self.assertFalse(any(v.get('unitPrice') for v in items['椰枣']['verified']),'unresolved 30/24 price is not used')
+        self.assertIn('第9章起',text('铁弓'));self.assertIn('第7章起',text('铁弓'))
+        self.assertIn('リベイラ村为750G',text('铁弓'))
+        for name in ('砂虫肉','铁剑','铁枪','铁斧','青铜斧','铁弓'):
+            prices=[v for v in items[name]['verified'] if 'unitPrice' in v]
+            self.assertEqual(len(prices),1,name)
+            self.assertIn('第一部',prices[0]['priceBasis'])
+            for v in items[name]['verified']:
+                if v.get('checkedAt')!='2026-10-02':continue
+                for ref in v['sources']:
+                    self.assertTrue(ref['evidenceLocation'])
+                    self.assertEqual(ref['checkedAt'],v['checkedAt'])
+
+    def test_blood_seals_render_as_cards_with_icons(self):
+        html=next(s['html'] for c in DATA['chapters'] for s in c['sections'] if s['id']=='s5-8')
+        icons=re.findall(r'<img class="crest-icon" src="([^"]+)"',html);self.assertEqual(len(icons),10)
+        for src in icons:self.assertTrue((ROOT/'docs'/src).exists(),src)
+        self.assertNotIn('<table>',html);self.assertIn('持有者：赛奥朵拉、凯伊、奥尔赫尔、塔利穆恩、波鲁波亚',html)
 
 if __name__=='__main__':unittest.main()
