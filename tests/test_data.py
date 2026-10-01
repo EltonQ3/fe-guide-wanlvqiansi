@@ -159,4 +159,16 @@ class DataTests(unittest.TestCase):
         kiroika=next(c for c in DATA['characters'] if c['name']=='基罗伊卡')
         self.assertEqual((kiroika['avatar'],kiroika['portrait']),('assets/avatar/59.jpg','assets/portrait/59.jpg'))
 
+    def test_lists_render_after_lead_in_lines(self):
+        for c in DATA['chapters']:
+            for s in c['sections']:
+                self.assertNotRegex(s['html'],r'</strong>：\s*-\s',s['title'])
+        tips=next(s for c in DATA['chapters'] for s in c['sections'] if s['id']=='s2-1')['html']
+        self.assertIn('重要提醒</strong>：</p>\n<ul>',tips)
+
+    def test_class_icons_exist(self):
+        for c in DATA['classes']:
+            self.assertTrue(c.get('icon'),c['name'])
+            self.assertTrue((ROOT/'docs'/c['icon']).is_file(),c['icon'])
+
 if __name__=='__main__':unittest.main()

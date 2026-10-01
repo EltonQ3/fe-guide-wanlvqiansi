@@ -89,3 +89,7 @@ function plannerAction(el){
   if(el.id==='plan-clear'){for(const [id,v] of Object.entries(st.marks[st.route]))if(v==='target')delete st.marks[st.route][id];plannerSave();renderPlanner();toast('已清空本线计划；已招募的标记保留。');return true;}
   return false;
 }
+function plannerHomeCard(){
+  const st=plannerData(),rows=routeIds.map(id=>{const m=Object.values(st.marks[id]);return {id,target:m.filter(v=>v==='target').length,done:m.filter(v=>v==='done').length};}).filter(r=>r.target||r.done);
+  return `<div class="plan-mini"><div class="mini-head"><span>我的招募计划</span><a href="#planner">打开规划 →</a></div>${rows.length?rows.map(r=>`<a href="#planner/${r.id}"><strong>${esc(plannerRouteTitle(r.id))}</strong><span>计划 ${r.target} · 已招 ${r.done}</span></a>`).join(''):'<p>四条线的门槛放在一起比，勾选想招的人，自动列出要备的金币、物品和外传。</p><a class="text-link" href="#planner">开始规划 <span>→</span></a>'}</div>`;
+}

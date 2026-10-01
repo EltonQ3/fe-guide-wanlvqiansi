@@ -19,6 +19,8 @@ def read(name):
 def plain(text):
     return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', markdown.markdown(text, extensions=['tables'])))).strip()
 def render(text):
+    # Python-Markdown needs a blank line before a list; the manual often writes "**要点**：" directly above one.
+    text = re.sub(r'(?m)^((?![-*] |\d+\. |[#|>]).*\S.*)\n(?=(?:[-*]|\d+\.) )', r'\1\n\n', text)
     result = markdown.markdown(text, extensions=['tables', 'fenced_code', 'sane_lists'])
     def wrap_table(match):
         table=match[0]
@@ -132,6 +134,9 @@ for collection in curated.values():
             sources[key]['status']='page-reviewed'
             sources[key]['note']='已核对本次条目所引页面；不代表该站全部结论已验证。'
             if 'docs.qq.com' in s['url']: sources[key]['note']='2026-09-29 可见表格核对外传窗口与部分兵种条件；表格禁止复制，未批量导出，兵种基础资料仍含此前站内收录。'
+for c in curated['classes']:
+    icon = Path('assets/icon/class-sm')/(c['name']+'.webp')
+    if (ROOT/'docs'/icon).is_file(): c['icon'] = icon.as_posix()
 # Structured view of the recruit table for the planner. Every part keeps its original wording;
 # a part the rules do not recognise stays an item rather than being dropped or guessed.
 paralogue_ids = {p['person']: p['id'] for p in curated['paralogues']}

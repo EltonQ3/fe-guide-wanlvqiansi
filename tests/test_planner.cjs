@@ -41,4 +41,6 @@ const matrix=t.run('plannerMatrix(false)');
 assert.equal([...matrix.matchAll(/class="is-lowest"/g)].length,data.characters.reduce((n,c)=>n+Object.values(c.plan||{}).filter(p=>p.lowest).length,0));
 const bad=setup('{"route":"x","filter":"y","renown":{"kai":99,"leda":"3"},"marks":{"kai":{"1":"maybe"}}}');
 assert.deepEqual(JSON.parse(JSON.stringify(bad.run('plannerData()'))),{route:'kai',filter:'all',renown:{kai:1,dietrich:1,theodora:1,leda:3},marks:{kai:{},dietrich:{},theodora:{},leda:{}}});
+assert(t.run('plannerHomeCard()').includes('#planner/leda')&&t.run('plannerHomeCard()').includes('已招 1'),'home card lists routes with marks');
+assert(bad.run('plannerHomeCard()').includes('开始规划'),'home card invites planning when empty');
 console.log('Planner: route lists, paralogue windows, totals, marks, persistence and matrix passed.');
