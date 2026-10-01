@@ -73,4 +73,6 @@ assert(mixed.node('#planner-restore').innerHTML.includes('合并到本机'),'dev
 mixed.click({planRestore:'merge'});
 const merged=mixed.run('plannerData().marks.kai');assert.equal(merged[id('希蒙')],'done');assert.equal(merged[id('哪吒')],'target');assert.equal(merged[id('洛蕾塔')],'done');
 const broken=setup(null);broken.run(`$('#main').innerHTML=plannerPage('kai','FW1@@');renderPlanner()`);assert(broken.node('#planner-restore').innerHTML.includes('无法识别'));
+const flags=t.run(`characterFlags(D.characters.find(c=>c.name==='蒂亚拉'))`);assert(flags.includes('凯伊篇同伴')&&flags.includes('3 线可挖 · 最低 8R'),flags);
+assert(t.run(`characterFlags(D.characters.find(c=>c.name==='凯伊'))`).includes('凯伊篇主角'));
 console.log('Planner: route lists, paralogue windows, totals, marks, persistence and matrix passed.');

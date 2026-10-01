@@ -171,4 +171,11 @@ class DataTests(unittest.TestCase):
             self.assertTrue(c.get('icon'),c['name'])
             self.assertTrue((ROOT/'docs'/c['icon']).is_file(),c['icon'])
 
+    def test_text_size_floor(self):
+        css=(ROOT/'web/styles.css').read_text()
+        for sel,decls in re.findall(r'([^{}]+)\{([^{}]*)\}',css):
+            if re.search(r'\.brand|kbd|\.hero-caption|\.route-hero-name|\.game-logo',sel):continue
+            for size in re.findall(r'font(?:-size)?:[^;}]*?(\d+(?:\.\d+)?)px',decls):
+                self.assertGreaterEqual(float(size),11,f'{sel.strip()} uses {size}px text')
+
 if __name__=='__main__':unittest.main()
