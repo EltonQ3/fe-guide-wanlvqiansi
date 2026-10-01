@@ -1,0 +1,18 @@
+/* Dark theme: tokens and judgement calls. Appended after the generated mirror of styles.css (tools/dark_css.py). */
+@media screen{
+:root[data-mode=dark]{color-scheme:dark;--ink:#e6e2d8;--muted:#a3a7ab;--paper:#181714;--white:#201f1d;--line:#35332e;--gold-ink:#d0b07a;--green:#86b39a;--dark:#101318}
+:root[data-mode=dark] body{background:var(--paper)}
+/* Buttons without their own background use the browser's ButtonFace (light grey chip); give it the dark-chip equivalent. */
+:root[data-mode=dark] button{background-color:#2a2925}
+/* Light buttons in dark mode: hover darkens instead of lightening; filled marks keep white text readable. */
+:root[data-mode=dark] .button:hover{background:#cbc7bd}
+:root[data-mode=dark] .button.secondary:hover{background:#2a2925}
+:root[data-mode=dark] .planner-filters button[aria-pressed=true]{color:var(--paper)}
+:root[data-mode=dark] .planner-filters button[aria-pressed=true] span{color:#5f5b52}
+:root[data-mode=dark] .plan-actions [data-plan-mark=done][aria-pressed=true]{background:#3f6a52;border-color:#3f6a52}
+/* Route accents are mirrored by the generator; labels that use color-mix in the light theme read the light accent directly. */
+:root[data-mode=dark] .route-section-head .eyebrow,:root[data-mode=dark] .route-toc>.eyebrow,:root[data-mode=dark] .di-kicker,:root[data-mode=dark] .campaign-pilot .di-kicker{color:var(--route-accent,#a5a9ac)}
+/* Portraits and screenshots sit a little quieter on a dark page. */
+:root[data-mode=dark] main img:not(.class-icon){filter:brightness(.94)}
+}
+@media screen and (max-width:800px){:root[data-mode=dark] .reading-nav a.active{color:var(--paper)}}

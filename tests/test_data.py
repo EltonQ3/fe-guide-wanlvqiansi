@@ -178,4 +178,26 @@ class DataTests(unittest.TestCase):
             for size in re.findall(r'font(?:-size)?:[^;}]*?(\d+(?:\.\d+)?)px',decls):
                 self.assertGreaterEqual(float(size),11,f'{sel.strip()} uses {size}px text')
 
+    def test_dark_theme_is_generated(self):
+        import sys; sys.path.insert(0,str(ROOT/'tools'))
+        from dark_css import transform, dark_overrides
+        css=(ROOT/'docs/styles.css').read_text()
+        self.assertIn(':root[data-mode=dark]',css)
+        self.assertNotIn('var(--#',css)
+        self.assertEqual(css.count('{'),css.count('}'))
+        light=(ROOT/'web/styles.css').read_text()
+        self.assertTrue(css.startswith(light))
+        dark=dark_overrides(light)
+        # light surfaces turn dark, dark text turns light, accent fills and already-dark parts stay
+        for color,role in (('#f5f3ee','bg'),('#fffefa','bg'),('#dedbd3','line')):
+            r,g,b=(int(transform(color,role)[i:i+2],16) for i in (1,3,5));self.assertLess(max(r,g,b),80,color)
+        r,g,b=(int(transform('#202830','fg')[i:i+2],16) for i in (1,3,5));self.assertGreater(min(r,g,b),160)
+        for color,role in (('#cbb68e','bg'),('#171e26','bg'),('#fff','fg')):self.assertEqual(transform(color,role),color)
+        self.assertIn(':root[data-mode=dark] .button.gold{color:#191f25;background:#cbb68e',dark)
+        self.assertIn(':root[data-mode=dark] .route-hero .button{background:var(--route-gold);color:#253129}',dark)
+        self.assertNotIn('print',dark.split('@media screen',1)[0])
+        page=(ROOT/'docs/index.html').read_text()
+        self.assertIn("localStorage.getItem('fe-next.theme')",page)
+        self.assertIn('id="theme-toggle"',page)
+
 if __name__=='__main__':unittest.main()

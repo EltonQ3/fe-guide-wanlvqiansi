@@ -15,6 +15,12 @@ let checks = load('fe-next.weekly.v1', {});
 if (!checks || Array.isArray(checks) || typeof checks !== 'object') checks = {};
 let drafts = load('fe-next.candidates.v1', []);
 if (!Array.isArray(drafts)) drafts = [];
+// Appearance: follow the system unless the reader picks light or dark; the choice stays in this browser.
+const themeModes=['auto','light','dark'],themeLabels={auto:'跟随系统',light:'浅色',dark:'深色'},systemDark=window.matchMedia?.('(prefers-color-scheme: dark)');
+let themeMode=(()=>{try{return localStorage.getItem('fe-next.theme');}catch{return null;}})();
+if(!themeModes.includes(themeMode))themeMode='auto';
+function applyTheme(){const dark=themeMode==='dark'||themeMode==='auto'&&Boolean(systemDark?.matches);document.documentElement.dataset.mode=dark?'dark':'light';const b=document.querySelector('#theme-toggle');if(b){b.dataset.themeMode=themeMode;b.setAttribute('aria-label',`外观：${themeLabels[themeMode]}（点按切换）`);b.title=`外观：${themeLabels[themeMode]}`;}}
+systemDark?.addEventListener?.('change',()=>{if(themeMode==='auto')applyTheme();});
 function toast(message) { $('#toast').textContent = message; $('#toast').classList.add('visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').classList.remove('visible'), 2800); }
 function openDialog(id) { lastFocus = document.activeElement; const dialog = $('#'+id); if(!dialog.open) dialog.showModal(); }
 function closeDialog(id) { $('#'+id).close(); }
@@ -22,16 +28,35 @@ $$('dialog').forEach(d => { d.addEventListener('close', () => lastFocus?.isConne
 function countDone() { return D.weekly.filter(t => checks[t.id]).length; }
 function heading(kicker, title, description) { return `<header class="page-heading"><div class="eyebrow">${kicker}</div><h1>${title}</h1><p>${description}</p></header>`; }
 function weeklyItem(task, i, mini = false) { return `<label class="check-item ${checks[task.id]?'done':''}"><input type="checkbox" data-week="${task.id}" ${checks[task.id]?'checked':''} aria-label="完成行动 ${i+1}：${esc(task.text)}">${mini?'':`<span class="check-number">${String(i+1).padStart(2,'0')}</span>`}<span class="check-copy">${task.html}</span></label>`; }
+// Where the reader last was, so the home page can offer "continue reading" (this browser only).
+const lastReadKey='fe-next.last.v1';
+function rememberReading(hash,label){save(lastReadKey,{hash,label,at:new Date().toISOString()});}
+function lastReading(){const r=load(lastReadKey,null);return r&&typeof r.hash==='string'&&/^#(route|guide|story)\//.test(r.hash)&&typeof r.label==='string'?r:null;}
+function ago(iso){const days=Math.floor((Date.now()-Date.parse(iso))/864e5);return days<=0?'今天':days===1?'昨天':days<30?days+' 天前':'一个多月前';}
+const routeOrder={kai:[1,'新手、系列新人'],theodora:[2,'想稳妥体验'],dietrich:[3,'爱打硬仗、刷战斗'],leda:[4,'二周目、支援流']};
+const routeHooks={kai:'捕获坐骑，种植饲料',dietrich:'刃鸣与战技强化',theodora:'招募军团，调度战备',leda:'酒馆献艺，咒歌助战'};
+const homeIcons={planner:'<path d="M5 4h14v16H5z"/><path d="M8.5 9l1.5 1.5L13 7.5M8.5 15l1.5 1.5 3-3M15 9h1.5M15 15h1.5"/>',characters:'<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3.4 2.8-5 5.5-5s4.9 1.6 5.5 5"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.8 14.2c2.4-.2 4.2 1.3 4.7 4.3"/>',classes:'<path d="M12 3l7 4v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V7z"/><path d="M9 12l2 2 4-4"/>',weekly:'<rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 9.5h16M8.5 3v4M15.5 3v4M8 14h2M14 14h2"/>',missable:'<path d="M12 4l9 16H3z"/><path d="M12 10v4.5M12 17.2v.3"/>',search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>'};
+function homeResume(){
+  const last=lastReading(),marked=routeIds.filter(id=>Object.keys(plannerData().marks[id]).length),done=countDone();
+  if(!last&&!marked.length&&!done)return `<div class="section-heading"><div><div class="eyebrow">NEW HERE</div><h2>第一次来？三步上手</h2></div></div><div class="resume-grid starter">${[['#route/kai','先选一条路线','新手推荐凯伊篇：机制直观、名声好攒。四条线随时可以切换。'],['#weekly','养成每周习惯','用餐、训练、侍奉每周各一次，周日做最划算。'],['#planner','规划想招的同伴','四线门槛放在一起比，自动列出要备的金币与物品。']].map(([h,t,d],i)=>`<a class="resume-card" href="${h}"><span class="resume-step">${i+1}</span><strong>${t}</strong><p>${d}</p></a>`).join('')}</div>`;
+  return `<div class="section-heading"><div><div class="eyebrow">WELCOME BACK</div><h2>继续你的旅程</h2></div></div><div class="resume-grid">${last?`<a class="resume-card" href="${esc(last.hash)}"><span class="resume-kicker">继续阅读 · ${esc(ago(last.at))}</span><strong>${esc(last.label)}</strong><p>回到上次看到的段落 →</p></a>`:`<a class="resume-card" href="#story"><span class="resume-kicker">流程攻略</span><strong>选一条路线读下去</strong><p>四位主角的人物篇与第二、三部 →</p></a>`}<a class="resume-card" href="#planner${marked[0]?'/'+marked[0]:''}"><span class="resume-kicker">我的招募计划</span>${marked.length?`${marked.map(id=>`<strong>${esc(plannerRouteTitle(id))}<small> 计划 ${plannerCount(id,'target')} · 已招 ${plannerCount(id,'done')}</small></strong>`).join('')}<p>打开清单 →</p>`:'<strong>还没有标记</strong><p>按名声挑人，自动汇总要备的物品 →</p>'}</a><a class="resume-card" href="#weekly"><span class="resume-kicker">本周行动</span><strong>${done} / ${D.weekly.length} 已完成</strong><div class="progress"><span data-progress style="width:${done/D.weekly.length*100}%"></span></div><p>${done>=D.weekly.length?'这周都办完了 →':'看看还差哪几项 →'}</p></a></div>`;
+}
+function homeRoutes(protagonists){
+  const parts=D.story.filter(s=>s.part>1);
+  return `<div class="section-heading"><div><div class="eyebrow">BY ROUTE</div><h2>按路线找攻略</h2></div><a class="text-link" href="#story">三部流程总览 <span>↗</span></a></div><p class="home-lede">第一部四位主角各走一条线，名声与等级不互通；支援、加护等级四线共享。下面的顺序是原手册的建议，并非唯一玩法。</p><div class="route-picks">${[...routeIds].sort((a,b)=>routeOrder[a][0]-routeOrder[b][0]).map(id=>{const i=routeIds.indexOf(id),c=protagonists[i],[order,fit]=routeOrder[id];return `<a class="route-pick" href="#route/${id}" style="--pick:${['#3d5a8a','#5a4a6e','#8a6d2c','#8a3d4d'][i]}"><img src="${esc(c.avatar)}" alt="" loading="lazy"><span class="route-pick-order">建议第 ${order} 条</span><strong>${esc(c.name)}篇</strong><em>${esc(routeHooks[id])}</em><small>适合：${esc(fit)}</small></a>`;}).join('')}</div><div class="later-picks">${parts.map(s=>`<a href="#story/${s.id}"><span>第${s.part===2?'二':'三'}部</span><strong>${esc(s.title)}</strong><small>${esc(s.subtitle)}</small></a>`).join('')}</div>`;
+}
+function homeTools(){
+  const tiles=[['#planner','planner','招募规划','四线门槛对照、要备的金币与物品'],['#characters','characters','角色图鉴','招募条件、礼物喜好、培养方案'],['#classes','classes','兵种资料','54 种兵种的考试、解锁与精通'],['#weekly','weekly','每周行动','9 项周常清单，周日做更划算'],['#guide/g6','missable','错过要素','切换路线、推进主线前先确认'],['','search','全站搜索','角色、礼物、条件，一搜即得']];
+  return `<div class="section-heading"><div><div class="eyebrow">TOOLS</div><h2>常用工具</h2></div></div><div class="tool-grid">${tiles.map(([h,icon,t,d])=>`${h?`<a class="tool-tile" href="${h}">`:'<button class="tool-tile" data-search="">'}<svg viewBox="0 0 24 24" aria-hidden="true">${homeIcons[icon]}</svg><span><strong>${t}</strong><small>${d}</small></span>${h?'</a>':'</button>'}`).join('')}</div>`;
+}
 function home() {
   const names=['凯伊','迪托利希','赛奥朵拉','蕾达'];
   const protagonists=names.map(n => D.characters.find(c=>c.aliases.includes(n)));
-  const latest=D.logs.find(e=>e.date===D.updated);
   return `<section class="hero-home"><div class="container"><div class="hero-inner"><div class="hero-copy"><div class="eyebrow">FIRE EMBLEM · FORTUNE’S WEAVE</div><h1>于万缕命运间，<br><span>走出你的胜局。</span></h1><p>从第一次选择，到每一场战斗。<br>一份陪你探索《万缕千丝》的玩家战术手帖。</p><div class="hero-actions"><a class="button gold" href="#story">开始冒险 <span>↗</span></a><a class="text-link" href="#characters">查找角色 <span>→</span></a></div></div><div class="hero-art">${protagonists.map((c,i)=>`<a class="portrait-panel" href="#route/${routeIds[i]}" aria-label="阅读第一部${esc(c.name)}篇章专题"><img src="${esc(c.portrait)}" alt="${esc(c.name)}立绘" fetchpriority="high"><span>${esc(c.name)}<small>第一部 · 完整专题 ↗</small></span></a>`).join('')}<div class="hero-caption">FOUR PATHS. ONE INTERWOVEN DESTINY.</div></div></div><div class="meta-strip"><span><i class="dot"></i>资料快照 ${D.updated.replaceAll('-','.')}</span><span>3 部流程 / 6 篇手册 / ${D.characters.length} 位角色</span><span>玩家整理 · 非官方网站</span></div></div></section>
   <div class="container"><div class="home-search"><button class="search-launch" data-search="">${magnify}<span>想查什么？角色、礼物、招募条件…</span></button><div class="hot-search"><span>常用</span><button data-search="招募">招募</button><button data-search="转职">转职</button><button data-search="礼物">礼物</button><button data-search="错过">错过要素</button></div></div>
-  <div class="home-body"><div class="section-heading"><div><div class="eyebrow">YOUR NEXT MOVE</div><h2>此刻，你想做什么？</h2></div><span class="text-link">从问题出发，更快找到答案</span></div><div class="entry-grid"><a class="entry featured" href="#story"><span class="entry-number">01</span><span class="arrow">↗</span><h3>准备开始冒险</h3><p>第一部四路线、第二部战争篇、第三部救世篇。</p></a><a class="entry" href="#characters"><span class="entry-number">02</span><span class="arrow">↗</span><h3>找到心仪的同伴</h3><p>招募门槛、礼物喜好，一份档案查清楚。</p></a><a class="entry" href="#planner"><span class="entry-number">03</span><span class="arrow">↗</span><h3>规划四线招募</h3><p>谁在哪条线门槛最低，要备多少金币和物品。</p></a><a class="entry" href="#guide/g6"><span class="entry-number">04</span><span class="arrow">↗</span><h3>不留下遗憾</h3><p>路线切换与错过要素，推进前再确认。</p></a></div>
-  <div class="home-columns"><section><div class="section-heading"><div><div class="eyebrow">THE FIELD MANUAL</div><h2>把每一步，走得更从容</h2></div><a class="text-link" href="#guides">全部攻略 ↗</a></div><div class="guide-list">${D.chapters.map((c,i)=>`<a class="guide-row" href="#guide/${c.id}"><span>${String(i+1).padStart(2,'0')}</span><div><h3>${esc(c.title)}</h3><p>${chapterNotes[i]}</p></div><span class="arrow">↗</span></a>`).join('')}</div></section>
-  <aside><div class="section-heading"><div><div class="eyebrow">A LITTLE EVERY WEEK</div><h2>本周，也别忘了</h2></div></div><div class="weekly-mini"><div class="mini-head"><span>我的行动清单</span><span data-progress-text>${countDone()} / ${D.weekly.length} 完成</span></div><div class="progress"><span data-progress style="width:${countDone()/D.weekly.length*100}%"></span></div>${D.weekly.slice(1,4).map((t,i)=>weeklyItem(t,i+1,true)).join('')}<a class="text-link" href="#weekly">查看完整 ${D.weekly.length} 项行动 <span>→</span></a></div>${plannerHomeCard()}<div class="update-note"><div class="eyebrow">LATEST NOTES</div><time>${D.updated}</time><h3>最近的内容修订</h3><p>${esc(latest?.merged?.[0]?.text || '查看最近的资料记录。')}</p><a href="#sources/log">查看修订与争议记录 ↗</a></div></aside></div>
-  <section class="featured-chars"><div class="section-heading"><div><div class="eyebrow">FOUR ROUTES · PART ONE</div><h2>第一部，选择你的旅途</h2></div><a class="text-link" href="#story">三部流程总览 ↗</a></div><div class="characters-preview">${protagonists.map((c,i)=>`<a class="mini-character" href="#route/${routeIds[i]}"><img src="${esc(c.avatar)}" alt="" loading="lazy"><span><strong>${esc(c.name)}</strong><small>第一部 · 完整专题 ↗</small></span></a>`).join('')}</div></section></div></div>`;
+  <div class="home-body"><section class="home-resume">${homeResume()}</section><section class="home-routes">${homeRoutes(protagonists)}</section>
+  <div class="home-columns"><section><div class="home-tools">${homeTools()}</div><div class="section-heading"><div><div class="eyebrow">THE FIELD MANUAL</div><h2>系统手册 · ${D.chapters.length} 篇</h2></div><a class="text-link" href="#guides">全部主题 ↗</a></div><div class="guide-list">${D.chapters.map((c,i)=>`<a class="guide-row" href="#guide/${c.id}"><span>${String(i+1).padStart(2,'0')}</span><div><h3>${esc(c.title)}</h3><p>${chapterNotes[i]}</p></div><span class="arrow">↗</span></a>`).join('')}</div></section>
+  <aside><div class="section-heading"><div><div class="eyebrow">THIS WEEK</div><h2>本周清单</h2></div></div><div class="weekly-mini"><div class="mini-head"><span>我的行动清单</span><span data-progress-text>${countDone()} / ${D.weekly.length} 完成</span></div><div class="progress"><span data-progress style="width:${countDone()/D.weekly.length*100}%"></span></div>${D.weekly.slice(1,4).map((t,i)=>weeklyItem(t,i+1,true)).join('')}<a class="text-link" href="#weekly">查看完整 ${D.weekly.length} 项行动 <span>→</span></a></div><div class="update-note"><div class="eyebrow">LATEST NOTES</div><h3>最近更新</h3><ul class="update-list">${D.logs.slice(0,3).map(e=>`<li><time>${esc(e.date)}</time><strong>${esc(e.edition||'资料更新')}</strong><p>${esc(e.merged?.[0]?.text||'')}</p></li>`).join('')}</ul><a href="#sources/log">全部修订与争议记录 ↗</a></div></aside></div></div></div>`;
 }
 function characterPage(query='') { return `<div class="container page">${heading('COMPANION ARCHIVE','每一位同伴，都值得了解。','按角色查招募、交涉和培养方案。支持简繁别名、日文名、物品与条件反查。')}<a class="reference-link" href="#planner">招募规划 · 四线门槛对照、勾选目标、汇总要备的金币与物品 →</a><div class="filter-bar"><input id="char-query" type="search" value="${esc(query)}" placeholder="搜索角色、别名、礼物，例如：洛蕾塔、咖啡" aria-label="搜索角色或礼物"><select id="route-filter" aria-label="按第一部可用路线筛选"><option value="">第一部 · 所有路线</option>${routeNames.map(n=>`<option>${n}</option>`).join('')}</select><span class="count" id="char-count" aria-live="polite"></span></div><div id="character-grid" class="character-grid"></div><p class="notice">已补充 ${D.negotiations.length} 位角色交涉明细、${D.builds.length} 位角色培养建议；其他档案继续补完。四路线筛选仅指第一部，包含本线主角；「—」表示该路线无法招募。简繁与社群别名共用同一档案，数值仍需以当前游戏版本核对。</p></div>`; }
 // Card tags say something specific: where the person starts, and how many routes can scout them at what renown.
@@ -79,7 +104,7 @@ function filterSources() {
   const values=D.sources.filter(s=>(!kind||s.kind===kind)&&(!q||[s.title,s.host,s.note,s.url].join(' ').toLowerCase().includes(q)));
   $('#source-count').textContent=`${values.length} 个来源`;
   const groups=Object.entries(values.reduce((g,s)=>((g[s.host]??=[]).push(s),g),{})).sort((a,b)=>b[1].length-a[1].length||a[0].localeCompare(b[0]));
-  $('#source-list').innerHTML=groups.map(([host,rows])=>`<details class="source-group" ${q||kind||groups.length<=3?'open':''}><summary><strong>${esc(host)}</strong><span>${rows.length} 个来源${rows.some(s=>s.status==='page-reviewed')?` · ${rows.filter(s=>s.status==='page-reviewed').length} 个所引页面已核对`:''}</span></summary>${rows.map(s=>`<div class="source-row"><div><span class="tag ${s.kind==='官方'?'green':''}">${esc(s.kind)}</span></div><div><h3><a href="${href(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)} ↗</a></h3><p>${esc(s.host)}${s.originalGrade?` · 原分级 ${esc(s.originalGrade)}`:''}</p>${s.note?`<details><summary style="font-size:10px;cursor:pointer;color:var(--muted)">展开原记录说明</summary><p>${esc(s.note)}</p></details>`:''}</div><div><span class="tag ${s.status==='page-reviewed'?'green':''}">${s.status==='page-reviewed'?'所引页面已核对':'待重新核验'}</span>${s.lastListed?`<br><time>记录 ${esc(s.lastListed)}</time>`:''}</div></div>`).join('')}</details>`).join('')||'<p class="empty">没有匹配的来源，试试其他关键词。</p>';
+  $('#source-list').innerHTML=groups.map(([host,rows])=>`<details class="source-group" ${q||kind||groups.length<=3?'open':''}><summary><strong>${esc(host)}</strong><span>${rows.length} 个来源${rows.some(s=>s.status==='page-reviewed')?` · ${rows.filter(s=>s.status==='page-reviewed').length} 个所引页面已核对`:''}</span></summary>${rows.map(s=>`<div class="source-row"><div><span class="tag ${s.kind==='官方'?'green':''}">${esc(s.kind)}</span></div><div><h3><a href="${href(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)} ↗</a></h3><p>${esc(s.host)}${s.originalGrade?` · 原分级 ${esc(s.originalGrade)}`:''}</p>${s.note?`<details><summary style="font-size:12px;cursor:pointer;color:var(--muted)">展开原记录说明</summary><p>${esc(s.note)}</p></details>`:''}</div><div><span class="tag ${s.status==='page-reviewed'?'green':''}">${s.status==='page-reviewed'?'所引页面已核对':'待重新核验'}</span>${s.lastListed?`<br><time>记录 ${esc(s.lastListed)}</time>`:''}</div></div>`).join('')}</details>`).join('')||'<p class="empty">没有匹配的来源，试试其他关键词。</p>';
 }
 function renderDrafts() {
   if(!drafts.length){$('#drafts').innerHTML='';return;}
@@ -147,8 +172,8 @@ function storyDetail(id) {
 }
 
 // Highlights the contents entry for the section under the reading line; on narrow screens it also keeps that entry in view.
-function spy(links) {
-  const mark=id=>links.forEach(a=>{const on=a.dataset.section===id;a.classList.toggle('active',on);if(!on){a.removeAttribute('aria-current');return;}a.setAttribute('aria-current','location');const bar=a.parentElement,r=a.getBoundingClientRect(),b=bar.getBoundingClientRect();if(bar.scrollWidth>bar.clientWidth&&(r.left<b.left||r.right>b.right))bar.scrollBy({left:r.left-b.left-16,behavior:'smooth'});});
+function spy(links,onMark) {
+  const mark=id=>{onMark?.(id,links.find(a=>a.dataset.section===id));links.forEach(a=>{const on=a.dataset.section===id;a.classList.toggle('active',on);if(!on){a.removeAttribute('aria-current');return;}a.setAttribute('aria-current','location');const bar=a.parentElement,r=a.getBoundingClientRect(),b=bar.getBoundingClientRect();if(bar.scrollWidth>bar.clientWidth&&(r.left<b.left||r.right>b.right))bar.scrollBy({left:r.left-b.left-16,behavior:'smooth'});});};
   observer=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);if(visible[0])mark(visible[0].target.id);},{rootMargin:'-30% 0px -65% 0px'});
   links.forEach(a=>{const t=document.getElementById(a.dataset.section);if(t)observer.observe(t);});
   return mark;
@@ -182,11 +207,13 @@ function navigate() {
   if(view==='sources')renderSources();
   window.scrollTo({top:0,behavior:'instant'});
   if(['route','story'].includes(view)&&section)requestAnimationFrame(()=>$('#'+CSS.escape(section))?.scrollIntoView({behavior:'instant'}));
-  if(view==='route'){const links=$$('.route-toc a[data-section]');if(links.length)spy(links)(section&&links.some(a=>a.dataset.section===section)?section:links[0].dataset.section);}
+  const reading=(sid,a)=>rememberReading(`#${view}/${id}/${sid}`,`${titles[view]} · ${(a?.textContent||'').replace(/^\d+/,'').trim()}`);
+  if(view==='story'&&id&&D.story.find(s=>s.id===id)?.part>1)rememberReading('#story/'+id,titles.story);
+  if(view==='route'){const links=$$('.route-toc a[data-section]');if(links.length)spy(links,reading)(section&&links.some(a=>a.dataset.section===section)?section:links[0].dataset.section);}
   if(view==='guide') {
     if(section)requestAnimationFrame(()=>$('#'+CSS.escape(section))?.scrollIntoView({behavior:'instant'}));
     // A visible selection on initial load, before the observer reports.
-    spy($$('.reading-nav a[data-section]'))(section||D.chapters.find(c=>c.id===id)?.sections[0]?.id);
+    spy($$('.reading-nav a[data-section]'),reading)(section||D.chapters.find(c=>c.id===id)?.sections[0]?.id);
   }
 }
 document.addEventListener('click', async e=> {
@@ -196,6 +223,7 @@ document.addEventListener('click', async e=> {
   if(el.id==='plan-copy'){const text=plannerText(plannerData().route);try{await navigator.clipboard.writeText(text);toast('已复制招募清单。');}catch{toast('浏览器未允许复制；可截图保存右侧清单。');}}
   if(el.hasAttribute('data-search'))search(el.dataset.search);
   if(el.id==='search-open')search();
+  if(el.id==='theme-toggle'){themeMode=themeModes[(themeModes.indexOf(themeMode)+1)%themeModes.length];try{localStorage.setItem('fe-next.theme',themeMode);}catch{}applyTheme();toast(`外观：${themeLabels[themeMode]}${themeMode==='auto'?'（目前'+(document.documentElement.dataset.mode==='dark'?'深色':'浅色')+'）':''}`);}
   if(el.dataset.class)showClass(el.dataset.class);
   if(el.dataset.searchClass){closeDialog('search-dialog');showClass(el.dataset.searchClass);}
   if(el.dataset.character)showCharacter(el.dataset.character);
@@ -224,6 +252,7 @@ window.addEventListener('scroll',()=>requestAnimationFrame(headroom),{passive:tr
 window.addEventListener('resize',measureHeader);
 window.addEventListener('load',measureHeader);
 measureHeader();
+applyTheme();
 navigate();
 
 document.addEventListener('change',e=>{if(['class-tier','class-role'].includes(e.target.id))filterClasses();});

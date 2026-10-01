@@ -75,4 +75,11 @@ const merged=mixed.run('plannerData().marks.kai');assert.equal(merged[id('希蒙
 const broken=setup(null);broken.run(`$('#main').innerHTML=plannerPage('kai','FW1@@');renderPlanner()`);assert(broken.node('#planner-restore').innerHTML.includes('无法识别'));
 const flags=t.run(`characterFlags(D.characters.find(c=>c.name==='蒂亚拉'))`);assert(flags.includes('凯伊篇同伴')&&flags.includes('3 线可挖 · 最低 8R'),flags);
 assert(t.run(`characterFlags(D.characters.find(c=>c.name==='凯伊'))`).includes('凯伊篇主角'));
+// Home page: newcomers get three starting steps; returning readers get their place, plan and week.
+const fresh=setup(null);assert(fresh.run('home()').includes('第一次来？三步上手'));
+const routesHtml=fresh.run("homeRoutes(['凯伊','迪托利希','赛奥朵拉','蕾达'].map(n=>D.characters.find(c=>c.aliases.includes(n))))");
+const pos=['凯伊篇','赛奥朵拉篇','迪托利希篇','蕾达篇'].map(n=>routesHtml.indexOf(n));assert.deepEqual([...pos].sort((a,b)=>a-b),pos,'route cards follow the recommended order');
+fresh.run("rememberReading('#route/kai/paralogues','凯伊篇 · 外传与漏接提醒')");
+const resumed=fresh.run('home()');assert(resumed.includes('继续你的旅程')&&resumed.includes('#route/kai/paralogues')&&resumed.includes('凯伊篇 · 外传与漏接提醒'));
+assert(t.run('homeResume()').includes('蕾达篇<small> 计划'),'plan summary per route');
 console.log('Planner: route lists, paralogue windows, totals, marks, persistence and matrix passed.');
