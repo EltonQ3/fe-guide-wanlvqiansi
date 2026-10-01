@@ -902,6 +902,72 @@
     "status": "imported"
   },
   {
+    "id": "d707769e0f67",
+    "url": "https://gamewith.jp/fefw/577296",
+    "title": "GameWith · 诺克裘拉（10月1日更新）",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-10-02",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "30a713dacd54",
+    "url": "https://gamewith.jp/fefw/577330",
+    "title": "GameWith · 迪托利希篇路线总表",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "「スカウトできるキャラ」中诺克裘拉的迪托利希栏仍只有条件、时点留空；4章开放自由行动只证明可开始自由行动，不等于证明该角色当章出现。",
+    "lastListed": "2026-10-02",
+    "status": "imported"
+  },
+  {
+    "id": "a2b43b2dee37",
+    "url": "https://game8.jp/fe-banshisenko/816480",
+    "title": "Game8 · 迪托利希篇4章（10月2日更新）",
+    "host": "game8.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "「攻略チャート」步骤1为法比奥在进城前给予3000G，步骤3—6为酒馆事件战后米迦艾拉加入；没有米迦艾拉付款步骤，仍不足以证明明确免付。",
+    "lastListed": "2026-10-02",
+    "status": "imported"
+  },
+  {
+    "id": "2185ee203478",
+    "url": "https://gamewith.jp/fefw/577290",
+    "title": "GameWith · 杰斯特角色页",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-10-02",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "0ecf92c6b258",
+    "url": "https://gamewith.jp/fefw/579107",
+    "title": "GameWith · 杰斯特请求2",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "「受注場所と期限」「攻略」写四线受注日期、11月27日期限及ワルハラ鉱山；未给路线可辨认的任务栏或地图过程。",
+    "lastListed": "2026-10-02",
+    "status": "imported"
+  },
+  {
+    "id": "7ee8d9e6b10c",
+    "url": "https://gamewith.jp/fefw/577284",
+    "title": "GameWith · 赛奥朵拉篇5章",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "任务表中的杰斯特请求2同样写ワルハラ鉱山；同站汇总只能作为一致性复核，不作为第二份独立证据。",
+    "lastListed": "2026-10-02",
+    "status": "imported"
+  },
+  {
     "id": "b1c6972114e6",
     "url": "https://game8.jp/fe-banshisenko/816451",
     "title": "Game8 · 洛蕾塔",
@@ -1100,17 +1166,6 @@
     "status": "page-reviewed"
   },
   {
-    "id": "d707769e0f67",
-    "url": "https://gamewith.jp/fefw/577296",
-    "title": "GameWith · ノクチュラのおすすめ兵種とスカウト条件",
-    "host": "gamewith.jp",
-    "kind": "攻略 / 媒体",
-    "originalGrade": "",
-    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
-    "lastListed": "2026-10-02",
-    "status": "page-reviewed"
-  },
-  {
     "id": "5f81280c7295",
     "url": "https://game8.jp/fe-banshisenko/816447",
     "title": "Game8 · ノクチュラの育成おすすめと兵種・スカウト条件",
@@ -1173,17 +1228,6 @@
     "kind": "攻略 / 媒体",
     "originalGrade": "",
     "note": "拉弥努一家角色介绍段：作者明确迪线，米迦艾拉在酒馆获救后成为同伴；未说明费用，不能裁定免费。",
-    "lastListed": "2026-10-02",
-    "status": "imported"
-  },
-  {
-    "id": "a2b43b2dee37",
-    "url": "https://game8.jp/fe-banshisenko/816480",
-    "title": "Game8 · ディートリヒ篇4章「実力行使」",
-    "host": "game8.jp",
-    "kind": "攻略 / 媒体",
-    "originalGrade": "",
-    "note": "「攻略チャート」步骤3—6：酒馆、マジーデ事件战、事件后米迦艾拉加入。步骤1另有法比奥给予3000G，不能与米迦艾拉费用混为一谈。",
     "lastListed": "2026-10-02",
     "status": "imported"
   },
@@ -1263,28 +1307,6 @@
     "note": "食材表砂虫肉价格列500，未标商店/路线/价格定义。与具体购买页面300不同；不能按多数票覆盖，只采用凯伊キラ村截图范围，泛用基础价不裁定。",
     "lastListed": "2026-10-02",
     "status": "imported"
-  },
-  {
-    "id": "0ecf92c6b258",
-    "url": "https://gamewith.jp/fefw/579107",
-    "title": "GameWith · ジェスターの頼み2の攻略",
-    "host": "gamewith.jp",
-    "kind": "攻略 / 媒体",
-    "originalGrade": "",
-    "note": "10/1 15:14全文「目的地で敵を全滅させる」新增明确分流：凯伊ワルハラ鉱山、其他主角セドー砦；顶部内容表仍笼统矿山。不同于旧检索摘要。缺第二个路线明确证据，保留候选。",
-    "lastListed": "2026-10-02",
-    "status": "imported"
-  },
-  {
-    "id": "2185ee203478",
-    "url": "https://gamewith.jp/fefw/577290",
-    "title": "GameWith · ジェスター(マクシム)のおすすめ兵種とスカウト条件",
-    "host": "gamewith.jp",
-    "kind": "攻略 / 媒体",
-    "originalGrade": "",
-    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
-    "lastListed": "2026-10-02",
-    "status": "page-reviewed"
   },
   {
     "id": "52a62eef4c3a",
