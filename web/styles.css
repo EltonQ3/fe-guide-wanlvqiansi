@@ -251,3 +251,6 @@ small{font-size:max(11px,.85em)}
 .plan-source,.planner-summary .plan-source{display:block;margin-top:4px;font-size:12px;line-height:1.7;color:var(--muted)}.plan-source span{display:block}.plan-source a{color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px;margin-right:6px}
 .plan-tips{margin:10px 0 0;padding-left:1.2em;font-size:12px;line-height:1.8;color:var(--muted)}.plan-tips a{color:var(--gold-ink)}
 .trade-sources{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.trade-sources h4{font-size:13px;margin:0 0 6px}.trade-sources p{margin:8px 0;font-size:13px}
+/* Phones: room between the buttons and the portraits for the braided threads (web/weave.js), so the cards never cover them. */
+@media(max-width:580px){.hero-art{margin-top:30px}}
+@media(max-width:700px){.campaign-pilot .route-hero-art{margin-top:24px}}

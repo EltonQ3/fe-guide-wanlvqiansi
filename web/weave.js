@@ -21,18 +21,20 @@ function startWeave(canvas){
     const m=mask.getContext('2d');m.setTransform(dpr,0,0,dpr,0,0);m.filter='blur(28px)';m.fillStyle='rgba(0,0,0,.92)';
     // Text stays on a near-plain ground: the mask erases most of the threads under it.
     if(home){
-      const copy=box('.hero-copy'),art=box('.hero-art'),meta=box('.meta-strip'),ends=[...hero.querySelectorAll('.portrait-panel')].map(el=>rel(el.getBoundingClientRect()).b);
+      const copy=box('.hero-copy'),actions=box('.hero-actions'),art=box('.hero-art'),meta=box('.meta-strip'),ends=[...hero.querySelectorAll('.portrait-panel')].map(el=>rel(el.getBoundingClientRect()).b);
       // Where the staggered portraits end, so the braid slips in front of and behind the cards; threads fan out
-      // upward on the left, under the masked text. Between text and portraits when they stack.
-      band=art.t>copy.b-20?{y:(copy.b+art.t)/2,from:0,spread:Math.min(14,H*.03),up:0}:{y:Math.min((Math.min(...ends)+Math.max(...ends))/2,meta.t-24),from:copy.l,spread:0,up:(Math.max(...ends)-copy.t)/4.5};
-      m.fillRect(copy.l-36,copy.t,copy.r-copy.l+72,copy.b-copy.t);m.fillRect(meta.l,meta.t+8,meta.r-meta.l,meta.b-meta.t);
+      // upward on the left, under the masked text. When they stack (phones), a flatter braid runs in the gap between
+      // the buttons and the portraits, measured from the buttons rather than the padded copy block.
+      band=art.t>copy.b-20?{y:(actions.b+art.t)/2,from:0,spread:4,up:0,amp:6}:{y:Math.min((Math.min(...ends)+Math.max(...ends))/2,meta.t-24),from:copy.l,spread:0,up:(Math.max(...ends)-copy.t)/4.5,amp:11};
+      // Stacked: stop above the (opaque) buttons so the soft edge does not fade the braid below them.
+      m.fillRect(copy.l-36,copy.t,copy.r-copy.l+72,(art.t>copy.b-20?actions.b-20:copy.b)-copy.t);m.fillRect(meta.l,meta.t+8,meta.r-meta.l,meta.b-meta.t);
     }else{
       // The copy block has generous padding; mask its contents only so the band below the button stays visible.
       const kids=[...hero.querySelector('.route-hero-copy').children].map(el=>el.getBoundingClientRect()).filter(b=>b.width);
       const text=rel({left:Math.min(...kids.map(b=>b.left)),top:Math.min(...kids.map(b=>b.top)),right:Math.max(...kids.map(b=>b.right)),bottom:Math.max(...kids.map(b=>b.bottom))});
       const art=box('.route-hero-art'),stacked=art.t>text.b-20;
-      band={y:stacked?(text.b+art.t)/2:(text.b+H)/2,from:0,spread:0,up:0};
-      m.fillRect(text.l-36,text.t-30,text.r-text.l+72,text.b-text.t+(stacked?50:36));
+      band={y:stacked?(text.b+art.t)/2:(text.b+H)/2,from:0,spread:0,up:0,amp:stacked?7:11};
+      m.fillRect(text.l-36,text.t-30,text.r-text.l+72,text.b-text.t+(stacked?0:36));
     }
     const n=Math.round(Math.min(34,Math.max(14,W/42)));
     warp=Array.from({length:n},(_,i)=>({y:H*(.06+.88*i/(n-1)),a:5+(i*7)%9,l:340+(i*137)%380,s:.10+(i%5)*.035,p:i*1.7,o:.07+(i%4)*.025}));
@@ -42,13 +44,13 @@ function startWeave(canvas){
   function draw(){
     ctx.clearRect(0,0,W,H);ctx.lineCap='round';ctx.lineWidth=1;
     for(const w of warp){ctx.strokeStyle=`rgba(203,182,142,${w.o})`;line(x=>{const y=w.y+w.a*Math.sin(x/w.l*6.283+t*w.s+w.p);return y+push(x,y);});}
-    const {y:yc,from,spread,up}=band,span=Math.max(1,W-from),turn=Math.PI*2/colors.length,mid=(colors.length-1)/2;
+    const {y:yc,from,spread,up,amp}=band,span=Math.max(1,W-from),turn=Math.PI*2/colors.length,mid=(colors.length-1)/2;
     for(let pass=0;pass<2;pass++)colors.forEach((c,k)=>{
       const lift=glow[k],dim=focus>=0&&focus!==k?.45:1;
       ctx.strokeStyle=c;ctx.globalAlpha=(pass?.62+.38*lift:.10+.12*lift)*dim;ctx.lineWidth=pass?1.3+lift:5+3*lift;
       line(x=>{const u=Math.min(1,Math.max(0,(x-from)/span)),s=u*u*(3-2*u),e=Math.min(1,s*1.6);
-        const apart=yc+((k-mid)*spread-k*up)*(1-s)+9*Math.sin(x/260+t*.35+k*2.1)*(1-s);
-        const braid=yc+11*Math.sin(x/62-t*.6+k*turn);
+        const apart=yc+((k-mid)*spread-k*up)*(1-s)+amp*.8*Math.sin(x/260+t*.35+k*2.1)*(1-s);
+        const braid=yc+amp*Math.sin(x/62-t*.6+k*turn);
         const y=apart+(braid-apart)*e;return y+push(x,y);});
     });
     ctx.globalAlpha=1;ctx.globalCompositeOperation='destination-out';ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(mask,0,0);
