@@ -3,10 +3,10 @@ const root=path.resolve(__dirname,'..'),data=JSON.parse(fs.readFileSync(path.joi
 function setup(stored){
  const nodes={},store={'fe-next.planner.v1':stored};
  const node=id=>nodes[id]??={value:'',innerHTML:'',textContent:'',checked:false,classList:{add(){},remove(){}},focus(){},scrollIntoView(){},showModal(){this.open=true}};
- const ctx=vm.createContext({window:{FE_DATA:data},document:{querySelector:node,querySelectorAll:()=>[],activeElement:null},localStorage:{getItem:k=>store[k]??null,setItem:(k,v)=>{store[k]=v;}},history:{replaceState(){}},CSS:{escape:String},setTimeout,clearTimeout});
+ const copied=[],ctx=vm.createContext({window:{FE_DATA:data},document:{querySelector:node,querySelectorAll:()=>[],activeElement:null},localStorage:{getItem:k=>store[k]??null,setItem:(k,v)=>{store[k]=v;}},history:{replaceState(){}},CSS:{escape:String},location:{href:'https://fe-guide.pages.dev/#planner'},navigator:{clipboard:{writeText:t=>{copied.push(t);return Promise.resolve();}}},TextEncoder,TextDecoder,btoa,atob,setTimeout,clearTimeout});
  for(const f of ['dietrich.js','campaign.js','reference.js','planner.js'])vm.runInContext(fs.readFileSync(path.join(root,'web',f),'utf8'),ctx);
  vm.runInContext(fs.readFileSync(path.join(root,'web/app.js'),'utf8').split('function navigate()')[0],ctx);
- return {run:code=>vm.runInContext(code,ctx),node,store,click:dataset=>vm.runInContext(`plannerAction({dataset:${JSON.stringify(dataset)},closest:()=>null})`,ctx)};
+ return {run:code=>vm.runInContext(code,ctx),node,store,copied,click:dataset=>vm.runInContext(`plannerAction({dataset:${JSON.stringify(dataset)},closest:()=>null})`,ctx)};
 }
 const routes={kai:'凯伊线',dietrich:'迪托利希线',theodora:'赛奥朵拉线',leda:'蕾达线'};
 const t=setup(null);
@@ -40,7 +40,37 @@ const saved=JSON.parse(t.store['fe-next.planner.v1']);assert.equal(saved.route,'
 const matrix=t.run('plannerMatrix(false)');
 assert.equal([...matrix.matchAll(/class="is-lowest"/g)].length,data.characters.reduce((n,c)=>n+Object.values(c.plan||{}).filter(p=>p.lowest).length,0));
 const bad=setup('{"route":"x","filter":"y","renown":{"kai":99,"leda":"3"},"marks":{"kai":{"1":"maybe"}}}');
-assert.deepEqual(JSON.parse(JSON.stringify(bad.run('plannerData()'))),{route:'kai',filter:'all',renown:{kai:1,dietrich:1,theodora:1,leda:3},marks:{kai:{},dietrich:{},theodora:{},leda:{}}});
+assert.deepEqual(JSON.parse(JSON.stringify(bad.run('plannerData()'))),{route:'kai',filter:'all',renown:{kai:1,dietrich:1,theodora:1,leda:3},marks:{kai:{},dietrich:{},theodora:{},leda:{}},savedAt:null,backupAt:null});
 assert(t.run('plannerHomeCard()').includes('#planner/leda')&&t.run('plannerHomeCard()').includes('已招 1'),'home card lists routes with marks');
 assert(bad.run('plannerHomeCard()').includes('开始规划'),'home card invites planning when empty');
+// Long playthroughs: marks persist with a timestamp, and a backup link moves them to another device or domain.
+assert(saved.savedAt&&!saved.backupAt,'marking records when the plan last changed');
+const savedAt=saved.savedAt;t.click({planFilter:'all'});assert.equal(JSON.parse(t.store['fe-next.planner.v1']).savedAt,savedAt,'view changes do not count as plan changes');
+assert(t.node('#planner-summary').innerHTML.includes('还没有备份'));
+t.click({planMark:'target',planId:id('西洛可')});
+const code=t.run('plannerCode()');assert.match(code,/^FW1[A-Za-z0-9_-]+$/);
+const back=t.run(`plannerDecode(${JSON.stringify('https://x.pages.dev/#planner?restore='+code)})`);
+assert.deepEqual(JSON.parse(JSON.stringify(back.marks)),JSON.parse(JSON.stringify(t.run('plannerData().marks'))),'backup round-trips every mark');
+assert.equal(back.renown.leda,t.run('plannerData().renown.leda'));
+for(const bad of ['','FW1','FW1@@@','hello',code.slice(0,12)])assert.equal(t.run(`plannerDecode(${JSON.stringify(bad)})`),null,'rejects '+bad);
+t.click({planMark:'target',planId:id('莉利安')});
+
+const before=t.copied.length;t.run(`plannerAction({id:'plan-backup',dataset:{},closest:()=>null})`);
+assert(t.node('#planner-summary').innerHTML.includes('备份链接已是最新'),'backup status after copying');
+assert.equal(t.copied.length,before+1);assert(t.copied.at(-1).startsWith('https://fe-guide.pages.dev/#planner?restore=FW1'));
+// another device: open the link, preview the plan, then import or merge
+const other=setup(null);
+other.run(`$('#main').innerHTML=plannerPage('kai',${JSON.stringify(t.copied.at(-1).split('restore=')[1])});renderPlanner()`);
+const banner=other.node('#planner-restore').innerHTML;
+assert(banner.includes('导入这份计划')&&!banner.includes('合并到本机')&&banner.includes('蕾达篇：计划'),'empty device offers a plain import');
+other.click({planRestore:'replace'});
+assert.deepEqual(JSON.parse(JSON.stringify(other.run('plannerData().marks'))),JSON.parse(JSON.stringify(t.run('plannerData().marks'))));
+assert.equal(other.node('#planner-restore').innerHTML,'','banner closes after import');
+assert.equal(other.run('plannerData().route'),t.run('Object.keys(plannerData().marks).find(id=>Object.keys(plannerData().marks[id]).length)'),'jumps to a route that has marks');
+const mixed=setup(null);mixed.click({planMark:'done',planId:id('希蒙')});mixed.click({planMark:'target',planId:id('哪吒')});
+mixed.run(`plannerPending=plannerDecode(${JSON.stringify(code)});renderPlanner()`);
+assert(mixed.node('#planner-restore').innerHTML.includes('合并到本机'),'device with marks is offered a merge');
+mixed.click({planRestore:'merge'});
+const merged=mixed.run('plannerData().marks.kai');assert.equal(merged[id('希蒙')],'done');assert.equal(merged[id('哪吒')],'target');assert.equal(merged[id('洛蕾塔')],'done');
+const broken=setup(null);broken.run(`$('#main').innerHTML=plannerPage('kai','FW1@@');renderPlanner()`);assert(broken.node('#planner-restore').innerHTML.includes('无法识别'));
 console.log('Planner: route lists, paralogue windows, totals, marks, persistence and matrix passed.');
