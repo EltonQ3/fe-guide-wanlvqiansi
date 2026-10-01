@@ -4,9 +4,10 @@ const plannerKey='fe-next.planner.v1';
 const needLabels={gold:'金币',item:'物品',quest:'任务',paralogue:'外传',option:'交涉选项',story:'剧情'};
 const plannerFilters=[['all','本线可挖'],['ready','名声已达标'],['marked','我的标记'],['lowest','本线门槛最低']];
 let plannerStore,plannerPending=null,plannerRestoreBad=false,plannerPersistAsked=false;
+let plannerSaveFailed=false,plannerManualBackup=null,plannerCopying=false;
 function plannerClean(raw){
   const ok=x=>x&&typeof x==='object'&&!Array.isArray(x),s=ok(raw)?raw:{},time=t=>typeof t==='string'&&!Number.isNaN(Date.parse(t))?t:null;
-  const st={route:routeIds.includes(s.route)?s.route:'kai',filter:plannerFilters.some(f=>f[0]===s.filter)?s.filter:'all',renown:{},marks:{},savedAt:time(s.savedAt),backupAt:time(s.backupAt)};
+  const st={route:routeIds.includes(s.route)?s.route:'kai',filter:plannerFilters.some(f=>f[0]===s.filter)?s.filter:'all',renown:{},marks:{},savedAt:time(s.savedAt),backupAt:time(s.backupAt),backupCode:typeof s.backupCode==='string'&&/^FW1[A-Za-z0-9_-]+$/.test(s.backupCode)?s.backupCode:null};
   for(const id of routeIds){
     const r=Number(ok(s.renown)?s.renown[id]:NaN);st.renown[id]=Number.isInteger(r)&&r>=1&&r<=10?r:1;
     const m=ok(s.marks)&&ok(s.marks[id])?s.marks[id]:{};st.marks[id]=Object.fromEntries(Object.entries(m).filter(([,v])=>v==='target'||v==='done'));
@@ -15,7 +16,21 @@ function plannerClean(raw){
 }
 function plannerData(){return plannerStore??=plannerClean(load(plannerKey,{}));}
 // touch=false for view changes (route tab, filter), so "changed since backup" only reflects the plan itself.
-function plannerSave(touch=true){const st=plannerData();if(touch)st.savedAt=new Date().toISOString();save(plannerKey,st);}
+function plannerSave(touch=true){
+  const st=plannerData(),savedAt=touch?new Date().toISOString():st.savedAt;
+  const kept=save(plannerKey,{...st,savedAt});
+  plannerSaveFailed=!kept;
+  if(kept)st.savedAt=savedAt;
+  return kept;
+}
+function plannerHasData(){const st=plannerData();return routeIds.some(id=>Object.keys(st.marks[id]).length||st.renown[id]>1);}
+function plannerMobile(){return Boolean(window.matchMedia?.('(max-width: 800px)').matches);}
+function plannerRefresh(){if($('#planner-summary'))renderPlanner();}
+function plannerFinishBackup(code){
+  const st=plannerData();st.backupAt=new Date().toISOString();st.backupCode=code;
+  plannerManualBackup=null;plannerSave(false);plannerRefresh();
+  toast('备份链接已复制。请发给自己或存进收藏，换设备打开即可导入。');
+}
 function plannerCount(routeId,value,st=plannerData()){return Object.entries(st.marks[routeId]).filter(([id,v])=>v===value&&D.characters.some(c=>c.id===id)).length;}
 // Backup code: the whole plan travels inside the link, so it works on another device, browser or domain without an account.
 function plannerCode(st=plannerData()){
@@ -37,13 +52,17 @@ function plannerMerge(into,from){for(const id of routeIds){into.renown[id]=Math.
 function plannerRestoreBanner(){
   if(plannerRestoreBad)return '<div class="plan-restore is-bad"><p><strong>这条备份链接无法识别。</strong>可能复制时被截断了，请回到原设备重新复制完整链接。</p><div class="plan-buttons"><button class="button secondary" data-plan-restore="dismiss">知道了</button></div></div>';
   if(!plannerPending)return '';
-  const rows=routeIds.map(id=>({id,t:plannerCount(id,'target',plannerPending),d:plannerCount(id,'done',plannerPending),r:plannerPending.renown[id]})).filter(r=>r.t||r.d||r.r>1),local=routeIds.some(id=>Object.keys(plannerData().marks[id]).length);
+  const rows=routeIds.map(id=>({id,t:plannerCount(id,'target',plannerPending),d:plannerCount(id,'done',plannerPending),r:plannerPending.renown[id]})).filter(r=>r.t||r.d||r.r>1),local=plannerHasData();
   return `<div class="plan-restore" role="region" aria-label="导入备份"><div><span class="eyebrow">BACKUP FOUND</span><h2>这条链接带着一份招募计划</h2><p>${rows.map(r=>`${esc(plannerRouteTitle(r.id))}：计划 ${r.t} · 已招 ${r.d} · 名声 ${r.r}`).join('<br>')||'这份备份没有标记。'}</p></div><div class="plan-buttons">${local?'<button class="button" data-plan-restore="merge">合并到本机</button><button class="button secondary" data-plan-restore="replace">用备份覆盖本机</button>':'<button class="button" data-plan-restore="replace">导入这份计划</button>'}<button class="button secondary" data-plan-restore="dismiss">不导入</button></div>${local?'<p class="plan-fine">合并：两边的标记都保留，同一人以「已招募」为准，名声取较高的一边。覆盖：本机现有标记换成备份内容。</p>':''}</div>`;
 }
 function plannerBackupBlock(){
-  const st=plannerData(),has=routeIds.some(id=>Object.keys(st.marks[id]).length),when=t=>new Date(t).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
-  const state=!has?'标记会自动保存在这台设备的浏览器，关掉网页、重开机都还在。':`已自动保存在这台设备的浏览器${st.savedAt?`（${when(st.savedAt)} 更新）`:''}。${!st.backupAt?'<strong>还没有备份。</strong>换手机、换浏览器，或浏览器清理网站数据后，这份计划不会跟过去。':Date.parse(st.savedAt)>Date.parse(st.backupAt)?'上次备份之后又有改动，建议重新复制备份链接。':`备份链接已是最新（${when(st.backupAt)}）。`}`;
-  return `<div class="plan-backup"><h3>备份与换设备</h3><p>${state} <span id="plan-persist"></span></p>${has?'<button class="button secondary" id="plan-backup">复制备份链接</button><input id="plan-backup-out" readonly hidden aria-label="备份链接">':''}<details class="plan-import"><summary>从备份链接或备份码导入</summary><div><input id="plan-import-code" placeholder="粘贴备份链接，或以 FW1 开头的备份码" aria-label="备份链接或备份码"><button class="button secondary" id="plan-import">导入</button></div></details></div>`;
+  const st=plannerData(),has=plannerHasData(),when=t=>new Date(t).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
+  const latest=st.backupCode?st.backupCode===plannerCode():st.backupAt&&!plannerSaveFailed&&Date.parse(st.savedAt)<=Date.parse(st.backupAt);
+  const storage=plannerSaveFailed?'<strong>浏览器未允许保存；这份计划只在当前页面有效，请立即备份。</strong>':has?`已自动保存在这台设备的浏览器${st.savedAt?`（${when(st.savedAt)} 更新）`:''}。`:'标记会保存在这台设备的浏览器；可用备份链接带到其他设备。';
+  const backup=plannerCopying?'正在复制备份链接…':plannerManualBackup?'<strong>等待手动复制并保存链接，备份尚未完成。</strong>':!st.backupAt?has?'<strong>还没有备份。</strong>换设备或清理网站数据前，请保存备份链接。':'':latest?`备份链接已是最新（${when(st.backupAt)}）。`:'上次备份之后又有改动，建议重新复制备份链接。';
+  const open=plannerSaveFailed||plannerManualBackup||($('#plan-backup-details')?.open??!plannerMobile());
+  const manual=plannerManualBackup?`<div class="plan-manual-backup"><p>请手动复制下面的链接并保存，再确认完成。</p><input id="plan-backup-out" readonly value="${esc(plannerManualBackup.link)}" aria-label="备份链接"><button class="button secondary" id="plan-backup-confirm">已复制并保存链接</button></div>`:'';
+  return `<details class="plan-backup" id="plan-backup-details" ${open?'open':''}><summary>备份与换设备</summary><p>${storage} ${backup} <span id="plan-persist"></span></p>${has?`<button class="button secondary" id="plan-backup" ${plannerCopying?'disabled':''}>复制备份链接</button>`:''}${manual}<details class="plan-import"><summary>从备份链接或备份码导入</summary><div><input id="plan-import-code" placeholder="粘贴备份链接，或以 FW1 开头的备份码" aria-label="备份链接或备份码"><button class="button secondary" id="plan-import">导入</button></div></details></details>`;
 }
 function plannerRouteName(id){return routeNames[routeIds.indexOf(id)];}
 function plannerRouteTitle(id){return plannerRouteName(id).replace('线','篇');}
@@ -97,7 +116,7 @@ function tradeSources(c){
 function plannerItemCost(items){return Object.entries(items).reduce((sum,[name,x])=>sum+(x.qty&&!x.unknown?(D.tradeItems?.[name]?.verified.find(v=>v.unitPrice)?.unitPrice||0)*x.qty:0),0);}
 function plannerSummary(routeId){
   const t=plannerTotals(routeId),done=plannerCount(routeId,'done'),list=(type,title)=>{const rows=t.needs.filter(n=>n.type===type);return rows.length?`<h3>${title}</h3><ul>${rows.map(n=>`<li><strong>${esc(n.who)}</strong>${esc(n.text)}${n.type==='paralogue'?`<small>${esc(plannerWindows(n,routeId)||'本线窗口未收录')}</small>`:''}</li>`).join('')}</ul>`:'';};
-  return `<div class="eyebrow">SHOPPING LIST</div><h2>${esc(plannerRouteTitle(routeId))} · 计划 ${t.people.length} 人</h2><p class="plan-count">已招募 ${done} 人 · 当前名声 ${plannerData().renown[routeId]}</p>${t.people.length?`<dl class="plan-stats"><div><dt>最高名声</dt><dd>${t.renown}</dd></div><div><dt>支援最高</dt><dd>${t.support}S</dd></div><div><dt>金币至少</dt><dd>${t.gold.toLocaleString('en-US')}G</dd></div></dl>${Object.keys(t.items).length?`<h3>物品</h3><ul>${Object.entries(t.items).map(([name,x])=>`<li><strong>${esc(name)}${x.qty?' ×'+x.qty:''}${x.unknown?(x.qty?' ＋待确认':' · 数量待确认'):''}</strong>${esc(x.who.join('、'))}${plannerSource(name)}</li>`).join('')}</ul>${plannerItemCost(t.items)?`<p class="plan-fine">已核对标价的物品按标价约 ${plannerItemCost(t.items).toLocaleString('en-US')}G（未含折扣，也未含标价待核对的物品）。</p>`:''}${D.shopTips?.length?`<ul class="plan-tips">${D.shopTips.map(x=>`<li>${esc(x.text)} <a href="${esc(x.ref)}">原文 →</a></li>`).join('')}</ul>`:''}`:''}${list('quest','先完成的任务')}${list('paralogue','需要先打的外传')}${list('option','交涉时这样选')}${list('story','剧情前提')}<p class="plan-fine">金币按表内最低花费相加：希蒙掷错需再付，札可捏按砍到 10G 计；商店折扣与物品买价未计入（物品标价另列在物品清单下）。支援要靠送礼、用餐提升，表中 S 是与本线主角的支援等级。</p><div class="plan-buttons"><button class="button" id="plan-copy">复制清单</button><button class="button secondary" id="plan-clear">清空本线计划</button></div>`:`<p class="plan-fine">点人物右侧的「计划」，这里会汇总要准备的金币、物品、任务和外传。「已招募」的人不再计入清单。</p>`}${plannerBackupBlock()}`;
+  return `<div class="eyebrow">SHOPPING LIST</div><h2>${esc(plannerRouteTitle(routeId))} · 计划 ${t.people.length} 人</h2><p class="plan-count">已招募 ${done} 人 · 当前名声 ${plannerData().renown[routeId]}</p>${t.people.length?`<dl class="plan-stats"><div><dt>最高名声</dt><dd>${t.renown}</dd></div><div><dt>支援最高</dt><dd>${t.support}S</dd></div><div><dt>金币至少</dt><dd>${t.gold.toLocaleString('en-US')}G</dd></div></dl>${Object.keys(t.items).length?`<h3>物品</h3><ul>${Object.entries(t.items).map(([name,x])=>`<li><strong>${esc(name)}${x.qty?' ×'+x.qty:''}${x.unknown?(x.qty?' ＋待确认':' · 数量待确认'):''}</strong>${esc(x.who.join('、'))}${plannerSource(name)}</li>`).join('')}</ul>${plannerItemCost(t.items)?`<p class="plan-fine">按下方注明城镇的已核对物品标价估算约 ${plannerItemCost(t.items).toLocaleString('en-US')}G（不保证本线当前进度可到达或有足够库存；未含折扣及标价待核对的物品）。</p>`:''}${D.shopTips?.length?`<ul class="plan-tips">${D.shopTips.map(x=>`<li>${esc(x.text)} <a href="${esc(x.ref)}">原文 →</a></li>`).join('')}</ul>`:''}`:''}${list('quest','先完成的任务')}${list('paralogue','需要先打的外传')}${list('option','交涉时这样选')}${list('story','剧情前提')}<p class="plan-fine">金币按表内最低花费相加：希蒙掷错需再付，札可捏按砍到 10G 计；商店折扣与物品买价未计入（物品标价另列在物品清单下）。支援要靠送礼、用餐提升，表中 S 是与本线主角的支援等级。</p><div class="plan-buttons"><button class="button" id="plan-copy">复制清单</button><button class="button secondary" id="plan-clear">清空本线计划</button></div>`:`<p class="plan-fine">点人物右侧的「计划」，这里会汇总要准备的金币、物品、任务和外传。「已招募」的人不再计入清单。</p>`}${plannerBackupBlock()}`;
 }
 function plannerText(routeId){
   const t=plannerTotals(routeId);
@@ -111,18 +130,21 @@ function plannerMatrix(onlyMarked){
 function plannerPage(routeId,restore=null){
   const st=plannerData();if(routeIds.includes(routeId))st.route=routeId;
   plannerPending=restore?plannerDecode(restore):null;plannerRestoreBad=Boolean(restore)&&!plannerPending;
-  return `<div class="container page planner-page">${heading('RECRUIT PLANNER','挖谁、在哪条线挖、要备什么。','第一部四条路线的招募门槛放在一起比较。标记计划后，自动汇总要准备的金币、物品、任务与外传。标记自动保存在这台设备的浏览器，换设备可用备份链接带走；不会读取游戏存档。')}<div id="planner-restore"></div><div class="planner-routes" role="group" aria-label="选择第一部路线" id="planner-routes"></div><div class="planner-layout"><div class="planner-main"><div class="planner-controls"><div class="renown-stepper"><span id="renown-label">本线当前名声</span><button data-renown="-1" aria-label="名声减一">−</button><output id="planner-renown" aria-labelledby="renown-label" aria-live="polite"></output><button data-renown="1" aria-label="名声加一">＋</button></div><div class="planner-filters" role="group" aria-label="筛选人物" id="planner-filters"></div></div><div class="planner-own" id="planner-own"></div><div id="planner-list"></div></div><aside class="planner-summary" id="planner-summary" aria-label="本线招募清单"></aside></div><section class="planner-compare"><div class="section-heading"><div><div class="eyebrow">FOUR ROUTES SIDE BY SIDE</div><h2>同一个人，在哪条线挖更省力？</h2></div><label class="plan-toggle"><input type="checkbox" id="planner-only-marked"> 只看我标记过的</label></div><p class="notice">绿色是四线里名声门槛最低的路线。小字为支援等级与附加条件：金＝金币、物＝物品、任＝任务、外＝外传、交＝交涉选项、剧＝剧情前提。◎ 计划，✓ 已招募。门槛最低只说明条件最宽，不代表最早出现；出场章节见各人物篇。第一部各线的等级和道具不互通，同一人物在多条线招到，第三部可以<a href="#guide/g5/s5-5">合并因果</a>，分开培养不同方向更划算。</p><div id="planner-matrix"></div></section><p class="notice">条件取自本站四路线招募表，与角色档案同源；标为原手册的条目尚未逐项实测，以游戏内交涉提示为准。<a href="#guide/g5/s5-3">查看招募原文 →</a></p></div>`;
+  return `<div class="container page planner-page">${heading('RECRUIT PLANNER','挖谁、在哪条线挖、要备什么。','对照四线门槛，标记同伴后汇总物品、金币和任务。计划存在本机，换设备前请备份。')}<div id="planner-restore"></div><div class="planner-routes" role="group" aria-label="选择第一部路线" id="planner-routes"></div><div id="planner-save-status" class="plan-save-status" role="status" hidden></div><div id="planner-mobile-summary" class="planner-mobile-summary"></div><div class="planner-layout"><div class="planner-main"><div class="planner-controls"><div class="renown-stepper"><span id="renown-label">本线当前名声</span><button data-renown="-1" aria-label="名声减一">−</button><output id="planner-renown" aria-labelledby="renown-label" aria-live="polite"></output><button data-renown="1" aria-label="名声加一">＋</button></div><div class="planner-filters" role="group" aria-label="筛选人物" id="planner-filters"></div></div><details class="planner-own" id="planner-own"></details><div id="planner-list"></div></div><aside class="planner-summary" id="planner-summary" aria-label="本线招募清单"></aside></div><section class="planner-compare"><div class="section-heading"><div><div class="eyebrow">FOUR ROUTES SIDE BY SIDE</div><h2>同一个人，在哪条线挖更省力？</h2></div><label class="plan-toggle"><input type="checkbox" id="planner-only-marked"> 只看我标记过的</label></div><p class="notice">绿色是四线里名声门槛最低的路线。小字为支援等级与附加条件：金＝金币、物＝物品、任＝任务、外＝外传、交＝交涉选项、剧＝剧情前提。◎ 计划，✓ 已招募。门槛最低只说明条件最宽，不代表最早出现；出场章节见各人物篇。第一部各线的等级和道具不互通，同一人物在多条线招到，第三部可以<a href="#guide/g5/s5-5">合并因果</a>，分开培养不同方向更划算。</p><div id="planner-matrix"></div></section><p class="notice">条件取自本站四路线招募表，与角色档案同源；标为原手册的条目尚未逐项实测，以游戏内交涉提示为准。<a href="#guide/g5/s5-3">查看招募原文 →</a></p></div>`;
 }
 function renderPlanner(){
   const st=plannerData(),id=st.route,own=plannerOwn(id),scouts=plannerScouts(id);
   $('#planner-routes').innerHTML=routeIds.map((r,i)=>{const hero=D.characters.find(c=>c.plan?.[r]?.kind==='lord');return `<button aria-pressed="${r===id}" data-planner-route="${r}">${hero?.avatar?`<img src="${esc(hero.avatar)}" alt="">`:''}<span><strong>${esc(routeNames[i].replace('线','篇'))}</strong><small>计划 ${plannerCount(r,'target')} · 已招 ${plannerCount(r,'done')}</small></span></button>`;}).join('');
   $('#planner-renown').textContent='Lv. '+st.renown[id];
   $('#planner-filters').innerHTML=plannerFilters.map(([f,label])=>{const n=scouts.filter(c=>f==='ready'?c.plan[id].renown<=st.renown[id]:f==='marked'?st.marks[id][c.id]:f==='lowest'?c.plan[id].lowest:true).length;return `<button data-plan-filter="${f}" aria-pressed="${st.filter===f}">${label}<span>${n}</span></button>`;}).join('');
-  $('#planner-own').innerHTML=`<span class="eyebrow">本线自带</span>${own.map(c=>`<button data-character="${esc(c.id)}" title="${esc(c.recruit[plannerRouteName(id)])}">${c.avatar?`<img src="${esc(c.avatar)}" alt="">`:''}<span>${esc(c.name)}<small>${esc(c.recruit[plannerRouteName(id)].replace('本路线主角','主角'))}</small></span></button>`).join('')}`;
+  const ownBox=$('#planner-own');if(ownBox.dataset?.ready!==id){ownBox.open=!plannerMobile();if(ownBox.dataset)ownBox.dataset.ready=id;}
+  ownBox.innerHTML=`<summary>本线自带 · ${own.length} 人</summary><div class="planner-own-people">${own.map(c=>`<button data-character="${esc(c.id)}" title="${esc(c.recruit[plannerRouteName(id)])}">${c.avatar?`<img src="${esc(c.avatar)}" alt="">`:''}<span>${esc(c.name)}<small>${esc(c.recruit[plannerRouteName(id)].replace('本路线主角','主角'))}</small></span></button>`).join('')}</div>`;
   $('#planner-list').innerHTML=plannerList(id);
   $('#planner-summary').innerHTML=plannerSummary(id);
   $('#planner-matrix').innerHTML=plannerMatrix($('#planner-only-marked')?.checked);
   $('#planner-restore').innerHTML=plannerRestoreBanner();
+  const status=$('#planner-save-status');status.hidden=!plannerSaveFailed;status.innerHTML=plannerSaveFailed?'<strong>浏览器未允许保存；计划只在当前页面有效。</strong><button class="text-link" id="plan-save-retry">重试保存</button><button class="text-link" data-plan-backup="1">立即备份</button>':'';
+  $('#planner-mobile-summary').innerHTML=`<button data-scroll="planner-summary">计划 ${plannerCount(id,'target')} · 已招 ${plannerCount(id,'done')}<span>查看清单 ↓</span></button>${plannerHasData()?'<button data-plan-backup="1">备份</button>':''}`;
   globalThis.navigator?.storage?.persisted?.().then(kept=>{const note=$('#plan-persist');if(note&&kept)note.textContent='浏览器已同意长期保存本站数据。';}).catch(()=>{});
 }
 function plannerAction(el){
@@ -132,18 +154,25 @@ function plannerAction(el){
   if(el.dataset.planFilter){st.filter=el.dataset.planFilter;plannerSave(false);renderPlanner();return true;}
   if(el.dataset.planMark){if(!plannerPersistAsked){plannerPersistAsked=true;globalThis.navigator?.storage?.persist?.().catch(()=>{});}const marks=st.marks[st.route],id=el.dataset.planId;if(marks[id]===el.dataset.planMark)delete marks[id];else marks[id]=el.dataset.planMark;plannerSave();renderPlanner();$(`[data-plan-row="${CSS.escape(id)}"] [data-plan-mark="${el.dataset.planMark}"]`)?.focus();return true;}
   if(el.id==='plan-clear'){for(const [id,v] of Object.entries(st.marks[st.route]))if(v==='target')delete st.marks[st.route][id];plannerSave();renderPlanner();toast('已清空本线计划；已招募的标记保留。');return true;}
-  if(el.id==='plan-backup'){
-    const link=location.href.split('#')[0]+'#planner?restore='+plannerCode();st.backupAt=new Date().toISOString();plannerSave(false);renderPlanner();
-    const manual=()=>{const out=$('#plan-backup-out');if(out){out.hidden=false;out.value=link;out.focus();out.select();}toast('浏览器没有允许自动复制；链接已选中，请手动复制保存。');};
-    if(globalThis.navigator?.clipboard?.writeText)navigator.clipboard.writeText(link).then(()=>toast('备份链接已复制。发给自己或存进收藏，换设备打开即可导入。'),manual);else manual();
+  if(el.id==='plan-save-retry'){if(plannerSave())toast('已保存这份计划。');renderPlanner();return true;}
+  if(el.id==='plan-backup-confirm'){if(plannerManualBackup)plannerFinishBackup(plannerManualBackup.code);return true;}
+  if(el.id==='plan-backup'||el.dataset.planBackup){
+    if(plannerCopying)return true;
+    const code=plannerCode(),link=location.href.split('#')[0]+'#planner?restore='+code;
+    const manual=()=>{plannerCopying=false;plannerManualBackup={code,link};plannerRefresh();const out=$('#plan-backup-out');out?.focus();out?.select();toast('请手动复制并保存链接，完成后点确认。');};
+    if(globalThis.navigator?.clipboard?.writeText){
+      plannerCopying=true;plannerRefresh();
+      try{Promise.resolve(navigator.clipboard.writeText(link)).then(()=>{plannerCopying=false;plannerFinishBackup(code);},manual);}catch{manual();}
+    }else manual();
     return true;
   }
   if(el.id==='plan-import'){const data=plannerDecode($('#plan-import-code').value);if(!data){toast('无法识别这个备份码，请确认复制完整。');return true;}plannerPending=data;plannerRestoreBad=false;renderPlanner();$('#planner-restore').scrollIntoView({behavior:'smooth',block:'center'});return true;}
   if(el.dataset.planRestore){
     const how=el.dataset.planRestore;
-    if(plannerPending&&how==='merge'){plannerMerge(st,plannerPending);plannerSave();toast('已合并备份。');}
-    if(plannerPending&&how==='replace'){for(const id of routeIds){st.renown[id]=plannerPending.renown[id];st.marks[id]={...plannerPending.marks[id]};}plannerSave();toast('已导入备份。');}
+    if(plannerPending&&how==='merge')plannerMerge(st,plannerPending);
+    if(plannerPending&&how==='replace'){for(const id of routeIds){st.renown[id]=plannerPending.renown[id];st.marks[id]={...plannerPending.marks[id]};}}
     if(how!=='dismiss'&&!Object.keys(st.marks[st.route]).length)st.route=routeIds.find(id=>Object.keys(st.marks[id]).length)||st.route;
+    if(plannerPending&&how!=='dismiss'){const kept=plannerSave();toast(kept?(how==='merge'?'已合并并保存备份。':'已导入并保存备份。'):'已导入至当前页面；浏览器未允许保存，请先备份。');}
     plannerPending=null;plannerRestoreBad=false;history.replaceState(null,'','#planner/'+st.route);renderPlanner();return true;
   }
   return false;

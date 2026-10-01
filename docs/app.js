@@ -42,7 +42,7 @@ function homeResume(){
   return `<div class="section-heading"><div><div class="eyebrow">WELCOME BACK</div><h2>继续你的旅程</h2></div></div><div class="resume-grid">${last?`<a class="resume-card" href="${esc(last.hash)}"><span class="resume-kicker">继续阅读 · ${esc(ago(last.at))}</span><strong>${esc(last.label)}</strong><p>回到上次看到的段落 →</p></a>`:`<a class="resume-card" href="#story"><span class="resume-kicker">流程攻略</span><strong>选一条路线读下去</strong><p>四位主角的人物篇与第二、三部 →</p></a>`}<a class="resume-card" href="#planner${marked[0]?'/'+marked[0]:''}"><span class="resume-kicker">我的招募计划</span>${marked.length?`${marked.map(id=>`<strong>${esc(plannerRouteTitle(id))}<small> 计划 ${plannerCount(id,'target')} · 已招 ${plannerCount(id,'done')}</small></strong>`).join('')}<p>打开清单 →</p>`:'<strong>还没有标记</strong><p>按名声挑人，自动汇总要备的物品 →</p>'}</a><a class="resume-card" href="#weekly"><span class="resume-kicker">本周行动</span><strong>${done} / ${D.weekly.length} 已完成</strong><div class="progress"><span data-progress style="width:${done/D.weekly.length*100}%"></span></div><p>${done>=D.weekly.length?'这周都办完了 →':'看看还差哪几项 →'}</p></a></div>${homeParalogueAlerts()}`;
 }
 function homeParalogueAlerts(){
-  const rank={closing:0,open:1,upcoming:2},rows=[];
+  const rank={closing:0,deadline:0,open:1,upcoming:2},rows=[];
   for(const [id,today] of Object.entries(gameDates()))if(routeIds.includes(id)&&dayOfYear(today)!==null)for(const x of paralogueDigest(id,today).rows)if(x.st.state in rank&&(x.st.state!=='upcoming'||x.st.days<=7))rows.push({id,today,...x});
   rows.sort((a,b)=>rank[a.st.state]-rank[b.st.state]||a.st.days-b.st.days);
   return rows.length?`<div class="resume-alerts"><span class="resume-kicker">外传提醒</span>${rows.slice(0,4).map(x=>`<a href="#route/${x.id}/paralogues" class="is-${x.st.state}"><strong>${esc(plannerRouteTitle(x.id))} · ${esc(x.p.person)}外传</strong><span>${esc(paralogueLabel(x.st))}</span></a>`).join('')}</div>`:'';
@@ -193,6 +193,7 @@ function headroom() {
   if(Math.abs(y-lastScroll)>8)lastScroll=y;
 }
 function measureHeader(){document.documentElement.style.setProperty('--header-h',$('.site-header').offsetHeight+'px');}
+let activeTransition=null,navigationRevision=0;
 function navigate() {
   const raw=location.hash.slice(1)||'home';
   if(raw==='main'){ $('#main').focus(); return; }
@@ -200,10 +201,18 @@ function navigate() {
   const key=['guide','route','story'].includes(view)?`${view}/${id||''}`:view;
   if(['guide','route'].includes(view)&&currentView===key) { headroomLock=Date.now()+900; if(section){document.documentElement.classList.add('nav-hidden');$('#'+CSS.escape(section))?.scrollIntoView({behavior:'smooth'});} else window.scrollTo({top:0}); return; }
   const first=!currentView;observer?.disconnect(); currentView=key;
+  const revision=++navigationRevision;
+  activeTransition?.skipTransition();
   $$('dialog[open]').forEach(d=>d.close()); // before the old view is captured, so no dialog lingers in the snapshot
   // Cross-fade between views where the browser supports it; the first paint and reduced motion swap at once.
-  if(!first&&document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.startViewTransition(()=>renderView(view,id,section,query));
-  else renderView(view,id,section,query);
+  const render=()=>{if(revision===navigationRevision)renderView(view,id,section,query);};
+  if(!first&&document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const transition=activeTransition=document.startViewTransition(render);
+    // A newer navigation may skip the animation. Its ready promise rejects, while its DOM update still runs.
+    transition.ready.catch(()=>{});
+    transition.updateCallbackDone.catch(error=>setTimeout(()=>{throw error;},0));
+    transition.finished.catch(()=>{}).finally(()=>{if(activeTransition===transition)activeTransition=null;});
+  }else render();
 }
 function renderView(view,id,section,query) {
   if(view==='sources') sourceTab=['registry','log','collect'].includes(id)?id:'registry';

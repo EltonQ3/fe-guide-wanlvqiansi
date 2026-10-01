@@ -5,8 +5,10 @@ chat link previews see one page with no content. These pages render the same dat
 routes, characters and classes, plus a directory, sitemap.xml and robots.txt. They add no content of their own,
 and each one links back to its interactive view.
 """
-import html, re
+import html, json, re, subprocess
+from pathlib import Path
 from urllib.parse import quote
+from static_markup import static_markup
 
 SITE = '万缕千丝 · 战术手帖'
 NAV = [('home', '探索首页'), ('story', '流程攻略'), ('characters', '角色图鉴'), ('planner', '招募规划'),
@@ -31,8 +33,9 @@ def public_url(base, path):
     return base.rstrip('/') + '/' + path.removesuffix('.html')
 
 class Site:
-    def __init__(self, data, base, theme_script):
+    def __init__(self, data, base, theme_script, routes):
         self.d, self.base, self.theme_script = data, base.rstrip('/') + '/', theme_script
+        self.routes = routes
         self.pages = []  # (path, html, priority)
         self.people = {c['name']: c for c in data['characters']}
         for c in data['characters']:
@@ -143,29 +146,12 @@ class Site:
                  image=c.get('portrait') or None, kind='profile')
 
     def route(self, s):
-        rel = '../'
-        t = lambda text: self.linked(text, rel)
         p = s.get('profile') or {}
-        parts = []
-        if p:
-            parts.append(f'<section class="route-section"><h2>背景与特色</h2><p>{t(p.get("background"))}</p><p>{t(p.get("fit"))}</p><dl>{"".join(f"<div><dt>{esc(k)}</dt><dd>{t(v)}</dd></div>" for k, v in p.get("features", []))}</dl></section>')
-            parts.append(f'<section class="route-section"><h2>人物培养</h2><p>{t(p.get("strength"))}</p>{"<ul>" + "".join(f"<li>{t(x)}</li>" for x in p.get("notes", [])) + "</ul>" if p.get("notes") else ""}</section>')
-        if s.get('team'): parts.append(f'<p class="aliases">初始队伍：{"、".join(t(x) for x in s["team"])}</p>')
-        if s.get('priorities'): parts.append('<section class="route-section"><h2>推进要点</h2><ol>' + ''.join(f'<li>{t(x)}</li>' for x in s['priorities']) + '</ol></section>')
-        if s.get('battles'):
-            parts.append('<section class="route-section"><h2>关卡笔记</h2>' + ''.join(self.battle(b, t) for b in s['battles']) + '</section>')
-        paras = sorted((x for x in self.d['paralogues'] if s['id'] in x['routes']), key=lambda x: tuple(map(int, x['routes'][s['id']][0]['start'].split('/'))))
-        if paras:
-            cards = ''.join(self.paralogue(x, s['id'], t) for x in paras)
-            parts.append(f'<section class="route-section"><h2>外传日历 · {len(paras)} 篇</h2><p>日期均为游戏内 1449 年；接取窗口结束后，即使完成期限未到，也可能接不到任务。</p>{cards}</section>')
-        if s.get('chapters'):
-            parts.append('<section class="route-section"><h2>各章资料来源</h2><p class="evidence">' + ''.join(f'<a href="{esc(safe_url(ch["url"]))}" target="_blank" rel="noopener noreferrer">第 {ch["number"]} 章 ↗</a>' for ch in s['chapters']) + '</p></section>')
-        parts.append(evidence(s.get('sources')))
-        head = f'<header class="reading-title"><div class="eyebrow">{"PART I · " + esc(p.get("tagline")) if p else "PART " + ("II" if s["part"] == 2 else "III")}</div><h1>{esc(s["title"])}</h1><p>{t(p.get("intro") or s.get("subtitle"))}</p></header>'
         title = s['title'] if s['part'] == 1 else f'第{"二" if s["part"] == 2 else "三"}部 · {s["title"]}'
         desc = summary(f'火焰纹章 万缕千丝 {title}攻略：{p.get("intro") or s.get("subtitle")}' + (s['priorities'][0] if s.get('priorities') else ''))
         spa = ('route/' if s['part'] == 1 else 'story/') + s['id']
-        self.add(f'route/{s["id"]}.html', '0.8', f'{title}攻略', desc, f'<article class="reading-content static-route">{head}{"".join(parts)}</article>', spa,
+        body = static_markup(self.routes[s['id']], s['id'], self.d['characters'])
+        self.add(f'route/{s["id"]}.html', '0.8', f'{title}攻略', desc, body, spa,
                  crumbs=[('directory.html#routes', '流程攻略'), ('', title)])
 
     def trade_sources(self, c, shown):
@@ -183,25 +169,11 @@ class Site:
         return f'<div class="trade-sources"><h4>物品去哪里找</h4>{"".join(rows)}</div>' if rows else ''
 
     @staticmethod
-    def battle(b, t):
-        team = f'<p><b>阵容</b> {t(b["team"])}</p>' if b.get('team') else ''
-        watch = f'<p><b>留意</b> {t(b["watch"])}</p>' if b.get('watch') else ''
-        steps = ''.join(f'<li>{t(x)}</li>' for x in b.get('steps', []))
-        return f'<article class="static-battle"><h3>第 {esc(b.get("number"))} 章 · {esc(b.get("title"))}</h3><p><b>目标</b> {t(b.get("goal"))}</p>{team}<ol>{steps}</ol>{watch}{evidence(b.get("sources"))}</article>'
-
-    @staticmethod
-    def paralogue(x, route, t):
-        def window(w):
-            span = w['start'] if w['start'] == w['end'] else f'{w["start"]}—{w["end"]}'
-            return f'<li>第 {esc(w["chapter"])} 章 · 可接取 {esc(span)} · 完成期限 {esc(w.get("deadline") or "来源未单列")}</li>'
-        windows = ''.join(window(w) for w in x['routes'][route])
-        return f'<article class="static-battle"><h3>{esc(x["person"])}外传 · {esc(x["title"])}</h3><ul>{windows}</ul><p><b>去哪里接</b> {esc(x["place"])}</p><p>{t(x["consequence"])}</p><p><b>道具奖励</b> {esc(x["reward"])}</p>{evidence(x.get("sources"))}</article>'
-
-    @staticmethod
     def class_row(c):
         icon = f'<img class="class-icon" src="{esc(c["icon"])}" alt="" width="20" height="20" loading="lazy"> ' if c.get('icon') else ''
-        cells = ''.join(f'<td>{esc(c[k])}</td>' for k in ('movement', 'exam', 'unlock', 'features', 'mastery', 'phase'))
-        return f'<tr id="{esc(c["id"])}"><th scope="row">{icon}{esc(c["name"])}</th>{cells}</tr>'
+        cells = ''.join(f'<td>{esc(c[k])}</td>' for k in ('movement', 'exam', 'unlock', 'training', 'features', 'mastery', 'phase'))
+        restriction = f'<small class="notice">{esc(c["restriction"])}</small>' if c.get('restriction') else ''
+        return f'<tr id="{esc(c["id"])}"><th scope="row">{icon}{esc(c["name"])}{restriction}</th>{cells}</tr>'
 
     def classes(self):
         groups = []
@@ -209,9 +181,10 @@ class Site:
             rows = [c for c in self.d['classes'] if c['tier'] == tier]
             if not rows: continue
             body = ''.join(self.class_row(c) for c in rows)
-            groups.append(f'<section class="route-section"><h2>{esc(tier)} · {len(rows)} 种</h2><div class="table-scroll wide" role="region" aria-label="{esc(tier)}兵种表，可横向滚动" tabindex="0"><table><thead><tr><th>兵种</th><th>移动</th><th>考试</th><th>开放条件</th><th>特性</th><th>精通技能</th><th>可用阶段</th></tr></thead><tbody>{body}</tbody></table></div></section>')
+            exam = '神将考试要求' if tier == '神将' else '备考技能参考'
+            groups.append(f'<section class="route-section"><h2>{esc(tier)} · {len(rows)} 种</h2><div class="table-scroll wide" role="region" aria-label="{esc(tier)}兵种表，可横向滚动" tabindex="0"><table><thead><tr><th>兵种</th><th>移动</th><th>{exam}</th><th>开放条件</th><th>技能经验加成</th><th>特性</th><th>精通技能</th><th>可用阶段</th></tr></thead><tbody>{body}</tbody></table></div></section>')
         refs = {s['url']: s for c in self.d['classes'] for s in c.get('sources', [])}
-        body = f'<article class="reading-content static-route"><header class="reading-title"><div class="eyebrow">CLASS LIBRARY</div><h1>兵种资料</h1><p>{len(self.d["classes"])} 种兵种的考试、开放条件、特性与精通技能，按阶段排列。</p></header>{"".join(groups)}{evidence(list(refs.values()))}</article>'
+        body = f'<article class="reading-content static-route"><header class="reading-title"><div class="eyebrow">CLASS LIBRARY</div><h1>兵种资料</h1><p>{len(self.d["classes"])} 种兵种的考试、开放条件、特性与精通技能，按阶段排列。</p></header><p class="notice">共创表采用推荐考试技能；普通考试仍以当前菜单的通过率、票证和条件为准。任职特性随兵种变化，精通所得需完成精通后再检查可装备项。</p>{"".join(groups)}{evidence(list(refs.values()))}</article>'
         desc = summary(f'火焰纹章 万缕千丝全 {len(self.d["classes"])} 种兵种资料：' + '、'.join(c['name'] for c in self.d['classes'][:24]) + '等兵种的考试、开放条件与精通技能。')
         self.add('classes.html', '0.7', '兵种资料 · 考试与精通技能', desc, body, 'classes', crumbs=[('', '兵种资料')])
 
@@ -246,7 +219,13 @@ def robots(base):
 def write(out, data, base, index_html):
     """Write the static pages, sitemap.xml and robots.txt into `out`; return the page count."""
     theme = re.search(r'<script>\(function\(\)\{var m;.*?</script>', index_html)[0]
-    pages = Site(data, base, theme).build()
+    try:
+        rendered = subprocess.run(['node', str(Path(__file__).with_name('render_routes.cjs'))],
+                                  input=json.dumps(data, ensure_ascii=False), text=True, capture_output=True, check=True)
+    except FileNotFoundError as error:
+        raise RuntimeError('Node.js 20+ is required to build shared static route pages.') from error
+    routes = json.loads(rendered.stdout)
+    pages = Site(data, base, theme, routes).build()
     for directory in ('guide', 'route', 'character'):
         target = out / directory
         if target.exists():

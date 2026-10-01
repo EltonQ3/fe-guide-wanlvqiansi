@@ -90,7 +90,7 @@ class DataTests(unittest.TestCase):
                 for key in ('gameVersion','difficulty','route','chapter','scope','status'):
                     self.assertIn(key,item)
                 for ref in item['sources']:
-                    self.assertEqual(ref['checkedAt'],'2026-10-01')
+                    self.assertIn(ref['checkedAt'],[item['checkedAt'],item.get('acquisitionCheckedAt')])
                     self.assertTrue(ref['evidenceLocation'])
         registry={s['url']:s for s in DATA['sources']}
         self.assertEqual(registry['https://gamewith.jp/fefw/577380']['lastListed'],'2026-10-01')
@@ -225,9 +225,40 @@ class DataTests(unittest.TestCase):
         golia=(ROOT/'docs/character/50.html').read_text()
         self.assertIn('巨人肉 ×3',golia);self.assertIn('index.html#characters?name=%E6%AD%8C%E5%88%A9%E4%BA%9A',golia)
         kai=(ROOT/'docs/route/kai.html').read_text()
-        self.assertIn('<a href="../character/2.html">凯伊</a>',kai);self.assertIn('完成期限 10/21',kai);self.assertIn('来源未单列',(ROOT/'docs/route/theodora.html').read_text())
+        self.assertRegex(kai,r'<a[^>]*href="../character/2.html"[^>]*>.*?凯伊')
+        self.assertIn('完成期限</small><strong>10/21',kai)
+        self.assertIn('来源未单列',(ROOT/'docs/route/theodora.html').read_text())
         g4=(ROOT/'docs/guide/g4.html').read_text()
         for s in DATA['chapters'][3]['sections']:self.assertIn(f'id="{s["id"]}"',g4)
+
+    def test_static_routes_honor_publication_and_keep_public_advice(self):
+        from html import unescape
+        text=lambda value:re.sub(r'\s+','',unescape(re.sub(r'<[^>]+>','',value)))
+        for route in DATA['story']:
+            page=(ROOT/f'docs/route/{route["id"]}.html').read_text()
+            plain=text(page)
+            pilot=route.get('profile',{}).get('pilot')
+            if pilot:
+                if not pilot.get('publishBattles',False):
+                    self.assertNotIn('id="battles"',page)
+                    for draft in route['battles']:self.assertNotIn(text(draft['steps'][0]),plain)
+                for person in pilot['native']+pilot['scouts']:
+                    for key in ('train','caution','late'):
+                        self.assertIn(text(person[key]),plain,f'{route["id"]}: {person["name"]} {key}')
+                    self.assertIn(person['sources'][0]['url'],page)
+                for p in DATA['paralogues']:
+                    if p['routes'].get(route['id']):
+                        for step in p.get('strategy',[]):
+                            self.assertIn(text(step),plain)
+            self.assertNotIn('<button',page)
+            self.assertNotIn('<select',page)
+            self.assertNotIn('data-scroll=',page)
+        classes=(ROOT/'docs/classes.html').read_text()
+        self.assertIn('备考技能参考',classes)
+        self.assertIn('通过率、票证和条件',classes)
+        for c in DATA['classes']:
+            for key in ('restriction','training'):
+                if c.get(key):self.assertIn(text(c[key]),text(classes),c['name'])
 
     def test_trade_items_publish_only_checked_findings(self):
         trade=json.loads((ROOT/'source/trade_items.json').read_text());neg=json.loads((ROOT/'source/negotiations.json').read_text())
@@ -245,6 +276,26 @@ class DataTests(unittest.TestCase):
             for lead in i['leads']:self.assertEqual(lead['status'],'search-summary')
         sections={f"#guide/{c['id']}/{s['id']}" for c in DATA['chapters'] for s in c['sections']}
         for tip in DATA['shopTips']:self.assertIn(tip['ref'],sections)
+
+    def test_acquisition_review_keeps_route_and_price_conditions(self):
+        items=DATA['tradeItems']
+        self.assertTrue(all(item['verified'] for item in items.values()))
+        text=lambda name:' '.join(v['text'] for v in items[name]['verified'])
+        self.assertIn('凯伊篇可在海都',text('巨人肉'))
+        self.assertIn('取得箱子时决定',text('巨人肉'))
+        self.assertIn('凯伊篇不能进入',text('椰枣'))
+        self.assertFalse(any(v.get('unitPrice') for v in items['椰枣']['verified']),'unresolved 30/24 price is not used')
+        self.assertIn('第9章起',text('铁弓'));self.assertIn('第7章起',text('铁弓'))
+        self.assertIn('リベイラ村为750G',text('铁弓'))
+        for name in ('砂虫肉','铁剑','铁枪','铁斧','青铜斧','铁弓'):
+            prices=[v for v in items[name]['verified'] if 'unitPrice' in v]
+            self.assertEqual(len(prices),1,name)
+            self.assertIn('第一部',prices[0]['priceBasis'])
+            for v in items[name]['verified']:
+                if v.get('checkedAt')!='2026-10-02':continue
+                for ref in v['sources']:
+                    self.assertTrue(ref['evidenceLocation'])
+                    self.assertEqual(ref['checkedAt'],v['checkedAt'])
 
     def test_blood_seals_render_as_cards_with_icons(self):
         html=next(s['html'] for c in DATA['chapters'] for s in c['sections'] if s['id']=='s5-8')

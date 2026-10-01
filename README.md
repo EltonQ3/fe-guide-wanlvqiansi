@@ -50,6 +50,8 @@ python3 -m http.server 8766 --bind 127.0.0.1
 
 ## 修改内容与重建
 
+构建需要 Python 3.11+ 和 Node.js 20+。Node 只在构建时复用交互版路线渲染，不需要 npm 包；读者打开站点仍不需要 Node 或在线服务。
+
 `source/火焰纹章万缕千丝_完全攻略手册.md` 是攻略正文，`source/_daily_log.json` 是继承的历史记录。`docs/data/chars.json` 维护图像和别名。修改后执行：
 
 ```sh
@@ -58,6 +60,16 @@ python3 tools/build_site.py
 python3 -m unittest discover -s tests -v
 for f in tests/*.cjs; do node "$f"; done
 ```
+
+发布前还需浏览器回归检查（脚本会自动启动和关闭本机预览）：
+
+```sh
+python3 -m pip install -r requirements-dev.txt
+python3 -m playwright install --with-deps chromium webkit
+python3 tools/browser_smoke.py --browser all --output test-results
+```
+
+已有 Chromium 时可用 `--chromium-path /实际路径`；`--base-url` 可检查已部署的预览。GitHub Actions `Validate guide` 在 PR 和 main 上执行构建、生成文件一致性、Python／Node 测试与 Chromium／WebKit 检查。验证环境不足或检查失败时保留分支／PR，不发布到 main。
 
 `source/negotiations.json`、`source/builds.json`、`source/story.json` 分别维护交涉明细、培养方案和三部流程；页面来源核对不等于游戏实测。新增条目须保留具体来源、适用路线和未确认条件。
 
@@ -143,6 +155,7 @@ python3 tools/check_sources.py --host gamewith.jp --limit 5
 
 - 外传日期提醒（`web/reference.js` 的 `paralogueState`）只读站内外传日历的接取窗口与完成期限，不推算任何新日期。来源未单列完成期限的外传，接取窗口过后显示「本线接取窗口已过」，不假定期限。日期按非闰年计算；2 月 30 日等无效日期会提示重选。
 - 静态页面由 `tools/static_pages.py` 在构建时生成，内容与交互版同源，不另写文案；每页有 canonical、描述与 Open Graph 标签，并链接回对应的交互页面。人名会链接到角色静态页，便于搜索引擎沿站内链接抓取。
+- 路线正文通过 `tools/render_routes.cjs` 直接调用交互版渲染，再由 `tools/static_markup.py` 转换为静态链接；两者共同遵守 `profile.pilot.publishBattles`。培养、外传打法及兵种条件不能另写一份或跳过发布开关。
 - canonical 与 `sitemap.xml` 用不带 `.html` 的地址（Cloudflare Pages 会把 `/x.html` 重定向到 `/x`）；站内相对链接保留 `.html`，本机 `python3 -m http.server` 预览也能打开。
 - 正式域名默认 `https://fe-guide.pages.dev`。绑定自定义域名后，用 `python3 tools/build_site.py --base-url https://新域名` 重新构建，首页 canonical、静态页与 sitemap 会一起更新。Cloudflare Pages 的预览部署默认带 `noindex`，不会与正式站抢收录。
 - 收录需要站主在百度搜索资源平台、Google Search Console 验证网站并提交 `sitemap.xml`；这一步需要账号操作，构建脚本不会代做。
@@ -155,4 +168,3 @@ python3 tools/check_sources.py --host gamewith.jp --limit 5
   - `pages`：该物品的专门攻略页，只作“去哪里查”的链接。
   - `leads`：搜索摘要线索，构建不读取、页面不显示。打开原页核对后，把确认的结论先写进 `negotiations.json`（附出处），再引用到 `verified`。
   - 招募表新增需要物品的角色时，若 `trade_items.json` 没有该物品，构建会报错。
-

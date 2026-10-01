@@ -11,6 +11,193 @@
   },
   "entries": [
     {
+      "date": "2026-10-02",
+      "edition": "改版复核：材料原页核对、静态同源与规划可靠性",
+      "checked": 20,
+      "merged": [
+        {
+          "text": "补齐巨人肉、コーシャルーガー、砂虫肉、椰枣、铁剑、铁枪、铁斧、青铜斧的已核对取得方式；铁弓补齐城镇价格与帝都分路线开放章。所有价格保留城镇／第一部条件；肉箱、掉落仍标随机。",
+          "src": [
+            "https://gamewith.jp/fefw/577828",
+            "https://altema.jp/febansisenkou/nikugensen",
+            "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-item016/",
+            "https://game8.jp/fe-banshisenko/817074",
+            "https://gamewith.jp/fefw/578020",
+            "https://game8.jp/fe-banshisenko/817080",
+            "https://gamewith.jp/fefw/577816",
+            "https://game8.jp/fe-banshisenko/816871",
+            "https://game8.jp/fe-banshisenko/816457",
+            "https://chucco.com/fefw-halvin-scout/",
+            "https://gamewith.jp/fefw/577833",
+            "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase021/",
+            "https://gamewith.jp/fefw/578518",
+            "https://gamewith.jp/fefw/577834",
+            "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase002/",
+            "https://gamewith.jp/fefw/577852",
+            "https://gamewith.jp/fefw/577857"
+          ]
+        },
+        {
+          "text": "静态路线共用交互版渲染，隐藏未发布战斗草稿并保留培养、外传打法和兵种限制；规划器修复保存失败与复制备份状态，手机先选人物；首页加入已接外传完成期限提醒。",
+          "src": []
+        },
+        {
+          "text": "新增浏览器回归脚本与GitHub Actions：构建、Python／Node测试、生成文件一致性、Chromium／WebKit冒烟；每日巡检同步执行这些检查。",
+          "src": []
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "椰枣在バイナのオアシス市集的价格",
+          "current": "GameWithデーツ专页及哈尔温页列30G。",
+          "incoming": "Game8デーツ专页列24；未提供可确认的折扣、路线或版本条件。保留两者，不以折扣推测消除差异，本轮只发布取得地点及路线限制。",
+          "src": [
+            "https://gamewith.jp/fefw/577816",
+            "https://gamewith.jp/fefw/577341",
+            "https://game8.jp/fe-banshisenko/816871"
+          ]
+        },
+        {
+          "topic": "コーシャルーガー地点的来源内表文差异",
+          "current": "GameWith正文指コーシャルー湖，紧邻表格标题为アルシネウス大橋。",
+          "incoming": "AlGest与Game8分别列出湖与大桥，确认两处都有取得记录；本站按这两页的明确地点发布，不从GameWith混用标题推断额外保证。",
+          "src": [
+            "https://gamewith.jp/fefw/577822",
+            "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-item016/",
+            "https://game8.jp/fe-banshisenko/817074"
+          ]
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "B",
+          "name": "【FE万紫千紅】コーシャルーガーの入手場所と使い道",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-item016/",
+          "note": "コーシャルーガーの入手場所：探索／探索の？？？枠；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【FE万紫千紅】王都メガエラで入手できる武器・アイテム",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase002/",
+          "note": "王都メガエラの武器屋：鉄の槍／斧1125G、青銅の斧375G；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【FE万紫千紅】王都ブレストンで入手できる武器・アイテム",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-subbase021/",
+          "note": "王都ブレストンの武器屋：鉄の剣／槍／斧／弓の各1500G；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】巨大肉の効率的な入手方法｜箱厳選のやり方【FE万紫千紅】 - アルテマ",
+          "url": "https://altema.jp/febansisenkou/nikugensen",
+          "note": "巨大肉の入手方法まとめ（交換はカイ篇限定）／肉箱厳選のやり方；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】武器一覧【ファイアーエムブレム】 | AppMedia",
+          "url": "https://appmedia.jp/fe_banshisenkou/80411827",
+          "note": "已读原页作为交叉检查；本轮未据此新增独立数值。；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "C",
+          "name": "FE万紫千紅のハルヴィンを仲間にする方法を紹介します - ゲームブログちゅこっと陽だまる",
+          "url": "https://chucco.com/fefw-halvin-scout/",
+          "note": "デーツの入手方法：クエスト報酬2個→栽培→10個交付；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】ハルヴィンの育成おすすめと兵種・スカウト条件【ファイアーエムブレム万紫千紅】｜ゲームエイト",
+          "url": "https://game8.jp/fe-banshisenko/816457",
+          "note": "交渉ではデーツを10個渡す：カイ編のクエスト報酬と栽培；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】コーシャルーガーの入手方法と使い道【ファイアーエムブレム万紫千紅】｜ゲームエイト",
+          "url": "https://game8.jp/fe-banshisenko/817074",
+          "note": "ワールドマップの探索で入手：3地点とカイ編不可注記；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】砂虫肉の入手方法と使い道【ファイアーエムブレム万紫千紅】｜ゲームエイト",
+          "url": "https://game8.jp/fe-banshisenko/817080",
+          "note": "ショップで入手：キラの村300／海都アレクトー・リガネット×10；砂虫のドロップ；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】ハルヴィンのおすすめ兵種とスカウト条件【ファイアーエムブレム万紫千紅】 - ゲームウィズ",
+          "url": "https://gamewith.jp/fefw/577341",
+          "note": "已读原页作为交叉检查；本轮未据此新增独立数值。；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】コーシャルーガーの入手方法と使い道【ファイアーエムブレム万紫千紅】 - ゲームウィズ",
+          "url": "https://gamewith.jp/fefw/577822",
+          "note": "已读原页作为交叉检查；本轮未据此新增独立数值。；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】巨大肉の入手方法と使い道【ファイアーエムブレム万紫千紅】 - ゲームウィズ",
+          "url": "https://gamewith.jp/fefw/577828",
+          "note": "巨大肉の入手方法：海都アレクトー／高級肉箱／砂影の砦；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】鉄の弓の入手方法と性能【ファイアーエムブレム万紫千紅】 - ゲームウィズ",
+          "url": "https://gamewith.jp/fefw/577833",
+          "note": "入手方法：第一部の武器屋の城镇別価格；帝都の主人公別開放章（救世編とは分離）；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】鉄の槍の入手方法と性能【ファイアーエムブレム万紫千紅】 - ゲームウィズ",
+          "url": "https://gamewith.jp/fefw/577834",
+          "note": "入手方法：第一部の武器屋の城镇別価格；帝都の主人公別開放章（救世編とは分離）；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】鉄の斧の入手方法と性能【ファイアーエムブレム万紫千紅】 - ゲームウィズ",
+          "url": "https://gamewith.jp/fefw/577852",
+          "note": "入手方法：第一部の武器屋の城镇別価格；帝都の主人公別開放章（救世編とは分離）；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】青銅の斧の入手方法と性能【ファイアーエムブレム万紫千紅】 - ゲームウィズ",
+          "url": "https://gamewith.jp/fefw/577857",
+          "note": "入手方法：第一部の武器屋の城镇別価格；帝都の主人公別開放章（救世編とは分離）；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】砂虫肉の入手方法と使い道【ファイアーエムブレム万紫千紅】 - ゲームウィズ",
+          "url": "https://gamewith.jp/fefw/578020",
+          "note": "砂虫肉の入手方法：キラの村で購入（300G）／高級肉箱；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】鉄の剣の入手方法と性能【ファイアーエムブレム万紫千紅】 - ゲームウィズ",
+          "url": "https://gamewith.jp/fefw/578518",
+          "note": "入手方法：第一部の武器屋の城镇別価格；帝都の主人公別開放章（救世編とは分離）；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】デーツの入手方法と使い道【ファイアーエムブレム万紫千紅】 - ゲームウィズ",
+          "url": "https://gamewith.jp/fefw/577816",
+          "note": "デーツの入手方法：探索のルート制限／クエスト報酬／バイナのオアシス；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        },
+        {
+          "grade": "B",
+          "name": "【万紫千紅】デーツの入手方法と使い道【ファイアーエムブレム万紫千紅】｜ゲームエイト",
+          "url": "https://game8.jp/fe-banshisenko/816871",
+          "note": "探索で入手：カイ編不可；クエスト報酬：毛むくじゃらのでけえ獣・デーツ×2；核对日按Asia/Tokyo记，不代表游戏内实测。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "游戏内实测与真机",
+          "reason": "本轮为攻略原页核对和浏览器模拟验证，未取得游戏存档、主机实测或Mac／Windows／iOS／Android真机；版本及难度未提供时保留null。"
+        }
+      ]
+    },
+    {
       "date": "2026-10-01",
       "edition": "血印图鉴排版与部署检查修复",
       "checked": 0,

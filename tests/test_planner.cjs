@@ -1,13 +1,14 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),data=JSON.parse(fs.readFileSync(path.join(root,'docs/data.js'),'utf8').replace(/^window.FE_DATA = /,'').replace(/;\s*$/,''));
-function setup(stored){
+function setup(stored,options={}){
  const nodes={},store={'fe-next.planner.v1':stored};
- const node=id=>nodes[id]??={value:'',innerHTML:'',textContent:'',checked:false,classList:{add(){},remove(){}},focus(){},scrollIntoView(){},showModal(){this.open=true}};
- const copied=[],ctx=vm.createContext({window:{FE_DATA:data},document:{querySelector:node,querySelectorAll:()=>[],activeElement:null},localStorage:{getItem:k=>store[k]??null,setItem:(k,v)=>{store[k]=v;}},history:{replaceState(){}},CSS:{escape:String},location:{href:'https://fe-guide.pages.dev/#planner'},navigator:{clipboard:{writeText:t=>{copied.push(t);return Promise.resolve();}}},TextEncoder,TextDecoder,btoa,atob,setTimeout,clearTimeout});
+ const node=id=>nodes[id]??={value:'',innerHTML:'',textContent:'',dataset:{},checked:false,classList:{add(){},remove(){}},focus(){},select(){},scrollIntoView(){},showModal(){this.open=true}};
+ const copied=[],ctx=vm.createContext({window:{FE_DATA:data},document:{querySelector:node,querySelectorAll:()=>[],activeElement:null},localStorage:{getItem:k=>store[k]??null,setItem:(k,v)=>{if(options.blockStorage)throw new Error('Storage denied');store[k]=v;}},history:{replaceState(){}},CSS:{escape:String},location:{href:'https://fe-guide.pages.dev/#planner'},navigator:{clipboard:{writeText:t=>{if(options.blockClipboard)return Promise.reject(new Error('Clipboard denied'));copied.push(t);return Promise.resolve();}}},TextEncoder,TextDecoder,btoa,atob,setTimeout,clearTimeout});
  for(const f of ['dietrich.js','campaign.js','reference.js','planner.js'])vm.runInContext(fs.readFileSync(path.join(root,'web',f),'utf8'),ctx);
  vm.runInContext(fs.readFileSync(path.join(root,'web/app.js'),'utf8').split('function navigate()')[0],ctx);
  return {run:code=>vm.runInContext(code,ctx),node,store,copied,click:dataset=>vm.runInContext(`plannerAction({dataset:${JSON.stringify(dataset)},closest:()=>null})`,ctx)};
 }
+async function main(){
 const routes={kai:'凯伊线',dietrich:'迪托利希线',theodora:'赛奥朵拉线',leda:'蕾达线'};
 const t=setup(null);
 for(const [id,name] of Object.entries(routes)){
@@ -40,7 +41,7 @@ const saved=JSON.parse(t.store['fe-next.planner.v1']);assert.equal(saved.route,'
 const matrix=t.run('plannerMatrix(false)');
 assert.equal([...matrix.matchAll(/class="is-lowest"/g)].length,data.characters.reduce((n,c)=>n+Object.values(c.plan||{}).filter(p=>p.lowest).length,0));
 const bad=setup('{"route":"x","filter":"y","renown":{"kai":99,"leda":"3"},"marks":{"kai":{"1":"maybe"}}}');
-assert.deepEqual(JSON.parse(JSON.stringify(bad.run('plannerData()'))),{route:'kai',filter:'all',renown:{kai:1,dietrich:1,theodora:1,leda:3},marks:{kai:{},dietrich:{},theodora:{},leda:{}},savedAt:null,backupAt:null});
+assert.deepEqual(JSON.parse(JSON.stringify(bad.run('plannerData()'))),{route:'kai',filter:'all',renown:{kai:1,dietrich:1,theodora:1,leda:3},marks:{kai:{},dietrich:{},theodora:{},leda:{}},savedAt:null,backupAt:null,backupCode:null});
 assert(t.run('plannerHomeCard()').includes('#planner/leda')&&t.run('plannerHomeCard()').includes('已招 1'),'home card lists routes with marks');
 assert(bad.run('plannerHomeCard()').includes('开始规划'),'home card invites planning when empty');
 // Long playthroughs: marks persist with a timestamp, and a backup link moves them to another device or domain.
@@ -56,6 +57,8 @@ for(const bad of ['','FW1','FW1@@@','hello',code.slice(0,12)])assert.equal(t.run
 t.click({planMark:'target',planId:id('莉利安')});
 
 const before=t.copied.length;t.run(`plannerAction({id:'plan-backup',dataset:{},closest:()=>null})`);
+assert.equal(t.run('plannerData().backupAt'),null,'copying has not completed yet');
+await new Promise(resolve=>setImmediate(resolve));
 assert(t.node('#planner-summary').innerHTML.includes('备份链接已是最新'),'backup status after copying');
 assert.equal(t.copied.length,before+1);assert(t.copied.at(-1).startsWith('https://fe-guide.pages.dev/#planner?restore=FW1'));
 // another device: open the link, preview the plan, then import or merge
@@ -87,13 +90,45 @@ const dated=setup(null);dated.store['fe-next.gamedate.v1']=JSON.stringify({kai:'
 const alerts=dated.run('homeResume()');assert(alerts.includes('继续你的旅程')&&alerts.includes('外传提醒')&&alerts.includes('今天是最后一天可接'),'closing window is surfaced first');
 assert(alerts.indexOf('今天是最后一天可接')<alerts.indexOf('</div>',alerts.indexOf('外传提醒')),'alert sits in the reminder block');
 assert(!alerts.includes('蕾达篇 · '),'invalid saved dates are ignored');
+dated.store['fe-next.gamedate.v1']=JSON.stringify({kai:'10/11'});
+const deadlines=dated.run('homeResume()');
+assert(deadlines.includes('已接者须在 10/12 前完成'),'known completion deadline is a home alert');
+assert(deadlines.indexOf('已接者须在 10/12 前完成')<deadlines.indexOf('7 天后开放'),'completion deadline comes before the next opening');
+// Failed persistence and rejected clipboard must not claim the plan is saved or backed up.
+const faults={blockStorage:true,blockClipboard:true},denied=setup(null,faults);
+denied.run(`$('#main').innerHTML=plannerPage('kai');renderPlanner()`);
+denied.click({planMark:'target',planId:id('西洛可')});
+assert.equal(denied.run('plannerData().savedAt'),null);
+assert(denied.node('#planner-summary').innerHTML.includes('浏览器未允许保存'));
+assert(!denied.node('#planner-summary').innerHTML.includes('已自动保存'));
+assert.equal(denied.node('#planner-save-status').hidden,false);
+denied.run(`plannerAction({id:'plan-backup',dataset:{},closest:()=>null})`);await new Promise(resolve=>setImmediate(resolve));
+assert.equal(denied.run('plannerData().backupAt'),null);
+assert(denied.node('#planner-summary').innerHTML.includes('备份尚未完成'));
+assert(!denied.node('#planner-summary').innerHTML.includes('备份链接已是最新'));
+const manualCode=denied.run('plannerManualBackup.code');
+denied.click({planMark:'target',planId:id('莉利安')});
+denied.run(`plannerAction({id:'plan-backup-confirm',dataset:{},closest:()=>null})`);
+assert.equal(denied.run('plannerData().backupCode'),manualCode,'manual confirmation records the copied snapshot');
+assert(!denied.node('#planner-summary').innerHTML.includes('备份链接已是最新'),'later edits cannot be called backed up');
+faults.blockStorage=false;
+denied.run(`plannerAction({id:'plan-save-retry',dataset:{},closest:()=>null})`);
+assert.equal(denied.node('#planner-save-status').hidden,true);
+assert.equal(JSON.parse(denied.store['fe-next.planner.v1']).marks.kai[id('西洛可')],'target');
+const legacy=setup(JSON.stringify({marks:{kai:{[id('西洛可')]:'target'}},savedAt:'2026-09-30T12:00:00Z',backupAt:'2026-09-30T12:01:00Z'}));
+assert(legacy.run('plannerBackupBlock()').includes('备份链接已是最新'),'old timestamp-only plans still work');
 // Shopping list: checked sources and known prices only; unchecked items point to their guide pages.
 const shop=setup(JSON.stringify({route:'kai',renown:{kai:10},marks:{kai:{'59':'target','19':'target','50':'target'}}}));
 const sum=shop.run(`plannerSummary('kai')`);
 assert(sum.includes('约 19,000G'),'圣水 8×500 + グルマオサ 3×5000');assert(sum.includes('取得：商店基础标价每个 500G'));
-assert(sum.split('巨人肉')[1].includes('取得方式本站尚未核对')&&sum.includes('https://gamewith.jp/fefw/577828'));
+assert(sum.includes('凯伊篇可在海都アレクトー')&&sum.includes('https://gamewith.jp/fefw/577828'));
+assert(sum.includes('不保证本线当前进度可到达或有足够库存'));
+const weapons=setup(JSON.stringify({route:'kai',marks:{kai:{[id('洛蕾塔')]:'target',[id('努佐')]:'target'}}}));
+assert(weapons.run(`plannerSummary('kai')`).includes('估算约 9,000G'),'town-qualified 3 iron swords + 3 iron bows at 1500G');
 assert(shop.run(`plannerText('kai')`).includes('圣水 ×8（取得：商店基础标价每个 500G'));
 assert(shop.run(`tradeSources(D.characters.find(c=>c.name==='歌利亚'))`).includes('物品去哪里找'));
 const mu=shop.run(`tradeSources(D.characters.find(c=>c.name==='穆'))`);assert(mu.includes('取得方式见上方交涉说明')&&!mu.includes('本站尚未核对'),'a finding shown in the trade note is not called unchecked');
 assert.equal(shop.run(`tradeSources(D.characters.find(c=>c.aliases.includes('法比奥')))`),'','no repeat of the trade note');
 console.log('Planner: route lists, paralogue windows, totals, marks, persistence and matrix passed.');
+}
+main().catch(error=>{console.error(error);process.exitCode=1;});
