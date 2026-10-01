@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171d24">
+  <meta name="color-scheme" content="light dark">
+  <script>(function(){var m;try{m=localStorage.getItem('fe-next.theme')}catch(e){}var d=m==='dark'||(m!=='light'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.setAttribute('data-mode',d?'dark':'light')})()</script>
+  <title>开局与全局框架 · 攻略手册 · 万缕千丝 · 战术手帖</title>
+  <meta name="description" content="火焰纹章 万缕千丝攻略手册第 1 篇「开局与全局框架」：难度与模式、四主角路线选择（按体验目标）、时间与「自由行动」——最容易被误解的机制、每周固定行动总表（不消耗回合，但每周限一次）、「先见之助言」——自由行动的决策罗盘、名声（Reno…">
+  <link rel="canonical" href="https://fe-guide.pages.dev/guide/g1">
+  <meta property="og:site_name" content="万缕千丝 · 战术手帖">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="开局与全局框架 · 攻略手册">
+  <meta property="og:description" content="火焰纹章 万缕千丝攻略手册第 1 篇「开局与全局框架」：难度与模式、四主角路线选择（按体验目标）、时间与「自由行动」——最容易被误解的机制、每周固定行动总表（不消耗回合，但每周限一次）、「先见之助言」——自由行动的决策罗盘、名声（Reno…">
+  <meta property="og:url" content="https://fe-guide.pages.dev/guide/g1">
+  <meta property="og:locale" content="zh_CN">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="static-page">
+  <a href="#main" class="skip-link">跳到内容</a>
+  <header class="site-header">
+    <a href="../index.html#home" class="brand" aria-label="万缕千丝 战术手帖首页">
+      <img class="game-logo" src="../assets/game-logo.webp" width="172" height="51" alt="Fire Emblem 万紫千红（万缕千丝）官方标志">
+      <span class="brand-caption">万缕千丝<small>战 术 手 帖</small></span>
+    </a>
+    <nav class="main-nav" aria-label="主导航"><a href="../index.html#home">探索首页</a><a href="../index.html#story">流程攻略</a><a href="../index.html#characters">角色图鉴</a><a href="../index.html#planner">招募规划</a><a href="../index.html#classes">兵种资料</a><a href="../index.html#guides">攻略手册</a><a href="../index.html#weekly">每周行动</a><a href="../index.html#sources">情报档案</a></nav>
+  </header>
+  <main id="main" tabindex="-1"><div class="container page">
+    <div class="breadcrumbs"><a href="../index.html">首页</a><span>/</span><a href="../directory.html#guides">攻略手册</a><span>/</span><span>第 1 篇</span></div>
+    <p class="static-note">这是便于搜索与分享的静态版本，内容与交互版同步生成。<a href="../index.html#guide/g1">打开交互版 →</a></p>
+<div class="reading-layout"><aside class="reading-nav"><h2>本篇目录 <span class="eyebrow">01</span></h2><nav aria-label="本篇目录"><a href="#s1-2">难度与模式</a><a href="#s1-3">四主角路线选择（按体验目标）</a><a href="#s1-4">时间与「自由行动」——最容易被误解的机制</a><a href="#s1-5">每周固定行动总表（不消耗回合，但每周限一次）</a><a href="#s1-6">「先见之助言」——自由行动的决策罗盘</a><a href="#s1-7">名声（Renown）与名声等级</a></nav></aside><article class="reading-content"><header class="reading-title"><div class="eyebrow">CHAPTER 01 / FIELD NOTES</div><h1>开局与全局框架</h1><div class="article-meta"><span>资料快照 2026-10-01</span><span>6 个主题</span></div></header><section class="reading-section" id="s1-2"><h2>难度与模式</h2><div class="prose"><div class="table-scroll compact" role="region" aria-label="数据表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>推荐</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>难度</td>
+<td><strong>普通</strong>（新手）／<strong>困难</strong>（老手）</td>
+<td>困难可在「方尖塔大厅」随时下调；但<strong>一旦下调，本章进行中无法回调</strong></td>
+</tr>
+<tr>
+<td>模式</td>
+<td><strong>轻松</strong>（新手）／<strong>经典</strong>（硬核）</td>
+<td>经典模式下伙伴阵亡不复活；但<strong>当章内可用「章重来」回到开头</strong>挽回</td>
+</tr>
+<tr>
+<td>存档</td>
+<td><strong>注意单存档机制</strong></td>
+<td>本作只有一个存档位：手动存档会覆盖自动存档，新自动存档也会覆盖手动存档</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>普通与困难的核心差异，不只是敌人强度。</strong> 关键在<strong>「天刻的白沙」</strong>——它是<strong>回溯时间</strong>的消耗品，同时也是<strong>战斗中启用神之加护</strong>的消耗品。<strong>普通难度下芙托娜的回溯免费（0 沙），困难难度每次回溯要花 5 沙。</strong> 这意味着困难难度下，<strong>回溯与加护在争夺同一份资源</strong>。</p>
+</blockquote></div></section><section class="reading-section" id="s1-3"><h2>四主角路线选择（按体验目标）</h2><div class="prose"><p>原手册推荐顺序为（不代表所有来源一致）——<strong>凯伊 → 赛奥朵拉 → 迪托利希 → 蕾达</strong>（由简至难）。</p>
+<div class="table-scroll wide" role="region" aria-label="数据表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>主角</th>
+<th>推荐理由</th>
+<th>适合人群</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>凯伊 Cai</strong></td>
+<td>固有系统类似支线任务，机制简单易懂；名声最易积攒，招募队友轻松；自带范围攻击，战斗容错高；地图范围最小，便于熟悉探索</td>
+<td>完全新手 / 系列新人</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>赛奥朵拉 Theodora</strong></td>
+<td>独有「军团兵」可下达计略指令（范围攻击、异常回复），攻辅兼备；但需要较多地图探索与时间管理</td>
+<td>想稳妥体验的玩家</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>迪托利希 Dietrich</strong></td>
+<td>名声提升较难，要求严格日程安排；专属任务是狩猎强敌，战斗经验与经验值获取量极大</td>
+<td>战斗爱好者 / 想刷战斗次数</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>蕾达 Leda</strong></td>
+<td>名声最难提升；侧重复仇主题与支援（Buff）打法；<strong>唯一能解锁「舞者」职业的路线</strong>，且解锁后其他路线也可用</td>
+<td>二周目 / 支援流玩家</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>英文站补充</strong>：Polygon 与 GameSpot 均建议<strong>新手从凯伊开始</strong>，称其为「Starter Option」；Theodora 适合老手（剧情专有名词多、政治线复杂）；Leda 适合支援流玩家。GameSpot 特别提示：<strong>在方尖塔大厅如果转身离开房间，会直接触发最终决战</strong>——此时无法招募四主角及部分重要角色，等于「硬核模式」。</p>
+</blockquote></div></section><section class="reading-section" id="s1-4"><h2>时间与「自由行动」——最容易被误解的机制</h2><div class="prose"><blockquote>
+<p><strong>核心结论：时钟本身毫无意义，只有「回合数」重要。</strong></p>
+</blockquote>
+<ul>
+<li>每天分为 4 个 6 小时时段（0:00–5:59 / 6:00–11:59 / 12:00–17:59 / 18:00–23:59），<strong>每个时段 = 1 回合</strong>，4 回合 = 1 天。</li>
+<li>时间<strong>不会实时流逝</strong>——只要你没有执行消耗回合的行动，时钟会自动停住（会停在 5:59 / 11:59 / 17:59 / 23:59）。所以不用担心「浪费时间」。</li>
+<li>放置时时间也会走，<strong>长时间挂机请先打开菜单</strong>。</li>
+</ul></div></section><section class="reading-section" id="s1-5"><h2>每周固定行动总表（不消耗回合，但每周限一次）</h2><div class="prose"><p><strong>三语站一致建议：统一在「星期日」做，因为周日效果好。</strong></p>
+<div class="table-scroll wide" role="region" aria-label="数据表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>行动</th>
+<th>效果</th>
+<th>周日加成</th>
+<th>是否消耗回合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>用餐（宿屋）</strong></td>
+<td>提升同席 3 人的支援值；恢复 HP、魔法次数、干劲</td>
+<td><strong>花费减半</strong></td>
+<td>否</td>
+</tr>
+<tr>
+<td><strong>训练（斗技场）</strong></td>
+<td>提升技能 EXP（<strong>最有价值的周常</strong>），并提升一起训练的两人的支援。每周能练的技能会换</td>
+<td><strong>周六与周日花费减半</strong></td>
+<td>否</td>
+</tr>
+<tr>
+<td><strong>侍奉（神殿）</strong></td>
+<td>提升加护等级与支援值；解锁神之加护</td>
+<td><strong>贡献度获得量增加</strong></td>
+<td>否</td>
+</tr>
+<tr>
+<td><strong>喂食白鸦</strong></td>
+<td>提升该角色与伊修玛尔的支援。三次回应都选对，涨得更多；没选全对也会涨。支援越高，战斗里他出来帮忙的机会越大，这要到第三部才见效</td>
+<td>仅周日</td>
+<td>否</td>
+</tr>
+<tr>
+<td><strong>送礼</strong></td>
+<td>提升想挖角角色的支援值；<strong>首次赠送解锁用餐资格</strong></td>
+<td>—</td>
+<td>否</td>
+</tr>
+<tr>
+<td><strong>剧院</strong></td>
+<td>观演和出演每周只能选一个。观演要名声 7，花费金币提升两人支援。出演要名声 8，只能派已招募的角色，还能拿到金币和礼物</td>
+<td>—</td>
+<td>否</td>
+</tr>
+<tr>
+<td><strong>大浴场</strong></td>
+<td>名声 8 后开放。每种浴池每周一次，提升支援，得到临时增益，并恢复体力、魔法次数和干劲</td>
+<td>—</td>
+<td>否</td>
+</tr>
+<tr>
+<td><strong>马厩喂食</strong></td>
+<td>仅<strong>凯伊篇</strong>可用</td>
+<td>—</td>
+<td>否</td>
+</tr>
+<tr>
+<td><strong>宿屋住宿</strong></td>
+<td>恢复</td>
+<td>—</td>
+<td><strong>是</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>实践建议</strong>：自由行动期间外出探索鞑古扎大陆，但<strong>每周至少回一次鞑古席翁</strong>完成周常，然后再出发。</p>
+</blockquote></div></section><section class="reading-section" id="s1-6"><h2>「先见之助言」——自由行动的决策罗盘</h2><div class="prose"><p>从「冒险手帐」可查看<strong>先见之助言</strong>，他会直接告诉下一场主战所需的准备：</p>
+<div class="table-scroll compact" role="region" aria-label="数据表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>对应准备</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>推荐 Lv.</td>
+<td>去遭遇战或地牢练级</td>
+</tr>
+<tr>
+<td>推荐武器 Rank</td>
+<td>武器店购买 / 万达鲁商会兑换</td>
+</tr>
+<tr>
+<td>推荐兵种</td>
+<td>资格考试转职 / 挖角新同伴</td>
+</tr>
+<tr>
+<td>推荐道具</td>
+<td>购买</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>自由行动不知道做什么时，打开「冒险の手引き」执行<strong>推荐度 3</strong> 的内容。宿屋的「おまかせ稼ぎ」（自动活动）主要用于<strong>调整时间</strong>——比如快接近周日时用它快进。</p>
+</blockquote></div></section><section class="reading-section" id="s1-7"><h2>名声（Renown）与名声等级</h2><div class="prose"><ul>
+<li>名声达到一定数值会提升<strong>名声 Lv.</strong>，解锁各类要素与新同伴的挖角资格。</li>
+<li><strong>主要来源：完成支线任务（Subquest）</strong>。自由行动开放后，<strong>把所有可接的支线全部接下</strong>，并在期限内完成并报告。</li>
+<li>其他来源：完成主线、外传、部分事件；与神「谒见（拝谒）」时也可提升。</li>
+<li><strong>注意</strong>：迪托利希篇与蕾达篇名声提升明显更难，需要更严格的日程规划。</li>
+</ul>
+<p>日文站把任务分成五类。支线和外传，四位主角都会遇到；帮人只在凯伊篇，战备增强只在赛奥朵拉篇，兴行只在蕾达篇。有的支线通关后，其他路线会直接算完成。</p>
+<div class="table-scroll compact" role="region" aria-label="数据表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>种类</th>
+<th>谁能接</th>
+<th>主要收获</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>支线</td>
+<td>四位主角</td>
+<td>名声，以及各式道具</td>
+</tr>
+<tr>
+<td>外传</td>
+<td>四位主角；同一条外传不是每条线都有</td>
+<td>金币较多，并推进该角色的故事</td>
+</tr>
+<tr>
+<td>帮人</td>
+<td>仅凯伊</td>
+<td>道具、名声</td>
+</tr>
+<tr>
+<td>战备增强</td>
+<td>仅赛奥朵拉</td>
+<td>金币、名声</td>
+</tr>
+<tr>
+<td>兴行</td>
+<td>仅蕾达</td>
+<td>名声</td>
+</tr>
+</tbody>
+</table></div>
+<hr /></div></section><nav class="page-end" aria-label="上一篇与下一篇"><a href="../directory.html"><small>← 返回</small>全站目录</a><a href="g2.html"><small>下一篇 →</small>核心系统机制</a></nav></article></div>
+  </div></main>
+  <footer class="site-footer"><a href="../index.html#home">万缕千丝 · 战术手帖</a><span>玩家整理，持续校对。资料快照 2026-10-01。游戏与美术版权归 Nintendo / INTELLIGENT SYSTEMS 所有。</span><a href="../directory.html">全站目录</a><a href="../index.html#sources">资料与出处 ↗</a></footer>
+</body>
+</html>

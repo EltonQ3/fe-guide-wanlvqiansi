@@ -82,4 +82,9 @@ const pos=['凯伊篇','赛奥朵拉篇','迪托利希篇','蕾达篇'].map(n=>r
 fresh.run("rememberReading('#route/kai/paralogues','凯伊篇 · 外传与漏接提醒')");
 const resumed=fresh.run('home()');assert(resumed.includes('继续你的旅程')&&resumed.includes('#route/kai/paralogues')&&resumed.includes('凯伊篇 · 外传与漏接提醒'));
 assert(t.run('homeResume()').includes('蕾达篇<small> 计划'),'plan summary per route');
+// Paralogue reminders on the home page follow the saved in-game date of each route.
+const dated=setup(null);dated.store['fe-next.gamedate.v1']=JSON.stringify({kai:'10/19',leda:'2/30'});
+const alerts=dated.run('homeResume()');assert(alerts.includes('继续你的旅程')&&alerts.includes('外传提醒')&&alerts.includes('今天是最后一天可接'),'closing window is surfaced first');
+assert(alerts.indexOf('今天是最后一天可接')<alerts.indexOf('</div>',alerts.indexOf('外传提醒')),'alert sits in the reminder block');
+assert(!alerts.includes('蕾达篇 · '),'invalid saved dates are ignored');
 console.log('Planner: route lists, paralogue windows, totals, marks, persistence and matrix passed.');

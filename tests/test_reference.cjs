@@ -29,4 +29,20 @@ node('#class-tier').value='';node('#class-query').value='找不到的兵种';vm.
 node('#class-query').value='';node('#class-role').value='开锁';vm.runInContext('filterClasses()',ctx);assert(node('#class-results').innerHTML.includes('恶棍')&&!node('#class-results').innerHTML.includes('主教'));
 const c=data.classes.find(c=>c.name==='舞者');vm.runInContext(`showClass('${c.id}')`,ctx);assert(node('#class-dialog').open&&node('#class-dialog').innerHTML.includes('第一部为蕾达专用'));
 node('#global-query').value='外传';vm.runInContext('renderSearch()',ctx);assert(node('#search-results').innerHTML.includes('#route/dietrich/paralogues'));
+// In-game date tracker: window states, labels, digest, invalid dates.
+const st=(id,route,day)=>vm.runInContext(`paralogueState(D.paralogues.find(p=>p.id==='${id}').routes.${route},'${day}')`,ctx);
+const label=(id,route,day)=>vm.runInContext(`paralogueLabel(paralogueState(D.paralogues.find(p=>p.id==='${id}').routes.${route},'${day}'))`,ctx);
+assert.equal(vm.runInContext(`dayOfYear('2/30')`,ctx),null);assert.equal(vm.runInContext(`dayOfYear('13/1')`,ctx),null);assert.equal(vm.runInContext(`dayOfYear('1/1')`,ctx),0);
+assert.equal(st('bertrand','dietrich','9/16').state,'upcoming');assert.equal(st('bertrand','dietrich','9/16').days,1);
+assert.equal(label('bertrand','dietrich','9/17'),'仅今天可接');
+assert.notEqual(st('bertrand','dietrich','9/18').state,'open');
+assert.equal(st('orhel','kai','10/17').state,'upcoming');assert.equal(st('talimoon','kai','9/18').state,'open');assert(label('talimoon','kai','9/18').includes('9/22 截止（含今天还有 5 天）'));
+assert.equal(label('orhel','kai','10/18'),'明天截止，尽快去接');assert.equal(label('orhel','kai','10/19'),'今天是最后一天可接');
+assert.equal(st('orhel','kai','10/20').state,'deadline');assert(label('orhel','kai','10/20').includes('10/21'));
+assert.equal(st('orhel','kai','10/22').state,'closed');
+assert.equal(st('talimoon','kai','9/25').state,'upcoming','a later window re-opens the paralogue');assert.equal(st('talimoon','kai','9/25').days,6);
+assert.equal(st('talimoon','kai','10/11').state,'deadline');assert.equal(st('talimoon','theodora','10/11').state,'closed','no deadline in sources: closed, not guessed');
+assert.equal(st('orhel','kai','x'),null);
+const dg=vm.runInContext(`paralogueDigest('kai','9/20')`,ctx);assert.equal(dg.rows.length,4);assert(dg.open>=1&&dg.open+dg.closed+dg.rows.filter(x=>x.st.state==='upcoming').length+dg.rows.filter(x=>x.st.state==='deadline').length===4);
+const cal=vm.runInContext(`paralogueSection('kai')`,ctx);assert(cal.includes('class="gamedate" data-route="kai"')&&[...cal.matchAll(/data-status-for=/g)].length===4);
 console.log('Four route calendars, distinct windows/deadlines, class links, filters, modal and search passed.');

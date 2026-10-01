@@ -11,6 +11,7 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--src', type=Path, default=SOURCE/'火焰纹章万缕千丝_完全攻略手册.md')
 parser.add_argument('--log', type=Path, default=SOURCE/'_daily_log.json')
 parser.add_argument('--out', type=Path, default=ROOT/'docs')
+parser.add_argument('--base-url', default='https://fe-guide.pages.dev', help='public origin for canonical links and sitemap.xml')
 args = parser.parse_args()
 OUT = args.out.resolve()
 OUT.mkdir(parents=True, exist_ok=True)
@@ -188,6 +189,11 @@ if OUT != ROOT/'docs':
     for directory in ['assets', 'data', 'archive']:
         if (ROOT/'docs'/directory).exists():
             shutil.copytree(ROOT/'docs'/directory, OUT/directory, dirs_exist_ok=True)
+# Crawlable static pages (guide, routes, characters, classes) with canonical/OG metadata, sitemap.xml and robots.txt.
+from static_pages import write as write_static
+index_html = (ROOT/'web/index.html').read_text()
+(OUT/'index.html').write_text(index_html.replace('https://fe-guide.pages.dev/', args.base_url.rstrip('/') + '/'))
+print(f'Wrote {write_static(OUT, payload, args.base_url, index_html)} static pages, sitemap.xml and robots.txt for {args.base_url}.')
 (OUT/'source').mkdir(exist_ok=True)
 shutil.copy2(args.src, OUT/'source/guide.md')
 # Old inbound page links retain their original anchors inside the frozen archive.

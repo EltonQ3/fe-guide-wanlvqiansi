@@ -12,6 +12,15 @@
 :root[data-mode=dark] .plan-actions [data-plan-mark=done][aria-pressed=true]{background:#3f6a52;border-color:#3f6a52}
 /* Route accents are mirrored by the generator; labels that use color-mix in the light theme read the light accent directly. */
 :root[data-mode=dark] .route-section-head .eyebrow,:root[data-mode=dark] .route-toc>.eyebrow,:root[data-mode=dark] .di-kicker,:root[data-mode=dark] .campaign-pilot .di-kicker{color:var(--route-accent,#a5a9ac)}
+/* Inset panels inside cards collapse to the card colour after mirroring; lift them a step. */
+:root[data-mode=dark] .paralogue-windows>div,:root[data-mode=dark] .gamedate{background:#2a2824}
+/* Paralogue status strips: the generated tints sit too close to the card, so each state gets its own dark wash. */
+:root[data-mode=dark] .paralogue-status{background:#262521;color:#aaa69d}
+:root[data-mode=dark] .paralogue-status.is-open{background:#1d3024;color:#93c8a4}
+:root[data-mode=dark] .paralogue-status.is-closing{background:#3b2219;color:#f0a688}
+:root[data-mode=dark] .paralogue-status.is-upcoming{background:#1d2835;color:#a3bcd6}
+:root[data-mode=dark] .paralogue-status.is-deadline{background:#332918;color:#dcbb7c}
+:root[data-mode=dark] .resume-alerts a.is-closing span{color:#f0a688}:root[data-mode=dark] .resume-alerts a.is-open span{color:#93c8a4}
 /* Portraits and screenshots sit a little quieter on a dark page. */
 :root[data-mode=dark] main img:not(.class-icon){filter:brightness(.94)}
 }

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171d24">
+  <meta name="color-scheme" content="light dark">
+  <script>(function(){var m;try{m=localStorage.getItem('fe-next.theme')}catch(e){}var d=m==='dark'||(m!=='light'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.setAttribute('data-mode',d?'dark':'light')})()</script>
+  <title>核心系统机制 · 攻略手册 · 万缕千丝 · 战术手帖</title>
+  <meta name="description" content="火焰纹章 万缕千丝攻略手册第 2 篇「核心系统机制」：支援等级系统——本作最值得优先投入的长期投资、【重点技巧】支援等级速刷法（零成本）、战斗系统与计算式、Blaze Arts（主角专属大招）。关键机制：支援等级是「全局数值」（Globa…">
+  <link rel="canonical" href="https://fe-guide.pages.dev/guide/g2">
+  <meta property="og:site_name" content="万缕千丝 · 战术手帖">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="核心系统机制 · 攻略手册">
+  <meta property="og:description" content="火焰纹章 万缕千丝攻略手册第 2 篇「核心系统机制」：支援等级系统——本作最值得优先投入的长期投资、【重点技巧】支援等级速刷法（零成本）、战斗系统与计算式、Blaze Arts（主角专属大招）。关键机制：支援等级是「全局数值」（Globa…">
+  <meta property="og:url" content="https://fe-guide.pages.dev/guide/g2">
+  <meta property="og:locale" content="zh_CN">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="static-page">
+  <a href="#main" class="skip-link">跳到内容</a>
+  <header class="site-header">
+    <a href="../index.html#home" class="brand" aria-label="万缕千丝 战术手帖首页">
+      <img class="game-logo" src="../assets/game-logo.webp" width="172" height="51" alt="Fire Emblem 万紫千红（万缕千丝）官方标志">
+      <span class="brand-caption">万缕千丝<small>战 术 手 帖</small></span>
+    </a>
+    <nav class="main-nav" aria-label="主导航"><a href="../index.html#home">探索首页</a><a href="../index.html#story">流程攻略</a><a href="../index.html#characters">角色图鉴</a><a href="../index.html#planner">招募规划</a><a href="../index.html#classes">兵种资料</a><a href="../index.html#guides">攻略手册</a><a href="../index.html#weekly">每周行动</a><a href="../index.html#sources">情报档案</a></nav>
+  </header>
+  <main id="main" tabindex="-1"><div class="container page">
+    <div class="breadcrumbs"><a href="../index.html">首页</a><span>/</span><a href="../directory.html#guides">攻略手册</a><span>/</span><span>第 2 篇</span></div>
+    <p class="static-note">这是便于搜索与分享的静态版本，内容与交互版同步生成。<a href="../index.html#guide/g2">打开交互版 →</a></p>
+<div class="reading-layout"><aside class="reading-nav"><h2>本篇目录 <span class="eyebrow">02</span></h2><nav aria-label="本篇目录"><a href="#s2-1">支援等级系统——本作最值得优先投入的长期投资</a><a href="#s2-2">【重点技巧】支援等级速刷法（零成本）</a><a href="#s2-3">战斗系统与计算式</a><a href="#s2-4">Blaze Arts（主角专属大招）</a></nav></aside><article class="reading-content"><header class="reading-title"><div class="eyebrow">CHAPTER 02 / FIELD NOTES</div><h1>核心系统机制</h1><div class="article-meta"><span>资料快照 2026-10-01</span><span>4 个主题</span></div></header><section class="reading-section" id="s2-1"><h2>支援等级系统——本作最值得优先投入的长期投资</h2><div class="prose"><blockquote>
+<p><strong>关键机制：支援等级是「全局数值」（Global Value）。</strong></p>
+</blockquote>
+<p>在任意一条路线上提升两名角色之间的支援，该等级会<strong>保留并同步反映到其他所有路线</strong>，且<strong>永远不会下降</strong>——即使重开章节也不会掉。这意味着：</p>
+<ul>
+<li>你在凯伊篇刷的蕾达 × 其他角色的支援，会让蕾达篇的招募变得<strong>更容易</strong>。</li>
+<li><strong>跨路线重复收益</strong>：这是本作性价比最高的长期投资。</li>
+</ul>
+<p><strong>提升支援的四种方式</strong>：</p>
+<div class="table-scroll compact" role="region" aria-label="数据表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>邀请用餐</strong></td>
+<td>宿屋内选择用餐，可同时提升同席 3 人支援；同时恢复 HP 与魔法次数，<strong>务必每次都用</strong></td>
+</tr>
+<tr>
+<td><strong>赠送礼物</strong></td>
+<td>只有送<strong>对方喜欢的物品</strong>才会提升支援值；主要用于尚未入队、想挖角的角色</td>
+</tr>
+<tr>
+<td><strong>联手攻击（连携）</strong></td>
+<td>地牢等战斗中发动联手攻击可提升参战同伴支援值</td>
+</tr>
+<tr>
+<td><strong>剧院观演</strong></td>
+<td>每周观演和出演只能选一个。观演可含尚未入队的客人，出演只限已招募角色</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>支援等级的效果</strong>：战斗中相邻的同伴会获得能力加成；高等级可解锁特殊事件（可在宿屋「支援会话」中回看）。</p>
+<p><strong>重要提醒</strong>：</p>
+<ul>
+<li><strong>A 级是上限，本作没有 S 级支援、没有结婚系统</strong>；恋爱元素只存在于角色剧本写作中，不是系统机制。</li>
+<li><strong>不要过度依赖送礼</strong>——主要手段应是宿屋「用餐」：可每周多次、可同时提升多组支援、还能提升<strong>非主角之间</strong>的支援，甚至可邀请不可招募的角色（部分角色有支援对话）。</li>
+</ul></div></section><section class="reading-section" id="s2-2"><h2>【重点技巧】支援等级速刷法（零成本）</h2><div class="prose"><p>利用「支援全局化 + 不下降 + 章节重开」三个特性叠加：</p>
+<ol>
+<li>重开一个<strong>已通关</strong>的章节；</li>
+<li>在宿屋为想要提升支援的角色组合<strong>举办多轮用餐</strong>；</li>
+<li>用宿屋的「自动活动」推进到下一周，继续用餐；</li>
+<li>重复直到该章主战前的回合耗尽；</li>
+<li>基地菜单 → 系统 → <strong>重开章节（Restart Chapter）</strong>，回到步骤 1。</li>
+</ol>
+<p><strong>要点</strong>：</p>
+<ul>
+<li>过程中<strong>不消耗任何金钱和道具</strong>（只是反复读档），理论上甚至不需要中途存档，只要最后存一次。</li>
+<li>建议<strong>选择较长的章节</strong>（例如蕾达篇第 9 章），重开前能办更多次用餐。</li>
+<li>开始前最好已在上一章给所有角色送过礼，否则每次重置都要重新送礼解锁用餐功能。</li>
+<li>注意部分章节中特定角色群（凯伊、迪托利希、赛奥朵拉、塔利穆恩、阿纳托莉娅的队伍）会不在鞑古席翁，需换到他们在场的章节。</li>
+</ul></div></section><section class="reading-section" id="s2-3"><h2>战斗系统与计算式</h2><div class="prose"><p><strong>基础规则</strong>：</p>
+<ul>
+<li><strong>武器克制倍率</strong>：无特攻 = 等倍；有效 = 武器威力 <strong>2 倍</strong>；特攻 = 武器威力 <strong>3 倍</strong>。</li>
+<li><strong>暴击</strong>：伤害 <strong>3 倍</strong>。</li>
+<li><strong>追击条件</strong>：攻速差 <strong>≥ 4</strong> 即可追击（普攻两次）。</li>
+<li>所有小数<strong>向下取整</strong>。</li>
+</ul>
+<p><strong>核心公式</strong>：</p>
+<div class="table-scroll compact" role="region" aria-label="数据表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>物理攻击</td>
+<td>力 + 武器威力×特效补正 + 战技补正 + 技能 + 其他补正</td>
+</tr>
+<tr>
+<td>魔法攻击</td>
+<td>魔力 + 魔法威力 + 战技补正 + 技能 + 其他补正</td>
+</tr>
+<tr>
+<td>物理防御</td>
+<td>守备 + 装备守备 + 地形 + 其他补正</td>
+</tr>
+<tr>
+<td>魔法防御</td>
+<td>魔防 + 装备魔防 + 地形 + 其他补正</td>
+</tr>
+<tr>
+<td>必杀</td>
+<td>(技 + 幸运) ÷ 2 + 武器/魔法必杀 + 技能 + 其他补正</td>
+</tr>
+<tr>
+<td>命中</td>
+<td>技 + 武器命中 + 战技补正 + 装备命中 + 技能 + 神の加護 + 其他</td>
+</tr>
+<tr>
+<td><strong>攻速</strong></td>
+<td>速度 −（装备总重量 − 体格），最低为 0</td>
+</tr>
+<tr>
+<td>回避</td>
+<td>攻速 + 技能 + 地形 + 神の加護 + 其他</td>
+</tr>
+<tr>
+<td>必杀回避</td>
+<td>幸运 + 技能 + 神の加護 + 其他</td>
+</tr>
+<tr>
+<td>物理伤害</td>
+<td>(物理攻击 − 物理防御) × 必杀补正 × 技能 × 神の加護</td>
+</tr>
+<tr>
+<td><strong>攻击命中率</strong></td>
+<td>命中 − 回避</td>
+</tr>
+<tr>
+<td><strong>必杀发生率</strong></td>
+<td>必杀 − 必杀回避</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>实战要点</strong>：英文站特别强调<strong>「本作基本不是回避环境」</strong>，因此<strong>坦克型角色非常吃香</strong>。这与前作以回避为核心的 Meta 有明显差异。</p>
+</blockquote>
+<p><strong>关键战斗技巧</strong>：</p>
+<ul>
+<li>按 <strong>ZL</strong> 可显示全部敌人的攻击范围（红色高亮），用于卡位与保护脆皮。</li>
+<li>武器有<strong>有效（×2）</strong>与<strong>有效+（×3）</strong>两级：枪对骑兵 ×2、弓对飞行 ×3。</li>
+<li><strong>攻击速度（AS）= 速度 − 装备重量影响</strong>，比对手高 <strong>4 以上</strong>才能追击——布阵前务必核对 AS、Prt、Rsl。</li>
+<li><strong>战技（Combat Art）</strong>消耗武器耐久，可提升威力/命中/必杀；<strong>Blaze Arts 消耗 HP</strong>，使用会填充「Blaze Gauge」，<strong>充满后降低该单位最大 HP 并清除所有加成</strong>。</li>
+</ul></div></section><section class="reading-section" id="s2-4"><h2>Blaze Arts（主角专属大招）</h2><div class="prose"><p>四位主角各有专属 Blaze Arts，<strong>消耗 HP</strong>，是改变战局的关键，但<strong>使用时机至关重要</strong>。</p>
+<blockquote>
+<p><strong>建议</strong>：开启前先确认敌方攻击范围；准备好治疗；尽量把主角移出危险地带；或选在能一举清掉「有能力反击的敌人」时使用。<strong>只有当 HP 代价不会引发新的危机时，Blaze Art 才是最有价值的。</strong></p>
+</blockquote>
+<div class="table-scroll compact" role="region" aria-label="数据表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>主角</th>
+<th>Blaze Art 特性</th>
+<th>战术定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>凯伊 Cai</strong></td>
+<td><strong>范围攻击</strong>（本作罕见的 AOE）</td>
+<td>高容错主力，机动力极强</td>
+</tr>
+<tr>
+<td><strong>迪托利希 Dietrich</strong></td>
+<td><strong>强调位移与站位</strong>，可快速贴脸；影渡（可无视障碍瞬移）</td>
+<td>近战物理爆发、必杀流</td>
+</tr>
+<tr>
+<td><strong>赛奥朵拉 Theodora</strong></td>
+<td><strong>远程巨岩投掷</strong>，攻击范围全游戏最大</td>
+<td>顶级肉盾 + 远程支援</td>
+</tr>
+<tr>
+<td><strong>蕾达 Leda</strong></td>
+<td><strong>范围 Buff 歌曲</strong>，可同时强化周边多名同伴</td>
+<td>支援核心，需居中站位</td>
+</tr>
+<tr>
+<td><strong>伊修玛尔（救世主）</strong></td>
+<td><strong>「破邪闪击」大范围攻击</strong>，极为强力</td>
+<td>均衡型，起始等级高</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>蕾达专项建议</strong>：她的歌曲「站位与选曲同等重要」。使用前先查看技能范围，把想强化的单位移入范围，尽量一次覆盖多名能立刻输出的角色。一个实用套路是：<strong>把同伴放进敌方攻击范围，再用她提升守备与魔防的技能</strong>，从而轻松反杀。</p>
+<hr /></div></section><nav class="page-end" aria-label="上一篇与下一篇"><a href="g1.html"><small>← 上一篇</small>开局与全局框架</a><a href="g3.html"><small>下一篇 →</small>加护（侍奉）心得</a></nav></article></div>
+  </div></main>
+  <footer class="site-footer"><a href="../index.html#home">万缕千丝 · 战术手帖</a><span>玩家整理，持续校对。资料快照 2026-10-01。游戏与美术版权归 Nintendo / INTELLIGENT SYSTEMS 所有。</span><a href="../directory.html">全站目录</a><a href="../index.html#sources">资料与出处 ↗</a></footer>
+</body>
+</html>

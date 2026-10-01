@@ -199,5 +199,34 @@ class DataTests(unittest.TestCase):
         page=(ROOT/'docs/index.html').read_text()
         self.assertIn("localStorage.getItem('fe-next.theme')",page)
         self.assertIn('id="theme-toggle"',page)
+    def test_static_pages_for_search(self):
+        from html import unescape
+        from urllib.parse import urlsplit
+        base='https://fe-guide.pages.dev/'
+        paths=[f'guide/{c["id"]}.html' for c in DATA['chapters']]+[f'route/{s["id"]}.html' for s in DATA['story']]+[f'character/{c["id"]}.html' for c in DATA['characters']]+['classes.html','directory.html']
+        sitemap=(ROOT/'docs/sitemap.xml').read_text()
+        self.assertEqual(re.findall(r'<loc>(.*?)</loc>',sitemap),[base]+[base+p.removesuffix('.html') for p in paths])
+        self.assertIn(f'Sitemap: {base}sitemap.xml',(ROOT/'docs/robots.txt').read_text())
+        self.assertIn(f'<link rel="canonical" href="{base}">',(ROOT/'docs/index.html').read_text())
+        self.assertIn('href="directory.html"',(ROOT/'docs/index.html').read_text())
+        titles=set()
+        for path in paths:
+            page=(ROOT/'docs'/path).read_text()
+            self.assertIn(f'<link rel="canonical" href="{base}{path.removesuffix(".html")}">',page)
+            self.assertIn(f'<meta property="og:url" content="{base}{path.removesuffix(".html")}">',page)
+            title=re.search(r'<title>(.*?)</title>',page)[1];self.assertNotIn(title,titles);titles.add(title)
+            desc=unescape(re.search(r'<meta name="description" content="([^"]*)">',page)[1]);self.assertTrue(20<=len(desc)<=120,(path,desc))
+            self.assertEqual(page.count('<h1'),1,path)
+            self.assertNotIn('<script src',page)  # readable without the app; only the inline theme script
+            self.assertIn("localStorage.getItem('fe-next.theme')",page)
+            for link in re.findall(r'(?:href|src)="([^"#]+)(?:#[^"]*)?"',page):
+                if urlsplit(link).scheme: continue
+                self.assertTrue(((ROOT/'docs'/path).parent/link).resolve().exists(),(path,link))
+        golia=(ROOT/'docs/character/50.html').read_text()
+        self.assertIn('巨人肉 ×3',golia);self.assertIn('index.html#characters?name=%E6%AD%8C%E5%88%A9%E4%BA%9A',golia)
+        kai=(ROOT/'docs/route/kai.html').read_text()
+        self.assertIn('<a href="../character/2.html">凯伊</a>',kai);self.assertIn('完成期限 10/21',kai);self.assertIn('来源未单列',(ROOT/'docs/route/theodora.html').read_text())
+        g4=(ROOT/'docs/guide/g4.html').read_text()
+        for s in DATA['chapters'][3]['sections']:self.assertIn(f'id="{s["id"]}"',g4)
 
 if __name__=='__main__':unittest.main()

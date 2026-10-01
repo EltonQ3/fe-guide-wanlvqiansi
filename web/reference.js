@@ -1,8 +1,40 @@
 'use strict';
+// In-game date per route (this browser only): which paralogues are open now, about to close, or still ahead.
+const gameDateKey='fe-next.gamedate.v1';
+function gameDates(){const d=load(gameDateKey,{});return d&&typeof d==='object'&&!Array.isArray(d)?d:{};}
+function dayOfYear(md){const m=/^(\d{1,2})\/(\d{1,2})$/.exec(md||'');if(!m)return null;const mo=+m[1],d=+m[2];if(mo<1||mo>12||d<1||d>new Date(Date.UTC(2001,mo,0)).getUTCDate())return null;return Math.round((Date.UTC(2001,mo-1,d)-Date.UTC(2001,0,1))/864e5);}
+function paralogueState(windows,today){
+  const t=dayOfYear(today);if(t===null)return null;let next=null,past=null;
+  for(const w of windows){const s=dayOfYear(w.start),e=dayOfYear(w.end),dl=dayOfYear(w.deadline);
+    if(t>=s&&t<=e)return {state:e-t<=1?'closing':'open',days:e-t,w};
+    if(t<s&&(!next||s-t<next.days))next={state:'upcoming',days:s-t,w};
+    if(t>e&&(!past||e>dayOfYear(past.w.end)))past=dl!==null&&t<=dl?{state:'deadline',days:dl-t,w}:{state:'closed',days:0,w};}
+  return next||past;
+}
+function paralogueLabel(st){
+  const w=st.w;
+  return {open:`可接取 · ${w.end} 截止（含今天还有 ${st.days+1} 天）`,closing:w.start===w.end?'仅今天可接':st.days===0?'今天是最后一天可接':'明天截止，尽快去接',upcoming:`${st.days} 天后开放（${w.start}，第 ${w.chapter} 章）`,deadline:`接取已截止 · 已接者须在 ${w.deadline} 前完成`,closed:'本线接取窗口已过'}[st.state];
+}
+function gameDateControl(routeId){
+  const [m,d]=(gameDates()[routeId]||'/').split('/');
+  return `<div class="gamedate" data-route="${routeId}"><span class="gamedate-label">我在本线的游戏日期</span><select data-gamedate="month" aria-label="游戏内月份"><option value="">月</option>${Array.from({length:12},(_,i)=>`<option ${String(i+1)===m?'selected':''}>${i+1}</option>`).join('')}</select><select data-gamedate="day" aria-label="游戏内日期"><option value="">日</option>${Array.from({length:31},(_,i)=>`<option ${String(i+1)===d?'selected':''}>${i+1}</option>`).join('')}</select><button class="text-link" data-gamedate-clear="${routeId}">清除</button><p class="gamedate-summary" aria-live="polite">填上本线游戏里的当前日期，每篇外传会标出可接、即将截止或还要等几天。只保存在这台设备的浏览器。</p></div>`;
+}
+function paralogueDigest(routeId,today){
+  const rows=routeParalogues(routeId).map(p=>({p,st:paralogueState(p.routes[routeId],today)})).filter(x=>x.st);
+  const count=k=>rows.filter(x=>x.st.state===k).length;
+  return {rows,open:count('open')+count('closing'),closing:count('closing'),upcoming:rows.filter(x=>x.st.state==='upcoming'&&x.st.days<=7).length,closed:count('closed')};
+}
+function renderGameDate(routeId){
+  const box=document.querySelector(`.gamedate[data-route="${routeId}"]`);if(!box)return;
+  const today=gameDates()[routeId],dg=today&&paralogueDigest(routeId,today);
+  for(const p of routeParalogues(routeId)){const el=document.querySelector(`[data-status-for="${p.id}"]`);if(!el)continue;const st=today&&paralogueState(p.routes[routeId],today);el.hidden=!st;el.className='paralogue-status'+(st?' is-'+st.state:'');el.textContent=st?paralogueLabel(st):'';el.closest('.paralogue-card')?.classList.toggle('is-past',st?.state==='closed');}
+  box.querySelector('.gamedate-summary').textContent=dg?`${today}：可接 ${dg.open} 篇${dg.closing?`（${dg.closing} 篇今明两天截止）`:''}，7 天内开放 ${dg.upcoming} 篇，已过 ${dg.closed} 篇。`:'填上本线游戏里的当前日期，每篇外传会标出可接、即将截止或还要等几天。只保存在这台设备的浏览器。';
+}
+function setGameDate(routeId,value){const all=gameDates();if(value)all[routeId]=value;else delete all[routeId];save(gameDateKey,all);renderGameDate(routeId);}
 function routeParalogues(id){return D.paralogues.filter(p=>p.routes[id]).sort((a,b)=>{const date=x=>{const [m,d]=x.routes[id][0].start.split('/').map(Number);return m*100+d;};return date(a)-date(b);});}
 function paralogueSection(routeId){
  const rows=routeParalogues(routeId),urgent=rows.filter(p=>p.routes[routeId].some(w=>w.start===w.end||p.id==='orhel'&&routeId==='kai'));
- return `<section id="paralogues" class="route-section">${routeSectionHead('05','PARALOGUE CALENDAR',`${({kai:'第10—11章',dietrich:'第9—11章',theodora:'第10—12章',leda:'第10—11章'})[routeId]} · ${rows.length}篇外传日历`,'只列本篇能接的外传，按首次开放日期排列。日期均为游戏内1449年；接取窗口结束后，即使完成期限未到，也可能接不到任务。')}<div class="paralogue-intro"><b>${rows.length}<small>本篇外传</small></b><p>每篇基本奖励均含 <strong>20,000G ＋ 名声150</strong>，另有下列道具。完成外传只满足部分招募条件，不会自动招来相关人物。第三部的条件加入另行标注。</p></div>${urgent.map(p=>`<p class="paralogue-alert"><strong>短窗口提醒 · ${esc(p.person)}外传</strong> ${p.routes[routeId][0].start===p.routes[routeId][0].end?'仅9月17日可接，推进当天前先去大斗技场。':'10月18—19日可接，别把10月21日的完成期限当成接取期限。'}</p>`).join('')}<div class="paralogue-timeline">${rows.map(p=>`<article class="paralogue-card" data-paralogue="${p.id}"><header><span class="paralogue-date">${esc(p.routes[routeId][0].start)}<small>开始接取</small></span><div><span class="di-kicker">${esc(p.person)}外传</span><h3>${esc(p.title)}</h3></div>${routeCharacter(p.person)?.avatar?`<img src="${esc(routeCharacter(p.person).avatar)}" alt="${esc(p.person)}" loading="lazy">`:''}</header><div class="paralogue-windows">${p.routes[routeId].map(w=>`<div><span>第 ${esc(w.chapter)} 章</span><p><small>可接取</small><strong>${esc(w.start===w.end?w.start+'（仅当天）':w.start+'—'+w.end)}</strong></p><p><small>完成期限</small><strong>${esc(w.deadline||'来源未单列')}</strong></p></div>`).join('')}</div><p class="paralogue-place"><b>去哪里接</b> ${esc(p.place)}</p><p class="paralogue-impact">${dietrichText(p.consequence)}</p><div class="paralogue-reward"><span>道具奖励</span><strong>${esc(p.reward)}</strong></div><details><summary>${p.strategy?.length?'打法、接取提醒与资料来源':'接取提醒与资料来源'}</summary><p>${esc(p.steps)}</p>${p.strategy?.length?`<ol>${p.strategy.map(step=>`<li>${esc(step)}</li>`).join('')}</ol>`:''}${p.routes[routeId].some(w=>!w.deadline)?'<p class="notice">来源未单列完成期限的条目，不推定它等于接取末日。接到后查看游戏任务栏，并尽早完成。</p>':''}<p>窗口按腾讯共创表核对；完成期限由单篇攻略补充。标题为本站中文整理，便于识别任务人物。</p>${evidence(p.sources)}</details></article>`).join('')}</div><p class="di-editor-note">错过时可考虑在方尖塔之间重玩对应章节；重玩仍有流程成本，建议提前留档。<a href="#guide/g6">查看路线与进度说明 →</a></p></section>`;
+ return `<section id="paralogues" class="route-section">${routeSectionHead('05','PARALOGUE CALENDAR',`${({kai:'第10—11章',dietrich:'第9—11章',theodora:'第10—12章',leda:'第10—11章'})[routeId]} · ${rows.length}篇外传日历`,'只列本篇能接的外传，按首次开放日期排列。日期均为游戏内1449年；接取窗口结束后，即使完成期限未到，也可能接不到任务。')}<div class="paralogue-intro"><b>${rows.length}<small>本篇外传</small></b><p>每篇基本奖励均含 <strong>20,000G ＋ 名声150</strong>，另有下列道具。完成外传只满足部分招募条件，不会自动招来相关人物。第三部的条件加入另行标注。</p></div>${gameDateControl(routeId)}${urgent.map(p=>`<p class="paralogue-alert"><strong>短窗口提醒 · ${esc(p.person)}外传</strong> ${p.routes[routeId][0].start===p.routes[routeId][0].end?'仅9月17日可接，推进当天前先去大斗技场。':'10月18—19日可接，别把10月21日的完成期限当成接取期限。'}</p>`).join('')}<div class="paralogue-timeline">${rows.map(p=>`<article class="paralogue-card" data-paralogue="${p.id}"><header><span class="paralogue-date">${esc(p.routes[routeId][0].start)}<small>开始接取</small></span><div><span class="di-kicker">${esc(p.person)}外传</span><h3>${esc(p.title)}</h3></div>${routeCharacter(p.person)?.avatar?`<img src="${esc(routeCharacter(p.person).avatar)}" alt="${esc(p.person)}" loading="lazy">`:''}</header><p class="paralogue-status" data-status-for="${p.id}" hidden></p><div class="paralogue-windows">${p.routes[routeId].map(w=>`<div><span>第 ${esc(w.chapter)} 章</span><p><small>可接取</small><strong>${esc(w.start===w.end?w.start+'（仅当天）':w.start+'—'+w.end)}</strong></p><p><small>完成期限</small><strong>${esc(w.deadline||'来源未单列')}</strong></p></div>`).join('')}</div><p class="paralogue-place"><b>去哪里接</b> ${esc(p.place)}</p><p class="paralogue-impact">${dietrichText(p.consequence)}</p><div class="paralogue-reward"><span>道具奖励</span><strong>${esc(p.reward)}</strong></div><details><summary>${p.strategy?.length?'打法、接取提醒与资料来源':'接取提醒与资料来源'}</summary><p>${esc(p.steps)}</p>${p.strategy?.length?`<ol>${p.strategy.map(step=>`<li>${esc(step)}</li>`).join('')}</ol>`:''}${p.routes[routeId].some(w=>!w.deadline)?'<p class="notice">来源未单列完成期限的条目，不推定它等于接取末日。接到后查看游戏任务栏，并尽早完成。</p>':''}<p>窗口按腾讯共创表核对；完成期限由单篇攻略补充。标题为本站中文整理，便于识别任务人物。</p>${evidence(p.sources)}</details></article>`).join('')}</div><p class="di-editor-note">错过时可考虑在方尖塔之间重玩对应章节；重玩仍有流程成本，建议提前留档。<a href="#guide/g6">查看路线与进度说明 →</a></p></section>`;
 }
 function findClass(name){return D.classes.find(c=>c.name===name||c.aliases.includes(name));}
 function classIcon(c,size=20){return c.icon?`<img class="class-icon" src="${esc(c.icon)}" alt="" width="${size}" height="${size}" loading="lazy">`:'';}
