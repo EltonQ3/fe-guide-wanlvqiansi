@@ -145,4 +145,5 @@ python3 tools/check_sources.py --host gamewith.jp --limit 5
 - canonical 与 `sitemap.xml` 用不带 `.html` 的地址（Cloudflare Pages 会把 `/x.html` 重定向到 `/x`）；站内相对链接保留 `.html`，本机 `python3 -m http.server` 预览也能打开。
 - 正式域名默认 `https://fe-guide.pages.dev`。绑定自定义域名后，用 `python3 tools/build_site.py --base-url https://新域名` 重新构建，首页 canonical、静态页与 sitemap 会一起更新。Cloudflare Pages 的预览部署默认带 `noindex`，不会与正式站抢收录。
 - 收录需要站主在百度搜索资源平台、Google Search Console 验证网站并提交 `sitemap.xml`；这一步需要账号操作，构建脚本不会代做。
+- 首页「命运丝线」（`web/weave.js`）：Canvas 2D 背景动画，不用任何外部库。四条主角线的颜色取自立绘底色（`weaveColors`）。文字区域由遮罩淡化丝线；改动首页排版后，请复查大图文字对比仍 ≥ 4.5:1。`prefers-reduced-motion` 下只画静止一帧，画面外或后台分页不绘制。
 

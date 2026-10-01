@@ -228,3 +228,5 @@ small{font-size:max(11px,.85em)}
 .static-page .table-scroll th[scope=row]{white-space:nowrap}.static-page .table-scroll .class-icon{vertical-align:-4px;margin-right:4px}
 @media(max-width:800px){.static-dossier .detail-art{min-height:0}.static-dossier .detail-body{padding:22px 18px}.static-dossier h1{font-size:28px}.static-route dl>div{grid-template-columns:1fr;gap:2px}.static-route .route-section>h2{font-size:21px}}
 .static-page .table-scroll table{min-width:900px}
+.hero-home{position:relative}.hero-home>.container{position:relative;z-index:1}.hero-weave{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+@media print{.hero-weave{display:none}}
