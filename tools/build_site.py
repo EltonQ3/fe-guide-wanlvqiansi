@@ -132,6 +132,38 @@ for collection in curated.values():
             sources[key]['status']='page-reviewed'
             sources[key]['note']='已核对本次条目所引页面；不代表该站全部结论已验证。'
             if 'docs.qq.com' in s['url']: sources[key]['note']='2026-09-29 可见表格核对外传窗口与部分兵种条件；表格禁止复制，未批量导出，兵种基础资料仍含此前站内收录。'
+# Structured view of the recruit table for the planner. Every part keeps its original wording;
+# a part the rules do not recognise stays an item rather than being dropped or guessed.
+paralogue_ids = {p['person']: p['id'] for p in curated['paralogues']}
+route_ids = dict(zip(('凯伊线','迪托利希线','赛奥朵拉线','蕾达线'), ('kai','dietrich','theodora','leda')))
+def need(text):
+    if text.startswith('完成') or any(k in text for k in ('任务','请求','頼み')): return {'type':'quest','text':text}
+    m = re.fullmatch(r'(.+?)外传', text)
+    if m:
+        if m[1] not in paralogue_ids: raise ValueError('Unknown paralogue in recruit table: '+text)
+        return {'type':'paralogue','text':text,'paralogue':paralogue_ids[m[1]]}
+    gold = re.search(r'(\d+)G', text)
+    if '选择' in text or '→' in text or '砍价' in text: return {'type':'option','text':text,**({'gold':int(gold[1])} if gold else {})}
+    if gold and text.startswith(gold[0]): return {'type':'gold','text':text,'gold':int(gold[1])}
+    if '败退' in text: return {'type':'story','text':text}
+    m = re.fullmatch(r'(.+?)\s*×\s*(\d+)(.*)', text)
+    return {'type':'item','text':text,'item':m[1] if m else re.sub(r'（.*$','',text),'qty':int(m[2]) if m else None}
+def recruit_plan(value):
+    parts = [p.strip() for p in value.split('・') if p.strip()]
+    if value in ('—', ''): return {'kind':'none'}
+    if value == '本路线主角': return {'kind':'lord'}
+    if '教学加入' in value: return {'kind':'tutorial'}
+    if '加入' in parts[0]:
+        chapter = re.search(r'第 (\d+) 章', parts[0])
+        return {'kind':'auto','chapter':int(chapter[1]) if chapter else None,'needs':[need(p) for p in parts[1:]]}
+    m = re.fullmatch(r'(\d)S / (\d+)R', parts[0])
+    if not m: raise ValueError('Unparsed recruit condition: '+value)
+    return {'kind':'scout','support':int(m[1]),'renown':int(m[2]),'needs':[need(p) for p in parts[1:]]}
+for c in characters:
+    if not c['recruit']: continue
+    c['plan'] = {route_ids[route]: recruit_plan(value) for route, value in c['recruit'].items()}
+    scouts = [p for p in c['plan'].values() if p['kind'] == 'scout']
+    for p in scouts: p['lowest'] = p['renown'] == min(s['renown'] for s in scouts)
 latest=max(e['date'] for e in logs)
 payload={'snapshot':'35dfba9b2300efc28c4a84e720bc9b9f35e12b0b','updated':latest,'chapters':chapters,'characters':characters,'weekly':weekly,'sources':list(sources.values()),'logs':logs,**curated}
 (OUT/'data.js').write_text('window.FE_DATA = '+json.dumps(payload,ensure_ascii=False).replace('</','<\\/')+';\n')

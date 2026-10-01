@@ -101,7 +101,7 @@ class DataTests(unittest.TestCase):
             p=next(x for x in DATA['paralogues'] if x['id']==person)
             self.assertEqual(len(p['strategy']),2)
             self.assertTrue(all(w['deadline'] is None for windows in p['routes'].values() for w in windows))
-        log=next(e for e in DATA['logs'] if e['date']=='2026-10-01')
+        log=next(e for e in DATA['logs'] if e.get('edition')=='外传与招募资料复核／页面结构检查')
         self.assertEqual(log['checked'],len({s['url'] for s in log['new_sources']}))
         self.assertTrue(any('铁弓数量' in c['topic'] for c in log['conflicts']))
 
@@ -125,5 +125,38 @@ class DataTests(unittest.TestCase):
                 self.assertNotIn(name,native)
                 self.assertTrue(purpose and reason)
             self.assertIn('教学加入',characters[profile['teaching']]['recruit'][route])
+
+    def test_recruit_plan_mirrors_table(self):
+        routes=('kai','dietrich','theodora','leda')
+        paralogues={p['id']:p for p in DATA['paralogues']}
+        for c in DATA['characters']:
+            if not c['recruit']:
+                self.assertNotIn('plan',c);continue
+            self.assertEqual(set(c['plan']),set(routes))
+            scouts=[p for p in c['plan'].values() if p['kind']=='scout']
+            for route,name in zip(routes,('凯伊线','迪托利希线','赛奥朵拉线','蕾达线')):
+                p,value=c['plan'][route],c['recruit'][name]
+                if p['kind']!='scout':continue
+                self.assertTrue(value.startswith(f"{p['support']}S / {p['renown']}R"),c['name'])
+                self.assertEqual(p['lowest'],p['renown']==min(s['renown'] for s in scouts))
+                for n in p['needs']:
+                    self.assertIn(n['text'],value)
+                    if n['type']=='paralogue':self.assertTrue(paralogues[n['paralogue']]['routes'].get(route),f"{c['name']} needs {n['text']} on {route}")
+        chars={c['name']:c for c in DATA['characters']}
+        self.assertEqual(chars['洛蕾塔']['plan']['kai']['needs'],[{'type':'item','text':'铁剑×3','item':'铁剑','qty':3}])
+        self.assertTrue(chars['洛蕾塔']['plan']['theodora']['lowest'])
+        self.assertEqual([n['type'] for n in chars['蒂亚拉']['plan']['leda']['needs']],['paralogue','gold'])
+        self.assertEqual(chars['米迦艾拉']['plan']['dietrich'],{'kind':'auto','chapter':4,'needs':[{'type':'gold','text':'3000G（详细页记载，待实机核对）','gold':3000}]})
+        self.assertEqual(chars['艾丝梅拉尔达']['plan']['leda']['needs'][0]['type'],'quest')
+        self.assertIsNone(chars['努佐']['plan']['dietrich']['needs'][0]['qty'])
+        self.assertEqual(chars['古扎岚']['plan']['kai']['kind'],'tutorial')
+
+    def test_art_and_alias_corrections(self):
+        io=[c for c in DATA['characters'] if '伊奥' in c['aliases'] or '伊欧' in c['aliases']]
+        self.assertEqual(len(io),1)
+        self.assertEqual(io[0]['gifts']['推荐礼物'],'马匹用品')
+        self.assertTrue(io[0]['recruit'])
+        kiroika=next(c for c in DATA['characters'] if c['name']=='基罗伊卡')
+        self.assertEqual((kiroika['avatar'],kiroika['portrait']),('assets/avatar/59.jpg','assets/portrait/59.jpg'))
 
 if __name__=='__main__':unittest.main()
