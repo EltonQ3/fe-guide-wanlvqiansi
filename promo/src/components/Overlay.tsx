@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, staticFile, useCurrentFrame, continueRender, delayRender} from 'remotion';
-import {T, FPS, colors, serif} from '../timeline';
+import {colors, serif} from '../timeline';
 
 // Self-hosted Latin serif (the site's Libre Caslon Text); Chinese falls back to Noto Serif SC.
 const fontHandle = delayRender('fonts');
@@ -10,32 +10,6 @@ Promise.all([
   new FontFace('Libre Caslon Text', `url(${staticFile('fonts/libre-caslon-text-latin-700-normal.woff2')})`, {weight: '700'}).load(),
 ]).then((fonts) => { fonts.forEach((f) => document.fonts.add(f)); continueRender(fontHandle); }).catch(() => continueRender(fontHandle));
 
-// Burned-in Chinese subtitles for the Japanese voice-over. In the animatic the Japanese line is shown too,
-// standing in for the voice that is not recorded yet.
-export const Subtitles: React.FC<{animatic: boolean}> = ({animatic}) => {
-  const frame = useCurrentFrame();
-  // Each subtitle stays as long as its recorded line (plus a short tail); before recording, a fixed length.
-  const span = (v: {seconds?: number}) => Math.round(((v.seconds ?? T.long.voSeconds - 0.4) + 0.4) * FPS);
-  const cue = (T.long.vo as {id: string; at: number; ja: string; zh: string | null; seconds?: number}[]).find((v) => frame >= v.at && frame < v.at + span(v));
-  if (!cue || (!cue.zh && !animatic)) return null;   // hero lines and the last line are already on screen
-  const len = span(cue);
-  const o = interpolate(frame - cue.at, [0, 6, len - 8, len], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  return (
-    <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 56, opacity: o, pointerEvents: 'none',
-      background: 'linear-gradient(to top, rgba(10,12,15,.72) 0%, rgba(10,12,15,.45) 13%, rgba(10,12,15,0) 24%)'}}>
-      {animatic && (
-        <div style={{fontFamily: '"Noto Serif SC", "IPAGothic", serif', fontSize: 24, color: 'rgba(243,238,229,.7)', marginBottom: 10, padding: '4px 12px', border: '1px dashed rgba(243,238,229,.35)', borderRadius: 4}}>
-          配音（日）· {cue.ja}
-        </div>
-      )}
-      {cue.zh && (
-        <div style={{fontFamily: serif, fontSize: 42, color: colors.ink, letterSpacing: '0.08em', textShadow: '0 2px 12px rgba(0,0,0,.65), 0 0 2px rgba(0,0,0,.6)'}}>{cue.zh}</div>
-      )}
-    </AbsoluteFill>
-  );
-};
-
-// A quiet browser window around site captures, with the real address in the bar.
 export const BrowserFrame: React.FC<{width: number; height: number; chrome?: number; children: React.ReactNode; style?: React.CSSProperties}> = ({width, height, chrome = 1, children, style}) => (
   <div style={{position: 'absolute', width, height: height + 44 * chrome, borderRadius: 12 * chrome, overflow: 'hidden', boxShadow: `0 40px 120px rgba(0,0,0,${0.55 * chrome})`, background: '#1d232b', ...style}}>
     <div style={{height: 44 * chrome, opacity: chrome, display: 'flex', alignItems: 'center', gap: 9, padding: '0 18px', background: '#1d232b', borderBottom: '1px solid rgba(255,255,255,.06)'}}>

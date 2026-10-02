@@ -9,7 +9,9 @@ fs.mkdirSync(OUT, {recursive: true});
 const geo = {};
 const rect = el => { const r = el.getBoundingClientRect(); return {x: r.left, y: r.top, w: r.width, h: r.height}; };
 
-async function page(browser, {width = 1920, height = 1080, scale = 1, theme = 'light', store = {}} = {}) {
+// Desktop captures are 1920x1080 CSS pixels at 2x, so the video can push in on details and stay sharp; geometry
+// stays in CSS pixels, so anything drawn over a capture shown at 1920 wide lines up either way.
+async function page(browser, {width = 1920, height = 1080, scale = 2, theme = 'light', store = {}} = {}) {
   const p = await browser.newPage({viewport: {width, height}, deviceScaleFactor: scale, reducedMotion: 'reduce'});
   await p.goto(SITE);
   await p.evaluate(([t, s]) => { localStorage.clear(); localStorage.setItem('fe-next.theme', t); for (const [k, v] of Object.entries(s)) localStorage.setItem(k, JSON.stringify(v)); }, [theme, store]);
@@ -28,10 +30,12 @@ const hideWeave = p => p.addStyleTag({content: '.hero-weave{display:none!importa
     await open(p, '#home'); await hideWeave(p); await p.waitForTimeout(200);
     await p.screenshot({path: path.join(OUT, 'home.png')});
     await p.screenshot({path: path.join(OUT, 'home-full.png'), fullPage: true});
+    await p.addStyleTag({content: '.hero-weave{display:block!important}'}); await p.waitForTimeout(300);
+    await p.screenshot({path: path.join(OUT, 'home-weave.png')});
     geo.home = await p.evaluate(r => {
       const q = s => document.querySelector(s), R = eval(r);
       return {page: document.documentElement.scrollHeight, hero: R(q('.hero-home')), copy: R(q('.hero-copy')), art: R(q('.hero-art')), meta: R(q('.meta-strip')),
-        panels: [...document.querySelectorAll('.portrait-panel')].map(R)};
+        panels: [...document.querySelectorAll('.portrait-panel')].map(R), title: R(q('.hero-copy h1'))};
     }, rect.toString());
     await p.close();
   }
@@ -60,6 +64,44 @@ const hideWeave = p => p.addStyleTag({content: '.hero-weave{display:none!importa
     geo.planner.scrollY = y;
   }
 
+  // Kai's route page: the banner and the first chapter section, for slow pans across text and screenshots.
+  {
+    const p = await page(browser);
+    await open(p, '#route/kai', 1200);
+    await p.screenshot({path: path.join(OUT, 'route-kai.png'), clip: {x: 0, y: 0, width: 1920, height: 2160}, fullPage: true});
+    geo.route = await p.evaluate(r => {
+      const R = eval(r), q = s => document.querySelector(s), A = (el) => { const b = R(el); return {...b, y: b.y + scrollY}; };
+      const sec = [...document.querySelectorAll('section.route-section')].slice(0, 2);
+      return {hero: A(q('.route-hero')), title: A(q('.route-hero h1')), lead: A(q('.route-hero p')),
+        sections: sec.map(e => ({box: A(e), title: A(e.querySelector('h2')), images: [...e.querySelectorAll('img')].slice(0, 2).map(A)}))};
+    }, rect.toString());
+    await p.close();
+  }
+
+  // The companion archive: the first rows of portraits.
+  {
+    const p = await page(browser);
+    await open(p, '#characters', 1200);
+    await p.screenshot({path: path.join(OUT, 'characters.png'), clip: {x: 0, y: 0, width: 1920, height: 1800}, fullPage: true});
+    geo.characters = await p.evaluate(r => [...document.querySelectorAll('.character-card')].slice(0, 24).map(el => { const b = eval(r)(el); return {...b, y: b.y + scrollY}; }), rect.toString());
+    await p.close();
+  }
+
+  // Classes with their pixel icons, the weekly list, and one companion's dossier.
+  {
+    const p = await page(browser);
+    await open(p, '#classes', 1200);
+    await p.screenshot({path: path.join(OUT, 'classes.png'), clip: {x: 0, y: 0, width: 1920, height: 2160}, fullPage: true});
+    geo.classes = await p.evaluate(r => [...document.querySelectorAll('.class-icon')].slice(0, 30).map(el => { const b = eval(r)(el); return {...b, y: b.y + scrollY}; }), rect.toString());
+    await open(p, '#weekly', 1000);
+    await p.screenshot({path: path.join(OUT, 'weekly.png')});
+    await open(p, '#characters', 1000);
+    await p.click('.character-card:nth-child(4)'); await p.waitForTimeout(700);
+    await p.screenshot({path: path.join(OUT, 'dossier.png')});
+    geo.dossier = await p.evaluate(r => { const el = document.querySelector('#character-dialog .character-detail'); return el ? eval(r)(el) : null; }, rect.toString());
+    await p.close();
+  }
+
   // Paralogue overview on Dietrich's route (eight rows), captured sharp; the video sweeps its own "today" line.
   {
     const p = await page(browser, {scale: 2});
@@ -75,10 +117,13 @@ const hideWeave = p => p.addStyleTag({content: '.hero-weave{display:none!importa
     await p.close();
   }
 
-  // Day and night: the blood-seal cards in the manual, light and dark, plus where the theme toggle sits.
+  // Day and night: Kai's company (second section of the route page), light and dark at the same scroll, plus where
+  // the theme toggle sits.
   for (const theme of ['light', 'dark']) {
     const p = await page(browser, {theme});
-    await open(p, '#guide/g5/s5-8', 1200);
+    await open(p, '#route/kai', 1200);
+    await p.evaluate(() => { const s = document.querySelectorAll('section.route-section')[1]; window.scrollTo(0, s.getBoundingClientRect().top + scrollY - 110); });
+    await p.waitForTimeout(500);
     await p.screenshot({path: path.join(OUT, `reading-${theme}.png`)});
     if (theme === 'light') geo.toggle = await p.evaluate(r => eval(r)(document.querySelector('#theme-toggle')), rect.toString());
     await p.close();

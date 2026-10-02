@@ -4,12 +4,14 @@
   "description": "Promotional video for the 万缕千丝 战术手帖 site. Separate from the site build; the site still needs no npm.",
   "scripts": {
     "prepare-assets": "node scripts/prepare.mjs",
-    "capture": "node scripts/capture.mjs",
-    "audio": "python3 audio/synth.py",
+    "capture": "NODE_PATH=$(npm root -g) node scripts/capture.cjs && python3 scripts/blur.py",
+    "audio": "python3 audio/score.py && python3 audio/synth.py",
     "studio": "remotion studio",
     "animatic": "remotion render Long out/long-animatic.mp4 --scale=0.5 --props='{\"animatic\":true}'",
     "animatic:short": "remotion render Short out/short-animatic.mp4 --scale=0.5 --props='{\"animatic\":true}'",
-    "render": "remotion render Long out/long.mp4 && remotion render Short out/short.mp4"
+    "render": "remotion render Long out/long.mp4 && remotion render Short out/short.mp4",
+    "samples": "sh audio/fetch_samples.sh",
+    "preview": "remotion render Long out/long-preview.mp4 --scale=0.6667"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",
