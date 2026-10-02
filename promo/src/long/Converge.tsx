@@ -23,8 +23,32 @@ const helix = (k: number, n: number, phase = 0) => {
   return new THREE.CatmullRomCurve3(pts);
 };
 
-// The camera's depth at time t (seconds into the scene): down the braid, slow at first, rushing at the end.
-const camZ = (t: number) => { const u = Math.min(1, Math.max(0, (t * FPS) / 200)); return 30 - 128 * u * u * u; };
+// The camera: drifts down the vortex (0-95), eases in while the wheel forms around the frame (95-185), then
+// dives through the wheel's hub into the light (185-200). Frames are local to the scene.
+const camAtFrame = (f: number) => f < 185
+  ? interpolate(f, [0, 95, 150, 185], [30, 17, 14, 12.5], {...clamp, easing: Easing.inOut(Easing.cubic)})
+  : interpolate(f, [185, 200], [12.5, -14], {...clamp, easing: Easing.in(Easing.cubic)});
+const camZ = (t: number) => camAtFrame(t * FPS);
+
+// The surprise: from bar 15 the cards are pulled out of the vortex and lock, ring by ring on sixteenth notes,
+// into a great wheel of fates facing the camera, the four protagonists at its hub. The wheel turns backwards,
+// stops dead on the cadence, and turns forward as the music lands in D major.
+const WHEEL_Z = -6, LOCK = 100, SIXTEENTH = 6.25, FLY = 18, STOP = 186;
+type Slot = {k: number; a0: number; r: number; h: number};
+const wheelSlots = (n: number) => {
+  const out: Slot[] = [];
+  for (let k = 0; out.length < n; k++) {
+    const r = 3.9 + k * 1.9, h = 1.5 + 0.14 * k, count = Math.floor((2 * Math.PI * r) / (h * 0.75 * 1.14));
+    for (let j = 0; j < count && out.length < n; j++) out.push({k, a0: ((j + (k % 2) * 0.5) / count) * Math.PI * 2, r, h});
+  }
+  return out;
+};
+const lockOf = (k: number) => LOCK + k * SIXTEENTH;
+const ease3 = (u: number) => { const v = Math.min(1, Math.max(0, u)); return v < 0.5 ? 4 * v * v * v : 1 - Math.pow(-2 * v + 2, 3) / 2; };
+// how far the wheel has turned by frame f: backwards, slowing to a stop at STOP, then forwards
+const omega = (fr: number) => fr < STOP ? -0.75 * (1 - ease3((fr - 140) / (STOP - 140))) : 1.6 * ease3((fr - STOP) / 6);
+const spinAt = (f: number) => { let s = 0; for (let k = LOCK; k < f; k++) s += omega(k) / FPS; return s; };
+const HUB = [[-2.0, 0], [0, 2.0], [2.0, 0], [0, -2.0]];
 
 // The whole archive of companions (every portrait, three times over) streams into the vortex: each card enters
 // ahead of the camera at its own moment, then flows down the braid, turning with the twist, its orbit shrinking
@@ -74,59 +98,98 @@ const Scene: React.FC<{f: number; imgs: HTMLImageElement[]; heroImgs: number[]}>
     for (let i = 0; i < 120; i++) { const a = (i / 120) * Math.PI * 2, l = i % 10 === 0 ? 0.5 : 0.22; pts.push(Math.cos(a) * 4.6, Math.sin(a) * 4.6, 0, Math.cos(a) * (4.6 - l), Math.sin(a) * (4.6 - l), 0); }
     const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3)); return g;
   }, []);
-  // camera: down the braid, slow then rushing into the knot at the end
-  const p = interpolate(f, [0, 200], [0, 1], {...clamp, easing: Easing.in(Easing.cubic)});
-  const z = 30 - 128 * p;
-  cam.position.set(0.6 * Math.sin(t * 0.7), -0.5 + 0.3 * Math.cos(t * 0.5), z);
-  cam.fov = 55 + 25 * Math.pow(p, 4); cam.updateProjectionMatrix();
-  cam.lookAt(0, 0.9 * (1 - p), z - 20);
-  // the ring turns backwards, slows to a stop just before D major, then turns forward
-  const stop = SYNC.impacts[2] - SYNC.impacts[1] - 14;
-  const turn = f < stop ? -(stop - f) * (stop - f) * 0.0009 - (stop - f) * 0.01 : (f - stop) * (f - stop) * 0.002;
+  const slots = useMemo(() => wheelSlots(SWARM), []);
+  const ringCount = slots[slots.length - 1].k + 1;
+  const circles = useMemo(() => Array.from({length: ringCount}, (_, k) => {
+    const r = 3.9 + k * 1.9 - (1.5 + 0.14 * k) * 0.62, pts: number[] = [];
+    for (let j = 0; j <= 128; j++) { const a = (j / 128) * Math.PI * 2; pts.push(Math.cos(a) * r, Math.sin(a) * r, 0); }
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3)); return g;
+  }), []);
+  const spokes = useMemo(() => {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(SWARM * 6), 3));
+    g.setAttribute('color', new THREE.BufferAttribute(new Float32Array(SWARM * 6), 3));
+    return g;
+  }, []);
+  // camera
+  const camZnow = camAtFrame(f), w = ease3((f - 90) / 45), dive = ease3((f - 185) / 15);
+  cam.position.set(0.6 * Math.sin(t * 0.7) * (1 - w), (-0.5 + 0.3 * Math.cos(t * 0.5)) * (1 - w), camZnow);
+  cam.fov = 55 + 30 * dive; cam.updateProjectionMatrix();
+  const look = new THREE.Vector3(0, 0.9, camZnow - 20).lerp(new THREE.Vector3(0, 0, WHEEL_Z), w).lerp(new THREE.Vector3(0, 0, -60), dive);
+  cam.lookAt(look);
+  const spin = spinAt(f);
+  // the far ring of fate turns with the wheel
   const ringOpacity = interpolate(f, [10, 40, 190, 200], [0, 0.85, 0.85, 0.2], clamp);
+  const vortexFade = 1 - 0.6 * w * (1 - dive);
+  const gold = new THREE.Color(colors.thread);
+  const sp = spokes.getAttribute('position') as THREE.BufferAttribute, sc = spokes.getAttribute('color') as THREE.BufferAttribute;
+  const cards = Array.from({length: SWARM}, (_, i) => {
+    const c = swarm(i, t), sl = slots[i], u = ease3((f - lockOf(sl.k)) / FLY);
+    const aw = c.a + t * 0.9;                                   // vortex position in world space (the vortex turns)
+    const th = sl.a0 + spin * (1.25 - 0.07 * sl.k);
+    const wx = Math.cos(th) * sl.r, wy = Math.sin(th) * sl.r;
+    const x = Math.cos(aw) * c.r * (1 - u) + wx * u, y = Math.sin(aw) * c.r * (1 - u) + wy * u;
+    const z = c.z * (1 - u) + (WHEEL_Z - 0.03 * sl.k) * u + Math.sin(Math.PI * u) * 4;
+    const near = Math.min(1, Math.max(0, (camZnow - z - 4) / 6));
+    const ov = interpolate(c.age, [0, 0.3], [0, 1], clamp) * Math.min(1, Math.max(0, (c.r - 0.3) / 0.9));
+    const o = (ov * (1 - Math.min(1, u * 2)) + Math.min(1, u * 2)) * near;
+    sp.setXYZ(i * 2, 0, 0, WHEEL_Z - 0.2); sp.setXYZ(i * 2 + 1, x, y, z - 0.05);
+    const k = 0.32 * u * near; sc.setXYZ(i * 2, gold.r * k * 0.2, gold.g * k * 0.2, gold.b * k * 0.2); sc.setXYZ(i * 2 + 1, gold.r * k, gold.g * k, gold.b * k);
+    if (o <= 0.01 || z > camZnow - 0.5) return null;
+    const size = c.size * (1 - u) + (sl.h / 1.36) * u;
+    const rz = 0.35 * Math.sin(c.a) * (1 - u) + (th - Math.PI / 2) * u;
+    return (
+      <group key={i} position={[x, y, z]} rotation={[-y * 0.04 * (1 - u), x * 0.04 * (1 - u), rz]} scale={[size, size, 1]}>
+        <mesh position={[0, 0, -0.01]}><planeGeometry args={[1.08, 1.42]} /><meshBasicMaterial color={colors.gold} transparent opacity={0.5 * o} toneMapped={false} depthWrite={false} /></mesh>
+        <mesh><planeGeometry args={[1.02, 1.36]} /><meshBasicMaterial map={tex[i % tex.length]} transparent opacity={o} toneMapped={false} depthWrite={false} /></mesh>
+      </group>
+    );
+  });
+  sp.needsUpdate = true; sc.needsUpdate = true;
   return (
     <>
       <group rotation={[0, 0, t * 0.9]}>
-        <lineSegments geometry={fine}><lineBasicMaterial vertexColors transparent opacity={0.8} blending={THREE.AdditiveBlending} depthWrite={false} /></lineSegments>
+        <lineSegments geometry={fine}><lineBasicMaterial vertexColors transparent opacity={0.8 * vortexFade} blending={THREE.AdditiveBlending} depthWrite={false} /></lineSegments>
         {tubes.map((tb, k) => (
           <group key={k}>
-            <mesh geometry={tb.halo}><meshBasicMaterial color={T.heroes[k].thread} transparent opacity={0.22} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} /></mesh>
-            <mesh geometry={tb.core}><meshBasicMaterial color={new THREE.Color(T.heroes[k].thread).lerp(new THREE.Color('#ffffff'), 0.45)} toneMapped={false} /></mesh>
+            <mesh geometry={tb.halo}><meshBasicMaterial color={T.heroes[k].thread} transparent opacity={0.22 * vortexFade} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} /></mesh>
+            <mesh geometry={tb.core}><meshBasicMaterial color={new THREE.Color(T.heroes[k].thread).lerp(new THREE.Color('#ffffff'), 0.45)} transparent opacity={vortexFade} toneMapped={false} /></mesh>
           </group>
         ))}
-        {Array.from({length: SWARM}, (_, i) => {
-          const c = swarm(i, t), tx = tex[i % tex.length];
-          // fade in on entry, out at the knot, and out again before the camera reaches a card, so none fills the frame
-          const near = Math.min(1, Math.max(0, (cam.position.z - c.z - 5) / 7));
-          const o = interpolate(c.age, [0, 0.3], [0, 1], clamp) * Math.min(1, Math.max(0, (c.r - 0.3) / 0.9)) * near;
-          if (o <= 0.01 || c.z > cam.position.z - 0.5) return null;
-          return (
-            <group key={i} position={[c.x, c.y, c.z]} rotation={[-c.y * 0.04, c.x * 0.04, -t * 0.9 + 0.35 * Math.sin(c.a)]} scale={[c.size, c.size, 1]}>
-              <mesh position={[0, 0, -0.01]}><planeGeometry args={[1.08, 1.42]} /><meshBasicMaterial color={colors.gold} transparent opacity={0.5 * o} toneMapped={false} depthWrite={false} /></mesh>
-              <mesh><planeGeometry args={[1.02, 1.36]} /><meshBasicMaterial map={tx} transparent opacity={o} toneMapped={false} depthWrite={false} /></mesh>
-            </group>
-          );
-        })}
       </group>
+      <lineSegments geometry={spokes}><lineBasicMaterial vertexColors transparent blending={THREE.AdditiveBlending} depthWrite={false} /></lineSegments>
+      {circles.map((g, k) => {
+        const u = ease3((f - lockOf(k) - 4) / FLY);
+        return u > 0 ? <lineLoop key={k} geometry={g} position={[0, 0, WHEEL_Z - 0.1]} rotation={[0, 0, spin * (1.25 - 0.07 * k)]}>
+          <lineBasicMaterial color={colors.thread} transparent opacity={0.45 * u * (1 - dive)} blending={THREE.AdditiveBlending} depthWrite={false} />
+        </lineLoop> : null;
+      })}
+      {cards}
       {heroImgs.map((hi, k) => {
         const tx = tex[hi];
-        // the four protagonists frame the vortex at first, each in a corner, then the camera passes them
-        const a = [Math.PI * 0.78, Math.PI * 0.22, Math.PI * 1.22, Math.PI * 1.78][k], r = 4.4, zc = 18 - k * 1.5;
-        const o = interpolate(f, [4 + k * 5, 16 + k * 5], [0, 1], clamp);
+        // the four protagonists frame the vortex at first, each in a corner, then fly to the wheel's hub
+        const a = [Math.PI * 0.78, Math.PI * 0.22, Math.PI * 1.22, Math.PI * 1.78][k], r = 4.4;
+        const u = ease3((f - 88 - k * 2) / 26);
+        const x = Math.cos(a) * r * 1.25 * (1 - u) + HUB[k][0] * u, y = Math.sin(a) * r * 0.62 * (1 - u) + HUB[k][1] * u;
+        const z = (18 - k * 1.5) * (1 - u) + (WHEEL_Z + 0.4) * u + Math.sin(Math.PI * u) * 2;
+        const o = interpolate(f, [4 + k * 5, 16 + k * 5], [0, 1], clamp) * Math.min(1, Math.max(0, (camZnow - z - 1.5) / 3));
+        if (o <= 0.01) return null;
         return (
-          <group key={k} position={[Math.cos(a) * r * 1.25, Math.sin(a) * r * 0.62, zc]}>
+          <group key={k} position={[x, y, z]} scale={[1 - 0.2 * u, 1 - 0.2 * u, 1]}>
             <mesh position={[0, 0, -0.02]}><planeGeometry args={[2.06, 2.72]} /><meshBasicMaterial color={T.heroes[k].thread} transparent opacity={0.7 * o} toneMapped={false} /></mesh>
             <mesh><planeGeometry args={[1.95, 2.6]} /><meshBasicMaterial map={tx} transparent opacity={o} toneMapped={false} /></mesh>
           </group>
         );
       })}
+      <sprite position={[0, 0, WHEEL_Z - 0.5]} scale={[7 + 5 * w + 40 * dive, 7 + 5 * w + 40 * dive, 1]}>
+        <spriteMaterial map={glow} transparent opacity={(0.22 + 0.4 * w) * (f > STOP ? 1 : 0.85)} blending={THREE.AdditiveBlending} depthWrite={false} />
+      </sprite>
       <group position={[0, 0, ZB + 6]}>
-        <group rotation={[0, 0, (turn * Math.PI) / 180]}>
-          <lineSegments geometry={ticks}><lineBasicMaterial color={colors.thread} transparent opacity={ringOpacity} blending={THREE.AdditiveBlending} /></lineSegments>
-          <mesh><torusGeometry args={[4.6, 0.03, 6, 200]} /><meshBasicMaterial color={colors.thread} transparent opacity={ringOpacity} toneMapped={false} /></mesh>
+        <group rotation={[0, 0, spin * 0.6]}>
+          <lineSegments geometry={ticks}><lineBasicMaterial color={colors.thread} transparent opacity={ringOpacity * (1 - 0.5 * w)} blending={THREE.AdditiveBlending} /></lineSegments>
+          <mesh><torusGeometry args={[4.6, 0.03, 6, 200]} /><meshBasicMaterial color={colors.thread} transparent opacity={ringOpacity * (1 - 0.5 * w)} toneMapped={false} /></mesh>
         </group>
-        <mesh rotation={[0, 0, (-turn * 1.7 * Math.PI) / 180]}><torusGeometry args={[3.6, 0.018, 6, 200]} /><meshBasicMaterial color={colors.thread} transparent opacity={ringOpacity * 0.7} toneMapped={false} /></mesh>
-        <sprite scale={[14 + 30 * Math.pow(p, 3), 14 + 30 * Math.pow(p, 3), 1]}><spriteMaterial map={glow} transparent opacity={0.6 + 0.4 * p} blending={THREE.AdditiveBlending} depthWrite={false} /></sprite>
+        <sprite scale={[14, 14, 1]}><spriteMaterial map={glow} transparent opacity={0.6} blending={THREE.AdditiveBlending} depthWrite={false} /></sprite>
       </group>
     </>
   );
@@ -146,7 +209,9 @@ export const Converge: React.FC<{from: number}> = ({from}) => {
         </ThreeCanvas>
       )}
       <AbsoluteFill style={{background: 'radial-gradient(ellipse 60% 40% at 50% 40%, rgba(8,10,13,.55) 0%, rgba(8,10,13,0) 70%)'}} />
-      <AbsoluteFill style={{background: 'radial-gradient(ellipse 34% 16% at 50% 70%, rgba(8,10,13,.6) 0%, rgba(8,10,13,0) 100%)', opacity: interpolate(abs, [1436, 1450], [0, 1], clamp)}} />
+      {/* a title band under the slogan: the wheel shows above and below it */}
+      <div style={{position: 'absolute', left: 0, right: 0, top: 590, height: 330, opacity: interpolate(abs, [1434, 1450, 1588, 1598], [0, 1, 1, 0], clamp),
+        background: 'linear-gradient(to bottom, rgba(8,10,13,0) 0%, rgba(8,10,13,.74) 28%, rgba(8,10,13,.78) 72%, rgba(8,10,13,0) 100%)'}} />
       <div style={{position: 'absolute', top: 640, width: W, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 26}}>
         <Copy id="line1" frame={abs} size={96} stagger={2.6} />
         <Copy id="line2" frame={abs} size={96} stagger={2.6} color="#f1d49a" glow="rgba(241,212,154,.5)" />
