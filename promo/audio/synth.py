@@ -1,12 +1,12 @@
-"""Score and sound effects for the promo, synthesized from timeline.json so sound and picture share one clock.
+"""The short cut's score and sound effects, synthesized from timeline.json so sound and picture share one clock.
+(The long cut is scored with orchestral samples: audio/score.py.)
 
 Everything is generated here (no samples, no outside music), so the soundtrack is ours to publish.
 Motif: four plucked notes, one per protagonist (D, F#, A, C#). They sound alone in Act 1, together when the
 four threads braid, and resolve to a high D at the end. Plucks are modal synthesis (decaying partials), which
 gives exact tuning; the score is D major at 72 BPM, one bar = 100 frames at 30 fps.
 
-Output (public/audio/): long-music.wav, long-sfx.wav, long-mix.wav and the same for short, mixed to about
--14 LUFS with ffmpeg loudnorm. Voice-over is mixed later, with the music ducked under it.
+Output (public/audio/): short-music.wav, short-sfx.wav and short-mix.wav, at about -14 LUFS.
 Run: python3 audio/synth.py            (needs numpy, scipy and ffmpeg)
 """
 import json, subprocess, wave
@@ -152,67 +152,6 @@ def shimmer(buf, t0, t1, chord, density, octave_up=1, gain=1.0):
             place(buf, pluck(rng.choice(tones), 2.5, bright=0.55), t + rng.uniform(-0.02, 0.02), rng.uniform(-0.9, 0.9), rng.uniform(0.08, 0.16) * gain)
         t += BEAT / 2
 
-def long_music():
-    L = T['long']; secs = L['frames'] / FPS
-    m = track(secs)
-    chords = L['music']['chords']
-    # Act 1 -------------------------------------------------------------------------------------------------
-    place(m, pluck('D4', 6, bright=0.7, decay=2.2), 0.0, 0, 0.9)                      # the first thread
-    place(m, bass('D2', BAR * 1.2) * env(int(BAR * 1.2 * SR), 2.0, 0.6), BAR * 0.2, 0, 0.35)
-    lay_pad(m, [c for c in chords if c[1] == 1], gain=0.28)                             # rising from silence
-    lay_pad(m, [c for c in chords if c[1] == 2], gain=0.4)
-    lay_pad(m, [c for c in chords if 3 <= c[1] < 8], gain=0.42)
-    shimmer(m, BAR * 1, BAR * 2, 'Bm7', 0.4); shimmer(m, BAR * 2, BAR * 3, 'Gmaj7', 0.85, gain=1.6)   # threads multiply
-    shimmer(m, BAR * 2.5, BAR * 3, 'Gmaj7', 0.9, octave_up=2, gain=1.2)
-    for i, (note, chord) in enumerate(zip(MOTIF, ['Dadd9', 'Bm7', 'Gmaj7', 'A'])):           # the four heroes
-        t0 = BAR * (3 + i)
-        place(m, pluck(note, 5, bright=0.8, decay=1.8), t0, [-0.4, 0.3, -0.2, 0.4][i], 0.75)
-        place(m, pluck(note, 3, bright=0.5), t0 + BEAT * 1.5, -[-0.4, 0.3, -0.2, 0.4][i], 0.25)   # echo
-        shimmer(m, t0 + BEAT, t0 + BAR, chord, 0.25)
-        place(m, bass(CHORDS[chord][1], BAR), t0, 0, 0.4)
-    for j, note in enumerate(MOTIF):                                                         # braid: together
-        place(m, pluck(note, 6, bright=0.85, decay=2.4), BAR * 7 + j * 0.045, [-0.5, -0.15, 0.15, 0.5][j], 0.55)
-    place(m, bass('D2', BAR), BAR * 7, 0, 0.45)
-    # Act 2 -------------------------------------------------------------------------------------------------
-    lay_pad(m, [c for c in chords if 8 <= c[1] < 14], gain=0.32, cutoff=1800)
-    patterns = [0, 2, 1, 3, 2, 1, 3, 2]                                                      # arpeggio order
-    for name, t0, d in chords_at([c for c in chords if 8 <= c[1] < 13]):
-        tones = [n[:-1] + str(int(n[-1]) + 1) for n in CHORDS[name][0][1:]]
-        for s in range(8):
-            place(m, keys(tones[patterns[s] % len(tones)]), t0 + s * BEAT / 2, (s % 2 - 0.5) * 0.5, 0.33 if s % 4 else 0.42)
-        place(m, bass(CHORDS[name][1], d), t0, 0, 0.5)
-        for b in range(4):
-            if b in (0, 2): place(m, kick(), t0 + b * BEAT, 0, 0.35)
-            for half in range(2): place(m, shaker(), t0 + b * BEAT + half * BEAT / 2, 0.3, 0.8 if half else 0.5)
-    for note, at in (('A5', 1050), ('D6', 1100), ('F#6', 1150)):                             # threads connect
-        place(m, pluck(note, 3, bright=0.6), at / FPS, 0.2, 0.32)
-    # night: only pad and sub, filter closing
-    lay_pad(m, [['A7sus4', 13, 1]], gain=0.26, cutoff=650)
-    place(m, bass('A1', BAR), BAR * 13, 0, 0.25)
-    # Act 3 -------------------------------------------------------------------------------------------------
-    lay_pad(m, [c for c in chords if c[1] >= 14], gain=0.6, cutoff=1700)
-    for b, chord in ((14, 'Gmaj7'), (15, 'A')):
-        place(m, kick(0.6), BAR * b, 0, 0.45)
-        for s in range(8):                                                                    # motif climbs
-            place(m, pluck(MOTIF[s % 4], 2.5, bright=0.7), BAR * b + s * BEAT / 2, [-0.5, -0.15, 0.15, 0.5][s % 4], 0.22 + 0.02 * s)
-        place(m, bass(CHORDS[chord][1], BAR), BAR * b, 0, 0.5)
-    for j, note in enumerate(['D5', 'F#5', 'A5', 'D6']):                                    # resolution
-        place(m, pluck(note, 7, bright=0.8, decay=2.6), BAR * 16 + j * BEAT, [-0.5, -0.15, 0.15, 0.5][j], 0.6)
-    place(m, bass('D2', BAR * 2), BAR * 16, 0, 0.5)
-    place(m, pluck('D4', 6, bright=0.7, decay=2.2), BAR * 17 + BEAT, 0, 0.5)                # the first thread, again
-    m = reverb(m, 2.8, 0.34)
-    return fade_out(m, secs, 1.6)
-
-def long_sfx():
-    L = T['long']; secs = L['frames'] / FPS; s = track(secs)
-    for e in L['sfx']:
-        if e['type'] == 'riser': place(s, riser((e['to'] - e['from']) / FPS), e['from'] / FPS, 0, 0.5)
-        elif e['type'] == 'whoosh': place(s, whoosh(), e['at'] / FPS - 0.25, 0, 0.55)
-        elif e['type'] == 'swish': place(s, swish(), e['at'] / FPS - 0.05, 0.3, 0.6)
-        elif e['type'] == 'tick': place(s, tick(), e['at'] / FPS, 0.1, 0.55)
-        elif e['type'] == 'bell': place(s, bell('B5' if e['at'] < 1250 else 'E6'), e['at'] / FPS, 0.2, 0.5)
-    return fade_out(reverb(s, 1.6, 0.2), secs, 0.4)
-
 def short_music():
     S = T['short']; secs = S['frames'] / FPS; m = track(secs)
     place(m, pluck('D4', 4, bright=0.7, decay=1.6), 0, 0, 0.9)
@@ -244,27 +183,6 @@ def fade_out(buf, secs, length):
     buf[:, -f:] *= np.linspace(1, 0, f) ** 1.5
     return buf
 
-def read_mono(path):
-    with wave.open(str(path)) as w:
-        x = np.frombuffer(w.readframes(w.getnframes()), '<i2').astype(float) / 32768
-        if w.getnchannels() == 2: x = x.reshape(-1, 2).mean(1)
-        if w.getframerate() != SR: x = np.interp(np.arange(int(len(x) * SR / w.getframerate())) * w.getframerate() / SR, np.arange(len(x)), x)
-    return x
-
-def voice_track(secs):
-    """Japanese voice-over at its cue frames (public/audio/vo/v01.wav ...) and a gain curve that ducks the music
-    about 8 dB under each line, with short ramps. Returns (None, None) until the voice has been generated."""
-    n = int(secs * SR); vo = np.zeros((2, n)); duck = np.ones(n); found = False
-    for cue in T['long']['vo']:
-        path = OUT / 'vo' / f"{cue['id']}.wav"
-        if not path.exists(): continue
-        found = True; sig = hp(read_mono(path), 90); t0 = cue['at'] / FPS
-        place(vo, sig / max(np.max(np.abs(sig)), 1e-6) * 0.7, t0)
-        a, b, r = int((t0 - 0.12) * SR), int((t0 + len(sig) / SR + 0.25) * SR), int(0.15 * SR)
-        curve = np.ones(n); curve[max(a, 0):min(b, n)] = 0.4
-        duck = np.minimum(duck, np.convolve(curve, np.ones(r) / r, mode='same'))
-    return (vo, duck) if found else (None, None)
-
 def write(path, buf):
     peak = np.max(np.abs(buf)); buf = buf / peak * 0.8 if peak > 0.8 else buf
     data = (np.clip(buf.T, -1, 1) * 32767).astype('<i2')
@@ -280,12 +198,10 @@ def loudnorm(src, dst, target=-14):
 
 if __name__ == '__main__':
     OUT.mkdir(parents=True, exist_ok=True)
-    for name, music, sfx in (('long', long_music, long_sfx), ('short', short_music, short_sfx)):
+    for name, music, sfx in (('short', short_music, short_sfx),):
         mus, fx = music(), sfx()
         write(OUT / f'{name}-music.wav', mus); write(OUT / f'{name}-sfx.wav', fx)
-        vo, duck = voice_track(T['long']['frames'] / FPS) if name == 'long' else (None, None)
-        if vo is not None: print('voice-over mixed in, music ducked under it')
-        write(OUT / f'{name}-raw.wav', mus * 0.85 * (duck if duck is not None else 1) + fx + (vo if vo is not None else 0))
+        write(OUT / f'{name}-raw.wav', mus * 0.85 + fx)
         loudnorm(OUT / f'{name}-raw.wav', OUT / f'{name}-mix.wav')
         (OUT / f'{name}-raw.wav').unlink()
         print(name, 'written', f'{mus.shape[1] / SR:.2f}s')

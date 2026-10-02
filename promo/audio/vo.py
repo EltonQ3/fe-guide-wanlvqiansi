@@ -66,6 +66,8 @@ def seconds(path):
 
 if __name__ == '__main__':
     cmd, args = (sys.argv[1] if len(sys.argv) > 1 else 'help'), sys.argv[2:]
+    if cmd in ('audition', 'render') and not T['long']['vo']:
+        sys.exit('timeline.json has no voice-over cues (long.vo is empty); nothing to record.')
     if cmd == 'voices':
         for v in call(url('voices', 'languageCode=ja-JP'), 30)['voices']: print(v['name'], v['ssmlGender'], v['naturalSampleRateHertz'])
     elif cmd == 'audition':
