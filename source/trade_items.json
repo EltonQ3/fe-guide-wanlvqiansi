@@ -125,6 +125,36 @@
               "label": "GameWith · 穆资料"
             }
           ]
+        },
+        {
+          "text": "迪托利希线也可在「裏山道」「オーガス山道」「巨人の丘」探索收集；已有明确本线玩家记录，不必只等流动商人。凯伊线不能照搬这些探索地点。",
+          "sources": [
+            {
+              "url": "https://lushgreengame.com/fe-bnssnk-grumaosa/",
+              "label": "ぴこぴこ · グルマオサの入手方法",
+              "checkedAt": "2026-10-02",
+              "evidenceLocation": "「ムウを仲間にしたい」「グルマオサの入手場所」「具体的な手順」：明确迪线3S/7R、材料3；玛尔斯本殿南侧裏山道探索，作者实得并交付入队。可反复探索但每次消耗回合。未采纳其云存档/读档方案或单次产量作保证。"
+            },
+            {
+              "url": "https://gamewith.jp/fefw/577825",
+              "label": "GameWith · グルマオサの入手方法と使い道",
+              "checkedAt": "2026-10-02",
+              "evidenceLocation": "「ワールドマップの探索で入手」：裏山道、オーガス山道、巨人の丘均标迪/赛/蕾，凯伊不在列表；商人5000G为现有句。与独立迪线玩家记录交叉核对。"
+            },
+            {
+              "url": "https://game8.jp/fe-banshisenko/817031",
+              "label": "Game8 · グルマオサの入手方法と使い道",
+              "checkedAt": "2026-10-02",
+              "evidenceLocation": "「ワールドマップの探索で入手」：裏山道、オーガス山道、巨人の丘材料表及每项凯伊线不可到达备注；「キャラの交渉に使用」材料3。"
+            }
+          ],
+          "checkedAt": "2026-10-02",
+          "gameVersion": null,
+          "difficulty": null,
+          "route": "迪托利希线",
+          "chapter": null,
+          "part": 1,
+          "status": "page-reviewed"
         }
       ],
       "pages": [
