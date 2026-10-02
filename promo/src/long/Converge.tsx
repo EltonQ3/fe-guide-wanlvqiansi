@@ -125,7 +125,7 @@ export const Converge: React.FC<{from: number}> = ({from}) => {
 };
 
 // 0:53-1:00 D major: one thread again, steady and warm. The harp plays the motif once more and the thread answers
-// each note; the name and the address of the site.
+// each note. The name comes in first and the address right after it (from about 0:54.5), so it stays readable for 5 s.
 const LY = H * 0.66;
 export const End: React.FC<{from: number}> = ({from}) => {
   const f = useCurrentFrame(), abs = from + f, t = f / FPS;
@@ -165,8 +165,8 @@ export const End: React.FC<{from: number}> = ({from}) => {
         <div style={{fontFamily: '"Noto Serif SC", serif', fontSize: 36, letterSpacing: '1em', paddingLeft: '1em', color: colors.goldSoft, marginTop: 22, ...show(26)}}>战术手帖</div>
       </div>
       <div style={{position: 'absolute', top: LY + 70, width: W, textAlign: 'center'}}>
-        <div style={{fontFamily: '"Libre Caslon Text", serif', fontStyle: 'italic', fontSize: 50, letterSpacing: '.04em', color: colors.thread, ...show(SYNC.endMotif[0] - from)}}>fe-guide.pages.dev</div>
-        <div style={{fontFamily: '"Noto Serif SC", serif', fontSize: 20, letterSpacing: '.12em', color: 'rgba(243,238,229,.55)', marginTop: 30, ...show(SYNC.endMotif[2] - from)}}>
+        <div style={{fontFamily: '"Libre Caslon Text", serif', fontStyle: 'italic', fontSize: 50, letterSpacing: '.04em', color: colors.thread, ...show(38)}}>fe-guide.pages.dev</div>
+        <div style={{fontFamily: '"Noto Serif SC", serif', fontSize: 20, letterSpacing: '.12em', color: 'rgba(243,238,229,.55)', marginTop: 30, ...show(58)}}>
           玩家整理 · 非官方网站　｜　游戏与美术版权归 Nintendo / INTELLIGENT SYSTEMS 所有
         </div>
       </div>

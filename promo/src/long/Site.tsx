@@ -181,7 +181,7 @@ export const Night: React.FC<{from: number}> = ({from}) => {
 // into threads toward the centre for the convergence.
 const CUTS: {name: string; w: number; h: number; a: Cam; b: Cam}[] = [
   {name: 'characters', w: 1920, h: 1800, a: {x: 560, y: 580, z: 2.0, ry: -8}, b: {x: 760, y: 590, z: 2.15, ry: -6}},
-  {name: 'classes', w: 1920, h: 2160, a: {x: 640, y: 730, z: 3.0, rx: 10}, b: {x: 700, y: 740, z: 3.4, rx: 6}},
+  {name: 'classes', w: 1920, h: 2160, a: {x: 700, y: 1250, z: 2.1, rx: 10}, b: {x: 820, y: 1270, z: 2.35, rx: 6}},
   {name: 'dossier', w: 1920, h: 1080, a: {x: 900, y: 330, z: 2.1, ry: 8}, b: {x: 940, y: 380, z: 2.3, ry: 5}},
   {name: 'weekly', w: 1920, h: 1080, a: {x: 620, y: 480, z: 2.1, rx: 10, ry: -6}, b: {x: 720, y: 520, z: 2.3, rx: 6}},
   {name: 'route-kai', w: 1920, h: 2160, a: {x: 900, y: 2060, z: 2.0, ry: 10}, b: {x: 1100, y: 2070, z: 2.2, ry: 6}},
