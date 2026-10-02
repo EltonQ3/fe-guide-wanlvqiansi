@@ -6,10 +6,12 @@ import * as THREE from 'three';
 import {colors, FPS, H, T, W} from '../timeline';
 import {clamp, Copy, FateRing, Flash, Paint, embers, rand, SYNC} from './kit';
 import {toTextures, usePreloaded} from './Tunnel';
+import portraits from '../../public/portrait/index.json';
 
 // 0:47-0:53 The four themes sound together: the four route threads spiral in from the edges of the frame and
-// braid into one line ahead; the myriad threads follow; the ring of fate spins backwards, stops, and turns
-// forward as the music lands in D major.
+// braid into one line ahead; the myriad threads follow, and with them the whole archive of companions (every
+// portrait, twice over) is swept down the vortex into the knot; the ring of fate spins backwards, stops, and
+// turns forward as the music lands in D major.
 const ZA = 22, ZB = -110;
 const radius = (z: number) => 0.12 + 6.2 * Math.pow(Math.min(1, Math.max(0, (z - ZB) / (ZA - ZB))), 1.6);
 const helix = (k: number, n: number, phase = 0) => {
@@ -21,6 +23,20 @@ const helix = (k: number, n: number, phase = 0) => {
   return new THREE.CatmullRomCurve3(pts);
 };
 
+// The camera's depth at time t (seconds into the scene): down the braid, slow at first, rushing at the end.
+const camZ = (t: number) => { const u = Math.min(1, Math.max(0, (t * FPS) / 200)); return 30 - 128 * u * u * u; };
+
+// The whole archive of companions (every portrait, three times over) streams into the vortex: each card enters
+// ahead of the camera at its own moment, then flows down the braid, turning with the twist, its orbit shrinking
+// with the vortex, and fades as it reaches the knot. Entries are spread over the shot so the stream never thins.
+const SWARM = portraits.length * 3;
+const swarm = (i: number, t: number) => {
+  const born = -1.6 + ((i + rand(i, 41)) / SWARM) * 7.2, age = t - born;
+  const z0 = camZ(Math.max(0, born)) - 10 - rand(i, 46) * 28, v = 6 + rand(i, 42) * 8, z = z0 - v * Math.max(0, age);
+  const m = 1.1 + rand(i, 43) * 1.4, a = rand(i, 44) * Math.PI * 2 + z * 0.16, r = radius(z) * m;
+  return {x: Math.cos(a) * r, y: Math.sin(a) * r, z, r, a, age, size: (1.25 + rand(i, 45) * 1.0) * Math.min(1, Math.max(0.28, r / 2.4))};
+};
+
 const glowTexture = () => {
   const c = document.createElement('canvas'); c.width = c.height = 256;
   const g = c.getContext('2d')!, gr = g.createRadialGradient(128, 128, 0, 128, 128, 128);
@@ -29,7 +45,7 @@ const glowTexture = () => {
   return new THREE.CanvasTexture(c);
 };
 
-const Scene: React.FC<{f: number; imgs: HTMLImageElement[]}> = ({f, imgs}) => {
+const Scene: React.FC<{f: number; imgs: HTMLImageElement[]; heroImgs: number[]}> = ({f, imgs, heroImgs}) => {
   const {camera} = useThree();
   const cam = camera as THREE.PerspectiveCamera;
   const t = f / FPS;
@@ -78,8 +94,22 @@ const Scene: React.FC<{f: number; imgs: HTMLImageElement[]}> = ({f, imgs}) => {
             <mesh geometry={tb.core}><meshBasicMaterial color={new THREE.Color(T.heroes[k].thread).lerp(new THREE.Color('#ffffff'), 0.45)} toneMapped={false} /></mesh>
           </group>
         ))}
+        {Array.from({length: SWARM}, (_, i) => {
+          const c = swarm(i, t), tx = tex[i % tex.length];
+          // fade in on entry, out at the knot, and out again before the camera reaches a card, so none fills the frame
+          const near = Math.min(1, Math.max(0, (cam.position.z - c.z - 5) / 7));
+          const o = interpolate(c.age, [0, 0.3], [0, 1], clamp) * Math.min(1, Math.max(0, (c.r - 0.3) / 0.9)) * near;
+          if (o <= 0.01 || c.z > cam.position.z - 0.5) return null;
+          return (
+            <group key={i} position={[c.x, c.y, c.z]} rotation={[-c.y * 0.04, c.x * 0.04, -t * 0.9 + 0.35 * Math.sin(c.a)]} scale={[c.size, c.size, 1]}>
+              <mesh position={[0, 0, -0.01]}><planeGeometry args={[1.08, 1.42]} /><meshBasicMaterial color={colors.gold} transparent opacity={0.5 * o} toneMapped={false} depthWrite={false} /></mesh>
+              <mesh><planeGeometry args={[1.02, 1.36]} /><meshBasicMaterial map={tx} transparent opacity={o} toneMapped={false} depthWrite={false} /></mesh>
+            </group>
+          );
+        })}
       </group>
-      {tex.map((tx, k) => {
+      {heroImgs.map((hi, k) => {
+        const tx = tex[hi];
         // the four protagonists frame the vortex at first, each in a corner, then the camera passes them
         const a = [Math.PI * 0.78, Math.PI * 0.22, Math.PI * 1.22, Math.PI * 1.78][k], r = 4.4, zc = 18 - k * 1.5;
         const o = interpolate(f, [4 + k * 5, 16 + k * 5], [0, 1], clamp);
@@ -104,17 +134,19 @@ const Scene: React.FC<{f: number; imgs: HTMLImageElement[]}> = ({f, imgs}) => {
 
 export const Converge: React.FC<{from: number}> = ({from}) => {
   const f = useCurrentFrame(), abs = from + f;
-  const imgs = usePreloaded(T.heroes.map((h) => staticFile(h.portrait)));
+  const imgs = usePreloaded(portraits.map((p) => staticFile(`portrait/${p}`)));
+  const heroImgs = T.heroes.map((h) => portraits.indexOf(h.portrait.split('/').pop()!));
   return (
     <AbsoluteFill style={{background: colors.night}}>
       {imgs && (
         <ThreeCanvas width={W} height={H} camera={{fov: 55, position: [0, 0, 30], near: 0.1, far: 300}} gl={{antialias: true}}>
           <color attach="background" args={[colors.night]} />
           <fog attach="fog" args={[colors.night, 30, 150]} />
-          <Scene f={f} imgs={imgs} />
+          <Scene f={f} imgs={imgs} heroImgs={heroImgs} />
         </ThreeCanvas>
       )}
       <AbsoluteFill style={{background: 'radial-gradient(ellipse 60% 40% at 50% 40%, rgba(8,10,13,.55) 0%, rgba(8,10,13,0) 70%)'}} />
+      <AbsoluteFill style={{background: 'radial-gradient(ellipse 34% 16% at 50% 70%, rgba(8,10,13,.6) 0%, rgba(8,10,13,0) 100%)', opacity: interpolate(abs, [1436, 1450], [0, 1], clamp)}} />
       <div style={{position: 'absolute', top: 640, width: W, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 26}}>
         <Copy id="line1" frame={abs} size={96} stagger={2.6} />
         <Copy id="line2" frame={abs} size={96} stagger={2.6} color="#f1d49a" glow="rgba(241,212,154,.5)" />
