@@ -78,18 +78,19 @@ export const Book: React.FC<{from: number}> = ({from}) => {
   );
 };
 
-// 0:30 A route's notes: the chapter banner up close, then a cut down the page across screenshots and text.
+// 0:30 The notes: a route's banner up close, then a cut to a manual chapter, gliding down the type.
 export const Read: React.FC<{from: number}> = ({from}) => {
-  const f = useCurrentFrame(), g = G.route;
+  const f = useCurrentFrame(), gd = G.guide;
   const a: Key[] = [[0, {x: 560, y: 270, z: 2.3, rx: 4, ry: 12}], [50, {x: 760, y: 320, z: 2.6, rx: 2, ry: 6}]];
-  const img = g.sections[0].images;
-  const b: Key[] = [[50, {x: img[0].x + 380, y: img[0].y + 80, z: 2.0, rx: 16, ry: -6}], [100, {x: img[1].x + 420, y: img[1].y + 200, z: 2.2, rx: 8, ry: -3}]];
+  const b: Key[] = [[50, {x: gd.title.x + 280, y: gd.title.y + 40, z: 2.2, rx: 14, ry: -6}], [100, {x: gd.title.x + 340, y: gd.heads[2].y - 60, z: 2.35, rx: 8, ry: -3}]];
   const second = f >= 50;
   return (
     <AbsoluteFill>
       <Backdrop t={f / FPS + 8} />
-      <Shot name="route-kai" w={1920} h={2160} cam={camAt(f, second ? b : a)} blur={second ? enter(f - 50) : enter(f)} dof={second ? 0.55 : 0.85} />
-      <Label id="read" frame={from + f} eyebrow="ROUTE NOTES" />
+      {second
+        ? <Shot name="guide" w={1920} h={2160} cam={camAt(f, b)} blur={enter(f - 50)} dof={0.55} />
+        : <Shot name="route-kai" w={1920} h={2160} cam={camAt(f, a)} blur={enter(f)} />}
+      <Label id="read" frame={from + f} eyebrow="ROUTES & MANUAL" />
     </AbsoluteFill>
   );
 };

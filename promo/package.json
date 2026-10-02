@@ -11,7 +11,7 @@
     "animatic:short": "remotion render Short out/short-animatic.mp4 --scale=0.5 --props='{\"animatic\":true}'",
     "render": "remotion render Long out/long.mp4 && remotion render Short out/short.mp4",
     "samples": "sh audio/fetch_samples.sh",
-    "preview": "remotion render Long out/long-preview.mp4 --scale=0.6667"
+    "preview": "remotion render Long out/long-preview.mp4 --scale=0.75"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

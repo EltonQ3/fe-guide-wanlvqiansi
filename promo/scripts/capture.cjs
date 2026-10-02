@@ -78,6 +78,19 @@ const hideWeave = p => p.addStyleTag({content: '.hero-weave{display:none!importa
     await p.close();
   }
 
+  // A chapter of the system manual: type-led pages for a slow glide down the text.
+  {
+    const p = await page(browser);
+    await open(p, '#guide/g5', 1200);
+    await p.evaluate(() => window.scrollTo(0, 0)); await p.waitForTimeout(300);
+    await p.screenshot({path: path.join(OUT, 'guide.png'), clip: {x: 0, y: 0, width: 1920, height: 2160}, fullPage: true});
+    geo.guide = await p.evaluate(r => {
+      const R = eval(r), A = el => { const b = R(el); return {...b, y: b.y + scrollY}; };
+      return {title: A(document.querySelector('main h1')), heads: [...document.querySelectorAll('main h2, main h3')].slice(0, 6).map(A)};
+    }, rect.toString());
+    await p.close();
+  }
+
   // The companion archive: the first rows of portraits.
   {
     const p = await page(browser);
