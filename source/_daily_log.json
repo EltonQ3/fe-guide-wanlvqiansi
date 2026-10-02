@@ -11,6 +11,317 @@
   },
   "entries": [
     {
+      "date": "2026-10-03",
+      "edition": "补齐九篇外传打法、杨界与伊欧培养、诺克裘拉出现时点",
+      "checked": 35,
+      "merged": [
+        {
+          "text": "贝特朗、阿纳托莉娅、奥尔赫尔补胜利目标、饲料、护送控场与同阶段机关；九篇既有外传现均有战斗要点。原接取窗口、完成期限和奖励全部保留，接取人改为大斗技场前的委托人。",
+          "src": "https://game8.jp/fe-banshisenko/816676"
+        },
+        {
+          "text": "杨界新增远程治疗与单修／双修取舍，伊欧新增骑兵先手防御／必杀回避的触发限制与两条培养方向；两人的路线卡去掉存在分歧的早期精确考试值。",
+          "src": "https://gamewith.jp/fefw/577295"
+        },
+        {
+          "text": "诺克裘拉迪托利希线第4章起帝都出现获得AlGest、Game8原页交叉支持，更新人物篇与规划器使用的出现时点；不补日期、等级或免交涉结论。",
+          "src": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character44/"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "贝特朗外传 · 接取窗口与委托人",
+          "current": "接取窗口全部保留；可将 steps 中未经支持的贝特朗改为中性委托人。",
+          "incoming": "Game8与GameWith日期支持原表；AppMedia上表迪线为无、下表却迪线9/17—9/25，内部矛盾。三站委托人点名ガブリエル。",
+          "src": "https://appmedia.jp/fe_banshisenkou/80414167"
+        },
+        {
+          "topic": "阿纳托莉娅外传 · 接取与完成日期不能混用",
+          "current": "保留两线10/5—10/14接取、10/17完成。",
+          "incoming": "Game8称两线受注至10/17；GameWith分别列接取和完成；AppMedia下表错列赛奥朵拉而上表不开放。蕾达玩家日记区分10/14接取和10/17完成，但不能证明迪线。",
+          "src": "https://game8.jp/fe-banshisenko/816835"
+        },
+        {
+          "topic": "奥尔赫尔外传 · 分路线日期",
+          "current": "保留各线原接取和完成值。",
+          "incoming": "Game8除凯伊外把接取统一到10/27；AppMedia凯伊至10/20、迪线至10/24、赛线至10/27；Altema把四线统一到10/27。不能据站点多数改变GameWith明确分栏与原表。",
+          "src": "https://game8.jp/fe-banshisenko/816783"
+        },
+        {
+          "topic": "奥尔赫尔外传 · 开局分兵属于打法取舍",
+          "current": "新文只确定双装置同阶段；分路、先集中清路是条件化建议。",
+          "incoming": "GameWith/Game8推荐分队；AppMedia先集中夺一处再留人；Altema流程写分队、详解又推荐北侧集中且不强用投石器。没有版本或难度说明，不裁定唯一最优。",
+          "src": "https://altema.jp/febansisenkou/oruherugaiden"
+        },
+        {
+          "topic": "阿纳托莉娅外传 · 首领眩晕触发的表述",
+          "current": "使用GameWith、Game8、Altema与蕾达玩家共同指向的红色特殊敌人，不发布任意杂兵计数公式。",
+          "incoming": "AppMedia仅笼统写击倒多只迪ガンマ，未区分红色与普通种。保留为来源措辞差异；不能用此页给精确次数背书。",
+          "src": "https://appmedia.jp/fe_banshisenkou/80412745"
+        },
+        {
+          "topic": "诺克裘拉 · 迪托利希出现时点【页级核对完成】",
+          "current": "此前仅Game8列第4章、本站保留待核。本次补为第4章起在帝都出现，支援1／名声6不变。",
+          "incoming": "新读取AlGest分路线原页同样明确第4章「実力行使」以后帝都，与Game8一致。GameWith留空不是相反结论；尚未实机复现，具体日期、入队等级及附加交涉不推定。",
+          "src": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character44/"
+        },
+        {
+          "topic": "牧师与轻骑兵 · 旧备考等级差异",
+          "current": "杨界与伊欧人物篇培养卡改为主技能方向，不再复述有冲突的早期精确备考值；兵种资料表保留原始来源值，待全表复核。",
+          "incoming": "牧师GameWith与Game8写白魔术C，旧共创表C+；轻骑兵Game8写马术D，旧表E+。此类数值为提高考试通过率的准备值，不能写成唯一硬门槛。",
+          "src": "https://gamewith.jp/fefw/577354"
+        },
+        {
+          "topic": "グレートナイト · 第三部开放区分",
+          "current": "伊欧新卡只写第三部、完成库莱尔的委托，不指定区分；该职保留日文名，避免误认作カタフラクト。",
+          "incoming": "GameWith写第2区分起，Game8写第3区分复兴神殿后；精确开放时点仍待游戏画面。两站最终推荐兵种不同属于训练取舍，不裁决唯一最优。",
+          "src": "https://game8.jp/fe-banshisenko/816948"
+        },
+        {
+          "topic": "杨界 · 魔法与问答的未核字段",
+          "current": "只确认可习得远程治疗，不补习得技能等级；不新增持斧贤者方案或改问答。",
+          "incoming": "GameWith明确远程治疗在白魔術B，Game8可读文字未独立标同一等级；贤者可用斧的列表有差异。第三题任意与果实范例也不能据此判定唯一答案。",
+          "src": "https://game8.jp/fe-banshisenko/816446"
+        },
+        {
+          "topic": "杰斯特 · 请求2路线目的地",
+          "current": "仍不写统一行程；请求链保留。",
+          "incoming": "本次GameWith原页步骤明确凯伊为ワルハラ鉱山、其他主角为セドー砦，上表却仍泛写矿山。Game8凯伊与蕾达总表都列セドー砦。路线解释尚缺独立游戏画面，不用搜索旧摘要替代原页或按站点多数裁定。",
+          "src": "https://gamewith.jp/fefw/579107"
+        },
+        {
+          "topic": "米迦艾拉 · 迪托利希线3000G",
+          "current": "保留剧情加入与费用待核，不宣称免费。",
+          "incoming": "Altema4章流程亦将3000G放在进城前、加入放在酒馆会话后；仍没有明确免付说明，不能凭未列付款步骤裁决。",
+          "src": "https://altema.jp/febansisenkou/delitorihiroute"
+        },
+        {
+          "topic": "菲亚娜 · 后续培养候选",
+          "current": "保留原简略黑魔术卡，本批不增加第三份完整培养。",
+          "incoming": "黑魔、白魔和魔法骑兵均有新推荐，但双修、可用魔法与特殊解锁需逐职复核。概率节约魔法次数不写成无限回复。",
+          "src": "https://gamewith.jp/fefw/577288"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "",
+          "name": "GameWith · 贝特朗外传胜利目标、喂食与觉醒",
+          "url": "https://gamewith.jp/fefw/577839",
+          "note": "正文491—520行；先击倒4巨人、喂食至下次己方阶段、觉醒后仍可行动、地形阵"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 贝特朗外传比赛规则与喂食",
+          "url": "https://game8.jp/fe-banshisenko/816676",
+          "note": "正文111—148行；委托人及分路线日期另见63—80行"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 贝特朗外传喂食与截杀",
+          "url": "https://appmedia.jp/fe_banshisenkou/80414167",
+          "note": "正文126—144行；日期表88—105行、委托人与跳时115—124行"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 阿纳托莉娅外传护送、错乱与红色敌人",
+          "url": "https://gamewith.jp/fefw/577885",
+          "note": "正文538—594行；分路线接取/完成日期427—445行"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 阿纳托莉娅外传跟随、错乱与传送陷阱",
+          "url": "https://game8.jp/fe-banshisenko/816835",
+          "note": "正文105—139行；受注日期72—79行"
+        },
+        {
+          "grade": "",
+          "name": "Altema · 阿纳托莉娅外传胜败条件与红色敌人辨认",
+          "url": "https://altema.jp/febansisenkou/anatoriagaiden",
+          "note": "正文114—168行，尤其120行的全可行动平民先撤与3人败北、158行红色敌人停首领1回合"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 阿纳托莉娅外传护送及待核验措辞",
+          "url": "https://appmedia.jp/fe_banshisenkou/80412745",
+          "note": "正文126—150行；日期/路线表88—105行"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 奥尔赫尔外传双装置、增援与治疗",
+          "url": "https://gamewith.jp/fefw/577863",
+          "note": "正文532—569行；分路线接取/完成日期420—449行"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 奥尔赫尔外传同阶段机关与宝箱",
+          "url": "https://game8.jp/fe-banshisenko/816783",
+          "note": "正文101—136行；受注日期72—79行"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 奥尔赫尔外传全灭目标与集中推进方案",
+          "url": "https://appmedia.jp/fe_banshisenkou/80412811",
+          "note": "正文134—158行；日期表88—107行"
+        },
+        {
+          "grade": "",
+          "name": "Altema · 奥尔赫尔外传投石器可选与集中北进",
+          "url": "https://altema.jp/febansisenkou/oruherugaiden",
+          "note": "正文113—138行；日期表64—83行"
+        },
+        {
+          "grade": "",
+          "name": "狩人と猫玩家记录 · 蕾达线阿纳托莉娅与奥尔赫尔外传",
+          "url": "https://rodinia.blog.fc2.com/blog-entry-1163.html",
+          "note": "2026-09-30玩家日记；正文31—61行阿纳托莉娅红怪及5人奖励，121—147行奥尔赫尔两箱与蕾达接取窗口"
+        },
+        {
+          "grade": "",
+          "name": "Altema · 贝特朗外传迪托利希线跳时风险候选",
+          "url": "https://altema.jp/febansisenkou/burigiltutoou",
+          "note": "正文58—102行"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · gw-yokai",
+          "url": "https://gamewith.jp/fefw/577295",
+          "note": "成長率・ステータス；スカウト条件；ワイズマンがおすすめ；個人スキル；白魔術技能表"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · g8-yokai",
+          "url": "https://game8.jp/fe-banshisenko/816446",
+          "note": "育成おすすめ；スカウト条件；個人スキル；魔法"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · app-yokai",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402800",
+          "note": "スカウト条件；個人スキル；得意・不得意"
+        },
+        {
+          "grade": "",
+          "name": "AlGest · al-yokai",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character45/",
+          "note": "初期兵種・スキル・装備；加入条件"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · gw-io",
+          "url": "https://gamewith.jp/fefw/577299",
+          "note": "成長率・ステータス；スカウト条件；グレートナイトがおすすめ；経由するおすすめ兵種；個人スキル"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · g8-io",
+          "url": "https://game8.jp/fe-banshisenko/816441",
+          "note": "オリハルディアに育成するのがおすすめ；評価・成長値・スキル・技能；個人スキル"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · app-io",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402788",
+          "note": "スカウト条件；成長値；個人スキル；得意・不得意"
+        },
+        {
+          "grade": "",
+          "name": "AlGest · al-io",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character33/",
+          "note": "技能レベル；初期兵種・スキル・装備；加入条件"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · gw-priest",
+          "url": "https://gamewith.jp/fefw/577354",
+          "note": "必要技能とレベル"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · gw-bishop",
+          "url": "https://gamewith.jp/fefw/577346",
+          "note": "必要技能とレベル；兵種スキル"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · g8-wiseman",
+          "url": "https://game8.jp/fe-banshisenko/816705",
+          "note": "必要技能とレベル／使用可能技能；解放条件"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · gw-greatknight",
+          "url": "https://gamewith.jp/fefw/577893",
+          "note": "必要技能とレベル；兵種スキル"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · g8-greatknight",
+          "url": "https://game8.jp/fe-banshisenko/816948",
+          "note": "必要技能とレベル；解放条件；成長率"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · gw-fianna",
+          "url": "https://gamewith.jp/fefw/577288",
+          "note": "おすすめ兵種；回復メインと割り切るならワイズマンも候補；個人スキル"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · g8-fianna",
+          "url": "https://game8.jp/fe-banshisenko/816456",
+          "note": "育成おすすめ；評価・成長値・スキル・技能"
+        },
+        {
+          "grade": "",
+          "name": "AlGest · 诺克裘拉",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character44/",
+          "note": "「加入条件」：迪线第4章起帝都、支援1／名声6，与Game8一致；只核定页级出现时点"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 诺克裘拉",
+          "url": "https://game8.jp/fe-banshisenko/816447",
+          "note": "「スカウト条件・交渉の攻略」：迪线第1部4章起出现；不推定具体日期或额外交涉"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 诺克裘拉",
+          "url": "https://gamewith.jp/fefw/577296",
+          "note": "「スカウト条件」：迪线仍仅列支援1／名声6，时点留空；空白不作为第4章反证"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 杰斯特请求2",
+          "url": "https://gamewith.jp/fefw/579107",
+          "note": "10月2日原页「目的地で敵を全滅させる」明确凯伊为ワルハラ鉱山、其余为セドー砦；上方摘要仍泛写矿山，搜索摘要仍可能返回旧版"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 凯伊篇请求表",
+          "url": "https://game8.jp/fe-banshisenko/816789",
+          "note": "「ジェスターの頼み2」仍列セドー砦；与GameWith凯伊分线说明不一致"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 蕾达篇请求表",
+          "url": "https://game8.jp/fe-banshisenko/816793",
+          "note": "「ジェスターの頼み2」列セドー砦；与GameWith其他主角表述一致，但无路线可辨认的操作画面"
+        },
+        {
+          "grade": "",
+          "name": "Altema · 迪托利希篇4章",
+          "url": "https://altema.jp/febansisenkou/delitorihiroute",
+          "note": "「4章の攻略チャート」：进帝都前取得3000G，酒馆会话后米迦艾拉加入；未明确费用免除，不能据未写付款推定免费"
+        }
+      ],
+      "limited": [
+        {
+          "site": "证据范围",
+          "reason": "本轮核对公开攻略原页及明确蕾达线的玩家记录，未取得游戏存档；版本、难度和精确考试条件仍需游戏内复现。不同攻略站的一致文字不等于多份独立实机测试。"
+        }
+      ]
+    },
+    {
       "date": "2026-10-02",
       "edition": "未决角色时点、费用与请求地点复核",
       "checked": 6,

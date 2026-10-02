@@ -520,5 +520,121 @@
         "checkedAt": "2026-10-02"
       }
     ]
+  },
+  {
+    "name": "杨界",
+    "role": "白魔术治疗／远程救急",
+    "early": "迪托利希线第4章教学加入后，先让他承担回复，给法比奥留出输出行动。其他线完成招募后再套用本方案。个人技能只在击倒敌人时按幸运的一半百分比回复自身全部HP，不要为了赌回血让治疗者冒险抢击杀。",
+    "middle": "省训练方案是专注白魔术，沿诅咒师 → 牧师 → 主教培养；学会远程治疗后，优先从安全位置覆盖前排。若队伍确实缺法术伤害，再兼修黑魔术，代价是回复主轴成形更慢。",
+    "late": "第三部可继续以贤者为目标，延续白魔术投入。贤者不能使用黑魔术，黑白双修时要先确认当前兵种能用哪些魔法，不能只看角色已经学会什么。",
+    "requirement": "主教按白魔术 B、贤者按白魔术 A 准备；这些是备考方向，仍须开放对应考试并查看票证与通过率。早期先专注白魔术，按当前存档的考试界面决定何时转职。",
+    "caution": "击杀回血和后续防御技能都不能保证存活，不宜独自承受敌群。凯伊线若蒂亚拉已能覆盖治疗，先按分队和救急需求决定是否追加投入；不必为了多一个同职能角色重新分散资源。",
+    "route": "第一部迪托利希线教学加入后优先适用；其他线须已完成招募",
+    "chapter": "迪托利希线第4章教学入队后；其他线按实际招募进度",
+    "scope": "技能、治疗能力与兵种备考方向由GameWith、Game8、AlGest及AppMedia交叉核对；单修／双修和投入优先级为本站编辑建议。未作游戏内实测，版本与难度未注明。",
+    "checkedAt": "2026-10-03",
+    "gameVersion": null,
+    "difficulty": null,
+    "status": "page-reviewed",
+    "spoilerLevel": "培养与招募条件",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577295",
+        "label": "GameWith · 杨界",
+        "evidenceLocation": "「スカウト条件・交渉」「おすすめ兵種とシミュレーター」「個人スキル」「技能習得スキル・戦技／白魔術」",
+        "checkedAt": "2026-10-03"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816446",
+        "label": "Game8 · 杨界",
+        "evidenceLocation": "「育成おすすめ（兵種）」「スカウト条件・交渉の攻略」「ブレイズタイプ・個人スキル・血印」「魔法」",
+        "checkedAt": "2026-10-03"
+      },
+      {
+        "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character45/",
+        "label": "AlGest · 杨界",
+        "evidenceLocation": "「初期兵種・スキル・装備」「加入条件」；迪托利希4章招募教学",
+        "checkedAt": "2026-10-03"
+      },
+      {
+        "url": "https://appmedia.jp/fe_banshisenkou/80402800",
+        "label": "AppMedia · 杨界",
+        "evidenceLocation": "「スカウト条件」「個人スキル」「得意・不得意・才能開花」",
+        "checkedAt": "2026-10-03"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816705",
+        "label": "Game8 · 贤者",
+        "evidenceLocation": "「必要技能とレベル」的使用技能与白魔术A；「解放条件」",
+        "checkedAt": "2026-10-03"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577288",
+        "label": "GameWith · 菲亚娜的贤者选职说明",
+        "evidenceLocation": "「回復メインと割り切るならワイズマンも候補」明确贤者不能使用黑魔法；仅用于核对兵种使用限制",
+        "checkedAt": "2026-10-03"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577346",
+        "label": "GameWith · 主教",
+        "evidenceLocation": "「必要技能とレベル」：白魔术B是提高合格率的备考值",
+        "checkedAt": "2026-10-03"
+      }
+    ]
+  },
+  {
+    "name": "伊欧",
+    "role": "先手枪骑／机动支援",
+    "early": "先练擅长的枪术与马术，承担侧翼收尾和补位。个人技能仅在骑兵先手战斗时提供防御力+3、必杀回避+30；这里提高的是防必杀，不是普通回避，也不是敌方回合常驻防御。",
+    "middle": "训练较集中的方案是轻骑兵 → 荣光骑士，继续沿枪术与马术成长。想兼顾重装承伤再追加重装术；重装骑兵这一过渡职有路线解锁条件，未开放时不必为它中断现有培养。",
+    "late": "第三部可选奥利哈铁骑，延续枪与马术两项训练；愿意额外练重装、且完成特殊解锁时，再考虑グレートナイト。两种都是候选，按机动、承伤需求和现有技能选择。",
+    "requirement": "奥利哈铁骑按枪术 A、马术 B 备考；グレートナイト按枪术 A、马术 D、重装术 D 备考，另需完成库莱尔的委托。考试列表、开放进度、票证与通过率以当前存档为准。",
+    "caution": "速度与魔防并非长项，冲锋前检查能否追击、敌方法术与骑兵特效范围。未学到后续骑乘强化前，不预支其命中与攻击加成。招募成本随路线变化；赛奥朵拉线已有莱桑达时，可先养现有骑兵，不照搬迪线低门槛。",
+    "route": "第一部四路线，已完成招募后；后期目标另属第三部",
+    "chapter": "实际入队后；出场章不等于当章即可满足全部招募条件",
+    "scope": "个人技能、成长倾向与招募成本由GameWith、Game8、AlGest及AppMedia交叉核对；两条骑兵方向及训练取舍为本站编辑建议。未作游戏内实测，版本与难度未注明。未有已核对中文名的最上级职保留日文。",
+    "checkedAt": "2026-10-03",
+    "gameVersion": null,
+    "difficulty": null,
+    "status": "page-reviewed",
+    "spoilerLevel": "培养与招募条件",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577299",
+        "label": "GameWith · 伊欧",
+        "evidenceLocation": "「成長率・ステータス」「スカウト条件・交渉」「グレートナイトがおすすめ」「経由するおすすめ兵種」「個人スキル」",
+        "checkedAt": "2026-10-03"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816441",
+        "label": "Game8 · 伊欧",
+        "evidenceLocation": "「オリハルディアに育成するのがおすすめ」「評価・成長値・スキル・技能」「ブレイズタイプ・個人スキル・血印」",
+        "checkedAt": "2026-10-03"
+      },
+      {
+        "url": "https://appmedia.jp/fe_banshisenkou/80402788",
+        "label": "AppMedia · 伊欧",
+        "evidenceLocation": "「スカウト条件」「成長値」「個人スキル」「得意・不得意・才能開花」",
+        "checkedAt": "2026-10-03"
+      },
+      {
+        "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character33/",
+        "label": "AlGest · 伊欧",
+        "evidenceLocation": "「技能レベル」「初期兵種・スキル・装備」「加入条件」",
+        "checkedAt": "2026-10-03"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577893",
+        "label": "GameWith · グレートナイト",
+        "evidenceLocation": "「必要技能とレベル」「兵種スキル」；开放时点与Game8不同",
+        "checkedAt": "2026-10-03"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816948",
+        "label": "Game8 · グレートナイト",
+        "evidenceLocation": "「必要技能とレベル」「解放条件」；所需技能一致，开放区分有差异",
+        "checkedAt": "2026-10-03"
+      }
+    ]
   }
 ]
