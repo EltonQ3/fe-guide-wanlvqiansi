@@ -543,5 +543,314 @@
         "at": 364
       }
     ]
+  },
+  "concept": {
+    "_说明": "第二支宣传片「逆命」：不介绍网站，只做一支 60 秒的概念预告。90 BPM，每拍 20 帧、每小节 80 帧（16 分音符 = 5 帧）。三幕：终焉（世界已毁、同伴倒下、魔神霸罗尔）→ 回溯与集结（倒流、四位主角的暴击切入、万千同伴、战场）→ 一拍静默 → 逆命（烧掉写定的命运）。配乐 audio/concept.py，画面 src/concept/，都读这一节。",
+    "bpm": 90,
+    "beatFrames": 20,
+    "barFrames": 80,
+    "frames": 1800,
+    "scenes": [
+      {
+        "id": "end-of-world",
+        "from": 0,
+        "to": 320,
+        "act": 1
+      },
+      {
+        "id": "black-sun",
+        "from": 320,
+        "to": 400,
+        "act": 1
+      },
+      {
+        "id": "soul",
+        "from": 400,
+        "to": 480,
+        "act": 1
+      },
+      {
+        "id": "rewind",
+        "from": 480,
+        "to": 560,
+        "act": 2
+      },
+      {
+        "id": "crit-kai",
+        "from": 560,
+        "to": 640,
+        "act": 2
+      },
+      {
+        "id": "crit-dietrich",
+        "from": 640,
+        "to": 720,
+        "act": 2
+      },
+      {
+        "id": "crit-theodora",
+        "from": 720,
+        "to": 800,
+        "act": 2
+      },
+      {
+        "id": "crit-leda",
+        "from": 800,
+        "to": 880,
+        "act": 2
+      },
+      {
+        "id": "rewrite",
+        "from": 880,
+        "to": 960,
+        "act": 2
+      },
+      {
+        "id": "gather",
+        "from": 960,
+        "to": 1040,
+        "act": 2
+      },
+      {
+        "id": "battle",
+        "from": 1040,
+        "to": 1120,
+        "act": 2
+      },
+      {
+        "id": "written",
+        "from": 1120,
+        "to": 1280,
+        "act": 2
+      },
+      {
+        "id": "burn",
+        "from": 1280,
+        "to": 1440,
+        "act": 3
+      },
+      {
+        "id": "emblem",
+        "from": 1440,
+        "to": 1600,
+        "act": 3
+      },
+      {
+        "id": "title",
+        "from": 1600,
+        "to": 1800,
+        "act": 3
+      }
+    ],
+    "sync": {
+      "_说明": "帧号。ticks：时钟每拍一响、每响一位同伴褪色断线；knells：丧钟；braams：低音铜管轰鸣；heroes：暴击切入；strobe：同伴频闪起点；clashes：武器三角的撞击；silence：静默开始；ignite：点火；shatter：黑日碎裂；major：转入 D 大调；coda：尾声钢琴。",
+      "ticks": [
+        80,
+        100,
+        120,
+        140,
+        160,
+        180,
+        200,
+        220,
+        240,
+        260,
+        280,
+        300,
+        320,
+        340,
+        360,
+        380,
+        420,
+        445
+      ],
+      "knells": [
+        160,
+        240
+      ],
+      "braams": [
+        320,
+        1280
+      ],
+      "soul": 400,
+      "rewind": 480,
+      "drop": 560,
+      "heroes": [
+        560,
+        640,
+        720,
+        800
+      ],
+      "rewrite": 880,
+      "strobe": 960,
+      "clashes": [
+        1060,
+        1080,
+        1100
+      ],
+      "levelup": 1100,
+      "written": 1120,
+      "silence": 1200,
+      "ignite": 1280,
+      "shatter": 1590,
+      "major": 1600,
+      "coda": [
+        1700,
+        1710,
+        1720,
+        1730,
+        1760
+      ]
+    },
+    "copy": [
+      {
+        "id": "ended",
+        "from": 14,
+        "to": 76,
+        "text": "世界，已经终结。",
+        "style": "whisper"
+      },
+      {
+        "id": "fallen",
+        "from": 164,
+        "to": 236,
+        "text": "所有人，都已倒下。",
+        "style": "whisper"
+      },
+      {
+        "id": "gone",
+        "from": 244,
+        "to": 316,
+        "text": "倒下的人，不会再回来。",
+        "style": "whisper"
+      },
+      {
+        "id": "balor",
+        "from": 330,
+        "to": 396,
+        "text": "魔神 · 霸罗尔",
+        "style": "slam"
+      },
+      {
+        "id": "soul",
+        "from": 404,
+        "to": 438,
+        "text": "但有一个灵魂，",
+        "style": "whisper"
+      },
+      {
+        "id": "past",
+        "from": 440,
+        "to": 478,
+        "text": "被允许回到过去。",
+        "style": "whisper"
+      },
+      {
+        "id": "rewrite",
+        "from": 880,
+        "to": 956,
+        "text": "改写他们的命运。",
+        "style": "slam"
+      },
+      {
+        "id": "gather",
+        "from": 962,
+        "to": 1036,
+        "text": "集结万千同伴。",
+        "style": "slam"
+      },
+      {
+        "id": "written",
+        "from": 1150,
+        "to": 1272,
+        "text": "命运，早已写定——",
+        "style": "whisper"
+      },
+      {
+        "id": "burn",
+        "from": 1280,
+        "to": 1400,
+        "text": "那就，烧掉它。",
+        "style": "slam"
+      },
+      {
+        "id": "title",
+        "from": 1606,
+        "to": 1800,
+        "text": "火焰纹章 万缕千丝",
+        "style": "title"
+      }
+    ],
+    "music": {
+      "key": "D minor → D major (bar 20)",
+      "_chords": "[小节, 和弦…]，每小节两个和弦",
+      "chords": [
+        [
+          7,
+          "Dm",
+          "Bb"
+        ],
+        [
+          8,
+          "Gm",
+          "Dm"
+        ],
+        [
+          9,
+          "Bb",
+          "F"
+        ],
+        [
+          10,
+          "Gm",
+          "A"
+        ],
+        [
+          11,
+          "Dm",
+          "Dm"
+        ],
+        [
+          12,
+          "Bb",
+          "C"
+        ],
+        [
+          13,
+          "Dm",
+          "Bb"
+        ],
+        [
+          14,
+          "Gm",
+          "A"
+        ],
+        [
+          16,
+          "Dm",
+          "Dm"
+        ],
+        [
+          17,
+          "Bb",
+          "Bb"
+        ],
+        [
+          18,
+          "Gm",
+          "A"
+        ],
+        [
+          19,
+          "Bb",
+          "C"
+        ],
+        [
+          20,
+          "D",
+          "D"
+        ]
+      ]
+    }
   }
 }

@@ -20,6 +20,7 @@ from scipy.signal import butter, fftconvolve, resample_poly, sosfilt
 
 ROOT = Path(__file__).resolve().parents[1]
 LIB = Path(os.environ.get('VSCO_DIR', ROOT / 'samples' / 'vsco-2-ce'))
+VCSL = Path(os.environ.get('VCSL_DIR', ROOT / 'samples' / 'vcsl'))   # Versilian Community Sample Library, CC0
 SR = 48000
 NAMES = {'C': 0, 'C#': 1, 'Db': 1, 'D': 2, 'D#': 3, 'Eb': 3, 'E': 4, 'F': 5, 'F#': 6, 'Gb': 6, 'G': 7, 'G#': 8,
          'Ab': 8, 'A': 9, 'A#': 10, 'Bb': 10, 'B': 11}
@@ -58,11 +59,12 @@ class Instrument:
     """One articulation of one instrument: a folder of samples named like Name_A#3_v2_rr1.wav."""
 
     def __init__(self, folder, stem, octave=12, keep=None, release=0.3, gain=0.0, pan=0.0, width=1.0,
-                 send=0.35, oneshot=False, legato_skip=0.07, pitched=True, level='rms', zones=None, ring=6.0):
+                 send=0.35, oneshot=False, legato_skip=0.07, pitched=True, level='rms', zones=None, ring=6.0, root=None):
         self.stem, self.release, self.gain, self.pan, self.width, self.send = stem, release, gain, pan, width, send
         self.oneshot, self.legato_skip, self.pitched, self.level, self.ring = oneshot, legato_skip, pitched, level, ring
         self.zones, self.turn = {}, {}
-        for f in sorted((LIB / folder).glob('*.wav')):
+        base = Path(root) if root else LIB
+        for f in sorted((base / folder).glob('*.wav')):
             if keep and not re.search(keep, f.name): continue
             if zones is not None:                     # unnamed pitches (timpani): {file prefix: midi}
                 note = next((m for p, m in zones.items() if f.name.startswith(p)), None)
@@ -73,11 +75,11 @@ class Instrument:
                 note = NAMES[m[1]] + 12 * (int(m[2]) + 1) + octave
             else:
                 note = 60
-            v = re.search(r'_v(\d+)', f.name)
-            d = re.search(r'_(ppp|pp|p|mp|mf|fff|ff|f)(?=[_.])', f.name)
+            v = re.search(r'_vl?(\d+)', f.name)
+            d = re.search(r'_(ppp|pp|p|mp|mf|fff|ff|f)(?=[_.\d])', f.name)
             layer = int(v[1]) if v else DYN[d[1]] if d else 0
             self.zones.setdefault(note, {}).setdefault(layer, []).append(str(f))
-        if not self.zones: raise SystemExit(f'No samples in {LIB / folder} (run: sh audio/fetch_samples.sh)')
+        if not self.zones: raise SystemExit(f'No samples in {base / folder} (run: sh audio/fetch_samples.sh)')
 
     def pick(self, p, vel):
         zone = min(self.zones, key=lambda z: (abs(z - p), -z)) if self.pitched else 60
