@@ -44,7 +44,7 @@ export const Short: React.FC<{animatic: boolean}> = () => (
     {T.heroes.map((h, i) => <S key={h.id} cut="short" id={`hero-${h.id}`}>{(d) => <HeroCard hero={h} duration={d} index={i} />}</S>)}
     <S cut="short" id="notebook">{(d) => <Notebook duration={d} />}</S>
     <S cut="short" id="planner">{(d) => <Planner duration={d} marks={rel('short', 'planner', sfxAt('short', 'tick'))} />}</S>
-    <S cut="short" id="end">{(d) => <EndCard duration={d} pluckAt={0} fadeFrom={d - 14} />}</S>
+    <S cut="short" id="end">{(d) => <EndCard duration={d} pluckAt={0} fadeFrom={d - 10} pace={0.35} />}</S>
     <Audio src={staticFile('audio/short-mix.wav')} />
   </AbsoluteFill>
 );

@@ -33,9 +33,10 @@ export const WeaveBack: React.FC<{duration: number}> = ({duration}) => {
 };
 
 // 0:53 End card: one braided thread, the site's name and address; the opening pluck returns once.
-export const EndCard: React.FC<{duration: number; pluckAt: number; fadeFrom?: number}> = ({duration, pluckAt, fadeFrom}) => {
+// `pace` < 1 brings the lines in sooner (the short cut needs the address on screen for at least two seconds).
+export const EndCard: React.FC<{duration: number; pluckAt: number; fadeFrom?: number; pace?: number}> = ({duration, pluckAt, fadeFrom, pace = 1}) => {
   const f = useCurrentFrame(), t = 80 + f / FPS;
-  const show = (d: number) => ({opacity: interpolate(f, [d, d + 20], [0, 1], clamp)});
+  const show = (d: number) => ({opacity: interpolate(f, [d * pace, d * pace + 20 * pace], [0, 1], clamp)});
   const out = interpolate(f, [fadeFrom ?? duration - 30, duration], [1, 0], clamp);
   return (
     <AbsoluteFill style={{background: colors.night, opacity: out}}>
