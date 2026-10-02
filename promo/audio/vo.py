@@ -5,14 +5,15 @@ far below Google's free allowance, which is counted in the millions; check Googl
 every line by voice and text so re-running never bills the same line twice. Every call is logged in
 audio/tts-usage.json (no key in it).
 
-Key: environment variable GOOGLE_TTS_API_KEY (set in the cloud environment's settings; never in the repo or chat).
+Key, set in the cloud environment's settings and never in the repo or chat: either an environment variable
+GOOGLE_TTS_API_KEY, or an API credential the environment's proxy adds to requests for texttospeech.googleapis.com.
 
   python3 audio/vo.py voices                         # list Japanese voices (free call, no characters used)
   python3 audio/vo.py audition ja-JP-Neural2-B ...   # first line (v01) in each voice -> public/audio/vo/audition/
   python3 audio/vo.py render ja-JP-Neural2-B --rate 0.92   # all lines -> public/audio/vo/v01.wav ...
 Then `python3 audio/synth.py` mixes the voice in, ducking the music under it.
 """
-import base64, datetime, hashlib, json, os, sys, urllib.request, wave
+import base64, datetime, hashlib, json, os, sys, urllib.error, urllib.request, wave
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,10 +24,20 @@ USAGE = ROOT / 'audio' / 'tts-usage.json'
 API = 'https://texttospeech.googleapis.com/v1'
 MONTH_CAP = 20000          # characters per calendar month; one full render is about 300
 
-def key():
+def url(path, query=''):
+    # Without the variable, send no key and let the proxy add the environment's credential for this host.
     k = os.environ.get('GOOGLE_TTS_API_KEY')
-    if not k: sys.exit('GOOGLE_TTS_API_KEY is not set in this session (environment variables reach new sessions only).')
-    return k
+    q = '&'.join(x for x in (query, f'key={k}' if k else '') if x)
+    return f'{API}/{path}' + (f'?{q}' if q else '')
+
+def call(req, timeout):
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r: return json.load(r)
+    except urllib.error.HTTPError as e:
+        if e.code in (401, 403):
+            sys.exit(f'Google refused the call ({e.code}): no usable key. Set GOOGLE_TTS_API_KEY, or an API credential for '
+                     'texttospeech.googleapis.com, in the environment settings; either reaches new sessions only.')
+        raise
 
 def usage():
     month = datetime.date.today().strftime('%Y-%m')
@@ -43,8 +54,8 @@ def synthesize(text, voice, rate=1.0, pitch=0.0):
         sys.exit(f"Stopped: this would pass the {MONTH_CAP}-character monthly cap ({u['characters']} used). Nothing was sent.")
     body = {'input': {'text': text}, 'voice': {'languageCode': 'ja-JP', 'name': voice},
             'audioConfig': {'audioEncoding': 'LINEAR16', 'sampleRateHertz': 48000, 'speakingRate': rate, 'pitch': pitch}}
-    req = urllib.request.Request(f'{API}/text:synthesize?key={key()}', data=json.dumps(body).encode(), headers={'Content-Type': 'application/json'})
-    with urllib.request.urlopen(req, timeout=60) as r: audio = base64.b64decode(json.load(r)['audioContent'])
+    req = urllib.request.Request(url('text:synthesize'), data=json.dumps(body).encode(), headers={'Content-Type': 'application/json'})
+    audio = base64.b64decode(call(req, 60)['audioContent'])
     u['characters'] += len(text); u['calls'].append({'at': datetime.datetime.now().isoformat(timespec='seconds'), 'voice': voice, 'chars': len(text)})
     USAGE.write_text(json.dumps(u, ensure_ascii=False, indent=2) + '\n')
     CACHE.mkdir(parents=True, exist_ok=True); cached.write_bytes(audio)
@@ -56,8 +67,7 @@ def seconds(path):
 if __name__ == '__main__':
     cmd, args = (sys.argv[1] if len(sys.argv) > 1 else 'help'), sys.argv[2:]
     if cmd == 'voices':
-        with urllib.request.urlopen(f'{API}/voices?languageCode=ja-JP&key={key()}', timeout=30) as r:
-            for v in json.load(r)['voices']: print(v['name'], v['ssmlGender'], v['naturalSampleRateHertz'])
+        for v in call(url('voices', 'languageCode=ja-JP'), 30)['voices']: print(v['name'], v['ssmlGender'], v['naturalSampleRateHertz'])
     elif cmd == 'audition':
         (VO / 'audition').mkdir(parents=True, exist_ok=True)
         line = T['long']['vo'][0]['ja']

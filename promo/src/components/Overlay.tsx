@@ -14,9 +14,11 @@ Promise.all([
 // standing in for the voice that is not recorded yet.
 export const Subtitles: React.FC<{animatic: boolean}> = ({animatic}) => {
   const frame = useCurrentFrame();
-  const len = Math.round(T.long.voSeconds * FPS);
-  const cue = T.long.vo.find((v) => frame >= v.at && frame < v.at + len);
+  // Each subtitle stays as long as its recorded line (plus a short tail); before recording, a fixed length.
+  const span = (v: {seconds?: number}) => Math.round(((v.seconds ?? T.long.voSeconds - 0.4) + 0.4) * FPS);
+  const cue = (T.long.vo as {id: string; at: number; ja: string; zh: string | null; seconds?: number}[]).find((v) => frame >= v.at && frame < v.at + span(v));
   if (!cue || (!cue.zh && !animatic)) return null;   // hero lines and the last line are already on screen
+  const len = span(cue);
   const o = interpolate(frame - cue.at, [0, 6, len - 8, len], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 56, opacity: o, pointerEvents: 'none',
