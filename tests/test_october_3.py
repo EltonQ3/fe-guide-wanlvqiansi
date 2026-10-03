@@ -48,7 +48,7 @@ class October3Tests(unittest.TestCase):
         self.assertFalse(d['publishBattles'])
 
     def test_log_and_static_outputs(self):
-        e=DATA['logs'][0]
+        e=next(x for x in DATA['logs'] if x.get('edition')=='补齐九篇外传打法、杨界与伊欧培养、诺克裘拉出现时点')
         self.assertEqual(e['date'],'2026-10-03')
         self.assertEqual(e['checked'],35)
         self.assertEqual(e['checked'],len(set(x['url'] for x in e['new_sources'])))
