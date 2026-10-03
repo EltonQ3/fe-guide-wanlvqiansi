@@ -11,6 +11,417 @@
   },
   "entries": [
     {
+      "date": "2026-10-04",
+      "edition": "菲亚娜与诺克裘拉培养、分路线招募行程与考试预算",
+      "checked": 53,
+      "merged": [
+        {
+          "text": "菲亚娜新增步兵法术／机动攻疗选择，明确概率省治疗次数、游唱诗人的解锁路径与贤者失去黑魔术的取舍；诺克裘拉新增格斗／斧单修和武僧投入比较，拆开战后、战技及概率回避。全站完整培养增至29人。",
+          "src": "https://game8.jp/fe-banshisenko/816456"
+        },
+        {
+          "text": "西洛可不再三线套用南部祭坛；赛奥朵拉线补经イアペトス大洞窟另一出口到アトラ山頂的行程，来源附可辨本线路线的游戏地图。手册与交涉档案同步，不添加统一截止日期。",
+          "src": "https://game8.jp/fe-banshisenko/816429"
+        },
+        {
+          "text": "艾丝梅拉尔达补凯伊线6体海兽、水域推进取舍与回帝都回报；敌人等级、完成回合不外推到其他路线。",
+          "src": "https://chucco.com/fefw-esmeralda-scout/"
+        },
+        {
+          "text": "手册5.2区分考试开放条件和通过率，补帝都上级票证名声8、3000G与次章补货提示；保留原兵种表，未以攻略表多数改写冲突Rank。",
+          "src": "https://game8.jp/fe-banshisenko/817102"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "菲亚娜 · 蕾达首次出现与终职取舍",
+          "current": "新增完整培养档案；蕾达卡改为可交谈后按本线确认，不再固定第5章。",
+          "incoming": "AlGest写第4章，GameWith/Game8写第5章；未按多数决定，精确时点待实机。GameWith推荐机动黑白魔术、Game8推荐贤者，是用途取舍而非谁唯一正确。贤者不能用黑魔术的限制已发布。",
+          "src": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character53/"
+        },
+        {
+          "topic": "菲亚娜 · 最上级开放区分及成长列",
+          "current": "仅写第三部完成茱拉委托；不用争议速度/技巧成长推导最优练级。",
+          "incoming": "ヴァルキュリウム的GameWith为第2区分起、Game8为第3区分修复神殿后；游唱诗人、贤者的速度/技巧成长列亦有差异。保留各原页，兵种库未顺带改值。",
+          "src": "https://game8.jp/fe-banshisenko/816947"
+        },
+        {
+          "topic": "诺克裘拉 · 战斗将领成长与回避范围",
+          "current": "只用共同支持的格斗/斧主轴及条件式回避；不引用速/技成长，不补Lv20空白技能。",
+          "incoming": "战斗将领GameWith速+5/技−5，Game8速−5/技+5；斗拳手精通只在使用战技的战斗生效，不依技能名推断战后移动。武僧推荐与战斗将领推荐可并列，不裁决唯一最优。",
+          "src": "https://game8.jp/fe-banshisenko/816714"
+        },
+        {
+          "topic": "资格考试 · 通过率与硬门槛分开",
+          "current": "手册5.2改为先看开放与票证，再看当前通过率；保留既有兵种数值，未按来源数量修改。",
+          "incoming": "Game8原页截图展示低于建议技能/等级仍可应试；GameWith总解说却列中级10/上级20，Game8、AppMedia萨满巫师页均列中级20。总表数值不可直接套进本作各兵种。",
+          "src": "https://gamewith.jp/fefw/578224"
+        },
+        {
+          "topic": "萨满巫师 · 技能等级与命中加成",
+          "current": "兵种原表黑魔术C+、魔法命中+3暂留，新增培养不复述未决早期Rank。",
+          "incoming": "Game8与AppMedia原页写黑魔术C；GameWith搜索结果也为C但未再打开该原页，不计独立核对。命中+3与GameWith摘要+5不同，不以摘要裁决；须取得游戏考试/兵种画面核对。",
+          "src": "https://game8.jp/fe-banshisenko/816655"
+        },
+        {
+          "topic": "西洛可 · 分路线目的地与期限",
+          "current": "修正三线共用祭坛；发布有路线明确地图支持的赛奥朵拉山顶行程。凯伊保留原行程，迪线具体山顶路线仍为日志候选。",
+          "incoming": "新分路线任务页写凯伊南部祭坛、迪/赛西北山顶；Game8赛线章节与可辨路线截图支持赛线山顶。GameWith任务表泛写11/27，而Game8受注截图为10/24，本次不发布统一截止日期。GameWith凯伊初出5章、Game8角色页4章，本次也不改初出时点。",
+          "src": "https://gamewith.jp/fefw/577860"
+        },
+        {
+          "topic": "米迦艾拉 · 迪托利希线3000G",
+          "current": "保持既有剧情加入与费用待核，不裁定免费。",
+          "incoming": "本次重新核对AlGest招募表/角色页和Game8角色页仍把迪线列为剧情加入，GameWith角色页仍单列3000G；新检索到玩家迪线日记只说顺剧情加入，未记录金币前后变化。未找到能排除自动扣款的游戏画面；不能把进城前法比奥赠款当作米迦艾拉费用。",
+          "src": "https://gamewith.jp/fefw/577316"
+        },
+        {
+          "topic": "杰斯特 · 请求2目的地",
+          "current": "保留请求链，不发布统一目的地。",
+          "incoming": "GameWith579107最新完整页L439明确凯伊ワルハラ鉱山、其他主人公セドー砦，L412概要仍统一矿山。Game8任务总表为セドー砦；AppMedia各章重复共用任务表统一矿山，不能按多个章节页面视作独立复核。未取得可辨本线路线的原始任务画面，继续待核。",
+          "src": "https://gamewith.jp/fefw/579107"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "",
+          "name": "GameWith · 菲亚娜",
+          "url": "https://gamewith.jp/fefw/577288",
+          "note": "角色正文L405–1075：成長率・ステータス；スカウト条件・交渉；おすすめ兵種とシミュレーター；個人スキル；レベル習得；白魔術・黒魔術表"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 菲亚娜",
+          "url": "https://game8.jp/fe-banshisenko/816456",
+          "note": "L59–127 育成おすすめ；L181–221 成长／得意技能／招募；L250–344 技能与魔法"
+        },
+        {
+          "grade": "",
+          "name": "AlGest · 菲亚娜",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character53/",
+          "note": "L33–93 初期ステータス、成長率、技能レベル、初期兵種・スキル・装備、加入条件"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 菲亚娜",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402752",
+          "note": "L83–145 スカウト条件、成長値、個人スキル、得意・不得意・才能開花"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 牧师",
+          "url": "https://game8.jp/fe-banshisenko/816654",
+          "note": "L57–72 使用技能／备考值；L133–148 兵种技能和信仰心"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 牧师",
+          "url": "https://gamewith.jp/fefw/577354",
+          "note": "L408–424 必要技能与成长；L681–725 白魔術の探求、魔法回復+5、信仰心"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 先知",
+          "url": "https://game8.jp/fe-banshisenko/816647",
+          "note": "L57–72 使用技能与黑魔术B；L127–142 黑魔法次数翻倍、魔法命中+5、精通效果"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 先知",
+          "url": "https://gamewith.jp/fefw/577347",
+          "note": "L408–425 备考值；L566–596 菲亚娜推荐；L722–770 兵种与精通技能"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 游唱诗人",
+          "url": "https://game8.jp/fe-banshisenko/816715",
+          "note": "L58–95 使用技能、备考值、凯伊／蕾达解锁；L102–139 成长与技能"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 游唱诗人",
+          "url": "https://gamewith.jp/fefw/577442",
+          "note": "L408–427 两路线解锁／备考值／成长；L434–466 菲亚娜推荐；L536–595 兵种技能"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · ヴァルキュリウム",
+          "url": "https://game8.jp/fe-banshisenko/816947",
+          "note": "L58–80 黑白魔术／马术可用、备考值、神殿修复与茱拉委托；L105–123 兵种技能"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · ヴァルキュリウム",
+          "url": "https://gamewith.jp/fefw/577911",
+          "note": "L408–426 备考与解锁；L433–465 菲亚娜推荐；L499–576 兵种技能"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 贤者",
+          "url": "https://game8.jp/fe-banshisenko/816705",
+          "note": "L58–84 使用技能／白魔术A／开放；L134–169 成长与兵种技能"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 贤者",
+          "url": "https://gamewith.jp/fefw/577595",
+          "note": "L408–425 备考值与成长；L620–662 兵种与精通技能"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 诺克裘拉",
+          "url": "https://gamewith.jp/fefw/577296",
+          "note": "「成長率・ステータス」「バトルモンクがおすすめ」「ウォーリアーを経由して火力も確保」「個人スキル」「レベル習得スキル」；集中与Lv35ゾーン+的触发条件"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 诺克裘拉",
+          "url": "https://game8.jp/fe-banshisenko/816447",
+          "note": "「バトルマスターに育成するのがおすすめ」「評価・成長値・スキル・技能」「スカウト条件・交渉の攻略」「ブレイズタイプ・個人スキル・血印」「レベルで覚えるスキル」"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 诺克裘拉",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402797",
+          "note": "「成長値」「個人スキル」「習得スキル」的Lv35记录；「得意・不得意・才能開花」列出斧／格斗／步兵擅长、剑／黑白魔术不擅长"
+        },
+        {
+          "grade": "",
+          "name": "AlGest · 诺克裘拉",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character44/",
+          "note": "「成長率」「初期兵種・スキル・装備」「加入条件」；仅交叉核对既有分路线出现章，不从初始数值推定实际入队等级"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 斗拳手",
+          "url": "https://gamewith.jp/fefw/577362",
+          "note": "「マスタースキル」：ヒット&アウェイ只在使用战技的战斗中提供回避+10"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 斗拳手",
+          "url": "https://game8.jp/fe-banshisenko/816663",
+          "note": "「兵種スキル」「マスタースキル」；区分持护手的兵种回避与使用战技时的精通技能"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 勇士",
+          "url": "https://game8.jp/fe-banshisenko/816652",
+          "note": "「必要技能とレベル」的选择技能B；「使用可能技能」「兵種スキル」支持斧／格斗过渡"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 武僧",
+          "url": "https://gamewith.jp/fefw/577606",
+          "note": "「必要技能とレベル」：白魔术D、格斗B与奥罗拉委托；「兵種スキル」：护手装备中回避+7"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 武僧",
+          "url": "https://game8.jp/fe-banshisenko/816950",
+          "note": "「必要技能とレベル」「解放条件」「兵種スキル」；只采用共同支持的技能方向和委托名，不引用精确剩余回合"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 战斗将领",
+          "url": "https://gamewith.jp/fefw/577601",
+          "note": "「必要技能とレベル」的选择技能A；「おすすめキャラ」收录诺克裘拉；速／技成长数值与Game8相反，未采用"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 战斗将领",
+          "url": "https://game8.jp/fe-banshisenko/816714",
+          "note": "「必要技能とレベル」的选择技能A；「おすすめキャラ」「兵種スキル」；速／技成长数值与GameWith相反，未采用"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 资格考试通过率与票证",
+          "url": "https://game8.jp/fe-banshisenko/817102",
+          "note": "「資格試験の合格率を上げる方法」77—117行及「資格試験に必要なアイテム」120—134行；页面含低于建议等级/技能的通过率截图。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 资格考试的开放与通过率",
+          "url": "https://gamewith.jp/fefw/578224",
+          "note": "399—423行通过率，460—488行票证/名声，492—503行已合格兵种切换；表中中级10/上级20与其他原页不一致，不采纳等级值。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 上级考试票证采购与补货",
+          "url": "https://gamewith.jp/fefw/577838",
+          "note": "403—417行：帝都贩卖员名声8起3000G、库存次章补充；448—456行每次消耗一张。"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 资格考试流程",
+          "url": "https://appmedia.jp/fe_banshisenkou/80374558",
+          "note": "74—120行；技能影响合格率、需要票证与阶段培养。考试官位置与两站不同，不采纳此位置。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 萨满巫师考试与技能",
+          "url": "https://game8.jp/fe-banshisenko/816655",
+          "note": "57—72行黑魔术C/推奨20/名声4；118—125行命中+3。未据此改旧共创表C+。"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 萨满巫师考试与技能",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402851",
+          "note": "80—85行黑魔术C/推奨20/名声4；110—120行魔法命中+3。旧表和GameWith技能值存在差异，留待实机。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 西洛可请求分路线流程",
+          "url": "https://gamewith.jp/fefw/577860",
+          "note": "「シロッコの頼みの攻略」L415–453；L439明确赛/迪为アトラ山頂、凯伊为秘奥の祭壇；L442–446把イアペトス大洞窟与禁断の森分列；L429先接任务才能取物。正文完整读取。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 詩人の碑の写し取得地点",
+          "url": "https://gamewith.jp/fefw/577823",
+          "note": "「詩人の碑の写しの入手方法」L401–421；分凯伊与赛/迪两标题，L421写ヤシロ砦探索后经イアペトス大洞窟别出口。与同站任务页合计只算一个出版来源。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 西洛可交涉与地图画面",
+          "url": "https://game8.jp/fe-banshisenko/816429",
+          "note": "「交渉はアトラ山脈で…」L227–244；「アトラ山脈へはイアペトス大洞窟を通って向かう」说明另出口。其地图图片明确显示赛奥朵拉头像与メガエラの灯火，地点为アトラ山頂；不是所有路线游戏验证。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 赛奥朵拉7章招募准备",
+          "url": "https://game8.jp/fe-banshisenko/816772",
+          "note": "「スカウトで戦力を補強しよう」L200–212；本线明确西洛可须穿过西北洞窟到アトラ山頂，低等级队伍可考虑绕敌。原文洞窟名写イアペソス，与其他页/游戏图イアペトス不一致，采用游戏图名；不采纳原文笼统“两人支援1”（同页大刀表为2）或精确推荐等级。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 艾丝梅拉尔达交涉",
+          "url": "https://gamewith.jp/fefw/577317",
+          "note": "「エスメラルダの頼みクリアで加入」写北部ダマセン岬、敌人6体；下一段「ダマセン岬はウツナ峠→フィーナの漁村経由で行く」写在两地依次待机开路。完整页面HTML/正文已读；未用无路线说明推定所有线敌人等级。"
+        },
+        {
+          "grade": "",
+          "name": "ちゅこっと阳だまる · 凯伊线艾丝梅拉尔达实得记录",
+          "url": "https://chucco.com/fefw-esmeralda-scout/",
+          "note": "2026-09-26独立玩家日记。「エスメラルダの頼み」L59–65任务；「遭遇戦攻略」L75–95明确败北为凯伊败走、海兽6体、海/浅滩阻碍移动、飞行亚历山德拉发挥作用；「報告する」L96–104回帝都从スカウト回报并入队。与GameWith不同作者/站点，非转载。"
+        },
+        {
+          "grade": "",
+          "name": "Gamecap · 菲亚娜治疗补充候选",
+          "url": "https://gamecap.jp/fe_fw/osusume_chara.html",
+          "note": "仅核对菲亚娜段606—622行及相邻治疗说明；不列精确魔法学习等级。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 索绯雅后续候选",
+          "url": "https://game8.jp/fe-banshisenko/816448",
+          "note": "209—221行招募、255—265行个人治疗与后期射程技能；未完成培养交叉核对，不新增正文。"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 斗拳手",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402827",
+          "note": "考试表与使用武器；103—107行精通技能，只在使用战技的战斗中提供回避。"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 诺克裘拉武僧推荐",
+          "url": "https://appmedia.jp/fe_banshisenkou/80380957",
+          "note": "86—88行Hard前提、479—486行诺克裘拉段；不采用排名及常时高回避概括。"
+        },
+        {
+          "grade": "",
+          "name": "AlGest · 招募条件总表",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-scoutlist/",
+          "note": "重新核对米迦艾拉剧情入队条目；未推导免费。"
+        },
+        {
+          "grade": "",
+          "name": "AlGest · 杰斯特",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character51/",
+          "note": "分路线加入条件与请求链，不能独立证明请求2的目的地。"
+        },
+        {
+          "grade": "",
+          "name": "AlGest · 米迦艾拉",
+          "url": "https://al-gest.com/fe-banshisenkou/fe-banshisenkou-character11/",
+          "note": "加入条件的迪托利希剧情加入；未列金币变化。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 米迦艾拉",
+          "url": "https://game8.jp/fe-banshisenko/816423",
+          "note": "招募条件：迪线剧情加入；不能仅凭未列费用认定免费。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 杰斯特请求2",
+          "url": "https://gamewith.jp/fefw/579107",
+          "note": "412行概要与439行分路线步骤仍有冲突；未取到路线明确的原始任务图。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 彼得请求",
+          "url": "https://gamewith.jp/fefw/578987",
+          "note": "任务主体与原条目重复，马车行程未作为三线共同结论新增。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 艾丝梅拉尔达请求",
+          "url": "https://gamewith.jp/fefw/578462",
+          "note": "ダマセン岬任务流程与交通；不新增无独立路线证据的敌人等级。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 札可捏",
+          "url": "https://game8.jp/fe-banshisenko/816458",
+          "note": "交涉顺序10000/1000/100/10G；旧表已有10G，本轮未扩写单页副作用。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 札可捏",
+          "url": "https://gamewith.jp/fefw/577292",
+          "note": "交涉降价顺序支持Game8；本轮优先发布行程与战斗缺口。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 米迦艾拉",
+          "url": "https://gamewith.jp/fefw/577316",
+          "note": "迪线3000G与剧情加入标记并存；未取得扣款画面裁决。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 任务总表",
+          "url": "https://game8.jp/fe-banshisenko/817517",
+          "note": "杰斯特请求2为セドー砦，不能仅按总表覆盖GameWith分路线差异。"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 蕾达12章任务表",
+          "url": "https://appmedia.jp/fe_banshisenkou/80408803",
+          "note": "共用任务表请求2统一矿山；多个章节引用同表不算独立证据。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "GameWith图片CDN",
+          "reason": "5张候选原尺寸图片与正文所用尺寸均HTTP403；未绕过访问限制，文字页可读，不把图片alt文本算成游戏画面核对。"
+        },
+        {
+          "site": "AlGest 西洛可请求页",
+          "reason": "页面导航链接存在，但web工具打开返回Internal Error；未作为独立证据。"
+        },
+        {
+          "site": "核对范围",
+          "reason": "本轮共检查53个不同原页的相关正文；同站复述及图片不另计独立来源。赛线西洛可附图已辨认路线，凯伊艾丝梅拉尔达另有独立玩家记录；未作本站游戏内实测，未注明的游戏版本和难度继续留空。"
+        },
+        {
+          "site": "待补内容",
+          "reason": "彼得任务主体已覆盖，札可捏10G已在原表，本轮不重复扩写。索绯雅法术与其等级技能先留候选；外传未单列期限、米迦艾拉费用和杰斯特请求2仍不补造结论。"
+        }
+      ]
+    },
+    {
       "date": "2026-10-03",
       "edition": "补齐九篇外传打法、杨界与伊欧培养、诺克裘拉出现时点",
       "checked": 35,

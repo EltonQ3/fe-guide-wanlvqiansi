@@ -83,39 +83,115 @@
       "赛奥朵拉线",
       "蕾达线"
     ],
-    "byRoute": {},
+    "byRoute": {
+      "凯伊线": "先接「エスメラルダの頼み」，再到北部「ダマセン岬」讨伐「荒くれ海獣」。本线任务战有6体海兽；海面与浅滩会影响行进，有飞行单位时可用来跨越水域、支援收尾。满足支援与名声门槛后，胜利仍需回帝都，从艾丝梅拉尔达的「スカウト」对话回报，才会正式入队。"
+    },
     "sources": [
       {
         "url": "https://gamewith.jp/fefw/577317",
-        "label": "GameWith · 艾丝梅拉尔达资料"
+        "label": "GameWith · 艾丝梅拉尔达交涉",
+        "checkedAt": "2026-10-04",
+        "evidenceLocation": "「エスメラルダの頼みクリアで加入」写北部ダマセン岬、敌人6体；下一段「ダマセン岬はウツナ峠→フィーナの漁村経由で行く」写在两地依次待机开路。完整页面HTML/正文已读；未用无路线说明推定所有线敌人等级。",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://chucco.com/fefw-esmeralda-scout/",
+        "label": "ちゅこっと阳だまる · 凯伊线艾丝梅拉尔达实得记录",
+        "checkedAt": "2026-10-04",
+        "evidenceLocation": "2026-09-26独立玩家日记。「エスメラルダの頼み」L59–65任务；「遭遇戦攻略」L75–95明确败北为凯伊败走、海兽6体、海/浅滩阻碍移动、飞行亚历山德拉发挥作用；「報告する」L96–104回帝都从スカウト回报并入队。与GameWith不同作者/站点，非转载。",
+        "part": 1,
+        "route": "凯伊线",
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
       }
     ],
     "checkedAt": "2026-09-29",
     "gameVersion": null,
     "status": "page-reviewed",
-    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+    "scope": "GameWith完整页面与明确凯伊败北条件的独立玩家日记交叉核对；新增战斗与回报建议只用于第一部凯伊线，其他路线不推定敌人数量或等级。未作本站实机验证。",
+    "acquisitionCheckedAt": "2026-10-04"
   },
   {
     "name": "西洛可",
-    "kind": "任务",
+    "kind": "任务 · 分路线目的地",
     "condition": "完成「西洛可的请求」",
-    "details": "先接「シロッコの頼み」，再到南部秘奥の祭壇取得「詩人の碑の写し」并交付；未接任务时不能预先拾取。",
+    "details": "先接「シロッコの頼み」，再按本线任务目的地探索取得「詩人の碑の写し」并回报；未接任务时不能预先拾取。凯伊线原行程为南部「秘奥の祭壇」；赛奥朵拉线应走西北「アトラ山頂」，不能照搬凯伊行程。出发前查看当前任务栏的目的地与期限，并给往返、回报留出时间。",
     "routes": [
       "凯伊线",
       "迪托利希线",
       "赛奥朵拉线"
     ],
-    "byRoute": {},
+    "byRoute": {
+      "凯伊线": "先接请求，再到南部「秘奥の祭壇」探索取得「詩人の碑の写し」并交付；未接任务时不能预先拾取。",
+      "赛奥朵拉线": "先接请求，到西北「イアペトス大洞窟」，从未到达过的另一出口通往「アトラ山頂」，探索取得「詩人の碑の写し」后回报。若已开放カルトド駅，可搭乘马车缩短往返；前往洞窟前先看敌人强度，队伍不足时不要硬清全洞。",
+      "迪托利希线": "先接请求，按当前存档的任务标记确认目的地，取得「詩人の碑の写し」后回帝都交付；不要直接沿用凯伊线的南部祭坛行程。"
+    },
     "sources": [
       {
         "url": "https://gamewith.jp/fefw/577311",
         "label": "GameWith · 西洛可资料"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577860",
+        "label": "GameWith · 西洛可请求分路线流程",
+        "checkedAt": "2026-10-04",
+        "evidenceLocation": "「シロッコの頼みの攻略」L415–453；L439明确赛/迪为アトラ山頂、凯伊为秘奥の祭壇；L442–446把イアペトス大洞窟与禁断の森分列；L429先接任务才能取物。正文完整读取。",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577823",
+        "label": "GameWith · 詩人の碑の写し取得地点",
+        "checkedAt": "2026-10-04",
+        "evidenceLocation": "「詩人の碑の写しの入手方法」L401–421；分凯伊与赛/迪两标题，L421写ヤシロ砦探索后经イアペトス大洞窟别出口。与同站任务页合计只算一个出版来源。",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816429",
+        "label": "Game8 · 西洛可交涉与地图画面",
+        "checkedAt": "2026-10-04",
+        "evidenceLocation": "「交渉はアトラ山脈で…」L227–244；「アトラ山脈へはイアペトス大洞窟を通って向かう」说明另出口。其地图图片明确显示赛奥朵拉头像与メガエラの灯火，地点为アトラ山頂；不是所有路线游戏验证。",
+        "part": 1,
+        "route": "赛奥朵拉线",
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816772",
+        "label": "Game8 · 赛奥朵拉7章招募准备",
+        "checkedAt": "2026-10-04",
+        "evidenceLocation": "「スカウトで戦力を補強しよう」L200–212；本线明确西洛可须穿过西北洞窟到アトラ山頂，低等级队伍可考虑绕敌。原文洞窟名写イアペソス，与其他页/游戏图イアペトス不一致，采用游戏图名；不采纳原文笼统“两人支援1”（同页大刀表为2）或精确推荐等级。",
+        "part": 1,
+        "route": "赛奥朵拉线",
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
       }
     ],
     "checkedAt": "2026-09-29",
     "gameVersion": null,
     "status": "page-reviewed",
-    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+    "scope": "本次新增赛奥朵拉线山顶行程，经GameWith分路线正文、Game8本线章节与可辨本线路线的游戏地图交叉核对。凯伊保留原行程；迪托利希路线线索及期限差异只记日志。未作本站游戏内实测。",
+    "acquisitionCheckedAt": "2026-10-04"
   },
   {
     "name": "穆",
