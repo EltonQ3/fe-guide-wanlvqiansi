@@ -11,6 +11,441 @@
   },
   "entries": [
     {
+      "date": "2026-10-05",
+      "edition": "索绯雅与基罗伊卡培养、西提司分线目的地与鲁鲁迪娅行程",
+      "checked": 49,
+      "merged": [
+        {
+          "text": "索绯雅新增完整治疗培养，拆开固定回复、Lv20／35回复射程成长和主教→贤者失去黑魔术的取舍；赛奥朵拉教学队伍卡同步精简。",
+          "src": "https://wing-game.hatenablog.com/entry/-fortunes-weave/units/sofia"
+        },
+        {
+          "text": "基罗伊卡新增弓术单修、探索与机动取舍，标明异常增伤、Lv35概率技能及游侠／弓骑职解锁。撤下蕾达固定第7章出现的卡片与硬编码徽标。完整培养共31人。",
+          "src": "https://note.com/fe_mic/n/na82be733b578"
+        },
+        {
+          "text": "西提司不再三线共用南部乌拉诺斯山；赛奥朵拉线改为西南奥加斯山道，以分线正文和可辨本线游戏地图核对，手册与交涉档案同步。",
+          "src": "https://game8.jp/fe-banshisenko/816450"
+        },
+        {
+          "text": "鲁鲁迪娅补凯伊线港口「会話→船乗り」、已开放两站的马车往返及回帝都从「スカウト」回报；不承诺固定回合数或统一期限。",
+          "src": "https://chucco.com/fefw-ludia-scout/"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "索绯雅 · リブロー习得Rank",
+          "current": "培养正文只写已习得后利用远程治疗，不把白魔术B当作必得保证。",
+          "incoming": "GameWith角色原页白魔术表列A；ウイング玩家正文与Game8蕾达第8章列B。玩家主教图白魔术为B+，但没有展示魔法列表，不能据此排除A条件。Game8角色页说明列的是截图技能状态，未单列精确习得Rank。",
+          "src": "https://gamewith.jp/fefw/577294"
+        },
+        {
+          "topic": "索绯雅 · 守备成长",
+          "current": "仅写物理承伤非长项，不发布精确守备成长。",
+          "incoming": "GameWith角色及兵种推荐嵌表为20；Game8、AppMedia、Altema与玩家正文为25。独立截图只是Lv48实际能力，不是成长率测试，不能按多数裁决。",
+          "src": "https://gamewith.jp/fefw/577294"
+        },
+        {
+          "topic": "贤者 · 速／技成长与技能措辞",
+          "current": "只采用白魔术A、回复+15、白魔次数翻倍及不能使用黑魔术的共同结论；不据成长列推导最优练级。",
+          "incoming": "GameWith速+5／技0，Game8速0／技+5。GameWith回复+15技能句还把回复队友误写成攻击队友，按Game8与多角色说明限定为回复，不沿用错字。",
+          "src": "https://game8.jp/fe-banshisenko/816448"
+        },
+        {
+          "topic": "牧师 · 早期备考Rank",
+          "current": "新培养只写白魔术方向，不在档案或路线卡重复早期精确Rank；兵种旧表暂留。",
+          "incoming": "GameWith与Game8原页均列白魔术C，站内继承共创表列C+。本次独立玩家截图为主教状态，不能裁定牧师考试建议值，等待对应游戏考试画面。",
+          "src": "https://game8.jp/fe-banshisenko/816654"
+        },
+        {
+          "topic": "基罗伊卡 · 蕾达出现章与交涉数量",
+          "current": "撤下蕾达卡固定第7章说法，改为帝都可交谈后按本线进度确认；保留旧交涉表凯伊／赛奥朵拉圣水8、迪／蕾3。人物篇金字塔原有的硬编码第7章徽标同步撤下。",
+          "incoming": "GameWith蕾达7章、Game8蕾达5章；Game8正文统一写圣水3，GameWith与AppMedia按四线8/3/8/3。Game8交涉截图确有3，但无路线文字，不能据图推成四线都3。建议只将蕾达卡的固定初出章改为待核，交涉表保留分线条件。",
+          "src": "https://gamewith.jp/fefw/577287"
+        },
+        {
+          "topic": "基罗伊卡 · 迪托利希线名声门槛",
+          "current": "保留既有名声4，不依据攻略数量裁决为定论；培养适用于已招募后。",
+          "incoming": "Altema完整页L68写名声6；GameWith/Game8/AppMedia写4。未找到明确展示该路线当前名声及可招募条件的界面，本批不改字段。",
+          "src": "https://altema.jp/febansisenkou/kiloika"
+        },
+        {
+          "topic": "基罗伊卡 · 终职推荐与成长列",
+          "current": "发布探影者与ボウナイト两种候选，不发布唯一最优，不引用争议成长数值。",
+          "incoming": "GameWith角色页推荐探影者，Game8角色页推荐ボウナイト；是步行功能与骑兵机动取舍。探影者速/技GameWith25/15、Game815/25；森林骑士技巧GameWith10、Game815。",
+          "src": "https://gamewith.jp/fefw/577287"
+        },
+        {
+          "topic": "基罗伊卡 · ボウナイト开放区分",
+          "current": "仅写第三部完成カーラ委托，不指定精确区分。",
+          "incoming": "GameWith为第2区分以降，Game8为第3区分修复神殿后。已查看Game8任务截图，奖励明确ボウナイト，画面4/6和期限6/6不等于直接标明区分，不能单凭画面裁决最早区分。",
+          "src": "https://game8.jp/fe-banshisenko/816949"
+        },
+        {
+          "topic": "基罗伊卡 · 玩家记录可用范围",
+          "current": "采用两张状态截图支持实际恶棍/弓系使用与开锁补位，采用心得提示异常配合的机会成本；不发布其单档面板或个人评分为普适结论。",
+          "incoming": "marque明确Hard/Classic，迪/蕾两张均Lv37恶棍，但这不证明最优培养；黒い猫的技55/速50与攻略不符，不采用该数值；ホース自称本角色未实玩，不作独立验证。",
+          "src": "https://note.com/fe_mic/n/na82be733b578"
+        },
+        {
+          "topic": "狙击手 · 移动力",
+          "current": "培养文不写绝对移动数值；保留弓B与命中精通。",
+          "incoming": "Game8写5，AppMedia成长表旁写6；未取得无加成兵种画面，未修改兵种库。",
+          "src": "https://game8.jp/fe-banshisenko/816651"
+        },
+        {
+          "topic": "西提司 · 分路线目的地与期限",
+          "current": "修正统一南部山；本次只发布有路线明确地图支持的赛奥朵拉西南山道。凯伊原行程保留，蕾达具体山道仍候选。",
+          "incoming": "GameWith579269正文L410–412/L447分凯伊乌拉诺斯、赛/蕾奥加斯；角色577340仍泛写乌拉诺斯。Game8赛奥朵拉地图支持奥加斯，不能替蕾达验证。GameWith与Game8受注截图均显示10/24，GameWith正文却称11/27；不发布统一期限，也不由单张截图推导每次接取截止规则。",
+          "src": "https://gamewith.jp/fefw/579269"
+        },
+        {
+          "topic": "杰斯特 · 请求2仍缺路线明确操作证据",
+          "current": "仅保留请求链与任务栏复核；本次不发布凯伊矿山／其他线塞多砦为确定行程。",
+          "incoming": "10/5复核GameWith579107 L412概要仍是ワルハラ鉱山，L439明确凯伊矿山、其他主角セドー砦。直接看了地图25a18ba…，只是编辑标注双路线的地图，无玩家头像/任务栏；受注图20f40fc…实际是请求1与ダダ平原，不能证明请求2地点。未找到独立路线可辨的请求2原始任务画面。",
+          "src": "https://gamewith.jp/fefw/579107"
+        },
+        {
+          "topic": "鲁鲁迪娅 · 港口NPC名、首次出现与回合数",
+          "current": "凯伊流程采用实际菜单「船乗り」；不改初出章或发布固定往返5回合。",
+          "incoming": "Game8正文L230写漁師，但其港口截图菜单为船乗り，与GameWith及独立玩家一致。Game8凯伊/蕾达初出4章，GameWith请求页凯伊6章/蕾达5章；独立玩家只能证明其当次可完成，不能裁定初出章。",
+          "src": "https://game8.jp/fe-banshisenko/816454"
+        },
+        {
+          "topic": "早期考试 · 萨满巫师技能值仍待游戏画面",
+          "current": "本批不改兵种原表，也不扩写已发布的普通考试通过率说明。",
+          "incoming": "本次补读GameWith萨满巫师完整页，确认其魔法命中+5与Game8原页+3的差异。资格考试页可见游戏截图为上级龙骑士，不足以裁定中级萨满巫师Rank/技能数值。",
+          "src": "https://gamewith.jp/fefw/577355"
+        },
+        {
+          "topic": "西提司 · 西南开路与战斗建议",
+          "current": "本批不扩大招募正文。",
+          "incoming": "Game8单站正文L239称王都ブレストン市场购买バシテア地図100G开路，地图注释也写购地图开路；L241称敌人全是剑步兵。未找到独立原页或商店/战斗原画面交叉证据，本批不把价格、必买地图或全敌人配置写入最终路线。",
+          "src": "https://game8.jp/fe-banshisenko/816450"
+        },
+        {
+          "topic": "乌尔坦德 · 礼盒拾取步骤",
+          "current": "本批不扩大招募正文。",
+          "incoming": "本次未发现足够值得新增的双源完整路线。GameWith物品页明确仅确认迪线、右侧楼梯及发光点；Game8只给泛用砦取物，不能把楼梯操作扩展至三线。请求页搜索摘要仍返回旧版“接取章内期限”，打开最新完整正文已改11/27；只记时效风险，不发布期限。",
+          "src": "https://gamewith.jp/fefw/577850"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "",
+          "name": "GameWith · 索绯雅",
+          "url": "https://gamewith.jp/fefw/577294",
+          "note": "角色正文L405–528：成长、四线招募、推荐路线、个人与等级技能；L804–864白魔术表将リブロー列A，保留分歧"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 索绯雅",
+          "url": "https://game8.jp/fe-banshisenko/816448",
+          "note": "L59–127培养路线及贤者不能用黑魔术；L181–221成长／招募；L251–385技能及回复魔法"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 索绯雅",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402758",
+          "note": "L83–147四线门槛、成长、个人回复+10、Lv20遠隔治癒与白魔术擅长"
+        },
+        {
+          "grade": "",
+          "name": "Altema · 索绯雅",
+          "url": "https://altema.jp/febansisenkou/sophia",
+          "note": "L60–68四线招募门槛；L115–144贤者推荐、成长与个人技能；成长合计列异常，未采用"
+        },
+        {
+          "grade": "",
+          "name": "ウイング玩家记录 · 索绯雅培养至第二部",
+          "url": "https://wing-game.hatenablog.com/entry/-fortunes-weave/units/sofia",
+          "note": "完整HTML正文「習得魔法」「スキル」「育成方針／ビショップ」；已查看治癒の心得说明图与Lv48主教状态图：个人回复+10、主教魔法回复+10、遠隔治癒+在装备技能栏。正文称リブロー信仰B，截图未展示魔法列表，不能独立裁决解锁Rank"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 牧师",
+          "url": "https://game8.jp/fe-banshisenko/816654",
+          "note": "L57–72白魔术C与通过率；L133–148白魔次数翻倍、回复+5、精通幸运+3"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 牧师",
+          "url": "https://gamewith.jp/fefw/577354",
+          "note": "L408–415白魔术C为提高合格率的备考方向；L681–725白魔次数翻倍／回复+5／信仰心"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 主教",
+          "url": "https://game8.jp/fe-banshisenko/816645",
+          "note": "L57–72使用技能含黑白魔术、白魔术B备考；L137–152白魔次数翻倍、回复+10与结界"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 主教",
+          "url": "https://gamewith.jp/fefw/577346",
+          "note": "L408–416白魔术B、上级票证与通过率；L620–668白魔次数翻倍、回复+10、邻接魔防+3"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 贤者",
+          "url": "https://game8.jp/fe-banshisenko/816705",
+          "note": "L58–84使用技能、白魔术A与第三部开放；L134–169成长与技能，白魔次数翻倍／回复+15"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 贤者",
+          "url": "https://gamewith.jp/fefw/577595",
+          "note": "L408–425白魔术A、最上级票证和成长；L620–658白魔次数翻倍、回复+15；速／技成长与Game8有差异"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 赛奥朵拉第5章",
+          "url": "https://game8.jp/fe-banshisenko/816487",
+          "note": "L98–128招募功能开放与名声2后招募索绯雅；不把自由行动起点等同自动入队"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 蕾达第8章",
+          "url": "https://game8.jp/fe-banshisenko/816807",
+          "note": "L179–191写白魔术B习得リブロー；L237–243支援3／名声7；仅用于记录解锁Rank差异，不改写全路线时点"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 基罗伊卡",
+          "url": "https://gamewith.jp/fefw/577287",
+          "note": "L405–538 成长、分路线招募、探影者推荐、暴虐与Lv35威迫+；技能表仅作已列项目核对"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 基罗伊卡",
+          "url": "https://game8.jp/fe-banshisenko/816460",
+          "note": "L59–182 弓骑路线；L183–230 成长与招募；L256–346 技能与战技。交涉截图已查看，能读圣水×3，但图片未明写路线"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 基罗伊卡",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402779",
+          "note": "L95–139 分路线圣水8/3、成长、暴虐与弓术擅长"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 探影者",
+          "url": "https://gamewith.jp/fefw/577603",
+          "note": "L408–425 弓/剑A备考及成长；速/技25/15与Game8相反，未采用"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 探影者",
+          "url": "https://game8.jp/fe-banshisenko/816712",
+          "note": "L58–84 使用技能、弓/剑A与第三部开放；L106–142 成长、开锁、探索与精通。速/技15/25与GameWith不同"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 游侠",
+          "url": "https://gamewith.jp/fefw/577544",
+          "note": "L408–427 迪线名声10挑战／蕾达兴行4解锁、弓/剑B备考"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 游侠",
+          "url": "https://game8.jp/fe-banshisenko/816859",
+          "note": "L58–91 两路线解锁、弓/剑B；L116–134 开锁、探索与50%近邻反击；两张解锁任务游戏截图已实际查看"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 森林骑士",
+          "url": "https://game8.jp/fe-banshisenko/816650",
+          "note": "L57–72 剑弓马可用、弓B/马D；L107–125 弓命中与追击时攻击+3精通"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 森林骑士",
+          "url": "https://gamewith.jp/fefw/577350",
+          "note": "L408–425 备考与成长；L498–595 兵种和狩人之眼效果。技巧成长+10与Game8+15不同"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · ボウナイト",
+          "url": "https://game8.jp/fe-banshisenko/816949",
+          "note": "L58–80 弓A/马D、カーラ神殿修复与委托解锁；L116–134 弓命中和精通战技。カーラ委托奖励截图已实际查看"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · ボウナイト",
+          "url": "https://gamewith.jp/fefw/577912",
+          "note": "L408–426 弓A/马D、カーラ委托；L465–604 收录基罗伊卡、兵种技能与精通战技。开放区分与Game8不同"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 狙击手",
+          "url": "https://game8.jp/fe-banshisenko/816651",
+          "note": "L57–72 弓B备考；L87–91 推荐基罗伊卡；L136–151 弓命中+10、精通命中+15"
+        },
+        {
+          "grade": "",
+          "name": "AppMedia · 狙击手",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402863",
+          "note": "L80–126 弓B、仅弓装备及命中技能；移动写6与Game8写5不同，未采用移动数值"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 恶棍",
+          "url": "https://gamewith.jp/fefw/577360",
+          "note": "L408–424 资格/成长仅核对未沿用早期Rank；L625–695 开锁与探索术、精通击杀回避的限制"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 毒弓",
+          "url": "https://game8.jp/fe-banshisenko/819476",
+          "note": "L56–104 取得与性能；本培养只采用命中时施毒及基础威力低，不发布统一获得进度"
+        },
+        {
+          "grade": "",
+          "name": "ちゅこっと陽だまる · 禁断之森实玩记录",
+          "url": "https://chucco.com/fefw-forbidden-forest/",
+          "note": "L40–70 毒弓宝箱及命中施毒效果；本次只采用其武器效果文字，未把未查看的图片算作证据"
+        },
+        {
+          "grade": "",
+          "name": "marque · 第一部全路线实玩评价",
+          "url": "https://note.com/fe_mic/n/na82be733b578",
+          "note": "L16–20 明确Hard/Classic与游玩顺序；L113–117 迪线基罗伊卡、L234–238 蕾达基罗伊卡。两张状态截图均已下载并实际查看"
+        },
+        {
+          "grade": "",
+          "name": "黒い猫の産物 · 迪托利希线初玩角色心得",
+          "url": "https://note.com/sanbutsu/n/n57c7561ee73e",
+          "note": "L40–42 实际培养基罗伊卡，说明状态异常配合的实战机会成本；其技55/速50与攻略及面板方向有出入，不采纳该数值"
+        },
+        {
+          "grade": "",
+          "name": "ホースの黒い馬 · 角色评价（排除其基罗伊卡评分）",
+          "url": "https://note.com/horse_blackhorse/n/ne63ee8919eb3",
+          "note": "L312–317 作者明确本角色是凯伊线未实玩评价，不能用作独立实机证据或判定角色下位替代"
+        },
+        {
+          "grade": "",
+          "name": "Altema · 基罗伊卡",
+          "url": "https://altema.jp/febansisenkou/kiloika",
+          "note": "L59–122 分路线门槛、成长、暴虐与Lv35威迫+。迪线名声写6，与GameWith/Game8/AppMedia的4不同；本次不裁决"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 西提司请求分路线流程",
+          "url": "https://gamewith.jp/fefw/579269",
+          "note": "完整原页的任务主体L402–455；L410–412、L447明确凯伊ウラノス山、赛奥朵拉/蕾达オーガス山道，L455回帝都报告。原始受注图7846ba…已直接查看，目的地オーガス山道、期限10/24；不采用正文泛写的11/27。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 西提司交涉与赛奥朵拉地图",
+          "url": "https://game8.jp/fe-banshisenko/816450",
+          "note": "完整原页L209–241。L230南西オーガス山道；L237配图d31b249…已直接查看，左下赛奥朵拉头像、メガエラの灯火、1449/10/3及标记オーガス山道，支持本线路线。L226受注图3c5ddfa…明确任务目的地与10/24期限。图不是蕾达线证据。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 西提司角色页",
+          "url": "https://gamewith.jp/fefw/577340",
+          "note": "完整原页L430–448仍把任务地点泛写南部ウラノス山，与本网站请求详页的分路线说明不一致；仅作旧结论来源及凯伊原行程复核。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 鲁鲁迪娅请求流程",
+          "url": "https://gamewith.jp/fefw/579136",
+          "note": "完整原页L418–464：先スカウト接任务，港口选择会话→船乗り，之后回帝都；L449–455已开放フェロニア駅时可用東アマルテア駅→フェロニア駅省回合。未采用全路线11/27与精确初出日期。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 鲁鲁迪娅港口与马车行程",
+          "url": "https://game8.jp/fe-banshisenko/816454",
+          "note": "完整原页L209–235；L234配图44baa6b…已直接查看，凯伊头像、リベイラの風、東アマルテア駅、フェロニア駅与カリアネイラの港均清楚。L228港口图6e8f43…菜单实际写船乗り；正文L230误写漁師，采用实图菜单。L235约5回合只是该页估计，不发布为保证。"
+        },
+        {
+          "grade": "",
+          "name": "ちゅこっと阳だまる · 凯伊线鲁鲁迪娅实得记录",
+          "url": "https://chucco.com/fefw-ludia-scout/",
+          "note": "2026-10-02独立玩家记录。原页完整HTML已下载读取，正文「スカウト条件(カイ篇)」「ルルディヤーの頼み」明确港口与船乗り会话、回帝都从スカウト回报后入队。2026100119500800_s.jpg显示凯伊在港口会话菜单，2026100120105500_s.jpg显示凯伊与鲁鲁迪娅及スカウト成功；两图已直接查看。未把玩家当次11/27期限扩展到所有路线。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 杰斯特请求2",
+          "url": "https://gamewith.jp/fefw/579107",
+          "note": "完整原页L403–447；直接检查地图与受注图，地图为编辑标注、受注图实际请求1，尚不能消除请求2分线证据缺口。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 资格考试图证复核",
+          "url": "https://game8.jp/fe-banshisenko/817102",
+          "note": "正文L58–134与资格考试截图13021043已核对；截图为赛奥朵拉Lv37的上级龙骑士，不能解答初/中级兵种Rank争议。已有通过率说明不重复扩写。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 萨满巫师复核",
+          "url": "https://game8.jp/fe-banshisenko/816655",
+          "note": "原页L57–72黑魔术C/建议20/名声4、L118–125魔法命中+3；未见可确认对应考试/技能值的原始游戏画面。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 萨满巫师完整页",
+          "url": "https://gamewith.jp/fefw/577355",
+          "note": "本次打开原页，L779–787明确兵种技能魔法命中+5，确认此前搜索摘要中的差异确实存在于正文；未据来源数量改值。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · カガヤキウオ",
+          "url": "https://gamewith.jp/fefw/577827",
+          "note": "完整原页L401–437：湖泊四路线、稀有低概率、交涉1份；交通与角色页所列最近站不同，不本次采用。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · カガヤキウオ",
+          "url": "https://game8.jp/fe-banshisenko/816890",
+          "note": "完整原页L56–99：湖泊非每次必出、交涉1份、亦可交换与作为食材。"
+        },
+        {
+          "grade": "",
+          "name": "ちゅこっと阳だまる · 凯伊妮涅实得",
+          "url": "https://chucco.com/fefw-nine-scout/",
+          "note": "完整原页L47–73：凯伊3S/6R、湖泊探索、矿山通路、实际交付1份入队。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 礼盒",
+          "url": "https://gamewith.jp/fefw/577850",
+          "note": "完整原页L401–422，明确仅迪线确认；先接任务、右侧楼梯发光点、交付入队。"
+        },
+        {
+          "grade": "",
+          "name": "GameWith · 乌尔坦德请求",
+          "url": "https://gamewith.jp/fefw/579060",
+          "note": "完整原页L405–436，北西砦地下城目標ピン与キラキラ；本次完整正文日期与搜索缓存不同。"
+        },
+        {
+          "grade": "",
+          "name": "Game8 · 乌尔坦德",
+          "url": "https://game8.jp/fe-banshisenko/816420",
+          "note": "完整原页L212–236：非凯伊三线条件与砦取物；凯伊剧情加入。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "核对范围",
+          "reason": "本批读取49个按URL去重的完整原页，另核看角色技能／状态、兵种解锁奖励和分路线招募原始画面。图片不计作额外来源；同站角色页和任务页不算两份独立实验。"
+        },
+        {
+          "site": "版本与难度",
+          "reason": "没有本站游戏存档实测；攻略原页未明示版本与难度时留空。marque明确Hard/Classic，其两条路线单档表现不外推为全难度保证。"
+        },
+        {
+          "site": "网页读取",
+          "reason": "部分独立玩家原页在网页检索工具中打开失败，经普通HTTP取得完整HTML后阅读全文；任务图片直接查看原图。失败摘要与仅搜索可见的页面不计入核对数。"
+        },
+        {
+          "site": "未发布候选",
+          "reason": "妮涅稀有鱼探索和留存提示已作原页复核，本批仍保留既有物品页；矿山通路尚需第二份凯伊路线证据。杰斯特请求2仍缺可辨本线的原始任务画面，未用编辑标注地图裁决。"
+        }
+      ]
+    },
+    {
       "date": "2026-10-04",
       "edition": "菲亚娜与诺克裘拉培养、分路线招募行程与考试预算",
       "checked": 53,

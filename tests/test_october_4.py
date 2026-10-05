@@ -60,7 +60,8 @@ class October4Tests(unittest.TestCase):
         self.assertIn('赛奥朵拉线经',line);self.assertIn('迪托利希线先核对',line)
 
     def test_log_and_generated_builds(self):
-        e=DATA['logs'][0];self.assertEqual(e['date'],'2026-10-04')
+        e=next(x for x in DATA['logs'] if x.get('edition')=='菲亚娜与诺克裘拉培养、分路线招募行程与考试预算')
+        self.assertEqual(e['date'],'2026-10-04')
         self.assertEqual(e['checked'],len({x['url'] for x in e['new_sources']}))
         self.assertGreaterEqual(e['checked'],30)
         for c in ['菲亚娜','战斗将领','米迦艾拉','杰斯特']:
