@@ -48,3 +48,16 @@ assert(!oldEvidence.includes('2026.09.29'));
 const mixedEvidence=vm.runInContext("evidence([{url:'https://example.com/old',label:'Old'},{url:'https://example.com/new',label:'New',checkedAt:'2026-10-01'}])",ctx);
 assert(!mixedEvidence.includes('2026.09.29')&&!mixedEvidence.includes('2026.10.01'));
 console.log('Oct1 route-scoped negotiation, player-facing evidence limits, and hidden editorial dates passed.');
+
+// Oct5: disputed Leda arrival must not survive in a hard-coded pyramid badge.
+const ledaPyramid=vm.runInContext("routePortal(D.story.find(s=>s.id==='leda'))",ctx);
+assert(!ledaPyramid.includes('第 7 章出现'));
+assert(ledaPyramid.includes('按本线进度确认'));
+const dietrichPyramidHtml=vm.runInContext("routePortal(D.story.find(s=>s.id==='dietrich'))",ctx);
+assert(dietrichPyramidHtml.includes('第 6 章出现'));
+const visibleModal=(route,name)=>modal(route,name).replace(/<[^>]*>/g,'');
+assert(visibleModal('theodora','西提司').includes('オーガス山道'));
+assert(!visibleModal('leda','西提司').includes('オーガス山道'));
+assert(visibleModal('kai','鲁鲁迪娅').includes('東アマルテア駅→フェロニア駅'));
+assert(!visibleModal('leda','鲁鲁迪娅').includes('東アマルテア駅→フェロニア駅'));
+console.log('Oct5: corrected Leda arrival badge and route-isolated recruitment errands passed.');
