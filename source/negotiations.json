@@ -245,24 +245,105 @@
     "name": "妮涅",
     "kind": "物品",
     "condition": "カガヤキウオ ×1",
-    "details": "可探索南部ブロンテス湖取得。另修正蕾达线名声门槛为 8R；其余路线名声为 6 / 8 / 6。",
+    "details": "可探索南部ブロンテス湖取得。カガヤキウオ是稀有采集物，可能需要多次探索，不能保证一次取得。准备招募时先保留1条，再用于其他交换或消耗；支援与名声仍按本线条件。凯伊线尚未到湖边时，可按下方矿山通路前往。",
     "routes": [
       "凯伊线",
       "迪托利希线",
       "赛奥朵拉线",
       "蕾达线"
     ],
-    "byRoute": {},
+    "byRoute": {
+      "凯伊线": "先到帝都西南「ワルハラ鉱山」，穿过矿山，从大房间左后方通道的「未達出口」回到世界地图，开放通往「ブロンテス湖」的道路。到湖边探索收集カガヤキウオ×1；稀有鱼可能需要多次探索，不把一次未出货当作走错地点。保留1条回帝都，在已满足3S／6R后从妮涅的「スカウト」交付入队。出发前检查当前队伍状态并预留探索、往返的行动时间。"
+    },
     "sources": [
       {
         "url": "https://gamewith.jp/fefw/577303",
         "label": "GameWith · 妮涅资料"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577827",
+        "label": "GameWith · カガヤキウオ探索与用途",
+        "checkedAt": "2026-10-06",
+        "evidenceLocation": "「マップ南のブロンテス湖の探索で入手」L408–425：四主角可探索湖、鱼为低概率稀有采集物；「ニネのスカウトで使用」L431–444：需要1条。与同站角色页不作为两份独立实机证据。",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816890",
+        "label": "Game8 · カガヤキウオ取得方式",
+        "checkedAt": "2026-10-06",
+        "evidenceLocation": "「ワールドマップの探索で入手」L60–66：湖的四种采集候选与可能需多次探索；「キャラの交渉に使用」L75–83：妮涅1条；L85–99另列交换/食材用途。正文完整读取。",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://chucco.com/fefw-nine-scout/",
+        "label": "ちゅこっと阳だまる · 凯伊线妮涅招募记录",
+        "checkedAt": "2026-10-06",
+        "evidenceLocation": "「ニネ」L47–52明确凯伊线3S/6R及1条；「カガヤキウオの入手方法」L63–73：帝都西南ブロンテス湖、穿过ワルハラ鉱山、交付后入队。已实际查看湖地图与招募成功截图；地图有凯伊/リベイラの風与8/2，不据该日期推定首次开放。",
+        "part": 1,
+        "route": "凯伊线",
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://chucco.com/fefw-valhalla-mine/",
+        "label": "ちゅこっと阳だまる · 凯伊线矿山通路",
+        "checkedAt": "2026-10-06",
+        "evidenceLocation": "「ワルハラ鉱山の場所」L33–39；「未達出口」L73–81：大房间左后方通道出到世界地图后可到ブロンテス湖。已实际查看矿山地图、洞内出口、湖刚开放3张截图，均能辨凯伊；同一作者两篇合计为一份玩家记录。",
+        "part": 1,
+        "route": "凯伊线",
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
       }
     ],
     "checkedAt": "2026-09-29",
     "gameVersion": null,
     "status": "page-reviewed",
-    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+    "scope": "两家攻略原页交叉核对湖探索与稀有采集；凯伊行程另有独立玩家矿山至湖边、招募成功记录及5张实际查看截图。新通路只用于第一部凯伊线，不推定其他线通路、固定出货次数或最早到达章。未作本站实机验证。",
+    "acquisitionCheckedAt": "2026-10-06",
+    "route": "第一部四路线既有湖探索；新增矿山通路仅凯伊线",
+    "chapter": "凯伊玩家截图为7/25和8/2，非首次开放章",
+    "difficulty": null,
+    "imageEvidence": [
+      {
+        "url": "https://chucco.com/wp-content/uploads/2026/09/2026092620153800_s.jpg",
+        "evidenceLocation": "矿山地图：凯伊头像、リベイラの風、7/25，选中ワルハラ鉱山并显示未达出口存在。",
+        "checkedAt": "2026-10-06"
+      },
+      {
+        "url": "https://chucco.com/wp-content/uploads/2026/09/2026092620275200_s.jpg",
+        "evidenceLocation": "洞内未达出口：凯伊站在出口前，右上「未達出口あり」，日期7/25。具体左后方通道由同页正文定位，不只据画面朝向推断。",
+        "checkedAt": "2026-10-06"
+      },
+      {
+        "url": "https://chucco.com/wp-content/uploads/2026/09/2026092620280600_s.jpg",
+        "evidenceLocation": "出矿山后的地图：凯伊头像、7/25，ブロンテス湖已能选择，第四个采集项仍为???。不把该图误作已经捞到稀有鱼。",
+        "checkedAt": "2026-10-06"
+      },
+      {
+        "url": "https://chucco.com/wp-content/uploads/2026/09/2026092623332800_s.jpg",
+        "evidenceLocation": "湖地图：凯伊头像、リベイラの風、8/2，ブロンテス湖的第四项采集物已显示カガヤキウオ。",
+        "checkedAt": "2026-10-06"
+      },
+      {
+        "url": "https://chucco.com/wp-content/uploads/2026/09/2026092623463100_s.jpg",
+        "evidenceLocation": "画面「スカウト成功」「ニネが仲間になった」；具体交付1条由相邻作者正文说明。",
+        "checkedAt": "2026-10-06"
+      }
+    ]
   },
   {
     "name": "努蒂奴",
