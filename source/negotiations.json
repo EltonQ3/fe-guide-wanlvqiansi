@@ -1143,5 +1143,68 @@
     "status": "page-reviewed",
     "scope": "本轮只核对交涉材料取得方式；原招募门槛沿用手册，未作游戏内实测。",
     "acquisitionCheckedAt": "2026-10-02"
+  },
+  {
+    "name": "伊尼奥尼",
+    "kind": "金币",
+    "condition": "按本线支付 3000–6000G",
+    "details": "先达到本线支援与名声门槛，再支付指定金币。Game8说明不能议价。四线门槛与金额经GameWith、AppMedia核对，与原表一致；首次出现章节在来源间有分歧，暂不设固定最早招募章。",
+    "routes": [
+      "凯伊线",
+      "迪托利希线",
+      "赛奥朵拉线",
+      "蕾达线"
+    ],
+    "byRoute": {
+      "凯伊线": "支援3／名声8；支付6000G。",
+      "迪托利希线": "支援3／名声8；支付6000G。",
+      "赛奥朵拉线": "支援1／名声9；支付4000G。",
+      "蕾达线": "支援1／名声7；支付3000G。"
+    },
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577379",
+        "label": "GameWith · 伊尼奥尼四线招募与付款",
+        "checkedAt": "2026-10-06",
+        "evidenceLocation": "イニオニのスカウト条件・交渉：四线条件表／指定の金額分ゴールドを支払うと加入",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://appmedia.jp/fe_banshisenkou/80402776",
+        "label": "AppMedia · 伊尼奥尼四线条件",
+        "checkedAt": "2026-10-06",
+        "evidenceLocation": "イニオニの加入・スカウト条件 → スカウト条件：四线支援、名声与金币",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816463",
+        "label": "Game8 · 伊尼奥尼交涉",
+        "checkedAt": "2026-10-06",
+        "evidenceLocation": "交渉では指定されたゴールドを渡す：不能议价",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部"
+      }
+    ],
+    "checkedAt": "2026-10-06",
+    "gameVersion": null,
+    "difficulty": null,
+    "route": "第一部四路线",
+    "chapter": null,
+    "status": "page-reviewed",
+    "scope": "公开页面核对：姓名、四线门槛、金币交涉；未作游戏内实测，首次出现场景与礼物反应分歧未裁定。"
   }
 ]

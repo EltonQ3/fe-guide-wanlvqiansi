@@ -426,7 +426,7 @@
   "portrait": "assets/portrait/58.jpg"
  },
  "易尼奥尼": {
-  "n": "60",
+  "n": "text-5bc5d135",
   "jp": "イニオニ",
   "avatar": "assets/avatar/60.jpg",
   "portrait": "assets/portrait/60.jpg"
@@ -467,5 +467,23 @@
   "avatar": "assets/avatar/hero_m.jpg",
   "portrait": "assets/portrait/hero_m.jpg",
   "avatar_f": "assets/avatar/hero_f.jpg"
+ },
+ "伊尼奥尼": {
+  "n": "text-5bc5d135",
+  "jp": "イニオニ",
+  "avatar": "assets/avatar/60.jpg",
+  "portrait": "assets/portrait/60.jpg"
+ },
+ "伊尼奧尼": {
+  "n": "text-5bc5d135",
+  "jp": "イニオニ",
+  "avatar": "assets/avatar/60.jpg",
+  "portrait": "assets/portrait/60.jpg"
+ },
+ "Inyoni": {
+  "n": "text-5bc5d135",
+  "jp": "イニオニ",
+  "avatar": "assets/avatar/60.jpg",
+  "portrait": "assets/portrait/60.jpg"
  }
 }

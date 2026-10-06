@@ -902,6 +902,17 @@
     "status": "imported"
   },
   {
+    "id": "c8a34c61cf98",
+    "url": "https://www.nintendo.today/en-US/contents/97ac2011-aef2-4b0a-96c2-bbdb9a220b2a",
+    "title": "Nintendo Today! · Inyoni官方人物宣传",
+    "host": "www.nintendo.today",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "A",
+    "note": "直接读取官方页面及公开图像；title=Inyoni，isShareable=true；版权归Nintendo / INTELLIGENT SYSTEMS，仅核人物与宣传素材。",
+    "lastListed": "2026-10-06",
+    "status": "imported"
+  },
+  {
     "id": "75019464e724",
     "url": "https://gamewith.jp/fefw/577300",
     "title": "GameWith · 努蒂奴",
@@ -3561,6 +3572,39 @@
     "originalGrade": "",
     "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
     "lastListed": "2026-09-29",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "4410d5de3fa6",
+    "url": "https://gamewith.jp/fefw/577379",
+    "title": "GameWith · 伊尼奥尼四线招募与付款",
+    "host": "gamewith.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-10-06",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "03c5dacc5e09",
+    "url": "https://appmedia.jp/fe_banshisenkou/80402776",
+    "title": "AppMedia · 伊尼奥尼四线条件",
+    "host": "appmedia.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-10-06",
+    "status": "page-reviewed"
+  },
+  {
+    "id": "3723fc9890e2",
+    "url": "https://game8.jp/fe-banshisenko/816463",
+    "title": "Game8 · 伊尼奥尼交涉",
+    "host": "game8.jp",
+    "kind": "攻略 / 媒体",
+    "originalGrade": "",
+    "note": "已核对本次条目所引页面；不代表该站全部结论已验证。",
+    "lastListed": "2026-10-06",
     "status": "page-reviewed"
   },
   {
