@@ -61,3 +61,14 @@
 - 许可：SIL Open Font License 1.1，全文见 assets/fonts/OFL-LibreCaslonText.txt
 - 版权：Copyright 2012 The Libre Caslon Text Project Authors
 
+
+## 伊尼奥尼（Inyoni）人物图像（2026-10-06）
+
+- 官方页面：https://www.nintendo.today/en-US/contents/97ac2011-aef2-4b0a-96c2-bbdb9a220b2a
+- 官方公开图像：https://www.nintendo.today/images/en-US/contents/97ac2011-aef2-4b0a-96c2-bbdb9a220b2a/thumbnail/large
+- 身份交叉核对：https://serenesforest.net/2026/09/14/fortunes-weave-combined-social-media-info-part-10/#inyoni （附Inyoni姓名宣传卡与官方原帖链接）。
+- 读取日期：2026-10-06；页面与图片HTTP 200，官方页面title为Inyoni、isShareable为true。实图与图库姓名卡、原仓库60号人物的红发、面部红纹与弓手服饰一致。
+- 原图：1640×2054 WebP，SHA-256 `cb531872c48af0c181b8b251541a80d4197d6efe25b8c5b6c24579066ec18c23`。
+- 文件：`docs/assets/avatar/60.jpg`，从原图像素框(330,150,1230,1050)裁出头像，192×192 JPEG；`docs/assets/portrait/60.jpg`，完整原图等比缩到400×501 JPEG，保留官方Switch 2标识。采用既有JPEG质量84、渐进式编码，未生成或重绘人物。
+- 权利：Nintendo / INTELLIGENT SYSTEMS；官方宣传美术，仅用于非官方玩家攻略中的角色识别与资料说明，不声明开放素材许可。
+- 映射：伊尼奥尼／伊尼奧尼／易尼奥尼／Inyoni共用既有公开ID `text-5bc5d135`，避免旧角色链接与招募计划失效。60号原映射只有美术、没有独立攻略条目，不新增重复角色。

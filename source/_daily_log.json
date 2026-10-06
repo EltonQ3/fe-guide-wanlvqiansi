@@ -12,6 +12,59 @@
   "entries": [
     {
       "date": "2026-10-06",
+      "edition": "伊尼奥尼官方头像、别名查重与招募资料核对",
+      "checked": 5,
+      "merged": [
+        {
+          "text": "伊尼奥尼／伊尼奧尼／易尼奥尼／Inyoni与イニオニ合并为同一档案；保留text-5bc5d135，角色仍55位，原四线门槛与金额不变。用Nintendo Today!官方公开宣传图补齐192px头像及人物页图片，未生成或重绘。",
+          "src": "https://www.nintendo.today/en-US/contents/97ac2011-aef2-4b0a-96c2-bbdb9a220b2a"
+        },
+        {
+          "text": "补四线金币交涉说明与家族、故乡、狩猎、农活、弓保养喜好；首次出现章节与礼物反应等级有来源分歧，不发布统一章数或最爱礼物。",
+          "src": "https://gamewith.jp/fefw/577379"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "伊尼奥尼 · 首次出现章节",
+          "current": "不设固定最早招募章；四线支援、名声、金额保留。",
+          "incoming": "Game8写凯伊7章、迪托利希8章；GameWith写凯伊8章、迪托利希9章。赛奥朵拉均9章；蕾达仅Game8列9章。需实机或可定位事件画面核对。",
+          "src": "https://game8.jp/fe-banshisenko/816463"
+        },
+        {
+          "topic": "伊尼奥尼 · 礼物反应",
+          "current": "仅发布共同喜好，具体礼物反应待核验。",
+          "incoming": "GameWith将風裂きの矢羽根、鋭い釣り針列大好き；Game8列気に入った，且最爱名单不同。不要按来源数量裁决。",
+          "src": "https://gamewith.jp/fefw/577379"
+        },
+        {
+          "topic": "伊尼奥尼 · 后续培养补充",
+          "current": "完整分阶段培养待补；本轮未发布唯一最优终职。",
+          "incoming": "GameWith偏步兵弓／マスターアーチ，Game8偏骑射／ボウナイト；需要另核兵种条件、技能限制与训练成本后比较用途。",
+          "src": "https://game8.jp/fe-banshisenko/816463"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "A",
+          "name": "Nintendo Today! · Inyoni官方人物宣传",
+          "url": "https://www.nintendo.today/en-US/contents/97ac2011-aef2-4b0a-96c2-bbdb9a220b2a",
+          "note": "直接读取官方页面及公开图像；title=Inyoni，isShareable=true；版权归Nintendo / INTELLIGENT SYSTEMS，仅核人物与宣传素材。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "Creative Uncut",
+          "reason": "人物页可读，原图403；未绕过或使用该受限下载。"
+        },
+        {
+          "site": "X / FireEmblemJP",
+          "reason": "官方帖2099679599789834623访问403；改用公开可读Nintendo Today!官方页，不绕过限制。"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-06",
       "edition": "努蒂奴与札可捏培养、荣光骑士备考成本与妮涅取鱼行程",
       "checked": 46,
       "merged": [
