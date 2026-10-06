@@ -11,6 +11,433 @@
   },
   "entries": [
     {
+      "date": "2026-10-06",
+      "edition": "努蒂奴与札可捏培养、荣光骑士备考成本与妮涅取鱼行程",
+      "checked": 46,
+      "merged": [
+        {
+          "text": "努蒂奴新增斧／马起步、物理骑兵与魔剑转型取舍；修正三张路线卡的荣光骑士备考，明确须另补剑或枪，并保留骑兵特性、非大型与概率减伤限制。",
+          "src": "https://game8.jp/fe-banshisenko/816648"
+        },
+        {
+          "text": "札可捏新增斧系残血收尾与按需剑系改修，说明敌方半血条件、投击武器限制及训练成本；赛奥朵拉、蕾达路线卡同步精简，完整培养共33人。",
+          "src": "https://tanisiame.blog.fc2.com/blog-entry-2033.html"
+        },
+        {
+          "text": "妮涅补凯伊线穿过ワルハラ鉱山未达出口、开放湖边道路、探索取鱼后回帝都交付的行程；不将此通路推为四线共用，不改支援／名声或开放日期。",
+          "src": "https://chucco.com/fefw-valhalla-mine/"
+        },
+        {
+          "text": "交涉档案、手册和采购清单同步说明カガヤキウオ为稀有采集物，可能需要多次探索；保留1条用于招募，不承诺一次取得。",
+          "src": "https://game8.jp/fe-banshisenko/816890"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "努蒂奴 · 物理／魔剑终职建议",
+          "current": "以入队后的斧／马为低投入起点，枪与剑按未来目标择一；不设唯一最优终职。",
+          "incoming": "GameWith推荐ハイエピタフ，Game8推荐グレートナイト；这是用途和训练取舍。Game8评级D、GameWith评级B也不能作为事实矛盾裁决。",
+          "src": "https://gamewith.jp/fefw/577300"
+        },
+        {
+          "topic": "努蒂奴 · 荣光骑士并非纯斧无缝接续",
+          "current": "三张路线卡已改飞鸵兵→骑甲驼兵→荣光骑士，并明确另补剑／枪B＋马C；保留土匪为可选过渡。",
+          "incoming": "两站兵种完整页均把斧列为可用武器，却只列剑／枪为考试选择。既有卡只说斧马主修、未写补剑枪成本，易被理解为不用额外训练。",
+          "src": "https://game8.jp/fe-banshisenko/816648"
+        },
+        {
+          "topic": "努蒂奴 · 骑兵技能限制",
+          "current": "仅采用技能表的骑兵限定与自身大型单位无效，不简化成所有骑乘或所有地形适用。",
+          "incoming": "Game8评价段落又称骑兵重装限定，过于狭窄；其技能表、GameWith、AppMedia明确只有【骑兵】及大型限制。飞行擅长不改变限制。",
+          "src": "https://game8.jp/fe-banshisenko/816443"
+        },
+        {
+          "topic": "两种骑兵终职 · 最早开放区分",
+          "current": "只写第三部完成各自委托，不给第2／第3区分。",
+          "incoming": "GameWith的ハイエピタフ与グレートナイト页写救世篇第2区分以降；Game8两页写第3区分修复神殿后。两张已看游戏图都只显示日期4/6、期限6/6与奖励职业，不能证明最早区分。",
+          "src": "https://game8.jp/fe-banshisenko/816946"
+        },
+        {
+          "topic": "ハイエピタフ · 委托名称",
+          "current": "人物培养采用截图可读的スミルノス；只引用职业奖励，不发布该任务路线或期限。",
+          "incoming": "Game8正文写スミノルス，原页奖励截图显示スミルノス，GameWith亦为スミルノス。截图能支持名称，不支持最早解锁区分。",
+          "src": "https://game8.jp/fe-banshisenko/816946"
+        },
+        {
+          "topic": "骑甲驼兵／荣光骑士 · 速技成长",
+          "current": "不引用有分歧的成长数值，也不靠这些数值推导最优练级。",
+          "incoming": "骑甲驼兵GameWith速+10／技+5，Game8速+15／技+10；荣光骑士GameWith技0，Game8技+5。玩家面板不是成长率测试。",
+          "src": "https://gamewith.jp/fefw/577356"
+        },
+        {
+          "topic": "努蒂奴 · 斧种与数量",
+          "current": "保留既有分线条件；本培养只适用于完成本线招募后。",
+          "incoming": "GameWith、AppMedia为凯／迪青铜斧2，赛／蕾铁斧3；Game8交涉正文泛写青铜斧2，hyperWiki四线均青铜斧2。不得套用统一数量，也不按网页多数裁决。",
+          "src": "https://hyperwiki.jp/fefw/character/ch33/"
+        },
+        {
+          "topic": "努蒂奴 · 玩家证据范围",
+          "current": "只用Hard/Classic赛奥朵拉玩家Lv44重装骑兵图证明实际职业／技能装备记录，不把面板或主观强弱定为全难度事实。",
+          "incoming": "作者明示第二部第6章出击前图，认为重骑培养并不突出；marque凯伊线也认为第二飞驼位不理想，但都不是对照试验。转载讨论里的Lv35魔力30、Lv30力速30没有独立证据，不采用。",
+          "src": "https://tharja-neftyscyther.hatenadiary.jp/entry/2026/09/26/120400"
+        },
+        {
+          "topic": "札可捏 · 斧系与剑系推荐",
+          "current": "发布斧术集中收尾与按需改修剑术两种方案，不发布唯一最优或强度榜排名。",
+          "incoming": "GameWith角色页推荐斗士→土匪→勇士→战斗将领；Game8新版角色页推荐斗士→剑客→侍道→刀剑将领。独立Hard/Classic赛线通关作者实际使用土匪并以投撃和卑劣+收尾；另一四线Hard/Classic作者给出负面斧系评价。属于队伍、武器与投入假设的差异，不能靠媒体数量裁决。",
+          "src": "https://game8.jp/fe-banshisenko/816458"
+        },
+        {
+          "topic": "战斗将领 · 速度/技巧成长相反",
+          "current": "新培养仅写延续斧系与命中收益，不发布该兵种速/技精确成长或据此计算最优路线；旧兵种表不改。",
+          "incoming": "GameWith577601 L429为速+5/技-5；Game8 816714 L133为速-5/技+5。两者HP/力量等其他列相同，但现有截图并未显示兵种成长表，不能确定是互换错列还是版本差异。",
+          "src": "https://gamewith.jp/fefw/577601"
+        },
+        {
+          "topic": "刀剑将领 · 开放区分",
+          "current": "只写第三部完成战神（マーズ）委托并核对当前考试列表；不指定最早区分。",
+          "incoming": "GameWith577914 L417写第2区分以降，Game8 816951 L79–81写第3区分修复マーズ神殿后。两站一致支持剑A和委托；本批无可裁定区分的实机证据，延续既有争议。",
+          "src": "https://game8.jp/fe-banshisenko/816951"
+        },
+        {
+          "topic": "札可捏 · 卑劣+等级与战技解锁Rank",
+          "current": "新培养只发布已习得后的条件与用途，不写卑劣+的精确等级或投撃的精确解锁Rank。",
+          "incoming": "GameWith角色页单独列卑劣+为Lv35、投撃为斧C；Game8仅列已会技能及当次剑C/斧B+状态图，没有证明最早解锁点。玩家记录证明实际使用，但也未给精确取得等级。",
+          "src": "https://gamewith.jp/fefw/577292"
+        },
+        {
+          "topic": "札可捏 · 玩家截图证据边界",
+          "current": "四张图仅作为实际操作/技能状态证据；不把玩家100G菜单写成最终最低价，不把剑D+图写成兵种考试图。",
+          "incoming": "青嵐100G截图是中途议价；最终10G由Game8实际图和多站原页及タニシ玩家正文共同支持。剑D+图清晰显示学习剑术Lv1、持剑命中+3，但没有展示兵种考试、成长率或全程表现。Game8技能状态图也不是初始技能保证。",
+          "src": "https://note.com/kowloon4/n/n52183dbf9553"
+        },
+        {
+          "topic": "妮涅 · 凯伊首次出现章",
+          "current": "不新增首次出现章；本批只补已可出发后的物品行程。",
+          "incoming": "GameWith577303 L437列第4章3月，Game8 816437 L225列第3章。凯伊玩家图为7/25和8/2，不能裁定首次出现或湖通路首次开放时点。",
+          "src": "https://game8.jp/fe-banshisenko/816437"
+        },
+        {
+          "topic": "妮涅 · 通路范围与探索概率",
+          "current": "矿山未达出口路线仅写凯伊；稀有鱼写可能多次探索，不承诺固定次数/概率。",
+          "incoming": "Chucco同一玩家两篇和5图形成凯伊通路、采集项与入队链条。GameWith/Game8支持湖探索稀有鱼，但不把这两个站当作独立实测概率，也不将玩家7/25当首次开放。",
+          "src": "https://chucco.com/fefw-valhalla-mine/"
+        },
+        {
+          "topic": "杰斯特 · 请求2路线证据仍不足",
+          "current": "保持请求链及当前任务栏复核，不发布凯伊矿山/其他线塞多砦为确定行程。",
+          "incoming": "新实际查看Game8角色页「クエスト②」原始受注图：目的地セドー砦与期限11/27可见，但无可辨主角、章数或所属；不能独立证明三条非凯伊线。GameWith原页L439维持分流，L412概要仍矿山。",
+          "src": "https://game8.jp/fe-banshisenko/816452"
+        },
+        {
+          "topic": "米迦艾拉 · 迪托利希线3000G",
+          "current": "继续不裁定付费或免费。",
+          "incoming": "本轮新增读取10/3 hyperWiki米迦艾拉页，迪线表格写0S/0R/3000G；无扣款画面或方法说明。AppMedia原页仍事件战后加入，GameWith原页仍剧情加入+3000G；不能以额外表格票数或剧情流程缺少收费判定。另读茶器迪线日志④全文，叙述酒馆后加入且作者提示顺序可能记错；仍无金币前后或付款画面，不足裁决。",
+          "src": "https://hyperwiki.jp/fefw/character/ch44/"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "B",
+          "name": "GameWith · 努蒂奴",
+          "url": "https://gamewith.jp/fefw/577300",
+          "note": "「成長率・ステータス」「スカウト条件・交渉」「ハイエピタフがおすすめ」「個人スキル」「レベル習得スキル」；L418–550，个人技能骑兵／大型限制与Lv35疾駆+"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 努蒂奴",
+          "url": "https://game8.jp/fe-banshisenko/816443",
+          "note": "L61–133物理骑兵方案；L187–203技能擅长／苦手；L258–271个人与等级技能；技能列表限于文内截图状态，不能当完整习得表"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 骑甲驼兵",
+          "url": "https://game8.jp/fe-banshisenko/816657",
+          "note": "L59–74骑兵、马术D与斧／枪C；L85–112成长及精通。仅采用一致的备考方向，不用争议成长值"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 荣光骑士",
+          "url": "https://gamewith.jp/fefw/577348",
+          "note": "L415–423马术C、枪／剑B与上级考试票证；L653起圣盾为受魔法攻击时20%减半，不能保证承伤"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 荣光骑士",
+          "url": "https://game8.jp/fe-banshisenko/816648",
+          "note": "L57–72可用斧但考试选择仅剑／枪B；L134–149战技装备+2与20%圣盾"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · ハイエピタフ",
+          "url": "https://gamewith.jp/fefw/577913",
+          "note": "L415–424剑B、黑魔D、马D和最上级票证；L544起技能。其第2区分以降与Game8第3区分不同"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · ハイエピタフ",
+          "url": "https://game8.jp/fe-banshisenko/816946",
+          "note": "L58–80剑／黑魔／马可用、备考与委托；L120–132黑魔次数翻倍。已查看委托奖励游戏截图，可读奖励兵种与スミルノス，不据日期裁决区分"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · グレートナイト",
+          "url": "https://game8.jp/fe-banshisenko/816948",
+          "note": "L58–80备考及クレール委托；L101–138成长与条件式防守技能。已查看委托奖励游戏截图，不据4/6日期裁决最早区分"
+        },
+        {
+          "grade": "C",
+          "name": "ゲームの公開メモ帳 · 赛奥朵拉线Hard/Classic实玩",
+          "url": "https://tharja-neftyscyther.hatenadiary.jp/entry/2026/09/26/120400",
+          "note": "「FE万紫千紅セオドラ編」「キャラクター所感／ヌディーヌ(カタフラクト)」；第二部第6章出击前Lv44状态图已实际查看，可读个人强行突破及装备疾駆+。作者单档认为重骑表现一般，不外推普适强弱"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 努蒂奴",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402791",
+          "note": "L95–144；四线斧数量区分、技能限制、Lv20疾駆、技能倾向"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 骑甲驼兵",
+          "url": "https://gamewith.jp/fefw/577356",
+          "note": "L415–431共同备考方向及成长分歧；L623–633精通条件"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · グレートナイト",
+          "url": "https://gamewith.jp/fefw/577893",
+          "note": "L415–433备考／票证／第三部开放分歧；L588–605条件式防守"
+        },
+        {
+          "grade": "B",
+          "name": "hyperWiki · 努蒂奴",
+          "url": "https://hyperwiki.jp/fefw/character/ch33/",
+          "note": "L74–79四线统一青铜斧×2；L92–122骑兵技能、Lv20／35移动成本。招募与主要资料分歧，不采用"
+        },
+        {
+          "grade": "C",
+          "name": "redfreshet · 努蒂奴",
+          "url": "https://redfreshet.com/game-tools/fe-banshisenko/characters/char_033/",
+          "note": "育成候補、技能倾向、习得逆引；未提供独立游戏过程，不作为第二份实机证据"
+        },
+        {
+          "grade": "C",
+          "name": "ぽちぽちゲーム速報 · 培养讨论转载",
+          "url": "https://note.com/game9820/n/ned25aef271d0",
+          "note": "L15–54；魔法／骑兵讨论与单档数值的转述。不是作者可复现实玩，不作为独立证据"
+        },
+        {
+          "grade": "C",
+          "name": "marque · 第一部四线Hard/Classic角色评价",
+          "url": "https://note.com/fe_mic/n/na82be733b578",
+          "note": "L23–27明确难度与路线顺序，L59–61凯伊第二飞驼位表现不佳。只作投入优先级背景，不据此定级"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 札可捏",
+          "url": "https://gamewith.jp/fefw/577292",
+          "note": "L410–536成长、四线招募、斧系推荐、持斧命中+10和卑劣+；L559–705剑/斧技能表。Lv35为单站精确等级，新正文只写习得后"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 札可捏",
+          "url": "https://game8.jp/fe-banshisenko/816458",
+          "note": "L59–127剑系推荐；L181–232成长、分线招募与10G；L255–331条件技能与战技。技能状态与10G交涉两张原图均实际查看"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 札可捏",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402770",
+          "note": "L95–108四线门槛和10G；L114–139成长、斧包丁和剑/斧擅长、黑/白魔术苦手"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 土匪",
+          "url": "https://gamewith.jp/fefw/577363",
+          "note": "L415–431剑/斧C备考及力量/HP取向；L630–680斧命中+3与精通仅在自身攻击被闪避的战斗中回避+20"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 土匪",
+          "url": "https://game8.jp/fe-banshisenko/816664",
+          "note": "L57–72剑/斧C备考；L111–146成长与兵种/精通技能，独立核对GameWith土匪页"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 勇士",
+          "url": "https://gamewith.jp/fefw/577352",
+          "note": "L415–432剑/斧/格斗B选项、上级票证与成长；保留任一主武器备考，不要求三修"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 勇士",
+          "url": "https://game8.jp/fe-banshisenko/816652",
+          "note": "L57–72剑/斧/格斗B备考；L115–153成长、斧/格斗命中+5、战技攻击命中+10精通"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 战斗将领",
+          "url": "https://gamewith.jp/fefw/577601",
+          "note": "L415–432剑/斧/格斗A备考、最上级票证；L631–716斧命中+7和精通战技。速+5/技-5与Game8冲突，未采用成长数值"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 战斗将领",
+          "url": "https://game8.jp/fe-banshisenko/816714",
+          "note": "L58–84剑/斧/格斗A及第三部开放；L127–165成长、斧命中+7与战鬼一击。速-5/技+5与GameWith相反，未采用"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 侍道",
+          "url": "https://game8.jp/fe-banshisenko/816653",
+          "note": "L57–72剑B备考；L117–152速/技取向、剑必杀+5与精通残心的必杀击倒条件"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 刀剑将领",
+          "url": "https://gamewith.jp/fefw/577914",
+          "note": "L415–433剑A、最上级票证、战神委托；L540–615剑必杀+7及流星。第2区分以降与Game8第3区分不同"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 刀剑将领",
+          "url": "https://game8.jp/fe-banshisenko/816951",
+          "note": "L60–81剑A及修复マーズ神殿后完成委托；L121–156速/技取向、剑必杀+7与流星。不裁决第2/3区分"
+        },
+        {
+          "grade": "C",
+          "name": "青嵐 · 赛奥朵拉篇第8章实玩记录",
+          "url": "https://note.com/kowloon4/n/n52183dbf9553",
+          "note": "L7–10说明仅玩赛奥朵拉线；L21附近两张原图已下载实看：100G议价菜单、剑术D+学会剑术Lv1（持剑命中+3）。只能证明该次操作，不证明最终价格或低等级最优"
+        },
+        {
+          "grade": "C",
+          "name": "タニシの拠点 · Hard/Classic赛奥朵拉线通关记录",
+          "url": "https://tanisiame.blog.fc2.com/blog-entry-2033.html",
+          "note": "完整HTML已读取（web工具失败后由HTTP200原页读取）；开头明确Hard/Classic；「今回使ったユニット雑感／ザーコネ」记录土匪、斧包丁/卑劣+/投撃收尾与低速承伤问题。玩家体验不作全难度保证"
+        },
+        {
+          "grade": "B",
+          "name": "Altema · 札可捏",
+          "url": "https://altema.jp/febansisenkou/zarcone",
+          "note": "L59–97四线门槛、成长、擅长/苦手与个人技能；L107–113引用官方预览但未把引用片段充作已观看视频"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 兵种推荐",
+          "url": "https://gamewith.jp/fefw/575722",
+          "note": "L720–788刀剑将领剑A、成长取向和战神委托；与独立刀剑将领页同站同事实，不重复计为独立证据"
+        },
+        {
+          "grade": "C",
+          "name": "dedenneDX · 四线Hard/Classic首轮评价",
+          "url": "https://note.com/fresh_curlew7984/n/na88804a5f5b8",
+          "note": "L14说明难度与随机成长；L78–82对札可捏与斧系评价负面，无该角色具体等级/培养流程，不作为新数值证据"
+        },
+        {
+          "grade": "C",
+          "name": "ちゅこっと阳だまる · 凯伊线妮涅招募记录",
+          "url": "https://chucco.com/fefw-nine-scout/",
+          "note": "完整正文L25–79；L47–52凯伊条件，L63–73矿山→湖→交付成功；实际查看2张截图"
+        },
+        {
+          "grade": "C",
+          "name": "ちゅこっと阳だまる · ワルハラ鉱山",
+          "url": "https://chucco.com/fefw-valhalla-mine/",
+          "note": "完整正文L25–103；L73–81大房间左后方未达出口通湖；另查看3张矿山/出口/开路图，同作者不是第二份独立玩家"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 妮涅",
+          "url": "https://gamewith.jp/fefw/577303",
+          "note": "完整角色原页正文；L433–453四线条件及湖探索；凯伊初出写第4章，未用于本批时点裁决"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · カガヤキウオ",
+          "url": "https://gamewith.jp/fefw/577827",
+          "note": "完整正文L383–461；L408–425湖探索/低概率，L431–444交涉1条"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · カガヤキウオ",
+          "url": "https://game8.jp/fe-banshisenko/816890",
+          "note": "完整正文L34–99；L60–66稀有鱼可能多次探索，L75–95交涉及交换"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 妮涅",
+          "url": "https://game8.jp/fe-banshisenko/816437",
+          "note": "完整正文L36–428及已显示评论；L216–238招募/湖；凯伊初出第3章，与GameWith第4章不一致"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 杰斯特",
+          "url": "https://game8.jp/fe-banshisenko/816452",
+          "note": "完整正文L34–296；L224–236请求链，以及请求2原始任务受注图，实图可见目的地セドー砦但无可辨主角/路线"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 杰斯特请求2",
+          "url": "https://gamewith.jp/fefw/579107",
+          "note": "完整正文L376–447；L412概要矿山、L439凯伊矿山/其他主角塞多砦，仍内部范围不一致；搜索索引返回9/30旧文不能代替10/2原页"
+        },
+        {
+          "grade": "B",
+          "name": "hyperWiki · 米迦艾拉",
+          "url": "https://hyperwiki.jp/fefw/character/ch44/",
+          "note": "完整页面L0–164；10/3发布，L75–80迪线0S/0R/3000G，无剧情扣款流程或游戏画面"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 米迦艾拉",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402656",
+          "note": "完整角色正文L43–173；L96–107迪线事件战后加入，其余三线3000G；仍未明确迪线免付"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 米迦艾拉",
+          "url": "https://gamewith.jp/fefw/577316",
+          "note": "完整角色正文L383–1224；L433–449迪线剧情加入格仍带3000G；金钱配图不是该线招募扣款对比"
+        },
+        {
+          "grade": "C",
+          "name": "茶器玩家 · 迪托利希游戏日志④",
+          "url": "https://ameblo.jp/chiakigames/entry-12980164615.html",
+          "note": "web.open失败后经urllib正常HTTP200读取完整HTML/正文。酒馆战后米迦艾拉要求加入，但未给金币前后对照；结尾作者提醒事件顺序可能记忆有偏差，不能裁定免付。"
+        },
+        {
+          "grade": "C",
+          "name": "ポケモナンザ · 稀有鱼探索候选",
+          "url": "https://pokemonza.hatenablog.jp/entry/2026/09/22/125540",
+          "note": "web.open失败后经urllib正常HTTP200读取完整HTML/正文。主张湖低概率、多次探索/自动探索/方尖塔补救；没有本线路线说明或操作画面，不采用额外自动探索及补救流程。其统一4章说法不能扩至各线。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "核对范围",
+          "reason": "本批读取46个按完整URL去重、具有实质正文的原页，另实际核看14张角色状态、交涉、委托奖励与矿山／湖地图。图片不额外计来源；同一作者多篇与同站角色／兵种页不视作独立实测。"
+        },
+        {
+          "site": "版本与难度",
+          "reason": "没有本站游戏存档实测。攻略页未注明版本与难度时留空；玩家记录中的Hard/Classic与单路线、单档状态保留范围，不推广为全难度培养保证。"
+        },
+        {
+          "site": "未充分读取的票证页",
+          "reason": "GameWith 577838、577837可打开但返回主要是导航，票证正文未充分核读，未计入46篇，也未据此增加标价或总成本。"
+        },
+        {
+          "site": "网页与图片读取",
+          "reason": "部分Hatena、FC2、Ameblo及图片在网页工具中失败，使用同一公开地址的普通HTTP或云端浏览器取得正文／原图并实际核看；访问成功本身不算结论通过。"
+        },
+        {
+          "site": "未发布候选",
+          "reason": "杰斯特请求2受注图可读塞多砦但无可辨路线；米迦艾拉新表格及玩家流程仍缺扣款证据，均未裁决。稀有鱼自动探索、回溯补救的具体流程未获足够画面，继续留作候选。"
+        }
+      ]
+    },
+    {
       "date": "2026-10-05",
       "edition": "索绯雅与基罗伊卡培养、西提司分线目的地与鲁鲁迪娅行程",
       "checked": 49,

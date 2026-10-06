@@ -23,7 +23,7 @@ class October5Tests(unittest.TestCase):
         for b in [s,k]:
             self.assertIsNone(b['gameVersion']); self.assertIsNone(b['difficulty'])
             self.assertTrue(all(x.get('checkedAt')=='2026-10-05' and x.get('evidenceLocation') for x in b['sources']))
-        self.assertEqual(len([c for c in DATA['characters'] if c.get('builds')]),31)
+        self.assertEqual(len([c for c in DATA['characters'] if c.get('builds')]),33)
 
     def test_route_cards_keep_eligibility_and_training_tradeoffs(self):
         stories={s['id']:s for s in DATA['story']}
@@ -66,7 +66,7 @@ class October5Tests(unittest.TestCase):
         self.assertIn('会話→船乗り',manual)
 
     def test_log_and_generated_outputs(self):
-        e=DATA['logs'][0]
+        e=next(x for x in DATA['logs'] if x.get('edition')=='索绯雅与基罗伊卡培养、西提司分线目的地与鲁鲁迪娅行程')
         self.assertEqual(e['date'],'2026-10-05')
         self.assertEqual(e['checked'],len({x['url'] for x in e['new_sources']}))
         self.assertGreaterEqual(e['checked'],30)

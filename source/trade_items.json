@@ -191,6 +191,35 @@
               "label": "GameWith · 妮涅资料"
             }
           ]
+        },
+        {
+          "text": "カガヤキウオ是稀有采集物，可能需要多次探索，不能保证一次取得。",
+          "sources": [
+            {
+              "url": "https://gamewith.jp/fefw/577827",
+              "label": "GameWith · カガヤキウオ探索与用途",
+              "checkedAt": "2026-10-06",
+              "evidenceLocation": "「マップ南のブロンテス湖の探索で入手」L408–425：四主角可探索湖、鱼为低概率稀有采集物；「ニネのスカウトで使用」L431–444：需要1条。与同站角色页不作为两份独立实机证据。",
+              "part": 1,
+              "route": null,
+              "chapter": null,
+              "difficulty": null,
+              "gameVersion": null,
+              "spoiler": "第一部招募"
+            },
+            {
+              "url": "https://game8.jp/fe-banshisenko/816890",
+              "label": "Game8 · カガヤキウオ取得方式",
+              "checkedAt": "2026-10-06",
+              "evidenceLocation": "「ワールドマップの探索で入手」L60–66：湖的四种采集候选与可能需多次探索；「キャラの交渉に使用」L75–83：妮涅1条；L85–99另列交换/食材用途。正文完整读取。",
+              "part": 1,
+              "route": null,
+              "chapter": null,
+              "difficulty": null,
+              "gameVersion": null,
+              "spoiler": "第一部招募"
+            }
+          ]
         }
       ],
       "pages": [
@@ -199,17 +228,7 @@
           "label": "GameWith · カガヤキウオの入手方法"
         }
       ],
-      "leads": [
-        {
-          "claim": "ブロンテス湖の探索で低確率；おまかせ稼ぎで繰り返し探索すると楽",
-          "from": [
-            "https://gamewith.jp/fefw/577827",
-            "https://pokemonza.hatenablog.jp/entry/2026/09/22/125540"
-          ],
-          "status": "search-summary",
-          "retrieved": "2026-10-01"
-        }
-      ]
+      "leads": []
     },
     {
       "name": "コーシャルーガー",

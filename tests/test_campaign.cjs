@@ -61,3 +61,9 @@ assert(!visibleModal('leda','西提司').includes('オーガス山道'));
 assert(visibleModal('kai','鲁鲁迪娅').includes('東アマルテア駅→フェロニア駅'));
 assert(!visibleModal('leda','鲁鲁迪娅').includes('東アマルテア駅→フェロニア駅'));
 console.log('Oct5: corrected Leda arrival badge and route-isolated recruitment errands passed.');
+
+// Oct6: Kai's mine-to-lake itinerary must not leak into other route dossiers.
+assert(visibleModal('kai','妮涅').includes('ワルハラ鉱山'));
+for(const r of ['dietrich','theodora','leda']) assert(!visibleModal(r,'妮涅').includes('ワルハラ鉱山'));
+for(const r of ['kai','dietrich','theodora','leda']) assert(visibleModal(r,'妮涅').includes('可能需要多次探索'));
+console.log('Oct6: route-isolated lake access and shared rare-fish caution passed.');
