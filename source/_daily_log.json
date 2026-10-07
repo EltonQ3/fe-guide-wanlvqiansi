@@ -11,6 +11,541 @@
   },
   "entries": [
     {
+      "date": "2026-10-07",
+      "edition": "伊尼奥尼与贾斯敏培养、地下城取盒与法比奥交涉备剑",
+      "checked": 65,
+      "merged": [
+        {
+          "text": "伊尼奥尼新增步兵弓／骑射培养取舍与票证预算，明确持弓、弓战技、步兵限定和追击条件；沿用稳定ID及四线招募价，不裁决唯一最优终职。",
+          "src": "https://game8.jp/fe-banshisenko/816463"
+        },
+        {
+          "text": "贾斯敏新增重装守点及第三部战象选项，说明后攻触发、武器／重装备考和战象专用票证／坐骑；蕾达卡撤下有争议的固定初出章，完整培养共35人。",
+          "src": "https://game8.jp/fe-banshisenko/816461"
+        },
+        {
+          "text": "乌尔坦德补迪托利希线进入堡垒地下城、跟任务标记调查发光点取盒并回报；不将其误作世界地图采集、宝箱或敌人掉落，不推广三线期限。",
+          "src": "https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-ultand/"
+        },
+        {
+          "text": "法比奥蕾达线交涉新增清めの剣可用选项，同步角色、手册及物品清单；补第8章战斗开始附近主动拾取提示，先查库存再额外寻找武器。",
+          "src": "https://www.rpgsite.net/guide/21210-fire-emblem-fortunes-weave-part-i-ledas-path-walkthrough"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "伊尼奥尼 · 步兵弓与骑射推荐",
+          "current": "新增按训练成本、命中／战技栏与机动需求选择的两套方向，不设唯一最优终职。",
+          "incoming": "GameWith人物页推荐マスターアーチ，Game8人物页推荐ボウナイト；两站兵种页的技能和备考方向一致，差别可以由玩法用途解释。蕾达Hard/Classic玩家骑射仍感追击不足，不把职业名等同追击保证。",
+          "src": "https://game8.jp/fe-banshisenko/816463"
+        },
+        {
+          "topic": "宗师射手、森林骑士 · 成长数值",
+          "current": "新培养只比较一致的技能、备考与职责；不使用有争议的成长百分比。",
+          "incoming": "宗师射手：GameWith速+15／技+20，Game8速+20／技+15；森林骑士：GameWith技+10，Game8技+15。缺少可复核的成长机制实证，未按站点数量裁决。",
+          "src": "https://game8.jp/fe-banshisenko/816713"
+        },
+        {
+          "topic": "ボウナイト · 第三部最早开放区分",
+          "current": "只写第三部修复カーラ神殿并完成カーラ委托，待开放时再考试。",
+          "incoming": "GameWith兵种页写第2区分以降，Game8写第3区分；Game8任务截图直接确认カーラ委托奖励ボウナイト，但4/6日期不足以裁决最早区分。GameWithカーラ任务正文一段误写クレール，未采用该段复兴材料或整段路线。",
+          "src": "https://gamewith.jp/fefw/578384"
+        },
+        {
+          "topic": "贾斯敏 · 蕾达线首次出现章",
+          "current": "撤下路线卡固定章数及对应金字塔初出徽标；保留已交叉确认的2S／4R／500G。",
+          "incoming": "GameWith为第一部第7章5月，Game8为第一部第6章；AppMedia确认门槛和费用但不提供初出章。尚无路线明确、日期连续的原始截图裁决。",
+          "src": "https://gamewith.jp/fefw/577383 https://game8.jp/fe-banshisenko/816461"
+        },
+        {
+          "topic": "贾斯敏 · 重装步兵主要备考技能",
+          "current": "不写早期精确重装Rank，不修改全站兵种旧表。",
+          "incoming": "GameWith重装E，Game8重装E+；二者武器C一致，尚无考试图。",
+          "src": "https://gamewith.jp/fefw/577359 https://game8.jp/fe-banshisenko/816660"
+        },
+        {
+          "topic": "贾斯敏 · 兵种成长率",
+          "current": "只写明确的职责、个人成长弱点与技能，不发布争议兵种成长数值或期望面板。",
+          "incoming": "要塞速/技为-15/+5 vs +5/-15；战象为-10/+20 vs +20/-10；巨型重甲兵幸运为+10 vs0。重装步兵守备成长+5 vs +25也不同。",
+          "src": "https://gamewith.jp/fefw/577598 https://game8.jp/fe-banshisenko/816710 https://gamewith.jp/fefw/577923 https://game8.jp/fe-banshisenko/816718 https://gamewith.jp/fefw/577349 https://game8.jp/fe-banshisenko/816649"
+        },
+        {
+          "topic": "贾斯敏 · ガードスパイク习得Rank",
+          "current": "不把该技能精确Rank纳入培养。",
+          "incoming": "GameWith斧D；AppMedia斧B重复两行。Game8仅给当前技能状态图，不能用来确定最早习得Rank。",
+          "src": "https://gamewith.jp/fefw/577383 https://appmedia.jp/fe_banshisenkou/80402773"
+        },
+        {
+          "topic": "贾斯敏 · 强度排名与玩家个体表现",
+          "current": "不写强度Tier或最强；按缺口、成本、对手和生存预测给编辑建议。",
+          "incoming": "GameWith A、Game8 C；蕾达玩家称自身档只有守备成长，独立凯伊流程则认为重装补位有用。路线、投入和成长不同，排名不可相互覆盖。",
+          "src": "https://gamewith.jp/fefw/577383 https://game8.jp/fe-banshisenko/816461 https://ameblo.jp/9zimuban9/entry-12979061429.html"
+        },
+        {
+          "topic": "贾斯敏 · 技能精确等级与减伤数字",
+          "current": "正文写「习得后」；不写精确遮断减伤，避免把摘要当当前原页证据。",
+          "incoming": "Lv35来自GameWith，Game8交叉证明效果但未列等级。要塞遮断Game8写-5，GameWith只写减少伤害，本次打开Altema当前原页已无旧搜索结果的推荐兵种表。",
+          "src": "https://gamewith.jp/fefw/577383 https://game8.jp/fe-banshisenko/816461 https://gamewith.jp/fefw/577598 https://game8.jp/fe-banshisenko/816710"
+        },
+        {
+          "topic": "乌尔坦德取得方式",
+          "current": "只采用本轮已核对的路线与步骤；未确认日期、地点或保底保证不写入正文。",
+          "incoming": "Reddit独立迪线提问者因已清空宝箱找不到礼盒；回复分别说地下城发光点/顶部目标标记，以及世界地图Search，互有冲突。GameWith原页与Raider King同指地下城发光点；不以Reddit票数裁决，也不把提问帖当成功全流程。",
+          "src": "https://www.reddit.com/r/FE_Fortunes_Weave/comments/1wqoy5y/ultand_recruitment_help/"
+        },
+        {
+          "topic": "乌尔坦德期限",
+          "current": "只采用本轮已核对的路线与步骤；未确认日期、地点或保底保证不写入正文。",
+          "incoming": "Game8实看受注图显示11/27但无路线。Gamecap目录笼统10/24、正文一处把任务名误贴到ジール硬貨条目，另一处写贈り物の箱を倒す，页面不适合裁定精确期限。本轮不新增日期。",
+          "src": "https://gamecap.jp/fe_fw/quest.html https://game8.jp/fe-banshisenko/816420"
+        },
+        {
+          "topic": "杰斯特请求2",
+          "current": "只采用本轮已核对的路线与步骤；未确认日期、地点或保底保证不写入正文。",
+          "incoming": "GameWith579107完整正文L452仍为凯伊矿山、其余セドー砦；概要L425仍笼统矿山。新增检查Game8凯伊路线完整页L1463–1474仍列セドー砦，不能把同站其他路线汇总表当独立实测。Raider King和NGB完整招募页没有地点信息，未补足路线证据，因此不新增确定分线行程。",
+          "src": "https://gamewith.jp/fefw/579107 https://game8.jp/fe-banshisenko/816789 https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-jester/ https://nightlygamingbinge.com/fire-emblem-fortunes-weave-jester-guide/"
+        },
+        {
+          "topic": "彼得请求",
+          "current": "只采用本轮已核对的路线与步骤；未确认日期、地点或保底保证不写入正文。",
+          "incoming": "Raider King完整页首次Search保底的说法没有独立流程画面；GameWith物品页另明确只核蕾达。现有已经有山探索路线，不拿重复或单站保底保证充当本轮新增。",
+          "src": "https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-peter/"
+        },
+        {
+          "topic": "早期资格考试 · 新玩家记录仍不能裁定旧表Rank",
+          "current": "继续保留普通考试以当前合格率判断的说明，不改牧师／萨满巫师C与C+等旧表分歧。",
+          "incoming": "新读蕾达初/中级两篇实玩记录，提供失败耗票与低于建议技能仍100%的单档叙述；未取得可核对具体牧师／萨满巫师考试的画面，不能当作旧表更正证据。",
+          "src": "https://rodinia.blog.fc2.com/blog-entry-1159.html"
+        },
+        {
+          "topic": "法比奥 · 精确交涉章／日",
+          "current": "交涉条件仅保留迪托利希外传完成、其阵营在本线败退及3S／9R，不给统一章数或日期。",
+          "incoming": "旧档案写蕾达第11章败退后，Game8写11/4以后，Raider King写第12章；不按多数裁决。清めの剣已由两份完整指南明确支持，但选物截图不能证明道具消耗与所有强化／耐久状态。",
+          "src": "https://game8.jp/fe-banshisenko/816421 https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-fabio/"
+        },
+        {
+          "topic": "战象兵 · 专用票证价格与坐骑任务",
+          "current": "培养保留专用票证和象坐骑的额外准备，不发布1500G或任务材料数量。",
+          "incoming": "GameWith578870唯一明确标价1500G；专用票证在同站兵种／物品两页一致，坐骑取得在物品／坐骑页一致，不能当独立两站。战象只有马术可用已核原页启用／灰色图标，并与Game8明确不能装备武器互证。",
+          "src": "https://gamewith.jp/fefw/578870 https://gamewith.jp/fefw/577923 https://game8.jp/fe-banshisenko/816461"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "B",
+          "name": "GameWith · 伊尼奥尼",
+          "url": "https://gamewith.jp/fefw/577379",
+          "note": "「おすすめ兵種とシミュレーター」「個人スキル」「レベル習得スキル」L459–548；步兵弓建议、持弓力+3、弓战技专用增益。L995–1001列步兵术D学射撃安定；不由表内缺项推定不会习得其他技能。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 伊尼奥尼",
+          "url": "https://game8.jp/fe-banshisenko/816463",
+          "note": "「育成おすすめ」L59–131与「スキル」L259–319；骑射推荐、个人及等级技能和歩兵限制。已查看技能Rank截图，只能证明该截图状态，不能作为完整习得表。首次出现章与GameWith不同，未采用。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 狙击手",
+          "url": "https://gamewith.jp/fefw/577351",
+          "note": "「必要技能とレベル」L421–429弓B、上级票证和通过率；「スキル」L627–685弓命中+10、战技栏+2、精通射撃の達人。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 狙击手",
+          "url": "https://game8.jp/fe-banshisenko/816651",
+          "note": "L57–72弓B备考；L136–153兵种技能、精通持弓命中+15。与GameWith一致，不将推荐等级写成硬门槛。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 森林骑士",
+          "url": "https://gamewith.jp/fefw/577350",
+          "note": "L421–429弓B、马D、上级票证；L507–608乘降、弓命中+5、战技栏+1及猎人之眼仅追击伤害+3。技成长+10与Game8的+15有差异，不用成长数值论证。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 森林骑士",
+          "url": "https://game8.jp/fe-banshisenko/816650",
+          "note": "L57–72弓B／马D；L107–125兵种技能与猎人之眼追击限制。技能效果与GameWith一致。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 宗师射手",
+          "url": "https://gamewith.jp/fefw/577600",
+          "note": "L413–429步兵、弓A和最上级票证；L627–698战技栏+3、持弓命中+15、飞空猎手对飞行命中条件。成长速+15／技+20不与Game8合并。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 宗师射手",
+          "url": "https://game8.jp/fe-banshisenko/816713",
+          "note": "L58–84备考与第三部开放；L144–159持弓命中+15、战技栏+3和精通战技。成长速+20／技+15与GameWith倒置，正文不发布数值或成长优劣。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · ボウナイト",
+          "url": "https://gamewith.jp/fefw/577912",
+          "note": "L420–429弓A、马D、最上级票证和カーラ委托；L507–620兵种弓命中+10／战技栏+2。第2区分以降与Game8第3区分不同，不裁决最早开放区分。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · ボウナイト",
+          "url": "https://game8.jp/fe-banshisenko/816949",
+          "note": "L58–80弓A／马D与修复カーラ神殿后完成委托；L116–134弓命中+10、战技栏+2。已下载实看カーラの依頼截图，奖励明确为ボウナイト，不凭截图4/6日期裁决区分。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 考试票证",
+          "url": "https://game8.jp/fe-banshisenko/816834",
+          "note": "L58–90帝都资格考试官旁售票、上级3000G、下一章补货和每次考试消耗1张。另实看销售员位置图，图本身未显示价格。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 上级考试票证",
+          "url": "https://gamewith.jp/fefw/577838",
+          "note": "L416–434帝都售票员及王都メガエラ市场3000G、次章库存；L461–469每次考试消耗1张。与Game8票证原页交叉核对。；L416–469名声8起帝都销售、3000G、次章补货与一考一票；仅用于预算，不承诺固定转职等级"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 最上级考试票证",
+          "url": "https://gamewith.jp/fefw/577837",
+          "note": "L416–448第三部帝都及市场8000G、每次考试1张；只采用与GameCap第三部商店页共同列出的フィーナの漁村市场标价，不推定最低价或第一部可买。；L416–448第三部帝都／市集8000G和一考一票；用于要塞预算，不与战象专用票证混同"
+        },
+        {
+          "grade": "B",
+          "name": "GameCap · 第三部商店",
+          "url": "https://gamecap.jp/fe_fw/shop3.html",
+          "note": "「フィーナの漁村／市場」L137–165最上级票证8000G；与GameWith同地同阶段交叉核对。"
+        },
+        {
+          "grade": "B",
+          "name": "天馬騎士団 · 技能表",
+          "url": "https://www.fire-emblem.fun/?pid=1971",
+          "note": "技能表L179「射撃安定」明确歩兵且持弓／魔法时命中+5，与Game8人物页交叉核对；本次不采用其他未逐项核验技能。；L120–124戦象の装脚：骑兵伤害减半、不能回避；与Game8完整兵种页相符。未据此推定技能获得等级。"
+        },
+        {
+          "grade": "B",
+          "name": "ちゅこっと陽だまる · 凯伊线招募实玩",
+          "url": "https://chucco.com/fefw-inyoni-scout/",
+          "note": "「イニオニ」「イニオニを仲間にする方法」L32–69；已实际查看两张原图：该存档Lv38弓箭手状态、支援3名声8，支付确认6000G。作者明确等级与兵种随进度变化，不写成固定初始值。"
+        },
+        {
+          "grade": "B",
+          "name": "竹馬 · 蕾达Hard/Classic第一部实玩",
+          "url": "https://note.com/light_moraea983/n/n1084266c8f88",
+          "note": "「プレイ状況」L26–35明确Hard/Classic；「各キャラ使用感／イニオニ」L124–126记录弓箭手→森林骑士与追击不足。已实看该节Lv38森林骑士状态图，个人／兵种／装备技能分栏清楚，可辨弓命中+5、战技栏+1、ぶち抜き+、射撃安定。此单档不证明必然成长、技能必触发或最优配装。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · game8.jp / 816408",
+          "url": "https://game8.jp/fe-banshisenko/816408",
+          "note": "已实看最上级考试功能开放截图与中级考试48%截图；它们不显示目标上级弓职的完整考试，所以具体弓B／A和马D仍以交叉原页为证。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · altema.jp / lnioni",
+          "url": "https://altema.jp/febansisenkou/lnioni",
+          "note": "第三家核对个人持弓力+3、ぶち抜き+弓战技攻+4必杀+10及Lv35；正文仍采用学会后措辞，无须额外承诺精确升级节点。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · note.com / n5c16043f9293",
+          "url": "https://note.com/korokke83700/n/n5c16043f9293",
+          "note": "赛奥朵拉第一部作者称单发能击倒脆法师，未注明难度；与另一蕾达作者负面评价并存，未将任何人的最强评价写入正文。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · note.com / n9b760b82b16f",
+          "url": "https://note.com/w0heero00w0/n/n9b760b82b16f",
+          "note": "作者完成蕾达篇、赛线5章，弓箭手伊尼奥尼受击与速度体验较差；未注明难度，不与Hard骑射截图做强度直比。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · hyperwiki.jp / ch7",
+          "url": "https://hyperwiki.jp/fefw/character/ch7/",
+          "note": "「基本情報／スカウト条件」列四线支援／名声，且四线全部写6000G；这与仓库既有按路线区分3000–6000G的金额不一致，未用该表更改招募价。该页「個人スキル」「習得するスキル戦技魔法」另列持弓力+3、Lv35ぶち抜き+弓战技攻击力+4必杀+10，与GameWith/Game8交叉一致。页面自注数据仍有缺项，不当完整习得表。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · gamecap.jp / shop.html",
+          "url": "https://gamecap.jp/fe_fw/shop.html",
+          "note": "第一部商店表「王都メガエラ／市場」L289–319列上级考试票证3000G，与GameWith577838同地标价一致；第三部价格另用shop3.html核对，不混合阶段。未将同页其他城镇或折扣未经核验地并入本轮。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · gamewith.jp / 578384",
+          "url": "https://gamewith.jp/fefw/578384",
+          "note": "「カーラの依頼の受注場所と期限」L418–431表格列カーラ神殿本殿、修复后接取、香木1个、奖励ボウナイト；「報酬」L455–462同样列ボウナイト。L433正文却误写クレール委托/神殿并带出复兴材料，未采用该段。第2区分与Game8第3区分差异已进入conflicts，不由日期裁定最早区分。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 贾斯敏",
+          "url": "https://gamewith.jp/fefw/577383",
+          "note": "L416–550成长、四线门槛、后攻命中+20及Lv35怒涛反击+；蕾达初出7章与Game8冲突，不采用固定章数"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 贾斯敏",
+          "url": "https://game8.jp/fe-banshisenko/816461",
+          "note": "L61–138重装与战象选项；L192–273擅长、招募、两项后攻技能；技能状态原图已实际查看，只表示该次斧B／重装B等状态，不是完整习得表"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 贾斯敏",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402773",
+          "note": "L95–108交叉核对四线支援／名声／费用；L129–151个人技能与擅长。战技表有重复且ガードスパイク的斧B与GameWith斧D不同，不采用解锁Rank"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 巨型重甲兵",
+          "url": "https://gamewith.jp/fefw/577349",
+          "note": "L421–438重装D、斧／枪B、上级票证；L671–693后攻耐物+5、精通后攻命中+10。幸运成长+10与Game8的0冲突，不取数值"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 巨型重甲兵",
+          "url": "https://game8.jp/fe-banshisenko/816649",
+          "note": "L57–72使用武器与考试备考值；L137–152后攻耐物+5、集中反击命中+10。与GameWith交叉核对"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 要塞",
+          "url": "https://gamewith.jp/fefw/577598",
+          "note": "L421–438重装C、斧／枪A、最上级票证；L677–697后攻耐物+7及精通减伤。速／技成长与Game8互换，不发布数值"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 要塞",
+          "url": "https://game8.jp/fe-banshisenko/816710",
+          "note": "L58–84备考与第三部开放；L145–160后攻耐物+7、精通减伤。实际查看开放截图，只能直接证明最上级考试已开放，不由截图推定日期"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 战象兵",
+          "url": "https://game8.jp/fe-banshisenko/816718",
+          "note": "L60–87马术C、第三部第1区分后开放；L112–129骑兵状态下攻击伤害减半且不能回避、重突进。速／技成长与GameWith互换，不采用"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 战象兵",
+          "url": "https://gamewith.jp/fefw/577923",
+          "note": "L418–427马术C与专用票证；L543–594骑兵条件技能及第三部开放。没有补写Game8列出的不能回避限制，不能把遗漏当反证；当前HTML使用可能技能仅馬術带_able，其余武器图标为灰色禁用，已核同页CSS，不能采用文本解析展开的全部图标"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 战象兵考试票证",
+          "url": "https://gamewith.jp/fefw/578870",
+          "note": "L415–448第三部帝都票证1500G、马术C及「戦象乗りの絆」取得象；考试原图下载403，未将图片内容作为证据"
+        },
+        {
+          "grade": "B",
+          "name": "ちゅこ · 凯伊线招募实录",
+          "url": "https://chucco.com/fefw-jasmine-scout/",
+          "note": "L32–60明确凯伊线1S／8R／2000G、兵种等级随进度变化；人物状态与付款确认两张原图均下载实看，可读重装步兵Lv28及2000G，不外推固定入队等级"
+        },
+        {
+          "grade": "B",
+          "name": "あゆりん · 凯伊篇第7章至通关实录",
+          "url": "https://note.com/komesoudoukumiai/n/n5716db4473b4",
+          "note": "原始HTML完整读取（web正文未收录全部相关段落）：第9章招募贾斯敏段及「理想郷の戦い」段；招募成功原图已实际查看，正文记录重装遇法师有被一击击倒风险。难度与版本未注明，不外推为必然结果"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 萨拉米斯战象",
+          "url": "https://gamewith.jp/fefw/578911",
+          "note": "L414–425「戦象乗りの絆」获得坐骑；L451–455仅列战象兵可骑。与专用票证页相符，但同属GameWith不算独立两站证据；不采用材料数量。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · gamewith.jp / 577359",
+          "url": "https://gamewith.jp/fefw/577359",
+          "note": "L421–428重装步兵主要技能为重装E，武器选择C；与Game8重装E+不同。L430–437守备成长+5也与Game8+25不同。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · game8.jp / 816660",
+          "url": "https://game8.jp/fe-banshisenko/816660",
+          "note": "L57–72重装E+、武器C；L122–137后攻耐物+3与大反击。重装E+和守备成长+25与GameWith不同。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · altema.jp / jasmine",
+          "url": "https://altema.jp/febansisenkou/jasmine",
+          "note": "当前完整原页L95–128确认槍／斧／重装擅长、剑／飞行苦手和后攻命中+20；原页已没有搜索结果曾显示的推荐兵种／遮断-5表。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · ameblo.jp / entry-12979061429.html",
+          "url": "https://ameblo.jp/9zimuban9/entry-12979061429.html",
+          "note": "L57–71明确首轮蕾达第1、2部已完；L165、219作者表示自己档贾斯敏只有守备成长，难度未注明。"
+        },
+        {
+          "grade": "C",
+          "name": "狩人と猫 · 蕾达初级资格考试实玩",
+          "url": "https://rodinia.blog.fc2.com/blog-entry-1157.html",
+          "note": "完整原页L19–29、L65–86：蕾达5章开放、卡塔妮雅74%初考失败后再次成功及票证损失。正文可核，但该页原始图片CDN403，未核看，不据此更改精确Rank。"
+        },
+        {
+          "grade": "C",
+          "name": "狩人と猫 · 蕾达中级资格考试实玩",
+          "url": "https://rodinia.blog.fc2.com/blog-entry-1159.html",
+          "note": "完整原页L17–42：Lv18天翼兵32%，Lv21剑D+时100%的单档记录；仅能支持普通考试并非所有建议Rank的绝对门槛。原图未核看，未用这例推导通过率公式或修改旧表。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 赠礼盒取得位置",
+          "url": "https://gamewith.jp/fefw/577850",
+          "note": "「贈り物の箱の入手方法」L401–410：明确标题只核迪托利希，其他主角仍调查中；先接任务，再在堡垒地下城取得；起点右侧楼梯到开阔区为本页单独细节。本轮不将未能看图的精确楼梯路线发布。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 乌尔坦德请求流程",
+          "url": "https://gamewith.jp/fefw/579060",
+          "note": "「贈り物の箱の入手方法」L431–439及「コロイオス砦の行き方」L441–449：进入地下城，跟目标标记调查发光点；堡垒在帝都西北。与同站物品页合计只算一个出版来源。"
+        },
+        {
+          "grade": "B",
+          "name": "Raider King · 乌尔坦德招募完整流程",
+          "url": "https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-ultand/",
+          "note": "Skeith Ruch 2026-09-29；「How to Recruit Ultand」L19–30：门槛、接受请求、帝都西北Corroios Fort Ruins、地下城发光采集点、回报入队；明确不是宝箱或敌人掉落。自署截图，但本轮图片403，不能称看过此站图证。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 乌尔坦德交涉",
+          "url": "https://game8.jp/fe-banshisenko/816420",
+          "note": "「交渉はコロイオス砦で贈り物の箱を拾ってくる」L239–242：堡垒在帝都西北，拾取后交付。原任务截图实际查看，显示目的地コロイオス砦、贈り物の箱0/1及期限11/27；图内不能可靠确定主角，不能拿它裁定三线期限。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 法比奥净化剑交涉",
+          "url": "https://game8.jp/fe-banshisenko/816421",
+          "note": "「交渉は8章ボスで入手できる『清めの剣』がおすすめ」L238–242明确以清めの剣成功招募，而不只是图片列出可选物品；实际查看物品选择图：蕾达与法比奥、清めの剣20/20（未强化）被选中。截图不是成功/扣物画面。"
+        },
+        {
+          "grade": "B",
+          "name": "Raider King · 法比奥招募完整流程",
+          "url": "https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-fabio/",
+          "note": "Skeith Ruch 2026-09-30；L19–31明确蕾达、外传及剧情条件，再交涉；作者亲自用Electron Agitator成功，并明确另列Cleansing Blades也可用。此站独立于Game8，但没有展示清净剑成功后的连续画面；不把所有稀有道具推广为可用。"
+        },
+        {
+          "grade": "B",
+          "name": "RPG Site · 蕾达第8章取剑",
+          "url": "https://www.rpgsite.net/guide/21210-fire-emblem-fortunes-weave-part-i-ledas-path-walkthrough",
+          "note": "完整蕾达流程「Part 1 Chapter 8 – Shape of the Conspiracy」L381–400；「Qualifier Braganca Brotherhood」Notes L399明确开战附近可拾取Cleansing Blade。这是战场拾取，未声称自动入包、全难度对照或永久可补领。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 蕾达第8章净化剑",
+          "url": "https://game8.jp/fe-banshisenko/816807",
+          "note": "「亡者には清めの剣かレダの『滅冥の歌』を使おう」L291–294：塔利穆恩在开战时落下清めの剣，应手动拾取。实际查看战场原图：塔利穆恩台词点名清めの剣，出发处前方有金色发光道具。图本身不是拾取后背包证据。与Game8角色页视为同一出版来源。"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 蕾达第8章取剑",
+          "url": "https://appmedia.jp/fe_banshisenkou/80404312",
+          "note": "「清めの剣が拾える」L132–136：试合开始时塔利穆恩落下清めの剣。完整页面正文已读；本轮未下载其配图。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · gamewith.jp / 577319",
+          "url": "https://gamewith.jp/fefw/577319",
+          "note": "原既有乌尔坦德条目完整页面；fort位置泛写，未代替物品页的路线限定。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · game8.jp / 822081",
+          "url": "https://game8.jp/fe-banshisenko/822081",
+          "note": "堡垒完整页面；地点与独立截图可查。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · www.reddit.com / ultand_recruitment_help",
+          "url": "https://www.reddit.com/r/FE_Fortunes_Weave/comments/1wqoy5y/ultand_recruitment_help/",
+          "note": "全文及回复；独立迪线玩家困惑，非完成流程，见限制。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · gamecap.jp / quest.html",
+          "url": "https://gamecap.jp/fe_fw/quest.html",
+          "note": "完整任务页面；重复错标和期限不明，不能据以改字段。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · gamewith.jp / 579107",
+          "url": "https://gamewith.jp/fefw/579107",
+          "note": "完整请求2页；分线段落与概要仍不同。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · raiderking.com / fire-emblem-fortunes-weave-how-to-recruit-jester",
+          "url": "https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-jester/",
+          "note": "完整过程但无分线地点，等级不采纳。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · nightlygamingbinge.com / fire-emblem-fortunes-weave-jester-guide",
+          "url": "https://nightlygamingbinge.com/fire-emblem-fortunes-weave-jester-guide/",
+          "note": "完整条目；迪/蕾请求名而没有任务地点，未解分流。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · game8.jp / 816789",
+          "url": "https://game8.jp/fe-banshisenko/816789",
+          "note": "完整凯伊路线页任务部分L1463–1474仍写请求2塞多砦，无法支持GameWith分线。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · raiderking.com / fire-emblem-fortunes-weave-how-to-recruit-peter",
+          "url": "https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-peter/",
+          "note": "完整页；一搜必中为单站保证，不发布。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · raiderking.com / fire-emblem-fortunes-weave-all-units-and-how-to-recruit-them",
+          "url": "https://raiderking.com/fire-emblem-fortunes-weave-all-units-and-how-to-recruit-them/",
+          "note": "完整总表的Fabio段L133–150；与同站专篇内容重复，只算同一作者来源。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · gamewith.jp / 577554",
+          "url": "https://gamewith.jp/fefw/577554",
+          "note": "蕾达第8章完整页未找到净化剑段，不作为取剑支持。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · note.com / n9654ff369737",
+          "url": "https://note.com/chinu_game/n/n9654ff369737",
+          "note": "迪线6–7章独立日记，全文没有取盒流程，不作为乌尔坦德证据。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · note.com / n7f386e076c21",
+          "url": "https://note.com/kowloon4/n/n7f386e076c21",
+          "note": "赛线第10章独立日记，全文没有取盒流程，不作为乌尔坦德证据。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "采集范围",
+          "reason": "开工先检查main 32aaa3c、内容计划、日志和10/6两次修订，保留伊尼奥尼头像及别名。实质核读65个按完整URL去重的原页，另看角色状态、交涉、委托及战场画面。图片不另算来源，同站多页与同一作者多篇不是独立实测。"
+        },
+        {
+          "site": "版本与难度",
+          "reason": "本站未运行游戏，未注明的版本／难度继续留空。伊尼奥尼有蕾达Hard/Classic单档证据；贾斯敏凯伊玩家未标难度，不外推全难度成长或稳定击杀。"
+        },
+        {
+          "site": "图片访问受限",
+          "reason": "Raider King乌尔坦德图片、GameWith原尺寸图及FC2初级考试图返回403，没有换客户端或相似路径绕过。未见图片不算图证；采用另行公开可读的Game8、Chucco与Note图片仅证明画面实际内容。"
+        },
+        {
+          "site": "无实质正文候选",
+          "reason": "伊尼奥尼AppMedia技能候选及贾斯敏4个导航／无关页面未定位可用内容，搜索摘要没有代替正文，均不计有效查证数；两个Note候选404亦排除。"
+        },
+        {
+          "site": "尚未解决",
+          "reason": "杰斯特请求2分线目的地、米迦艾拉3000G、早期考试Rank与未单列外传期限仍未获决定性证据。未拿一次失败或未核线索充当本轮新增内容。"
+        }
+      ]
+    },
+    {
       "date": "2026-10-06",
       "edition": "伊尼奥尼官方头像、别名查重与招募资料核对",
       "checked": 5,

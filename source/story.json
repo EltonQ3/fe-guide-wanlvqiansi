@@ -2395,32 +2395,70 @@
           },
           {
             "name": "贾斯敏",
-            "role": "重装承伤／反击",
-            "why": "被攻击时有命中加成，适合守狭口，但会与巴卡尼亚重叠。",
+            "role": "重装守点／后攻反击",
+            "why": "本线2S／4R、500G较省招募成本；后攻命中+20可补守点，但已有巴卡尼亚够用时不必重复投入。",
             "path": [
               "士兵",
               "重装步兵",
               "巨型重甲兵"
             ],
-            "train": "重装配合斧或枪专精，走重装步兵、巨型重甲兵；用反击磨血，保留治疗覆盖。",
-            "caution": "本线第7章才出现。慢速重装要避开法师、特效武器和集中攻击。",
-            "late": "第三部可考虑要塞；先满足解锁与考试要求，不提前分散第一部训练。",
+            "train": "斧或枪选一项主练并补重装；巨型重甲兵按主武器B＋重装D备考。后攻耐物+5与精通后攻命中+10帮助守点，早期考试以存档界面为准。",
+            "caution": "遇见后先核对本线招募条件。后攻增益不能当先手常驻；慢速重装要避开法师、特效与集中攻击。",
+            "late": "第三部可转要塞（主武器A＋重装C）；战象另需马术C、专用票证与象坐骑，且不能回避、不能装备武器。",
             "sources": [
               {
                 "url": "https://gamewith.jp/fefw/577383",
-                "label": "GameWith · 贾斯敏资料"
+                "label": "GameWith · 贾斯敏",
+                "evidenceLocation": "L416–550成长、四线门槛、后攻命中+20及Lv35怒涛反击+；蕾达初出7章与Game8冲突，不采用固定章数",
+                "checkedAt": "2026-10-07"
+              },
+              {
+                "url": "https://game8.jp/fe-banshisenko/816461",
+                "label": "Game8 · 贾斯敏",
+                "evidenceLocation": "L61–138重装与战象选项；L192–273擅长、招募、两项后攻技能；技能状态原图已实际查看，只表示该次斧B／重装B等状态，不是完整习得表",
+                "checkedAt": "2026-10-07"
+              },
+              {
+                "url": "https://appmedia.jp/fe_banshisenkou/80402773",
+                "label": "AppMedia · 贾斯敏",
+                "evidenceLocation": "L95–108交叉核对四线支援／名声／费用；L129–151个人技能与擅长。战技表有重复且ガードスパイク的斧B与GameWith斧D不同，不采用解锁Rank",
+                "checkedAt": "2026-10-07"
+              },
+              {
+                "url": "https://gamewith.jp/fefw/577349",
+                "label": "GameWith · 巨型重甲兵",
+                "evidenceLocation": "L421–438重装D、斧／枪B、上级票证；L671–693后攻耐物+5、精通后攻命中+10。幸运成长+10与Game8的0冲突，不取数值",
+                "checkedAt": "2026-10-07"
+              },
+              {
+                "url": "https://game8.jp/fe-banshisenko/816718",
+                "label": "Game8 · 战象兵",
+                "evidenceLocation": "L60–87马术C、第三部第1区分后开放；L112–129骑兵状态下攻击伤害减半且不能回避、重突进。速／技成长与GameWith互换，不采用",
+                "checkedAt": "2026-10-07"
+              },
+              {
+                "url": "https://gamewith.jp/fefw/578870",
+                "label": "GameWith · 战象兵考试票证",
+                "evidenceLocation": "L415–448第三部帝都票证1500G、马术C及「戦象乗りの絆」取得象；考试原图下载403，未将图片内容作为证据",
+                "checkedAt": "2026-10-07"
               }
             ],
-            "arrival": "第 7 章 · 5月出现",
+            "arrival": "遇见后确认本线条件",
             "fame": 4,
             "support": 2,
             "condition": "支付500G。",
             "pyramid": {
-              "role": "重装承伤",
+              "role": "重装守点",
               "priority": "situational",
               "label": "按需补位",
-              "note": "被攻击时有命中加成，适合守狭口，但会与巴卡尼亚重叠。"
-            }
+              "note": "2S／4R、500G补物理前排；已有巴卡尼亚够用时先养现成主力。"
+            },
+            "checkedAt": "2026-10-07",
+            "buildCheckedAt": "2026-10-07",
+            "gameVersion": null,
+            "difficulty": null,
+            "status": "page-reviewed",
+            "scope": "培养与招募条件经原页交叉核对；训练取舍为编辑建议，未作游戏实测；初出章与早期考试争议保留。"
           },
           {
             "name": "札可捏",

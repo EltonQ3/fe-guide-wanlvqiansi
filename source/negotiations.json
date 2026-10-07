@@ -821,29 +821,80 @@
     "name": "乌尔坦德",
     "kind": "任务＋物品",
     "condition": "完成「乌尔坦德的请求」，交付赠礼盒",
-    "details": "先接任务，再去北部コロイオス砦取得「贈り物の箱」交付；未接任务时不能预先拾取。",
+    "details": "先接受「ウルタンドの頼み」，再回收「贈り物の箱」并交付；未接任务时不能预先拾取。迪托利希线走法见下，其他路线先核对当前任务栏的目的地与期限。",
     "routes": [
       "迪托利希线",
       "赛奥朵拉线",
       "蕾达线"
     ],
-    "byRoute": {},
+    "byRoute": {
+      "迪托利希线": "满足本线3S／5R后，从乌尔坦德的「スカウト」接下请求。前往帝都西北「コロイオス砦」，进入地下城，跟随顶部目标标记调查发光拾取点，取得「贈り物の箱」后回帝都交付。目标是地下城里的任务拾取点，不需要靠重开宝箱或刷敌人掉落取得；此前清过宝箱时仍应检查任务标记。出发前核对当前任务期限，预留往返与回报时间。"
+    },
     "sources": [
       {
         "url": "https://gamewith.jp/fefw/577319",
         "label": "GameWith · 乌尔坦德资料"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577850",
+        "label": "GameWith · 赠礼盒取得位置",
+        "checkedAt": "2026-10-07",
+        "evidenceLocation": "「贈り物の箱の入手方法」L401–410：明确标题只核迪托利希，其他主角仍调查中；先接任务，再在堡垒地下城取得；起点右侧楼梯到开阔区为本页单独细节。本轮不将未能看图的精确楼梯路线发布。",
+        "part": 1,
+        "route": "迪托利希线",
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/579060",
+        "label": "GameWith · 乌尔坦德请求流程",
+        "checkedAt": "2026-10-07",
+        "evidenceLocation": "「贈り物の箱の入手方法」L431–439及「コロイオス砦の行き方」L441–449：进入地下城，跟目标标记调查发光点；堡垒在帝都西北。与同站物品页合计只算一个出版来源。",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-ultand/",
+        "label": "Raider King · 乌尔坦德招募完整流程",
+        "checkedAt": "2026-10-07",
+        "evidenceLocation": "Skeith Ruch 2026-09-29；「How to Recruit Ultand」L19–30：门槛、接受请求、帝都西北Corroios Fort Ruins、地下城发光采集点、回报入队；明确不是宝箱或敌人掉落。自署截图，但本轮图片403，不能称看过此站图证。",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816420",
+        "label": "Game8 · 乌尔坦德交涉",
+        "checkedAt": "2026-10-07",
+        "evidenceLocation": "「交渉はコロイオス砦で贈り物の箱を拾ってくる」L239–242：堡垒在帝都西北，拾取后交付。原任务截图实际查看，显示目的地コロイオス砦、贈り物の箱0/1及期限11/27；图内不能可靠确定主角，不能拿它裁定三线期限。",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
       }
     ],
-    "checkedAt": "2026-09-29",
+    "checkedAt": "2026-10-07",
     "gameVersion": null,
     "status": "page-reviewed",
-    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+    "scope": "第一部迪托利希线。多站原页支持地下城取盒与回报；GameWith物品页明确把位置限定为迪线。本站未实测，版本及难度未知；没有新的最早开放章或各路线期限判定。",
+    "difficulty": null
   },
   {
     "name": "法比奥",
     "kind": "外传＋剧情＋武器",
-    "condition": "迪托利希外传后，待本线第 11 章迪托利希败退，再交付合适武器",
-    "details": "资料记录有交付达·米纳系护手成功的例子（日文表格写「ド・ミナの籠手」）；这只是已知成功例，并非已验证的唯一可用武器。需 3S／9R。",
+    "condition": "完成迪托利希外传，且迪托利希阵营在本线败退后，交付合适武器",
+    "details": "资料记录有交付达·米纳系护手成功的例子（日文表格写「ド・ミナの籠手」）；这只是已知成功例，并非已验证的唯一可用武器。需 3S／9R。 蕾达线也可用「清めの剣」交涉。蕾达第8章布拉干萨同胞团战开始时，塔利穆恩会在出发处附近留下这把剑，需在战场上主动拾取，不是通关后自动入包。若已拾取，先检查库存再另寻交涉武器。 不把已知可用品例扩大为任意贵重武器都能通过。",
     "routes": [
       "蕾达线"
     ],
@@ -852,12 +903,73 @@
       {
         "url": "https://gamewith.jp/fefw/577318",
         "label": "GameWith · 法比奥资料"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816421",
+        "label": "Game8 · 法比奥净化剑交涉",
+        "checkedAt": "2026-10-07",
+        "evidenceLocation": "「交渉は8章ボスで入手できる『清めの剣』がおすすめ」L238–242明确以清めの剣成功招募，而不只是图片列出可选物品；实际查看物品选择图：蕾达与法比奥、清めの剣20/20（未强化）被选中。截图不是成功/扣物画面。",
+        "part": 1,
+        "route": "蕾达线",
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-fabio/",
+        "label": "Raider King · 法比奥招募完整流程",
+        "checkedAt": "2026-10-07",
+        "evidenceLocation": "Skeith Ruch 2026-09-30；L19–31明确蕾达、外传及剧情条件，再交涉；作者亲自用Electron Agitator成功，并明确另列Cleansing Blades也可用。此站独立于Game8，但没有展示清净剑成功后的连续画面；不把所有稀有道具推广为可用。",
+        "part": 1,
+        "route": "蕾达线",
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://www.rpgsite.net/guide/21210-fire-emblem-fortunes-weave-part-i-ledas-path-walkthrough",
+        "label": "RPG Site · 蕾达第8章取剑",
+        "checkedAt": "2026-10-07",
+        "evidenceLocation": "完整蕾达流程「Part 1 Chapter 8 – Shape of the Conspiracy」L381–400；「Qualifier Braganca Brotherhood」Notes L399明确开战附近可拾取Cleansing Blade。这是战场拾取，未声称自动入包、全难度对照或永久可补领。",
+        "part": 1,
+        "route": "蕾达线",
+        "chapter": "第8章",
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816807",
+        "label": "Game8 · 蕾达第8章净化剑",
+        "checkedAt": "2026-10-07",
+        "evidenceLocation": "「亡者には清めの剣かレダの『滅冥の歌』を使おう」L291–294：塔利穆恩在开战时落下清めの剣，应手动拾取。实际查看战场原图：塔利穆恩台词点名清めの剣，出发处前方有金色发光道具。图本身不是拾取后背包证据。与Game8角色页视为同一出版来源。",
+        "part": 1,
+        "route": "蕾达线",
+        "chapter": "第8章",
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
+      },
+      {
+        "url": "https://appmedia.jp/fe_banshisenkou/80404312",
+        "label": "AppMedia · 蕾达第8章取剑",
+        "checkedAt": "2026-10-07",
+        "evidenceLocation": "「清めの剣が拾える」L132–136：试合开始时塔利穆恩落下清めの剣。完整页面正文已读；本轮未下载其配图。",
+        "part": 1,
+        "route": "蕾达线",
+        "chapter": "第8章",
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部招募"
       }
     ],
-    "checkedAt": "2026-09-29",
+    "checkedAt": "2026-10-07",
     "gameVersion": null,
     "status": "page-reviewed",
-    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+    "scope": "第一部蕾达线。Game8角色页和独立Raider King完整指南均明确表示净化剑可成功；Game8实际选物画面只证明Leda曾在该交涉界面选择未强化净化剑。第8章拾取由RPG Site、Game8及AppMedia本线流程交叉核对，非全版本/难度实測。不得声称道具不消耗或所有耐久/强化状态都成功。",
+    "difficulty": null
   },
   {
     "name": "努佐",
