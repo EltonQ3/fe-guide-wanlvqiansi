@@ -972,6 +972,73 @@
               "label": "GameWith · 法比奥资料"
             }
           ]
+        },
+        {
+          "text": "蕾达线也可用「清めの剣」交涉。蕾达第8章布拉干萨同胞团战开始时，塔利穆恩会在出发处附近留下这把剑，需在战场上主动拾取，不是通关后自动入包。若已拾取，先检查库存再另寻交涉武器。",
+          "sources": [
+            {
+              "url": "https://game8.jp/fe-banshisenko/816421",
+              "label": "Game8 · 法比奥净化剑交涉",
+              "checkedAt": "2026-10-07",
+              "evidenceLocation": "「交渉は8章ボスで入手できる『清めの剣』がおすすめ」L238–242明确以清めの剣成功招募，而不只是图片列出可选物品；实际查看物品选择图：蕾达与法比奥、清めの剣20/20（未强化）被选中。截图不是成功/扣物画面。",
+              "part": 1,
+              "route": "蕾达线",
+              "chapter": null,
+              "difficulty": null,
+              "gameVersion": null,
+              "spoiler": "第一部招募"
+            },
+            {
+              "url": "https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-fabio/",
+              "label": "Raider King · 法比奥招募完整流程",
+              "checkedAt": "2026-10-07",
+              "evidenceLocation": "Skeith Ruch 2026-09-30；L19–31明确蕾达、外传及剧情条件，再交涉；作者亲自用Electron Agitator成功，并明确另列Cleansing Blades也可用。此站独立于Game8，但没有展示清净剑成功后的连续画面；不把所有稀有道具推广为可用。",
+              "part": 1,
+              "route": "蕾达线",
+              "chapter": null,
+              "difficulty": null,
+              "gameVersion": null,
+              "spoiler": "第一部招募"
+            },
+            {
+              "url": "https://www.rpgsite.net/guide/21210-fire-emblem-fortunes-weave-part-i-ledas-path-walkthrough",
+              "label": "RPG Site · 蕾达第8章取剑",
+              "checkedAt": "2026-10-07",
+              "evidenceLocation": "完整蕾达流程「Part 1 Chapter 8 – Shape of the Conspiracy」L381–400；「Qualifier Braganca Brotherhood」Notes L399明确开战附近可拾取Cleansing Blade。这是战场拾取，未声称自动入包、全难度对照或永久可补领。",
+              "part": 1,
+              "route": "蕾达线",
+              "chapter": "第8章",
+              "difficulty": null,
+              "gameVersion": null,
+              "spoiler": "第一部招募"
+            },
+            {
+              "url": "https://game8.jp/fe-banshisenko/816807",
+              "label": "Game8 · 蕾达第8章净化剑",
+              "checkedAt": "2026-10-07",
+              "evidenceLocation": "「亡者には清めの剣かレダの『滅冥の歌』を使おう」L291–294：塔利穆恩在开战时落下清めの剣，应手动拾取。实际查看战场原图：塔利穆恩台词点名清めの剣，出发处前方有金色发光道具。图本身不是拾取后背包证据。与Game8角色页视为同一出版来源。",
+              "part": 1,
+              "route": "蕾达线",
+              "chapter": "第8章",
+              "difficulty": null,
+              "gameVersion": null,
+              "spoiler": "第一部招募"
+            },
+            {
+              "url": "https://appmedia.jp/fe_banshisenkou/80404312",
+              "label": "AppMedia · 蕾达第8章取剑",
+              "checkedAt": "2026-10-07",
+              "evidenceLocation": "「清めの剣が拾える」L132–136：试合开始时塔利穆恩落下清めの剣。完整页面正文已读；本轮未下载其配图。",
+              "part": 1,
+              "route": "蕾达线",
+              "chapter": "第8章",
+              "difficulty": null,
+              "gameVersion": null,
+              "spoiler": "第一部招募"
+            }
+          ],
+          "checkedAt": "2026-10-07",
+          "route": "蕾达线"
         }
       ],
       "pages": [],
