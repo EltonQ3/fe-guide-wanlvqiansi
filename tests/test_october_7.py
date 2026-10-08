@@ -2,10 +2,25 @@
 import json
 import unittest
 from pathlib import Path
+from urllib.parse import urlsplit
 ROOT=Path(__file__).resolve().parents[1]
 DATA=json.loads((ROOT/'docs/data.js').read_text().removeprefix('window.FE_DATA = ').strip().removesuffix(';').replace('<\\/', '</'))
 
 class October7Tests(unittest.TestCase):
+    def test_current_conflict_citations_are_single_urls(self):
+        source=json.loads((ROOT/'source/_daily_log.json').read_text())['entries'][0]
+        for entry in (source, DATA['logs'][0]):
+            self.assertEqual(entry['date'],'2026-10-07')
+            for conflict in entry['conflicts']:
+                with self.subTest(topic=conflict['topic']):
+                    src=conflict['src']
+                    self.assertIsInstance(src,str)
+                    self.assertFalse(any(c.isspace() for c in src),src)
+                    self.assertEqual(src.count('://'),1,src)
+                    parsed=urlsplit(src)
+                    self.assertIn(parsed.scheme,('http','https'))
+                    self.assertTrue(parsed.netloc,src)
+
     def test_new_builds_keep_stable_ids_and_evidence(self):
         chars={c['name']:c for c in DATA['characters']}
         self.assertEqual(len(chars),55)

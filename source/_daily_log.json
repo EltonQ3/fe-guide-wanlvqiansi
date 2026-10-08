@@ -55,37 +55,37 @@
           "topic": "贾斯敏 · 蕾达线首次出现章",
           "current": "撤下路线卡固定章数及对应金字塔初出徽标；保留已交叉确认的2S／4R／500G。",
           "incoming": "GameWith为第一部第7章5月，Game8为第一部第6章；AppMedia确认门槛和费用但不提供初出章。尚无路线明确、日期连续的原始截图裁决。",
-          "src": "https://gamewith.jp/fefw/577383 https://game8.jp/fe-banshisenko/816461"
+          "src": "https://gamewith.jp/fefw/577383"
         },
         {
           "topic": "贾斯敏 · 重装步兵主要备考技能",
           "current": "不写早期精确重装Rank，不修改全站兵种旧表。",
           "incoming": "GameWith重装E，Game8重装E+；二者武器C一致，尚无考试图。",
-          "src": "https://gamewith.jp/fefw/577359 https://game8.jp/fe-banshisenko/816660"
+          "src": "https://gamewith.jp/fefw/577359"
         },
         {
           "topic": "贾斯敏 · 兵种成长率",
           "current": "只写明确的职责、个人成长弱点与技能，不发布争议兵种成长数值或期望面板。",
           "incoming": "要塞速/技为-15/+5 vs +5/-15；战象为-10/+20 vs +20/-10；巨型重甲兵幸运为+10 vs0。重装步兵守备成长+5 vs +25也不同。",
-          "src": "https://gamewith.jp/fefw/577598 https://game8.jp/fe-banshisenko/816710 https://gamewith.jp/fefw/577923 https://game8.jp/fe-banshisenko/816718 https://gamewith.jp/fefw/577349 https://game8.jp/fe-banshisenko/816649"
+          "src": "https://gamewith.jp/fefw/577598"
         },
         {
           "topic": "贾斯敏 · ガードスパイク习得Rank",
           "current": "不把该技能精确Rank纳入培养。",
           "incoming": "GameWith斧D；AppMedia斧B重复两行。Game8仅给当前技能状态图，不能用来确定最早习得Rank。",
-          "src": "https://gamewith.jp/fefw/577383 https://appmedia.jp/fe_banshisenkou/80402773"
+          "src": "https://gamewith.jp/fefw/577383"
         },
         {
           "topic": "贾斯敏 · 强度排名与玩家个体表现",
           "current": "不写强度Tier或最强；按缺口、成本、对手和生存预测给编辑建议。",
           "incoming": "GameWith A、Game8 C；蕾达玩家称自身档只有守备成长，独立凯伊流程则认为重装补位有用。路线、投入和成长不同，排名不可相互覆盖。",
-          "src": "https://gamewith.jp/fefw/577383 https://game8.jp/fe-banshisenko/816461 https://ameblo.jp/9zimuban9/entry-12979061429.html"
+          "src": "https://gamewith.jp/fefw/577383"
         },
         {
           "topic": "贾斯敏 · 技能精确等级与减伤数字",
           "current": "正文写「习得后」；不写精确遮断减伤，避免把摘要当当前原页证据。",
           "incoming": "Lv35来自GameWith，Game8交叉证明效果但未列等级。要塞遮断Game8写-5，GameWith只写减少伤害，本次打开Altema当前原页已无旧搜索结果的推荐兵种表。",
-          "src": "https://gamewith.jp/fefw/577383 https://game8.jp/fe-banshisenko/816461 https://gamewith.jp/fefw/577598 https://game8.jp/fe-banshisenko/816710"
+          "src": "https://gamewith.jp/fefw/577383"
         },
         {
           "topic": "乌尔坦德取得方式",
@@ -97,13 +97,13 @@
           "topic": "乌尔坦德期限",
           "current": "只采用本轮已核对的路线与步骤；未确认日期、地点或保底保证不写入正文。",
           "incoming": "Game8实看受注图显示11/27但无路线。Gamecap目录笼统10/24、正文一处把任务名误贴到ジール硬貨条目，另一处写贈り物の箱を倒す，页面不适合裁定精确期限。本轮不新增日期。",
-          "src": "https://gamecap.jp/fe_fw/quest.html https://game8.jp/fe-banshisenko/816420"
+          "src": "https://gamecap.jp/fe_fw/quest.html"
         },
         {
           "topic": "杰斯特请求2",
           "current": "只采用本轮已核对的路线与步骤；未确认日期、地点或保底保证不写入正文。",
           "incoming": "GameWith579107完整正文L452仍为凯伊矿山、其余セドー砦；概要L425仍笼统矿山。新增检查Game8凯伊路线完整页L1463–1474仍列セドー砦，不能把同站其他路线汇总表当独立实测。Raider King和NGB完整招募页没有地点信息，未补足路线证据，因此不新增确定分线行程。",
-          "src": "https://gamewith.jp/fefw/579107 https://game8.jp/fe-banshisenko/816789 https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-jester/ https://nightlygamingbinge.com/fire-emblem-fortunes-weave-jester-guide/"
+          "src": "https://gamewith.jp/fefw/579107"
         },
         {
           "topic": "彼得请求",
@@ -121,13 +121,13 @@
           "topic": "法比奥 · 精确交涉章／日",
           "current": "交涉条件仅保留迪托利希外传完成、其阵营在本线败退及3S／9R，不给统一章数或日期。",
           "incoming": "旧档案写蕾达第11章败退后，Game8写11/4以后，Raider King写第12章；不按多数裁决。清めの剣已由两份完整指南明确支持，但选物截图不能证明道具消耗与所有强化／耐久状态。",
-          "src": "https://game8.jp/fe-banshisenko/816421 https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-fabio/"
+          "src": "https://game8.jp/fe-banshisenko/816421"
         },
         {
           "topic": "战象兵 · 专用票证价格与坐骑任务",
           "current": "培养保留专用票证和象坐骑的额外准备，不发布1500G或任务材料数量。",
           "incoming": "GameWith578870唯一明确标价1500G；专用票证在同站兵种／物品两页一致，坐骑取得在物品／坐骑页一致，不能当独立两站。战象只有马术可用已核原页启用／灰色图标，并与Game8明确不能装备武器互证。",
-          "src": "https://gamewith.jp/fefw/578870 https://gamewith.jp/fefw/577923 https://game8.jp/fe-banshisenko/816461"
+          "src": "https://gamewith.jp/fefw/578870"
         }
       ],
       "new_sources": [
