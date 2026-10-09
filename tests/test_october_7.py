@@ -8,8 +8,8 @@ DATA=json.loads((ROOT/'docs/data.js').read_text().removeprefix('window.FE_DATA =
 
 class October7Tests(unittest.TestCase):
     def test_current_conflict_citations_are_single_urls(self):
-        source=json.loads((ROOT/'source/_daily_log.json').read_text())['entries'][0]
-        for entry in (source, DATA['logs'][0]):
+        source=next(e for e in json.loads((ROOT/'source/_daily_log.json').read_text())['entries'] if e['date']=='2026-10-07')
+        for entry in (source, next(e for e in DATA['logs'] if e['date']=='2026-10-07')):
             self.assertEqual(entry['date'],'2026-10-07')
             for conflict in entry['conflicts']:
                 with self.subTest(topic=conflict['topic']):
@@ -24,7 +24,7 @@ class October7Tests(unittest.TestCase):
     def test_new_builds_keep_stable_ids_and_evidence(self):
         chars={c['name']:c for c in DATA['characters']}
         self.assertEqual(len(chars),55)
-        self.assertEqual(sum(bool(c.get('builds')) for c in chars.values()),35)
+        self.assertGreaterEqual(sum(bool(c.get('builds')) for c in chars.values()),35)
         for name,cid in [('伊尼奥尼','text-5bc5d135'),('贾斯敏','58')]:
             self.assertEqual(chars[name]['id'],cid)
             b=chars[name]['builds']; self.assertEqual(b['checkedAt'],'2026-10-07')
@@ -64,7 +64,7 @@ class October7Tests(unittest.TestCase):
         for x in (u,f):self.assertEqual(len(x['sources']),len({s['url'] for s in x['sources']}))
 
     def test_log_and_static_pages_match(self):
-        e=DATA['logs'][0];self.assertEqual(e['date'],'2026-10-07')
+        e=next(e for e in DATA['logs'] if e['date']=='2026-10-07');self.assertEqual(e['date'],'2026-10-07')
         self.assertEqual(e['checked'],65);self.assertEqual(e['checked'],len({s['url'] for s in e['new_sources']}))
         self.assertEqual(len(e['merged']),4)
         for term in ('伊尼奥尼','贾斯敏','乌尔坦德','法比奥','杰斯特','早期资格考试'):

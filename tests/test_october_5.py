@@ -23,7 +23,7 @@ class October5Tests(unittest.TestCase):
         for b in [s,k]:
             self.assertIsNone(b['gameVersion']); self.assertIsNone(b['difficulty'])
             self.assertTrue(all(x.get('checkedAt')=='2026-10-05' and x.get('evidenceLocation') for x in b['sources']))
-        self.assertEqual(len([c for c in DATA['characters'] if c.get('builds')]),35)
+        self.assertGreaterEqual(len([c for c in DATA['characters'] if c.get('builds')]),35)
 
     def test_route_cards_keep_eligibility_and_training_tradeoffs(self):
         stories={s['id']:s for s in DATA['story']}

@@ -11,6 +11,435 @@
   },
   "entries": [
     {
+      "date": "2026-10-09",
+      "edition": "但丁与乌修拉培养、凯伊线奥林匹亚三段请求",
+      "checked": 54,
+      "merged": [
+        {
+          "text": "但丁新增先知双魔法输出、补疗控场及第三部职业取舍；明确队友魅力概率触发、单系转职限制和8000G招募预算。",
+          "src": "https://wing-game.hatenablog.com/entry/fe-fortunes-weave/units/dante"
+        },
+        {
+          "text": "乌修拉新增道具袋随队支援与剑弓培养，区分通用森林骑士和迪线解锁游侠，完整培养共37人；不以概率爆发保证击杀。",
+          "src": "https://game8.jp/fe-banshisenko/816434"
+        },
+        {
+          "text": "乌修拉交涉统一为所有问题都回答是，撤下未经充分证据支持的四次／四问；三线外传、支援名声及蕾达不可招募均保留。",
+          "src": "https://gamewith.jp/fefw/577307"
+        },
+        {
+          "text": "奥林匹亚补凯伊线完整三段交涉行程，区分平原探索与矿山地下城调查发光点；保持迪线旧流程，不新增最早章或统一期限。",
+          "src": "https://chucco.com/fefw-olympia-scout/"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "但丁 · 条件支援与双魔法取舍",
+          "current": "新增先知双魔法与第三部机动／单系取舍，不把概率技能当常驻光环或唯一终职。",
+          "incoming": "独立玩家个人技能原图证明受益队友魅力决定概率，トロン状态图证1–3射程；Game8技能图只到黑白B+，未列A魔法不能作为不会习得的反证。",
+          "src": "https://wing-game.hatenablog.com/entry/fe-fortunes-weave/units/dante"
+        },
+        {
+          "topic": "但丁 · 最早出现与骑乘双魔法开放",
+          "current": "不发布固定初出章或ヴァルキュリウム的精确开放区分。",
+          "incoming": "凯伊初出GameWith第3章／Game8第5章；ヴァルキュリウム第2／第3区分不同，只保留第三部完成ジュラの依頼并确认考试开放。",
+          "src": "https://game8.jp/fe-banshisenko/816947"
+        },
+        {
+          "topic": "乌修拉 · 交涉次数",
+          "current": "改为所有问题都选是，保留外传与三线门槛，不把四次改成另一个固定数。",
+          "incoming": "旧稿四次，Game8三次，GameWith仅全部；实际查看Game8单问图不足以裁定总数。",
+          "src": "https://game8.jp/fe-banshisenko/816434"
+        },
+        {
+          "topic": "乌修拉 · 职业与成长争议",
+          "current": "默认森林骑士过渡，游侠仅迪线已解锁时选；不发布争议成长数字或固定初始等级。",
+          "incoming": "游侠只列迪线挑战／蕾达兴行解锁，乌修拉蕾达不可招。森林骑士技成长与探影者速／技表两站不同；赛线Hard玩家约Lv30入队为单档。",
+          "src": "https://game8.jp/fe-banshisenko/816859"
+        },
+        {
+          "topic": "乌修拉 · 好機+及血印",
+          "current": "培养只写攻击时概率效果和习得后，不扩充精确习得等级或血印叠乘组合。",
+          "incoming": "GameWith列Lv35与束縛の天冠，Game8未列相应血印，不以缺项为反证；现有血印资料不由本轮擅自裁决。",
+          "src": "https://gamewith.jp/fefw/577307"
+        },
+        {
+          "topic": "杰斯特请求2 · 分线地点仍未解决",
+          "current": "保留既有任务链与当前任务栏核对，不新增确定分线目的地。",
+          "incoming": "本轮重看Game8请求2受注原图仍只证明セドー砦，未出现可辨主角；新读任天堂大辞典只列任务敌人，没有分线地点。GameWith正文仍凯伊矿山、其余塞多砦，概要仍笼统矿山。",
+          "src": "https://gamewith.jp/fefw/579107"
+        },
+        {
+          "topic": "米迦艾拉 · 迪托利希线3000G",
+          "current": "继续保留剧情加入与费用待核，不宣布免费或付费。",
+          "incoming": "新读RPG Site完整第四章及じどみちゃん实玩②，实际查看玩家剧情图与Game8队伍整备图，都能佐证入队却无金币前后或付款画面。Raider King表列N/A，GameWith仍3000G；不能用指南未写费用判免费。",
+          "src": "https://note.com/political_otaku/n/nb581a9729988"
+        },
+        {
+          "topic": "奥林匹亚 · 凯伊路线与泛用表",
+          "current": "只新增明确凯伊的平原探索及矿山地下城取物，保留既有迪线；不更改蕾达剧情加入。",
+          "incoming": "Game8正文未分路线地列绿洲／碧晶洞穴；GameWith明确分线，独立玩家11张截图可辨凯伊，受注画面直接列平原／矿山，足以限定采用凯伊路线。Game8另作アウロラローズ／蒼き心臓，玩家原图和GameWith为アウラムローズ／碧き心臓，采用原图写法。",
+          "src": "https://chucco.com/fefw-olympia-scout/"
+        },
+        {
+          "topic": "奥林匹亚 · 凯伊最早章及任务期限",
+          "current": "不新增固定最早章、统一截止日期或固定往返时间。",
+          "incoming": "GameWith凯伊初出第5章，Game8第4章；玩家是在11月实际接取，不能裁决最早章。其三张受注图均见11/27，但只代表该档，本轮保留出发前检查任务栏。",
+          "src": "https://game8.jp/fe-banshisenko/816430"
+        },
+        {
+          "topic": "早期资格考试 · 新图仍未覆盖牧师／萨满巫师",
+          "current": "保留现有看当前合格率的提示与建议等级，不改牧师／萨满巫师C/C+分歧。",
+          "incoming": "Game8 10/8更新页的新看图证据为赛奥朵拉上级龙骑考试：推荐35、名声8、飞行C和斧/枪B，当前飞行D仍有98%。不能用上级龙骑图更正早期黑/白魔法职业；GameWith概述的5/10/20亦不覆盖图内上级建议35的证据。",
+          "src": "https://game8.jp/fe-banshisenko/817102"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "B",
+          "name": "GameWith · 但丁",
+          "url": "https://gamewith.jp/fefw/577305",
+          "note": "L416–455成长与四线门槛；L500–531骑乘双魔法方向；L545–555个人技能、Lv35条件；L829–943魔法表含黑Aトロン与白Aフリーズ。凯伊初出章与Game8冲突，不采用。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 但丁",
+          "url": "https://game8.jp/fe-banshisenko/816433",
+          "note": "L193–243擅长、四线门槛与交涉；L273–285个人技能及条件；L292–373已确认魔法。实际查看技能状态图只到黑白B+，其未列A魔法不能用作不会习得的反证；8000G交涉原图已实看。"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 但丁",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402731",
+          "note": "L95–108四线支援／名声／8000G；L118–138成长、个人技能与擅长。技能正文把魅力误作魅了，采用另外两站与独立玩家原图一致的魅力。"
+        },
+        {
+          "grade": "B",
+          "name": "ウイング · 但丁迪线培养实录",
+          "url": "https://wing-game.hatenablog.com/entry/fe-fortunes-weave/units/dante",
+          "note": "L31–59物理脆弱、3射程トロン、白Aフリーズ与没有リブロー；L78–87两项概率技能；L113–129先知实用取舍。已下载实看L89个人技能原图和L124先知状态图，可直接读出Lv49、トロン及射程1–3；只证明该存档状态，不证明平均成长。"
+        },
+        {
+          "grade": "B",
+          "name": "ちゅこ · 凯伊线但丁招募记录",
+          "url": "https://chucco.com/fefw-dante-scout/",
+          "note": "原始HTML正文已完整读取（web正文抓取失败）：ダンテ及ダンテを仲間にする方法段，凯伊3S／10R、交8000G、等级兵种随进度变化。图片未查看，不把正文当作自有实测。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 先知",
+          "url": "https://game8.jp/fe-banshisenko/816647",
+          "note": "L57–72步行5、黑白双魔法、黑B备考；L127–142黑魔次数翻倍、魔法命中+5与精通邻接减速。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 先知",
+          "url": "https://gamewith.jp/fefw/577347",
+          "note": "L421–438黑B、上级票证、建议等级与名声；不将推奨等级写成绝对考试硬门槛。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 主教",
+          "url": "https://game8.jp/fe-banshisenko/816645",
+          "note": "L57–72白B及黑白双魔法；L137–152白魔次数翻倍、魔法回复+10与邻接结界。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 主教",
+          "url": "https://gamewith.jp/fefw/577346",
+          "note": "L421–429白B备考与上级票证，和Game8相符。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 游唱诗人",
+          "url": "https://game8.jp/fe-banshisenko/816715",
+          "note": "L58–95马D、黑／白B与凯伊／蕾达解锁任务；L122–139回复+5、命中+3及勇气咒歌。速／技成长与GameWith互换，不采用数值。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 游唱诗人",
+          "url": "https://gamewith.jp/fefw/577442",
+          "note": "L421–431凯伊贝特兰名声10、蕾达兴行4、马D及黑／白B、上级票证；与Game8交叉核对。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · ヴァルキュリウム",
+          "url": "https://game8.jp/fe-banshisenko/816947",
+          "note": "L58–80骑兵7、黑白魔法、马D及黑／白A、ジュラの依頼；L105–123回复+10、命中+5及静心咒歌。开放第3区分与GameWith第2区分起不同，前台不发布固定区分。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · ヴァルキュリウム",
+          "url": "https://gamewith.jp/fefw/577911",
+          "note": "L421–430马D、黑／白A、最上级票证与ジュラの依頼；L512–583乘降、回复+10、魔法命中+5。官方简中职名未核实，保留日文名。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 德鲁伊",
+          "url": "https://game8.jp/fe-banshisenko/816706",
+          "note": "L58–84黑A、第三部开放与可用技能列表只含黑魔；L129–144黑魔次数翻倍和命中+7。与独立玩家不能用フリーズ的观察交叉核对。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 贤者",
+          "url": "https://game8.jp/fe-banshisenko/816705",
+          "note": "L58–84白A、第三部开放、可用技能列表只含白魔；与独立玩家不能用トロン的观察交叉核对。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 上级考试票证",
+          "url": "https://gamewith.jp/fefw/577838",
+          "note": "L416–469帝都名声8起购买、3000G、次章补货、一考一票；L436–457凯伊白发鬼委托附送上级票证。价格为购买预算，并非必然总花费。；L416–435：帝都名声8起销售3000G及王都メガエラ市场同价；L461–469：上级一考一票，与Game8一致。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 最上级考试票证",
+          "url": "https://gamewith.jp/fefw/577837",
+          "note": "L416–448第三部各市场8000G及一考一票；フィーナの漁村同地价格与GameCap相符。；L416–448：第三部帝都和市场8000G、一考一票；只采用与GameCap共同列出的フィーナの漁村市场价格，不推定最低价。"
+        },
+        {
+          "grade": "B",
+          "name": "GameCap · 第三部商店",
+          "url": "https://gamecap.jp/fe_fw/shop3.html",
+          "note": "L137–165フィーナの漁村市场，最上级考试票证8000G，与GameWith交叉核对。；「フィーナの漁村／市場」L137–165：最上级票证8000G，与GameWith同阶段同地点交叉核对。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 乌修拉",
+          "url": "https://gamewith.jp/fefw/577307",
+          "note": "L439–466：三线支援/名声、外传与所有问题答是，蕾达不可招；L549–559：道具袋覆盖自身及周围2格、好機+攻击时（幸运÷2）%造成1.5倍伤害。L531–535的游侠过渡须另外核对路线解锁。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 乌修拉",
+          "url": "https://game8.jp/fe-banshisenko/816434",
+          "note": "L61–130：恶棍→森林骑士→探影者方向、迪线已解锁游侠才可改用；L233–244：三线门槛及全部答是，但写三次，与站内四次冲突；L284–305：技能与截图状态。已下载实看交涉单问与技能Rank两张图，均不能证明总问数或固定入队等级。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 恶棍",
+          "url": "https://gamewith.jp/fefw/577360",
+          "note": "L421–428：剑/弓C为选择技能；L638–708：战技栏+1、开锁、探索与精通暗影隐身，击倒后回避+10、再战一次恢复。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 恶棍",
+          "url": "https://game8.jp/fe-banshisenko/816661",
+          "note": "L57–72：剑/弓C备考；L97–115：战技栏+1、开锁及探索术，与GameWith一致。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 森林骑士",
+          "url": "https://gamewith.jp/fefw/577350",
+          "note": "L421–429：马D、弓B、上级票证与通过率；L511–608：乘降、战技栏+1、持弓命中+5、猎人之眼仅持弓追击攻击力+3。技成长+10与Game8+15不同，未采用。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 森林骑士",
+          "url": "https://game8.jp/fe-banshisenko/816650",
+          "note": "L57–72：剑/弓/马可用，骑乘移动6、马D/弓B备考；L107–125：持弓命中+5及猎人之眼追击条件，与GameWith一致。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 游侠",
+          "url": "https://gamewith.jp/fefw/577544",
+          "note": "L421–431：迪线名声10挑战、蕾达兴行解锁，剑/弓B及上级票证；L581–648：战技栏+2、开锁、上级探索与50%近身反击。仅用路线限制、备考与探索职能。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 游侠",
+          "url": "https://game8.jp/fe-banshisenko/816859",
+          "note": "L60–93：步兵、剑/弓B，迪线完成「挑戦者求む！必滅のオウコ」、蕾达完成兴行解锁。乌修拉蕾达线不可招，不能把此职业写成她的全路线默认上级。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 探影者",
+          "url": "https://gamewith.jp/fefw/577603",
+          "note": "L421–429：剑/弓A与最上级票证；L798–885：战技栏+3、开锁、最上级探索和落影之刃的有利地形条件。成长速+25/技+15与Game8倒置，正文不采用成长数值。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 探影者",
+          "url": "https://game8.jp/fe-banshisenko/816712",
+          "note": "L58–84：剑/弓A、步兵移动5及第三部第一分区完成后开放；L125–142：战技栏+3、开锁、最上级探索。正文保守写第三部开放后，不延伸其他特殊职业的精确开放区分。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 考试票证",
+          "url": "https://game8.jp/fe-banshisenko/816834",
+          "note": "L58–90：帝都考试官旁售票员、中级500G/上级3000G、每次考试消耗对应票证1张；用于预算，不当作必过保证。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 中级考试票证",
+          "url": "https://gamewith.jp/fefw/577835",
+          "note": "L416–439：帝都名声4起销售500G及其他市集同价；L480–487：中级一考一票，与Game8一致。"
+        },
+        {
+          "grade": "B",
+          "name": "酸化白味噌 · 赛奥朵拉线Hard/Classic实玩记录",
+          "url": "https://note.com/love_crucial/n/n5efe494c9ecb",
+          "note": "L8–15明确赛线与Hard/Classic；L213–236记录恶棍→森林骑士、实际靠道具袋分配药品解围。作者约Lv30入队为单档体验，不作为固定初始等级或全难度强度结论。"
+        },
+        {
+          "grade": "B",
+          "name": "Altema · 乌修拉",
+          "url": "https://altema.jp/febansisenkou/usyura",
+          "note": "L100–144剑系替代推荐和三线招募；与其他网站终职建议不同，只记录为编辑方案差异。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 杰斯特请求2",
+          "url": "https://gamewith.jp/fefw/579107",
+          "note": "L416–460仍有概要统一矿山与正文凯伊矿山／其余セドー砦的区分；未见新的路线明确原始证据。"
+        },
+        {
+          "grade": "B",
+          "name": "ちゅこっと陽だまる · 米迦艾拉",
+          "url": "https://chucco.com/fefw-mikaela-scout/",
+          "note": "完整文章说明迪线事件加入，其他线3000G；没有迪线支付或金币连续记录。"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 杰斯特",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402737",
+          "note": "招募节确认四线门槛与连续三任务；无请求2分线目的地。"
+        },
+        {
+          "grade": "B",
+          "name": "Raider King · 米迦艾拉",
+          "url": "https://raiderking.com/fire-emblem-fortunes-weave-how-to-recruit-mikaela/",
+          "note": "完整招募文把迪线列Story Recruitment／N/A，其他三线3000G；不是金币前后实测，不能单独裁决收费争议。"
+        },
+        {
+          "grade": "B",
+          "name": "RPG Site · 迪托利希第一部流程",
+          "url": "https://www.rpgsite.net/guide/21212-fire-emblem-fortunes-weave-part-i-dietrichs-path-walkthrough",
+          "note": "Chapter 4 L85–100：酒馆事件后、刃鸣教学时米迦艾拉已入队；未写支付过程，不能由缺项推导免费。"
+        },
+        {
+          "grade": "B",
+          "name": "じどみちゃん · 迪托利希篇实玩②",
+          "url": "https://note.com/political_otaku/n/nb581a9729988",
+          "note": "全文已读，L53–56叙述顺势加入；实际查看1789882200-bGjIXpyY6wJxHq5BLCF3USrZ原图，仅四人剧情会话，未显示金币或支付确认。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 迪托利希第四章",
+          "url": "https://game8.jp/fe-banshisenko/816480",
+          "note": "L63–109：进城前法比奥赠3000G、酒馆事件后米迦艾拉入队。实际查看入队节3b2b8224…图为队伍整备，无金币连续对照。"
+        },
+        {
+          "grade": "B",
+          "name": "ちゅこっと陽だまる · 凯伊奥林匹亚",
+          "url": "https://chucco.com/fefw-olympia-scout/",
+          "note": "完整文章与11张实机截图均已读取；新增凯伊三段路线、进入矿山地下城、调查发光点、逐段回报与最终入队。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 奥林匹亚请求2",
+          "url": "https://gamewith.jp/fefw/578553",
+          "note": "L417–471分线地点与回报程序支持凯伊平原探索；1400G只作本轮未采用线索。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 奥林匹亚",
+          "url": "https://gamewith.jp/fefw/577309",
+          "note": "L443–499门槛及三段分线原文，与凯伊实玩流程一致。凯伊初出5章与Game8的4章不一致，未用于新增最早章。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 奥林匹亚请求3",
+          "url": "https://gamewith.jp/fefw/578598",
+          "note": "L417–477明确凯伊矿山地下城、地面发光物与非宝箱／木箱。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 碧き心臓",
+          "url": "https://gamewith.jp/fefw/577865",
+          "note": "L414–440明确凯伊矿山及接取请求3后才能取物。页面物品位置原图403，未视看图成功。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 奥林匹亚",
+          "url": "https://game8.jp/fe-banshisenko/816430",
+          "note": "L222–276凯伊3S8R可互证；第二三段正文笼统绿洲／碧晶洞穴，不能覆盖独立凯伊实图。凯伊初出4章与GameWith5章冲突，未新增。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 杰斯特",
+          "url": "https://game8.jp/fe-banshisenko/816452",
+          "note": "L220–248三任务逐段回报；重看请求2原图12218e48…确认セドー砦，但无可辨主角，不裁定分线。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 米迦艾拉",
+          "url": "https://gamewith.jp/fefw/577316",
+          "note": "L439–455原表仍迪线剧情加入同时列3000G；与事件加入的独立记录并列保留，缺扣款证据。"
+        },
+        {
+          "grade": "B",
+          "name": "任天堂大辞典wiki · 杰斯特",
+          "url": "https://w.atwiki.jp/nitendo/pages/14193.html",
+          "note": "作品别L207–211列三段任务敌人名，无目的地、路线画面；不能补足请求2地点证据。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 资格考试更新与画面",
+          "url": "https://game8.jp/fe-banshisenko/817102",
+          "note": "2026-10-08 23:24更新；L79–121解释普通考试合格率，已下载并实际查看主要考试图：赛奥朵拉Lv37、龙骑上级考试推荐Lv35、名声8、飞行C与斧/枪B，当前飞行D仍显示98%。不是牧师或萨满巫师的早期考试画面，不能裁定其C/C+分歧。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 资格考试",
+          "url": "https://gamewith.jp/fefw/578224",
+          "note": "本轮重读原页，与Game8当前原图对照。概述仍把初/中/上级推荐等级写成5/10/20，不用这一概述推翻本站与实际考试画面相符的5/20/35；早期职业具体Rank仍须对应画面。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · note.com",
+          "url": "https://note.com/nagasugarrrrr/n/n30b9798730ba",
+          "note": "独立赛线体验L31–35提到但丁脆弱、由强壮队友保护；只作角色对位背景，不用于数值。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · game8.jp",
+          "url": "https://game8.jp/fe-banshisenko/817236",
+          "note": "路线编成页推荐但丁先知，与自身角色页纯奶推荐不同，视为取舍建议而非机制冲突。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · game8.jp",
+          "url": "https://game8.jp/fe-banshisenko/816618",
+          "note": "高门槛招募宜在达标后比较现有法系缺口；不把她当开局治疗保障。"
+        },
+        {
+          "grade": "B",
+          "name": "核对页 · gamecap.jp",
+          "url": "https://gamecap.jp/fe_fw/shop.html",
+          "note": "已打开第一部商店页；本次未对上级票证价格完成独立抽取，不用作价格互证。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "GameWith任务物品位置图",
+          "reason": "577865链接的8634921134b00f04894731de7d952bc7.png：web点击Internal Error，直接下载HTTP403；停止重试。已有独立玩家矿山发光点原图可核对，未声称看过该GameWith图。"
+        },
+        {
+          "site": "未发布的细节",
+          "reason": "休憩点房间右后通道只有独立玩家正文明确描述；截图可证发光调查点但不能单独核对全路径，因此发布文字采用任务标记与地面发光点，不新增精确转弯。奥林匹亚1400G与圣水店铺仅作为延伸线索，未完成第二份价格／库存实图核对，未新增。"
+        },
+        {
+          "site": "乌修拉扩展来源",
+          "reason": "hyperWiki ch8与AppMedia 80402746打开正文未检出角色技能，未采用搜索摘要作交叉证据，也不计入完整核对页数。"
+        },
+        {
+          "site": "实测边界",
+          "reason": "本轮实际查看的是公开玩家及攻略站截图，没有开展本站游戏内实测；版本与难度未统一的字段保持空值。"
+        }
+      ]
+    },
+    {
       "date": "2026-10-07",
       "edition": "伊尼奥尼与贾斯敏培养、地下城取盒与法比奥交涉备剑",
       "checked": 65,
