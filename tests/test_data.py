@@ -80,7 +80,7 @@ class DataTests(unittest.TestCase):
 
     def test_october_review_scope_and_dates(self):
         chars={c['name']:c for c in DATA['characters']}
-        self.assertEqual(chars['奥林匹亚']['negotiations']['routes'],['迪托利希线'])
+        self.assertEqual(chars['奥林匹亚']['negotiations']['routes'],['凯伊线','迪托利希线'])
         self.assertIn('碧晶洞穴',chars['奥林匹亚']['negotiations']['byRoute']['迪托利希线'])
         self.assertNotIn('铁弓×2',chars['努佐']['recruit']['迪托利希线'])
         self.assertIn('交涉提示',chars['努佐']['recruit']['迪托利希线'])

@@ -32,7 +32,7 @@ class October6Tests(unittest.TestCase):
             self.assertEqual(b['checkedAt'],'2026-10-06')
             self.assertTrue(all(s.get('evidenceLocation') and s['checkedAt']=='2026-10-06' for s in b['sources']))
             self.assertNotIn('第2区分',b['requirement']); self.assertNotIn('第3区分',b['requirement'])
-        self.assertEqual(sum(bool(c.get('builds')) for c in DATA['characters']),35)
+        self.assertGreaterEqual(sum(bool(c.get('builds')) for c in DATA['characters']),35)
 
     def test_route_cards_are_concise_and_preserve_eligibility(self):
         stories={s['id']:s for s in DATA['story']}

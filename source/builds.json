@@ -1292,5 +1292,247 @@
         "checkedAt": "2026-10-07"
       }
     ]
+  },
+  {
+    "name": "乌修拉",
+    "role": "随队道具袋支援／剑弓补刀与探索",
+    "early": "完成本线外传与招募后，先沿已有剑／弓技能培养。个人技能让自身及周围2格友军使用道具袋，适合随主队补给和收尾；恶棍以剑或弓C备考，兼顾开锁与探索，已有合适职业时不必降回初级重练。",
+    "middle": "通用过渡选森林骑士：弓B、马D，持弓命中+5，机动跟随需要补给的队友。精通「猎人之眼」只在持弓追击时攻击力+3，不会自动产生追击。迪托利希线完成「挑戦者求む！必滅のオウコ」解锁游侠后，也可按剑或弓B走步兵探索，省去额外马术；凯伊、赛奥朵拉线不默认能直接转游侠。",
+    "late": "第三部开放后可选探影者：集中剑或弓至A，无须双A；战技栏+3、开锁与最上级探索适合战斗兼探索。由森林骑士转回步兵会失去骑乘机动，当前更需要赶路补给时可继续现职。",
+    "requirement": "恶棍／森林骑士或游侠／探影者分别使用中级／上级／最上级票证，一考一票。帝都售票员中级500G、上级3000G；第三部フィーナの漁村市场最上级8000G，另留训练、武器和补考预算。技能Rank是备考方向，先确认本线开放、名声与当前合格率，不把建议等级当硬门槛。",
+    "caution": "「好機+」习得后，在攻击时按（幸运÷2）%概率令伤害变为1.5倍，击杀计划仍按不触发计算。道具袋范围不等于自动治疗或全图共享；随队时检查距离与敌方覆盖。已有弓手够用时，先看是否缺补给／探索职能再投资。",
+    "route": "第一部凯伊／迪托利希／赛奥朵拉线，完成本线招募后；蕾达线不可招募；探影者属于第三部",
+    "chapter": "实际入队后；不推定固定入队章或初始等级",
+    "scope": "技能、备考与费用经攻略原页交叉核对，另参考赛奥朵拉Hard/Classic玩家记录；训练与职业取舍为编辑建议，未作游戏实测。版本、难度未统一，不外推固定入队状态或全难度强度。",
+    "checkedAt": "2026-10-09",
+    "gameVersion": null,
+    "difficulty": null,
+    "status": "page-reviewed",
+    "spoilerLevel": "培养与招募条件",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577307",
+        "label": "GameWith · 乌修拉",
+        "evidenceLocation": "L439–466：三线支援/名声、外传与所有问题答是，蕾达不可招；L549–559：道具袋覆盖自身及周围2格、好機+攻击时（幸运÷2）%造成1.5倍伤害。L531–535的游侠过渡须另外核对路线解锁。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816434",
+        "label": "Game8 · 乌修拉",
+        "evidenceLocation": "L61–130：恶棍→森林骑士→探影者方向、迪线已解锁游侠才可改用；L233–244：三线门槛及全部答是，但写三次，与站内四次冲突；L284–305：技能与截图状态。已下载实看交涉单问与技能Rank两张图，均不能证明总问数或固定入队等级。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577360",
+        "label": "GameWith · 恶棍",
+        "evidenceLocation": "L421–428：剑/弓C为选择技能；L638–708：战技栏+1、开锁、探索与精通暗影隐身，击倒后回避+10、再战一次恢复。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816661",
+        "label": "Game8 · 恶棍",
+        "evidenceLocation": "L57–72：剑/弓C备考；L97–115：战技栏+1、开锁及探索术，与GameWith一致。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577350",
+        "label": "GameWith · 森林骑士",
+        "evidenceLocation": "L421–429：马D、弓B、上级票证与通过率；L511–608：乘降、战技栏+1、持弓命中+5、猎人之眼仅持弓追击攻击力+3。技成长+10与Game8+15不同，未采用。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816650",
+        "label": "Game8 · 森林骑士",
+        "evidenceLocation": "L57–72：剑/弓/马可用，骑乘移动6、马D/弓B备考；L107–125：持弓命中+5及猎人之眼追击条件，与GameWith一致。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577544",
+        "label": "GameWith · 游侠",
+        "evidenceLocation": "L421–431：迪线名声10挑战、蕾达兴行解锁，剑/弓B及上级票证；L581–648：战技栏+2、开锁、上级探索与50%近身反击。仅用路线限制、备考与探索职能。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816859",
+        "label": "Game8 · 游侠",
+        "evidenceLocation": "L60–93：步兵、剑/弓B，迪线完成「挑戦者求む！必滅のオウコ」、蕾达完成兴行解锁。乌修拉蕾达线不可招，不能把此职业写成她的全路线默认上级。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577603",
+        "label": "GameWith · 探影者",
+        "evidenceLocation": "L421–429：剑/弓A与最上级票证；L798–885：战技栏+3、开锁、最上级探索和落影之刃的有利地形条件。成长速+25/技+15与Game8倒置，正文不采用成长数值。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816712",
+        "label": "Game8 · 探影者",
+        "evidenceLocation": "L58–84：剑/弓A、步兵移动5及第三部第一分区完成后开放；L125–142：战技栏+3、开锁、最上级探索。正文保守写第三部开放后，不延伸其他特殊职业的精确开放区分。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816834",
+        "label": "Game8 · 考试票证",
+        "evidenceLocation": "L58–90：帝都考试官旁售票员、中级500G/上级3000G、每次考试消耗对应票证1张；用于预算，不当作必过保证。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577835",
+        "label": "GameWith · 中级考试票证",
+        "evidenceLocation": "L416–439：帝都名声4起销售500G及其他市集同价；L480–487：中级一考一票，与Game8一致。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577838",
+        "label": "GameWith · 上级考试票证",
+        "evidenceLocation": "L416–435：帝都名声8起销售3000G及王都メガエラ市场同价；L461–469：上级一考一票，与Game8一致。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577837",
+        "label": "GameWith · 最上级考试票证",
+        "evidenceLocation": "L416–448：第三部帝都和市场8000G、一考一票；只采用与GameCap共同列出的フィーナの漁村市场价格，不推定最低价。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamecap.jp/fe_fw/shop3.html",
+        "label": "GameCap · 第三部商店",
+        "evidenceLocation": "「フィーナの漁村／市場」L137–165：最上级票证8000G，与GameWith同阶段同地点交叉核对。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://note.com/love_crucial/n/n5efe494c9ecb",
+        "label": "酸化白味噌 · 赛奥朵拉线Hard/Classic实玩记录",
+        "evidenceLocation": "L8–15明确赛线与Hard/Classic；L213–236记录恶棍→森林骑士、实际靠道具袋分配药品解围。作者约Lv30入队为单档体验，不作为固定初始等级或全难度强度结论。",
+        "checkedAt": "2026-10-09"
+      }
+    ]
+  },
+  {
+    "name": "但丁",
+    "role": "黑魔输出／补疗控场 · 双魔法机动备选",
+    "early": "实际入队后沿现有黑魔法职业培养，保留已会的白魔法补疗，不必退回初级重练。ウィンド、シェイバー可针对飞行敌人；物理承伤偏弱，出手前仍看命中、攻速和反击射程，不因隔两格就默认安全。",
+    "middle": "主线可走萨满巫师 → 先知（ウァテス）：黑B备考，再向黑A的トロン推进，用3射程处理间接攻击敌人。先知兼用黑白魔法，黑魔次数翻倍、魔法命中+5。更缺治疗时可走白B主教；需要控场再练白Aフリーズ，使用前检查命中。",
+    "late": "第三部需要双魔法机动位时，补马D，完成ジュラの依頼并确认考试开放后选ヴァルキュリウム：魔法回复+10、魔法命中+5，但不自带两系次数翻倍。尚未开放或不缺机动可继续先知／主教；黑A德鲁伊不能用白魔，白A贤者不能用黑魔，转职前确认是否仍需兼顾トロン、补疗与フリーズ。",
+    "requirement": "先知黑B、主教白B；上级票证帝都3000G。ヴァルキュリウム按马D＋黑或白A备考，第三部フィーナの漁村市场最上级票证8000G。一考一票，开放与合格率以存档为准。想提早走游唱诗人还需马D＋黑或白B，并完成凯伊名声10白发鬼委托或蕾达「新商品を作ってお披露目したい4」；未开放就先用步兵。",
+    "caution": "个人技能在周围2格队友战斗时，按该队友的（魅力÷2）%触发必避+10；Lv35习得并装备「追加演出+」后，个人技能触发时再追加该队友命中、必杀+10，并非常驻光环。别为覆盖技能暴露她，也别用她替代リブロー远程治疗位。四线招募均需8000G，已有法系够用时先留升级与装备预算。",
+    "route": "第一部四路线，完成本线招募后；游唱诗人先核本线解锁，最上级方案属于第三部",
+    "chapter": "实际入队后；不指定固定初出章、入队等级或转职等级",
+    "scope": "角色与兵种原页交叉核对，另参考迪线先知实玩记录并查看其个人技能、トロン1–3射程状态图。训练与预算取舍为编辑建议，未作游戏实测；版本与难度未统一，单档数值不外推。",
+    "checkedAt": "2026-10-09",
+    "gameVersion": null,
+    "difficulty": null,
+    "status": "page-reviewed",
+    "spoilerLevel": "培养与招募条件",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577305",
+        "label": "GameWith · 但丁",
+        "evidenceLocation": "L416–455成长与四线门槛；L500–531骑乘双魔法方向；L545–555个人技能、Lv35条件；L829–943魔法表含黑Aトロン与白Aフリーズ。凯伊初出章与Game8冲突，不采用。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816433",
+        "label": "Game8 · 但丁",
+        "evidenceLocation": "L193–243擅长、四线门槛与交涉；L273–285个人技能及条件；L292–373已确认魔法。实际查看技能状态图只到黑白B+，其未列A魔法不能用作不会习得的反证；8000G交涉原图已实看。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://appmedia.jp/fe_banshisenkou/80402731",
+        "label": "AppMedia · 但丁",
+        "evidenceLocation": "L95–108四线支援／名声／8000G；L118–138成长、个人技能与擅长。技能正文把魅力误作魅了，采用另外两站与独立玩家原图一致的魅力。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://wing-game.hatenablog.com/entry/fe-fortunes-weave/units/dante",
+        "label": "ウイング · 但丁迪线培养实录",
+        "evidenceLocation": "L31–59物理脆弱、3射程トロン、白Aフリーズ与没有リブロー；L78–87两项概率技能；L113–129先知实用取舍。已下载实看L89个人技能原图和L124先知状态图，可直接读出Lv49、トロン及射程1–3；只证明该存档状态，不证明平均成长。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://chucco.com/fefw-dante-scout/",
+        "label": "ちゅこ · 凯伊线但丁招募记录",
+        "evidenceLocation": "原始HTML正文已完整读取（web正文抓取失败）：ダンテ及ダンテを仲間にする方法段，凯伊3S／10R、交8000G、等级兵种随进度变化。图片未查看，不把正文当作自有实测。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816647",
+        "label": "Game8 · 先知",
+        "evidenceLocation": "L57–72步行5、黑白双魔法、黑B备考；L127–142黑魔次数翻倍、魔法命中+5与精通邻接减速。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577347",
+        "label": "GameWith · 先知",
+        "evidenceLocation": "L421–438黑B、上级票证、建议等级与名声；不将推奨等级写成绝对考试硬门槛。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816645",
+        "label": "Game8 · 主教",
+        "evidenceLocation": "L57–72白B及黑白双魔法；L137–152白魔次数翻倍、魔法回复+10与邻接结界。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577346",
+        "label": "GameWith · 主教",
+        "evidenceLocation": "L421–429白B备考与上级票证，和Game8相符。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816715",
+        "label": "Game8 · 游唱诗人",
+        "evidenceLocation": "L58–95马D、黑／白B与凯伊／蕾达解锁任务；L122–139回复+5、命中+3及勇气咒歌。速／技成长与GameWith互换，不采用数值。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577442",
+        "label": "GameWith · 游唱诗人",
+        "evidenceLocation": "L421–431凯伊贝特兰名声10、蕾达兴行4、马D及黑／白B、上级票证；与Game8交叉核对。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816947",
+        "label": "Game8 · ヴァルキュリウム",
+        "evidenceLocation": "L58–80骑兵7、黑白魔法、马D及黑／白A、ジュラの依頼；L105–123回复+10、命中+5及静心咒歌。开放第3区分与GameWith第2区分起不同，前台不发布固定区分。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577911",
+        "label": "GameWith · ヴァルキュリウム",
+        "evidenceLocation": "L421–430马D、黑／白A、最上级票证与ジュラの依頼；L512–583乘降、回复+10、魔法命中+5。官方简中职名未核实，保留日文名。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816706",
+        "label": "Game8 · 德鲁伊",
+        "evidenceLocation": "L58–84黑A、第三部开放与可用技能列表只含黑魔；L129–144黑魔次数翻倍和命中+7。与独立玩家不能用フリーズ的观察交叉核对。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816705",
+        "label": "Game8 · 贤者",
+        "evidenceLocation": "L58–84白A、第三部开放、可用技能列表只含白魔；与独立玩家不能用トロン的观察交叉核对。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577838",
+        "label": "GameWith · 上级考试票证",
+        "evidenceLocation": "L416–469帝都名声8起购买、3000G、次章补货、一考一票；L436–457凯伊白发鬼委托附送上级票证。价格为购买预算，并非必然总花费。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577837",
+        "label": "GameWith · 最上级考试票证",
+        "evidenceLocation": "L416–448第三部各市场8000G及一考一票；フィーナの漁村同地价格与GameCap相符。",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://gamecap.jp/fe_fw/shop3.html",
+        "label": "GameCap · 第三部商店",
+        "evidenceLocation": "L137–165フィーナの漁村市场，最上级考试票证8000G，与GameWith交叉核对。",
+        "checkedAt": "2026-10-09"
+      }
+    ]
   }
 ]
