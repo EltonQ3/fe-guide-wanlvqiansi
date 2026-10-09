@@ -1534,5 +1534,265 @@
         "checkedAt": "2026-10-09"
       }
     ]
+  },
+  {
+    "name": "哪吒",
+    "role": "先攻剑系输出／拳套备选",
+    "early": "实际入队后优先剑术和可靠命中，沿现有斗士或剑客培养；已有合适职业时不必退回初级重练。个人「先手必胜」在先攻攻击时50%使攻击力+3，先按不触发也能完成的伤害安排收尾。剑术、格斗和步兵是擅长方向，没必要为兵种可用枪就额外补苦手枪术。",
+    "middle": "省训练路线是剑客 → 侍道：剑C／B备考，持续投入一项武器。侍道持剑必杀+5、战技栏+2；剑客精通「技巧精湛」只在必杀时增伤，侍道精通「残心」还要求以必杀击倒敌人才能少量回血，两者都不能替代常规治疗。想改用拳套时再另练格斗走勇士，持拳套命中+5，精通「熟练之技」只给战技攻击命中+10。",
+    "late": "第三部完成マーズの依頼并确认考试开放后，可沿剑A转刀剑将领：持剑必杀+7、战技栏+3，精通流星为五次攻击，每次伤害50%。未开放就继续侍道。已投入格斗、需要拳套输出时可按格斗A选战斗将领，持拳套命中+7；临时改武器仍要另付训练和装备成本，不为收集职业把剑、斧、格斗同时练到A。",
+    "requirement": "剑客用中级票证，侍道／勇士用上级票证，刀剑将领／战斗将领用最上级票证；每次考试消耗一张。帝都售票员中级500G、上级3000G；第三部フィーナの漁村市场最上级8000G，另留补考与武器预算。技能Rank作为备考方向，开放、名声和当前合格率先看存档；不把推荐等级当必达转职等级。",
+    "caution": "Lv35学会并装备「俺は止まらねぇ+」后，仍须先触发「先手必胜」，随后攻击才有50%机会攻击力+5；两项增伤都不能计入保底击杀。承伤和魔防不是强项，出手后检查反击、敌方覆盖及治疗距离。迪线已有迪托利希、蕾达线已有穆承担近战时，先养现成主力；凯伊／赛线也只在缺剑手时追加这笔投入。",
+    "route": "第一部四路线，完成本线招募后；刀剑将领与战斗将领属于第三部",
+    "chapter": "实际入队后；不推定固定入队章、初始等级或转职等级",
+    "scope": "角色、兵种和票证原页交叉核对，另实看玩家招募状态与交付成功图、Game8技能状态图。单修、转拳套、资源和站位取舍为本站编辑建议，未作游戏内实测；来源难度与版本未注明，不外推全难度最优。先攻沿用来源术语，不额外解释为仅玩家回合。力量成长及最上级开放区分冲突留在日志。",
+    "checkedAt": "2026-10-10",
+    "gameVersion": null,
+    "difficulty": null,
+    "status": "page-reviewed",
+    "spoilerLevel": "培养与招募条件",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577302",
+        "label": "GameWith · 哪吒",
+        "evidenceLocation": "L424–446擅长与四线招募；L540–577刀剑将领方向、个人技能先攻攻击50%+3、Lv35强化技能前置与50%+5。L548流星逐击判定只见单站说明，不采用。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816439",
+        "label": "Game8 · 哪吒",
+        "evidenceLocation": "L61–143剑系与拳套备选；L196–207四线与砂虫肉；L237–265个人/强化/步兵技能。已实看技能状态原图，可读剑B+、格斗D、步兵B+，不是完整习得表；力量55与其他原页45冲突。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://altema.jp/febansisenkou/najya",
+        "label": "Altema · 哪吒",
+        "evidenceLocation": "L61–96擅长剑/格斗/步兵、苦手枪及两项概率技能；L99–131侍道与刀剑将领。力量45；侍道魔防成长表为+5，与GameWith/Game8的-5冲突，不采用。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://hyperwiki.jp/fefw/character/ch30/",
+        "label": "HyperWiki · 哪吒",
+        "evidenceLocation": "L75–80四线招募；L98、L122–124个人先攻50%攻击+3、Lv35追加须个人触发后50%攻击+5、阳动指挥D。力量45。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816665",
+        "label": "Game8 · 剑客",
+        "evidenceLocation": "L57–72剑C备考与通过率；L132–147持剑必杀+3、战技栏+1、精通技巧精湛仅必杀时伤害+6。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577353",
+        "label": "GameWith · 侍道",
+        "evidenceLocation": "L416–429步兵、剑B、名声8与上级票证；本文只采用备考与职能，不发布成长数值。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816653",
+        "label": "Game8 · 侍道",
+        "evidenceLocation": "L57–72步兵与剑B备考；L137–152持剑必杀+5、战技栏+2及残心只在必杀击倒敌人时少量回复。与Altema原页技能相符。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577914",
+        "label": "GameWith · 刀剑将领",
+        "evidenceLocation": "L421–430剑A、最上级票证、マーズの依頼；L549–617战技栏+3、持剑必杀+7、精通流星五次攻击但每次伤害50%。精确开放区分与Game8冲突。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816951",
+        "label": "Game8 · 刀剑将领",
+        "evidenceLocation": "L60–81剑A备考、第三部修复マーズ神殿后完成委托开放；第三区分与GameWith第二区分以降冲突，正文只写第三部完成委托并确认开放。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577352",
+        "label": "GameWith · 勇士",
+        "evidenceLocation": "「必要技能とレベル」选择格斗/斧/剑B、上级票证；「スキル」持拳套命中+5、精通熟练之技仅战技攻击命中+10。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816652",
+        "label": "Game8 · 勇士",
+        "evidenceLocation": "L57–72步兵、剑/斧/格斗B选择技能；L135–153持拳套命中+5、战技攻击命中+10。与GameWith交叉核对；只采用格斗分支，不裁定AppMedia的剑/枪表差异。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577601",
+        "label": "GameWith · 战斗将领",
+        "evidenceLocation": "L421–429剑/斧/格斗A选择技能与最上级票证；L435速+5技-5与Game8倒置，不采用成长数值。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816714",
+        "label": "Game8 · 战斗将领",
+        "evidenceLocation": "L58–84剑/斧/格斗A备考及第三部开放；L147–165持拳套命中+7、战技栏+3。只写第三部，不以页面截图推定精确区分。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816834",
+        "label": "Game8 · 考试票证",
+        "evidenceLocation": "L58–90考试官旁售票员、中级500G/上级3000G、一考一张；次章补货。与GameWith票证页交叉核对。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577835",
+        "label": "GameWith · 中级考试票证",
+        "evidenceLocation": "L416–439帝都名声4起售500G；L480–487中级一考一张，与Game8一致。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577838",
+        "label": "GameWith · 上级考试票证",
+        "evidenceLocation": "L416–435帝都名声8起售3000G；L461–469一考一张，与Game8一致。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577837",
+        "label": "GameWith · 最上级考试票证",
+        "evidenceLocation": "L416–448第三部商店8000G、一考一张。只取与GameCap共同列出的フィーナの漁村市场标价。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamecap.jp/fe_fw/shop3.html",
+        "label": "GameCap · 第三部商店",
+        "evidenceLocation": "L137–164第三部フィーナの漁村市场最上级票证8000G，与GameWith交叉核对。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://chucco.com/fefw-naja-scout/",
+        "label": "ちゅこ · 哪吒招募实录",
+        "evidenceLocation": "L33–51斗士和已装备技能、3S/6R；L66–77砂虫肉三件交付成功。三张原图已下载实看，可读单档斗士Lv17、三件砂虫肉确认与招募成功；未据此外推固定加入等级、日期或全路线状态。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577364",
+        "label": "GameWith · 剑客",
+        "evidenceLocation": "L423–430剑C、名声4、考试通过率；L670–724持剑必杀+3、战技栏+1、精通技巧精湛仅必杀时伤害+6。与Game8交叉核对。",
+        "checkedAt": "2026-10-10"
+      }
+    ]
+  },
+  {
+    "name": "贝特朗",
+    "role": "觉醒自强化／第三部斧拳输出与剑系备选",
+    "early": "凯伊／迪托利希／赛奥朵拉线在第一部先完成贝特朗外传，第三部满足参战条件、实际可编成后再培养。低投入先保留已有勇士，主修常用斧或格斗，不必退回初级。勇士持斧／护手命中+5；精通并装备「熟练之技」后，仅战技攻击再获命中+10。武器先看实战命中与攻速，留足耐久和回复。",
+    "middle": "第三部第1区分完成、考试开放后可接战斗将领：剑／斧／格斗选一项A备考，常用斧拳则不必三项全修。职业给战技栏+3、持斧／护手命中+7。精通「战鬼一击」是需要选择使用的斧战技，伤害为1.5倍；拳系成型不等于每次攻击都获得这个倍率。预算不足可继续勇士补刀。",
+    "late": "想改走剑系，可练剑A并在完成マーズの依頼、确认考试开放后选刀剑将领，换取持剑必杀+7；需另配剑，不能继续照搬斧拳战技。高投入再考虑ジ・エターナル：第三部第4区分起取得专用道具后，沿常用剑／斧／格斗一项S备考。已有穆或诺克裘拉成型时，先比较队伍缺口，再分配神将道具。",
+    "requirement": "战斗将领／刀剑将领每次考试需最上级票证1张，第三部フィーナの漁村市场标价8000G，另留训练、换武器和补考预算；Rank按备考目标写，合格率以存档为准。ジ・エターナル另需天冠神殿的「裁きの天秤」及开门钥匙。第一部四线均不可常规挖角；外传只在凯伊／迪托利希／赛奥朵拉线发生，蕾达线不能照搬。",
+    "caution": "觉醒可先强化再攻击，持续至下次己方阶段：覇ノ覚醒补命中+50，閃／理分别补耐物／耐魔+10，嵐补回避+30；按将要面对的敌人选择，仍要算消耗后的HP与承伤。「铠葬流」仅5%概率无视攻速追击，击杀计划按不触发算。「冥狂」把槽升至6且爆发不解除Overblaze，却没有免除冥府型爆发削减最大HP的代价。",
+    "route": "第三部满足贝特朗外传条件并实际可编成后；第一部只作外传准备，临时助战不等于已能自主培养",
+    "chapter": "第三部第1区分起的条件参战；自由培养与考试以实际入队、编成和开放状态为准，不指定固定入队等级",
+    "scope": "人物、兵种与考试原页交叉核对，并实看第一部觉醒、第二部勇士和第三部困难通关状态图。培养、装备、预算和同定位替代为编辑建议，未作游戏实测；单档截图不代表平均成长，版本与难度未统一。",
+    "checkedAt": "2026-10-10",
+    "gameVersion": null,
+    "difficulty": null,
+    "status": "page-reviewed",
+    "spoilerLevel": "第三部加入与培养条件",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577593",
+        "label": "GameWith · 贝特朗",
+        "evidenceLocation": "L429–454个人技能及第一部四线不可挖角、第三部条件参战；L459–470外传路线；L474–541剑系方向；L1038–1102冥府型、四种觉醒与冥狂。未采用成长值、血印及精确技能Rank。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816882",
+        "label": "Game8 · 贝特朗",
+        "evidenceLocation": "L67–115现有勇士接战斗将领的方向；L134–166擅长与第三部条件参战；L189–253个人技能、觉醒及两种25%技能。技能截屏实看为剑B+、斧B+、格斗B、指挥B+，不能把不完整技能表当作完整习得表；6HP与第一部图证不一致，不发布统一消耗。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816676",
+        "label": "Game8 · 贝特朗外传与觉醒实图",
+        "evidenceLocation": "L63–80外传可发生于凯伊／迪托利希／赛奥朵拉，蕾达无此任务；L128–134觉醒。实看L130原图：Lv28临时参战，四项觉醒显示5HP，选中閃ノ覚醒显示耐物+10、使用后可继续攻击、到下一己方阶段。L137所谓覇絶图实际是覇ノ覚醒命中+50，不能证明该段覇絶结论。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816652",
+        "label": "Game8 · 勇士",
+        "evidenceLocation": "L57–72剑／斧／格斗B备考、步兵5与可用武器；L135–153战技栏+2、持斧／护手命中+5、精通后战技攻击命中+10。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577352",
+        "label": "GameWith · 勇士",
+        "evidenceLocation": "L421–429剑／斧／格斗B与上级票证；L637–705持斧／护手命中+5及精通熟练之技只强化战技命中，与Game8相符。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816714",
+        "label": "Game8 · 战斗将领",
+        "evidenceLocation": "L58–84剑／斧／格斗A选修与第三部第1区分完成后开放；L147–165战技栏+3、持斧／护手命中+7及战鬼一击。成长表速／技与GameWith相反，不采用。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577601",
+        "label": "GameWith · 战斗将领",
+        "evidenceLocation": "L421–429剑／斧／格斗A选修及最上级票证；L637–722持武器命中加成与精通战鬼一击，明确标为斧战技。速／技成长分歧保留。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://appmedia.jp/fe_banshisenkou/80413945",
+        "label": "AppMedia · 战斗将领",
+        "evidenceLocation": "L80–103第三部第1区分后开放、剑／斧／格斗选修A和可用剑斧护手；L105–133战鬼一击是射程1的斧战技，伤害1.5倍，不是常驻被动。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://appmedia.jp/fe_banshisenkou/80397295",
+        "label": "AppMedia · 考试与选择技能",
+        "evidenceLocation": "L88–106：合格率随技能Rank变化；仅有选择技能时以其中一项达标即可提高合格率。用于避免把三个武器A写成全修硬门槛，不采用早期职业争议Rank。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816951",
+        "label": "Game8 · 刀剑将领",
+        "evidenceLocation": "L60–81剑A、剑／枪／步兵可用、マーズ神殿修复后委托解锁；L141–156持剑必杀+7及流星。开放第3区分与GameWith第2区分起不同，前台不写固定区分。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577914",
+        "label": "GameWith · 刀剑将领",
+        "evidenceLocation": "L421–430剑A、最上级票证、マーズの依頼；L546–621持剑必杀+7与精通流星。其第2区分起说法不用于裁定开放时间。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816943",
+        "label": "Game8 · ジ・エターナル",
+        "evidenceLocation": "L58–83选修剑／斧／格斗S、裁きの天秤、第三部第4区分及天冠神殿钥匙；只采门槛与资源，不采用神将精通名称。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577879",
+        "label": "GameWith · ジ・エターナル",
+        "evidenceLocation": "L423–432选修S与裁きの天秤；L597–642第三部第4区分起天冠神殿开放、钥匙与预言者之间取得专用道具。神将精通名称与Game8不同，不采用。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577837",
+        "label": "GameWith · 最上级考试票证",
+        "evidenceLocation": "L416–448第三部市场和售票员8000G、一考一票；フィーナの漁村同地价格与GameCap交叉核对。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://gamecap.jp/fe_fw/shop3.html",
+        "label": "GameCap · 第三部商店",
+        "evidenceLocation": "L137–165フィーナの漁村市场的最上级考试票证8000G。只作价格与目的地交叉核验，不外推其他购买条件。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://note.com/kanata_64/n/n45c8bf11df45",
+        "label": "kanata · 蕾达线至战争篇实玩",
+        "evidenceLocation": "L195–202第二部NPC贝特朗及命中觉醒用途，另下载并实看本段状态图：Lv46勇士、个人技能、战技栏+2、斧／格斗命中+5。只证明该档第二部配置，不把NPC用法写为第一部自由培养。",
+        "checkedAt": "2026-10-10"
+      },
+      {
+        "url": "https://note.com/yoru_yomi/n/n27bd32892c3b",
+        "label": "よるよみ · 困难通关培养回顾",
+        "evidenceLocation": "L23–28难度和截图背景；L62–68探影者转ジ・エターナル、火力及承伤取舍。实看本段截图：Lv70ジ・エターナル，剑S、斧A、格斗A；只证明该单档配置，不外推平均能力或唯一最优路线。",
+        "checkedAt": "2026-10-10"
+      }
+    ]
   }
 ]
