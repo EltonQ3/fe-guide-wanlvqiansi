@@ -55,7 +55,7 @@
     "name": "彼得",
     "kind": "任务",
     "condition": "完成「彼得的请求」",
-    "details": "先接受「ピーテルの頼み」，再到東アイギーナ山探索，取得「幻のギンジ」后交付。未接任务时不能预先拾取。",
+    "details": "先接受「ピーテルの頼み」，再到世界地图东部的「アイギーナ山」探索，取得「幻のギンジ」后交付。未接任务时不能预先拾取。",
     "routes": [
       "迪托利希线",
       "赛奥朵拉线",
@@ -66,12 +66,32 @@
       {
         "url": "https://gamewith.jp/fefw/577320",
         "label": "GameWith · 彼得资料"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816419",
+        "label": "Game8 · 彼得受注图与地名",
+        "checkedAt": "2026-10-10",
+        "evidenceLocation": "L194–205既有四线条件及地图东部ウルカ駅附近探索。已实际查看L204原始受注图，任务目的地直接写アイギーナ山、交付幻のギンジ×1；图不提供可无歧义识别的主角头像，因此不冒称三线分别实测。",
+        "part": 1,
+        "route": null,
+        "chapter": null,
+        "difficulty": null,
+        "gameVersion": null,
+        "spoiler": "第一部外传／招募"
       }
     ],
     "checkedAt": "2026-09-29",
     "gameVersion": null,
     "status": "page-reviewed",
-    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。"
+    "scope": "公开攻略页面核对；未作游戏内逐项实测。编辑建议不代表唯一最优解。",
+    "imageEvidence": [
+      {
+        "url": "https://img.game8.jp/13012424/61b4935858d943c2d745b096dd5012cd.webp/show",
+        "checkedAt": "2026-10-10",
+        "evidenceLocation": "已实看：ピーテルの頼み受注图，目的地アイギーナ山、幻のギンジ0/1与11/27；无清晰主角头像，不用于新增分线期限。",
+        "route": null
+      }
+    ]
   },
   {
     "name": "艾丝梅拉尔达",
