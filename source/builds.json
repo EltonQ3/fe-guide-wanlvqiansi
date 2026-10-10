@@ -1815,73 +1815,73 @@
       {
         "url": "https://gamewith.jp/fefw/577304",
         "label": "GameWith · 希蒙",
-        "evidenceLocation": "个人技能及Lv习得表：HP≥2、致命伤害时幸運%留1HP；Lv35击杀幸運+2，上限+10且只到地图结束。斧系方向为推荐，不是唯一最优。",
+        "evidenceLocation": "个人技能「死にそびれ」及Lv35「悪運+」习得表；おすすめ育成。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://game8.jp/fe-banshisenko/816435",
         "label": "Game8 · 希蒙",
-        "evidenceLocation": "育成段落推荐剑客→侍道→刀剑将领；个人／等级技能表与GameWith相符。剑斧步兵擅长。未采用成长率排名、骑乘数值与固定最早加入章。",
+        "evidenceLocation": "育成方向「剣客→侍道→刀剣将領」；个人技能、等级技能与擅长技能表。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://hyperwiki.jp/fefw/character/ch20/",
         "label": "HyperWiki · 希蒙",
-        "evidenceLocation": "个人技能与Lv35恶运+表交叉核对，+10仅持续本地图；四路线原有支援／名声一致。",
+        "evidenceLocation": "个人技能「死にそびれ」与Lv35「悪運+」表。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://appmedia.jp/fe_banshisenkou/80402743",
         "label": "AppMedia · 希蒙",
-        "evidenceLocation": "个人技能HP≥2和幸運%生还、擅长剑／斧／步兵、苦手白魔；四线招募条件核对，未改既有表。",
+        "evidenceLocation": "个人技能、得意／苦手技能与四路线招募条件表。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://gamewith.jp/fefw/577352",
         "label": "GameWith · 勇士",
-        "evidenceLocation": "必要技能表剑／斧／格斗选修B、上级票证；技能段持斧命中+5、熟练之技仅战技攻击命中+10。",
+        "evidenceLocation": "兵种考试必要技能、票证与「斧の達人」兵种技能。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://game8.jp/fe-banshisenko/816652",
         "label": "Game8 · 勇士",
-        "evidenceLocation": "必要技能表选修B、技能段战技栏+2及持斧命中+5；与GameWith交叉核对。",
+        "evidenceLocation": "必要技能表与「斧の達人」兵种技能。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://gamewith.jp/fefw/577353",
         "label": "GameWith · 侍道",
-        "evidenceLocation": "剑B及上级票证；兵种持剑必杀+5，精通残心仅必杀击倒敌人时少量回复。",
+        "evidenceLocation": "考试必要技能与「剣の達人」「残心」技能段落。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://game8.jp/fe-banshisenko/816653",
         "label": "Game8 · 侍道",
-        "evidenceLocation": "必要技能与技能段：剑B、持剑必杀+5、残心的必杀击倒条件。",
+        "evidenceLocation": "必要技能表；兵种技能与精通技能「残心」。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://gamewith.jp/fefw/577601",
         "label": "GameWith · 战斗将领",
-        "evidenceLocation": "选修剑／斧／格斗A、最上级票证；速／技成长与Game8相反，不用于发布精确成长或排名。",
+        "evidenceLocation": "考试必要技能与最上级票证；采用选修剑／斧／格斗A条件。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://game8.jp/fe-banshisenko/816714",
         "label": "Game8 · 战斗将领",
-        "evidenceLocation": "兵种技能战技栏+3、持斧命中+7；成长表速−5、技+5与GameWith有分歧。",
+        "evidenceLocation": "必要技能与兵种技能；战技栏+3、持斧命中+7。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://gamewith.jp/fefw/577914",
         "label": "GameWith · 刀剑将领",
-        "evidenceLocation": "剑A、最上级票证、完成マーズの依頼。开放写第2区分以降，与Game8第3区分不同，只发布共同前置。",
+        "evidenceLocation": "考试必要技能、最上级票证与「マーズの依頼」开放前置。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://game8.jp/fe-banshisenko/816951",
         "label": "Game8 · 刀剑将领",
-        "evidenceLocation": "剑A备考、マーズ神殿修复后委托开放；不把第3区分作为本轮精确时点。",
+        "evidenceLocation": "考试必要技能与神殿修复后「マーズの依頼」前置。",
         "checkedAt": "2026-10-11"
       }
     ]
@@ -1906,67 +1906,67 @@
       {
         "url": "https://gamewith.jp/fefw/577339",
         "label": "GameWith · 莎兰",
-        "evidenceLocation": "白魔培养方向、引き寄せ后可用辅助魔法、Lv35相邻友军速度+4；只迪／蕾可挖，外传是前置。未将概括外传日期泛化为两线。",
+        "evidenceLocation": "推荐培养；个人技能「おせっかい」、Lv35「注意喚起+」与招募路线。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://game8.jp/fe-banshisenko/816438",
         "label": "Game8 · 莎兰",
-        "evidenceLocation": "个人与等级技能、步兵引き寄せ向后移一格且大型单位不可用；圣枪师是额外枪A方向。实际查看技能原图为白B+、指挥B+、黑D，法术列表不完整，不据缺项推定无法学习。",
+        "evidenceLocation": "推荐圣枪师的额外枪A投入；个人／等级技能与战技「引き寄せ」说明。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://hyperwiki.jp/fefw/character/ch18/",
         "label": "HyperWiki · 莎兰",
-        "evidenceLocation": "个人技能引き寄せ后可用辅助魔法；魔法栏尚在制作、凯伊／赛线招募数值留空，不能据此认定四线可招募。",
+        "evidenceLocation": "个人技能「おせっかい」：引き寄せ后可用辅助魔法。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://gamewith.jp/fefw/577346",
         "label": "GameWith · 主教",
-        "evidenceLocation": "白B、上级票证；白魔次数加倍、治疗友军回复+10，精通结界相邻友军魔防+3。",
+        "evidenceLocation": "必要白B及上级票证；白魔次数加倍、友军治疗量+10。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://game8.jp/fe-banshisenko/816645",
         "label": "Game8 · 主教",
-        "evidenceLocation": "白B备考与白魔次数加倍／回复+10；提供不必另修黑B的白魔上级方向。",
+        "evidenceLocation": "必要技能表与白魔次数加倍、治疗+10的兵种技能。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://gamewith.jp/fefw/577595",
         "label": "GameWith · 贤者",
-        "evidenceLocation": "白A、最上级票证、白魔次数加倍与回复+15；速／技成长与Game8互换。回复说明把回復写成攻撃，按技能名和Game8治疗定义核对，不写为攻击回血。",
+        "evidenceLocation": "必要白A、最上级票证；白魔次数加倍与回复+15技能。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://game8.jp/fe-banshisenko/816705",
         "label": "Game8 · 贤者",
-        "evidenceLocation": "白A；白魔次数加倍，治疗友军回复+15；成长表速0、技+5，与GameWith速+5、技0不同。",
+        "evidenceLocation": "必要技能与兵种技能；白魔次数加倍、治疗友军回复+15。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://gamewith.jp/fefw/577599",
         "label": "GameWith · 圣枪师",
-        "evidenceLocation": "枪A、最上级票证；白魔次数加倍／回复+10，精通不退架势在满HP战斗时防御力+5。",
+        "evidenceLocation": "必要枪A与最上级票证；兵种治疗技能、精通「不退の構え」。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://game8.jp/fe-banshisenko/816711",
         "label": "Game8 · 圣枪师",
-        "evidenceLocation": "枪A、可用枪／白魔／步兵；兵种回复+10与白魔次数加倍，精通满HP防御力+5。",
+        "evidenceLocation": "必要枪A与可用枪／白魔／步兵；兵种治疗技能、精通满HP防御+5。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://gamewith.jp/fefw/573032",
         "label": "GameWith · 位移战技",
-        "evidenceLocation": "引き寄せ条：步兵限定，相邻友军和自己向后移一格，不能对大型单位使用。角色习得表未列莎兰，不用于确定其学习Rank。",
+        "evidenceLocation": "战技「引き寄せ」条目：步兵限定、自己与相邻友军后退一格、大型单位限制。",
         "checkedAt": "2026-10-11"
       },
       {
         "url": "https://note.com/llatte827/n/n1e987c9fdeef",
         "label": "latte · 兵种与战术实玩笔记",
-        "evidenceLocation": "兵种与战术段落的实玩记述支持位移战技步兵限制；作者对习得技能类别存疑，未采用学习等级。",
+        "evidenceLocation": "「兵種と戦術について」位移战技段落：步兵限制的玩家记录。",
         "checkedAt": "2026-10-11"
       }
     ]

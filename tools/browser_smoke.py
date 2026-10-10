@@ -22,6 +22,11 @@ STATIC = ['directory.html', 'guide/g5.html', 'route/kai.html', 'character/59.htm
 class QuietHandler(SimpleHTTPRequestHandler):
     def log_message(self, *_): pass
 
+class PreviewServer(ThreadingHTTPServer):
+    # Roster pages request many local assets at once. Python 3.12's default
+    # five-connection backlog can reset valid requests on macOS.
+    request_queue_size = 128
+
 def require(condition, message):
     if not condition: raise AssertionError(message)
 
@@ -195,7 +200,7 @@ def main():
     if args.base_url:
         base = args.base_url.rstrip('/') + '/'
     else:
-        server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietHandler, directory=str(ROOT / 'docs')))
+        server = PreviewServer(('127.0.0.1', 0), partial(QuietHandler, directory=str(ROOT / 'docs')))
         threading.Thread(target=server.serve_forever, daemon=True).start()
         base = f'http://127.0.0.1:{server.server_port}/'
     try:
