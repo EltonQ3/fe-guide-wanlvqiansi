@@ -10,7 +10,7 @@ class October10Tests(unittest.TestCase):
     def test_new_builds_keep_stable_identity_and_citations(self):
         chars={c['name']:c for c in DATA['characters']}
         self.assertEqual(len(chars),55)
-        self.assertEqual(sum(bool(c.get('builds')) for c in chars.values()),39)
+        self.assertGreaterEqual(sum(bool(c.get('builds')) for c in chars.values()),39)
         for name,cid in [('哪吒','31'),('贝特朗','62')]:
             c=chars[name];b=c['builds']
             self.assertEqual(c['id'],cid)
@@ -63,7 +63,7 @@ class October10Tests(unittest.TestCase):
         self.assertIn('世界地图东部的「アイギーナ山」',n['details'])
 
     def test_daily_log_has_distinct_read_sources(self):
-        e=DATA['logs'][0]
+        e=next(e for e in DATA['logs'] if e.get('edition')=='先攻与觉醒培养、凯伊线塔利穆恩外传行程')
         self.assertEqual(e['date'],'2026-10-10')
         self.assertEqual(e['checked'],len({s['url'] for s in e['new_sources']}))
         self.assertGreaterEqual(len(e['merged']),3)

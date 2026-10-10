@@ -11,6 +11,249 @@
   },
   "entries": [
     {
+      "date": "2026-10-11",
+      "edition": "希蒙单修与概率生还、莎兰白魔与位移支援",
+      "scheduledFor": "2026-10-10T20:00:00Z",
+      "timezone": "Asia/Tokyo",
+      "checked": 29,
+      "merged": [
+        {
+          "text": "希蒙新增剑／斧单修培养与上级、第三部投入取舍；明确HP≥2、幸運%生还、击杀幸運加成的单图上限，承伤不能依赖触发。",
+          "src": "https://gamewith.jp/fefw/577304"
+        },
+        {
+          "text": "莎兰新增白魔主教→贤者与额外枪A圣枪师取舍；步兵位移后的辅助魔法、邻接速度与满HP防御条件分开说明，完整培养共41人。",
+          "src": "https://game8.jp/fe-banshisenko/816438"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "战斗将领与贤者成长表",
+          "current": "新培养不使用精确成长值或按成长排名；旧兵种表不随本轮改写。",
+          "incoming": "战斗将领GameWith速+5技−5、Game8速−5技+5；贤者GameWith速+5技0、Game8速0技+5。对应原页均列入来源。",
+          "src": "https://gamewith.jp/fefw/577601"
+        },
+        {
+          "topic": "刀剑将领开放区分",
+          "current": "只写第三部完成マーズの依頼、考试实际开放；不新增第2或第3区分结论。",
+          "incoming": "GameWith写第2区分以后，Game8写第3区分神殿修复后委托；未获得解决差异的版本或实机证据。",
+          "src": "https://game8.jp/fe-banshisenko/816951"
+        },
+        {
+          "topic": "莎兰完整法术表与引き寄せ习得Rank",
+          "current": "不新增A级法术清单、学习等级或缺项断言；只写已经学会并装备后的使用条件。",
+          "incoming": "Game8技能图实际为白B+／指挥B+／黑D，列表缺高Rank法术不能解释为不会学习；GameWith战技总表的习得对象未列莎兰，玩家对习得技能类别亦保留不确定。",
+          "src": "https://game8.jp/fe-banshisenko/816438"
+        },
+        {
+          "topic": "莎兰外传时间和路线",
+          "current": "原有阿纳托莉娅外传日历、招募门槛与答案全部保留，不以最早出场章推定入队。",
+          "incoming": "GameWith人物页将外传概括为11章，Game8蕾达流程列在10章；本轮用途是招募后的培养，未核出能覆盖两线的统一时间。",
+          "src": "https://gamewith.jp/fefw/577339"
+        },
+        {
+          "topic": "杰斯特请求2目的地",
+          "current": "仅保留新增分线支持线索，未改原任务链和当前任务栏核对规则。",
+          "incoming": "GameWith概要表仍写矿山而正文分凯伊矿山／其余セドー砦；Game8蕾达任务表也写セドー砦，AppMedia只给三次委托，HyperWiki只有一般任务查看与回报规则。尚缺连续分线游戏图证，不用此批资料裁定所有路线。",
+          "src": "https://gamewith.jp/fefw/579107"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "B",
+          "name": "GameWith · 希蒙",
+          "url": "https://gamewith.jp/fefw/577304",
+          "note": "个人技能及Lv习得表：HP≥2、致命伤害时幸運%留1HP；Lv35击杀幸運+2，上限+10且只到地图结束。斧系方向为推荐，不是唯一最优。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 希蒙",
+          "url": "https://game8.jp/fe-banshisenko/816435",
+          "note": "育成段落推荐剑客→侍道→刀剑将领；个人／等级技能表与GameWith相符。剑斧步兵擅长。未采用成长率排名、骑乘数值与固定最早加入章。"
+        },
+        {
+          "grade": "B",
+          "name": "HyperWiki · 希蒙",
+          "url": "https://hyperwiki.jp/fefw/character/ch20/",
+          "note": "个人技能与Lv35恶运+表交叉核对，+10仅持续本地图；四路线原有支援／名声一致。"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 希蒙",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402743",
+          "note": "个人技能HP≥2和幸運%生还、擅长剑／斧／步兵、苦手白魔；四线招募条件核对，未改既有表。"
+        },
+        {
+          "grade": "B",
+          "name": "ちゅこ · 希蒙招募记录",
+          "url": "https://chucco.com/fefw-simon-scout/",
+          "note": "凯伊篇招募正文：一回500G、裏选项；说明等级和职业随推进改变。已有正文已覆盖，未计为有效新增。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 土匪",
+          "url": "https://gamewith.jp/fefw/577363",
+          "note": "必要技能表剑／斧选修C；兵种持斧命中+3，精通立て直し有被回避前提。本次仅采用培养方向。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 勇士",
+          "url": "https://gamewith.jp/fefw/577352",
+          "note": "必要技能表剑／斧／格斗选修B、上级票证；技能段持斧命中+5、熟练之技仅战技攻击命中+10。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 勇士",
+          "url": "https://game8.jp/fe-banshisenko/816652",
+          "note": "必要技能表选修B、技能段战技栏+2及持斧命中+5；与GameWith交叉核对。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 侍道",
+          "url": "https://gamewith.jp/fefw/577353",
+          "note": "剑B及上级票证；兵种持剑必杀+5，精通残心仅必杀击倒敌人时少量回复。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 侍道",
+          "url": "https://game8.jp/fe-banshisenko/816653",
+          "note": "必要技能与技能段：剑B、持剑必杀+5、残心的必杀击倒条件。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 战斗将领",
+          "url": "https://gamewith.jp/fefw/577601",
+          "note": "选修剑／斧／格斗A、最上级票证；速／技成长与Game8相反，不用于发布精确成长或排名。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 战斗将领",
+          "url": "https://game8.jp/fe-banshisenko/816714",
+          "note": "兵种技能战技栏+3、持斧命中+7；成长表速−5、技+5与GameWith有分歧。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 刀剑将领",
+          "url": "https://gamewith.jp/fefw/577914",
+          "note": "剑A、最上级票证、完成マーズの依頼。开放写第2区分以降，与Game8第3区分不同，只发布共同前置。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 刀剑将领",
+          "url": "https://game8.jp/fe-banshisenko/816951",
+          "note": "剑A备考、マーズ神殿修复后委托开放；不把第3区分作为本轮精确时点。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 莎兰",
+          "url": "https://gamewith.jp/fefw/577339",
+          "note": "白魔培养方向、引き寄せ后可用辅助魔法、Lv35相邻友军速度+4；只迪／蕾可挖，外传是前置。未将概括外传日期泛化为两线。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 莎兰",
+          "url": "https://game8.jp/fe-banshisenko/816438",
+          "note": "个人与等级技能、步兵引き寄せ向后移一格且大型单位不可用；圣枪师是额外枪A方向。实际查看技能原图为白B+、指挥B+、黑D，法术列表不完整，不据缺项推定无法学习。"
+        },
+        {
+          "grade": "B",
+          "name": "HyperWiki · 莎兰",
+          "url": "https://hyperwiki.jp/fefw/character/ch18/",
+          "note": "个人技能引き寄せ后可用辅助魔法；魔法栏尚在制作、凯伊／赛线招募数值留空，不能据此认定四线可招募。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 主教",
+          "url": "https://gamewith.jp/fefw/577346",
+          "note": "白B、上级票证；白魔次数加倍、治疗友军回复+10，精通结界相邻友军魔防+3。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 主教",
+          "url": "https://game8.jp/fe-banshisenko/816645",
+          "note": "白B备考与白魔次数加倍／回复+10；提供不必另修黑B的白魔上级方向。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 贤者",
+          "url": "https://gamewith.jp/fefw/577595",
+          "note": "白A、最上级票证、白魔次数加倍与回复+15；速／技成长与Game8互换。回复说明把回復写成攻撃，按技能名和Game8治疗定义核对，不写为攻击回血。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 贤者",
+          "url": "https://game8.jp/fe-banshisenko/816705",
+          "note": "白A；白魔次数加倍，治疗友军回复+15；成长表速0、技+5，与GameWith速+5、技0不同。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 圣枪师",
+          "url": "https://gamewith.jp/fefw/577599",
+          "note": "枪A、最上级票证；白魔次数加倍／回复+10，精通不退架势在满HP战斗时防御力+5。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 圣枪师",
+          "url": "https://game8.jp/fe-banshisenko/816711",
+          "note": "枪A、可用枪／白魔／步兵；兵种回复+10与白魔次数加倍，精通满HP防御力+5。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 位移战技",
+          "url": "https://gamewith.jp/fefw/573032",
+          "note": "引き寄せ条：步兵限定，相邻友军和自己向后移一格，不能对大型单位使用。角色习得表未列莎兰，不用于确定其学习Rank。"
+        },
+        {
+          "grade": "B",
+          "name": "latte · 兵种与战术实玩笔记",
+          "url": "https://note.com/llatte827/n/n1e987c9fdeef",
+          "note": "兵种与战术段落的实玩记述支持位移战技步兵限制；作者对习得技能类别存疑，未采用学习等级。"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 杰斯特",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402737",
+          "note": "四线都需完成请求1—3；未给分线请求2目的地，不能解决既有矿山／砦争议。"
+        },
+        {
+          "grade": "B",
+          "name": "HyperWiki · 任务列表",
+          "url": "https://hyperwiki.jp/fefw/quest/",
+          "note": "任务说明：X查看目的地、期限内回报；没有本轮足以解决杰斯特第二请求分线地点的证据。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 杰斯特请求2",
+          "url": "https://gamewith.jp/fefw/579107",
+          "note": "概要表统一写ワルハラ鉱山，正文写凯伊矿山、其余主人公セドー砦；内部矛盾仍在，保留待核。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 蕾达线任务清单",
+          "url": "https://game8.jp/fe-banshisenko/816793",
+          "note": "蕾达任务表L1652–1664列请求2目的地セドー砦，是分线支持线索；缺同档受注、目的地、回报的连续图证，不扩展至其他线或改原任务。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "核对范围",
+          "reason": "checked按本轮打开并核对正文段落的URL去重；包括已有来源重读，不等于新增独立实测数量。搜索摘要、网页排行榜与未经自己读取的转述未作发布证据。"
+        },
+        {
+          "site": "游戏实测",
+          "reason": "未取得游戏存档；版本和难度未知。实际查看Game8莎兰技能原图仅核对资料覆盖范围，未将其当作完整技能表。"
+        },
+        {
+          "site": "基线与去重",
+          "reason": "以main 108c48c5f0da714e746ec1be3d611531a4611c7a为基线；PR15哪吒、贝特朗、凯伊塔利穆恩行程与彼得地名已存在，未重复发布。希蒙硬币答案和莎兰招募问答亦已存在，本轮不算新增。"
+        },
+        {
+          "site": "研究边界",
+          "reason": "米迦艾拉费用、早期考试Rank及未单列外传期限本轮没有新增决定性证据，沿用历史待核记录；不凑成正文更新。"
+        }
+      ]
+    },
+    {
       "date": "2026-10-10",
       "edition": "先攻与觉醒培养、凯伊线塔利穆恩外传行程",
       "checked": 48,
