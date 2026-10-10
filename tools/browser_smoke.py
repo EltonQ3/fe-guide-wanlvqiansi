@@ -16,10 +16,16 @@ ROUTES = ['#home', '#route/kai', '#route/dietrich', '#route/theodora', '#route/l
 STATIC = ['directory.html', 'guide/g5.html', 'route/kai.html', 'character/59.html', 'classes.html',
           'character/58.html', 'character/text-5bc5d135.html', 'character/8.html', 'character/9.html',
           'character/22.html', 'character/24.html', 'character/18.html',
-          'character/31.html', 'character/62.html', 'character/7.html', 'character/63.html']
+          'character/31.html', 'character/62.html', 'character/7.html', 'character/63.html',
+          'character/25.html', 'character/30.html']
 
 class QuietHandler(SimpleHTTPRequestHandler):
     def log_message(self, *_): pass
+
+class PreviewServer(ThreadingHTTPServer):
+    # Roster pages request many local assets at once. Python 3.12's default
+    # five-connection backlog can reset valid requests on macOS.
+    request_queue_size = 128
 
 def require(condition, message):
     if not condition: raise AssertionError(message)
@@ -71,7 +77,7 @@ class Checks:
                     if route in ('#route/kai', '#route/dietrich', '#route/theodora', '#route/leda', 'route/kai.html'):
                         expect(page.locator('#battles')).to_have_count(0)
                         require('培养重点' in page.locator('main').inner_text(), 'public training advice missing')
-                    if width == 390 and mode == 'light' and route in ('character/22.html', 'character/24.html', 'character/18.html'):
+                    if width == 390 and mode == 'light' and route in ('character/22.html', 'character/24.html', 'character/18.html', 'character/25.html', 'character/30.html'):
                         page.screenshot(path=str(self.output / f'{self.name}-mobile-{Path(route).stem}.png'), full_page=True)
                     if width == 390 and route == '#planner':
                         require(page.locator('[data-plan-mark]').first.bounding_box()['y'] < 844,
@@ -194,7 +200,7 @@ def main():
     if args.base_url:
         base = args.base_url.rstrip('/') + '/'
     else:
-        server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietHandler, directory=str(ROOT / 'docs')))
+        server = PreviewServer(('127.0.0.1', 0), partial(QuietHandler, directory=str(ROOT / 'docs')))
         threading.Thread(target=server.serve_forever, daemon=True).start()
         base = f'http://127.0.0.1:{server.server_port}/'
     try:

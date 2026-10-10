@@ -1794,5 +1794,181 @@
         "checkedAt": "2026-10-10"
       }
     ]
+  },
+  {
+    "checkedAt": "2026-10-11",
+    "gameVersion": null,
+    "difficulty": null,
+    "status": "page-reviewed",
+    "scope": "人物、兵种与技能原页交叉核对。培养、装备和资源优先级为条件化编辑建议，未作游戏内实测；未知版本与难度不推定。",
+    "spoilerLevel": "第一部招募前置与第三部兵种",
+    "name": "希蒙",
+    "role": "剑／斧单修近战，概率生还作后备",
+    "early": "入队后先选当前熟练度较高的剑或斧，沿剑客或土匪成型；预算有限不同时重练两系。出手前比较命中、伤害与攻速，留回复道具；队里已有成型的穆或古扎岚时，可先让希蒙补刀，不必争全部训练。",
+    "middle": "剑系以剑B备考侍道，持剑必杀+5；斧系以斧B备考勇士，持斧命中+5。两种都适合沿原投入继续，按队伍缺必杀机会还是命中补强选择。侍道精通「残心」须必杀击倒才回复，不能把普通击杀当保底续航。",
+    "late": "第三部考试开放后，斧系可沿斧A备考战斗将领，剑系可沿剑A并完成マーズの依頼后转刀剑将领。已有上级职能完成任务时，先补常用武器与回复预算，再考虑新考试；换武器方向还要另算训练和装备成本。",
+    "requirement": "四线均须先按本线条件招募，入队等级和职业随进度变化，不必为了照抄路线退回初级。侍道／勇士需上级票证，后期两职需最上级票证；Rank是备考目标，开放状态与通过率以当前存档为准。",
+    "caution": "「死にそびれ」只在HP≥2、受到致命伤害时按当前幸運%的概率留下1HP；承伤计划按不触发计算，留到1HP后不能靠它再挡下一击。Lv35的「恶运+」每次击倒敌人幸運+2，单图最多+10，地图结束即消失。先处理安全击杀，仍须避开追击、集火和危险魔法。",
+    "route": "第一部四路线招募后；后期兵种限第三部考试实际开放后",
+    "chapter": "按本线实际招募与考试进度，不新增固定加入章或等级",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577304",
+        "label": "GameWith · 希蒙",
+        "evidenceLocation": "个人技能「死にそびれ」及Lv35「悪運+」习得表；おすすめ育成。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816435",
+        "label": "Game8 · 希蒙",
+        "evidenceLocation": "育成方向「剣客→侍道→刀剣将領」；个人技能、等级技能与擅长技能表。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://hyperwiki.jp/fefw/character/ch20/",
+        "label": "HyperWiki · 希蒙",
+        "evidenceLocation": "个人技能「死にそびれ」与Lv35「悪運+」表。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://appmedia.jp/fe_banshisenkou/80402743",
+        "label": "AppMedia · 希蒙",
+        "evidenceLocation": "个人技能、得意／苦手技能与四路线招募条件表。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577352",
+        "label": "GameWith · 勇士",
+        "evidenceLocation": "兵种考试必要技能、票证与「斧の達人」兵种技能。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816652",
+        "label": "Game8 · 勇士",
+        "evidenceLocation": "必要技能表与「斧の達人」兵种技能。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577353",
+        "label": "GameWith · 侍道",
+        "evidenceLocation": "考试必要技能与「剣の達人」「残心」技能段落。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816653",
+        "label": "Game8 · 侍道",
+        "evidenceLocation": "必要技能表；兵种技能与精通技能「残心」。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577601",
+        "label": "GameWith · 战斗将领",
+        "evidenceLocation": "考试必要技能与最上级票证；采用选修剑／斧／格斗A条件。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816714",
+        "label": "Game8 · 战斗将领",
+        "evidenceLocation": "必要技能与兵种技能；战技栏+3、持斧命中+7。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577914",
+        "label": "GameWith · 刀剑将领",
+        "evidenceLocation": "考试必要技能、最上级票证与「マーズの依頼」开放前置。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816951",
+        "label": "Game8 · 刀剑将领",
+        "evidenceLocation": "考试必要技能与神殿修复后「マーズの依頼」前置。",
+        "checkedAt": "2026-10-11"
+      }
+    ]
+  },
+  {
+    "checkedAt": "2026-10-11",
+    "gameVersion": null,
+    "difficulty": null,
+    "status": "page-reviewed",
+    "scope": "人物、兵种与技能原页交叉核对。培养、装备和资源优先级为条件化编辑建议，未作游戏内实测；未知版本与难度不推定。",
+    "spoilerLevel": "第一部招募前置与第三部兵种",
+    "name": "莎兰",
+    "role": "白魔治疗／步兵位移后支援",
+    "early": "迪托利希／蕾达线完成阿纳托莉娅外传并实际招募后，先沿现有白魔术承担治疗，不必退回初级重练。队伍已有法比奥、索绯雅等治疗时，先补位移与邻接支援；把训练留给当前缺口，避免重复投入。",
+    "middle": "低投入以白B备考主教：白魔法次数加倍，治疗友军时回复量+10，适合继续单修白魔。Lv35「注意唤起+」使相邻友军速度+4；安排在主力旁时仍要检查敌方射程，不为加速把治疗者暴露在集火内。",
+    "late": "第三部考试开放后，白A的贤者延续白魔次数加倍并将治疗加成提高到+15。想兼用枪再考虑圣枪师：需额外练枪A，保留白魔、治疗+10及次数加倍；只有确有枪系用途才追加投入，不把另修黑B当成白魔路线必经步骤。",
+    "requirement": "先满足本线支援、名声、外传与问答，凯伊／赛奥朵拉线不能套用此招募培养。主教需上级票证，贤者／圣枪师需最上级票证；另留枪术训练、武器及补考预算，Rank按备考目标而非保证通过写。",
+    "caution": "学会并装备「引き寄せ」后，步兵状态可把自己与相邻友军向后移一格，不能用于大型单位；个人技能允许接着使用辅助魔法，不是任意再行动或再攻击。先看退后落点及剩余咒文次数。圣枪师精通「不退架势」的防御力+5只在满HP战斗时生效，受伤后不能继续按满血承伤计算。",
+    "route": "第一部迪托利希／蕾达线完成前置并招募后；第三部按实际编成与考试开放",
+    "chapter": "外传完成后的实际入队阶段；不从出场章推定可立即培养",
+    "sources": [
+      {
+        "url": "https://gamewith.jp/fefw/577339",
+        "label": "GameWith · 莎兰",
+        "evidenceLocation": "推荐培养；个人技能「おせっかい」、Lv35「注意喚起+」与招募路线。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816438",
+        "label": "Game8 · 莎兰",
+        "evidenceLocation": "推荐圣枪师的额外枪A投入；个人／等级技能与战技「引き寄せ」说明。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://hyperwiki.jp/fefw/character/ch18/",
+        "label": "HyperWiki · 莎兰",
+        "evidenceLocation": "个人技能「おせっかい」：引き寄せ后可用辅助魔法。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577346",
+        "label": "GameWith · 主教",
+        "evidenceLocation": "必要白B及上级票证；白魔次数加倍、友军治疗量+10。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816645",
+        "label": "Game8 · 主教",
+        "evidenceLocation": "必要技能表与白魔次数加倍、治疗+10的兵种技能。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577595",
+        "label": "GameWith · 贤者",
+        "evidenceLocation": "必要白A、最上级票证；白魔次数加倍与回复+15技能。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816705",
+        "label": "Game8 · 贤者",
+        "evidenceLocation": "必要技能与兵种技能；白魔次数加倍、治疗友军回复+15。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/577599",
+        "label": "GameWith · 圣枪师",
+        "evidenceLocation": "必要枪A与最上级票证；兵种治疗技能、精通「不退の構え」。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://game8.jp/fe-banshisenko/816711",
+        "label": "Game8 · 圣枪师",
+        "evidenceLocation": "必要枪A与可用枪／白魔／步兵；兵种治疗技能、精通满HP防御+5。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://gamewith.jp/fefw/573032",
+        "label": "GameWith · 位移战技",
+        "evidenceLocation": "战技「引き寄せ」条目：步兵限定、自己与相邻友军后退一格、大型单位限制。",
+        "checkedAt": "2026-10-11"
+      },
+      {
+        "url": "https://note.com/llatte827/n/n1e987c9fdeef",
+        "label": "latte · 兵种与战术实玩笔记",
+        "evidenceLocation": "「兵種と戦術について」位移战技段落：步兵限制的玩家记录。",
+        "checkedAt": "2026-10-11"
+      }
+    ]
   }
 ]
