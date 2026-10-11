@@ -146,7 +146,7 @@ class DataTests(unittest.TestCase):
         self.assertEqual(chars['洛蕾塔']['plan']['kai']['needs'],[{'type':'item','text':'铁剑×3','item':'铁剑','qty':3}])
         self.assertTrue(chars['洛蕾塔']['plan']['theodora']['lowest'])
         self.assertEqual([n['type'] for n in chars['蒂亚拉']['plan']['leda']['needs']],['paralogue','gold'])
-        self.assertEqual(chars['米迦艾拉']['plan']['dietrich'],{'kind':'auto','chapter':4,'needs':[{'type':'gold','text':'3000G（详细页记载，待实机核对）','gold':3000}]})
+        self.assertEqual(chars['米迦艾拉']['plan']['dietrich'],{'kind':'auto','chapter':4,'needs':[]})
         self.assertEqual(chars['艾丝梅拉尔达']['plan']['leda']['needs'][0]['type'],'quest')
         self.assertIsNone(chars['努佐']['plan']['dietrich']['needs'][0]['qty'])
         self.assertEqual(chars['古扎岚']['plan']['kai']['kind'],'tutorial')
