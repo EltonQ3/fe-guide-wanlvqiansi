@@ -11,6 +11,359 @@
   },
   "entries": [
     {
+      "date": "2026-10-12",
+      "edition": "邻接护卫与剑弓追击培养",
+      "scheduledFor": "2026-10-11T20:00:00Z",
+      "timezone": "Asia/Tokyo",
+      "checked": 39,
+      "merged": [
+        {
+          "text": "盖茨新增枪系荣光骑士、圣枪师与重骑投入取舍，区分迪线实际入队、跨线重装骑兵解锁和只作用于邻接友军的守备支援。",
+          "src": "https://gamewith.jp/fefw/577373"
+        },
+        {
+          "text": "迪雅各新增步兵弓、追加骑射及已有剑基础的培养选择，明确5%邻接护卫与追击限定命中／必杀增益；完整培养共43人。",
+          "src": "https://game8.jp/fe-banshisenko/816436"
+        },
+        {
+          "text": "米迦艾拉迪线读者条件只保留第4章酒馆事件战后剧情加入；未核清的3000G费用从正文、路线卡及规划清单移至日志，不宣称免费，其他三线费用保留。",
+          "src": "https://game8.jp/fe-banshisenko/816480"
+        },
+        {
+          "text": "大刀交付数量按路线收窄：凯伊保留玩家过程支持的2个，其他线仅保留物品要求及按交涉提示备齐；2／3争议移入日志，不把未确定数量计成零。",
+          "src": "https://chucco.com/fefw-daitou-scout/"
+        },
+        {
+          "text": "旧兵种资料撤下重装骑兵重装F及刀剑将领第2区分的未决精确值；保留考试重装资格和神殿委托前置。努佐数量争议说明移日志，迪线仍按当前交涉提示备弓。",
+          "src": "https://game8.jp/fe-banshisenko/816858"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "杰斯特请求2分线目的地",
+          "current": "保留既有任务链和按当前任务栏核对目的地的规则。",
+          "incoming": "本次重读GameWith仍为概要统一矿山、正文按凯伊矿山／其他线セドー砦；没有新增连续分线受注、目的地及回报图证，不能据此裁决。",
+          "src": "https://gamewith.jp/fefw/579107"
+        },
+        {
+          "topic": "米迦艾拉迪线费用",
+          "current": "读者条件仅列已核对的第4章酒馆事件战后剧情加入；迪线3000G只保留在本日志，不宣布免费或必付。",
+          "incoming": "HyperWiki迪线表仍列3000G；AppMedia、Game8章节流程与茶器实玩文字都记酒馆战后加入，但无连续金币记录。流程省略费用不等于证实免费。",
+          "src": "https://ameblo.jp/chiakigames/entry-12980164615.html"
+        },
+        {
+          "topic": "凯伊セントリオン稽古重复练级候选",
+          "current": "未新增刷取方法。",
+          "incoming": "iine hexe本日更新称可不达成全破坏后撤退保留经验、HP与魔法次数不恢复；仅一份实玩文字，未核版本与连续操作画面，留后续交叉验证。",
+          "src": "https://note.com/iine_hexe/n/n2e6e50e1ce93"
+        },
+        {
+          "topic": "盖茨成长及终职开放区分",
+          "current": "不发布精确成长、固定入队等级或最早终职区分。",
+          "incoming": "人物速成长35／40、HP50／60不同；グレートナイト开放第2／3区分存在差异。委托奖励原图能确认职业奖励，不能证明最早区分。",
+          "src": "https://game8.jp/fe-banshisenko/816948"
+        },
+        {
+          "topic": "重装骑兵考试Rank与解锁数量",
+          "current": "旧兵种表重装F撤下，不改写成E+；保留枪／斧B、马D并要求核对当前考试菜单的重装资格。",
+          "incoming": "两站当前页面重装E+与本站旧表F不同；赛线战备8项／第8章前全部的表述也未取得统一实机证据。新培养不补造精确任务数和重装Rank。",
+          "src": "https://game8.jp/fe-banshisenko/816858"
+        },
+        {
+          "topic": "迪雅各培养、成长与初出时间",
+          "current": "按实际熟练度选择弓单修、骑射追加或剑系，不写唯一最优、固定初出章和外传统一日期。",
+          "incoming": "GameWith推弓、Game8推剑属推荐差异；森林骑士技成长10／15、宗师射手速技15／20倒置，凯伊初出第4／3章不同。全部留待版本或实机证据。",
+          "src": "https://game8.jp/fe-banshisenko/816436"
+        },
+        {
+          "topic": "迪雅各图片证据范围",
+          "current": "不据截图发布完整技能习得表、平均面板或培养成功保证。",
+          "incoming": "技能图为单档剑B+／弓B+等状态；Game8标为育成成功例的图实际是期望值工具输出，不算游戏内实测。",
+          "src": "https://game8.jp/fe-banshisenko/816436"
+        },
+        {
+          "topic": "刀剑将领开放区分",
+          "current": "移除旧兵种资料中的第2区分，保留第三部完成マーズ委托并实际开放；不改写成第3区分。",
+          "incoming": "GameWith第2区分起与Game8第3区分仍不同，本轮不裁定。",
+          "src": "https://game8.jp/fe-banshisenko/816951"
+        },
+        {
+          "topic": "大刀交付数量与路线",
+          "current": "凯伊线保留2个；迪／赛／蕾不发布精确数量，规划器保留物品且qty为空。",
+          "incoming": "本日重读GameWith表格与标题2、正文3的矛盾仍在；Game8角色页2匹，ちゅこ明确凯伊请求和交付2后加入。未取得其他三线独立过程，不能多数决泛化。",
+          "src": "https://gamewith.jp/fefw/577336"
+        },
+        {
+          "topic": "原生角色旧培养卡的神殿职业开放区分",
+          "current": "凯伊和迪托利希旧培养中的固定第2区分一并撤下，保留第三部、对应委托与实际考试开放。",
+          "incoming": "历史日志已有高阶墓志铭与刀剑将领第2／3区分分歧；新培养采用保守措辞时，旧卡也必须一致，不能把未定区分当成固定规划前提。",
+          "src": "https://game8.jp/fe-banshisenko/816951"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "B",
+          "name": "GameWith · 盖茨",
+          "url": "https://gamewith.jp/fefw/577373",
+          "note": "L439–456招募前置；L505–536重骑目标与跨线解锁；L550–560助太刀和Lv35牙閃+。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 盖茨",
+          "url": "https://game8.jp/fe-banshisenko/816432",
+          "note": "L61–144枪系培养推荐；L154–170擅长与定位；L176–198外传后仍须等待剧情；L219–245个人／等级技能。技能截图仅代表该档技能状态，非完整表。"
+        },
+        {
+          "grade": "B",
+          "name": "HyperWiki · 盖茨",
+          "url": "https://hyperwiki.jp/fefw/character/ch15/",
+          "note": "L95–124个人技能、成长表及Lv35牙閃+；空白招募路线不作可招依据。"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 盖茨",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402728",
+          "note": "「加入ルート」「スカウト条件」「個人スキル」「得意・不得意・才能開花」；HP成长与其他来源不同，不采用。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 荣光骑士",
+          "url": "https://gamewith.jp/fefw/577348",
+          "note": "L421–429马术C、枪／剑B与上级票证；「聖盾」：受魔法攻击时20%减半。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 荣光骑士",
+          "url": "https://game8.jp/fe-banshisenko/816648",
+          "note": "L59–74可用技能与考试条件；兵种技能与精通圣盾段落。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 重装骑兵",
+          "url": "https://gamewith.jp/fefw/577520",
+          "note": "L421–430重装E+、马D及斧／枪B、上级票证；L625–641后攻耐物+3及20%大盾。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 重装骑兵",
+          "url": "https://game8.jp/fe-banshisenko/816858",
+          "note": "L60–82兵种、考试与赛线战备解锁；L107–125后攻耐物+3及大盾。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · グレートナイト",
+          "url": "https://gamewith.jp/fefw/577893",
+          "note": "L421–430重装D、马D与斧／枪A、最上级票证和クレール委托；L594–611后攻耐物+5、先攻50%猛盾。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · グレートナイト",
+          "url": "https://game8.jp/fe-banshisenko/816948",
+          "note": "L58–80考试与クレール委托；L120–138防御技能；已实际查看L78委托奖励截图，可读「クレールの依頼」及「グレートナイト」奖励，截图日期不作最早区分证明。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 圣枪师",
+          "url": "https://gamewith.jp/fefw/577599",
+          "note": "L421–429枪A、最上级票证；L588–598满HP防御力+5精通。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 圣枪师",
+          "url": "https://game8.jp/fe-banshisenko/816711",
+          "note": "L58–84步兵、枪A与第三部开放；L121–139兵种技能及满HP精通。"
+        },
+        {
+          "grade": "B",
+          "name": "らっく · 迪托利希线实玩日记",
+          "url": "https://note.com/luckrakku/n/n6357e0a647b3",
+          "note": "2026-10-04发布「10/3 FE 万紫千紅」，正文从「万紫千紅、ディートリヒ編2周目10章～2部3章まで」至ゲイツ感想：作者实际招募后评价该档状态；仅作晚入队培养需看存档的玩家旁证，不据其情绪性评价或未说明版本难度外推强弱。web原页错误后curl取得HTML并读取正文，不以搜索摘要代替。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 迪雅各",
+          "url": "https://gamewith.jp/fefw/577306",
+          "note": "L425、L443–446、L546–552：四线外传前置、用心棒相邻友军5%免追击、Lv35容赦無し+追击命中／必杀+10；L469–529弓系推荐。凯伊初出章及外传统一期限不采用。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 迪雅各",
+          "url": "https://game8.jp/fe-banshisenko/816436",
+          "note": "L61–139剑系与森林骑士备选；L192–212四线外传前置；L233–256个人及等级技能。实看L235技能截图：剑B+、弓B+、指挥D+、步兵D+，不推为完整习得表。L144是站方期望值计算工具图，并非游戏状态实测，不作培养结果证据。"
+        },
+        {
+          "grade": "B",
+          "name": "HyperWiki · 迪雅各",
+          "url": "https://hyperwiki.jp/fefw/character/ch28/",
+          "note": "L76–81四线门槛与外传；L119–125用心棒、Lv35容赦無し+。技能表自称未完成，不从空栏推定不会技能。"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 迪雅各",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402692",
+          "note": "L95–108四线支援／名声及奥尔赫尔外传前置；L127–138个人技能与擅长剑、弓、步兵。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 狙击手",
+          "url": "https://gamewith.jp/fefw/577351",
+          "note": "L421–429弓B备考、上级票证及合格率；L627–685战技栏+2、持弓命中+10，精通射击专家持弓命中+15。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 狙击手",
+          "url": "https://game8.jp/fe-banshisenko/816651",
+          "note": "L57–72弓B与步兵可用技能；L136–151兵种持弓命中+10、战技栏+2、精通持弓命中+15。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 森林骑士",
+          "url": "https://gamewith.jp/fefw/577350",
+          "note": "L421–429弓B／马D及上级票证；L511–608战技栏+1、持弓命中+5，猎人之眼仅持弓追击时攻击力+3。技成长+10与Game8不同，不采用。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 森林骑士",
+          "url": "https://game8.jp/fe-banshisenko/816650",
+          "note": "L57–72马D／弓B、可用剑弓马术；L107–125兵种与精通技能交叉核验。技成长+15与GameWith不同，保留争议。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 宗师射手",
+          "url": "https://gamewith.jp/fefw/577600",
+          "note": "L421–429弓A、最上级票证及合格率；L627–698战技栏+3与持弓命中+15。成长速+15／技+20不采用。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 宗师射手",
+          "url": "https://game8.jp/fe-banshisenko/816713",
+          "note": "L58–84弓A备考与第三部开放；L144–159战技栏+3、持弓命中+15。成长速+20／技+15与GameWith倒置，不采用。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 侍道",
+          "url": "https://gamewith.jp/fefw/577353",
+          "note": "L421–429剑B备考及上级票证；L669–725战技栏+2、持剑必杀+5，残心须必杀击倒敌人才回复HP。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 侍道",
+          "url": "https://game8.jp/fe-banshisenko/816653",
+          "note": "L57–72剑B备考；L137–152兵种技能及精通残心的必杀击倒条件。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 刀剑将领",
+          "url": "https://gamewith.jp/fefw/577914",
+          "note": "L421–430剑A、最上级票证与マーズの依頼解锁；L546–621持剑必杀+7。其第2区分起说法与Game8不同，正文不写固定区分。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 刀剑将领",
+          "url": "https://game8.jp/fe-banshisenko/816951",
+          "note": "L60–81剑A与神殿修复后マーズの依頼解锁；L141–156战技栏+3及持剑必杀+7。第3区分与GameWith有差异，不裁定。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 杰斯特请求2",
+          "url": "https://gamewith.jp/fefw/579107",
+          "note": "受注表仍统一写ワルハラ鉱山，攻略正文却按凯伊矿山／其他主角セドー砦分流；内部矛盾未消除。"
+        },
+        {
+          "grade": "B",
+          "name": "HyperWiki · 米迦艾拉",
+          "url": "https://hyperwiki.jp/fefw/character/ch44/",
+          "note": "招募表迪线仍写支援0／名声0／3000G，没有连续付款图证。"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 米迦艾拉",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402656",
+          "note": "迪线为マジーデ事件战结束后加入；其他三线列3000G。未提供迪线付款或免付款的直接图证。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 迪托利希第4章",
+          "url": "https://game8.jp/fe-banshisenko/816480",
+          "note": "流程步骤3—6：酒馆、マジーデ事件战、会话后米迦艾拉加入；步骤1收到法比奥3000G不能解读为招募支出。"
+        },
+        {
+          "grade": "B",
+          "name": "茶器 · 迪托利希实玩记录",
+          "url": "https://ameblo.jp/chiakigames/entry-12980164615.html",
+          "note": "酒馆战后米迦艾拉请求加入的第一人称记录，作者明说部分顺序凭回忆；未记载金币变化，不用缺少付款叙述证明免费。"
+        },
+        {
+          "grade": "B",
+          "name": "iine hexe · 实玩攻略备忘",
+          "url": "https://note.com/iine_hexe/n/n2e6e50e1ce93",
+          "note": "读取2026-10-12新补凯伊セントリオン稽古、撤退与经验保留线索；没有独立核清重复刷取和库存规则，仅留候选，不写正文。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 大刀",
+          "url": "https://gamewith.jp/fefw/577336",
+          "note": "L440–452四线表2与正文3仍矛盾。"
+        },
+        {
+          "grade": "B",
+          "name": "ちゅこ · 凯伊大刀招募",
+          "url": "https://chucco.com/fefw-daitou-scout/",
+          "note": "L44–48明确凯伊；L63请求2、L71交付2后加入。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 大刀",
+          "url": "https://game8.jp/fe-banshisenko/816455",
+          "note": "L198–202交涉2匹，未独立确认图片路线，不用于裁决其他三线。"
+        },
+        {
+          "grade": "B",
+          "name": "yakiudon · 迪托利希实玩",
+          "url": "https://yakiudon1961.hatenablog.com/entry/2026/09/28/151657",
+          "note": "L84–90明确用支援1角色，キロイカ名声4；图片为入队后状态，非本线招募条件界面。只补旁证，不宣布4／6争议解决。"
+        },
+        {
+          "grade": "B",
+          "name": "rodinia · 蕾达实玩前篇",
+          "url": "https://rodinia.blog.fc2.com/blog-entry-1159.html",
+          "note": "L82–92将洛蕾塔放在スカウトした仲間；支持挖角经历，不证明3S／5R或铁剑3。"
+        },
+        {
+          "grade": "B",
+          "name": "rodinia · 蕾达实玩后篇",
+          "url": "https://rodinia.blog.fc2.com/blog-entry-1164.html",
+          "note": "L79–95同作者再次记洛蕾塔挖角；不计为另一独立玩家，不裁定数值。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "核对范围",
+          "reason": "checked按本轮实际读取并核对的原页URL去重，包含已有来源重读，不等于新增独立实测数量。未把搜索摘要、排行榜或期望值工具图当实测。"
+        },
+        {
+          "site": "游戏实测",
+          "reason": "未取得游戏存档。实际查看盖茨、迪雅各技能图与クレール委托奖励图；单档状态不证明完整技能学习表、固定初始数值或最早开放时点。"
+        },
+        {
+          "site": "基线与去重",
+          "reason": "以main e74182dd23582dd7e0318a14520260dbef996c1b为基线；希蒙、莎兰等41份既有培养保留。两位没有既有完整路线培养卡，不新增重复长卡；四线支援／名声门槛、外传日历和战斗发布开关不变；移除迪线米迦艾拉未核费用的权威条件展示。"
+        },
+        {
+          "site": "实玩来源",
+          "reason": "迪雅各玩家日记只写晚招募感受，不采强弱结论；另一篇note两次原页读取失败，摘要未用于证据。盖茨实玩日记只作需按实际入队状态培养的旁证。"
+        },
+        {
+          "site": "后续研究",
+          "reason": "继续补余下人物培养、早期考试画面、未单列外传期限，以及杰斯特分线行程、米迦艾拉付款过程；セントリオン稽古新线索需独立过程核对。"
+        },
+        {
+          "site": "继承招募条件复核",
+          "reason": "窄查基罗伊卡迪线4／6、洛蕾塔蕾达加入方式、努蒂奴赛／蕾斧种数量：新读玩家正文补充前两项旁证，未取得足以判定全部数值的招募界面；努蒂奴仅有搜索包装页线索，无原帖及明确路线。旧字段和历史争议保留，不计入本日新核实内容。"
+        }
+      ]
+    },
+    {
       "date": "2026-10-11",
       "edition": "希蒙单修与概率生还、莎兰白魔与位移支援",
       "scheduledFor": "2026-10-10T20:00:00Z",
