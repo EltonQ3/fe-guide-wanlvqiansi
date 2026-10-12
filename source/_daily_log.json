@@ -11,6 +11,195 @@
   },
   "entries": [
     {
+      "date": "2026-10-13",
+      "edition": "第三部魔法培养与安娜夜间店铺",
+      "scheduledFor": "2026-10-12T20:00:00Z",
+      "timezone": "Asia/Tokyo",
+      "checked": 15,
+      "merged": [
+        {
+          "text": "阿纳托莉娅新增第三部实际入队后的黑魔术主轴、魔力型Arts与条件回避回血；不锁定有分歧的加入区分。",
+          "src": "https://gamewith.jp/fefw/577372"
+        },
+        {
+          "text": "塔利穆恩新增先知到德鲁伊培养与一次战斗弱化接力；区分Burst最大HP免减、冥咒消耗及幸运概率触发。完整培养共45人。",
+          "src": "https://game8.jp/fe-banshisenko/816883"
+        },
+        {
+          "text": "补安娜秘密店的最上层夜间位置、三线外传前置与蕾达第10章自动开店；采购提示保留购买画面的10000G标价及效果／重量取舍。",
+          "src": "https://game8.jp/fe-banshisenko/816696"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "阿纳托莉娅的第三部加入区分",
+          "current": "GameWith与AppMedia写第2区分；一致前置是第一部完成个人外传。培养卡只写第三部实际入队后。",
+          "incoming": "Game8角色页写第1区分中途；没有游戏内验证前不统一具体区分。",
+          "src": "https://gamewith.jp/fefw/577372"
+        },
+        {
+          "topic": "阿纳托莉娅个人技能日文名",
+          "current": "GameWith、AppMedia与Altema写流気功，效果回避+3。正文采用一致效果。",
+          "incoming": "Game8写流気巧；不强行统一日文名。",
+          "src": "https://game8.jp/fe-banshisenko/816885"
+        },
+        {
+          "topic": "德鲁伊速度与技巧成长修正",
+          "current": "GameWith职业页表格速度+10、技巧+15；培养文不列精确成长修正。",
+          "incoming": "Game8职业页816706与角色页写速度+15、技巧+10，不以来源数量裁定。",
+          "src": "https://gamewith.jp/fefw/577602"
+        },
+        {
+          "topic": "阿纳托莉娅Arts威力与解放顺序",
+          "current": "仅采用各站一致的魔力型与消耗HP，不列完整威力或HP数值表。",
+          "incoming": "Game8与Altema对煌龍破、龍破弐式／参式威力和解放顺序有差异。",
+          "src": "https://game8.jp/fe-banshisenko/817125"
+        },
+        {
+          "topic": "塔利穆恩强度评级【不写最强或必练】",
+          "current": "本站按队伍缺口与弱化功能给投入建议",
+          "incoming": "Game8评S、GameWith评A、Altema评C；三站对先知→德鲁伊培养方向一致，但评级标准不一致",
+          "src": "https://altema.jp/febansisenkou/tarimu-nn"
+        },
+        {
+          "topic": "安娜秘密店精确时段与库存刷新",
+          "current": "只采用交叉确认的夜间营业，购买画面仅证明所示标价，不承诺无限库存或刷新。",
+          "incoming": "AppMedia写18:00—5:59，Game8与Altema此次核对只明确夜间；单个画面不能验证整段营业边界及库存刷新。",
+          "src": "https://appmedia.jp/fe_banshisenkou/80419939"
+        },
+        {
+          "topic": "杰斯特请求2分线目的地",
+          "current": "维持原有任务链与按本线任务栏确认的规则。",
+          "incoming": "本次GameWith概要仍统一矿山，正文仍凯伊矿山／其他线セドー砦；未获得连续分线受注到回报的独立证据。",
+          "src": "https://gamewith.jp/fefw/579107"
+        },
+        {
+          "topic": "凯伊稽古撤退练级候选",
+          "current": "不把稽古候选写成已确认刷取方法。",
+          "incoming": "重新阅读实玩备忘与扩大检索后，仍缺名声6稽古重复撤退、经验与HP／法术库存变化的独立连续验证；遭遇战撤退文章不能直接证明稽古规则。",
+          "src": "https://note.com/iine_hexe/n/n2e6e50e1ce93"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "B",
+          "name": "Game8 · 德鲁伊职业页",
+          "url": "https://game8.jp/fe-banshisenko/816706",
+          "note": "2026-10-12更新，实查黑魔术A备考、最上级开放、黑魔法次数2倍与装备魔法命中+7；速度／技巧成长修正与GameWith冲突，不搬精确成长；2026-10-12更新；黑魔术A、可用技能无白魔术。写救世篇第一区分完成后开放；培养卡不把角色入队与考试开放当作同时。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 阿纳托莉娅",
+          "url": "https://gamewith.jp/fefw/577372",
+          "note": "实查外传前置、先知至德鲁伊方向、回避回血与天柱型；具体加入区分与Game8冲突。"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 阿纳托莉娅",
+          "url": "https://game8.jp/fe-banshisenko/816885",
+          "note": "实查魔法路线与Arts；加入区分、日文技能名和成长细项保留分歧。"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 阿纳托莉娅",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402704",
+          "note": "独立核对四线非招募对象、个人外传前置、回避+3与技能适性。"
+        },
+        {
+          "grade": "B",
+          "name": "Altema · 阿纳托莉娅",
+          "url": "https://altema.jp/febansisenkou/anatoria",
+          "note": "独立核对速攻魔法定位与德鲁伊方向；不搬赠礼与成长数值。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 德鲁伊",
+          "url": "https://gamewith.jp/fefw/577602",
+          "note": "核对黑魔术A备考、考试票证、黑魔法次数2倍和魔法命中+7；2026-10-05更新；核对黑魔法次数翻倍、装备魔法命中+7和精通技能的邻接条件。"
+        },
+        {
+          "grade": "B",
+          "name": "Altema · Blaze Arts",
+          "url": "https://altema.jp/febansisenkou/blazearts",
+          "note": "核对阿纳托莉娅Arts的魔力型与HP消耗；详细招式数值和顺序有分歧，未并入。"
+        },
+        {
+          "grade": "A",
+          "name": "GameWith — 塔利穆恩",
+          "url": "https://gamewith.jp/fefw/577342",
+          "note": "2026-10-08更新；本轮复核第三部第一区分加入、先知→德鲁伊、弱化持续条件、抵抗与胜利之风，并与Game8交叉核对。"
+        },
+        {
+          "grade": "A",
+          "name": "Game8 — 塔利穆恩",
+          "url": "https://game8.jp/fe-banshisenko/816883",
+          "note": "2026-10-12更新；加入时先知、弱化效果与HP消耗、胜利之风的攻防分别触发条件。成长修正矛盾数字不采纳。"
+        },
+        {
+          "grade": "A",
+          "name": "Altema — 塔利穆恩",
+          "url": "https://altema.jp/febansisenkou/tarimu-nn",
+          "note": "2026-10-08更新；检索结果返回完整正文可核对，交叉先知／德鲁伊与黑魔术B→A、兵种技能。四路线招募对象外是第一部范围。"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 安娜秘密店",
+          "url": "https://appmedia.jp/fe_banshisenkou/80419939",
+          "note": "「アンナの秘密の店の場所」：最上层、夜间、外传解锁及蕾达第10章例外；实际查看夜间摊位截图"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 安娜外传与店铺",
+          "url": "https://game8.jp/fe-banshisenko/816696",
+          "note": "「アンナの店が解放される」与「レダ編では10章で自動解放される」；实际查看购买菜单，六枚指轮标价10000G"
+        },
+        {
+          "grade": "B",
+          "name": "Altema · 安娜外传与店铺",
+          "url": "https://altema.jp/febansisenkou/annagaiden",
+          "note": "「アンナのお店が開店」；实际查看凯伊购买菜单：六枚指轮标价10000G，选中射手指轮显示命中+5、重量3"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 杰斯特请求2",
+          "url": "https://gamewith.jp/fefw/579107",
+          "note": "实际重读受注表与流程段落：统一矿山概要与凯伊矿山／其他主人公セドー砦正文仍不一致；不改变本站分线规则。"
+        },
+        {
+          "grade": "B",
+          "name": "iine hexe · 实玩备忘",
+          "url": "https://note.com/iine_hexe/n/n2e6e50e1ce93",
+          "note": "重读凯伊稽古与迪线记录；名声6稽古道场候选仍无独立连续操作图证，不发布撤退刷取法。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "基线与去重",
+          "reason": "main 2cfa49696b760175707ec236c2d39eaeadff5d1e为基线；既有43份培养保留，新增两份第三部培养。四线招募门槛、外传日期、未发布战斗开关和其他草稿不变。"
+        },
+        {
+          "site": "核对口径",
+          "reason": "checked按本次实际核对原页URL去重，含重读；不把搜索摘要或相同作者多页算独立实测。日期按Asia/Tokyo记录。"
+        },
+        {
+          "site": "图证与实测",
+          "reason": "实际查看AppMedia安娜夜间摊位、Game8购买菜单与Altema凯伊购买菜单。画面证实所示六枚指轮标价，不证明全路线永久同价、无限库存或刷新；未取得游戏存档。"
+        },
+        {
+          "site": "本轮培养核验",
+          "reason": "公开攻略页面文本交叉核对；未作游戏内实测，未留存实际截图。精确加入区分、成长修正与Arts细项尚有来源分歧。"
+        },
+        {
+          "site": "Game8 塔利穆恩技能截图",
+          "reason": "页面可读，但技能习得状况图片链接返回Internal Error；未取得截图，不声称截图实证或游戏内实测。"
+        },
+        {
+          "site": "Altema 塔利穆恩直开",
+          "reason": "直接open返回Internal Error；随后search返回该页完整正文，可核对推荐兵种与表格，未把失败包装成截图验证。"
+        }
+      ]
+    },
+    {
       "date": "2026-10-12",
       "edition": "邻接护卫与剑弓追击培养",
       "scheduledFor": "2026-10-11T20:00:00Z",

@@ -17,7 +17,7 @@ STATIC = ['directory.html', 'guide/g5.html', 'route/kai.html', 'character/59.htm
           'character/58.html', 'character/text-5bc5d135.html', 'character/8.html', 'character/9.html',
           'character/22.html', 'character/24.html', 'character/18.html',
           'character/31.html', 'character/62.html', 'character/7.html', 'character/63.html',
-          'character/25.html', 'character/30.html', 'character/21.html', 'character/27.html']
+          'character/25.html', 'character/30.html', 'character/21.html', 'character/27.html', 'character/29.html']
 
 class QuietHandler(SimpleHTTPRequestHandler):
     def log_message(self, *_): pass
@@ -77,7 +77,7 @@ class Checks:
                     if route in ('#route/kai', '#route/dietrich', '#route/theodora', '#route/leda', 'route/kai.html'):
                         expect(page.locator('#battles')).to_have_count(0)
                         require('培养重点' in page.locator('main').inner_text(), 'public training advice missing')
-                    if width == 390 and mode == 'light' and route in ('character/22.html', 'character/24.html', 'character/18.html', 'character/25.html', 'character/30.html', 'character/21.html', 'character/27.html'):
+                    if width == 390 and mode == 'light' and route in ('character/22.html', 'character/24.html', 'character/18.html', 'character/25.html', 'character/30.html', 'character/21.html', 'character/27.html', 'character/29.html', 'character/63.html'):
                         page.screenshot(path=str(self.output / f'{self.name}-mobile-{Path(route).stem}.png'), full_page=True)
                     if width == 390 and route == '#planner':
                         require(page.locator('[data-plan-mark]').first.bounding_box()['y'] < 844,
