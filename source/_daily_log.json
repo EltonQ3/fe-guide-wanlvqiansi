@@ -11,6 +11,211 @@
   },
   "entries": [
     {
+      "date": "2026-10-15",
+      "edition": "战车留职、承伤治疗与迪线任务",
+      "scheduledFor": "2026-10-14T20:00:00Z",
+      "timezone": "Asia/Tokyo",
+      "checked": 17,
+      "merged": [
+        {
+          "text": "班迪兹新增战车兵留职、突进落点与骑乘不能回避的承伤检查；不把猛击次数当额外行动。",
+          "src": "https://gamewith.jp/fefw/577297"
+        },
+        {
+          "text": "奥尔赫尔新增第三部实际入队后的白魔主线与按需枪系投入；区分重装属性、骑飞限制及Arts启动。完整培养卡共46人，奥尔赫尔另列于手册专节，不新增招募卡。",
+          "src": "https://game8.jp/fe-banshisenko/816884"
+        },
+        {
+          "text": "杰斯特请求2新增迪托利希线セドー砦战斗与逐段回报行程，独立实玩图文补证；不推广到其他线。",
+          "src": "https://chucco.com/fefw-jester-scout/"
+        }
+      ],
+      "conflicts": [
+        {
+          "topic": "班迪兹培养与战车兵资料差异",
+          "current": "采用多源一致的留职方向与技能条件，不新增精确成长。",
+          "incoming": "Game8人物页标题推荐弓骑士、表列森林骑士→弓骑士→神将，正文L124却推荐终身战车兵并把其他路线列备选。本稿以与GameWith/Altema一致的正文为低投入建议，不声称唯一最强。",
+          "src": "https://game8.jp/fe-banshisenko/816444"
+        },
+        {
+          "topic": "班迪兹培养与战车兵资料差异",
+          "current": "采用多源一致的留职方向与技能条件，不新增精确成长。",
+          "incoming": "GameWith战车兵技成长+15，Game8+25，Altema全表不同；不采用任何精确成长公式、成长总值或最终能力承诺。",
+          "src": "https://game8.jp/fe-banshisenko/816444"
+        },
+        {
+          "topic": "班迪兹培养与战车兵资料差异",
+          "current": "采用多源一致的留职方向与技能条件，不新增精确成长。",
+          "incoming": "Altema马术在解析中落在苦手段，弓术需求写D；GameWith/Game8为马术得意及弓C。本文不新增得意列表，考试目标采两主要站一致值并提示实际界面。",
+          "src": "https://game8.jp/fe-banshisenko/816444"
+        },
+        {
+          "topic": "班迪兹培养与战车兵资料差异",
+          "current": "采用多源一致的留职方向与技能条件，不新增精确成长。",
+          "incoming": "Game8评论区有坐骑成长翻倍及分等级精确增幅，属未独立实测用户评论，不采用。",
+          "src": "https://game8.jp/fe-banshisenko/816444"
+        },
+        {
+          "topic": "班迪兹培养与战车兵资料差异",
+          "current": "采用多源一致的留职方向与技能条件，不新增精确成长。",
+          "incoming": "独立wiki评价比商业攻略更保守，指出同类弓手竞争；作为投入成本提醒，不将其主观评价当机制。",
+          "src": "https://game8.jp/fe-banshisenko/816444"
+        },
+        {
+          "topic": "奥尔赫尔第三部加入区分",
+          "current": "新培养条目只写实际入队后，不变更现有剧情日期。",
+          "incoming": "Game8：第一区分途中；GameWith：表格及正文第二区分，小标题第一区分；AppMedia：第二区分",
+          "src": "https://game8.jp/fe-banshisenko/816884"
+        },
+        {
+          "topic": "奥尔赫尔最终职业推荐",
+          "current": "推荐属于定位差异；白魔路线为主，圣枪路线为可选，不宣称唯一最优。",
+          "incoming": "GameWith：圣枪师；Game8：ワイズマン→神将职；Altema：ワイズマン或神将职，标题仍写主教",
+          "src": "https://game8.jp/fe-banshisenko/816884"
+        },
+        {
+          "topic": "奥尔赫尔ワイズマン成长补正",
+          "current": "不引入精确成长加成；仅使用多源相符的使用技能、考试主技能和治疗技能。",
+          "incoming": "Game8职业页：力-5、守备-10等；Altema角色页：力+5、守备+10等",
+          "src": "https://game8.jp/fe-banshisenko/816884"
+        },
+        {
+          "topic": "杰斯特请求2分线目的地【迪线已补证，其余保留】",
+          "current": "迪托利希线セドー砦已由独立玩家受注、地图、战斗条件与胜利图片及回报文字确认，补入交涉资料。",
+          "incoming": "GameWith概要统一矿山与正文分线仍矛盾；本轮未取得凯伊／赛／蕾独立连续过程，不把迪线结论推广到其他线。",
+          "src": "https://chucco.com/fefw-jester-scout/"
+        },
+        {
+          "topic": "重装骑兵考试Rank与战备数量",
+          "current": "保留按当前考试菜单检查资格，不发布未核清的Rank和战备总数。",
+          "incoming": "Altema的重装E+与Game8／GameWith相同，但仍属攻略文字，缺考试菜单。Game8仍写第8章前全部战备，GameWith仍写8项；实际查看Game8职业解锁图，可见名声7与新考试开放，不能证明此前完成任务总数、最早章节或考试Rank，故不改正文。",
+          "src": "https://game8.jp/fe-banshisenko/816858"
+        }
+      ],
+      "new_sources": [
+        {
+          "grade": "B",
+          "name": "GameWith · 班迪兹（ベンディッツ）",
+          "url": "https://gamewith.jp/fefw/577297",
+          "note": "L437–507招募、留任战车兵和骑乘动物；L520–530个人命中技能与Lv.35猛击次数"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 班迪兹培养",
+          "url": "https://game8.jp/fe-banshisenko/816444",
+          "note": "L62–124标题与路线表写弓骑士，但正文推荐战车兵留职；L127–134凯伊线坐骑建议。只采用正文与其他来源一致的方向"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 战车兵",
+          "url": "https://gamewith.jp/fefw/577357",
+          "note": "L421–428马D、弓C为提高考试通过率的目标；L480–520装甲、突进、随等级成长与精通效果"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 战车兵",
+          "url": "https://game8.jp/fe-banshisenko/816658",
+          "note": "L61–76中级职与备考目标；L107–124骑乘防御、不能回避、突进和精通耐物效果"
+        },
+        {
+          "grade": "B",
+          "name": "Altema · 班迪兹",
+          "url": "https://altema.jp/febansisenkou/bandits",
+          "note": "L80–118个人技能、猛击次数和留职建议；技能Rank、成长表与其他站冲突，未采用"
+        },
+        {
+          "grade": "B",
+          "name": "任天堂大辞典wiki（社群）· 班迪兹",
+          "url": "https://w.atwiki.jp/nitendo/pages/14186.html",
+          "note": "L209–218四线招募、初始战车兵与专职技能；社群对投入价值较保守，仅作独立质性交叉核对"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 奥尔赫尔",
+          "url": "https://gamewith.jp/fefw/577374",
+          "note": "「スカウト条件」「おすすめ兵種」「個人スキル」「レベル習得スキル」：圣枪师候选、调魂+、重装属性和骑飞限制；加入小标题与正文区分有冲突"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · 奥尔赫尔",
+          "url": "https://game8.jp/fe-banshisenko/816884",
+          "note": "「育成おすすめ（兵種）」L65–111；「ブレイズタイプ・個人スキル・血印」L188–210；「レベル／技能レベルで覚えるスキル」L232–250：主教入队、白魔路线、Arts启动与回复条件"
+        },
+        {
+          "grade": "B",
+          "name": "AppMedia · 奥尔赫尔",
+          "url": "https://appmedia.jp/fe_banshisenkou/80402695",
+          "note": "「加入・スカウト条件」L82–94及「個人スキル」L117–129：第一部非招募对象、外传前置、第三部第二区分及骑飞限制"
+        },
+        {
+          "grade": "B",
+          "name": "Altema · 奥尔赫尔",
+          "url": "https://altema.jp/febansisenkou/oruheru",
+          "note": "「おすすめ兵種」：ワイズマン与神将职候选；「個人スキル」：骑兵、飞行限制。只采纳白魔培养方向，不抄录存在差异的成长补正"
+        },
+        {
+          "grade": "B",
+          "name": "Game8 · ワイズマン",
+          "url": "https://game8.jp/fe-banshisenko/816705",
+          "note": "「必要技能とレベル」L58–73、「解放条件」L75–84、「兵種スキル」L154–163：白魔术A、最上级开放阶段、可用斧／格斗／白魔术／步兵及回复加成"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 圣枪师",
+          "url": "https://gamewith.jp/fefw/577599",
+          "note": "「必要技能とレベル」「兵種スキル」：枪术A、最上级试验手形、白魔法次数翻倍与回复量+10"
+        },
+        {
+          "grade": "B",
+          "name": "ちゅこ · 迪托利希线杰斯特招募实玩",
+          "url": "https://chucco.com/fefw-jester-scout/",
+          "note": "2026-10-13文章请求2段落L96–126：受注→セドー砦→屍獄のデュナンゾ→迪托利希败走条件→胜利→回帝都回报。实际查看受注、路线地图、战斗条件和胜利四图；报告动作由作者文字描述，未取得报告菜单截图。"
+        },
+        {
+          "grade": "B",
+          "name": "GameWith · 杰斯特请求2分路线攻略",
+          "url": "https://gamewith.jp/fefw/579107",
+          "note": "正文「目的地で敵を全滅させる」将凯伊矿山与其他主人公セドー砦分开；概要表仍统一写矿山。只用于交叉支持已由独立迪线图文确认的地点，不裁定其余三线。"
+        },
+        {
+          "grade": "B",
+          "name": "重装骑兵考试交叉核对",
+          "url": "https://altema.jp/febansisenkou/cataphract",
+          "note": "复核考试与解锁条件；解锁图片不能证明此前任务总数或考试Rank，维持保守条件。"
+        },
+        {
+          "grade": "B",
+          "name": "重装骑兵考试交叉核对",
+          "url": "https://game8.jp/fe-banshisenko/816858",
+          "note": "复核考试与解锁条件；解锁图片不能证明此前任务总数或考试Rank，维持保守条件。"
+        },
+        {
+          "grade": "B",
+          "name": "重装骑兵考试交叉核对",
+          "url": "https://gamewith.jp/fefw/577520",
+          "note": "复核考试与解锁条件；解锁图片不能证明此前任务总数或考试Rank，维持保守条件。"
+        }
+      ],
+      "limited": [
+        {
+          "site": "基线与去重",
+          "reason": "基于main c6e5b0c1f2bf7e0bac70f97688998fd1fa8cfb4d；既有45份培养保留。10/14未发布资料在本轮重新核对，不把旧测试或丢失研究视作当前证据。日期按Asia/Tokyo。"
+        },
+        {
+          "site": "图证范围",
+          "reason": "实际查看独立迪线请求、地图、战斗条件与胜利四图；回报由作者文字描述，没有回报菜单截图或连续视频。画面中的期限、等级和章数不推广到其他存档。"
+        },
+        {
+          "site": "版本与难度",
+          "reason": "无本站游戏存档；公开来源未完整交代版本与难度。职业成长、加入区分与考试争议留日志。"
+        },
+        {
+          "site": "构建可复现性",
+          "reason": "干净main用Markdown 3.11可重建零差异；3.11.1使5个生成文件的中文粗体产生差异和字面**，已固定到3.11并增加回归断言。无其他依赖变化。"
+        }
+      ]
+    },
+    {
       "date": "2026-10-13",
       "edition": "第三部魔法培养与安娜夜间店铺",
       "scheduledFor": "2026-10-12T20:00:00Z",
