@@ -41,8 +41,8 @@ jobs:
       - name: Check desktop and mobile browsers
         run: python tools/browser_smoke.py --browser all --output test-results
       - uses: actions/upload-artifact@v4
-        if: failure()
+        if: always()
         with:
-          name: browser-failure
+          name: browser-qa
           path: test-results/
           if-no-files-found: ignore

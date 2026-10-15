@@ -12,12 +12,21 @@ from playwright.sync_api import expect, sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 ROUTES = ['#home', '#route/kai', '#route/dietrich', '#route/theodora', '#route/leda',
           '#story/war', '#story/salvation', '#planner', '#characters', '#classes',
-          '#guide/g5', '#weekly', '#sources']
-STATIC = ['directory.html', 'guide/g5.html', 'route/kai.html', 'character/59.html', 'classes.html',
+          '#guide/g5', '#weekly', '#sources', '#sources/log']
+STATIC = ['directory.html', 'guide/g5.html', 'route/kai.html', 'route/dietrich.html', 'character/59.html', 'classes.html',
           'character/58.html', 'character/text-5bc5d135.html', 'character/8.html', 'character/9.html',
           'character/22.html', 'character/24.html', 'character/18.html',
           'character/31.html', 'character/62.html', 'character/7.html', 'character/63.html',
-          'character/25.html', 'character/30.html', 'character/21.html', 'character/27.html', 'character/29.html']
+          'character/25.html', 'character/30.html', 'character/21.html', 'character/27.html', 'character/29.html',
+          'character/36.html', 'character/51.html']
+QA_SCREENSHOTS = {
+    '#guide/g5': 'guide-g5-interactive',
+    'guide/g5.html': 'guide-g5-static',
+    'character/27.html': 'character-27',
+    '#route/dietrich': 'route-dietrich-interactive',
+    'route/dietrich.html': 'route-dietrich-static',
+    '#sources/log': 'revision-log',
+}
 
 class QuietHandler(SimpleHTTPRequestHandler):
     def log_message(self, *_): pass
@@ -74,11 +83,14 @@ class Checks:
                     self.goto(page, route)
                     expect(page.locator('html')).to_have_attribute('data-mode', mode)
                     self.layout(page, width, f'{self.name} {mode} {width} {route}')
-                    if route in ('#route/kai', '#route/dietrich', '#route/theodora', '#route/leda', 'route/kai.html'):
+                    if route in ('#route/kai', '#route/dietrich', '#route/theodora', '#route/leda', 'route/kai.html', 'route/dietrich.html'):
                         expect(page.locator('#battles')).to_have_count(0)
                         require('培养重点' in page.locator('main').inner_text(), 'public training advice missing')
-                    if width == 390 and mode == 'light' and route in ('character/22.html', 'character/24.html', 'character/18.html', 'character/25.html', 'character/30.html', 'character/21.html', 'character/27.html', 'character/29.html', 'character/63.html'):
+                    if width == 390 and mode == 'light' and route in ('character/22.html', 'character/24.html', 'character/18.html', 'character/25.html', 'character/30.html', 'character/21.html', 'character/27.html', 'character/29.html', 'character/63.html', 'character/36.html', 'character/51.html'):
                         page.screenshot(path=str(self.output / f'{self.name}-mobile-{Path(route).stem}.png'), full_page=True)
+                    if mode == 'light' and width in (390, 1366) and route in QA_SCREENSHOTS:
+                        viewport = 'mobile' if width == 390 else 'desktop'
+                        page.screenshot(path=str(self.output / f'{self.name}-{mode}-{viewport}-{QA_SCREENSHOTS[route]}.png'), full_page=True)
                     if width == 390 and route == '#planner':
                         require(page.locator('[data-plan-mark]').first.bounding_box()['y'] < 844,
                                 'first mobile mark is below the initial screen')
